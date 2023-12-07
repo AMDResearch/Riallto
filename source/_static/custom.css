@@ -1,0 +1,57 @@
+/*
+ * custom.css
+ * ~~~~~~~~~
+ *
+ * Custom stylesheet.
+ *
+ * :copyright: Copyright 2022 by Xilinx, Inc.
+ *
+ */
+
+/* -- main layout ----------------------------------------------------------- */
+/*@media screen and (max-width: 950px){
+    .wy-body-for-nav{background:#000000}
+    .wy-nav-top{display:block}
+    .wy-nav-side{left:300px}
+    .wy-nav-side.shift{width:85%;left:0}
+    .wy-side-scroll{width:auto}
+    .wy-side-nav-search{width:auto}
+    .wy-menu.wy-menu-vertical{width:auto}
+    .wy-nav-content-wrap{margin-left:0}
+    .wy-nav-content-wrap
+    .wy-nav-content{padding:1.618em}
+    .wy-nav-content-wrap.shift{position:fixed;min-width:100%;left:85%;top:0;height:100%;overflow:hidden}
+}*/
+
+
+
+div.alert.alert-box.alert-success {
+    border: 1px solid #81C784; /* Border color for success alert */
+    background-color: #C8E6C9; /* Background color for success alert */
+    color: #1B5E20; /* Text color for success alert */
+    padding: 10px; /* Adjust padding as needed */
+    margin-bottom: 20px; /* Adjust margin as needed */
+    border-radius: 5px; /* Rounded corners for alert box */
+}
+
+
+/* Style Jupyter Notebook info alert boxes */
+div.alert.alert-box.alert-info {
+    border: 1px solid #4DD0E1; /* Border color for info alert */
+    background-color: #B2EBF2; /* Background color for info alert */
+    color: #006064; /* Text color for info alert */
+    padding: 10px; /* Adjust padding as needed */
+    margin-bottom: 20px; /* Adjust margin as needed */
+    border-radius: 5px; /* Rounded corners for alert box */
+}
+
+
+/* Style Jupyter Notebook warning alert boxes */
+div.alert.alert-box.alert-warning {
+    border: 1px solid #FFB74D; /* Border color for warning alert */
+    background-color: #FFE0B2; /* Background color for warning alert */
+    color: #E65100; /* Text color for warning alert */
+    padding: 10px; /* Adjust padding as needed */
+    margin-bottom: 20px; /* Adjust margin as needed */
+    border-radius: 5px; /* Rounded corners for alert box */
+}

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
+
+<!--<script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" data-document-language="true" type="text/javascript" charset="UTF-8" data-domain-script="03af8d57-0a04-47a6-8f10-322fa00d8fc7" ></script>
+<script type="text/javascript">
+function OptanonWrapper() { }
+</script>-->
+<!-- OneTrust Cookies Consent Notice end for xilinx.github.io -->
+<!-- Google Tag Manager -->
+<script type="text/plain" class="optanon-category-C0002">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5RHQV7');</script>
+<!-- End Google Tag Manager -->
+  <title>npu.lib.kernels.plusn &mdash; AMD Riallto 1.0 documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/./custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/./custom_page_width.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../_static/documentation_options.js?v=2882ecd3"></script>
+        <script src="../../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-5RHQV7" height="0" width="0" style="display:none;visibility:hidden" class="optanon-category-C0002"></iframe></noscript>
+<!-- End Google Tag Manager --> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+            <a href="../../../../index.html" class="icon icon-home"> AMD Riallto
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../index.html">Home</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Riallto overview</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../1_0_Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../install-riallto.html">Install Riallto</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../ryzenai_video_overview.html">Riallto Video Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../1_1_ryzenai.html">Ryzen AI Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../2_1_MS_Windows_Studio_Effects.html">Windows Studio Effects</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">NPU Architecture examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../3_1_Color_threshold_example.html">Loading your first example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../3_2_Ryzenai_capabilities.html">Understanding columns and tiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../3_3_Scaled_color_threshold_example.html">Scaling applications to multiple compute tiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../3_4_Edge_detect_example.html">Optimizing data movement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../3_5_Color_detect_example.html">Multicasting and multiple kernels per tile</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Building applications</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../4_1_software_framework.html">Introduction to the Riallto software framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../4_2_write_your_kernel.html">Write your first kernel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../4_3_kernels_with_runtime_parameters.html">Using Run Time Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../4_4_threshold_kernel_with_vector_ops.html">How to use the vector processor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../4_5_describe_an_application.html">Describing an application</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../4_6_build_application.html">Building a complete application</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../4_7_using_the_memtile_in_your_applications.html">Using memory tiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../4_8_build_a_colorDetect_application.html">Reusing software kernels</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Ryzen AI Machine Learning</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../5_1_pytorch_onnx_inference.html">Inference with PyTorch and ONNX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../5_2_pytorch_onnx_re-train.html">Re-training with PyTorch and ONNX</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python Package</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../modules.html">npu</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Glossary</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../Glossary.html">Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../Appendix_Review_of_Image_Processing_Concepts.html">Review of Image Processing concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../prerequisites-driver.html">Install the NPU driver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../prerequisites-aie-license.html">Get an AIE license</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../prerequisites-wsl.html">Enable WSL</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">AMD Riallto</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+      <li>npu.lib.kernels.plusn</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for npu.lib.kernels.plusn</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Copyright (C) 2023 Advanced Micro Devices, Inc. All rights reserved.</span>
+<span class="c1"># SPDX-License-Identifier: MIT</span>
+
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span> <span class="nn">.kernelgenerator</span> <span class="kn">import</span> <span class="n">KernelObjCall</span>
+
+
+<div class="viewcode-block" id="Plus1">
+<a class="viewcode-back" href="../../../../npu.lib.kernels.html#npu.lib.kernels.plusn.Plus1">[docs]</a>
+<span class="k">class</span> <span class="nc">Plus1</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Vectorized implementation of a plus1 function.</span>
+
+<span class="sd">    This function simply adds a constant 1 to every element of an input array.</span>
+<span class="sd">    This is a useful function to verify that your graph is set up</span>
+<span class="sd">    correctly as the input/output relationship is simple to interpret.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+        <span class="n">cpp</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s2">&quot;cpp&quot;</span> <span class="o">/</span> <span class="s2">&quot;plus1.cpp&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">KernelObjCall</span><span class="p">(</span><span class="n">cpp</span><span class="p">,</span> <span class="bp">cls</span><span class="o">.</span><span class="n">behavioralfx</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Plus1.behavioralfx">
+<a class="viewcode-back" href="../../../../npu.lib.kernels.html#npu.lib.kernels.plusn.Plus1.behavioralfx">[docs]</a>
+    <span class="k">def</span> <span class="nf">behavioralfx</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">nbytes</span><span class="o">.</span><span class="n">value</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">in_buffer</span><span class="o">.</span><span class="n">array</span><span class="o">.</span><span class="n">nbytes</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&#39;in_buffer&#39; size (</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">in_buffer</span><span class="o">.</span><span class="n">array</span><span class="o">.</span><span class="n">nbytes</span><span class="si">}</span><span class="s2">)&quot;</span>
+                             <span class="sa">f</span><span class="s2">&quot; does not match &#39;nbytes&#39; (</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nbytes</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">out_buffer</span><span class="o">.</span><span class="n">array</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">in_buffer</span><span class="o">.</span><span class="n">array</span> <span class="o">+</span> <span class="mi">1</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="PlusN">
+<a class="viewcode-back" href="../../../../npu.lib.kernels.html#npu.lib.kernels.plusn.PlusN">[docs]</a>
+<span class="k">class</span> <span class="nc">PlusN</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Vectorized implementation of a plusN function.</span>
+
+<span class="sd">    This function adds a custom value specified by the runtime parameter N</span>
+<span class="sd">    to every value of an input array.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+        <span class="n">cpp</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s2">&quot;cpp&quot;</span> <span class="o">/</span> <span class="s2">&quot;plusn.cpp&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">KernelObjCall</span><span class="p">(</span><span class="n">cpp</span><span class="p">,</span> <span class="bp">cls</span><span class="o">.</span><span class="n">behavioralfx</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span>
+
+<div class="viewcode-block" id="PlusN.behavioralfx">
+<a class="viewcode-back" href="../../../../npu.lib.kernels.html#npu.lib.kernels.plusn.PlusN.behavioralfx">[docs]</a>
+    <span class="k">def</span> <span class="nf">behavioralfx</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">nbytes</span><span class="o">.</span><span class="n">value</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">in_buffer</span><span class="o">.</span><span class="n">array</span><span class="o">.</span><span class="n">nbytes</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&#39;in_buffer&#39; size (</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">in_buffer</span><span class="o">.</span><span class="n">array</span><span class="o">.</span><span class="n">nbytes</span><span class="si">}</span><span class="s2">)&quot;</span>
+                             <span class="sa">f</span><span class="s2">&quot; does not match &#39;nbytes&#39; (</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nbytes</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">out_buffer</span><span class="o">.</span><span class="n">array</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="o">.</span><span class="n">value</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">in_buffer</span><span class="o">.</span><span class="n">array</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          
+				  
+				  <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Advanced Micro Devices, Inc.
+      <span class="lastupdated">Last updated on December 15, 2023.
+      </span></p>
+  </div>
+
+
+
+										<div class="aem-Grid aem-Grid--16">
+											<div class="aem-GridColumn aem-GridColumn--xxxlarge--none aem-GridColumn--xsmall--16 aem-GridColumn--offset--xsmall--0 aem-GridColumn--xlarge--none aem-GridColumn--xxlarge--none aem-GridColumn--default--none aem-GridColumn--offset--large--1 aem-GridColumn--xlarge--12 aem-GridColumn--offset--default--0 aem-GridColumn--xxlarge--10 aem-GridColumn--offset--xlarge--2 aem-GridColumn--offset--xxlarge--3 aem-GridColumn--offset--xxxlarge--4 aem-GridColumn--xsmall--none aem-GridColumn--large--none aem-GridColumn aem-GridColumn--large--14 aem-GridColumn--xxxlarge--8 aem-GridColumn--default--16">
+												<div class="container-fluid sub-footer">
+
+													                    <div class="row">
+                        <div class="col-xs-24">
+                          <p><a target="_blank" href="https://www.amd.com/en/corporate/copyright">Terms and Conditions</a> | <a target="_blank" href="https://www.amd.com/en/corporate/privacy">Privacy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/cookies">Cookie Policy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/trademarks">Trademarks</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/statement-human-trafficking-forced-labor.pdf">Statement on Forced Labor</a> | <a target="_blank" href="https://www.amd.com/en/corporate/competition">Fair and Open Competition</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/amd-uk-tax-strategy.pdf">UK Tax Strategy</a> | <a target="_blank" href="https://docs.xilinx.com/v/u/9x6YvZKuWyhJId7y7RQQKA">Inclusive Terminology</a> | <a href="#cookiessettings" class="ot-sdk-show-settings">Cookies Settings</a></p>
+                        </div>
+                    </div>
+												</div>
+											</div>
+										</div>
+										
+</br>
+
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+</body>
+</html>

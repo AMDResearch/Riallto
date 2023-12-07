@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How to Use the Vector Processing Units &mdash; AMD Riallto 1.0 documentation</title><link rel="icon" type="image/x-icon" href="_static/favicon.ico">
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+      <link rel="stylesheet" href="_static/nbsphinx-code-cells.css" type="text/css" />
+      <link rel="stylesheet" href="_static/./custom.css" type="text/css" />
+      <link rel="stylesheet" href="_static/./custom_page_width.css" type="text/css" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v3.0.0-rc.17/dist/cookieconsent.css">
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/documentation_options.js?v=2882ecd3"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="_static/copybutton.js?v=f281be69"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/jquery.js"></script>
+    <script src="_static/cookie-consent.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Describing an Application" href="4_5_describe_an_application.html" />
+    <link rel="prev" title="Run Time Parameters" href="4_3_kernels_with_runtime_parameters.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-5RHQV7" height="0" width="0" style="display:none;visibility:hidden" class="optanon-category-C0002"></iframe></noscript>
+<!-- End Google Tag Manager --> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+            <a href="index.html" class="icon icon-home"> AMD Riallto
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Home</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Riallto overview</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="1_0_Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install-riallto.html">Install Riallto</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ryzenai_video_overview.html">Riallto Video Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1_1_ryzenai.html">Ryzen AI Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_1_MS_Windows_Studio_Effects.html">Windows Studio Effects</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">NPU Architecture examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="3_1_Color_threshold_example.html">Loading your first example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_2_Ryzenai_capabilities.html">Understanding columns and tiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_3_Scaled_color_threshold_example.html">Scaling applications to multiple compute tiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_4_Edge_detect_example.html">Optimizing data movement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_5_Color_detect_example.html">Multicasting and multiple kernels per tile</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Building applications</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="4_1_software_framework.html">Introduction to the Riallto software framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_2_write_your_kernel.html">Write your first kernel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_3_kernels_with_runtime_parameters.html">Using Run Time Parameters</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">How to use the vector processor</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Goals">Goals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#References">References</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Vectorization">Vectorization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Introduction-to-the-AI-Engine-API">Introduction to the AI Engine API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Load/Store-and-Vector-APIs">Load/Store and Vector APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Operating-on-Vectors">Operating on Vectors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Vectorizing-the-pass-through-Kernel">Vectorizing the pass-through Kernel</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Explaining-the-code">Explaining the code</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Declare-a-vector">Declare a vector</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Calculate-the-number-of-loop-iterations">Calculate the number of loop iterations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Create-a-loop-and-load-input-data">Create a loop and load input data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Store-the-result">Store the result</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Increment-the-counters">Increment the counters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Vectorized-software-kernel-conclusion">Vectorized software kernel conclusion</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#Writing-a-Vectorized-Threshold-Kernel">Writing a Vectorized Threshold Kernel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Examining-the-Kernel">Examining the Kernel</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Initialization">Initialization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Inner-loop-body">Inner loop body</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Setup-the-loop-counter-and-load-input-data">Setup the loop counter and load input data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Compare-input-vector-against-threshold-and-generate-a-mask">Compare input vector against threshold and generate a mask</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#Build-the-Application">Build the Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Run-the-Application">Run the Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Next-Steps">Next Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="4_5_describe_an_application.html">Describing an application</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_6_build_application.html">Building a complete application</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_7_using_the_memtile_in_your_applications.html">Using memory tiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_8_build_a_colorDetect_application.html">Reusing software kernels</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Ryzen AI Machine Learning</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="5_1_pytorch_onnx_inference.html">Inference with PyTorch and ONNX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5_2_pytorch_onnx_re-train.html">Re-training with PyTorch and ONNX</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python Package</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">npu</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Glossary</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Glossary.html">Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Appendix_Review_of_Image_Processing_Concepts.html">Review of Image Processing concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="prerequisites-driver.html">Install the NPU driver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="prerequisites-aie-license.html">Get an AIE license</a></li>
+<li class="toctree-l1"><a class="reference internal" href="prerequisites-wsl.html">Enable WSL</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">AMD Riallto</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>How to Use the Vector Processing Units</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="How-to-Use-the-Vector-Processing-Units">
+<h1>How to Use the Vector Processing Units<a class="headerlink" href="#How-to-Use-the-Vector-Processing-Units" title="Link to this heading">¶</a></h1>
+<section id="Goals">
+<h2>Goals<a class="headerlink" href="#Goals" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Introduce AI Engine vector operations within a user-defined kernel</p></li>
+<li><p>Develop our first single instruction multiple data path (SIMD) application</p></li>
+<li><p>Achieve better performance when changing the run-time parameters (RTPs) during application execution</p></li>
+</ul>
+</section>
+<section id="References">
+<h2>References<a class="headerlink" href="#References" title="Link to this heading">¶</a></h2>
+<p><a class="reference external" href="https://www.xilinx.com/htmldocs/xilinx2023_2/aiengine_api/aie_api/doc/">AIE API reference manual</a></p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Single_instruction,_multiple_data">Single Instruction Multiple Data (SIMD)</a></p>
+<hr class="docutils" />
+</section>
+<section id="Vectorization">
+<h2>Vectorization<a class="headerlink" href="#Vectorization" title="Link to this heading">¶</a></h2>
+<p>Vectorization is a technique that allows a computer processor to perform the same operation on multiple data elements simultaneously, using a single instruction. This is supported by the SIMD architecture of the AI Engines in the NPU compute tiles. <a class="reference external" href="https://en.wikipedia.org/wiki/Single_instruction,_multiple_data">SIMD</a> stands for Single Instruction, Multiple Data.</p>
+<p>A vector represents a collection of data elements of the same type. A SIMD instruction is a single instruction that is executed simultaneously on multiple data elements. In other words, it processes vectors using a single operation.</p>
+<p>Vectorization is the process of transforming scalar operations (operations on individual data elements) into vector operations (operations on vectors). Instead of processing one data element at a time, vectorization enables the CPU to work on a batch of data elements in parallel. This approach leverages parallelism to improve the computational efficiency of tasks that involve the same operations on a set of data, such as arrays or vectors.</p>
+<p>We will show how the benefits of SIMD data parallelism are achieved with the AI Engine’s vector processor unit, shown below.</p>
+<center><p><img alt="aadcbe36d36942949a2cc8eb7433e4e2" src="_images/ai_engine_processor.png" /></p>
+</center><center><p>AIE-ML Architecture</p>
+</center><div class="alert alert-info" role="alert"><p>The vectorization factor is the number of data lanes in the vector unit. It corresponds to the number of scalar iterations that can be performed by each vector instruction. The vector processing unit (VPU) data path is 512-bits wide. It has 64 lanes for 8-bit data types, 32 lanes for 16-bit types or 16 lanes for 32-bit types. The VPU’s vectorization factor is configurable to accommodate the different widths of different data types.</p>
+</div></section>
+<section id="Introduction-to-the-AI-Engine-API">
+<h2>Introduction to the AI Engine API<a class="headerlink" href="#Introduction-to-the-AI-Engine-API" title="Link to this heading">¶</a></h2>
+<p>The previous examples used C++ code with no special APIs. C/C++ have limited built in support for vector processing. We will use the AI Engine API which support the vector architecture of the processor.</p>
+<p>You can read more details in the <a class="reference external" href="https://www.xilinx.com/htmldocs/xilinx2023_2/aiengine_api/aie_api/doc/">AIE API reference manual</a></p>
+<p>To get started we need to understand the load and store vector APIs, and the arithmetic vector APIs.</p>
+</section>
+<section id="Load/Store-and-Vector-APIs">
+<h2>Load/Store and Vector APIs<a class="headerlink" href="#Load/Store-and-Vector-APIs" title="Link to this heading">¶</a></h2>
+<p>Input and output data to software kernels running on AI Engines are stored in memory buffers in the local data memory of the compute tiles. Pointers provide the software kernel with access to the data buffers. On an AI Engine, the software kernel can read data from the input buffer pointer as a vector. This loads the inputs into special vector registers in the Vector Processing Unit. In the AI Engine, the output from the VPU is also stored in special vector registers, which can be written back
+to the output memory buffer as a vector.</p>
+<p>The AI Engine VPU can perform up to two load and one store operations from local data memory per clock cycle. If you are unfamiliar with the terms load and store, a <em>load</em> is a read from memory, and a <em>store</em> is a write to memory. The data path for each of these load and store operations is 256-bit wide. This means we can load 512-bit of data and store 256-bit of data in one cycle.</p>
+<p>We can use the following APIs to load and store vectors:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">::aie::load_v&lt;N&gt;(pointer)</span></code>: <a class="reference external" href="https://www.xilinx.com/htmldocs/xilinx2023_2/aiengine_api/aie_api/doc/group__group__memory.html#ga1d143988d732069ef3c66dc6d2ae3ea9">AIE Store vector operator documentation</a></p>
+<ul>
+<li><p>loads a vector of <code class="docutils literal notranslate"><span class="pre">N</span></code> elements from the input <code class="docutils literal notranslate"><span class="pre">pointer</span></code> and returns a vector of <code class="docutils literal notranslate"><span class="pre">N</span></code> elements of the underlying type of <code class="docutils literal notranslate"><span class="pre">pointer</span></code>.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">::aie::store_v(pointer,</span> <span class="pre">vector)</span></code>: <a class="reference external" href="https://www.xilinx.com/htmldocs/xilinx2023_2/aiengine_api/aie_api/doc/group__group__memory.html#gaa134a9db67641fc7ee69be78c7b00bf6">AIE Store vector operator documentation</a></p>
+<ul>
+<li><p>stores a <code class="docutils literal notranslate"><span class="pre">vector</span></code> into the buffer in data memory associated to the output <code class="docutils literal notranslate"><span class="pre">pointer</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+<p>We must use vector data types with these APIs. To declare a vector data type we can use the following:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">::aie::vector&lt;&lt;type&gt;,</span> <span class="pre">&lt;vector</span> <span class="pre">length&gt;&gt;</span> <span class="pre">vector_name</span></code>: <a class="reference external" href="https://www.xilinx.com/htmldocs/xilinx2023_2/aiengine_api/aie_api/doc/group__group__basic__types.html#classaie_1_1vector">AIE vector data type documentation</a></p>
+<ul>
+<li><p>Creates a vector of the specified type and length</p></li>
+</ul>
+</li>
+</ul>
+<p>You will see these APIs used in the next software kernel we will build.</p>
+<div class="alert alert-info" role="alert"><p>Data should be 128-bit aligned to get maximum performance. Data aligned on different boundaries will not be loaded/stored in a single operation.</p>
+</div><hr class="docutils" />
+</section>
+<section id="Operating-on-Vectors">
+<h2>Operating on Vectors<a class="headerlink" href="#Operating-on-Vectors" title="Link to this heading">¶</a></h2>
+<p>The AI Engine APIs support the following vector operations:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.xilinx.com/htmldocs/xilinx2023_2/aiengine_api/aie_api/doc/group__group__arithmetic.html">Arithmetic</a> - E.g., adding, subtracting, multiplying, accumulating, bitwise.</p></li>
+<li><p><a class="reference external" href="https://www.xilinx.com/htmldocs/xilinx2023_2/aiengine_api/aie_api/doc/group__group__compare.html">Comparison</a> - E.g., less than, greater than, equals/not equals.</p></li>
+<li><p><a class="reference external" href="https://www.xilinx.com/htmldocs/xilinx2023_2/aiengine_api/aie_api/doc/group__group__reduce.html">Reduction</a> - E.g., reduction add, min, max.</p></li>
+<li><p><a class="reference external" href="https://www.xilinx.com/htmldocs/xilinx2023_2/aiengine_api/aie_api/doc/group__group__reshape.html">Reshaping</a> - E.g., select, filter, interleave, shuffle.</p></li>
+</ul>
+<p>You can follow the links for more details, but this is not necessary at this stage.</p>
+<p>These APIs will be demonstrated in the software kernel code in the next examples.</p>
+</section>
+<section id="Vectorizing-the-pass-through-Kernel">
+<h2>Vectorizing the pass-through Kernel<a class="headerlink" href="#Vectorizing-the-pass-through-Kernel" title="Link to this heading">¶</a></h2>
+<p>To make a vectorized version of the pass-through application that we saw in earlier notebooks, we write the following C++ code:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">passthrough_vectorized</span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">in_buffer</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">out_buffer</span><span class="p">,</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">nbytes</span><span class="p">){</span>
+<span class="w">    </span><span class="c1">// a buffer to temporarily store our vector</span>
+<span class="w">    </span><span class="o">::</span><span class="n">aie</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">uint8_t</span><span class="p">,</span><span class="w"> </span><span class="mi">64</span><span class="o">&gt;</span><span class="w"> </span><span class="n">buffer</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// divide by vectorization factor (64)</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">loop_count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nbytes</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">6</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">&lt;</span><span class="n">loop_count</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">         </span><span class="c1">// load 32 elements into the buffer</span>
+<span class="w">        </span><span class="n">buffer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">::</span><span class="n">aie</span><span class="o">::</span><span class="n">load_v</span><span class="o">&lt;</span><span class="mi">64</span><span class="o">&gt;</span><span class="p">(</span><span class="n">in_buffer</span><span class="p">);</span>
+
+<span class="w">        </span><span class="c1">// store buffer into the out buffer</span>
+<span class="w">        </span><span class="o">::</span><span class="n">aie</span><span class="o">::</span><span class="n">store_v</span><span class="o">&lt;</span><span class="mi">64</span><span class="o">&gt;</span><span class="p">(</span><span class="n">out_buffer</span><span class="p">,</span><span class="w"> </span><span class="n">buffer</span><span class="p">);</span>
+
+<span class="w">         </span><span class="c1">// We need to increment the buffers by 32 each iteration now</span>
+<span class="w">        </span><span class="n">in_buffer</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">64</span><span class="p">;</span>
+<span class="w">        </span><span class="n">out_buffer</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">64</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<section id="Explaining-the-code">
+<h3>Explaining the code<a class="headerlink" href="#Explaining-the-code" title="Link to this heading">¶</a></h3>
+<p>The C++ code defines a function named <code class="docutils literal notranslate"><span class="pre">passthrough_vectorized()</span></code> that operates on arrays of 8-bit unsigned integers (uint8_t). Like the first passthrough example we saw, this function copies data from an input buffer to an output buffer in a vectorized manner, without any other processing. By vectorizing this example, it processes data in chunks of 64 elements at a time for improved performance. Breaking this code down line by line:</p>
+<section id="Declare-a-vector">
+<h4>Declare a vector<a class="headerlink" href="#Declare-a-vector" title="Link to this heading">¶</a></h4>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>::aie::vector&lt;uint8_t,64&gt; buffer;
+</pre></div>
+</div>
+<p>This line declares a vector named buffer, which can hold 64 elements of uint8_t type.</p>
+</section>
+<section id="Calculate-the-number-of-loop-iterations">
+<h4>Calculate the number of loop iterations<a class="headerlink" href="#Calculate-the-number-of-loop-iterations" title="Link to this heading">¶</a></h4>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">loop_count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nbytes</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">6</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>This line calculates the number of iterations required to process the data. It shifts the nbytes (number of bytes) to the right by 6 bits, effectively dividing it by 64 (26). This determines how many 64-element chunks there are in the data to be processed.</p>
+</section>
+<section id="Create-a-loop-and-load-input-data">
+<h4>Create a loop and load input data<a class="headerlink" href="#Create-a-loop-and-load-input-data" title="Link to this heading">¶</a></h4>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">&lt;</span><span class="n">loop_count</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</pre></div>
+</div>
+<p>This initiates a loop that will run loop_count times, with i as the loop counter</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">buffer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">::</span><span class="n">aie</span><span class="o">::</span><span class="n">load_v</span><span class="o">&lt;</span><span class="mi">64</span><span class="o">&gt;</span><span class="p">(</span><span class="n">in_buffer</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Inside the loop, this line loads 64 elements from the in_buffer into the buffer. The load vectorized operation is provided by the ::aie:: library. It effectively copies 64-Byte from the data memory to one of the vector registers of the NPU array.</p>
+</section>
+<section id="Store-the-result">
+<h4>Store the result<a class="headerlink" href="#Store-the-result" title="Link to this heading">¶</a></h4>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="o">::</span><span class="n">aie</span><span class="o">::</span><span class="n">store_v</span><span class="o">&lt;</span><span class="mi">64</span><span class="o">&gt;</span><span class="p">(</span><span class="n">out_buffer</span><span class="p">,</span><span class="w"> </span><span class="n">buffer</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The input is loaded into a vector register in the VPU. For this <em>passthrough</em> software kernel, the input passes unmodified through the VPU. The ::aie::stores_v writes the result from the vector registers back to the output memory buffer. The store operation effectively copies the 64 elements from the VPU to the local data memory.</p>
+</section>
+<section id="Increment-the-counters">
+<h4>Increment the counters<a class="headerlink" href="#Increment-the-counters" title="Link to this heading">¶</a></h4>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">input_buffer</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">64</span><span class="p">;</span>
+<span class="n">output_buffer</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">64</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>After processing a chunk of 64-element, both buffer pointers are incremented by 64 to prepare for the next chunk of data.</p>
+</section>
+<section id="Vectorized-software-kernel-conclusion">
+<h4>Vectorized software kernel conclusion<a class="headerlink" href="#Vectorized-software-kernel-conclusion" title="Link to this heading">¶</a></h4>
+<p>The function continues the loop until it has processed all the data in nbytes. The use of vectorized operations allows load and store access and copying, as it operates on larger data chunks at a time. This will result in significant performance improvements compared to scalar processing (processing one element at a time).</p>
+<hr class="docutils" />
+</section>
+</section>
+</section>
+<section id="Writing-a-Vectorized-Threshold-Kernel">
+<h2>Writing a Vectorized Threshold Kernel<a class="headerlink" href="#Writing-a-Vectorized-Threshold-Kernel" title="Link to this heading">¶</a></h2>
+<p>Rather than build the simple passthrough kernel, we will go straight to a vectorized threshold kernel.</p>
+<p>The overall objective of a vectorized threshold kernel is to implement the same <em>threshold functionality</em> we saw in an earlier example, but parallelized so that it can process multiple pixels in each iteration. This will significantly reduce the time the kernel needs to iterate in its innermost loop, resulting in a noticeable speed-up.</p>
+<p>Each RGBA pixel is 4-Byte so we choose a vector data type of length 32-bit to represent each pixel in our compute tile. Since our vector processing is 512-bit wide, we can now process 16 RGBA pixels per operation.</p>
+<p>Start by importing the <code class="docutils literal notranslate"><span class="pre">npu</span></code> package:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">npu</span>
+</pre></div>
+</div>
+</div>
+<p>This kernel will have the same functionality as the kernel defined in the previous notebook but with vector operations replacing the scalar operations.</p>
+<p>The primary AI Engine API operations we will use are:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>::aie:: call</p></th>
+<th class="head"><p>Operation Performed</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>::aie::load_v&lt;&gt;()</p></td>
+<td><p>Vector load</p></td>
+</tr>
+<tr class="row-odd"><td><p>::aie::store_v()</p></td>
+<td><p>Vector store</p></td>
+</tr>
+<tr class="row-even"><td><p>::aie::broadcast&lt;&gt;()</p></td>
+<td><p>Replicate arg_1 in each data lane of vector in arg_2. We will use this to pass the RunTime ‘threshold’ parameter to each data lane</p></td>
+</tr>
+<tr class="row-odd"><td><p>::aie::zeros&lt;&gt;()</p></td>
+<td><p>Create a vector of zeros with the specified number of lanes and data type</p></td>
+</tr>
+<tr class="row-even"><td><p>::aie::lt&lt;&gt;()</p></td>
+<td><p>Vector less than comparison</p></td>
+</tr>
+<tr class="row-odd"><td><p>::aie::mask&lt;&gt;()</p></td>
+<td><p>Vector compare arg1 with arg2 with resulting Boolean mask in arg3</p></td>
+</tr>
+<tr class="row-even"><td><p>::aie::select()</p></td>
+<td><p>Select arg1 or arg2 based on mask in arg3</p></td>
+</tr>
+</tbody>
+</table>
+<p>Let us look at the different portions of our kernel to explore how this works. The completed software kernel code is provided here:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">kernel</span>
+
+void threshold_vec(uint8_t *in_buffer, uint8_t *out_buffer,
+                   uint32_t nbytes,
+                   uint8_t r_threshold, uint8_t g_threshold, uint8_t b_threshold)
+{
+    // Vector lanes
+    const uint8_t vector_lanes = 64;
+    // Value of saturated pixels
+    const uint8_t saturated = 255;
+
+    // Declare 512-bit wide vectors
+    ::aie::vector&lt;uint8_t, vector_lanes&gt; input_pixels;
+    ::aie::vector&lt;uint8_t, vector_lanes&gt; output_pixels;
+    ::aie::vector&lt;uint8_t, vector_lanes&gt; threshold_vector;
+    ::aie::vector&lt;uint8_t, vector_lanes&gt; saturation_vector;
+    ::aie::vector&lt;uint8_t, vector_lanes&gt; zeros_vector = ::aie::zeros&lt;uint8_t, 64&gt;();
+
+    // Broadcast saturated value into all 64 lanes of saturation_vector
+    saturation_vector = ::aie::broadcast&lt;uint8_t, vector_lanes&gt;(saturated);
+
+    // Create a new uint32 for the pixel threshold values, and concatenate the RTP values
+    uint32_t pixel_rtps32;
+    pixel_rtps32 = (uint32_t)b_threshold &lt;&lt; 16 |
+                   (uint32_t)g_threshold &lt;&lt; 8 |
+                   (uint32_t)r_threshold;
+
+    // Broadcast threshold values into the kernel 32-bit at a time
+    threshold_vector =::aie::broadcast&lt;uint32_t, 16&gt;(pixel_rtps32).cast_to&lt;uint8_t&gt;();
+
+    // Vectorized thresholding loop
+    uint16_t loop_count = (nbytes) &gt;&gt; 6;
+    for(int j=0; j&lt;loop_count; j++) {
+
+        // Vector load pixels and mask
+        input_pixels = ::aie::load_v&lt;vector_lanes&gt;(in_buffer);
+
+        // Create 64-bit threshold status register
+        ::aie::mask&lt;64&gt; threshold_status;
+        // Capture Boolean results of thresholding
+        threshold_status = ::aie::lt(threshold_vector, input_pixels);
+
+        // Vector select actual pixel values using threshold_status as mask
+        output_pixels = ::aie::select(zeros_vector, saturation_vector, threshold_status);
+        // Vector store thresholded pixels in output buffer
+        ::aie::store_v(out_buffer, output_pixels);
+
+        // Advance buffer pointers by vectorization factor
+        in_buffer += vector_lanes;
+        out_buffer += vector_lanes;
+    }
+}
+</pre></div>
+</div>
+</div>
+<hr class="docutils" />
+</section>
+<section id="Examining-the-Kernel">
+<h2>Examining the Kernel<a class="headerlink" href="#Examining-the-Kernel" title="Link to this heading">¶</a></h2>
+<p>The vectorized kernel code above looks different from those in the previous notebooks. It uses APIs from the AI Engine library <code class="docutils literal notranslate"><span class="pre">::aie</span></code> to perform vector operations. To explain this kernel, we are going to break it up into two main parts:</p>
+<ol class="arabic simple">
+<li><p>The initialization, i.e., the bit before the for loop.</p></li>
+<li><p>The inner loop body, i.e., the bit inside the innermost loop.</p></li>
+</ol>
+<section id="Initialization">
+<h3>Initialization<a class="headerlink" href="#Initialization" title="Link to this heading">¶</a></h3>
+<p>The majority of the computation work that the kernel performs is within the innermost loop; however, before we can get to that, we need to set up some vectors that we are going to use within that inner loop.</p>
+<p>We start by defining some constants. The individual red, green and blue and alpha values of the pixel are 8-bit. We will use unsigned int8 as the vector data type so that we can operate on each pixel component. As the AI Engine datapath is 512-bit wide and supports 64 8-bit lanes, we define a constant for the number of lanes. Each pixel is 32-bit, so we will be able to process 16 pixels at a time.</p>
+<p>We will also define a <code class="docutils literal notranslate"><span class="pre">saturated</span></code> value we will set pixel components to if it exceeds the threshold. 255 is the maximum value for an unsigned int8.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">const</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">vector_lanes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">64</span><span class="p">;</span>
+<span class="k">const</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">saturated</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">255</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Next, we declare vectors for the input, output, a threshold vector, and a saturation vector. Each of these vectors is 512-bit wide (64 lanes x 8-bit).</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">saturation_vector</span></code> will be used for the values that we want our pixels to be set to if they are over the threshold value. We will use the <code class="docutils literal notranslate"><span class="pre">threshold_vector</span></code> for the pixel-wise comparison in our inner loop.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Declare 512-bit wide vectors</span>
+<span class="o">::</span><span class="n">aie</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">uint8_t</span><span class="p">,</span><span class="w"> </span><span class="n">vector_lanes</span><span class="o">&gt;</span><span class="w"> </span><span class="n">input_pixels</span><span class="p">;</span>
+<span class="o">::</span><span class="n">aie</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">uint8_t</span><span class="p">,</span><span class="w"> </span><span class="n">vector_lanes</span><span class="o">&gt;</span><span class="w"> </span><span class="n">output_pixels</span><span class="p">;</span>
+<span class="o">::</span><span class="n">aie</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">uint8_t</span><span class="p">,</span><span class="w"> </span><span class="n">vector_lanes</span><span class="o">&gt;</span><span class="w"> </span><span class="n">threshold_vector</span><span class="p">;</span>
+<span class="o">::</span><span class="n">aie</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">uint8_t</span><span class="p">,</span><span class="w"> </span><span class="n">vector_lanes</span><span class="o">&gt;</span><span class="w"> </span><span class="n">saturation_vector</span><span class="p">;</span>
+<span class="o">::</span><span class="n">aie</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">uint8_t</span><span class="p">,</span><span class="w"> </span><span class="n">vector_lanes</span><span class="o">&gt;</span><span class="w"> </span><span class="n">zeros_vector</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">::</span><span class="n">aie</span><span class="o">::</span><span class="n">zeros</span><span class="o">&lt;</span><span class="kt">uint8_t</span><span class="p">,</span><span class="w"> </span><span class="mi">64</span><span class="o">&gt;</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>The next line initializes the <code class="docutils literal notranslate"><span class="pre">saturation_vector</span></code>. This is done using the <code class="docutils literal notranslate"><span class="pre">::aie::broadcast()</span></code> function, which copies or broadcasts the saturated value into each lane of the vector.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="o">::</span><span class="n">aie</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">uint8_t</span><span class="p">,</span><span class="w"> </span><span class="mi">64</span><span class="o">&gt;</span><span class="w"> </span><span class="n">saturation_vector</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">::</span><span class="n">aie</span><span class="o">::</span><span class="n">broadcast</span><span class="o">&lt;</span><span class="kt">uint8_t</span><span class="p">,</span><span class="w"> </span><span class="mi">64</span><span class="o">&gt;</span><span class="p">(</span><span class="n">saturated</span><span class="p">);</span>
+</pre></div>
+</div>
+<center><p><img alt="7a195ec655e34c5e908a0f440de78069" src="_images/sat_vec_broadcast.png" /></p>
+</center><p>The next lines create a 32-bit unsigned int which will store the combined values from the individual 8-bit RGBA components. The values are combined by shifting and using a bitwise OR. Red is bits 0-7, green is bits 8-15, and blue is bits 16-23. The alpha channel is bits 25-31 but is not used so ORing with 0x0 ensures these bits are set these bits to zero.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">pixel_rtps32</span><span class="p">;</span>
+<span class="n">pixel_rtps32</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x0</span><span class="w"> </span><span class="o">|</span>
+<span class="w">               </span><span class="p">(</span><span class="kt">uint32_t</span><span class="p">)</span><span class="n">b_threshold</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">16</span><span class="w"> </span><span class="o">|</span>
+<span class="w">               </span><span class="p">(</span><span class="kt">uint32_t</span><span class="p">)</span><span class="n">g_threshold</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="o">|</span>
+<span class="w">               </span><span class="p">(</span><span class="kt">uint32_t</span><span class="p">)</span><span class="n">r_threshold</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>The next line is a little complicated. We start from <code class="docutils literal notranslate"><span class="pre">pixel_rtps32</span></code> to create the <code class="docutils literal notranslate"><span class="pre">threshold_vector</span></code>.</p>
+<p>Broadcast will create a new temporary variable, and broadcast this to the <code class="docutils literal notranslate"><span class="pre">threshold_vector</span></code>. First, we broadcast 16x 32-bit combined RGBA values, but cast them back to uint8 types to fill the 64x 8-bit lanes of the threshold_vector.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Broadcast threshold values into %%kernel 32 bits at a time</span>
+<span class="n">threshold_vector</span><span class="w"> </span><span class="o">=::</span><span class="n">aie</span><span class="o">::</span><span class="n">broadcast</span><span class="o">&lt;</span><span class="kt">uint32_t</span><span class="p">,</span><span class="w"> </span><span class="mi">16</span><span class="o">&gt;</span><span class="p">(</span><span class="n">pixel_rtps32</span><span class="p">).</span><span class="n">cast_to</span><span class="o">&lt;</span><span class="kt">uint8_t</span><span class="o">&gt;</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">threshold_vector</span></code> vector will be compared with our input RGBA vector.</p>
+<center><p><img alt="361cd6cc1f084b81ab5f43d07cc48368" src="_images/t_vec_broadcast.png" /></p>
+</center></section>
+<section id="Inner-loop-body">
+<h3>Inner loop body<a class="headerlink" href="#Inner-loop-body" title="Link to this heading">¶</a></h3>
+<p>The inner loop of our kernel is as follows:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">loop_count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">nbytes</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">6</span><span class="p">;</span>
+<span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">&lt;</span><span class="n">loop_count</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="c1">// Vector load pixels and mask</span>
+<span class="w">    </span><span class="n">input_pixels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">::</span><span class="n">aie</span><span class="o">::</span><span class="n">load_v</span><span class="o">&lt;</span><span class="n">vector_lanes</span><span class="o">&gt;</span><span class="p">(</span><span class="n">in_buffer</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Create 64-bit threshold status register</span>
+<span class="w">    </span><span class="o">::</span><span class="n">aie</span><span class="o">::</span><span class="n">mask</span><span class="o">&lt;</span><span class="mi">64</span><span class="o">&gt;</span><span class="w"> </span><span class="n">threshold_status</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// Capture Boolean results of thresholding</span>
+<span class="w">    </span><span class="n">threshold_status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">::</span><span class="n">aie</span><span class="o">::</span><span class="n">lt</span><span class="p">(</span><span class="n">threshold_vector</span><span class="p">,</span><span class="w"> </span><span class="n">input_pixels</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Vector select actual pixel values using threshold_status as mask</span>
+<span class="w">    </span><span class="n">output_pixels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">::</span><span class="n">aie</span><span class="o">::</span><span class="n">select</span><span class="p">(</span><span class="n">zeros_vector</span><span class="p">,</span><span class="w"> </span><span class="n">saturation_vector</span><span class="p">,</span><span class="w"> </span><span class="n">threshold_status</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// Vector store thresholded pixels in output buffer</span>
+<span class="w">    </span><span class="o">::</span><span class="n">aie</span><span class="o">::</span><span class="n">store_v</span><span class="p">(</span><span class="n">out_buffer</span><span class="p">,</span><span class="w"> </span><span class="n">output_pixels</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Advance buffer pointers by vectorization factor</span>
+<span class="w">    </span><span class="n">in_buffer</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">vector_lanes</span><span class="p">;</span>
+<span class="w">    </span><span class="n">out_buffer</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">vector_lanes</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<section id="Setup-the-loop-counter-and-load-input-data">
+<h4>Setup the loop counter and load input data<a class="headerlink" href="#Setup-the-loop-counter-and-load-input-data" title="Link to this heading">¶</a></h4>
+<p>The first thing to notice about the inner loop is that the bounds have changed; we can see that it has been divided by 64 with the <code class="docutils literal notranslate"><span class="pre">loop_count</span> <span class="pre">=</span> <span class="pre">nbytes</span> <span class="pre">&gt;&gt;6;</span></code> as we are processing 64 lanes in parallel in our vector operations.</p>
+<p>Inside the loop, we load into the input_pixels vector. A vector of 64-element is loaded from the input data buffer into <code class="docutils literal notranslate"><span class="pre">input_pixels</span></code> vector, based on the current location that <code class="docutils literal notranslate"><span class="pre">in_buffer</span></code> is pointing to, our input buffer pointer.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">input_pixels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">::</span><span class="n">aie</span><span class="o">::</span><span class="n">load_v</span><span class="o">&lt;</span><span class="n">vector_lanes</span><span class="o">&gt;</span><span class="p">(</span><span class="n">in_buffer</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Notice we use the <code class="docutils literal notranslate"><span class="pre">::aie::load_v()</span></code> vector load function. This is equivalent to reading a pointer in standard C, except doing this in C would require doing this 64 times for 8-bit types, or 16 times for 32-bit types.</p>
+</section>
+<section id="Compare-input-vector-against-threshold-and-generate-a-mask">
+<h4>Compare input vector against threshold and generate a mask<a class="headerlink" href="#Compare-input-vector-against-threshold-and-generate-a-mask" title="Link to this heading">¶</a></h4>
+<p>Next, we declare a 64-bit <code class="docutils literal notranslate"><span class="pre">threshold_status</span></code> mask. In the following line we use the <code class="docutils literal notranslate"><span class="pre">aie::lt()</span></code> which is a <em>less than</em> vector operation. Perform an element-wise less than operation between our new input vector <code class="docutils literal notranslate"><span class="pre">input_pixels</span></code> and the threshold vector <code class="docutils literal notranslate"><span class="pre">threshold_vector</span></code> we made in the initialization step to produce a 64-element mask vector. If the comparison is true, a 1 is written, or a 0 if the comparison is false.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="o">::</span><span class="n">aie</span><span class="o">::</span><span class="n">mask</span><span class="o">&lt;</span><span class="mi">64</span><span class="o">&gt;</span><span class="w"> </span><span class="n">threshold_status</span><span class="p">;</span>
+
+<span class="n">threshold_status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">::</span><span class="n">aie</span><span class="o">::</span><span class="n">lt</span><span class="p">(</span><span class="n">threshold_vector</span><span class="p">,</span><span class="w"> </span><span class="n">input_pixels</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Both these operations are shown visually below:</p>
+<center><p><img alt="4ea2cf9522aa4b67b3ae9c04d67a3ce6" src="_images/vec_gt_mask.png" /></p>
+</center><center><p>Loading and thresholding 16 RGBA pixels</p>
+</center><p>Once we have a mask of the element-wise comparisons between our vector and our threshold values, we use it to select for the RGB channels of each pixel whether to set it to zero or to set it to the maximum value. The following lines from the inner loop above achieve this:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">output_pixels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">::</span><span class="n">aie</span><span class="o">::</span><span class="n">select</span><span class="p">(</span><span class="n">zeros_vector</span><span class="p">,</span><span class="w"> </span><span class="n">saturation_vector</span><span class="p">,</span><span class="w"> </span><span class="n">threshold_status</span><span class="p">);</span>
+</pre></div>
+</div>
+<center><p><img alt="940a08f2bcca400db1dfc3bd6edfe1f8" src="_images/select_vec_store_v.png" /></p>
+</center><center><p>Selecting and writing 16 RGBA pixels</p>
+</center><p>The output vector can then be written back to the output data memory buffer using <code class="docutils literal notranslate"><span class="pre">::aie::store_v()</span></code></p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="o">::</span><span class="n">aie</span><span class="o">::</span><span class="n">store_v</span><span class="p">(</span><span class="n">out_buffer</span><span class="p">,</span><span class="w"> </span><span class="n">output_pixels</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The last step is to increment the input and output pointers.</p>
+<hr class="docutils" />
+</section>
+</section>
+</section>
+<section id="Build-the-Application">
+<h2>Build the Application<a class="headerlink" href="#Build-the-Application" title="Link to this heading">¶</a></h2>
+<p>Let us build and run this new vectorized version and see if we get a smoother response in the output.</p>
+<p><strong>Run the cell below to build the application.</strong></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">npu.lib.graphs.graph_1ct</span> <span class="kn">import</span> <span class="n">RGB720pBuilder</span>
+
+<span class="n">img_in</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">720</span><span class="p">,</span><span class="mi">1280</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+<span class="n">img_out</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">720</span><span class="p">,</span><span class="mi">1280</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+
+<span class="n">app_builder</span> <span class="o">=</span> <span class="n">RGB720pBuilder</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="n">threshold_vec</span><span class="p">)</span>
+<span class="n">app_builder</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">img_in</span><span class="p">,</span> <span class="n">img_out</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Using cached threshold_vec kernel object file...
+Building the xclbin...
+Successfully Building Application... threshold_vec.xclbin &amp; threshold_vec.seq delivered
+</pre></div></div>
+</div>
+<hr class="docutils" />
+</section>
+<section id="Run-the-Application">
+<h2>Run the Application<a class="headerlink" href="#Run-the-Application" title="Link to this heading">¶</a></h2>
+<p>Now that our application is built, let us look at the output.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">npu.lib.graphs.image_looper_720p</span> <span class="kn">import</span> <span class="n">ImageLooper720p</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">ImageLooper720p</span><span class="p">(</span><span class="n">img</span><span class="o">=</span><span class="s1">&#39;images/jpg/ryzenai_future_starts_now.jpg&#39;</span><span class="p">,</span>
+                      <span class="n">xclbin</span><span class="o">=</span><span class="s1">&#39;threshold_vec.xclbin&#39;</span><span class="p">,</span>
+                      <span class="n">rtps</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;r_threshold&quot;</span> <span class="p">:</span> <span class="p">{</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;slider&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;min&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;max&quot;</span> <span class="p">:</span> <span class="mi">255</span><span class="p">},</span>
+                            <span class="s2">&quot;g_threshold&quot;</span> <span class="p">:</span> <span class="p">{</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;slider&quot;</span><span class="p">,</span> <span class="s2">&quot;min&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;max&quot;</span> <span class="p">:</span> <span class="mi">255</span><span class="p">},</span>
+                            <span class="s2">&quot;b_threshold&quot;</span> <span class="p">:</span> <span class="p">{</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;slider&quot;</span><span class="p">,</span> <span class="s2">&quot;min&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;max&quot;</span> <span class="p">:</span> <span class="mi">255</span><span class="p">}})</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">app</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "e59f84461ea8400b97348fede60316de"}</script></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "d4b14eeb6dcf498490e3c2bc683b028f"}</script></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "3cbe826f8085459c83cb1571ca3f38f2"}</script></div>
+</div>
+<p>The response to changes in the RTPs are now much smoother thanks to vectorizing the kernel.</p>
+<div class="alert alert-info" role="info"><p>Vectorization help us achieve real-time performance for this video processing application.</p>
+</div><hr class="docutils" />
+</section>
+<section id="Next-Steps">
+<h2>Next Steps<a class="headerlink" href="#Next-Steps" title="Link to this heading">¶</a></h2>
+<p>In the next notebook we will learn how to use the <code class="docutils literal notranslate"><span class="pre">AppBuilder</span></code> class to create your own custom dataflow graph that can run in the NPU.</p>
+<hr class="docutils" />
+<center><p>Copyright© 2023 AMD, Inc</p>
+</center><center><p>SPDX-License-Identifier: MIT</p>
+</center><script type="application/vnd.jupyter.widget-state+json">
+{"state": {"47e90cfcbf284ebabdade8e944c15aa8": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "e59f84461ea8400b97348fede60316de": {"model_name": "ImageModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "ImageModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "ImageView", "format": "jpeg", "height": "", "layout": "IPY_MODEL_47e90cfcbf284ebabdade8e944c15aa8", "tabbable": null, "tooltip": null, "width": ""}, "buffers": [{"data": "", "encoding": "base64", "path": ["value"]}]}, "7e1b3d13f65143a7a7ca8ecd22476fa0": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "917f5afa89eb4c2aaad38e93b717d3e2": {"model_name": "ButtonStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "ButtonStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "button_color": null, "font_family": null, "font_size": null, "font_style": null, "font_variant": null, "font_weight": null, "text_color": null, "text_decoration": null}}, "d4b14eeb6dcf498490e3c2bc683b028f": {"model_name": "ButtonModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "ButtonModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "ButtonView", "button_style": "", "description": "Stop", "disabled": false, "icon": "", "layout": "IPY_MODEL_7e1b3d13f65143a7a7ca8ecd22476fa0", "style": "IPY_MODEL_917f5afa89eb4c2aaad38e93b717d3e2", "tabbable": null, "tooltip": null}}, "2f2336b181c740b4a707160d4339d310": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "c8909e7e695445108922bebd939921e5": {"model_name": "SliderStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "SliderStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "description_width": "auto", "handle_color": null}}, "d3d9f51aba9f4ada96b4514ef63c5ee7": {"model_name": "IntSliderModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "IntSliderModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "IntSliderView", "behavior": "drag-tap", "continuous_update": true, "description": "r_threshold", "description_allow_html": false, "disabled": false, "layout": "IPY_MODEL_2f2336b181c740b4a707160d4339d310", "max": 255, "min": 0, "orientation": "horizontal", "readout": true, "readout_format": "d", "step": 1, "style": "IPY_MODEL_c8909e7e695445108922bebd939921e5", "tabbable": null, "tooltip": null, "value": 128}}, "df5de2a519ae42769be2f2768510ba90": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "08806dbb162b415d947eeb1cf15f259c": {"model_name": "SliderStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "SliderStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "description_width": "auto", "handle_color": null}}, "fad9b64266864a16aa7ad7cc734a4884": {"model_name": "IntSliderModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "IntSliderModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "IntSliderView", "behavior": "drag-tap", "continuous_update": true, "description": "g_threshold", "description_allow_html": false, "disabled": false, "layout": "IPY_MODEL_df5de2a519ae42769be2f2768510ba90", "max": 255, "min": 0, "orientation": "horizontal", "readout": true, "readout_format": "d", "step": 1, "style": "IPY_MODEL_08806dbb162b415d947eeb1cf15f259c", "tabbable": null, "tooltip": null, "value": 128}}, "32cf6a1f3f39435db690d879f35ddf3a": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "d122c8dda75b4be1ab8e75e0e56bd579": {"model_name": "SliderStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "SliderStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "description_width": "auto", "handle_color": null}}, "0b8af922c1c0492dbe3c766e0d3540a0": {"model_name": "IntSliderModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "IntSliderModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "IntSliderView", "behavior": "drag-tap", "continuous_update": true, "description": "b_threshold", "description_allow_html": false, "disabled": false, "layout": "IPY_MODEL_32cf6a1f3f39435db690d879f35ddf3a", "max": 255, "min": 0, "orientation": "horizontal", "readout": true, "readout_format": "d", "step": 1, "style": "IPY_MODEL_d122c8dda75b4be1ab8e75e0e56bd579", "tabbable": null, "tooltip": null, "value": 128}}, "baecd7ed94524920b0fd6c329f526a7f": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "3cbe826f8085459c83cb1571ca3f38f2": {"model_name": "HBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HBoxView", "box_style": "", "children": ["IPY_MODEL_d3d9f51aba9f4ada96b4514ef63c5ee7", "IPY_MODEL_fad9b64266864a16aa7ad7cc734a4884", "IPY_MODEL_0b8af922c1c0492dbe3c766e0d3540a0"], "layout": "IPY_MODEL_baecd7ed94524920b0fd6c329f526a7f", "tabbable": null, "tooltip": null}}}, "version_major": 2, "version_minor": 0}
+</script></section>
+</section>
+
+
+           </div>
+          </div>
+          
+				  
+				  <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="4_3_kernels_with_runtime_parameters.html" class="btn btn-neutral float-left" title="Run Time Parameters" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="4_5_describe_an_application.html" class="btn btn-neutral float-right" title="Describing an Application" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Advanced Micro Devices, Inc.
+      <span class="lastupdated">Last updated on December 19, 2023.
+      </span></p>
+  </div>
+
+
+
+										<div class="aem-Grid aem-Grid--16">
+											<div class="aem-GridColumn aem-GridColumn--xxxlarge--none aem-GridColumn--xsmall--16 aem-GridColumn--offset--xsmall--0 aem-GridColumn--xlarge--none aem-GridColumn--xxlarge--none aem-GridColumn--default--none aem-GridColumn--offset--large--1 aem-GridColumn--xlarge--12 aem-GridColumn--offset--default--0 aem-GridColumn--xxlarge--10 aem-GridColumn--offset--xlarge--2 aem-GridColumn--offset--xxlarge--3 aem-GridColumn--offset--xxxlarge--4 aem-GridColumn--xsmall--none aem-GridColumn--large--none aem-GridColumn aem-GridColumn--large--14 aem-GridColumn--xxxlarge--8 aem-GridColumn--default--16">
+												<div class="container-fluid sub-footer">
+
+													                    <div class="row">
+                        <div class="col-xs-24">
+                          <p><a target="_blank" href="https://www.amd.com/en/corporate/copyright">Terms and Conditions</a> | <a target="_blank" href="https://www.amd.com/en/corporate/privacy">Privacy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/cookies">Cookie Policy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/trademarks">Trademarks</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/statement-human-trafficking-forced-labor.pdf">Statement on Forced Labor</a> | <a target="_blank" href="https://www.amd.com/en/corporate/competition">Fair and Open Competition</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/amd-uk-tax-strategy.pdf">UK Tax Strategy</a> | <a target="_blank" href="https://docs.xilinx.com/v/u/9x6YvZKuWyhJId7y7RQQKA">Inclusive Terminology</a> | <a href="#cookiessettings" class="ot-sdk-show-settings">Cookies Settings</a></p>
+                        </div>
+                    </div>
+												</div>
+											</div>
+										</div>
+										
+</br>
+
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div id="cookie-consent" class="cookie-consent">
+    <p>This website uses cookies to ensure you get the best experience on our website. <a href="#" id="cookie-accept">Accept</a> | <a href="#" id="cookie-reject">Reject</a></p>
+</div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+</body>
+</html>

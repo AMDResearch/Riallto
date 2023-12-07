@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
+
+<!--<script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" data-document-language="true" type="text/javascript" charset="UTF-8" data-domain-script="03af8d57-0a04-47a6-8f10-322fa00d8fc7" ></script>
+<script type="text/javascript">
+function OptanonWrapper() { }
+</script>-->
+<!-- OneTrust Cookies Consent Notice end for xilinx.github.io -->
+<!-- Google Tag Manager -->
+<script type="text/plain" class="optanon-category-C0002">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5RHQV7');</script>
+<!-- End Google Tag Manager -->
+  <title>npu.runtime.apprunner &mdash; AMD Riallto 1.0 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/./custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/./custom_page_width.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/documentation_options.js?v=2882ecd3"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../_static/copybutton.js?v=f281be69"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-5RHQV7" height="0" width="0" style="display:none;visibility:hidden" class="optanon-category-C0002"></iframe></noscript>
+<!-- End Google Tag Manager --> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+            <a href="../../../index.html" class="icon icon-home"> AMD Riallto
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../index.html">Home</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Riallto overview</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../1_0_Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../install-riallto.html">Install Riallto</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ryzenai_video_overview.html">Riallto Video Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../1_1_ryzenai.html">Ryzen AI Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../2_1_MS_Windows_Studio_Effects.html">Windows Studio Effects</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">NPU Architecture examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../3_1_Color_threshold_example.html">Loading your first example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../3_2_Ryzenai_capabilities.html">Understanding columns and tiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../3_3_Scaled_color_threshold_example.html">Scaling applications to multiple compute tiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../3_4_Edge_detect_example.html">Optimizing data movement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../3_5_Color_detect_example.html">Multicasting and multiple kernels per tile</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Building applications</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../4_1_software_framework.html">Introduction to the Riallto software framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../4_2_write_your_kernel.html">Write your first kernel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../4_3_kernels_with_runtime_parameters.html">Using Run Time Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../4_4_threshold_kernel_with_vector_ops.html">How to use the vector processor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../4_5_describe_an_application.html">Describing an application</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../4_6_build_application.html">Building a complete application</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../4_7_using_the_memtile_in_your_applications.html">Using memory tiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../4_8_build_a_colorDetect_application.html">Reusing software kernels</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Ryzen AI Machine Learning</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../5_1_pytorch_onnx_inference.html">Inference with PyTorch and ONNX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../5_2_pytorch_onnx_re-train.html">Re-training with PyTorch and ONNX</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python Package</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html">npu</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Glossary</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Glossary.html">Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Appendix_Review_of_Image_Processing_Concepts.html">Review of Image Processing concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../prerequisites-driver.html">Install the NPU driver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../prerequisites-aie-license.html">Get an AIE license</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../prerequisites-wsl.html">Enable WSL</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">AMD Riallto</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+      <li>npu.runtime.apprunner</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for npu.runtime.apprunner</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Copyright (C) 2023 Advanced Micro Devices, Inc. All rights reserved.</span>
+<span class="c1"># SPDX-License-Identifier: MIT</span>
+
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">gc</span>
+<span class="kn">import</span> <span class="nn">keyword</span>
+<span class="kn">import</span> <span class="nn">colorsys</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
+<span class="kn">from</span> <span class="nn">inspect</span> <span class="kn">import</span> <span class="n">Parameter</span><span class="p">,</span> <span class="n">Signature</span>
+<span class="kn">import</span> <span class="nn">PIL</span>
+<span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">BytesIO</span>
+<span class="kn">import</span> <span class="nn">npu.runtime</span> <span class="k">as</span> <span class="nn">ipr</span>
+<span class="kn">from</span> <span class="nn">.kernelinstance</span> <span class="kn">import</span> <span class="n">KernelInstance</span>
+<span class="kn">from</span> <span class="nn">npu.repr_dict</span> <span class="kn">import</span> <span class="n">ReprDict</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">from</span> <span class="nn">npu.utils.xbutil</span> <span class="kn">import</span> <span class="n">XBUtil</span>
+<span class="kn">import</span> <span class="nn">ipywidgets</span> <span class="k">as</span> <span class="nn">widget</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span>
+
+<span class="n">dtype_to_maxval</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;uint32_t&quot;</span> <span class="p">:</span> <span class="mi">4294967296</span><span class="p">,</span>
+    <span class="s2">&quot;uint16_t&quot;</span> <span class="p">:</span> <span class="mi">65536</span><span class="p">,</span>
+    <span class="s2">&quot;uint8_t&quot;</span> <span class="p">:</span> <span class="mi">255</span>
+<span class="p">}</span>
+<span class="n">_colors</span> <span class="o">=</span> <span class="p">[</span><span class="n">colorsys</span><span class="o">.</span><span class="n">hsv_to_rgb</span><span class="p">(</span><span class="n">hue</span> <span class="o">/</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">hue</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">256</span><span class="p">)]</span>
+<span class="n">_color_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">_colors</span><span class="p">])</span>
+
+
+<span class="k">def</span> <span class="nf">_huebar_inrange</span><span class="p">(</span><span class="nb">min</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">max</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+    <span class="n">mat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">_color_matrix</span><span class="p">)</span>
+    <span class="n">mat</span><span class="p">[</span><span class="mi">0</span><span class="p">,:</span><span class="nb">min</span><span class="p">,:]</span> <span class="o">=</span> <span class="mf">1.</span>
+    <span class="n">mat</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="nb">max</span><span class="p">:]</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">(</span><span class="n">mat</span><span class="o">*</span><span class="mi">255</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_updatebar</span><span class="p">(</span><span class="n">huebar</span><span class="p">:</span> <span class="n">widget</span><span class="o">.</span><span class="n">Image</span> <span class="p">,</span> <span class="nb">min</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="nb">max</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+    <span class="n">pil_image</span> <span class="o">=</span> <span class="n">PIL</span><span class="o">.</span><span class="n">Image</span><span class="o">.</span><span class="n">fromarray</span><span class="p">(</span><span class="n">_huebar_inrange</span><span class="p">(</span><span class="nb">min</span><span class="p">,</span> <span class="nb">max</span><span class="p">))</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">BytesIO</span><span class="p">()</span>
+    <span class="n">pil_image</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;jpeg&#39;</span><span class="p">)</span>
+    <span class="n">huebar</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="n">getvalue</span><span class="p">()</span>
+
+
+<div class="viewcode-block" id="IPUAppAlreadyLoaded">
+<a class="viewcode-back" href="../../../npu.runtime.html#npu.runtime.apprunner.IPUAppAlreadyLoaded">[docs]</a>
+<span class="k">class</span> <span class="nc">IPUAppAlreadyLoaded</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+    <span class="k">pass</span></div>
+
+
+
+<div class="viewcode-block" id="AppRunner">
+<a class="viewcode-back" href="../../../npu.runtime.html#npu.runtime.apprunner.AppRunner">[docs]</a>
+<span class="k">class</span> <span class="nc">AppRunner</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;This class abstracts the necessary setup steps of an NPU</span>
+<span class="sd">    application and enables a simple interface with the accelerator</span>
+<span class="sd">    using allocate() methods, treating buffers to the NPU as simple</span>
+<span class="sd">    Numpy arrays.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    xclbin_name : str</span>
+<span class="sd">        Name of xclbin file</span>
+<span class="sd">    fw_sequence : str</span>
+<span class="sd">        Name of the firmware sequence, typically same name as the </span>
+<span class="sd">        xclbin file</span>
+<span class="sd">    handoff : str</span>
+<span class="sd">        Name of the metadata handoff file, typically a .json file </span>
+<span class="sd">        with the same name as the xclbin and firmware files</span>
+
+<span class="sd">    Note</span>
+<span class="sd">    ----</span>
+<span class="sd">    This class is primarily built on top of the python bindings to </span>
+<span class="sd">    XRT (Xilinx Runtime Library). You can read more about the runtime</span>
+<span class="sd">    in the documentation at https://xilinx.github.io/XRT/.</span>
+<span class="sd">    </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">xclbin_name</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">fw_sequence</span><span class="p">:</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">handoff</span><span class="p">:</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns a new AppRunner object.&quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_process_handoff_metadata</span><span class="p">(</span><span class="n">xclbin_name</span><span class="p">,</span> <span class="n">handoff</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">xbutil</span> <span class="o">=</span> <span class="n">XBUtil</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_stability_checks</span><span class="p">()</span>
+
+        <span class="c1"># If sequence given, use it, otherwise look for same name as xclbin</span>
+        <span class="k">if</span> <span class="n">fw_sequence</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">sequence</span> <span class="o">=</span> <span class="n">ipr</span><span class="o">.</span><span class="n">Sequence</span><span class="p">(</span><span class="n">fw_sequence</span><span class="p">,</span> <span class="n">first_parse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">sequence</span> <span class="o">=</span> <span class="n">ipr</span><span class="o">.</span><span class="n">Sequence</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">xclbin_name</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;.seq&#39;</span><span class="p">,</span> <span class="n">first_parse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="n">xclbin</span> <span class="o">=</span> <span class="n">ipr</span><span class="o">.</span><span class="n">xclbin</span><span class="p">(</span><span class="n">xclbin_name</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">kernel_params</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_kernel_info</span><span class="p">(</span><span class="n">xclbin_name</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">device</span> <span class="o">=</span>  <span class="bp">self</span><span class="o">.</span><span class="n">_get_device</span><span class="p">()</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="o">.</span><span class="n">register_xclbin</span><span class="p">(</span><span class="n">xclbin</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">RuntimeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;Failed to register xclbin. Is another application running? </span>
+<span class="s2">Try shutting down/restarting all other jupyter notebooks and try again.&quot;&quot;&quot;</span><span class="p">)</span>
+            <span class="k">raise</span>
+
+        <span class="n">context</span> <span class="o">=</span> <span class="n">ipr</span><span class="o">.</span><span class="n">hw_context</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">,</span> <span class="n">xclbin</span><span class="o">.</span><span class="n">get_uuid</span><span class="p">())</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">kernel</span> <span class="o">=</span> <span class="n">ipr</span><span class="o">.</span><span class="n">kernel</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">kernel_name</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__mem_bank_indexes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_mem_bank_indexes</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_load_sequence</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_apply_metadata</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_widgets</span> <span class="o">=</span>  <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_allocated_arrays</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">def</span> <span class="nf">_get_device</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Checks to see if there is already an AppRunner that exists. </span>
+<span class="sd">        if there is gets the device from previously allocated AppRunner or</span>
+<span class="sd">        else creates a new device.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">gc</span><span class="o">.</span><span class="n">get_objects</span><span class="p">():</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span> <span class="ow">and</span> <span class="p">(</span><span class="n">obj</span> <span class="o">!=</span> <span class="bp">self</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">obj</span><span class="o">.</span><span class="n">device</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="n">obj</span><span class="o">.</span><span class="n">device</span>
+        <span class="k">return</span> <span class="n">ipr</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_process_handoff_metadata</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">xclbin_name</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">handoff</span><span class="p">:</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span><span class="o">-&gt;</span><span class="kc">None</span><span class="p">:</span> 
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Parses the handoff metadata if it exists and uses that to set the</span>
+<span class="sd">        kernel name. If no metadata exists then parse the kernel name from</span>
+<span class="sd">        the xclbin.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">handoff</span><span class="p">:</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">handoff</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_metadata</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">kernel_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_metadata</span><span class="p">[</span><span class="s2">&quot;application&quot;</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">xclbin_name</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;.json&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_metadata</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">kernel_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_metadata</span><span class="p">[</span><span class="s2">&quot;application&quot;</span><span class="p">]</span>
+            <span class="k">except</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_metadata</span> <span class="o">=</span> <span class="kc">None</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">kernel_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_infer_kernel_name</span><span class="p">(</span><span class="n">xclbin_name</span><span class="p">)</span>
+        <span class="k">return</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">metadata</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">ReprDict</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_metadata</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_stability_checks</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">-&gt;</span><span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Checks to ensure that the NPU is in a sensible state before</span>
+<span class="sd">        trying to load the application </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">xbutil</span><span class="o">.</span><span class="n">app_count</span> <span class="o">&gt;=</span> <span class="mi">4</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&quot;&quot;There is currently no free space on the NPU to run this application, </span>
+<span class="s2">have you tried closing other applications that you are running or disabling WSE? </span>
+<span class="se">\n\n</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">xbutil</span><span class="o">.</span><span class="n">app_table</span><span class="si">}</span><span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">xbutil</span><span class="o">.</span><span class="n">app_exists</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">kernel_name</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">IPUAppAlreadyLoaded</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&quot;&quot;Currently only one instance of an application can be running at </span>
+<span class="s2">a time on the NPU and there is already an application with name </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">kernel_name</span><span class="si">}</span>
+<span class="s2">loaded on the device.</span><span class="se">\n\n</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">xbutil</span><span class="o">.</span><span class="n">app_table</span><span class="si">}</span><span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
+
+
+    <span class="k">def</span> <span class="nf">_apply_metadata</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Tries to associate metadata with RTP commands in the sequence.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtps</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_metadata</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">ctkernels</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_metadata</span><span class="p">[</span><span class="s2">&quot;kernels&quot;</span><span class="p">][</span><span class="n">k</span><span class="p">]</span>
+                                <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_metadata</span><span class="p">[</span><span class="s2">&quot;kernels&quot;</span><span class="p">]</span>
+                                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_metadata</span><span class="p">[</span><span class="s2">&quot;kernels&quot;</span><span class="p">][</span><span class="n">k</span><span class="p">][</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;CT&quot;</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">ctkernels</span><span class="p">:</span>
+
+                <span class="k">if</span> <span class="n">k</span><span class="p">[</span><span class="s2">&quot;tloc&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;A CT Kernel in the Metadata has not been placed to a tile, most likely the tloc attribute of a kernel was not set&quot;</span><span class="p">)</span>
+
+                <span class="n">d</span> <span class="o">=</span> <span class="n">KernelInstance</span><span class="p">()</span>
+                <span class="n">d</span><span class="o">.</span><span class="n">_portlist</span> <span class="o">=</span> <span class="n">k</span><span class="p">[</span><span class="s2">&quot;ports&quot;</span><span class="p">]</span>
+                <span class="n">d</span><span class="o">.</span><span class="n">_tloc</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">k</span><span class="p">[</span><span class="s2">&quot;tloc&quot;</span><span class="p">])</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">rtps</span><span class="p">[</span><span class="n">k</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{}</span>
+
+                <span class="c1"># Determine if there were RTPs picked up in the sequence for</span>
+                <span class="c1"># this kernel instance</span>
+                <span class="k">if</span> <span class="n">d</span><span class="o">.</span><span class="n">_tloc</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">sequence</span><span class="o">.</span><span class="n">mlir_rtps</span><span class="p">:</span>
+                    <span class="n">idx</span> <span class="o">=</span> <span class="mi">0</span>
+                    <span class="k">for</span> <span class="n">port</span> <span class="ow">in</span> <span class="n">k</span><span class="p">[</span><span class="s2">&quot;ports&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+                        <span class="k">if</span> <span class="n">port</span><span class="p">[</span><span class="s2">&quot;ctype&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;rtp&quot;</span><span class="p">:</span>
+                            <span class="k">if</span> <span class="n">idx</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">sequence</span><span class="o">.</span><span class="n">mlir_rtps</span><span class="p">[</span><span class="n">d</span><span class="o">.</span><span class="n">_tloc</span><span class="p">]:</span>
+                                <span class="bp">self</span><span class="o">.</span><span class="n">sequence</span><span class="o">.</span><span class="n">mlir_rtps</span><span class="p">[</span><span class="n">d</span><span class="o">.</span><span class="n">_tloc</span><span class="p">][</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">port</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span>
+                                <span class="n">pdict</span> <span class="o">=</span> <span class="p">{</span>
+                                            <span class="s2">&quot;seq_ref&quot;</span> <span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">sequence</span><span class="o">.</span><span class="n">mlir_rtps</span><span class="p">[</span><span class="n">d</span><span class="o">.</span><span class="n">_tloc</span><span class="p">][</span><span class="n">idx</span><span class="p">],</span>
+                                            <span class="s2">&quot;dtype&quot;</span> <span class="p">:</span> <span class="n">port</span><span class="p">[</span><span class="s2">&quot;c_dtype&quot;</span><span class="p">],</span>
+                                            <span class="s2">&quot;init_val&quot;</span> <span class="p">:</span> <span class="n">port</span><span class="p">[</span><span class="s2">&quot;value&quot;</span><span class="p">]</span>
+                                        <span class="p">}</span>
+                                <span class="bp">self</span><span class="o">.</span><span class="n">rtps</span><span class="p">[</span><span class="n">k</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]][</span><span class="n">port</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">pdict</span> 
+                                <span class="nb">setattr</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">port</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">sequence</span><span class="o">.</span><span class="n">mlir_rtps</span><span class="p">[</span><span class="n">d</span><span class="o">.</span><span class="n">_tloc</span><span class="p">][</span><span class="n">idx</span><span class="p">])</span>
+                        <span class="n">idx</span> <span class="o">=</span> <span class="n">idx</span> <span class="o">+</span> <span class="mi">1</span>
+
+                <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span> <span class="n">d</span><span class="p">)</span>
+
+<div class="viewcode-block" id="AppRunner.rtpupdate">
+<a class="viewcode-back" href="../../../npu.runtime.html#npu.runtime.apprunner.AppRunner.rtpupdate">[docs]</a>
+    <span class="k">def</span> <span class="nf">rtpupdate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rtpseq</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+        <span class="n">rtpseq</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">val</span></div>
+
+
+    <span class="k">def</span> <span class="nf">_pairupdate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rtpseq</span><span class="p">:</span><span class="nb">list</span><span class="p">,</span> <span class="n">val</span><span class="p">:</span><span class="nb">list</span><span class="p">):</span>
+        <span class="n">rtpseq</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">val</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">rtpseq</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">val</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">_hueupdate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rtpseq</span><span class="p">:</span><span class="nb">list</span><span class="p">,</span> <span class="n">val</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">huebar</span><span class="p">:</span> <span class="n">widget</span><span class="o">.</span><span class="n">Image</span><span class="p">):</span>
+        <span class="n">rtpseq</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">val</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">rtpseq</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">val</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">_updatebar</span><span class="p">(</span><span class="n">huebar</span><span class="p">,</span> <span class="o">*</span><span class="n">val</span><span class="p">)</span>
+
+<div class="viewcode-block" id="AppRunner.dropdownrtpupdate">
+<a class="viewcode-back" href="../../../npu.runtime.html#npu.runtime.apprunner.AppRunner.dropdownrtpupdate">[docs]</a>
+    <span class="k">def</span> <span class="nf">dropdownrtpupdate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">rtpseq</span><span class="p">,</span> <span class="n">options</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+        <span class="n">rtpseq</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">options</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">val</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="AppRunner.rtpwidgets">
+<a class="viewcode-back" href="../../../npu.runtime.html#npu.runtime.apprunner.AppRunner.rtpwidgets">[docs]</a>
+    <span class="k">def</span> <span class="nf">rtpwidgets</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">widgetmeta</span><span class="o">=</span><span class="p">{}):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; This function automatically generates ipywidgets if this has been enabled in the metadata.&quot;&quot;&quot;</span>
+        <span class="n">widgets</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">hboxes</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">instance_name</span><span class="p">,</span> <span class="n">instance</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">rtps</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">widgets</span><span class="p">[</span><span class="n">instance_name</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">rtpname</span><span class="p">,</span> <span class="n">rtp</span> <span class="ow">in</span> <span class="n">instance</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="k">if</span> <span class="n">rtpname</span> <span class="ow">in</span> <span class="n">widgetmeta</span><span class="p">:</span>
+                    <span class="n">wmeta</span> <span class="o">=</span> <span class="n">widgetmeta</span><span class="p">[</span><span class="n">rtpname</span><span class="p">]</span>
+                    <span class="k">if</span> <span class="n">wmeta</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;slider&quot;</span><span class="p">:</span>
+                        <span class="n">slider</span> <span class="o">=</span> <span class="n">widget</span><span class="o">.</span><span class="n">IntSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="n">wmeta</span><span class="p">[</span><span class="s2">&quot;min&quot;</span><span class="p">],</span>
+                                                 <span class="nb">max</span><span class="o">=</span><span class="n">wmeta</span><span class="p">[</span><span class="s2">&quot;max&quot;</span><span class="p">],</span>
+                                                 <span class="n">description</span><span class="o">=</span><span class="n">wmeta</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="n">rtpname</span><span class="p">),</span>
+                                                 <span class="n">value</span><span class="o">=</span><span class="n">rtp</span><span class="p">[</span><span class="s2">&quot;init_val&quot;</span><span class="p">])</span>
+                        <span class="n">slider</span><span class="o">.</span><span class="n">observe</span><span class="p">(</span>
+                            <span class="k">lambda</span> <span class="n">change</span><span class="p">,</span> <span class="n">v</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">rtps</span><span class="p">[</span><span class="n">instance_name</span><span class="p">][</span><span class="n">rtpname</span><span class="p">]</span> <span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">rtpupdate</span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="s2">&quot;seq_ref&quot;</span><span class="p">],</span> <span class="n">change</span><span class="o">.</span><span class="n">new</span><span class="p">)</span>
+                            <span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">)</span>
+                        <span class="n">slider</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">description_width</span> <span class="o">=</span> <span class="s1">&#39;auto&#39;</span>
+                        <span class="n">widgets</span><span class="p">[</span><span class="n">instance_name</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">slider</span><span class="p">)</span>
+
+                    <span class="k">elif</span> <span class="n">wmeta</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;dropdown&quot;</span><span class="p">:</span>
+                        <span class="n">dropdown</span> <span class="o">=</span> <span class="n">widget</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span>
+                            <span class="n">options</span><span class="o">=</span><span class="n">wmeta</span><span class="p">[</span><span class="s2">&quot;options&quot;</span><span class="p">],</span>
+                            <span class="n">description</span><span class="o">=</span><span class="n">wmeta</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="n">rtpname</span><span class="p">),</span>
+                            <span class="n">disabled</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                            <span class="n">value</span><span class="o">=</span><span class="n">wmeta</span><span class="p">[</span><span class="s2">&quot;options&quot;</span><span class="p">][</span><span class="n">rtp</span><span class="p">[</span><span class="s1">&#39;init_val&#39;</span><span class="p">]])</span>
+                        <span class="n">dropdown</span><span class="o">.</span><span class="n">observe</span><span class="p">(</span>
+                            <span class="k">lambda</span> <span class="n">change</span><span class="p">,</span> <span class="n">v</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">rtps</span><span class="p">[</span><span class="n">instance_name</span><span class="p">][</span><span class="n">rtpname</span><span class="p">]:</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">dropdownrtpupdate</span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="s2">&quot;seq_ref&quot;</span><span class="p">],</span> <span class="n">wmeta</span><span class="p">[</span><span class="s2">&quot;options&quot;</span><span class="p">],</span> <span class="n">change</span><span class="o">.</span><span class="n">new</span><span class="p">)</span>
+                            <span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">)</span>
+                        <span class="n">dropdown</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">description_width</span> <span class="o">=</span> <span class="s1">&#39;auto&#39;</span>
+                        <span class="n">widgets</span><span class="p">[</span><span class="n">instance_name</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dropdown</span><span class="p">)</span>
+
+                    <span class="k">elif</span> <span class="n">wmeta</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;dropdownpair&quot;</span><span class="p">:</span>
+                        <span class="n">pair</span> <span class="o">=</span> <span class="n">instance</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">wmeta</span><span class="p">[</span><span class="s2">&quot;pair&quot;</span><span class="p">])</span>
+                        <span class="n">value</span> <span class="o">=</span> <span class="p">[</span><span class="n">rtp</span><span class="p">[</span><span class="s2">&quot;init_val&quot;</span><span class="p">],</span> <span class="n">pair</span><span class="p">[</span><span class="s2">&quot;init_val&quot;</span><span class="p">]]</span>
+                        <span class="n">dropdownp</span> <span class="o">=</span> <span class="n">widget</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span>
+                            <span class="n">options</span><span class="o">=</span><span class="n">wmeta</span><span class="p">[</span><span class="s2">&quot;options&quot;</span><span class="p">],</span>
+                            <span class="n">description</span><span class="o">=</span><span class="n">wmeta</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="n">rtpname</span><span class="p">),</span>
+                            <span class="n">disabled</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                            <span class="n">value</span><span class="o">=</span><span class="n">value</span><span class="p">)</span>
+                        <span class="n">dropdownp</span><span class="o">.</span><span class="n">observe</span><span class="p">(</span>
+                            <span class="k">lambda</span> <span class="n">change</span><span class="p">,</span> <span class="n">v</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">rtps</span><span class="p">[</span><span class="n">instance_name</span><span class="p">][</span><span class="n">rtpname</span><span class="p">],</span> <span class="n">h</span><span class="o">=</span><span class="n">pair</span><span class="p">[</span><span class="s2">&quot;seq_ref&quot;</span><span class="p">]:</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">_pairupdate</span><span class="p">([</span><span class="n">v</span><span class="p">[</span><span class="s2">&quot;seq_ref&quot;</span><span class="p">],</span> <span class="n">h</span><span class="p">],</span> <span class="n">change</span><span class="o">.</span><span class="n">new</span><span class="p">)</span>
+                            <span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">)</span>
+                        <span class="n">dropdownp</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">description_width</span> <span class="o">=</span> <span class="s1">&#39;auto&#39;</span>
+                        <span class="n">widgets</span><span class="p">[</span><span class="n">instance_name</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dropdownp</span><span class="p">)</span>
+
+                    <span class="k">elif</span> <span class="n">wmeta</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;rangeslider&quot;</span><span class="p">:</span>
+                        <span class="n">rhigh</span> <span class="o">=</span> <span class="n">instance</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">wmeta</span><span class="p">[</span><span class="s2">&quot;rangehigh&quot;</span><span class="p">])</span>
+                        <span class="n">value</span> <span class="o">=</span> <span class="p">[</span><span class="n">rtp</span><span class="p">[</span><span class="s2">&quot;init_val&quot;</span><span class="p">],</span> <span class="n">rhigh</span><span class="p">[</span><span class="s2">&quot;init_val&quot;</span><span class="p">]]</span>
+                        <span class="n">rslider</span> <span class="o">=</span> <span class="n">widget</span><span class="o">.</span><span class="n">IntRangeSlider</span><span class="p">(</span>
+                                                <span class="n">value</span><span class="o">=</span><span class="n">value</span><span class="p">,</span>
+                                                <span class="nb">min</span><span class="o">=</span><span class="n">wmeta</span><span class="p">[</span><span class="s2">&quot;min&quot;</span><span class="p">],</span>
+                                                <span class="nb">max</span><span class="o">=</span><span class="n">wmeta</span><span class="p">[</span><span class="s2">&quot;max&quot;</span><span class="p">],</span>
+                                                <span class="n">step</span><span class="o">=</span><span class="n">wmeta</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;step&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+                                                <span class="n">description</span><span class="o">=</span><span class="n">wmeta</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="n">rtpname</span><span class="p">))</span>
+                        <span class="n">rslider</span><span class="o">.</span><span class="n">observe</span><span class="p">(</span>
+                            <span class="k">lambda</span> <span class="n">change</span><span class="p">,</span> <span class="n">v</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">rtps</span><span class="p">[</span><span class="n">instance_name</span><span class="p">][</span><span class="n">rtpname</span><span class="p">],</span> <span class="n">h</span><span class="o">=</span><span class="n">rhigh</span><span class="p">[</span><span class="s2">&quot;seq_ref&quot;</span><span class="p">]:</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">_pairupdate</span><span class="p">([</span><span class="n">v</span><span class="p">[</span><span class="s2">&quot;seq_ref&quot;</span><span class="p">],</span> <span class="n">h</span><span class="p">],</span> <span class="n">change</span><span class="o">.</span><span class="n">new</span><span class="p">)</span>
+                            <span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">)</span>
+                        <span class="n">rslider</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">description_width</span> <span class="o">=</span> <span class="s1">&#39;auto&#39;</span>
+                        <span class="n">widgets</span><span class="p">[</span><span class="n">instance_name</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">rslider</span><span class="p">)</span>
+
+                    <span class="k">elif</span> <span class="n">wmeta</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;hueslider&quot;</span><span class="p">:</span>
+                        <span class="n">rhigh</span> <span class="o">=</span> <span class="n">instance</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">wmeta</span><span class="p">[</span><span class="s2">&quot;rangehigh&quot;</span><span class="p">])</span>
+                        <span class="n">value</span> <span class="o">=</span> <span class="p">[</span><span class="n">rtp</span><span class="p">[</span><span class="s2">&quot;init_val&quot;</span><span class="p">],</span> <span class="n">rhigh</span><span class="p">[</span><span class="s2">&quot;init_val&quot;</span><span class="p">]]</span>
+                        <span class="n">hueslider</span> <span class="o">=</span> <span class="n">widget</span><span class="o">.</span><span class="n">IntRangeSlider</span><span class="p">(</span>
+                                                <span class="n">value</span><span class="o">=</span><span class="n">value</span><span class="p">,</span>
+                                                <span class="nb">min</span><span class="o">=</span><span class="n">wmeta</span><span class="p">[</span><span class="s2">&quot;min&quot;</span><span class="p">],</span>
+                                                <span class="nb">max</span><span class="o">=</span><span class="n">wmeta</span><span class="p">[</span><span class="s2">&quot;max&quot;</span><span class="p">],</span>
+                                                <span class="n">step</span><span class="o">=</span><span class="n">wmeta</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;step&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+                                                <span class="n">description</span><span class="o">=</span><span class="n">wmeta</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="n">rtpname</span><span class="p">))</span>
+                        <span class="n">huebar</span> <span class="o">=</span> <span class="n">widget</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="nb">format</span><span class="o">=</span><span class="s1">&#39;jpeg&#39;</span><span class="p">)</span>
+                        <span class="n">_updatebar</span><span class="p">(</span><span class="n">huebar</span><span class="p">,</span> <span class="o">*</span><span class="n">value</span><span class="p">)</span>
+                        <span class="n">hueslider</span><span class="o">.</span><span class="n">metadata</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;key&#39;</span><span class="p">:</span> <span class="n">instance_name</span><span class="p">}</span>
+                        <span class="n">hueslider</span><span class="o">.</span><span class="n">observe</span><span class="p">(</span>
+                            <span class="k">lambda</span> <span class="n">change</span><span class="p">,</span> <span class="n">v</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">rtps</span><span class="p">[</span><span class="n">instance_name</span><span class="p">][</span><span class="n">rtpname</span><span class="p">],</span>
+                            <span class="n">h</span><span class="o">=</span><span class="n">rhigh</span><span class="p">[</span><span class="s2">&quot;seq_ref&quot;</span><span class="p">],</span> <span class="n">huebar</span><span class="o">=</span><span class="n">huebar</span><span class="p">:</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">_hueupdate</span><span class="p">([</span><span class="n">v</span><span class="p">[</span><span class="s2">&quot;seq_ref&quot;</span><span class="p">],</span> <span class="n">h</span><span class="p">],</span> <span class="n">change</span><span class="o">.</span><span class="n">new</span><span class="p">,</span> <span class="n">huebar</span><span class="p">)</span>
+                            <span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">)</span>
+                        <span class="n">hueslider</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">description_width</span> <span class="o">=</span> <span class="s1">&#39;auto&#39;</span>
+
+                        <span class="n">widgets</span><span class="p">[</span><span class="n">instance_name</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">hueslider</span><span class="p">)</span>
+                        <span class="n">widgets</span><span class="p">[</span><span class="n">instance_name</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">huebar</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">widgets</span><span class="p">[</span><span class="n">instance_name</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">hbox</span> <span class="o">=</span> <span class="n">widget</span><span class="o">.</span><span class="n">HBox</span><span class="p">(</span><span class="n">widgets</span><span class="p">[</span><span class="n">instance_name</span><span class="p">],</span> <span class="n">description</span><span class="o">=</span><span class="n">instance_name</span><span class="p">)</span>
+                <span class="n">display</span><span class="p">(</span><span class="n">hbox</span><span class="p">)</span>
+                <span class="n">hboxes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">hbox</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_widgets</span> <span class="o">=</span> <span class="n">widgets</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_hboxes</span> <span class="o">=</span> <span class="n">hboxes</span></div>
+
+
+<div class="viewcode-block" id="AppRunner.rtpsliders">
+<a class="viewcode-back" href="../../../npu.runtime.html#npu.runtime.apprunner.AppRunner.rtpsliders">[docs]</a>
+    <span class="k">def</span> <span class="nf">rtpsliders</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filters</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span> <span class="n">radios</span><span class="o">=</span><span class="p">{}):</span>
+        <span class="n">rtpsliders</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">instance_name</span><span class="p">,</span> <span class="n">instance</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">rtps</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">rtpsliders</span><span class="p">[</span><span class="n">instance_name</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">rtpname</span><span class="p">,</span> <span class="n">rtp</span> <span class="ow">in</span> <span class="n">instance</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">rtpname</span> <span class="ow">in</span> <span class="n">filters</span><span class="p">:</span>
+                    <span class="n">slider</span> <span class="o">=</span> <span class="n">widget</span><span class="o">.</span><span class="n">IntSlider</span><span class="p">(</span><span class="nb">min</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">max</span> <span class="o">=</span> <span class="n">dtype_to_maxval</span><span class="p">[</span><span class="n">rtp</span><span class="p">[</span><span class="s2">&quot;dtype&quot;</span><span class="p">]],</span> <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">rtpname</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">rtp</span><span class="p">[</span><span class="s1">&#39;init_val&#39;</span><span class="p">])</span>
+                    <span class="n">slider</span><span class="o">.</span><span class="n">observe</span><span class="p">(</span>
+                            <span class="k">lambda</span> <span class="n">change</span><span class="p">,</span> <span class="n">v</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">rtps</span><span class="p">[</span><span class="n">instance_name</span><span class="p">][</span><span class="n">rtpname</span><span class="p">]</span> <span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">rtpupdate</span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="s2">&quot;seq_ref&quot;</span><span class="p">],</span> <span class="n">change</span><span class="o">.</span><span class="n">new</span><span class="p">)</span>
+                            <span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">)</span>
+                    <span class="n">rtpsliders</span><span class="p">[</span><span class="n">instance_name</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">slider</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">rtpsliders</span><span class="p">[</span><span class="n">instance_name</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">hbox</span> <span class="o">=</span> <span class="n">widget</span><span class="o">.</span><span class="n">HBox</span><span class="p">(</span><span class="n">rtpsliders</span><span class="p">[</span><span class="n">instance_name</span><span class="p">],</span> <span class="n">description</span><span class="o">=</span><span class="n">instance_name</span><span class="p">)</span>
+                <span class="n">display</span><span class="p">(</span><span class="n">hbox</span><span class="p">)</span></div>
+
+
+    <span class="k">def</span> <span class="nf">_load_sequence</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Pre-allocate sequence, we assume it&#39;s always the 1st kernel argument.&quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">instr</span> <span class="o">=</span> <span class="n">ipr</span><span class="o">.</span><span class="n">bo</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sequence</span><span class="o">.</span><span class="n">buffer</span><span class="o">.</span><span class="n">nbytes</span><span class="p">,</span> <span class="n">ipr</span><span class="o">.</span><span class="n">bo</span><span class="o">.</span><span class="n">flags</span><span class="o">.</span><span class="n">cacheable</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__mem_bank_indexes</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">instr</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sequence</span><span class="o">.</span><span class="n">buffer</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">instr</span><span class="o">.</span><span class="n">sync</span><span class="p">(</span><span class="n">ipr</span><span class="o">.</span><span class="n">xclBOSyncDirection</span><span class="o">.</span><span class="n">XCL_BO_SYNC_BO_TO_DEVICE</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">MemoryError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Try resetting your device.&quot;</span><span class="p">)</span>
+            <span class="k">raise</span>
+
+<div class="viewcode-block" id="AppRunner.display">
+<a class="viewcode-back" href="../../../npu.runtime.html#npu.runtime.apprunner.AppRunner.display">[docs]</a>
+    <span class="k">def</span> <span class="nf">display</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">-&gt;</span><span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Display the graph of the loaded application.&quot;&quot;&quot;</span>
+        <span class="kn">from</span> <span class="nn">npu.utils.appviz</span> <span class="kn">import</span> <span class="n">AppViz</span>
+        <span class="n">_viz</span> <span class="o">=</span> <span class="n">AppViz</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_metadata</span><span class="p">)</span>
+        <span class="n">_viz</span><span class="o">.</span><span class="n">show</span></div>
+
+
+<div class="viewcode-block" id="AppRunner.save">
+<a class="viewcode-back" href="../../../npu.runtime.html#npu.runtime.apprunner.AppRunner.save">[docs]</a>
+    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span><span class="o">-&gt;</span><span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Saves animation to a file.&quot;&quot;&quot;</span>
+        <span class="kn">from</span> <span class="nn">npu.utils.appviz</span> <span class="kn">import</span> <span class="n">AppViz</span>
+        <span class="n">_viz</span> <span class="o">=</span> <span class="n">AppViz</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">metadata</span><span class="p">)</span>
+        <span class="n">_viz</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span></div>
+
+
+    <span class="k">def</span> <span class="nf">_refresh_sequence</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Reloads the sequence for the device.&quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">instr</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sequence</span><span class="o">.</span><span class="n">buffer</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">instr</span><span class="o">.</span><span class="n">sync</span><span class="p">(</span><span class="n">ipr</span><span class="o">.</span><span class="n">xclBOSyncDirection</span><span class="o">.</span><span class="n">XCL_BO_SYNC_BO_TO_DEVICE</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">MemoryError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Try resetting your device.&quot;</span><span class="p">)</span>
+            <span class="k">raise</span>
+
+    <span class="k">def</span> <span class="nf">_get_mem_bank_indexes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Since the instruction sequence is allocated and loaded onto the device</span>
+<span class="sd">        on __init__ we don&#39;t have to worry about it. We are assuming the</span>
+<span class="sd">        memory bank indexes will be the same for the remaining ports.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">mem_bank_indexes</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">kernel_params</span><span class="p">[</span><span class="s1">&#39;parameters&#39;</span><span class="p">])):</span>
+            <span class="n">mem_bank_indexes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">kernel</span><span class="o">.</span><span class="n">group_id</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+
+        <span class="c1"># app.allocate expects the indexes to be the same for user-defined, non-sequence buffers</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">mem_bank_indexes</span><span class="p">[</span><span class="mi">2</span><span class="p">:]))</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;Host buffer memory bank indexes not the same, could cause allocation issues&quot;</span><span class="p">,</span> <span class="ne">UserWarning</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">mem_bank_indexes</span>
+
+    <span class="k">def</span> <span class="nf">_infer_kernel_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">xclbin_name</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; From the xclbin infers the kernel name if one is note provided.</span>
+<span class="sd">            Searched the xclbin metadata to find a kernel with instance name</span>
+<span class="sd">            Riallto and uses the kernel name from that&quot;&quot;&quot;</span>
+
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">xclbin_name</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">xclbin_data</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+        <span class="n">kernel_name</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="n">found</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">while</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">idx</span> <span class="o">=</span> <span class="n">xclbin_data</span><span class="p">[</span><span class="n">start</span><span class="p">:]</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;&lt;kernel &quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">idx</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+                <span class="k">break</span>
+            <span class="n">start</span> <span class="o">=</span> <span class="n">start</span> <span class="o">+</span> <span class="n">idx</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="n">end</span> <span class="o">=</span> <span class="n">xclbin_data</span><span class="p">[</span><span class="n">start</span><span class="p">:]</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;&lt;/kernel&gt;&quot;</span><span class="p">)</span>
+
+            <span class="n">kernel_info</span> <span class="o">=</span> <span class="n">xclbin_data</span><span class="p">[</span><span class="n">start</span><span class="o">-</span><span class="mi">8</span><span class="p">:</span><span class="n">start</span><span class="o">+</span><span class="n">end</span><span class="o">+</span><span class="mi">9</span><span class="p">]</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
+
+            <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">kernel_info</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">):</span>
+                <span class="k">if</span> <span class="s2">&quot;kernel name&quot;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+                    <span class="n">kernel_name</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;kernel name=&quot;(.*?)&quot;&#39;</span><span class="p">,</span> <span class="n">line</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;=&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\&#39;</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\&quot;</span><span class="s1">&#39;</span><span class="p">)</span>
+                <span class="k">if</span> <span class="s2">&quot;instance name&quot;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+                    <span class="n">instance_name</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;instance name=&quot;(.*?)&quot;&#39;</span><span class="p">,</span> <span class="n">line</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;=&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\&#39;</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\&quot;</span><span class="s1">&#39;</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="s2">&quot;Riallto&quot;</span> <span class="ow">in</span> <span class="n">instance_name</span><span class="p">:</span>
+                        <span class="n">found</span> <span class="o">=</span> <span class="kc">True</span>
+                        <span class="k">break</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">found</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Could not see any Riallto kernels in the xclbin&quot;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">kernel_name</span>
+
+    <span class="k">def</span> <span class="nf">_get_kernel_info</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">xclbin_name</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;This function parses the xclbin contents for kernels and returns</span>
+<span class="sd">        the parameters specific to the kernel that the app is being initialized</span>
+<span class="sd">        with.</span>
+
+<span class="sd">        TODO: make this work with axlf sections instead of byte parsing</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        xclbin_name : str</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        kernel_params : list</span>
+<span class="sd">            List of kernel parameter metadata, i.e. types</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">kernel_params</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">xclbin_name</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">xclbin_data</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+        <span class="n">start</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">while</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">idx</span> <span class="o">=</span> <span class="n">xclbin_data</span><span class="p">[</span><span class="n">start</span><span class="p">:]</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;&lt;kernel &quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">idx</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+                <span class="k">break</span>
+            <span class="n">start</span> <span class="o">=</span> <span class="n">start</span> <span class="o">+</span> <span class="n">idx</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="n">end</span> <span class="o">=</span> <span class="n">xclbin_data</span><span class="p">[</span><span class="n">start</span><span class="p">:]</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;&lt;/kernel&gt;&quot;</span><span class="p">)</span>
+
+            <span class="n">kernel_info</span> <span class="o">=</span> <span class="n">xclbin_data</span><span class="p">[</span><span class="n">start</span><span class="o">-</span><span class="mi">8</span><span class="p">:</span><span class="n">start</span><span class="o">+</span><span class="n">end</span><span class="o">+</span><span class="mi">9</span><span class="p">]</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
+
+            <span class="n">params</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">kernel_info</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">):</span>
+                <span class="k">if</span> <span class="s2">&quot;kernel name=&quot;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+                    <span class="n">kernel_name</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;kernel name=&quot;(.*?)&quot;&#39;</span><span class="p">,</span> <span class="n">line</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;=&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\&#39;</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\&quot;</span><span class="s1">&#39;</span><span class="p">)</span>
+
+                <span class="k">if</span> <span class="s2">&quot;arg name&quot;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+
+                    <span class="n">name</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;name=&quot;(.*?)&quot;&#39;</span><span class="p">,</span> <span class="n">line</span><span class="p">)</span>
+                    <span class="n">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;=&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\&#39;</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\&quot;</span><span class="s1">&#39;</span><span class="p">)</span>
+
+                    <span class="n">types</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;type=&quot;(.*?)&quot;&#39;</span><span class="p">,</span> <span class="n">line</span><span class="p">)</span>
+                    <span class="n">types</span> <span class="o">=</span> <span class="n">types</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;=&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\&#39;</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\&quot;</span><span class="s1">&#39;</span><span class="p">)</span>
+
+                    <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">keyword</span><span class="o">.</span><span class="n">kwlist</span><span class="p">:</span>
+                        <span class="n">name</span> <span class="o">=</span> <span class="n">name</span> <span class="o">+</span> <span class="s1">&#39;_&#39;</span>
+
+                    <span class="n">params</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Parameter</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="n">Parameter</span><span class="o">.</span><span class="n">POSITIONAL_OR_KEYWORD</span><span class="p">,</span> <span class="n">annotation</span><span class="o">=</span><span class="n">types</span><span class="p">))</span>
+
+            <span class="n">kernel_params</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">kernel_name</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;parameters&quot;</span><span class="p">:</span> <span class="n">params</span><span class="p">,</span>
+                                    <span class="s2">&quot;signature&quot;</span><span class="p">:</span> <span class="n">Signature</span><span class="p">(</span><span class="n">params</span><span class="p">)}</span>
+
+        <span class="k">return</span> <span class="n">kernel_params</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">kernel_name</span><span class="p">]</span>
+
+<div class="viewcode-block" id="AppRunner.allocate">
+<a class="viewcode-back" href="../../../npu.runtime.html#npu.runtime.apprunner.AppRunner.allocate">[docs]</a>
+    <span class="k">def</span> <span class="nf">allocate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;u1&quot;</span><span class="p">,</span> <span class="n">cacheable</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">param</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Allocate a new PynqBuffer object.</span>
+
+<span class="sd">        This API mimics the numpy ndarray constructor.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># Default mem bank index for host buffers</span>
+        <span class="n">mem_bank_idx</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__mem_bank_indexes</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+        <span class="n">elements</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">shape</span><span class="p">:</span>
+                <span class="n">elements</span> <span class="o">*=</span> <span class="n">s</span>
+        <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+            <span class="n">elements</span> <span class="o">=</span> <span class="n">shape</span>
+        <span class="n">dtype</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">(</span><span class="n">dtype</span><span class="p">)</span>
+        <span class="n">size</span> <span class="o">=</span> <span class="n">elements</span> <span class="o">*</span> <span class="n">dtype</span><span class="o">.</span><span class="n">itemsize</span>
+
+        <span class="c1"># Instruction buffer should always be cacheable</span>
+        <span class="k">if</span> <span class="n">cacheable</span><span class="p">:</span>
+            <span class="n">cache_flag</span> <span class="o">=</span> <span class="n">ipr</span><span class="o">.</span><span class="n">bo</span><span class="o">.</span><span class="n">flags</span><span class="o">.</span><span class="n">cacheable</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">cache_flag</span> <span class="o">=</span> <span class="n">ipr</span><span class="o">.</span><span class="n">bo</span><span class="o">.</span><span class="n">flags</span><span class="o">.</span><span class="n">host_only</span>
+
+        <span class="c1"># Create xrt buffer object for kernel port</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">bo</span> <span class="o">=</span> <span class="n">ipr</span><span class="o">.</span><span class="n">bo</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">cache_flag</span><span class="p">,</span> <span class="n">mem_bank_idx</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">MemoryError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Try resetting your device.&quot;</span><span class="p">)</span>
+            <span class="k">raise</span>
+
+        <span class="c1"># Expose buffer object memory as python buffer</span>
+        <span class="n">buf</span> <span class="o">=</span> <span class="n">bo</span><span class="o">.</span><span class="n">map</span><span class="p">()</span>
+
+        <span class="n">ar</span> <span class="o">=</span> <span class="n">PynqBuffer</span><span class="p">(</span>
+            <span class="n">shape</span><span class="o">=</span><span class="n">shape</span><span class="p">,</span>
+            <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span>
+            <span class="n">bo</span><span class="o">=</span><span class="n">bo</span><span class="p">,</span>
+            <span class="n">buffer</span><span class="o">=</span><span class="n">buf</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_allocated_arrays</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ar</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">ar</span></div>
+
+
+<div class="viewcode-block" id="AppRunner.call">
+<a class="viewcode-back" href="../../../npu.runtime.html#npu.runtime.apprunner.AppRunner.call">[docs]</a>
+    <span class="k">def</span> <span class="nf">call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;This function abstracts pyxrt.run(), passes pyxrt.bo objects to the</span>
+<span class="sd">        pyxrt.run() function if they are recognized as PynqBuffer types, otherwise</span>
+<span class="sd">        passes them as is.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_refresh_sequence</span><span class="p">()</span>
+        <span class="c1"># run_args = [self.instr, len(self.sequence.buffer)]</span>
+        <span class="n">run_args</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="n">PynqBuffer</span><span class="p">):</span>
+                <span class="n">run_args</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">arg</span><span class="o">.</span><span class="n">bo</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">run_args</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span>
+
+        <span class="n">run</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">kernel</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">instr</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sequence</span><span class="o">.</span><span class="n">buffer</span><span class="p">),</span> <span class="o">*</span><span class="n">run_args</span><span class="p">)</span>
+        <span class="n">ert_state</span> <span class="o">=</span> <span class="n">run</span><span class="o">.</span><span class="n">wait</span><span class="p">(</span><span class="mi">5000</span><span class="p">)</span> <span class="c1"># 5 second timeout</span>
+        <span class="k">if</span> <span class="n">ert_state</span><span class="o">.</span><span class="n">value</span> <span class="o">!=</span> <span class="mi">4</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Returned state is </span><span class="si">{</span><span class="n">ert_state</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">ert_state</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">, expected &lt;ert_cmd_state.ERT_CMD_STATE_COMPLETED: 4&gt;&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="AppRunner.__delete__">
+<a class="viewcode-back" href="../../../npu.runtime.html#npu.runtime.apprunner.AppRunner.__delete__">[docs]</a>
+    <span class="k">def</span> <span class="fm">__delete__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Delete allocated instructions buffer to deallocate memory.</span>
+<span class="sd">        Delete other pybind11 objects to make sure resources are freed.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="fm">__del__</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="AppRunner.__del__">
+<a class="viewcode-back" href="../../../npu.runtime.html#npu.runtime.apprunner.AppRunner.__del__">[docs]</a>
+    <span class="k">def</span> <span class="fm">__del__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Delete allocated instructions buffer to deallocate memory.</span>
+<span class="sd">        Delete other pybind11 objects to make sure resources are freed.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;_allocated_arrays&quot;</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">ar</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_allocated_arrays</span><span class="p">:</span>
+                <span class="n">ar</span><span class="o">.</span><span class="n">free_memory</span><span class="p">()</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;instr&quot;</span><span class="p">):</span>
+            <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">instr</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;kernel&quot;</span><span class="p">):</span>
+            <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">kernel</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;device&quot;</span><span class="p">):</span>
+            <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">device</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;_widgets&quot;</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">widget_list</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_widgets</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="k">for</span> <span class="n">widget_item</span> <span class="ow">in</span> <span class="n">widget_list</span><span class="p">:</span>
+                    <span class="n">widget_item</span><span class="o">.</span><span class="n">unobserve_all</span><span class="p">()</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;_hboxes&quot;</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">box</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hboxes</span><span class="p">:</span>
+                <span class="n">box</span><span class="o">.</span><span class="n">unobserve_all</span><span class="p">()</span></div>
+
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">Signature</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">kernel_params</span><span class="p">[</span><span class="s1">&#39;signature&#39;</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="PynqBuffer">
+<a class="viewcode-back" href="../../../npu.runtime.html#npu.runtime.apprunner.PynqBuffer">[docs]</a>
+<span class="k">class</span> <span class="nc">PynqBuffer</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;This is a subclass of numpy.ndarray. This class is </span>
+<span class="sd">    intended to be constructed using the AppRunner.allocate()</span>
+<span class="sd">    method and should not be used as a standalone.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    bo: pyxrt.bo</span>
+<span class="sd">        A pyxrt buffer object.</span>
+<span class="sd">    cacheable: bool</span>
+<span class="sd">        Typically host buffers will not be cacheable, but instr</span>
+<span class="sd">        buffers will always be.</span>
+<span class="sd">    </span>
+<span class="sd">    Note</span>
+<span class="sd">    ----</span>
+<span class="sd">    It&#39;s important to free the buffer memory after use -- this </span>
+<span class="sd">    can be done with the `free_memory()` method. The AppRunner</span>
+<span class="sd">    class tracks the allocated buffers and clears the buffers </span>
+<span class="sd">    automatically when the object has been deleted.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__new__</span><span class="p">(</span>
+        <span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">cacheable</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">bo</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+    <span class="p">):</span>
+        <span class="bp">self</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bo</span> <span class="o">=</span> <span class="n">bo</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cacheable</span> <span class="o">=</span> <span class="n">cacheable</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="k">def</span> <span class="nf">__array_finalize__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">PynqBuffer</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">bo</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">bo</span>
+
+<div class="viewcode-block" id="PynqBuffer.sync_to_npu">
+<a class="viewcode-back" href="../../../npu.runtime.html#npu.runtime.apprunner.PynqBuffer.sync_to_npu">[docs]</a>
+    <span class="k">def</span> <span class="nf">sync_to_npu</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bo</span><span class="o">.</span><span class="n">sync</span><span class="p">(</span><span class="n">ipr</span><span class="o">.</span><span class="n">xclBOSyncDirection</span><span class="o">.</span><span class="n">XCL_BO_SYNC_BO_TO_DEVICE</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="PynqBuffer.sync_from_npu">
+<a class="viewcode-back" href="../../../npu.runtime.html#npu.runtime.apprunner.PynqBuffer.sync_from_npu">[docs]</a>
+    <span class="k">def</span> <span class="nf">sync_from_npu</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bo</span><span class="o">.</span><span class="n">sync</span><span class="p">(</span><span class="n">ipr</span><span class="o">.</span><span class="n">xclBOSyncDirection</span><span class="o">.</span><span class="n">XCL_BO_SYNC_BO_FROM_DEVICE</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">bo</span><span class="o">.</span><span class="n">size</span><span class="p">(),</span> <span class="mi">0</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="PynqBuffer.free_memory">
+<a class="viewcode-back" href="../../../npu.runtime.html#npu.runtime.apprunner.PynqBuffer.free_memory">[docs]</a>
+    <span class="k">def</span> <span class="nf">free_memory</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">bo</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">bo</span> <span class="o">=</span> <span class="kc">None</span></div>
+
+
+    <span class="k">def</span> <span class="fm">__del__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">free_memory</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">bo</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Cannot access data, device memory has been freed.&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__getitem__</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">bo</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Cannot modify data, device memory has been freed.&quot;</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__setitem__</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">bo</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;&lt;Freed buffer object&gt;&quot;</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__repr__</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">bo</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;&lt;Freed buffer object&gt;&quot;</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__str__</span><span class="p">()</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          
+				  
+				  <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Advanced Micro Devices, Inc.
+      <span class="lastupdated">Last updated on December 15, 2023.
+      </span></p>
+  </div>
+
+
+
+										<div class="aem-Grid aem-Grid--16">
+											<div class="aem-GridColumn aem-GridColumn--xxxlarge--none aem-GridColumn--xsmall--16 aem-GridColumn--offset--xsmall--0 aem-GridColumn--xlarge--none aem-GridColumn--xxlarge--none aem-GridColumn--default--none aem-GridColumn--offset--large--1 aem-GridColumn--xlarge--12 aem-GridColumn--offset--default--0 aem-GridColumn--xxlarge--10 aem-GridColumn--offset--xlarge--2 aem-GridColumn--offset--xxlarge--3 aem-GridColumn--offset--xxxlarge--4 aem-GridColumn--xsmall--none aem-GridColumn--large--none aem-GridColumn aem-GridColumn--large--14 aem-GridColumn--xxxlarge--8 aem-GridColumn--default--16">
+												<div class="container-fluid sub-footer">
+
+													                    <div class="row">
+                        <div class="col-xs-24">
+                          <p><a target="_blank" href="https://www.amd.com/en/corporate/copyright">Terms and Conditions</a> | <a target="_blank" href="https://www.amd.com/en/corporate/privacy">Privacy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/cookies">Cookie Policy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/trademarks">Trademarks</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/statement-human-trafficking-forced-labor.pdf">Statement on Forced Labor</a> | <a target="_blank" href="https://www.amd.com/en/corporate/competition">Fair and Open Competition</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/amd-uk-tax-strategy.pdf">UK Tax Strategy</a> | <a target="_blank" href="https://docs.xilinx.com/v/u/9x6YvZKuWyhJId7y7RQQKA">Inclusive Terminology</a> | <a href="#cookiessettings" class="ot-sdk-show-settings">Cookies Settings</a></p>
+                        </div>
+                    </div>
+												</div>
+											</div>
+										</div>
+										
+</br>
+
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,1917 @@
+<svg id="svg" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1020" height="980" viewBox="0, 0, 1020, 980">
+  <defs>
+    <marker id="ic_startarrow" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 4 2, 0 4" fill="black"/>
+    </marker>
+    <marker id="ic_endarrow" markerWidth="7" markerHeight="4" refX="0" refY="2" orient="auto" markerUnits="strokeWidth">
+      <polygon points="0 0, 4 2, 0 4" fill="black"/>
+    </marker>
+    <marker id="red_startarrow" markerWidth="10" markerHeight="7" refX="0" refY="2" orient="auto">
+      <polygon points="0 2, 4 0, 4 4" fill="red"/>
+    </marker>
+    <marker id="red_endarrow" markerWidth="7" markerHeight="4" refX="4" refY="2" orient="auto" markerUnits="strokeWidth">
+      <polygon points="0 0, 4 2, 0 4" fill="red"/>
+    </marker>
+    <marker id="startarrow" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 4 2, 0 4" fill="black"/>
+    </marker>
+    <marker id="endarrow" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto" markerUnits="strokeWidth">
+      <polygon points="0 0, 4 2, 0 4" fill="black"/>
+    </marker>
+  </defs>
+  <style>
+    .ic_animations {                     opacity: 0.8;                 }
+  </style>
+  <g id="svg">
+    <rect id="border" class="border" width="1000" height="960" x="10.0" y="10.0" stroke="black" stroke-width="1" fill="white"/>
+    <style>
+      .border, .aie_tile_container, .mem_tile_container, .if_tile_container, .local_memory_box, .mem_tile_memory, .if_dmabox, .aie_tile_buffers, .mem_tile_buffers, .aie_tile, .if_tile, .mem_tile, .aie_tile_text, mem_tile_text, .if_tile_text, .kernel {                 opacity: 0.5;             }
+    </style>
+    <style>
+      .interconnect, .ic_animations, .interconnect_box {                 opacity: 0.25;             }
+    </style>
+    <g>
+      <rect id="aie_tile0" class="aie_tile" width="180" height="140" x="20" y="20" stroke="black" stroke-width="2" fill="#C2E9FF"/>
+    </g>
+    <g>
+      <text id="text_aie_tile0" class="aie_tile_text" x="20" y="20" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="110.0" y="89.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <g>
+      <rect id="interconnect_box0" class="interconnect_box" width="40" height="40" x="30" y="30" stroke="black" stroke-width="1" fill="#DBBCBD"/>
+    </g>
+    <g>
+      <text id="text_interconnect_box0" class="interconnect_box_text" x="30" y="30" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="50.0" y="49.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <line id="ic_h_line0_0" class="interconnect" x1="38.0" y1="45.0" x2="58.0" y2="45.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line0_1" class="interconnect" x1="62.0" y1="55.0" x2="42.0" y2="55.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line0_2" class="interconnect" x1="45.0" y1="62.0" x2="45.0" y2="42.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line0_3" class="interconnect" x1="55.0" y1="38.0" x2="55.0" y2="58.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <g>
+      <rect id="aie_tile_container0" class="aie_tile_container" width="120" height="60.0" x="70" y="90.0" stroke="black" stroke-width="1" fill="#ffffff"/>
+    </g>
+    <g>
+      <text id="text_aie_tile_container0" class="aie_tile_container_text" x="70" y="90.0" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="130.0" y="119.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <g>
+      <rect id="aie_box0" class="aie_box" width="46.0" height="46.0" x="77.0" y="97.0" stroke="#CC79A7" stroke-width="3" fill="white"/>
+    </g>
+    <g>
+      <text id="text_aie_box0" class="aie_box_text" x="77.0" y="97.0" fill="black" font-family="Arial, Helvetica, sans-serif"> <tspan x="94.5" y="105.6" dy="1em" font-size="12">AI </tspan><tspan x="80.5" y="117.6" dy="1em" font-size="12">Engine </tspan></text>
+    </g>
+    <g>
+      <rect id="memory_outline_0_8" x="137.0" y="97.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_1_8" x="142.75" y="97.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_2_8" x="148.5" y="97.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_3_8" x="154.25" y="97.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_4_8" x="160.0" y="97.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_5_8" x="165.75" y="97.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_6_8" x="171.5" y="97.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_7_8" x="177.25" y="97.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="local_memory_box0" class="local_memory_box" width="46.0" height="46.0" x="137.0" y="97.0" stroke="black" stroke-width="1" fill="None"/>
+    </g>
+    <g>
+      <text id="text_local_memory_box0" class="local_memory_box_text" x="137.0" y="97.0" fill="black" font-family="Arial, Helvetica, sans-serif"> <tspan x="147.0" y="105.6" dy="1em" font-size="12">Data </tspan><tspan x="138.0" y="117.6" dy="1em" font-size="12">Memory </tspan></text>
+    </g>
+    <g>
+      <rect id="aie_tile4" class="aie_tile" width="180" height="140" x="220" y="20" stroke="black" stroke-width="2" fill="#C2E9FF"/>
+    </g>
+    <g>
+      <text id="text_aie_tile4" class="aie_tile_text" x="220" y="20" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="310.0" y="89.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <g>
+      <rect id="interconnect_box4" class="interconnect_box" width="40" height="40" x="230" y="30" stroke="black" stroke-width="1" fill="#DBBCBD"/>
+    </g>
+    <g>
+      <text id="text_interconnect_box4" class="interconnect_box_text" x="230" y="30" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="250.0" y="49.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <line id="ic_h_line4_0" class="interconnect" x1="238.0" y1="45.0" x2="258.0" y2="45.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line4_1" class="interconnect" x1="262.0" y1="55.0" x2="242.0" y2="55.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line4_2" class="interconnect" x1="245.0" y1="62.0" x2="245.0" y2="42.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line4_3" class="interconnect" x1="255.0" y1="38.0" x2="255.0" y2="58.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <g>
+      <rect id="aie_tile_container4" class="aie_tile_container" width="120" height="60.0" x="270" y="90.0" stroke="black" stroke-width="1" fill="#ffffff"/>
+    </g>
+    <g>
+      <text id="text_aie_tile_container4" class="aie_tile_container_text" x="270" y="90.0" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="330.0" y="119.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <g>
+      <rect id="aie_box4" class="aie_box" width="46.0" height="46.0" x="277.0" y="97.0" stroke="#009E73" stroke-width="3" fill="white"/>
+    </g>
+    <g>
+      <text id="text_aie_box4" class="aie_box_text" x="277.0" y="97.0" fill="black" font-family="Arial, Helvetica, sans-serif"> <tspan x="294.5" y="105.6" dy="1em" font-size="12">AI </tspan><tspan x="280.5" y="117.6" dy="1em" font-size="12">Engine </tspan></text>
+    </g>
+    <g>
+      <rect id="memory_outline_0_8" x="337.0" y="97.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_1_8" x="342.75" y="97.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_2_8" x="348.5" y="97.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_3_8" x="354.25" y="97.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_4_8" x="360.0" y="97.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_5_8" x="365.75" y="97.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_6_8" x="371.5" y="97.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_7_8" x="377.25" y="97.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="local_memory_box4" class="local_memory_box" width="46.0" height="46.0" x="337.0" y="97.0" stroke="black" stroke-width="1" fill="None"/>
+    </g>
+    <g>
+      <text id="text_local_memory_box4" class="local_memory_box_text" x="337.0" y="97.0" fill="black" font-family="Arial, Helvetica, sans-serif"> <tspan x="347.0" y="105.6" dy="1em" font-size="12">Data </tspan><tspan x="338.0" y="117.6" dy="1em" font-size="12">Memory </tspan></text>
+    </g>
+    <g>
+      <rect id="aie_tile8" class="aie_tile" width="180" height="140" x="420" y="20" stroke="black" stroke-width="2" fill="#C2E9FF"/>
+    </g>
+    <g>
+      <text id="text_aie_tile8" class="aie_tile_text" x="420" y="20" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="510.0" y="89.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <g>
+      <rect id="interconnect_box8" class="interconnect_box" width="40" height="40" x="430" y="30" stroke="black" stroke-width="1" fill="#DBBCBD"/>
+    </g>
+    <g>
+      <text id="text_interconnect_box8" class="interconnect_box_text" x="430" y="30" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="450.0" y="49.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <line id="ic_h_line8_0" class="interconnect" x1="438.0" y1="45.0" x2="458.0" y2="45.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line8_1" class="interconnect" x1="462.0" y1="55.0" x2="442.0" y2="55.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line8_2" class="interconnect" x1="445.0" y1="62.0" x2="445.0" y2="42.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line8_3" class="interconnect" x1="455.0" y1="38.0" x2="455.0" y2="58.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <g>
+      <rect id="aie_tile_container8" class="aie_tile_container" width="120" height="60.0" x="470" y="90.0" stroke="black" stroke-width="1" fill="#ffffff"/>
+    </g>
+    <g>
+      <text id="text_aie_tile_container8" class="aie_tile_container_text" x="470" y="90.0" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="530.0" y="119.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <g>
+      <rect id="aie_box8" class="aie_box" width="46.0" height="46.0" x="477.0" y="97.0" stroke="#009E73" stroke-width="3" fill="white"/>
+    </g>
+    <g>
+      <text id="text_aie_box8" class="aie_box_text" x="477.0" y="97.0" fill="black" font-family="Arial, Helvetica, sans-serif"> <tspan x="494.5" y="105.6" dy="1em" font-size="12">AI </tspan><tspan x="480.5" y="117.6" dy="1em" font-size="12">Engine </tspan></text>
+    </g>
+    <g>
+      <rect id="memory_outline_0_8" x="537.0" y="97.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_1_8" x="542.75" y="97.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_2_8" x="548.5" y="97.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_3_8" x="554.25" y="97.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_4_8" x="560.0" y="97.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_5_8" x="565.75" y="97.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_6_8" x="571.5" y="97.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_7_8" x="577.25" y="97.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="local_memory_box8" class="local_memory_box" width="46.0" height="46.0" x="537.0" y="97.0" stroke="black" stroke-width="1" fill="None"/>
+    </g>
+    <g>
+      <text id="text_local_memory_box8" class="local_memory_box_text" x="537.0" y="97.0" fill="black" font-family="Arial, Helvetica, sans-serif"> <tspan x="547.0" y="105.6" dy="1em" font-size="12">Data </tspan><tspan x="538.0" y="117.6" dy="1em" font-size="12">Memory </tspan></text>
+    </g>
+    <g>
+      <rect id="aie_tile12" class="aie_tile" width="180" height="140" x="620" y="20" stroke="black" stroke-width="2" fill="#C2E9FF"/>
+    </g>
+    <g>
+      <text id="text_aie_tile12" class="aie_tile_text" x="620" y="20" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="710.0" y="89.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <g>
+      <rect id="interconnect_box12" class="interconnect_box" width="40" height="40" x="630" y="30" stroke="black" stroke-width="1" fill="#DBBCBD"/>
+    </g>
+    <g>
+      <text id="text_interconnect_box12" class="interconnect_box_text" x="630" y="30" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="650.0" y="49.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <line id="ic_h_line12_0" class="interconnect" x1="638.0" y1="45.0" x2="658.0" y2="45.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line12_1" class="interconnect" x1="662.0" y1="55.0" x2="642.0" y2="55.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line12_2" class="interconnect" x1="645.0" y1="62.0" x2="645.0" y2="42.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line12_3" class="interconnect" x1="655.0" y1="38.0" x2="655.0" y2="58.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <g>
+      <rect id="aie_tile_container12" class="aie_tile_container" width="120" height="60.0" x="670" y="90.0" stroke="black" stroke-width="1" fill="#ffffff"/>
+    </g>
+    <g>
+      <text id="text_aie_tile_container12" class="aie_tile_container_text" x="670" y="90.0" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="730.0" y="119.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <g>
+      <rect id="aie_box12" class="aie_box" width="46.0" height="46.0" x="677.0" y="97.0" stroke="#009E73" stroke-width="3" fill="white"/>
+    </g>
+    <g>
+      <text id="text_aie_box12" class="aie_box_text" x="677.0" y="97.0" fill="black" font-family="Arial, Helvetica, sans-serif"> <tspan x="694.5" y="105.6" dy="1em" font-size="12">AI </tspan><tspan x="680.5" y="117.6" dy="1em" font-size="12">Engine </tspan></text>
+    </g>
+    <g>
+      <rect id="memory_outline_0_8" x="737.0" y="97.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_1_8" x="742.75" y="97.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_2_8" x="748.5" y="97.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_3_8" x="754.25" y="97.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_4_8" x="760.0" y="97.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_5_8" x="765.75" y="97.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_6_8" x="771.5" y="97.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_7_8" x="777.25" y="97.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="local_memory_box12" class="local_memory_box" width="46.0" height="46.0" x="737.0" y="97.0" stroke="black" stroke-width="1" fill="None"/>
+    </g>
+    <g>
+      <text id="text_local_memory_box12" class="local_memory_box_text" x="737.0" y="97.0" fill="black" font-family="Arial, Helvetica, sans-serif"> <tspan x="747.0" y="105.6" dy="1em" font-size="12">Data </tspan><tspan x="738.0" y="117.6" dy="1em" font-size="12">Memory </tspan></text>
+    </g>
+    <g>
+      <rect id="aie_tile16" class="aie_tile" width="180" height="140" x="820" y="20" stroke="black" stroke-width="2" fill="#C2E9FF"/>
+    </g>
+    <g>
+      <text id="text_aie_tile16" class="aie_tile_text" x="820" y="20" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="910.0" y="89.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <g>
+      <rect id="interconnect_box16" class="interconnect_box" width="40" height="40" x="830" y="30" stroke="black" stroke-width="1" fill="#DBBCBD"/>
+    </g>
+    <g>
+      <text id="text_interconnect_box16" class="interconnect_box_text" x="830" y="30" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="850.0" y="49.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <line id="ic_h_line16_0" class="interconnect" x1="838.0" y1="45.0" x2="858.0" y2="45.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line16_1" class="interconnect" x1="862.0" y1="55.0" x2="842.0" y2="55.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line16_2" class="interconnect" x1="845.0" y1="62.0" x2="845.0" y2="42.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line16_3" class="interconnect" x1="855.0" y1="38.0" x2="855.0" y2="58.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <g>
+      <rect id="aie_tile_container16" class="aie_tile_container" width="120" height="60.0" x="870" y="90.0" stroke="black" stroke-width="1" fill="#ffffff"/>
+    </g>
+    <g>
+      <text id="text_aie_tile_container16" class="aie_tile_container_text" x="870" y="90.0" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="930.0" y="119.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <g>
+      <rect id="aie_box16" class="aie_box" width="46.0" height="46.0" x="877.0" y="97.0" stroke="#009E73" stroke-width="3" fill="white"/>
+    </g>
+    <g>
+      <text id="text_aie_box16" class="aie_box_text" x="877.0" y="97.0" fill="black" font-family="Arial, Helvetica, sans-serif"> <tspan x="894.5" y="105.6" dy="1em" font-size="12">AI </tspan><tspan x="880.5" y="117.6" dy="1em" font-size="12">Engine </tspan></text>
+    </g>
+    <g>
+      <rect id="memory_outline_0_8" x="937.0" y="97.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_1_8" x="942.75" y="97.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_2_8" x="948.5" y="97.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_3_8" x="954.25" y="97.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_4_8" x="960.0" y="97.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_5_8" x="965.75" y="97.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_6_8" x="971.5" y="97.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_7_8" x="977.25" y="97.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="local_memory_box16" class="local_memory_box" width="46.0" height="46.0" x="937.0" y="97.0" stroke="black" stroke-width="1" fill="None"/>
+    </g>
+    <g>
+      <text id="text_local_memory_box16" class="local_memory_box_text" x="937.0" y="97.0" fill="black" font-family="Arial, Helvetica, sans-serif"> <tspan x="947.0" y="105.6" dy="1em" font-size="12">Data </tspan><tspan x="938.0" y="117.6" dy="1em" font-size="12">Memory </tspan></text>
+    </g>
+    <g>
+      <rect id="aie_tile1" class="aie_tile" width="180" height="140" x="20" y="180" stroke="black" stroke-width="2" fill="#C2E9FF"/>
+    </g>
+    <g>
+      <text id="text_aie_tile1" class="aie_tile_text" x="20" y="180" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="110.0" y="249.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <g>
+      <rect id="interconnect_box1" class="interconnect_box" width="40" height="40" x="30" y="190" stroke="black" stroke-width="1" fill="#DBBCBD"/>
+    </g>
+    <g>
+      <text id="text_interconnect_box1" class="interconnect_box_text" x="30" y="190" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="50.0" y="209.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <line id="ic_h_line1_0" class="interconnect" x1="38.0" y1="205.0" x2="58.0" y2="205.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line1_1" class="interconnect" x1="62.0" y1="215.0" x2="42.0" y2="215.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line1_2" class="interconnect" x1="45.0" y1="222.0" x2="45.0" y2="202.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line1_3" class="interconnect" x1="55.0" y1="198.0" x2="55.0" y2="218.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <g>
+      <rect id="aie_tile_container1" class="aie_tile_container" width="120" height="60.0" x="70" y="250.0" stroke="black" stroke-width="1" fill="#ffffff"/>
+    </g>
+    <g>
+      <text id="text_aie_tile_container1" class="aie_tile_container_text" x="70" y="250.0" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="130.0" y="279.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <g>
+      <rect id="aie_box1" class="aie_box" width="46.0" height="46.0" x="77.0" y="257.0" stroke="#009E73" stroke-width="3" fill="white"/>
+    </g>
+    <g>
+      <text id="text_aie_box1" class="aie_box_text" x="77.0" y="257.0" fill="black" font-family="Arial, Helvetica, sans-serif"> <tspan x="94.5" y="265.6" dy="1em" font-size="12">AI </tspan><tspan x="80.5" y="277.6" dy="1em" font-size="12">Engine </tspan></text>
+    </g>
+    <g>
+      <rect id="memory_outline_0_8" x="137.0" y="257.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_1_8" x="142.75" y="257.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_2_8" x="148.5" y="257.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_3_8" x="154.25" y="257.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_4_8" x="160.0" y="257.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_5_8" x="165.75" y="257.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_6_8" x="171.5" y="257.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_7_8" x="177.25" y="257.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="local_memory_box1" class="local_memory_box" width="46.0" height="46.0" x="137.0" y="257.0" stroke="black" stroke-width="1" fill="None"/>
+    </g>
+    <g>
+      <text id="text_local_memory_box1" class="local_memory_box_text" x="137.0" y="257.0" fill="black" font-family="Arial, Helvetica, sans-serif"> <tspan x="147.0" y="265.6" dy="1em" font-size="12">Data </tspan><tspan x="138.0" y="277.6" dy="1em" font-size="12">Memory </tspan></text>
+    </g>
+    <g>
+      <rect id="aie_tile5" class="aie_tile" width="180" height="140" x="220" y="180" stroke="black" stroke-width="2" fill="#C2E9FF"/>
+    </g>
+    <g>
+      <text id="text_aie_tile5" class="aie_tile_text" x="220" y="180" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="310.0" y="249.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <g>
+      <rect id="interconnect_box5" class="interconnect_box" width="40" height="40" x="230" y="190" stroke="black" stroke-width="1" fill="#DBBCBD"/>
+    </g>
+    <g>
+      <text id="text_interconnect_box5" class="interconnect_box_text" x="230" y="190" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="250.0" y="209.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <line id="ic_h_line5_0" class="interconnect" x1="238.0" y1="205.0" x2="258.0" y2="205.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line5_1" class="interconnect" x1="262.0" y1="215.0" x2="242.0" y2="215.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line5_2" class="interconnect" x1="245.0" y1="222.0" x2="245.0" y2="202.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line5_3" class="interconnect" x1="255.0" y1="198.0" x2="255.0" y2="218.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <g>
+      <rect id="aie_tile_container5" class="aie_tile_container" width="120" height="60.0" x="270" y="250.0" stroke="black" stroke-width="1" fill="#ffffff"/>
+    </g>
+    <g>
+      <text id="text_aie_tile_container5" class="aie_tile_container_text" x="270" y="250.0" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="330.0" y="279.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <g>
+      <rect id="aie_box5" class="aie_box" width="46.0" height="46.0" x="277.0" y="257.0" stroke="#0072B2" stroke-width="3" fill="white"/>
+    </g>
+    <g>
+      <text id="text_aie_box5" class="aie_box_text" x="277.0" y="257.0" fill="black" font-family="Arial, Helvetica, sans-serif"> <tspan x="294.5" y="265.6" dy="1em" font-size="12">AI </tspan><tspan x="280.5" y="277.6" dy="1em" font-size="12">Engine </tspan></text>
+    </g>
+    <g>
+      <rect id="memory_outline_0_8" x="337.0" y="257.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_1_8" x="342.75" y="257.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_2_8" x="348.5" y="257.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_3_8" x="354.25" y="257.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_4_8" x="360.0" y="257.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_5_8" x="365.75" y="257.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_6_8" x="371.5" y="257.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_7_8" x="377.25" y="257.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="local_memory_box5" class="local_memory_box" width="46.0" height="46.0" x="337.0" y="257.0" stroke="black" stroke-width="1" fill="None"/>
+    </g>
+    <g>
+      <text id="text_local_memory_box5" class="local_memory_box_text" x="337.0" y="257.0" fill="black" font-family="Arial, Helvetica, sans-serif"> <tspan x="347.0" y="265.6" dy="1em" font-size="12">Data </tspan><tspan x="338.0" y="277.6" dy="1em" font-size="12">Memory </tspan></text>
+    </g>
+    <g>
+      <rect id="aie_tile9" class="aie_tile" width="180" height="140" x="420" y="180" stroke="black" stroke-width="2" fill="#C2E9FF"/>
+    </g>
+    <g>
+      <text id="text_aie_tile9" class="aie_tile_text" x="420" y="180" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="510.0" y="249.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <g>
+      <rect id="interconnect_box9" class="interconnect_box" width="40" height="40" x="430" y="190" stroke="black" stroke-width="1" fill="#DBBCBD"/>
+    </g>
+    <g>
+      <text id="text_interconnect_box9" class="interconnect_box_text" x="430" y="190" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="450.0" y="209.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <line id="ic_h_line9_0" class="interconnect" x1="438.0" y1="205.0" x2="458.0" y2="205.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line9_1" class="interconnect" x1="462.0" y1="215.0" x2="442.0" y2="215.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line9_2" class="interconnect" x1="445.0" y1="222.0" x2="445.0" y2="202.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line9_3" class="interconnect" x1="455.0" y1="198.0" x2="455.0" y2="218.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <g>
+      <rect id="aie_tile_container9" class="aie_tile_container" width="120" height="60.0" x="470" y="250.0" stroke="black" stroke-width="1" fill="#ffffff"/>
+    </g>
+    <g>
+      <text id="text_aie_tile_container9" class="aie_tile_container_text" x="470" y="250.0" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="530.0" y="279.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <g>
+      <rect id="aie_box9" class="aie_box" width="46.0" height="46.0" x="477.0" y="257.0" stroke="#0072B2" stroke-width="3" fill="white"/>
+    </g>
+    <g>
+      <text id="text_aie_box9" class="aie_box_text" x="477.0" y="257.0" fill="black" font-family="Arial, Helvetica, sans-serif"> <tspan x="494.5" y="265.6" dy="1em" font-size="12">AI </tspan><tspan x="480.5" y="277.6" dy="1em" font-size="12">Engine </tspan></text>
+    </g>
+    <g>
+      <rect id="memory_outline_0_8" x="537.0" y="257.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_1_8" x="542.75" y="257.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_2_8" x="548.5" y="257.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_3_8" x="554.25" y="257.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_4_8" x="560.0" y="257.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_5_8" x="565.75" y="257.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_6_8" x="571.5" y="257.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_7_8" x="577.25" y="257.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="local_memory_box9" class="local_memory_box" width="46.0" height="46.0" x="537.0" y="257.0" stroke="black" stroke-width="1" fill="None"/>
+    </g>
+    <g>
+      <text id="text_local_memory_box9" class="local_memory_box_text" x="537.0" y="257.0" fill="black" font-family="Arial, Helvetica, sans-serif"> <tspan x="547.0" y="265.6" dy="1em" font-size="12">Data </tspan><tspan x="538.0" y="277.6" dy="1em" font-size="12">Memory </tspan></text>
+    </g>
+    <g>
+      <rect id="aie_tile13" class="aie_tile" width="180" height="140" x="620" y="180" stroke="black" stroke-width="2" fill="#C2E9FF"/>
+    </g>
+    <g>
+      <text id="text_aie_tile13" class="aie_tile_text" x="620" y="180" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="710.0" y="249.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <g>
+      <rect id="interconnect_box13" class="interconnect_box" width="40" height="40" x="630" y="190" stroke="black" stroke-width="1" fill="#DBBCBD"/>
+    </g>
+    <g>
+      <text id="text_interconnect_box13" class="interconnect_box_text" x="630" y="190" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="650.0" y="209.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <line id="ic_h_line13_0" class="interconnect" x1="638.0" y1="205.0" x2="658.0" y2="205.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line13_1" class="interconnect" x1="662.0" y1="215.0" x2="642.0" y2="215.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line13_2" class="interconnect" x1="645.0" y1="222.0" x2="645.0" y2="202.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line13_3" class="interconnect" x1="655.0" y1="198.0" x2="655.0" y2="218.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <g>
+      <rect id="aie_tile_container13" class="aie_tile_container" width="120" height="60.0" x="670" y="250.0" stroke="black" stroke-width="1" fill="#ffffff"/>
+    </g>
+    <g>
+      <text id="text_aie_tile_container13" class="aie_tile_container_text" x="670" y="250.0" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="730.0" y="279.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <g>
+      <rect id="aie_box13" class="aie_box" width="46.0" height="46.0" x="677.0" y="257.0" stroke="#0072B2" stroke-width="3" fill="white"/>
+    </g>
+    <g>
+      <text id="text_aie_box13" class="aie_box_text" x="677.0" y="257.0" fill="black" font-family="Arial, Helvetica, sans-serif"> <tspan x="694.5" y="265.6" dy="1em" font-size="12">AI </tspan><tspan x="680.5" y="277.6" dy="1em" font-size="12">Engine </tspan></text>
+    </g>
+    <g>
+      <rect id="memory_outline_0_8" x="737.0" y="257.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_1_8" x="742.75" y="257.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_2_8" x="748.5" y="257.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_3_8" x="754.25" y="257.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_4_8" x="760.0" y="257.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_5_8" x="765.75" y="257.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_6_8" x="771.5" y="257.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_7_8" x="777.25" y="257.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="local_memory_box13" class="local_memory_box" width="46.0" height="46.0" x="737.0" y="257.0" stroke="black" stroke-width="1" fill="None"/>
+    </g>
+    <g>
+      <text id="text_local_memory_box13" class="local_memory_box_text" x="737.0" y="257.0" fill="black" font-family="Arial, Helvetica, sans-serif"> <tspan x="747.0" y="265.6" dy="1em" font-size="12">Data </tspan><tspan x="738.0" y="277.6" dy="1em" font-size="12">Memory </tspan></text>
+    </g>
+    <g>
+      <rect id="aie_tile17" class="aie_tile" width="180" height="140" x="820" y="180" stroke="black" stroke-width="2" fill="#C2E9FF"/>
+    </g>
+    <g>
+      <text id="text_aie_tile17" class="aie_tile_text" x="820" y="180" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="910.0" y="249.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <g>
+      <rect id="interconnect_box17" class="interconnect_box" width="40" height="40" x="830" y="190" stroke="black" stroke-width="1" fill="#DBBCBD"/>
+    </g>
+    <g>
+      <text id="text_interconnect_box17" class="interconnect_box_text" x="830" y="190" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="850.0" y="209.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <line id="ic_h_line17_0" class="interconnect" x1="838.0" y1="205.0" x2="858.0" y2="205.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line17_1" class="interconnect" x1="862.0" y1="215.0" x2="842.0" y2="215.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line17_2" class="interconnect" x1="845.0" y1="222.0" x2="845.0" y2="202.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line17_3" class="interconnect" x1="855.0" y1="198.0" x2="855.0" y2="218.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <g>
+      <rect id="aie_tile_container17" class="aie_tile_container" width="120" height="60.0" x="870" y="250.0" stroke="black" stroke-width="1" fill="#ffffff"/>
+    </g>
+    <g>
+      <text id="text_aie_tile_container17" class="aie_tile_container_text" x="870" y="250.0" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="930.0" y="279.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <g>
+      <rect id="aie_box17" class="aie_box" width="46.0" height="46.0" x="877.0" y="257.0" stroke="#0072B2" stroke-width="3" fill="white"/>
+    </g>
+    <g>
+      <text id="text_aie_box17" class="aie_box_text" x="877.0" y="257.0" fill="black" font-family="Arial, Helvetica, sans-serif"> <tspan x="894.5" y="265.6" dy="1em" font-size="12">AI </tspan><tspan x="880.5" y="277.6" dy="1em" font-size="12">Engine </tspan></text>
+    </g>
+    <g>
+      <rect id="memory_outline_0_8" x="937.0" y="257.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_1_8" x="942.75" y="257.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_2_8" x="948.5" y="257.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_3_8" x="954.25" y="257.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_4_8" x="960.0" y="257.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_5_8" x="965.75" y="257.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_6_8" x="971.5" y="257.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_7_8" x="977.25" y="257.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="local_memory_box17" class="local_memory_box" width="46.0" height="46.0" x="937.0" y="257.0" stroke="black" stroke-width="1" fill="None"/>
+    </g>
+    <g>
+      <text id="text_local_memory_box17" class="local_memory_box_text" x="937.0" y="257.0" fill="black" font-family="Arial, Helvetica, sans-serif"> <tspan x="947.0" y="265.6" dy="1em" font-size="12">Data </tspan><tspan x="938.0" y="277.6" dy="1em" font-size="12">Memory </tspan></text>
+    </g>
+    <g>
+      <rect id="aie_tile2" class="aie_tile" width="180" height="140" x="20" y="340" stroke="black" stroke-width="2" fill="#C2E9FF"/>
+    </g>
+    <g>
+      <text id="text_aie_tile2" class="aie_tile_text" x="20" y="340" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="110.0" y="409.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <g>
+      <rect id="interconnect_box2" class="interconnect_box" width="40" height="40" x="30" y="350" stroke="black" stroke-width="1" fill="#DBBCBD"/>
+    </g>
+    <g>
+      <text id="text_interconnect_box2" class="interconnect_box_text" x="30" y="350" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="50.0" y="369.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <line id="ic_h_line2_0" class="interconnect" x1="38.0" y1="365.0" x2="58.0" y2="365.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line2_1" class="interconnect" x1="62.0" y1="375.0" x2="42.0" y2="375.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line2_2" class="interconnect" x1="45.0" y1="382.0" x2="45.0" y2="362.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line2_3" class="interconnect" x1="55.0" y1="358.0" x2="55.0" y2="378.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <g>
+      <rect id="aie_tile_container2" class="aie_tile_container" width="120" height="60.0" x="70" y="410.0" stroke="black" stroke-width="1" fill="#ffffff"/>
+    </g>
+    <g>
+      <text id="text_aie_tile_container2" class="aie_tile_container_text" x="70" y="410.0" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="130.0" y="439.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <g>
+      <rect id="aie_box2" class="aie_box" width="46.0" height="46.0" x="77.0" y="417.0" stroke="#009E73" stroke-width="3" fill="white"/>
+    </g>
+    <g>
+      <text id="text_aie_box2" class="aie_box_text" x="77.0" y="417.0" fill="black" font-family="Arial, Helvetica, sans-serif"> <tspan x="94.5" y="425.6" dy="1em" font-size="12">AI </tspan><tspan x="80.5" y="437.6" dy="1em" font-size="12">Engine </tspan></text>
+    </g>
+    <g>
+      <rect id="memory_outline_0_8" x="137.0" y="417.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_1_8" x="142.75" y="417.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_2_8" x="148.5" y="417.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_3_8" x="154.25" y="417.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_4_8" x="160.0" y="417.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_5_8" x="165.75" y="417.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_6_8" x="171.5" y="417.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_7_8" x="177.25" y="417.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="local_memory_box2" class="local_memory_box" width="46.0" height="46.0" x="137.0" y="417.0" stroke="black" stroke-width="1" fill="None"/>
+    </g>
+    <g>
+      <text id="text_local_memory_box2" class="local_memory_box_text" x="137.0" y="417.0" fill="black" font-family="Arial, Helvetica, sans-serif"> <tspan x="147.0" y="425.6" dy="1em" font-size="12">Data </tspan><tspan x="138.0" y="437.6" dy="1em" font-size="12">Memory </tspan></text>
+    </g>
+    <g>
+      <rect id="aie_tile6" class="aie_tile" width="180" height="140" x="220" y="340" stroke="black" stroke-width="2" fill="#C2E9FF"/>
+    </g>
+    <g>
+      <text id="text_aie_tile6" class="aie_tile_text" x="220" y="340" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="310.0" y="409.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <g>
+      <rect id="interconnect_box6" class="interconnect_box" width="40" height="40" x="230" y="350" stroke="black" stroke-width="1" fill="#DBBCBD"/>
+    </g>
+    <g>
+      <text id="text_interconnect_box6" class="interconnect_box_text" x="230" y="350" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="250.0" y="369.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <line id="ic_h_line6_0" class="interconnect" x1="238.0" y1="365.0" x2="258.0" y2="365.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line6_1" class="interconnect" x1="262.0" y1="375.0" x2="242.0" y2="375.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line6_2" class="interconnect" x1="245.0" y1="382.0" x2="245.0" y2="362.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line6_3" class="interconnect" x1="255.0" y1="358.0" x2="255.0" y2="378.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <g>
+      <rect id="aie_tile_container6" class="aie_tile_container" width="120" height="60.0" x="270" y="410.0" stroke="black" stroke-width="1" fill="#ffffff"/>
+    </g>
+    <g>
+      <text id="text_aie_tile_container6" class="aie_tile_container_text" x="270" y="410.0" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="330.0" y="439.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <g>
+      <rect id="aie_box6" class="aie_box" width="46.0" height="46.0" x="277.0" y="417.0" stroke="#0072B2" stroke-width="3" fill="white"/>
+    </g>
+    <g>
+      <text id="text_aie_box6" class="aie_box_text" x="277.0" y="417.0" fill="black" font-family="Arial, Helvetica, sans-serif"> <tspan x="294.5" y="425.6" dy="1em" font-size="12">AI </tspan><tspan x="280.5" y="437.6" dy="1em" font-size="12">Engine </tspan></text>
+    </g>
+    <g>
+      <rect id="memory_outline_0_8" x="337.0" y="417.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_1_8" x="342.75" y="417.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_2_8" x="348.5" y="417.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_3_8" x="354.25" y="417.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_4_8" x="360.0" y="417.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_5_8" x="365.75" y="417.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_6_8" x="371.5" y="417.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_7_8" x="377.25" y="417.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="local_memory_box6" class="local_memory_box" width="46.0" height="46.0" x="337.0" y="417.0" stroke="black" stroke-width="1" fill="None"/>
+    </g>
+    <g>
+      <text id="text_local_memory_box6" class="local_memory_box_text" x="337.0" y="417.0" fill="black" font-family="Arial, Helvetica, sans-serif"> <tspan x="347.0" y="425.6" dy="1em" font-size="12">Data </tspan><tspan x="338.0" y="437.6" dy="1em" font-size="12">Memory </tspan></text>
+    </g>
+    <g>
+      <rect id="aie_tile10" class="aie_tile" width="180" height="140" x="420" y="340" stroke="black" stroke-width="2" fill="#C2E9FF"/>
+    </g>
+    <g>
+      <text id="text_aie_tile10" class="aie_tile_text" x="420" y="340" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="510.0" y="409.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <g>
+      <rect id="interconnect_box10" class="interconnect_box" width="40" height="40" x="430" y="350" stroke="black" stroke-width="1" fill="#DBBCBD"/>
+    </g>
+    <g>
+      <text id="text_interconnect_box10" class="interconnect_box_text" x="430" y="350" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="450.0" y="369.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <line id="ic_h_line10_0" class="interconnect" x1="438.0" y1="365.0" x2="458.0" y2="365.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line10_1" class="interconnect" x1="462.0" y1="375.0" x2="442.0" y2="375.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line10_2" class="interconnect" x1="445.0" y1="382.0" x2="445.0" y2="362.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line10_3" class="interconnect" x1="455.0" y1="358.0" x2="455.0" y2="378.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <g>
+      <rect id="aie_tile_container10" class="aie_tile_container" width="120" height="60.0" x="470" y="410.0" stroke="black" stroke-width="1" fill="#ffffff"/>
+    </g>
+    <g>
+      <text id="text_aie_tile_container10" class="aie_tile_container_text" x="470" y="410.0" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="530.0" y="439.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <g>
+      <rect id="aie_box10" class="aie_box" width="46.0" height="46.0" x="477.0" y="417.0" stroke="#0072B2" stroke-width="3" fill="white"/>
+    </g>
+    <g>
+      <text id="text_aie_box10" class="aie_box_text" x="477.0" y="417.0" fill="black" font-family="Arial, Helvetica, sans-serif"> <tspan x="494.5" y="425.6" dy="1em" font-size="12">AI </tspan><tspan x="480.5" y="437.6" dy="1em" font-size="12">Engine </tspan></text>
+    </g>
+    <g>
+      <rect id="memory_outline_0_8" x="537.0" y="417.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_1_8" x="542.75" y="417.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_2_8" x="548.5" y="417.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_3_8" x="554.25" y="417.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_4_8" x="560.0" y="417.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_5_8" x="565.75" y="417.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_6_8" x="571.5" y="417.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_7_8" x="577.25" y="417.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="local_memory_box10" class="local_memory_box" width="46.0" height="46.0" x="537.0" y="417.0" stroke="black" stroke-width="1" fill="None"/>
+    </g>
+    <g>
+      <text id="text_local_memory_box10" class="local_memory_box_text" x="537.0" y="417.0" fill="black" font-family="Arial, Helvetica, sans-serif"> <tspan x="547.0" y="425.6" dy="1em" font-size="12">Data </tspan><tspan x="538.0" y="437.6" dy="1em" font-size="12">Memory </tspan></text>
+    </g>
+    <g>
+      <rect id="aie_tile14" class="aie_tile" width="180" height="140" x="620" y="340" stroke="black" stroke-width="2" fill="#C2E9FF"/>
+    </g>
+    <g>
+      <text id="text_aie_tile14" class="aie_tile_text" x="620" y="340" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="710.0" y="409.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <g>
+      <rect id="interconnect_box14" class="interconnect_box" width="40" height="40" x="630" y="350" stroke="black" stroke-width="1" fill="#DBBCBD"/>
+    </g>
+    <g>
+      <text id="text_interconnect_box14" class="interconnect_box_text" x="630" y="350" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="650.0" y="369.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <line id="ic_h_line14_0" class="interconnect" x1="638.0" y1="365.0" x2="658.0" y2="365.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line14_1" class="interconnect" x1="662.0" y1="375.0" x2="642.0" y2="375.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line14_2" class="interconnect" x1="645.0" y1="382.0" x2="645.0" y2="362.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line14_3" class="interconnect" x1="655.0" y1="358.0" x2="655.0" y2="378.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <g>
+      <rect id="aie_tile_container14" class="aie_tile_container" width="120" height="60.0" x="670" y="410.0" stroke="black" stroke-width="1" fill="#ffffff"/>
+    </g>
+    <g>
+      <text id="text_aie_tile_container14" class="aie_tile_container_text" x="670" y="410.0" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="730.0" y="439.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <g>
+      <rect id="aie_box14" class="aie_box" width="46.0" height="46.0" x="677.0" y="417.0" stroke="#0072B2" stroke-width="3" fill="white"/>
+    </g>
+    <g>
+      <text id="text_aie_box14" class="aie_box_text" x="677.0" y="417.0" fill="black" font-family="Arial, Helvetica, sans-serif"> <tspan x="694.5" y="425.6" dy="1em" font-size="12">AI </tspan><tspan x="680.5" y="437.6" dy="1em" font-size="12">Engine </tspan></text>
+    </g>
+    <g>
+      <rect id="memory_outline_0_8" x="737.0" y="417.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_1_8" x="742.75" y="417.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_2_8" x="748.5" y="417.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_3_8" x="754.25" y="417.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_4_8" x="760.0" y="417.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_5_8" x="765.75" y="417.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_6_8" x="771.5" y="417.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_7_8" x="777.25" y="417.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="local_memory_box14" class="local_memory_box" width="46.0" height="46.0" x="737.0" y="417.0" stroke="black" stroke-width="1" fill="None"/>
+    </g>
+    <g>
+      <text id="text_local_memory_box14" class="local_memory_box_text" x="737.0" y="417.0" fill="black" font-family="Arial, Helvetica, sans-serif"> <tspan x="747.0" y="425.6" dy="1em" font-size="12">Data </tspan><tspan x="738.0" y="437.6" dy="1em" font-size="12">Memory </tspan></text>
+    </g>
+    <g>
+      <rect id="aie_tile18" class="aie_tile" width="180" height="140" x="820" y="340" stroke="black" stroke-width="2" fill="#C2E9FF"/>
+    </g>
+    <g>
+      <text id="text_aie_tile18" class="aie_tile_text" x="820" y="340" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="910.0" y="409.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <g>
+      <rect id="interconnect_box18" class="interconnect_box" width="40" height="40" x="830" y="350" stroke="black" stroke-width="1" fill="#DBBCBD"/>
+    </g>
+    <g>
+      <text id="text_interconnect_box18" class="interconnect_box_text" x="830" y="350" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="850.0" y="369.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <line id="ic_h_line18_0" class="interconnect" x1="838.0" y1="365.0" x2="858.0" y2="365.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line18_1" class="interconnect" x1="862.0" y1="375.0" x2="842.0" y2="375.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line18_2" class="interconnect" x1="845.0" y1="382.0" x2="845.0" y2="362.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line18_3" class="interconnect" x1="855.0" y1="358.0" x2="855.0" y2="378.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <g>
+      <rect id="aie_tile_container18" class="aie_tile_container" width="120" height="60.0" x="870" y="410.0" stroke="black" stroke-width="1" fill="#ffffff"/>
+    </g>
+    <g>
+      <text id="text_aie_tile_container18" class="aie_tile_container_text" x="870" y="410.0" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="930.0" y="439.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <g>
+      <rect id="aie_box18" class="aie_box" width="46.0" height="46.0" x="877.0" y="417.0" stroke="#0072B2" stroke-width="3" fill="white"/>
+    </g>
+    <g>
+      <text id="text_aie_box18" class="aie_box_text" x="877.0" y="417.0" fill="black" font-family="Arial, Helvetica, sans-serif"> <tspan x="894.5" y="425.6" dy="1em" font-size="12">AI </tspan><tspan x="880.5" y="437.6" dy="1em" font-size="12">Engine </tspan></text>
+    </g>
+    <g>
+      <rect id="memory_outline_0_8" x="937.0" y="417.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_1_8" x="942.75" y="417.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_2_8" x="948.5" y="417.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_3_8" x="954.25" y="417.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_4_8" x="960.0" y="417.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_5_8" x="965.75" y="417.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_6_8" x="971.5" y="417.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_7_8" x="977.25" y="417.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="local_memory_box18" class="local_memory_box" width="46.0" height="46.0" x="937.0" y="417.0" stroke="black" stroke-width="1" fill="None"/>
+    </g>
+    <g>
+      <text id="text_local_memory_box18" class="local_memory_box_text" x="937.0" y="417.0" fill="black" font-family="Arial, Helvetica, sans-serif"> <tspan x="947.0" y="425.6" dy="1em" font-size="12">Data </tspan><tspan x="938.0" y="437.6" dy="1em" font-size="12">Memory </tspan></text>
+    </g>
+    <g>
+      <rect id="aie_tile3" class="aie_tile" width="180" height="140" x="20" y="500" stroke="black" stroke-width="2" fill="#C2E9FF"/>
+    </g>
+    <g>
+      <text id="text_aie_tile3" class="aie_tile_text" x="20" y="500" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="110.0" y="569.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <g>
+      <rect id="interconnect_box3" class="interconnect_box" width="40" height="40" x="30" y="510" stroke="black" stroke-width="1" fill="#DBBCBD"/>
+    </g>
+    <g>
+      <text id="text_interconnect_box3" class="interconnect_box_text" x="30" y="510" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="50.0" y="529.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <line id="ic_h_line3_0" class="interconnect" x1="38.0" y1="525.0" x2="58.0" y2="525.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line3_1" class="interconnect" x1="62.0" y1="535.0" x2="42.0" y2="535.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line3_2" class="interconnect" x1="45.0" y1="542.0" x2="45.0" y2="522.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line3_3" class="interconnect" x1="55.0" y1="518.0" x2="55.0" y2="538.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <g>
+      <rect id="aie_tile_container3" class="aie_tile_container" width="120" height="60.0" x="70" y="570.0" stroke="black" stroke-width="1" fill="#ffffff"/>
+    </g>
+    <g>
+      <text id="text_aie_tile_container3" class="aie_tile_container_text" x="70" y="570.0" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="130.0" y="599.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <g>
+      <rect id="aie_box3" class="aie_box" width="46.0" height="46.0" x="77.0" y="577.0" stroke="#CC79A7" stroke-width="3" fill="white"/>
+    </g>
+    <g>
+      <text id="text_aie_box3" class="aie_box_text" x="77.0" y="577.0" fill="black" font-family="Arial, Helvetica, sans-serif"> <tspan x="94.5" y="585.6" dy="1em" font-size="12">AI </tspan><tspan x="80.5" y="597.6" dy="1em" font-size="12">Engine </tspan></text>
+    </g>
+    <g>
+      <rect id="memory_outline_0_8" x="137.0" y="577.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_1_8" x="142.75" y="577.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_2_8" x="148.5" y="577.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_3_8" x="154.25" y="577.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_4_8" x="160.0" y="577.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_5_8" x="165.75" y="577.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_6_8" x="171.5" y="577.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_7_8" x="177.25" y="577.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="local_memory_box3" class="local_memory_box" width="46.0" height="46.0" x="137.0" y="577.0" stroke="black" stroke-width="1" fill="None"/>
+    </g>
+    <g>
+      <text id="text_local_memory_box3" class="local_memory_box_text" x="137.0" y="577.0" fill="black" font-family="Arial, Helvetica, sans-serif"> <tspan x="147.0" y="585.6" dy="1em" font-size="12">Data </tspan><tspan x="138.0" y="597.6" dy="1em" font-size="12">Memory </tspan></text>
+    </g>
+    <g>
+      <rect id="aie_tile7" class="aie_tile" width="180" height="140" x="220" y="500" stroke="black" stroke-width="2" fill="#C2E9FF"/>
+    </g>
+    <g>
+      <text id="text_aie_tile7" class="aie_tile_text" x="220" y="500" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="310.0" y="569.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <g>
+      <rect id="interconnect_box7" class="interconnect_box" width="40" height="40" x="230" y="510" stroke="black" stroke-width="1" fill="#DBBCBD"/>
+    </g>
+    <g>
+      <text id="text_interconnect_box7" class="interconnect_box_text" x="230" y="510" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="250.0" y="529.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <line id="ic_h_line7_0" class="interconnect" x1="238.0" y1="525.0" x2="258.0" y2="525.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line7_1" class="interconnect" x1="262.0" y1="535.0" x2="242.0" y2="535.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line7_2" class="interconnect" x1="245.0" y1="542.0" x2="245.0" y2="522.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line7_3" class="interconnect" x1="255.0" y1="518.0" x2="255.0" y2="538.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <g>
+      <rect id="aie_tile_container7" class="aie_tile_container" width="120" height="60.0" x="270" y="570.0" stroke="black" stroke-width="1" fill="#ffffff"/>
+    </g>
+    <g>
+      <text id="text_aie_tile_container7" class="aie_tile_container_text" x="270" y="570.0" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="330.0" y="599.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <g>
+      <rect id="aie_box7" class="aie_box" width="46.0" height="46.0" x="277.0" y="577.0" stroke="#009E73" stroke-width="3" fill="white"/>
+    </g>
+    <g>
+      <text id="text_aie_box7" class="aie_box_text" x="277.0" y="577.0" fill="black" font-family="Arial, Helvetica, sans-serif"> <tspan x="294.5" y="585.6" dy="1em" font-size="12">AI </tspan><tspan x="280.5" y="597.6" dy="1em" font-size="12">Engine </tspan></text>
+    </g>
+    <g>
+      <rect id="memory_outline_0_8" x="337.0" y="577.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_1_8" x="342.75" y="577.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_2_8" x="348.5" y="577.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_3_8" x="354.25" y="577.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_4_8" x="360.0" y="577.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_5_8" x="365.75" y="577.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_6_8" x="371.5" y="577.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_7_8" x="377.25" y="577.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="local_memory_box7" class="local_memory_box" width="46.0" height="46.0" x="337.0" y="577.0" stroke="black" stroke-width="1" fill="None"/>
+    </g>
+    <g>
+      <text id="text_local_memory_box7" class="local_memory_box_text" x="337.0" y="577.0" fill="black" font-family="Arial, Helvetica, sans-serif"> <tspan x="347.0" y="585.6" dy="1em" font-size="12">Data </tspan><tspan x="338.0" y="597.6" dy="1em" font-size="12">Memory </tspan></text>
+    </g>
+    <g>
+      <rect id="aie_tile11" class="aie_tile" width="180" height="140" x="420" y="500" stroke="black" stroke-width="2" fill="#C2E9FF"/>
+    </g>
+    <g>
+      <text id="text_aie_tile11" class="aie_tile_text" x="420" y="500" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="510.0" y="569.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <g>
+      <rect id="interconnect_box11" class="interconnect_box" width="40" height="40" x="430" y="510" stroke="black" stroke-width="1" fill="#DBBCBD"/>
+    </g>
+    <g>
+      <text id="text_interconnect_box11" class="interconnect_box_text" x="430" y="510" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="450.0" y="529.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <line id="ic_h_line11_0" class="interconnect" x1="438.0" y1="525.0" x2="458.0" y2="525.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line11_1" class="interconnect" x1="462.0" y1="535.0" x2="442.0" y2="535.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line11_2" class="interconnect" x1="445.0" y1="542.0" x2="445.0" y2="522.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line11_3" class="interconnect" x1="455.0" y1="518.0" x2="455.0" y2="538.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <g>
+      <rect id="aie_tile_container11" class="aie_tile_container" width="120" height="60.0" x="470" y="570.0" stroke="black" stroke-width="1" fill="#ffffff"/>
+    </g>
+    <g>
+      <text id="text_aie_tile_container11" class="aie_tile_container_text" x="470" y="570.0" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="530.0" y="599.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <g>
+      <rect id="aie_box11" class="aie_box" width="46.0" height="46.0" x="477.0" y="577.0" stroke="#009E73" stroke-width="3" fill="white"/>
+    </g>
+    <g>
+      <text id="text_aie_box11" class="aie_box_text" x="477.0" y="577.0" fill="black" font-family="Arial, Helvetica, sans-serif"> <tspan x="494.5" y="585.6" dy="1em" font-size="12">AI </tspan><tspan x="480.5" y="597.6" dy="1em" font-size="12">Engine </tspan></text>
+    </g>
+    <g>
+      <rect id="memory_outline_0_8" x="537.0" y="577.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_1_8" x="542.75" y="577.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_2_8" x="548.5" y="577.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_3_8" x="554.25" y="577.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_4_8" x="560.0" y="577.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_5_8" x="565.75" y="577.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_6_8" x="571.5" y="577.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_7_8" x="577.25" y="577.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="local_memory_box11" class="local_memory_box" width="46.0" height="46.0" x="537.0" y="577.0" stroke="black" stroke-width="1" fill="None"/>
+    </g>
+    <g>
+      <text id="text_local_memory_box11" class="local_memory_box_text" x="537.0" y="577.0" fill="black" font-family="Arial, Helvetica, sans-serif"> <tspan x="547.0" y="585.6" dy="1em" font-size="12">Data </tspan><tspan x="538.0" y="597.6" dy="1em" font-size="12">Memory </tspan></text>
+    </g>
+    <g>
+      <rect id="aie_tile15" class="aie_tile" width="180" height="140" x="620" y="500" stroke="black" stroke-width="2" fill="#C2E9FF"/>
+    </g>
+    <g>
+      <text id="text_aie_tile15" class="aie_tile_text" x="620" y="500" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="710.0" y="569.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <g>
+      <rect id="interconnect_box15" class="interconnect_box" width="40" height="40" x="630" y="510" stroke="black" stroke-width="1" fill="#DBBCBD"/>
+    </g>
+    <g>
+      <text id="text_interconnect_box15" class="interconnect_box_text" x="630" y="510" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="650.0" y="529.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <line id="ic_h_line15_0" class="interconnect" x1="638.0" y1="525.0" x2="658.0" y2="525.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line15_1" class="interconnect" x1="662.0" y1="535.0" x2="642.0" y2="535.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line15_2" class="interconnect" x1="645.0" y1="542.0" x2="645.0" y2="522.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line15_3" class="interconnect" x1="655.0" y1="518.0" x2="655.0" y2="538.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <g>
+      <rect id="aie_tile_container15" class="aie_tile_container" width="120" height="60.0" x="670" y="570.0" stroke="black" stroke-width="1" fill="#ffffff"/>
+    </g>
+    <g>
+      <text id="text_aie_tile_container15" class="aie_tile_container_text" x="670" y="570.0" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="730.0" y="599.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <g>
+      <rect id="aie_box15" class="aie_box" width="46.0" height="46.0" x="677.0" y="577.0" stroke="#009E73" stroke-width="3" fill="white"/>
+    </g>
+    <g>
+      <text id="text_aie_box15" class="aie_box_text" x="677.0" y="577.0" fill="black" font-family="Arial, Helvetica, sans-serif"> <tspan x="694.5" y="585.6" dy="1em" font-size="12">AI </tspan><tspan x="680.5" y="597.6" dy="1em" font-size="12">Engine </tspan></text>
+    </g>
+    <g>
+      <rect id="memory_outline_0_8" x="737.0" y="577.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_1_8" x="742.75" y="577.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_2_8" x="748.5" y="577.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_3_8" x="754.25" y="577.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_4_8" x="760.0" y="577.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_5_8" x="765.75" y="577.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_6_8" x="771.5" y="577.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_7_8" x="777.25" y="577.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="local_memory_box15" class="local_memory_box" width="46.0" height="46.0" x="737.0" y="577.0" stroke="black" stroke-width="1" fill="None"/>
+    </g>
+    <g>
+      <text id="text_local_memory_box15" class="local_memory_box_text" x="737.0" y="577.0" fill="black" font-family="Arial, Helvetica, sans-serif"> <tspan x="747.0" y="585.6" dy="1em" font-size="12">Data </tspan><tspan x="738.0" y="597.6" dy="1em" font-size="12">Memory </tspan></text>
+    </g>
+    <g>
+      <rect id="aie_tile19" class="aie_tile" width="180" height="140" x="820" y="500" stroke="black" stroke-width="2" fill="#C2E9FF"/>
+    </g>
+    <g>
+      <text id="text_aie_tile19" class="aie_tile_text" x="820" y="500" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="910.0" y="569.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <g>
+      <rect id="interconnect_box19" class="interconnect_box" width="40" height="40" x="830" y="510" stroke="black" stroke-width="1" fill="#DBBCBD"/>
+    </g>
+    <g>
+      <text id="text_interconnect_box19" class="interconnect_box_text" x="830" y="510" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="850.0" y="529.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <line id="ic_h_line19_0" class="interconnect" x1="838.0" y1="525.0" x2="858.0" y2="525.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line19_1" class="interconnect" x1="862.0" y1="535.0" x2="842.0" y2="535.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line19_2" class="interconnect" x1="845.0" y1="542.0" x2="845.0" y2="522.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line19_3" class="interconnect" x1="855.0" y1="518.0" x2="855.0" y2="538.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <g>
+      <rect id="aie_tile_container19" class="aie_tile_container" width="120" height="60.0" x="870" y="570.0" stroke="black" stroke-width="1" fill="#ffffff"/>
+    </g>
+    <g>
+      <text id="text_aie_tile_container19" class="aie_tile_container_text" x="870" y="570.0" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="930.0" y="599.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <g>
+      <rect id="aie_box19" class="aie_box" width="46.0" height="46.0" x="877.0" y="577.0" stroke="#009E73" stroke-width="3" fill="white"/>
+    </g>
+    <g>
+      <text id="text_aie_box19" class="aie_box_text" x="877.0" y="577.0" fill="black" font-family="Arial, Helvetica, sans-serif"> <tspan x="894.5" y="585.6" dy="1em" font-size="12">AI </tspan><tspan x="880.5" y="597.6" dy="1em" font-size="12">Engine </tspan></text>
+    </g>
+    <g>
+      <rect id="memory_outline_0_8" x="937.0" y="577.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_1_8" x="942.75" y="577.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_2_8" x="948.5" y="577.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_3_8" x="954.25" y="577.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_4_8" x="960.0" y="577.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_5_8" x="965.75" y="577.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_6_8" x="971.5" y="577.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_7_8" x="977.25" y="577.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="local_memory_box19" class="local_memory_box" width="46.0" height="46.0" x="937.0" y="577.0" stroke="black" stroke-width="1" fill="None"/>
+    </g>
+    <g>
+      <text id="text_local_memory_box19" class="local_memory_box_text" x="937.0" y="577.0" fill="black" font-family="Arial, Helvetica, sans-serif"> <tspan x="947.0" y="585.6" dy="1em" font-size="12">Data </tspan><tspan x="938.0" y="597.6" dy="1em" font-size="12">Memory </tspan></text>
+    </g>
+    <g>
+      <rect id="mem_tile4" class="mem_tile" width="180" height="140" x="20" y="660" stroke="black" stroke-width="2" fill="#E0FFC2"/>
+    </g>
+    <g>
+      <text id="text_mem_tile4" class="mem_tile_text" x="20" y="660" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="110.0" y="729.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <g>
+      <rect id="interconnect_box4" class="interconnect_box" width="40" height="40" x="30" y="670" stroke="black" stroke-width="1" fill="#DBBCBD"/>
+    </g>
+    <g>
+      <text id="text_interconnect_box4" class="interconnect_box_text" x="30" y="670" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="50.0" y="689.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <line id="ic_h_line4_0" class="interconnect" x1="38.0" y1="685.0" x2="58.0" y2="685.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line4_1" class="interconnect" x1="62.0" y1="695.0" x2="42.0" y2="695.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line4_2" class="interconnect" x1="45.0" y1="702.0" x2="45.0" y2="682.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line4_3" class="interconnect" x1="55.0" y1="678.0" x2="55.0" y2="698.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <g>
+      <rect id="mem_tile_container4" class="mem_tile_container" width="120" height="60.0" x="70" y="730.0" stroke="black" stroke-width="1" fill="#ffffff"/>
+    </g>
+    <g>
+      <text id="text_mem_tile_container4" class="mem_tile_container_text" x="70" y="730.0" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="130.0" y="759.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <g>
+      <rect id="memory_outline_0_16" x="77.0" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_1_16" x="83.625" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_2_16" x="90.25" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_3_16" x="96.875" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_4_16" x="103.5" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_5_16" x="110.125" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_6_16" x="116.75" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_7_16" x="123.375" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_8_16" x="130.0" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_9_16" x="136.625" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_10_16" x="143.25" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_11_16" x="149.875" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_12_16" x="156.5" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_13_16" x="163.125" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_14_16" x="169.75" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_15_16" x="176.375" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="mem_tile_memory4" class="mem_tile_memory" width="106" height="46.0" x="77" y="737.0" stroke="black" stroke-width="1" fill="None"/>
+    </g>
+    <g>
+      <text id="text_mem_tile_memory4" class="mem_tile_memory_text" x="77" y="737.0" fill="black" font-family="Arial, Helvetica, sans-serif"> <tspan x="94.0" y="744.4" dy="1em" font-size="13">Memory Tile </tspan><tspan x="93.0" y="757.4" dy="1em" font-size="13">Data movers </tspan></text>
+    </g>
+    <g>
+      <rect id="mem_tile8" class="mem_tile" width="180" height="140" x="220" y="660" stroke="black" stroke-width="2" fill="#E0FFC2"/>
+    </g>
+    <g>
+      <text id="text_mem_tile8" class="mem_tile_text" x="220" y="660" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="310.0" y="729.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <g>
+      <rect id="interconnect_box8" class="interconnect_box" width="40" height="40" x="230" y="670" stroke="black" stroke-width="1" fill="#DBBCBD"/>
+    </g>
+    <g>
+      <text id="text_interconnect_box8" class="interconnect_box_text" x="230" y="670" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="250.0" y="689.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <line id="ic_h_line8_0" class="interconnect" x1="238.0" y1="685.0" x2="258.0" y2="685.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line8_1" class="interconnect" x1="262.0" y1="695.0" x2="242.0" y2="695.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line8_2" class="interconnect" x1="245.0" y1="702.0" x2="245.0" y2="682.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line8_3" class="interconnect" x1="255.0" y1="678.0" x2="255.0" y2="698.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <g>
+      <rect id="mem_tile_container8" class="mem_tile_container" width="120" height="60.0" x="270" y="730.0" stroke="black" stroke-width="1" fill="#ffffff"/>
+    </g>
+    <g>
+      <text id="text_mem_tile_container8" class="mem_tile_container_text" x="270" y="730.0" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="330.0" y="759.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <g>
+      <rect id="memory_outline_0_16" x="277.0" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_1_16" x="283.625" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_2_16" x="290.25" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_3_16" x="296.875" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_4_16" x="303.5" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_5_16" x="310.125" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_6_16" x="316.75" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_7_16" x="323.375" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_8_16" x="330.0" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_9_16" x="336.625" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_10_16" x="343.25" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_11_16" x="349.875" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_12_16" x="356.5" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_13_16" x="363.125" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_14_16" x="369.75" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_15_16" x="376.375" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="mem_tile_memory8" class="mem_tile_memory" width="106" height="46.0" x="277" y="737.0" stroke="black" stroke-width="1" fill="None"/>
+    </g>
+    <g>
+      <text id="text_mem_tile_memory8" class="mem_tile_memory_text" x="277" y="737.0" fill="black" font-family="Arial, Helvetica, sans-serif"> <tspan x="294.0" y="744.4" dy="1em" font-size="13">Memory Tile </tspan><tspan x="293.0" y="757.4" dy="1em" font-size="13">Data movers </tspan></text>
+    </g>
+    <g>
+      <rect id="mem_tile12" class="mem_tile" width="180" height="140" x="420" y="660" stroke="black" stroke-width="2" fill="#E0FFC2"/>
+    </g>
+    <g>
+      <text id="text_mem_tile12" class="mem_tile_text" x="420" y="660" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="510.0" y="729.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <g>
+      <rect id="interconnect_box12" class="interconnect_box" width="40" height="40" x="430" y="670" stroke="black" stroke-width="1" fill="#DBBCBD"/>
+    </g>
+    <g>
+      <text id="text_interconnect_box12" class="interconnect_box_text" x="430" y="670" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="450.0" y="689.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <line id="ic_h_line12_0" class="interconnect" x1="438.0" y1="685.0" x2="458.0" y2="685.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line12_1" class="interconnect" x1="462.0" y1="695.0" x2="442.0" y2="695.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line12_2" class="interconnect" x1="445.0" y1="702.0" x2="445.0" y2="682.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line12_3" class="interconnect" x1="455.0" y1="678.0" x2="455.0" y2="698.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <g>
+      <rect id="mem_tile_container12" class="mem_tile_container" width="120" height="60.0" x="470" y="730.0" stroke="black" stroke-width="1" fill="#ffffff"/>
+    </g>
+    <g>
+      <text id="text_mem_tile_container12" class="mem_tile_container_text" x="470" y="730.0" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="530.0" y="759.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <g>
+      <rect id="memory_outline_0_16" x="477.0" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_1_16" x="483.625" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_2_16" x="490.25" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_3_16" x="496.875" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_4_16" x="503.5" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_5_16" x="510.125" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_6_16" x="516.75" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_7_16" x="523.375" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_8_16" x="530.0" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_9_16" x="536.625" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_10_16" x="543.25" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_11_16" x="549.875" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_12_16" x="556.5" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_13_16" x="563.125" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_14_16" x="569.75" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_15_16" x="576.375" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="mem_tile_memory12" class="mem_tile_memory" width="106" height="46.0" x="477" y="737.0" stroke="black" stroke-width="1" fill="None"/>
+    </g>
+    <g>
+      <text id="text_mem_tile_memory12" class="mem_tile_memory_text" x="477" y="737.0" fill="black" font-family="Arial, Helvetica, sans-serif"> <tspan x="494.0" y="744.4" dy="1em" font-size="13">Memory Tile </tspan><tspan x="493.0" y="757.4" dy="1em" font-size="13">Data movers </tspan></text>
+    </g>
+    <g>
+      <rect id="mem_tile16" class="mem_tile" width="180" height="140" x="620" y="660" stroke="black" stroke-width="2" fill="#E0FFC2"/>
+    </g>
+    <g>
+      <text id="text_mem_tile16" class="mem_tile_text" x="620" y="660" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="710.0" y="729.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <g>
+      <rect id="interconnect_box16" class="interconnect_box" width="40" height="40" x="630" y="670" stroke="black" stroke-width="1" fill="#DBBCBD"/>
+    </g>
+    <g>
+      <text id="text_interconnect_box16" class="interconnect_box_text" x="630" y="670" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="650.0" y="689.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <line id="ic_h_line16_0" class="interconnect" x1="638.0" y1="685.0" x2="658.0" y2="685.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line16_1" class="interconnect" x1="662.0" y1="695.0" x2="642.0" y2="695.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line16_2" class="interconnect" x1="645.0" y1="702.0" x2="645.0" y2="682.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line16_3" class="interconnect" x1="655.0" y1="678.0" x2="655.0" y2="698.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <g>
+      <rect id="mem_tile_container16" class="mem_tile_container" width="120" height="60.0" x="670" y="730.0" stroke="black" stroke-width="1" fill="#ffffff"/>
+    </g>
+    <g>
+      <text id="text_mem_tile_container16" class="mem_tile_container_text" x="670" y="730.0" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="730.0" y="759.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <g>
+      <rect id="memory_outline_0_16" x="677.0" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_1_16" x="683.625" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_2_16" x="690.25" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_3_16" x="696.875" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_4_16" x="703.5" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_5_16" x="710.125" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_6_16" x="716.75" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_7_16" x="723.375" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_8_16" x="730.0" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_9_16" x="736.625" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_10_16" x="743.25" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_11_16" x="749.875" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_12_16" x="756.5" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_13_16" x="763.125" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_14_16" x="769.75" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_15_16" x="776.375" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="mem_tile_memory16" class="mem_tile_memory" width="106" height="46.0" x="677" y="737.0" stroke="black" stroke-width="1" fill="None"/>
+    </g>
+    <g>
+      <text id="text_mem_tile_memory16" class="mem_tile_memory_text" x="677" y="737.0" fill="black" font-family="Arial, Helvetica, sans-serif"> <tspan x="694.0" y="744.4" dy="1em" font-size="13">Memory Tile </tspan><tspan x="693.0" y="757.4" dy="1em" font-size="13">Data movers </tspan></text>
+    </g>
+    <g>
+      <rect id="mem_tile20" class="mem_tile" width="180" height="140" x="820" y="660" stroke="black" stroke-width="2" fill="#E0FFC2"/>
+    </g>
+    <g>
+      <text id="text_mem_tile20" class="mem_tile_text" x="820" y="660" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="910.0" y="729.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <g>
+      <rect id="interconnect_box20" class="interconnect_box" width="40" height="40" x="830" y="670" stroke="black" stroke-width="1" fill="#DBBCBD"/>
+    </g>
+    <g>
+      <text id="text_interconnect_box20" class="interconnect_box_text" x="830" y="670" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="850.0" y="689.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <line id="ic_h_line20_0" class="interconnect" x1="838.0" y1="685.0" x2="858.0" y2="685.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line20_1" class="interconnect" x1="862.0" y1="695.0" x2="842.0" y2="695.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line20_2" class="interconnect" x1="845.0" y1="702.0" x2="845.0" y2="682.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line20_3" class="interconnect" x1="855.0" y1="678.0" x2="855.0" y2="698.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <g>
+      <rect id="mem_tile_container20" class="mem_tile_container" width="120" height="60.0" x="870" y="730.0" stroke="black" stroke-width="1" fill="#ffffff"/>
+    </g>
+    <g>
+      <text id="text_mem_tile_container20" class="mem_tile_container_text" x="870" y="730.0" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="930.0" y="759.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <g>
+      <rect id="memory_outline_0_16" x="877.0" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_1_16" x="883.625" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_2_16" x="890.25" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_3_16" x="896.875" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_4_16" x="903.5" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_5_16" x="910.125" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_6_16" x="916.75" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_7_16" x="923.375" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_8_16" x="930.0" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_9_16" x="936.625" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_10_16" x="943.25" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_11_16" x="949.875" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_12_16" x="956.5" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_13_16" x="963.125" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_14_16" x="969.75" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="memory_outline_15_16" x="976.375" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"/>
+    </g>
+    <g>
+      <rect id="mem_tile_memory20" class="mem_tile_memory" width="106" height="46.0" x="877" y="737.0" stroke="black" stroke-width="1" fill="None"/>
+    </g>
+    <g>
+      <text id="text_mem_tile_memory20" class="mem_tile_memory_text" x="877" y="737.0" fill="black" font-family="Arial, Helvetica, sans-serif"> <tspan x="894.0" y="744.4" dy="1em" font-size="13">Memory Tile </tspan><tspan x="893.0" y="757.4" dy="1em" font-size="13">Data movers </tspan></text>
+    </g>
+    <g>
+      <rect id="if_tile9" class="if_tile" width="180" height="140" x="220" y="820" stroke="black" stroke-width="2" fill="#E0C2FF"/>
+    </g>
+    <g>
+      <text id="text_if_tile9" class="if_tile_text" x="220" y="820" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="310.0" y="889.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <g>
+      <rect id="interconnect_box9" class="interconnect_box" width="40" height="40" x="230" y="830" stroke="black" stroke-width="1" fill="#DBBCBD"/>
+    </g>
+    <g>
+      <text id="text_interconnect_box9" class="interconnect_box_text" x="230" y="830" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="250.0" y="849.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <line id="ic_h_line9_0" class="interconnect" x1="238.0" y1="845.0" x2="258.0" y2="845.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line9_1" class="interconnect" x1="262.0" y1="855.0" x2="242.0" y2="855.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line9_2" class="interconnect" x1="245.0" y1="862.0" x2="245.0" y2="842.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line9_3" class="interconnect" x1="255.0" y1="838.0" x2="255.0" y2="858.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <g>
+      <rect id="if_tile_container9" class="if_tile_container" width="120" height="60.0" x="270" y="890.0" stroke="black" stroke-width="1" fill="#ffffff"/>
+    </g>
+    <g>
+      <text id="text_if_tile_container9" class="if_tile_container_text" x="270" y="890.0" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="330.0" y="919.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <g>
+      <rect id="if_dmabox9" class="if_dmabox" width="106" height="46.0" x="277" y="897.0" stroke="black" stroke-width="1" fill="white"/>
+    </g>
+    <g>
+      <text id="text_if_dmabox9" class="if_dmabox_text" x="277" y="897.0" fill="black" font-family="Arial, Helvetica, sans-serif"> <tspan x="292.0" y="904.4" dy="1em" font-size="13">Interface Tile </tspan><tspan x="293.0" y="917.4" dy="1em" font-size="13">Data movers </tspan></text>
+    </g>
+    <line id="diagonal9" class="interconnect" x1="270" y1="870" x2="290.0" y2="890.0" stroke="red" stroke-width="1" fill="none"/>
+    <g>
+      <rect id="if_tile13" class="if_tile" width="180" height="140" x="420" y="820" stroke="black" stroke-width="2" fill="#E0C2FF"/>
+    </g>
+    <g>
+      <text id="text_if_tile13" class="if_tile_text" x="420" y="820" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="510.0" y="889.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <g>
+      <rect id="interconnect_box13" class="interconnect_box" width="40" height="40" x="430" y="830" stroke="black" stroke-width="1" fill="#DBBCBD"/>
+    </g>
+    <g>
+      <text id="text_interconnect_box13" class="interconnect_box_text" x="430" y="830" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="450.0" y="849.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <line id="ic_h_line13_0" class="interconnect" x1="438.0" y1="845.0" x2="458.0" y2="845.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line13_1" class="interconnect" x1="462.0" y1="855.0" x2="442.0" y2="855.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line13_2" class="interconnect" x1="445.0" y1="862.0" x2="445.0" y2="842.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line13_3" class="interconnect" x1="455.0" y1="838.0" x2="455.0" y2="858.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <g>
+      <rect id="if_tile_container13" class="if_tile_container" width="120" height="60.0" x="470" y="890.0" stroke="black" stroke-width="1" fill="#ffffff"/>
+    </g>
+    <g>
+      <text id="text_if_tile_container13" class="if_tile_container_text" x="470" y="890.0" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="530.0" y="919.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <g>
+      <rect id="if_dmabox13" class="if_dmabox" width="106" height="46.0" x="477" y="897.0" stroke="black" stroke-width="1" fill="white"/>
+    </g>
+    <g>
+      <text id="text_if_dmabox13" class="if_dmabox_text" x="477" y="897.0" fill="black" font-family="Arial, Helvetica, sans-serif"> <tspan x="492.0" y="904.4" dy="1em" font-size="13">Interface Tile </tspan><tspan x="493.0" y="917.4" dy="1em" font-size="13">Data movers </tspan></text>
+    </g>
+    <line id="diagonal13" class="interconnect" x1="470" y1="870" x2="490.0" y2="890.0" stroke="red" stroke-width="1" fill="none"/>
+    <g>
+      <rect id="if_tile17" class="if_tile" width="180" height="140" x="620" y="820" stroke="black" stroke-width="2" fill="#E0C2FF"/>
+    </g>
+    <g>
+      <text id="text_if_tile17" class="if_tile_text" x="620" y="820" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="710.0" y="889.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <g>
+      <rect id="interconnect_box17" class="interconnect_box" width="40" height="40" x="630" y="830" stroke="black" stroke-width="1" fill="#DBBCBD"/>
+    </g>
+    <g>
+      <text id="text_interconnect_box17" class="interconnect_box_text" x="630" y="830" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="650.0" y="849.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <line id="ic_h_line17_0" class="interconnect" x1="638.0" y1="845.0" x2="658.0" y2="845.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line17_1" class="interconnect" x1="662.0" y1="855.0" x2="642.0" y2="855.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line17_2" class="interconnect" x1="645.0" y1="862.0" x2="645.0" y2="842.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line17_3" class="interconnect" x1="655.0" y1="838.0" x2="655.0" y2="858.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <g>
+      <rect id="if_tile_container17" class="if_tile_container" width="120" height="60.0" x="670" y="890.0" stroke="black" stroke-width="1" fill="#ffffff"/>
+    </g>
+    <g>
+      <text id="text_if_tile_container17" class="if_tile_container_text" x="670" y="890.0" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="730.0" y="919.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <g>
+      <rect id="if_dmabox17" class="if_dmabox" width="106" height="46.0" x="677" y="897.0" stroke="black" stroke-width="1" fill="white"/>
+    </g>
+    <g>
+      <text id="text_if_dmabox17" class="if_dmabox_text" x="677" y="897.0" fill="black" font-family="Arial, Helvetica, sans-serif"> <tspan x="692.0" y="904.4" dy="1em" font-size="13">Interface Tile </tspan><tspan x="693.0" y="917.4" dy="1em" font-size="13">Data movers </tspan></text>
+    </g>
+    <line id="diagonal17" class="interconnect" x1="670" y1="870" x2="690.0" y2="890.0" stroke="red" stroke-width="1" fill="none"/>
+    <g>
+      <rect id="if_tile21" class="if_tile" width="180" height="140" x="820" y="820" stroke="black" stroke-width="2" fill="#E0C2FF"/>
+    </g>
+    <g>
+      <text id="text_if_tile21" class="if_tile_text" x="820" y="820" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="910.0" y="889.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <g>
+      <rect id="interconnect_box21" class="interconnect_box" width="40" height="40" x="830" y="830" stroke="black" stroke-width="1" fill="#DBBCBD"/>
+    </g>
+    <g>
+      <text id="text_interconnect_box21" class="interconnect_box_text" x="830" y="830" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="850.0" y="849.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <line id="ic_h_line21_0" class="interconnect" x1="838.0" y1="845.0" x2="858.0" y2="845.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line21_1" class="interconnect" x1="862.0" y1="855.0" x2="842.0" y2="855.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line21_2" class="interconnect" x1="845.0" y1="862.0" x2="845.0" y2="842.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <line id="ic_h_line21_3" class="interconnect" x1="855.0" y1="838.0" x2="855.0" y2="858.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+    <g>
+      <rect id="if_tile_container21" class="if_tile_container" width="120" height="60.0" x="870" y="890.0" stroke="black" stroke-width="1" fill="#ffffff"/>
+    </g>
+    <g>
+      <text id="text_if_tile_container21" class="if_tile_container_text" x="870" y="890.0" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="930.0" y="919.3" dy="1em" font-size="1"> </tspan></text>
+    </g>
+    <g>
+      <rect id="if_dmabox21" class="if_dmabox" width="106" height="46.0" x="877" y="897.0" stroke="black" stroke-width="1" fill="white"/>
+    </g>
+    <g>
+      <text id="text_if_dmabox21" class="if_dmabox_text" x="877" y="897.0" fill="black" font-family="Arial, Helvetica, sans-serif"> <tspan x="892.0" y="904.4" dy="1em" font-size="13">Interface Tile </tspan><tspan x="893.0" y="917.4" dy="1em" font-size="13">Data movers </tspan></text>
+    </g>
+    <line id="diagonal21" class="interconnect" x1="870" y1="870" x2="890.0" y2="890.0" stroke="red" stroke-width="1" fill="none"/>
+    <path id="south_mem_connection0" class="mem_connections" stroke="blue" stroke-width="1" fill="none" d="M 160.0, 143.0,                 l0, 80.0,                l-30.0, 17.0,                l-30.0, 17.0"/>
+    <line id="east_mem_connection0" x1="183.0" y1="120.0" x2="277.0" y2="120.0" class="mem_connections" stroke="blue" stroke-width="1" fill="none"/>
+    <line id="internal_mem_connection0" x1="123.0" y1="120.0" x2="137.0" y2="120.0" class="mem_connections" stroke="blue" stroke-width="1" fill="none"/>
+    <path id="south_mem_connection0" class="mem_connections" stroke="#009E73" stroke-width="3" fill="none" d="M 160.0, 143.0,                 l0, 80.0,                l-30.0, 17.0,                l-30.0, 17.0"/>
+    <line id="internal_mem_connection0" x1="123.0" y1="120.0" x2="137.0" y2="120.0" class="mem_connections" stroke="#009E73" stroke-width="3" fill="none"/>
+    <line id="east_mem_connection0" x1="183.0" y1="120.0" x2="277.0" y2="120.0" class="mem_connections" stroke="#009E73" stroke-width="3" fill="none"/>
+    <line id="internal_mem_connection0" x1="123.0" y1="120.0" x2="137.0" y2="120.0" class="mem_connections" stroke="#009E73" stroke-width="3" fill="none"/>
+    <path id="south_mem_connection0" class="mem_connections" stroke="#CC79A7" stroke-width="3" fill="none" d="M 100.0, 143.0,                 l0, 80.0,                l30.0, 17.0,                l30.0, 17.0"/>
+    <line id="internal_mem_connection0" x1="123.0" y1="120.0" x2="137.0" y2="120.0" class="mem_connections" stroke="#CC79A7" stroke-width="3" fill="none"/>
+    <path id="south_mem_connection4" class="mem_connections" stroke="blue" stroke-width="1" fill="none" d="M 360.0, 143.0,                 l0, 80.0,                l-30.0, 17.0,                l-30.0, 17.0"/>
+    <line id="east_mem_connection4" x1="383.0" y1="120.0" x2="477.0" y2="120.0" class="mem_connections" stroke="blue" stroke-width="1" fill="none"/>
+    <line id="internal_mem_connection4" x1="323.0" y1="120.0" x2="337.0" y2="120.0" class="mem_connections" stroke="blue" stroke-width="1" fill="none"/>
+    <path id="south_mem_connection4" class="mem_connections" stroke="#0072B2" stroke-width="3" fill="none" d="M 360.0, 143.0,                 l0, 80.0,                l-30.0, 17.0,                l-30.0, 17.0"/>
+    <line id="internal_mem_connection4" x1="323.0" y1="120.0" x2="337.0" y2="120.0" class="mem_connections" stroke="#0072B2" stroke-width="3" fill="none"/>
+    <line id="east_mem_connection4" x1="383.0" y1="120.0" x2="477.0" y2="120.0" class="mem_connections" stroke="#009E73" stroke-width="3" fill="none"/>
+    <line id="internal_mem_connection4" x1="323.0" y1="120.0" x2="337.0" y2="120.0" class="mem_connections" stroke="#009E73" stroke-width="3" fill="none"/>
+    <path id="south_mem_connection4" class="mem_connections" stroke="#009E73" stroke-width="3" fill="none" d="M 300.0, 143.0,                 l0, 80.0,                l30.0, 17.0,                l30.0, 17.0"/>
+    <line id="internal_mem_connection4" x1="323.0" y1="120.0" x2="337.0" y2="120.0" class="mem_connections" stroke="#009E73" stroke-width="3" fill="none"/>
+    <path id="south_mem_connection8" class="mem_connections" stroke="blue" stroke-width="1" fill="none" d="M 560.0, 143.0,                 l0, 80.0,                l-30.0, 17.0,                l-30.0, 17.0"/>
+    <line id="east_mem_connection8" x1="583.0" y1="120.0" x2="677.0" y2="120.0" class="mem_connections" stroke="blue" stroke-width="1" fill="none"/>
+    <line id="internal_mem_connection8" x1="523.0" y1="120.0" x2="537.0" y2="120.0" class="mem_connections" stroke="blue" stroke-width="1" fill="none"/>
+    <path id="south_mem_connection8" class="mem_connections" stroke="#0072B2" stroke-width="3" fill="none" d="M 560.0, 143.0,                 l0, 80.0,                l-30.0, 17.0,                l-30.0, 17.0"/>
+    <line id="internal_mem_connection8" x1="523.0" y1="120.0" x2="537.0" y2="120.0" class="mem_connections" stroke="#0072B2" stroke-width="3" fill="none"/>
+    <line id="east_mem_connection8" x1="583.0" y1="120.0" x2="677.0" y2="120.0" class="mem_connections" stroke="#009E73" stroke-width="3" fill="none"/>
+    <line id="internal_mem_connection8" x1="523.0" y1="120.0" x2="537.0" y2="120.0" class="mem_connections" stroke="#009E73" stroke-width="3" fill="none"/>
+    <path id="south_mem_connection8" class="mem_connections" stroke="#009E73" stroke-width="3" fill="none" d="M 500.0, 143.0,                 l0, 80.0,                l30.0, 17.0,                l30.0, 17.0"/>
+    <line id="internal_mem_connection8" x1="523.0" y1="120.0" x2="537.0" y2="120.0" class="mem_connections" stroke="#009E73" stroke-width="3" fill="none"/>
+    <path id="south_mem_connection12" class="mem_connections" stroke="blue" stroke-width="1" fill="none" d="M 760.0, 143.0,                 l0, 80.0,                l-30.0, 17.0,                l-30.0, 17.0"/>
+    <line id="east_mem_connection12" x1="783.0" y1="120.0" x2="877.0" y2="120.0" class="mem_connections" stroke="blue" stroke-width="1" fill="none"/>
+    <line id="internal_mem_connection12" x1="723.0" y1="120.0" x2="737.0" y2="120.0" class="mem_connections" stroke="blue" stroke-width="1" fill="none"/>
+    <path id="south_mem_connection12" class="mem_connections" stroke="#0072B2" stroke-width="3" fill="none" d="M 760.0, 143.0,                 l0, 80.0,                l-30.0, 17.0,                l-30.0, 17.0"/>
+    <line id="internal_mem_connection12" x1="723.0" y1="120.0" x2="737.0" y2="120.0" class="mem_connections" stroke="#0072B2" stroke-width="3" fill="none"/>
+    <line id="east_mem_connection12" x1="783.0" y1="120.0" x2="877.0" y2="120.0" class="mem_connections" stroke="#009E73" stroke-width="3" fill="none"/>
+    <line id="internal_mem_connection12" x1="723.0" y1="120.0" x2="737.0" y2="120.0" class="mem_connections" stroke="#009E73" stroke-width="3" fill="none"/>
+    <path id="south_mem_connection12" class="mem_connections" stroke="#009E73" stroke-width="3" fill="none" d="M 700.0, 143.0,                 l0, 80.0,                l30.0, 17.0,                l30.0, 17.0"/>
+    <line id="internal_mem_connection12" x1="723.0" y1="120.0" x2="737.0" y2="120.0" class="mem_connections" stroke="#009E73" stroke-width="3" fill="none"/>
+    <path id="south_mem_connection16" class="mem_connections" stroke="blue" stroke-width="1" fill="none" d="M 960.0, 143.0,                 l0, 80.0,                l-30.0, 17.0,                l-30.0, 17.0"/>
+    <line id="internal_mem_connection16" x1="923.0" y1="120.0" x2="937.0" y2="120.0" class="mem_connections" stroke="blue" stroke-width="1" fill="none"/>
+    <path id="south_mem_connection16" class="mem_connections" stroke="#0072B2" stroke-width="3" fill="none" d="M 960.0, 143.0,                 l0, 80.0,                l-30.0, 17.0,                l-30.0, 17.0"/>
+    <line id="internal_mem_connection16" x1="923.0" y1="120.0" x2="937.0" y2="120.0" class="mem_connections" stroke="#0072B2" stroke-width="3" fill="none"/>
+    <path id="south_mem_connection16" class="mem_connections" stroke="#009E73" stroke-width="3" fill="none" d="M 900.0, 143.0,                 l0, 80.0,                l30.0, 17.0,                l30.0, 17.0"/>
+    <line id="internal_mem_connection16" x1="923.0" y1="120.0" x2="937.0" y2="120.0" class="mem_connections" stroke="#009E73" stroke-width="3" fill="none"/>
+    <path id="south_mem_connection1" class="mem_connections" stroke="blue" stroke-width="1" fill="none" d="M 160.0, 303.0,                 l0, 80.0,                l-30.0, 17.0,                l-30.0, 17.0"/>
+    <line id="east_mem_connection1" x1="183.0" y1="280.0" x2="277.0" y2="280.0" class="mem_connections" stroke="blue" stroke-width="1" fill="none"/>
+    <line id="internal_mem_connection1" x1="123.0" y1="280.0" x2="137.0" y2="280.0" class="mem_connections" stroke="blue" stroke-width="1" fill="none"/>
+    <path id="south_mem_connection1" class="mem_connections" stroke="#009E73" stroke-width="3" fill="none" d="M 160.0, 303.0,                 l0, 80.0,                l-30.0, 17.0,                l-30.0, 17.0"/>
+    <line id="internal_mem_connection1" x1="123.0" y1="280.0" x2="137.0" y2="280.0" class="mem_connections" stroke="#009E73" stroke-width="3" fill="none"/>
+    <line id="east_mem_connection1" x1="183.0" y1="280.0" x2="277.0" y2="280.0" class="mem_connections" stroke="#0072B2" stroke-width="3" fill="none"/>
+    <line id="internal_mem_connection1" x1="123.0" y1="280.0" x2="137.0" y2="280.0" class="mem_connections" stroke="#0072B2" stroke-width="3" fill="none"/>
+    <path id="south_mem_connection1" class="mem_connections" stroke="#009E73" stroke-width="3" fill="none" d="M 100.0, 303.0,                 l0, 80.0,                l30.0, 17.0,                l30.0, 17.0"/>
+    <line id="internal_mem_connection1" x1="123.0" y1="280.0" x2="137.0" y2="280.0" class="mem_connections" stroke="#009E73" stroke-width="3" fill="none"/>
+    <path id="south_mem_connection5" class="mem_connections" stroke="blue" stroke-width="1" fill="none" d="M 360.0, 303.0,                 l0, 80.0,                l-30.0, 17.0,                l-30.0, 17.0"/>
+    <line id="east_mem_connection5" x1="383.0" y1="280.0" x2="477.0" y2="280.0" class="mem_connections" stroke="blue" stroke-width="1" fill="none"/>
+    <line id="internal_mem_connection5" x1="323.0" y1="280.0" x2="337.0" y2="280.0" class="mem_connections" stroke="blue" stroke-width="1" fill="none"/>
+    <path id="south_mem_connection5" class="mem_connections" stroke="#0072B2" stroke-width="3" fill="none" d="M 360.0, 303.0,                 l0, 80.0,                l-30.0, 17.0,                l-30.0, 17.0"/>
+    <line id="internal_mem_connection5" x1="323.0" y1="280.0" x2="337.0" y2="280.0" class="mem_connections" stroke="#0072B2" stroke-width="3" fill="none"/>
+    <line id="east_mem_connection5" x1="383.0" y1="280.0" x2="477.0" y2="280.0" class="mem_connections" stroke="#0072B2" stroke-width="3" fill="none"/>
+    <line id="internal_mem_connection5" x1="323.0" y1="280.0" x2="337.0" y2="280.0" class="mem_connections" stroke="#0072B2" stroke-width="3" fill="none"/>
+    <path id="south_mem_connection5" class="mem_connections" stroke="#0072B2" stroke-width="3" fill="none" d="M 300.0, 303.0,                 l0, 80.0,                l30.0, 17.0,                l30.0, 17.0"/>
+    <line id="internal_mem_connection5" x1="323.0" y1="280.0" x2="337.0" y2="280.0" class="mem_connections" stroke="#0072B2" stroke-width="3" fill="none"/>
+    <path id="south_mem_connection9" class="mem_connections" stroke="blue" stroke-width="1" fill="none" d="M 560.0, 303.0,                 l0, 80.0,                l-30.0, 17.0,                l-30.0, 17.0"/>
+    <line id="east_mem_connection9" x1="583.0" y1="280.0" x2="677.0" y2="280.0" class="mem_connections" stroke="blue" stroke-width="1" fill="none"/>
+    <line id="internal_mem_connection9" x1="523.0" y1="280.0" x2="537.0" y2="280.0" class="mem_connections" stroke="blue" stroke-width="1" fill="none"/>
+    <path id="south_mem_connection9" class="mem_connections" stroke="#0072B2" stroke-width="3" fill="none" d="M 560.0, 303.0,                 l0, 80.0,                l-30.0, 17.0,                l-30.0, 17.0"/>
+    <line id="internal_mem_connection9" x1="523.0" y1="280.0" x2="537.0" y2="280.0" class="mem_connections" stroke="#0072B2" stroke-width="3" fill="none"/>
+    <line id="east_mem_connection9" x1="583.0" y1="280.0" x2="677.0" y2="280.0" class="mem_connections" stroke="#0072B2" stroke-width="3" fill="none"/>
+    <line id="internal_mem_connection9" x1="523.0" y1="280.0" x2="537.0" y2="280.0" class="mem_connections" stroke="#0072B2" stroke-width="3" fill="none"/>
+    <path id="south_mem_connection9" class="mem_connections" stroke="#0072B2" stroke-width="3" fill="none" d="M 500.0, 303.0,                 l0, 80.0,                l30.0, 17.0,                l30.0, 17.0"/>
+    <line id="internal_mem_connection9" x1="523.0" y1="280.0" x2="537.0" y2="280.0" class="mem_connections" stroke="#0072B2" stroke-width="3" fill="none"/>
+    <path id="south_mem_connection13" class="mem_connections" stroke="blue" stroke-width="1" fill="none" d="M 760.0, 303.0,                 l0, 80.0,                l-30.0, 17.0,                l-30.0, 17.0"/>
+    <line id="east_mem_connection13" x1="783.0" y1="280.0" x2="877.0" y2="280.0" class="mem_connections" stroke="blue" stroke-width="1" fill="none"/>
+    <line id="internal_mem_connection13" x1="723.0" y1="280.0" x2="737.0" y2="280.0" class="mem_connections" stroke="blue" stroke-width="1" fill="none"/>
+    <path id="south_mem_connection13" class="mem_connections" stroke="#0072B2" stroke-width="3" fill="none" d="M 760.0, 303.0,                 l0, 80.0,                l-30.0, 17.0,                l-30.0, 17.0"/>
+    <line id="internal_mem_connection13" x1="723.0" y1="280.0" x2="737.0" y2="280.0" class="mem_connections" stroke="#0072B2" stroke-width="3" fill="none"/>
+    <line id="east_mem_connection13" x1="783.0" y1="280.0" x2="877.0" y2="280.0" class="mem_connections" stroke="#0072B2" stroke-width="3" fill="none"/>
+    <line id="internal_mem_connection13" x1="723.0" y1="280.0" x2="737.0" y2="280.0" class="mem_connections" stroke="#0072B2" stroke-width="3" fill="none"/>
+    <path id="south_mem_connection13" class="mem_connections" stroke="#0072B2" stroke-width="3" fill="none" d="M 700.0, 303.0,                 l0, 80.0,                l30.0, 17.0,                l30.0, 17.0"/>
+    <line id="internal_mem_connection13" x1="723.0" y1="280.0" x2="737.0" y2="280.0" class="mem_connections" stroke="#0072B2" stroke-width="3" fill="none"/>
+    <path id="south_mem_connection17" class="mem_connections" stroke="blue" stroke-width="1" fill="none" d="M 960.0, 303.0,                 l0, 80.0,                l-30.0, 17.0,                l-30.0, 17.0"/>
+    <line id="internal_mem_connection17" x1="923.0" y1="280.0" x2="937.0" y2="280.0" class="mem_connections" stroke="blue" stroke-width="1" fill="none"/>
+    <path id="south_mem_connection17" class="mem_connections" stroke="#0072B2" stroke-width="3" fill="none" d="M 960.0, 303.0,                 l0, 80.0,                l-30.0, 17.0,                l-30.0, 17.0"/>
+    <line id="internal_mem_connection17" x1="923.0" y1="280.0" x2="937.0" y2="280.0" class="mem_connections" stroke="#0072B2" stroke-width="3" fill="none"/>
+    <path id="south_mem_connection17" class="mem_connections" stroke="#0072B2" stroke-width="3" fill="none" d="M 900.0, 303.0,                 l0, 80.0,                l30.0, 17.0,                l30.0, 17.0"/>
+    <line id="internal_mem_connection17" x1="923.0" y1="280.0" x2="937.0" y2="280.0" class="mem_connections" stroke="#0072B2" stroke-width="3" fill="none"/>
+    <path id="south_mem_connection2" class="mem_connections" stroke="blue" stroke-width="1" fill="none" d="M 160.0, 463.0,                 l0, 80.0,                l-30.0, 17.0,                l-30.0, 17.0"/>
+    <line id="east_mem_connection2" x1="183.0" y1="440.0" x2="277.0" y2="440.0" class="mem_connections" stroke="blue" stroke-width="1" fill="none"/>
+    <line id="internal_mem_connection2" x1="123.0" y1="440.0" x2="137.0" y2="440.0" class="mem_connections" stroke="blue" stroke-width="1" fill="none"/>
+    <path id="south_mem_connection2" class="mem_connections" stroke="#CC79A7" stroke-width="3" fill="none" d="M 160.0, 463.0,                 l0, 80.0,                l-30.0, 17.0,                l-30.0, 17.0"/>
+    <line id="internal_mem_connection2" x1="123.0" y1="440.0" x2="137.0" y2="440.0" class="mem_connections" stroke="#CC79A7" stroke-width="3" fill="none"/>
+    <line id="east_mem_connection2" x1="183.0" y1="440.0" x2="277.0" y2="440.0" class="mem_connections" stroke="#0072B2" stroke-width="3" fill="none"/>
+    <line id="internal_mem_connection2" x1="123.0" y1="440.0" x2="137.0" y2="440.0" class="mem_connections" stroke="#0072B2" stroke-width="3" fill="none"/>
+    <path id="south_mem_connection2" class="mem_connections" stroke="#009E73" stroke-width="3" fill="none" d="M 100.0, 463.0,                 l0, 80.0,                l30.0, 17.0,                l30.0, 17.0"/>
+    <line id="internal_mem_connection2" x1="123.0" y1="440.0" x2="137.0" y2="440.0" class="mem_connections" stroke="#009E73" stroke-width="3" fill="none"/>
+    <path id="south_mem_connection6" class="mem_connections" stroke="blue" stroke-width="1" fill="none" d="M 360.0, 463.0,                 l0, 80.0,                l-30.0, 17.0,                l-30.0, 17.0"/>
+    <line id="east_mem_connection6" x1="383.0" y1="440.0" x2="477.0" y2="440.0" class="mem_connections" stroke="blue" stroke-width="1" fill="none"/>
+    <line id="internal_mem_connection6" x1="323.0" y1="440.0" x2="337.0" y2="440.0" class="mem_connections" stroke="blue" stroke-width="1" fill="none"/>
+    <path id="south_mem_connection6" class="mem_connections" stroke="#009E73" stroke-width="3" fill="none" d="M 360.0, 463.0,                 l0, 80.0,                l-30.0, 17.0,                l-30.0, 17.0"/>
+    <line id="internal_mem_connection6" x1="323.0" y1="440.0" x2="337.0" y2="440.0" class="mem_connections" stroke="#009E73" stroke-width="3" fill="none"/>
+    <line id="east_mem_connection6" x1="383.0" y1="440.0" x2="477.0" y2="440.0" class="mem_connections" stroke="#0072B2" stroke-width="3" fill="none"/>
+    <line id="internal_mem_connection6" x1="323.0" y1="440.0" x2="337.0" y2="440.0" class="mem_connections" stroke="#0072B2" stroke-width="3" fill="none"/>
+    <path id="south_mem_connection6" class="mem_connections" stroke="#0072B2" stroke-width="3" fill="none" d="M 300.0, 463.0,                 l0, 80.0,                l30.0, 17.0,                l30.0, 17.0"/>
+    <line id="internal_mem_connection6" x1="323.0" y1="440.0" x2="337.0" y2="440.0" class="mem_connections" stroke="#0072B2" stroke-width="3" fill="none"/>
+    <path id="south_mem_connection10" class="mem_connections" stroke="blue" stroke-width="1" fill="none" d="M 560.0, 463.0,                 l0, 80.0,                l-30.0, 17.0,                l-30.0, 17.0"/>
+    <line id="east_mem_connection10" x1="583.0" y1="440.0" x2="677.0" y2="440.0" class="mem_connections" stroke="blue" stroke-width="1" fill="none"/>
+    <line id="internal_mem_connection10" x1="523.0" y1="440.0" x2="537.0" y2="440.0" class="mem_connections" stroke="blue" stroke-width="1" fill="none"/>
+    <path id="south_mem_connection10" class="mem_connections" stroke="#009E73" stroke-width="3" fill="none" d="M 560.0, 463.0,                 l0, 80.0,                l-30.0, 17.0,                l-30.0, 17.0"/>
+    <line id="internal_mem_connection10" x1="523.0" y1="440.0" x2="537.0" y2="440.0" class="mem_connections" stroke="#009E73" stroke-width="3" fill="none"/>
+    <line id="east_mem_connection10" x1="583.0" y1="440.0" x2="677.0" y2="440.0" class="mem_connections" stroke="#0072B2" stroke-width="3" fill="none"/>
+    <line id="internal_mem_connection10" x1="523.0" y1="440.0" x2="537.0" y2="440.0" class="mem_connections" stroke="#0072B2" stroke-width="3" fill="none"/>
+    <path id="south_mem_connection10" class="mem_connections" stroke="#0072B2" stroke-width="3" fill="none" d="M 500.0, 463.0,                 l0, 80.0,                l30.0, 17.0,                l30.0, 17.0"/>
+    <line id="internal_mem_connection10" x1="523.0" y1="440.0" x2="537.0" y2="440.0" class="mem_connections" stroke="#0072B2" stroke-width="3" fill="none"/>
+    <path id="south_mem_connection14" class="mem_connections" stroke="blue" stroke-width="1" fill="none" d="M 760.0, 463.0,                 l0, 80.0,                l-30.0, 17.0,                l-30.0, 17.0"/>
+    <line id="east_mem_connection14" x1="783.0" y1="440.0" x2="877.0" y2="440.0" class="mem_connections" stroke="blue" stroke-width="1" fill="none"/>
+    <line id="internal_mem_connection14" x1="723.0" y1="440.0" x2="737.0" y2="440.0" class="mem_connections" stroke="blue" stroke-width="1" fill="none"/>
+    <path id="south_mem_connection14" class="mem_connections" stroke="#009E73" stroke-width="3" fill="none" d="M 760.0, 463.0,                 l0, 80.0,                l-30.0, 17.0,                l-30.0, 17.0"/>
+    <line id="internal_mem_connection14" x1="723.0" y1="440.0" x2="737.0" y2="440.0" class="mem_connections" stroke="#009E73" stroke-width="3" fill="none"/>
+    <line id="east_mem_connection14" x1="783.0" y1="440.0" x2="877.0" y2="440.0" class="mem_connections" stroke="#0072B2" stroke-width="3" fill="none"/>
+    <line id="internal_mem_connection14" x1="723.0" y1="440.0" x2="737.0" y2="440.0" class="mem_connections" stroke="#0072B2" stroke-width="3" fill="none"/>
+    <path id="south_mem_connection14" class="mem_connections" stroke="#0072B2" stroke-width="3" fill="none" d="M 700.0, 463.0,                 l0, 80.0,                l30.0, 17.0,                l30.0, 17.0"/>
+    <line id="internal_mem_connection14" x1="723.0" y1="440.0" x2="737.0" y2="440.0" class="mem_connections" stroke="#0072B2" stroke-width="3" fill="none"/>
+    <path id="south_mem_connection18" class="mem_connections" stroke="blue" stroke-width="1" fill="none" d="M 960.0, 463.0,                 l0, 80.0,                l-30.0, 17.0,                l-30.0, 17.0"/>
+    <line id="internal_mem_connection18" x1="923.0" y1="440.0" x2="937.0" y2="440.0" class="mem_connections" stroke="blue" stroke-width="1" fill="none"/>
+    <path id="south_mem_connection18" class="mem_connections" stroke="#009E73" stroke-width="3" fill="none" d="M 960.0, 463.0,                 l0, 80.0,                l-30.0, 17.0,                l-30.0, 17.0"/>
+    <line id="internal_mem_connection18" x1="923.0" y1="440.0" x2="937.0" y2="440.0" class="mem_connections" stroke="#009E73" stroke-width="3" fill="none"/>
+    <path id="south_mem_connection18" class="mem_connections" stroke="#0072B2" stroke-width="3" fill="none" d="M 900.0, 463.0,                 l0, 80.0,                l30.0, 17.0,                l30.0, 17.0"/>
+    <line id="internal_mem_connection18" x1="923.0" y1="440.0" x2="937.0" y2="440.0" class="mem_connections" stroke="#0072B2" stroke-width="3" fill="none"/>
+    <path id="south_mem_connection18" class="mem_connections" stroke="#009E73" stroke-width="3" fill="none" d="M 960.0, 463.0,                 l0, 80.0,                l-30.0, 17.0,                l-30.0, 17.0"/>
+    <line id="internal_mem_connection18" x1="923.0" y1="440.0" x2="937.0" y2="440.0" class="mem_connections" stroke="#009E73" stroke-width="3" fill="none"/>
+    <line id="east_mem_connection3" x1="183.0" y1="600.0" x2="277.0" y2="600.0" class="mem_connections" stroke="blue" stroke-width="1" fill="none"/>
+    <line id="internal_mem_connection3" x1="123.0" y1="600.0" x2="137.0" y2="600.0" class="mem_connections" stroke="blue" stroke-width="1" fill="none"/>
+    <line id="east_mem_connection3" x1="183.0" y1="600.0" x2="277.0" y2="600.0" class="mem_connections" stroke="#009E73" stroke-width="3" fill="none"/>
+    <line id="internal_mem_connection3" x1="123.0" y1="600.0" x2="137.0" y2="600.0" class="mem_connections" stroke="#009E73" stroke-width="3" fill="none"/>
+    <line id="internal_mem_connection3" x1="123.0" y1="600.0" x2="137.0" y2="600.0" class="mem_connections" stroke="#CC79A7" stroke-width="3" fill="none"/>
+    <line id="east_mem_connection7" x1="383.0" y1="600.0" x2="477.0" y2="600.0" class="mem_connections" stroke="blue" stroke-width="1" fill="none"/>
+    <line id="internal_mem_connection7" x1="323.0" y1="600.0" x2="337.0" y2="600.0" class="mem_connections" stroke="blue" stroke-width="1" fill="none"/>
+    <line id="east_mem_connection7" x1="383.0" y1="600.0" x2="477.0" y2="600.0" class="mem_connections" stroke="#009E73" stroke-width="3" fill="none"/>
+    <line id="internal_mem_connection7" x1="323.0" y1="600.0" x2="337.0" y2="600.0" class="mem_connections" stroke="#009E73" stroke-width="3" fill="none"/>
+    <line id="west_mem_connection7" x1="277.0" y1="600.0" x2="183.0" y2="600.0" stroke="#009E73" stroke-width="2" fill="none"/>
+    <line id="internal_mem_connection7" x1="323.0" y1="600.0" x2="337.0" y2="600.0" class="mem_connections" stroke="#009E73" stroke-width="2" fill="none"/>
+    <line id="east_mem_connection11" x1="583.0" y1="600.0" x2="677.0" y2="600.0" class="mem_connections" stroke="blue" stroke-width="1" fill="none"/>
+    <line id="internal_mem_connection11" x1="523.0" y1="600.0" x2="537.0" y2="600.0" class="mem_connections" stroke="blue" stroke-width="1" fill="none"/>
+    <line id="east_mem_connection11" x1="583.0" y1="600.0" x2="677.0" y2="600.0" class="mem_connections" stroke="#009E73" stroke-width="3" fill="none"/>
+    <line id="internal_mem_connection11" x1="523.0" y1="600.0" x2="537.0" y2="600.0" class="mem_connections" stroke="#009E73" stroke-width="3" fill="none"/>
+    <line id="west_mem_connection11" x1="477.0" y1="600.0" x2="383.0" y2="600.0" stroke="#009E73" stroke-width="2" fill="none"/>
+    <line id="internal_mem_connection11" x1="523.0" y1="600.0" x2="537.0" y2="600.0" class="mem_connections" stroke="#009E73" stroke-width="2" fill="none"/>
+    <line id="east_mem_connection15" x1="783.0" y1="600.0" x2="877.0" y2="600.0" class="mem_connections" stroke="blue" stroke-width="1" fill="none"/>
+    <line id="internal_mem_connection15" x1="723.0" y1="600.0" x2="737.0" y2="600.0" class="mem_connections" stroke="blue" stroke-width="1" fill="none"/>
+    <line id="east_mem_connection15" x1="783.0" y1="600.0" x2="877.0" y2="600.0" class="mem_connections" stroke="#009E73" stroke-width="3" fill="none"/>
+    <line id="internal_mem_connection15" x1="723.0" y1="600.0" x2="737.0" y2="600.0" class="mem_connections" stroke="#009E73" stroke-width="3" fill="none"/>
+    <line id="west_mem_connection15" x1="677.0" y1="600.0" x2="583.0" y2="600.0" stroke="#009E73" stroke-width="2" fill="none"/>
+    <line id="internal_mem_connection15" x1="723.0" y1="600.0" x2="737.0" y2="600.0" class="mem_connections" stroke="#009E73" stroke-width="2" fill="none"/>
+    <line id="east_mem_connection15" x1="783.0" y1="600.0" x2="877.0" y2="600.0" class="mem_connections" stroke="#009E73" stroke-width="3" fill="none"/>
+    <line id="internal_mem_connection15" x1="723.0" y1="600.0" x2="737.0" y2="600.0" class="mem_connections" stroke="#009E73" stroke-width="3" fill="none"/>
+    <line id="internal_mem_connection19" x1="923.0" y1="600.0" x2="937.0" y2="600.0" class="mem_connections" stroke="blue" stroke-width="1" fill="none"/>
+    <line id="west_mem_connection19" x1="877.0" y1="600.0" x2="783.0" y2="600.0" stroke="#009E73" stroke-width="2" fill="none"/>
+    <line id="internal_mem_connection19" x1="923.0" y1="600.0" x2="937.0" y2="600.0" class="mem_connections" stroke="#009E73" stroke-width="2" fill="none"/>
+    <line id="west_mem_connection19" x1="877.0" y1="600.0" x2="783.0" y2="600.0" stroke="#009E73" stroke-width="2" fill="none"/>
+    <line id="internal_mem_connection19" x1="923.0" y1="600.0" x2="937.0" y2="600.0" class="mem_connections" stroke="#009E73" stroke-width="2" fill="none"/>
+    <line id="diagonal0" class="interconnect" x1="70" y1="70" x2="90.0" y2="90.0" stroke="red" stroke-width="1" fill="none"/>
+    <line id="v_ic_connection0" class="interconnect" x1="50" y1="70" x2="50" y2="190" stroke="red" stroke-width="1" fill="none"/>
+    <line id="h_ic_connection0" class="interconnect" x1="70" y1="50" x2="230" y2="50" stroke="red" stroke-width="1" fill="none"/>
+    <line id="diagonal4" class="interconnect" x1="270" y1="70" x2="290.0" y2="90.0" stroke="red" stroke-width="1" fill="none"/>
+    <line id="v_ic_connection4" class="interconnect" x1="250" y1="70" x2="250" y2="190" stroke="red" stroke-width="1" fill="none"/>
+    <line id="h_ic_connection4" class="interconnect" x1="270" y1="50" x2="430" y2="50" stroke="red" stroke-width="1" fill="none"/>
+    <line id="diagonal8" class="interconnect" x1="470" y1="70" x2="490.0" y2="90.0" stroke="red" stroke-width="1" fill="none"/>
+    <line id="v_ic_connection8" class="interconnect" x1="450" y1="70" x2="450" y2="190" stroke="red" stroke-width="1" fill="none"/>
+    <line id="h_ic_connection8" class="interconnect" x1="470" y1="50" x2="630" y2="50" stroke="red" stroke-width="1" fill="none"/>
+    <line id="diagonal12" class="interconnect" x1="670" y1="70" x2="690.0" y2="90.0" stroke="red" stroke-width="1" fill="none"/>
+    <line id="v_ic_connection12" class="interconnect" x1="650" y1="70" x2="650" y2="190" stroke="red" stroke-width="1" fill="none"/>
+    <line id="h_ic_connection12" class="interconnect" x1="670" y1="50" x2="830" y2="50" stroke="red" stroke-width="1" fill="none"/>
+    <line id="diagonal16" class="interconnect" x1="870" y1="70" x2="890.0" y2="90.0" stroke="red" stroke-width="1" fill="none"/>
+    <line id="v_ic_connection16" class="interconnect" x1="850" y1="70" x2="850" y2="190" stroke="red" stroke-width="1" fill="none"/>
+    <line id="diagonal1" class="interconnect" x1="70" y1="230" x2="90.0" y2="250.0" stroke="red" stroke-width="1" fill="none"/>
+    <line id="v_ic_connection1" class="interconnect" x1="50" y1="230" x2="50" y2="350" stroke="red" stroke-width="1" fill="none"/>
+    <line id="h_ic_connection1" class="interconnect" x1="70" y1="210" x2="230" y2="210" stroke="red" stroke-width="1" fill="none"/>
+    <line id="diagonal5" class="interconnect" x1="270" y1="230" x2="290.0" y2="250.0" stroke="red" stroke-width="1" fill="none"/>
+    <line id="v_ic_connection5" class="interconnect" x1="250" y1="230" x2="250" y2="350" stroke="red" stroke-width="1" fill="none"/>
+    <line id="h_ic_connection5" class="interconnect" x1="270" y1="210" x2="430" y2="210" stroke="red" stroke-width="1" fill="none"/>
+    <line id="diagonal9" class="interconnect" x1="470" y1="230" x2="490.0" y2="250.0" stroke="red" stroke-width="1" fill="none"/>
+    <line id="v_ic_connection9" class="interconnect" x1="450" y1="230" x2="450" y2="350" stroke="red" stroke-width="1" fill="none"/>
+    <line id="h_ic_connection9" class="interconnect" x1="470" y1="210" x2="630" y2="210" stroke="red" stroke-width="1" fill="none"/>
+    <line id="diagonal13" class="interconnect" x1="670" y1="230" x2="690.0" y2="250.0" stroke="red" stroke-width="1" fill="none"/>
+    <line id="v_ic_connection13" class="interconnect" x1="650" y1="230" x2="650" y2="350" stroke="red" stroke-width="1" fill="none"/>
+    <line id="h_ic_connection13" class="interconnect" x1="670" y1="210" x2="830" y2="210" stroke="red" stroke-width="1" fill="none"/>
+    <line id="diagonal17" class="interconnect" x1="870" y1="230" x2="890.0" y2="250.0" stroke="red" stroke-width="1" fill="none"/>
+    <line id="v_ic_connection17" class="interconnect" x1="850" y1="230" x2="850" y2="350" stroke="red" stroke-width="1" fill="none"/>
+    <line id="diagonal2" class="interconnect" x1="70" y1="390" x2="90.0" y2="410.0" stroke="red" stroke-width="1" fill="none"/>
+    <line id="v_ic_connection2" class="interconnect" x1="50" y1="390" x2="50" y2="510" stroke="red" stroke-width="1" fill="none"/>
+    <line id="h_ic_connection2" class="interconnect" x1="70" y1="370" x2="230" y2="370" stroke="red" stroke-width="1" fill="none"/>
+    <line id="diagonal6" class="interconnect" x1="270" y1="390" x2="290.0" y2="410.0" stroke="red" stroke-width="1" fill="none"/>
+    <line id="v_ic_connection6" class="interconnect" x1="250" y1="390" x2="250" y2="510" stroke="red" stroke-width="1" fill="none"/>
+    <line id="h_ic_connection6" class="interconnect" x1="270" y1="370" x2="430" y2="370" stroke="red" stroke-width="1" fill="none"/>
+    <line id="diagonal10" class="interconnect" x1="470" y1="390" x2="490.0" y2="410.0" stroke="red" stroke-width="1" fill="none"/>
+    <line id="v_ic_connection10" class="interconnect" x1="450" y1="390" x2="450" y2="510" stroke="red" stroke-width="1" fill="none"/>
+    <line id="h_ic_connection10" class="interconnect" x1="470" y1="370" x2="630" y2="370" stroke="red" stroke-width="1" fill="none"/>
+    <line id="diagonal14" class="interconnect" x1="670" y1="390" x2="690.0" y2="410.0" stroke="red" stroke-width="1" fill="none"/>
+    <line id="v_ic_connection14" class="interconnect" x1="650" y1="390" x2="650" y2="510" stroke="red" stroke-width="1" fill="none"/>
+    <line id="h_ic_connection14" class="interconnect" x1="670" y1="370" x2="830" y2="370" stroke="red" stroke-width="1" fill="none"/>
+    <line id="diagonal18" class="interconnect" x1="870" y1="390" x2="890.0" y2="410.0" stroke="red" stroke-width="1" fill="none"/>
+    <line id="v_ic_connection18" class="interconnect" x1="850" y1="390" x2="850" y2="510" stroke="red" stroke-width="1" fill="none"/>
+    <line id="diagonal3" class="interconnect" x1="70" y1="550" x2="90.0" y2="570.0" stroke="red" stroke-width="1" fill="none"/>
+    <line id="v_ic_connection3" class="interconnect" x1="50" y1="550" x2="50" y2="670" stroke="red" stroke-width="1" fill="none"/>
+    <line id="h_ic_connection3" class="interconnect" x1="70" y1="530" x2="230" y2="530" stroke="red" stroke-width="1" fill="none"/>
+    <line id="diagonal7" class="interconnect" x1="270" y1="550" x2="290.0" y2="570.0" stroke="red" stroke-width="1" fill="none"/>
+    <line id="v_ic_connection7" class="interconnect" x1="250" y1="550" x2="250" y2="670" stroke="red" stroke-width="1" fill="none"/>
+    <line id="h_ic_connection7" class="interconnect" x1="270" y1="530" x2="430" y2="530" stroke="red" stroke-width="1" fill="none"/>
+    <line id="diagonal11" class="interconnect" x1="470" y1="550" x2="490.0" y2="570.0" stroke="red" stroke-width="1" fill="none"/>
+    <line id="v_ic_connection11" class="interconnect" x1="450" y1="550" x2="450" y2="670" stroke="red" stroke-width="1" fill="none"/>
+    <line id="h_ic_connection11" class="interconnect" x1="470" y1="530" x2="630" y2="530" stroke="red" stroke-width="1" fill="none"/>
+    <line id="diagonal15" class="interconnect" x1="670" y1="550" x2="690.0" y2="570.0" stroke="red" stroke-width="1" fill="none"/>
+    <line id="v_ic_connection15" class="interconnect" x1="650" y1="550" x2="650" y2="670" stroke="red" stroke-width="1" fill="none"/>
+    <line id="h_ic_connection15" class="interconnect" x1="670" y1="530" x2="830" y2="530" stroke="red" stroke-width="1" fill="none"/>
+    <line id="diagonal19" class="interconnect" x1="870" y1="550" x2="890.0" y2="570.0" stroke="red" stroke-width="1" fill="none"/>
+    <line id="v_ic_connection19" class="interconnect" x1="850" y1="550" x2="850" y2="670" stroke="red" stroke-width="1" fill="none"/>
+    <line id="diagonal4" class="interconnect" x1="70" y1="710" x2="90.0" y2="730.0" stroke="red" stroke-width="1" fill="none"/>
+    <line id="h_ic_connection4" class="interconnect" x1="70" y1="690" x2="230" y2="690" stroke="red" stroke-width="1" fill="none"/>
+    <line id="diagonal8" class="interconnect" x1="270" y1="710" x2="290.0" y2="730.0" stroke="red" stroke-width="1" fill="none"/>
+    <line id="v_ic_connection8" class="interconnect" x1="250" y1="710" x2="250" y2="830" stroke="red" stroke-width="1" fill="none"/>
+    <line id="h_ic_connection8" class="interconnect" x1="270" y1="690" x2="430" y2="690" stroke="red" stroke-width="1" fill="none"/>
+    <line id="diagonal12" class="interconnect" x1="470" y1="710" x2="490.0" y2="730.0" stroke="red" stroke-width="1" fill="none"/>
+    <line id="v_ic_connection12" class="interconnect" x1="450" y1="710" x2="450" y2="830" stroke="red" stroke-width="1" fill="none"/>
+    <line id="h_ic_connection12" class="interconnect" x1="470" y1="690" x2="630" y2="690" stroke="red" stroke-width="1" fill="none"/>
+    <line id="diagonal16" class="interconnect" x1="670" y1="710" x2="690.0" y2="730.0" stroke="red" stroke-width="1" fill="none"/>
+    <line id="v_ic_connection16" class="interconnect" x1="650" y1="710" x2="650" y2="830" stroke="red" stroke-width="1" fill="none"/>
+    <line id="h_ic_connection16" class="interconnect" x1="670" y1="690" x2="830" y2="690" stroke="red" stroke-width="1" fill="none"/>
+    <line id="diagonal20" class="interconnect" x1="870" y1="710" x2="890.0" y2="730.0" stroke="red" stroke-width="1" fill="none"/>
+    <line id="v_ic_connection20" class="interconnect" x1="850" y1="710" x2="850" y2="830" stroke="red" stroke-width="1" fill="none"/>
+  </g>
+</svg>

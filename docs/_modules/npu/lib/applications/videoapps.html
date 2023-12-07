@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
+
+<!--<script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" data-document-language="true" type="text/javascript" charset="UTF-8" data-domain-script="03af8d57-0a04-47a6-8f10-322fa00d8fc7" ></script>
+<script type="text/javascript">
+function OptanonWrapper() { }
+</script>-->
+<!-- OneTrust Cookies Consent Notice end for xilinx.github.io -->
+<!-- Google Tag Manager -->
+<script type="text/plain" class="optanon-category-C0002">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5RHQV7');</script>
+<!-- End Google Tag Manager -->
+  <title>npu.lib.applications.videoapps &mdash; AMD Riallto 1.0 documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/./custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/./custom_page_width.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../_static/documentation_options.js?v=2882ecd3"></script>
+        <script src="../../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-5RHQV7" height="0" width="0" style="display:none;visibility:hidden" class="optanon-category-C0002"></iframe></noscript>
+<!-- End Google Tag Manager --> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+            <a href="../../../../index.html" class="icon icon-home"> AMD Riallto
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../index.html">Home</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Riallto overview</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../1_0_Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../install-riallto.html">Install Riallto</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../ryzenai_video_overview.html">Riallto Video Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../1_1_ryzenai.html">Ryzen AI Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../2_1_MS_Windows_Studio_Effects.html">Windows Studio Effects</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">NPU Architecture examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../3_1_Color_threshold_example.html">Loading your first example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../3_2_Ryzenai_capabilities.html">Understanding columns and tiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../3_3_Scaled_color_threshold_example.html">Scaling applications to multiple compute tiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../3_4_Edge_detect_example.html">Optimizing data movement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../3_5_Color_detect_example.html">Multicasting and multiple kernels per tile</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Building applications</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../4_1_software_framework.html">Introduction to the Riallto software framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../4_2_write_your_kernel.html">Write your first kernel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../4_3_kernels_with_runtime_parameters.html">Using Run Time Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../4_4_threshold_kernel_with_vector_ops.html">How to use the vector processor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../4_5_describe_an_application.html">Describing an application</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../4_6_build_application.html">Building a complete application</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../4_7_using_the_memtile_in_your_applications.html">Using memory tiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../4_8_build_a_colorDetect_application.html">Reusing software kernels</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Ryzen AI Machine Learning</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../5_1_pytorch_onnx_inference.html">Inference with PyTorch and ONNX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../5_2_pytorch_onnx_re-train.html">Re-training with PyTorch and ONNX</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python Package</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../modules.html">npu</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Glossary</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../Glossary.html">Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../Appendix_Review_of_Image_Processing_Concepts.html">Review of Image Processing concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../prerequisites-driver.html">Install the NPU driver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../prerequisites-aie-license.html">Get an AIE license</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../prerequisites-wsl.html">Enable WSL</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">AMD Riallto</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+      <li>npu.lib.applications.videoapps</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for npu.lib.applications.videoapps</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Copyright (C) 2023 Advanced Micro Devices, Inc. All rights reserved.</span>
+<span class="c1"># SPDX-License-Identifier: MIT</span>
+
+<span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">Enum</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">threading</span>
+<span class="kn">import</span> <span class="nn">cv2</span>
+<span class="kn">import</span> <span class="nn">inspect</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">colorsys</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">ipywidgets</span> <span class="k">as</span> <span class="nn">widget</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Union</span>
+<span class="kn">from</span> <span class="nn">npu.utils.display_widget</span> <span class="kn">import</span> <span class="n">DisplayImage</span>
+<span class="kn">from</span> <span class="nn">npu.runtime</span> <span class="kn">import</span> <span class="n">AppRunner</span>
+
+
+<div class="viewcode-block" id="pxtype">
+<a class="viewcode-back" href="../../../../npu.lib.applications.html#npu.lib.applications.videoapps.pxtype">[docs]</a>
+<span class="k">class</span> <span class="nc">pxtype</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Supported Image types&quot;&quot;&quot;</span>
+    <span class="n">RGBA</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">GRAY</span> <span class="o">=</span> <span class="mi">1</span></div>
+
+
+
+<span class="n">_resolutions</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1080</span><span class="p">,</span> <span class="mi">1920</span><span class="p">),</span> <span class="p">(</span><span class="mi">720</span><span class="p">,</span> <span class="mi">1280</span><span class="p">)]</span>
+<span class="n">_int_slider_r</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;slider&#39;</span><span class="p">,</span> <span class="s1">&#39;min&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">:</span> <span class="mi">255</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Red&#39;</span><span class="p">}</span>
+<span class="n">_int_slider_g</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;slider&#39;</span><span class="p">,</span> <span class="s1">&#39;min&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">:</span> <span class="mi">255</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Green&#39;</span><span class="p">}</span>
+<span class="n">_int_slider_b</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;slider&#39;</span><span class="p">,</span> <span class="s1">&#39;min&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">:</span> <span class="mi">255</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Blue&#39;</span><span class="p">}</span>
+<span class="n">_dropdown_thr</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;dropdownpair&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;options&quot;</span><span class="p">:</span> <span class="p">[(</span><span class="s2">&quot;BINARY&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]),</span> <span class="p">(</span><span class="s2">&quot;BINARY_INV&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]),</span>
+                <span class="p">(</span><span class="s2">&quot;TRUNC&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">]),</span> <span class="p">(</span><span class="s2">&quot;TOZERO&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">]),</span>
+                <span class="p">(</span><span class="s2">&quot;TOZERO_INV&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">])],</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Type&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;pair&quot;</span><span class="p">:</span> <span class="s2">&quot;thresholdValue4&quot;</span>
+    <span class="p">}</span>
+
+
+<span class="k">def</span> <span class="nf">_get_full_path</span><span class="p">(</span><span class="n">xclbin</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="n">binaries</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39;/binaries/&#39;</span>
+    <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">binaries</span><span class="p">,</span> <span class="n">xclbin</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">_find_closest_resolution</span><span class="p">(</span><span class="n">cam_h</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                             <span class="n">cam_w</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Find the closes available resolution</span>
+
+<span class="sd">    Find the nearest resolution in each dimension and use it if it matches</span>
+<span class="sd">    a valid resolution. Otherwise, pick the resolution that matches with the</span>
+<span class="sd">    nearest width.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">height</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">_resolutions</span><span class="p">]</span>
+    <span class="n">width</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">_resolutions</span><span class="p">]</span>
+
+    <span class="n">list_w</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">width</span><span class="p">)</span> <span class="o">-</span> <span class="n">cam_w</span><span class="p">))</span>
+    <span class="n">idxw</span> <span class="o">=</span> <span class="n">list_w</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">list_w</span><span class="p">))</span>
+    <span class="n">list_h</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">height</span><span class="p">)</span> <span class="o">-</span> <span class="n">cam_h</span><span class="p">))</span>
+    <span class="n">idxh</span> <span class="o">=</span> <span class="n">list_h</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">list_h</span><span class="p">))</span>
+
+    <span class="n">resolution</span> <span class="o">=</span> <span class="p">(</span><span class="n">_resolutions</span><span class="p">[</span><span class="n">idxh</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span> <span class="n">_resolutions</span><span class="p">[</span><span class="n">idxw</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+
+    <span class="k">if</span> <span class="n">resolution</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">_resolutions</span><span class="p">:</span>
+        <span class="n">resolution</span> <span class="o">=</span> <span class="n">_resolutions</span><span class="p">[</span><span class="n">idxw</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">resolution</span>
+
+
+<span class="k">def</span> <span class="nf">_get_webcam_resolution</span><span class="p">(</span><span class="n">cap</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get webcam resolution&quot;&quot;&quot;</span>
+    <span class="n">cam_w</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">cap</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">cv2</span><span class="o">.</span><span class="n">CAP_PROP_FRAME_WIDTH</span><span class="p">))</span>
+    <span class="n">cam_h</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">cap</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">cv2</span><span class="o">.</span><span class="n">CAP_PROP_FRAME_HEIGHT</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">cam_h</span><span class="p">,</span> <span class="n">cam_w</span>
+
+
+<span class="k">def</span> <span class="nf">_set_webcam_resolution</span><span class="p">(</span><span class="n">cap</span><span class="p">,</span> <span class="n">height</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">width</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Set webcam resolution</span>
+
+<span class="sd">    Returns `True` if the camera supports the resolutions. Otherwise</span>
+<span class="sd">    returns `False`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">_</span> <span class="o">=</span> <span class="n">cap</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">cv2</span><span class="o">.</span><span class="n">CAP_PROP_FRAME_WIDTH</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span>
+    <span class="n">_</span> <span class="o">=</span> <span class="n">cap</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">cv2</span><span class="o">.</span><span class="n">CAP_PROP_FRAME_HEIGHT</span><span class="p">,</span> <span class="n">height</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">width</span> <span class="o">!=</span> <span class="nb">int</span><span class="p">(</span><span class="n">cap</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">cv2</span><span class="o">.</span><span class="n">CAP_PROP_FRAME_WIDTH</span><span class="p">)):</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">return</span> <span class="kc">True</span>
+
+
+<span class="k">def</span> <span class="nf">_set_supported_webcam_resolution</span><span class="p">(</span><span class="n">cap</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Try to set one of the supported webcam resolution</span>
+
+<span class="sd">    Returns `True` if the camera supports one of the resolutions. Otherwise</span>
+<span class="sd">    returns `False`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">resolution</span> <span class="ow">in</span> <span class="n">_resolutions</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">_set_webcam_resolution</span><span class="p">(</span><span class="n">cap</span><span class="p">,</span> <span class="n">resolution</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">resolution</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
+            <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">return</span> <span class="kc">False</span>
+
+
+<div class="viewcode-block" id="VideoApplication">
+<a class="viewcode-back" href="../../../../npu.lib.applications.html#npu.lib.applications.videoapps.VideoApplication">[docs]</a>
+<span class="k">class</span> <span class="nc">VideoApplication</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Wrapper class that allows to feed and visualize video stream from the NPU</span>
+
+<span class="sd">    You must pass an xclbin and optionally the pixel type for the input and</span>
+<span class="sd">    output images.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    filename : str</span>
+<span class="sd">        Path to the xclbin file</span>
+<span class="sd">    videosource : [int, str]</span>
+<span class="sd">        videosource webcam index or path to video file</span>
+<span class="sd">    pxtype_in : pxtype</span>
+<span class="sd">        Pixel type for the input image, either pxtype.RGBA or pxtype.GRAY</span>
+<span class="sd">    pxtype_out : pxtype</span>
+<span class="sd">        Pixel type for the output image, either pxtype.RGBA or pxtype.GRAY</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    VideoApplication</span>
+<span class="sd">        Object that abstracts away the video handling from a webcam or</span>
+<span class="sd">        video file to visualization</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">cam_w</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">cam_h</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">rtps</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">_camres</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">_resize</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">_cap</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">videosource</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+                 <span class="n">pxtype_in</span><span class="p">:</span> <span class="n">pxtype</span> <span class="o">=</span> <span class="n">pxtype</span><span class="o">.</span><span class="n">RGBA</span><span class="p">,</span>
+                 <span class="n">pxtype_out</span><span class="p">:</span> <span class="n">pxtype</span> <span class="o">=</span> <span class="n">pxtype</span><span class="o">.</span><span class="n">RGBA</span><span class="p">):</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">pxtype_in</span><span class="p">,</span> <span class="n">pxtype</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;pxtype_in (</span><span class="si">{</span><span class="n">pxtype_in</span><span class="si">}</span><span class="s2">) must be of the type &quot;</span>
+                             <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">pxtype</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">pxtype_out</span><span class="p">,</span> <span class="n">pxtype</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;pxtype_out (</span><span class="si">{</span><span class="n">pxtype_out</span><span class="si">}</span><span class="s2">) must be of the type &quot;</span>
+                             <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">pxtype</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_pxtype_in</span> <span class="o">=</span> <span class="n">pxtype_in</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_pxtype_out</span> <span class="o">=</span> <span class="n">pxtype_out</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">videosource</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">)):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;&#39;videosource&#39; must be either an index to a &quot;</span>
+                             <span class="s2">&quot;webcam or a path to a video file&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">videosource</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">videosource</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">videosource</span><span class="si">=}</span><span class="s2"> file does not exist&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_vsource</span> <span class="o">=</span> <span class="n">videosource</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">cam_w</span> <span class="ow">or</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">cam_h</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_get_resolution</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_vsource</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">app</span> <span class="o">=</span> <span class="n">AppRunner</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">thread</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_disp</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">_get_resolution</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">videosource</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">videosource</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">videosource</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">prop</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">CAP_MSMF</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">prop</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">CAP_DSHOW</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_cap</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">VideoCapture</span><span class="p">(</span><span class="n">videosource</span><span class="p">,</span> <span class="n">prop</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cap</span><span class="o">.</span><span class="n">isOpened</span><span class="p">():</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_cap</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
+                <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="s2">&quot;Cannot read from webcam. Check if other &quot;</span>
+                              <span class="s2">&quot;notebook is using the webcam.&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_cap</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">VideoCapture</span><span class="p">(</span><span class="n">videosource</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_resize</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">_set_supported_webcam_resolution</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cap</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cam_h</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">cam_w</span> <span class="o">=</span> <span class="n">_get_webcam_resolution</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cap</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_camres</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cam_w</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">cam_h</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resize</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cam_h</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">cam_w</span> <span class="o">=</span> \
+                <span class="n">_find_closest_resolution</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cam_h</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">cam_w</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_get_resolution_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cap</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">VideoCapture</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_resize</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">_set_supported_webcam_resolution</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cap</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cam_h</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">cam_w</span> <span class="o">=</span> <span class="n">_get_webcam_resolution</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cap</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_camres</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cam_w</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">cam_h</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resize</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cam_h</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">cam_w</span> <span class="o">=</span> \
+                <span class="n">_find_closest_resolution</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cam_h</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">cam_w</span><span class="p">)</span>
+
+<div class="viewcode-block" id="VideoApplication.start">
+<a class="viewcode-back" href="../../../../npu.lib.applications.html#npu.lib.applications.videoapps.VideoApplication.start">[docs]</a>
+    <span class="k">def</span> <span class="nf">start</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Start the video processing&quot;&quot;&quot;</span>
+        <span class="n">ret</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cap</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cap</span><span class="o">.</span><span class="n">isOpened</span><span class="p">()</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">ret</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_cap</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_cleanup</span><span class="p">()</span>
+            <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="s2">&quot;Cannot read from webcam. Check if other notebook &quot;</span>
+                          <span class="s2">&quot;is using the webcam.&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_disp</span> <span class="o">=</span> <span class="n">DisplayImage</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">rtpwidgets</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rtps</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">thread</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_process_video</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span></div>
+
+
+    <span class="k">def</span> <span class="nf">_process_video</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pxtype_in</span> <span class="o">==</span> <span class="n">pxtype</span><span class="o">.</span><span class="n">RGBA</span><span class="p">:</span>
+            <span class="n">shape_in</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cam_h</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">cam_w</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+            <span class="n">typecolor</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2RGBA</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">shape_in</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cam_h</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">cam_w</span><span class="p">)</span>
+            <span class="n">typecolor</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2GRAY</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pxtype_out</span> <span class="o">==</span> <span class="n">pxtype</span><span class="o">.</span><span class="n">RGBA</span><span class="p">:</span>
+            <span class="n">shape_out</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cam_h</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">cam_w</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">shape_out</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cam_h</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">cam_w</span><span class="p">)</span>
+
+        <span class="n">bo_in</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">allocate</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">shape_in</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+        <span class="n">bo_out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">allocate</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">shape_out</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+
+        <span class="k">while</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cap</span><span class="o">.</span><span class="n">isOpened</span><span class="p">():</span>
+            <span class="n">ret</span><span class="p">,</span> <span class="n">frame</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cap</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">ret</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_vsource</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+                <span class="c1"># restart video</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_cap</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">VideoCapture</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_vsource</span><span class="p">)</span>
+                <span class="n">_</span><span class="p">,</span> <span class="n">frame</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cap</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resize</span><span class="p">:</span>
+                <span class="n">frame</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cam_w</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">cam_h</span><span class="p">))</span>
+            <span class="n">bo_in</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">typecolor</span><span class="p">)</span>
+
+            <span class="n">bo_in</span><span class="o">.</span><span class="n">sync_to_npu</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">bo_in</span><span class="p">,</span> <span class="n">bo_out</span><span class="p">)</span>
+            <span class="n">bo_out</span><span class="o">.</span><span class="n">sync_from_npu</span><span class="p">()</span>
+
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pxtype_out</span> <span class="o">==</span> <span class="n">pxtype</span><span class="o">.</span><span class="n">RGBA</span><span class="p">:</span>
+                <span class="n">tmp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">bo_out</span><span class="p">[:,</span> <span class="p">:,</span> <span class="p">:</span><span class="mi">3</span><span class="p">])</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">tmp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">bo_out</span><span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">_disp</span><span class="o">.</span><span class="n">frame</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_disp</span><span class="o">.</span><span class="n">exit</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_cap</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cleanup</span><span class="p">()</span>
+
+<div class="viewcode-block" id="VideoApplication.stop">
+<a class="viewcode-back" href="../../../../npu.lib.applications.html#npu.lib.applications.videoapps.VideoApplication.stop">[docs]</a>
+    <span class="k">def</span> <span class="nf">stop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Stop the video processing&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cap</span><span class="o">.</span><span class="n">release</span><span class="p">()</span></div>
+
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">resolution</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Webcam video feed resolution&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_camres</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">videores</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Video feed resolution to/from the NPU&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cam_w</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">cam_h</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_cleanup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="fm">__del__</span><span class="p">()</span>
+        <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">app</span></div>
+
+
+
+<span class="k">class</span> <span class="nc">_PipecleanerVideoProcessing</span><span class="p">(</span><span class="n">VideoApplication</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Pipecleaner Video processing</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">videosource</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_get_resolution</span><span class="p">(</span><span class="n">videosource</span><span class="p">)</span>
+        <span class="n">filename</span> <span class="o">=</span> <span class="n">_get_full_path</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;color_threshold_v1_</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">cam_h</span><span class="si">}</span><span class="s1">p.xclbin&#39;</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">videosource</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_process_video</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">bo_in</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cam_h</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">cam_w</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+        <span class="n">bo_out</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cam_h</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">cam_w</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+
+        <span class="k">while</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cap</span><span class="o">.</span><span class="n">isOpened</span><span class="p">():</span>
+            <span class="n">_</span><span class="p">,</span> <span class="n">frame</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cap</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+            <span class="n">bo_in</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2RGBA</span><span class="p">)</span>
+            <span class="n">tmp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">bo_out</span><span class="p">[:,</span> <span class="p">:,</span> <span class="p">:</span><span class="mi">3</span><span class="p">])</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_disp</span><span class="o">.</span><span class="n">frame</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_disp</span><span class="o">.</span><span class="n">exit</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_cap</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cleanup</span><span class="p">()</span>
+
+
+<div class="viewcode-block" id="ColorThresholdVideoProcessing">
+<a class="viewcode-back" href="../../../../npu.lib.applications.html#npu.lib.applications.videoapps.ColorThresholdVideoProcessing">[docs]</a>
+<span class="k">class</span> <span class="nc">ColorThresholdVideoProcessing</span><span class="p">(</span><span class="n">VideoApplication</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Color Threshold Video processing</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">rtps</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;thresholdValue1&#39;</span><span class="p">:</span> <span class="n">_int_slider_r</span><span class="p">,</span>
+            <span class="s1">&#39;thresholdValue2&#39;</span><span class="p">:</span> <span class="n">_int_slider_g</span><span class="p">,</span>
+            <span class="s1">&#39;thresholdValue3&#39;</span><span class="p">:</span> <span class="n">_int_slider_b</span><span class="p">,</span>
+            <span class="s1">&#39;thresholdType&#39;</span><span class="p">:</span> <span class="n">_dropdown_thr</span><span class="p">}</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">videosource</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_get_resolution</span><span class="p">(</span><span class="n">videosource</span><span class="p">)</span>
+        <span class="n">filename</span> <span class="o">=</span> <span class="n">_get_full_path</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;color_threshold_v1_</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">cam_h</span><span class="si">}</span><span class="s1">p.xclbin&#39;</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">videosource</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="ScaledColorThresholdVideoProcessing">
+<a class="viewcode-back" href="../../../../npu.lib.applications.html#npu.lib.applications.videoapps.ScaledColorThresholdVideoProcessing">[docs]</a>
+<span class="k">class</span> <span class="nc">ScaledColorThresholdVideoProcessing</span><span class="p">(</span><span class="n">VideoApplication</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Color Threshold Video processing</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">rtps</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;thresholdValue1&#39;</span><span class="p">:</span> <span class="n">_int_slider_r</span><span class="p">,</span>
+            <span class="s1">&#39;thresholdValue2&#39;</span><span class="p">:</span> <span class="n">_int_slider_g</span><span class="p">,</span>
+            <span class="s1">&#39;thresholdValue3&#39;</span><span class="p">:</span> <span class="n">_int_slider_b</span><span class="p">,</span>
+            <span class="s1">&#39;thresholdType&#39;</span><span class="p">:</span> <span class="n">_dropdown_thr</span><span class="p">}</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">videosource</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_get_resolution</span><span class="p">(</span><span class="n">videosource</span><span class="p">)</span>
+        <span class="n">filename</span> <span class="o">=</span> <span class="n">_get_full_path</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;color_threshold_v2_</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">cam_h</span><span class="si">}</span><span class="s1">p.xclbin&#39;</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">videosource</span><span class="p">)</span></div>
+
+
+
+<span class="k">class</span> <span class="nc">_Filter2dOperator</span><span class="p">():</span>
+    <span class="n">EDGE</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int16</span><span class="p">)</span>
+    <span class="n">SHARPEN</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int16</span><span class="p">)</span>
+    <span class="n">SOBEL_X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int16</span><span class="p">)</span>
+    <span class="n">SOBEL_Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int16</span><span class="p">)</span>
+    <span class="n">SCHARR_X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int16</span><span class="p">)</span>
+    <span class="n">SCHARR_Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int16</span><span class="p">)</span>
+    <span class="n">PREWITT_X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int16</span><span class="p">)</span>
+    <span class="n">PREWITT_Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int16</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_is_numpy_array</span><span class="p">(</span><span class="n">member</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">member</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="EdgeDetectVideoProcessing">
+<a class="viewcode-back" href="../../../../npu.lib.applications.html#npu.lib.applications.videoapps.EdgeDetectVideoProcessing">[docs]</a>
+<span class="k">class</span> <span class="nc">EdgeDetectVideoProcessing</span><span class="p">(</span><span class="n">VideoApplication</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Edge Detect Video processing</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">rtps</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;alpha&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;slider&#39;</span><span class="p">,</span> <span class="s1">&#39;min&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">:</span> <span class="mi">16384</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;edges&#39;</span><span class="p">},</span>
+        <span class="s1">&#39;beta&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;slider&#39;</span><span class="p">,</span> <span class="s1">&#39;min&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">:</span> <span class="mi">16384</span><span class="p">,</span>
+                 <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;color overlaid&#39;</span><span class="p">},</span>
+        <span class="s1">&#39;thresholdValue&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;slider&#39;</span><span class="p">,</span> <span class="s1">&#39;min&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">:</span> <span class="mi">255</span><span class="p">,</span>
+                           <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;threshold&#39;</span><span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">videosource</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_get_resolution</span><span class="p">(</span><span class="n">videosource</span><span class="p">)</span>
+        <span class="n">filename</span> <span class="o">=</span> <span class="n">_get_full_path</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;edge_detect_</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">cam_h</span><span class="si">}</span><span class="s1">p.xclbin&#39;</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">videosource</span><span class="p">)</span>
+
+<div class="viewcode-block" id="EdgeDetectVideoProcessing.start">
+<a class="viewcode-back" href="../../../../npu.lib.applications.html#npu.lib.applications.videoapps.EdgeDetectVideoProcessing.start">[docs]</a>
+    <span class="k">def</span> <span class="nf">start</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_filter2d_widgets</span><span class="p">()</span></div>
+
+
+    <span class="k">def</span> <span class="nf">_filter2d_widgets</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">options</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span>
+                   <span class="n">inspect</span><span class="o">.</span><span class="n">getmembers</span><span class="p">(</span><span class="n">_Filter2dOperator</span><span class="p">(),</span>
+                                      <span class="n">predicate</span><span class="o">=</span><span class="n">_is_numpy_array</span><span class="p">)]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_dropdown</span> <span class="o">=</span> <span class="n">widget</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span>
+            <span class="n">options</span><span class="o">=</span><span class="n">options</span><span class="p">,</span>
+            <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Filter2D Operator&#39;</span><span class="p">,</span>
+            <span class="n">value</span><span class="o">=</span><span class="n">options</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_dropdown</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">description_width</span> <span class="o">=</span> <span class="s1">&#39;auto&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_dropdown</span><span class="o">.</span><span class="n">observe</span><span class="p">(</span><span class="k">lambda</span> <span class="n">change</span><span class="p">:</span>
+                               <span class="bp">self</span><span class="o">.</span><span class="n">_filter2d_update</span><span class="p">(</span><span class="n">change</span><span class="o">.</span><span class="n">new</span><span class="p">),</span> <span class="s1">&#39;value&#39;</span><span class="p">)</span>
+        <span class="n">display</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_dropdown</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_filter2d_update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="n">f2doperator</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">_Filter2dOperator</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+                <span class="n">rtp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">rtps</span><span class="p">[</span><span class="s1">&#39;filter2dline_0&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;weight_</span><span class="si">{</span><span class="n">r</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+                <span class="n">rtp</span><span class="p">[</span><span class="s1">&#39;seq_ref&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">f2doperator</span><span class="p">[</span><span class="n">r</span><span class="p">][</span><span class="n">c</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="mi">12</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="ColorDetectVideoProcessing">
+<a class="viewcode-back" href="../../../../npu.lib.applications.html#npu.lib.applications.videoapps.ColorDetectVideoProcessing">[docs]</a>
+<span class="k">class</span> <span class="nc">ColorDetectVideoProcessing</span><span class="p">(</span><span class="n">VideoApplication</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Color Detect Video processing</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">rtps</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;thresholdValue1l&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;hueslider&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;min&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;max&quot;</span><span class="p">:</span> <span class="mi">255</span><span class="p">,</span>
+            <span class="s2">&quot;rangehigh&quot;</span><span class="p">:</span> <span class="s2">&quot;thresholdValue1u&quot;</span><span class="p">,</span>
+            <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Hue range 0&#39;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;thresholdValue2l&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;hueslider&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;min&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;max&quot;</span><span class="p">:</span> <span class="mi">255</span><span class="p">,</span>
+            <span class="s2">&quot;rangehigh&quot;</span><span class="p">:</span> <span class="s2">&quot;thresholdValue2u&quot;</span><span class="p">,</span>
+            <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Hue range 1&#39;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">videosource</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_get_resolution</span><span class="p">(</span><span class="n">videosource</span><span class="p">)</span>
+        <span class="n">filename</span> <span class="o">=</span> <span class="n">_get_full_path</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;color_detect_</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">cam_h</span><span class="si">}</span><span class="s1">p.xclbin&#39;</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">videosource</span><span class="p">)</span>
+
+<div class="viewcode-block" id="ColorDetectVideoProcessing.start">
+<a class="viewcode-back" href="../../../../npu.lib.applications.html#npu.lib.applications.videoapps.ColorDetectVideoProcessing.start">[docs]</a>
+    <span class="k">def</span> <span class="nf">start</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+        <span class="c1"># Create the HUE scale</span>
+        <span class="n">_</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">5.9</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">))</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">,</span> <span class="s1">&#39;box&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
+        <span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="n">colorsys</span><span class="o">.</span><span class="n">hsv_to_rgb</span><span class="p">(</span><span class="n">hue</span> <span class="o">/</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+                  <span class="k">for</span> <span class="n">hue</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">256</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span>
+        <span class="n">color_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">colors</span><span class="p">])</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">color_matrix</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+        <span class="c1"># Remove the  border</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;bottom&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;top&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;left&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;right&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;Hue Scale&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mf">1.05</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span>
+                    <span class="n">xycoords</span><span class="o">=</span><span class="s1">&#39;axes fraction&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">96</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">160</span><span class="p">,</span> <span class="mi">192</span><span class="p">,</span> <span class="mi">224</span><span class="p">,</span> <span class="mi">255</span><span class="p">])</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="DenoiseTPVideoProcessing">
+<a class="viewcode-back" href="../../../../npu.lib.applications.html#npu.lib.applications.videoapps.DenoiseTPVideoProcessing">[docs]</a>
+<span class="k">class</span> <span class="nc">DenoiseTPVideoProcessing</span><span class="p">(</span><span class="n">VideoApplication</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Denoising Task Parallel Video processing</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">videosource</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_get_resolution</span><span class="p">(</span><span class="n">videosource</span><span class="p">)</span>
+        <span class="n">filename</span> <span class="o">=</span> \
+            <span class="n">_get_full_path</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;denoise_task_parallel_</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">cam_h</span><span class="si">}</span><span class="s1">p.xclbin&#39;</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">videosource</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="DenoiseDPVideoProcessing">
+<a class="viewcode-back" href="../../../../npu.lib.applications.html#npu.lib.applications.videoapps.DenoiseDPVideoProcessing">[docs]</a>
+<span class="k">class</span> <span class="nc">DenoiseDPVideoProcessing</span><span class="p">(</span><span class="n">VideoApplication</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Denoising Data Parallel Video processing</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">videosource</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_get_resolution</span><span class="p">(</span><span class="n">videosource</span><span class="p">)</span>
+        <span class="n">filename</span> <span class="o">=</span> \
+            <span class="n">_get_full_path</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;denoise_data_parallel_</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">cam_h</span><span class="si">}</span><span class="s1">p.xclbin&#39;</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">videosource</span><span class="p">)</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          
+				  
+				  <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Advanced Micro Devices, Inc.
+      <span class="lastupdated">Last updated on December 15, 2023.
+      </span></p>
+  </div>
+
+
+
+										<div class="aem-Grid aem-Grid--16">
+											<div class="aem-GridColumn aem-GridColumn--xxxlarge--none aem-GridColumn--xsmall--16 aem-GridColumn--offset--xsmall--0 aem-GridColumn--xlarge--none aem-GridColumn--xxlarge--none aem-GridColumn--default--none aem-GridColumn--offset--large--1 aem-GridColumn--xlarge--12 aem-GridColumn--offset--default--0 aem-GridColumn--xxlarge--10 aem-GridColumn--offset--xlarge--2 aem-GridColumn--offset--xxlarge--3 aem-GridColumn--offset--xxxlarge--4 aem-GridColumn--xsmall--none aem-GridColumn--large--none aem-GridColumn aem-GridColumn--large--14 aem-GridColumn--xxxlarge--8 aem-GridColumn--default--16">
+												<div class="container-fluid sub-footer">
+
+													                    <div class="row">
+                        <div class="col-xs-24">
+                          <p><a target="_blank" href="https://www.amd.com/en/corporate/copyright">Terms and Conditions</a> | <a target="_blank" href="https://www.amd.com/en/corporate/privacy">Privacy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/cookies">Cookie Policy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/trademarks">Trademarks</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/statement-human-trafficking-forced-labor.pdf">Statement on Forced Labor</a> | <a target="_blank" href="https://www.amd.com/en/corporate/competition">Fair and Open Competition</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/amd-uk-tax-strategy.pdf">UK Tax Strategy</a> | <a target="_blank" href="https://docs.xilinx.com/v/u/9x6YvZKuWyhJId7y7RQQKA">Inclusive Terminology</a> | <a href="#cookiessettings" class="ot-sdk-show-settings">Cookies Settings</a></p>
+                        </div>
+                    </div>
+												</div>
+											</div>
+										</div>
+										
+</br>
+
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ryzen AI column architecture and tiles &mdash; AMD Riallto 1.0 documentation</title><link rel="icon" type="image/x-icon" href="_static/favicon.ico">
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+      <link rel="stylesheet" href="_static/./custom.css" type="text/css" />
+      <link rel="stylesheet" href="_static/./custom_page_width.css" type="text/css" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v3.0.0-rc.17/dist/cookieconsent.css">
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/documentation_options.js?v=2882ecd3"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="_static/copybutton.js?v=f281be69"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/jquery.js"></script>
+    <script src="_static/cookie-consent.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Scaling Data Parallel Applications to Multiple Compute Tiles" href="3_3_Scaled_color_threshold_example.html" />
+    <link rel="prev" title="Loading your First Example" href="3_1_Color_threshold_example.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-5RHQV7" height="0" width="0" style="display:none;visibility:hidden" class="optanon-category-C0002"></iframe></noscript>
+<!-- End Google Tag Manager --> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+            <a href="index.html" class="icon icon-home"> AMD Riallto
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Home</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Riallto overview</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="1_0_Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install-riallto.html">Install Riallto</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ryzenai_video_overview.html">Riallto Video Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1_1_ryzenai.html">Ryzen AI Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_1_MS_Windows_Studio_Effects.html">Windows Studio Effects</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">NPU Architecture examples</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="3_1_Color_threshold_example.html">Loading your first example</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Understanding columns and tiles</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Goals">Goals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#References">References</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#NPU-column-architecture">NPU column architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Color-Threshold-dataflow-graph">Color Threshold dataflow graph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Mapping-the-dataflow-graph-to-the-NPU">Mapping the dataflow graph to the NPU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Data-Movers-overview">Data Movers overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Data-movers-definition">Data movers definition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Buffer-descriptors">Buffer descriptors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Ubiquitous">Ubiquitous</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Link-terminators">Link terminators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Array-wide-access">Array-wide access</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Sophisticated-multi-dimensional-data-movement">Sophisticated multi-dimensional data movement</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Statically-defined,-data-%22push-architecture%22">Statically-defined, data “push architecture”</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#Compute-Tile-properties">Compute Tile properties</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#AI-Engine">AI Engine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#No-interrupts">No interrupts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Multiple-kernels-per-tile">Multiple kernels per tile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Vector-Processing-Units">Vector Processing Units</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#SIMD">SIMD</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#VLIW">VLIW</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Scalar-unit">Scalar unit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Supported-number-formats">Supported number formats</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Data-memory">Data memory</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#No-cache">No cache</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Memory-banks">Memory banks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Compute-tile-Data-movers">Compute tile Data movers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Compute-tile-data-moving-performance">Compute tile data moving performance</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Scaling-performance">Scaling performance</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#Memory-Tile-properties">Memory Tile properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Interface-Tile-properties">Interface Tile properties</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Gateways-to-system-memory">Gateways to system memory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#4-data-movers-per-interface-tile">4 data movers per interface tile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Leftmost-column-is-different">Leftmost column is different</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#NPU-Resource-Use">NPU Resource Use</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Multi-tenancy">Multi-tenancy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Next-Steps">Next Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="3_3_Scaled_color_threshold_example.html">Scaling applications to multiple compute tiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_4_Edge_detect_example.html">Optimizing data movement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_5_Color_detect_example.html">Multicasting and multiple kernels per tile</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Building applications</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="4_1_software_framework.html">Introduction to the Riallto software framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_2_write_your_kernel.html">Write your first kernel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_3_kernels_with_runtime_parameters.html">Using Run Time Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_4_threshold_kernel_with_vector_ops.html">How to use the vector processor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_5_describe_an_application.html">Describing an application</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_6_build_application.html">Building a complete application</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_7_using_the_memtile_in_your_applications.html">Using memory tiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_8_build_a_colorDetect_application.html">Reusing software kernels</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Ryzen AI Machine Learning</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="5_1_pytorch_onnx_inference.html">Inference with PyTorch and ONNX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5_2_pytorch_onnx_re-train.html">Re-training with PyTorch and ONNX</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python Package</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">npu</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Glossary</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Glossary.html">Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Appendix_Review_of_Image_Processing_Concepts.html">Review of Image Processing concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="prerequisites-driver.html">Install the NPU driver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="prerequisites-aie-license.html">Get an AIE license</a></li>
+<li class="toctree-l1"><a class="reference internal" href="prerequisites-wsl.html">Enable WSL</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">AMD Riallto</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Ryzen AI column architecture and tiles</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Ryzen-AI-column-architecture-and-tiles">
+<h1>Ryzen AI column architecture and tiles<a class="headerlink" href="#Ryzen-AI-column-architecture-and-tiles" title="Link to this heading">¶</a></h1>
+<section id="Goals">
+<h2>Goals<a class="headerlink" href="#Goals" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Understand the NPU column architecture</p></li>
+<li><p>View the previous example as a dataflow diagram and see how it can map to an NPU column</p></li>
+<li><p>Introduction to the AI Engine processors in compute tiles</p></li>
+<li><p>Learn about the features and capabilities of compute, memory and interface tiles</p></li>
+<li><p>Understand the capabilities of the Ryzen AI NPU data movers</p></li>
+</ul>
+</section>
+<section id="References">
+<h2>References<a class="headerlink" href="#References" title="Link to this heading">¶</a></h2>
+<p><a class="reference external" href="https://docs.xilinx.com/r/en-US/am020-versal-aie-ml">AI Engine Architecture Manual</a></p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Bfloat16_floating-point_format">bfloat16 data type</a></p>
+<hr class="docutils" />
+</section>
+<section id="NPU-column-architecture">
+<h2>NPU column architecture<a class="headerlink" href="#NPU-column-architecture" title="Link to this heading">¶</a></h2>
+<p>The NPU is a 2D array of tiles that can be grouped into columns.</p>
+<center><p><img alt="e34b801b2f284a61b986afa112be6c70" src="_images/aie_column.svg" /></p>
+</center><center><p>Ryzen AI NPU Column</p>
+</center><p>A column consists of:</p>
+<ul class="simple">
+<li><p>Compute tiles (four per column)</p>
+<ul>
+<li><p>where the computation happens</p></li>
+</ul>
+</li>
+<li><p>Memory tile (one per column)</p>
+<ul>
+<li><p>shared storage for reusable data, such as weights or bias</p></li>
+</ul>
+</li>
+<li><p>Interface tile (one per column)</p>
+<ul>
+<li><p>gateway to system memory, external to the NPU</p></li>
+</ul>
+</li>
+</ul>
+<p>We saw in section 1 that the only external connections the NPU has are to external memory. It does not access any system peripherals directly, such as a webcam. It receives all its inputs from external memory and writes all its outputs to the same memory. The main x86 CPU is responsible for providing input data in external memory for the NPU, and reading the NPU results in external memory. The NPU uses interfaces tiles to access external memory. Therefore, every NPU application must use at least
+one interface tile.</p>
+<p>Interfaces tiles are arranged at the bottom of an NPU column. For this reason, we typically group the resources of the NPU in columns and assign applications to one or more columns. An application built for one column can run on any of the other columns with the same resources.</p>
+</section>
+<section id="Color-Threshold-dataflow-graph">
+<h2>Color Threshold dataflow graph<a class="headerlink" href="#Color-Threshold-dataflow-graph" title="Link to this heading">¶</a></h2>
+<p>Returning to the color threshold example; this is one of the simplest examples we can build for the Ryzen AI NPU. Its dataflow graph and the corresponding mapping to the NPU column are shown below. (Dataflow graphs were introduced in the <a class="reference external" href="https://www.riallto.ai/ryzenai_video_overview.html">Riallto overview video</a>) in section 1. As a reminder, a dataflow graph is a graphical representation of a computation or a workflow, where nodes represent operations or tasks, and edges or connections
+between nodes represent the flow of data between these operations.</p>
+<p>The color threshold example’s dataflow graph has a single node connected via memory buffers to its input and output. In general, each node in a dataflow graph is associated with one or more programs or subprograms that it will execute for a given application to run successfully. The programs are referred to throughout these notebooks as <em>software kernels</em> or simply <em>kernels</em>. The color threshold application has one node and one kernel.</p>
+<center><p><img alt="8d571ab86f7a47e18dbe44a2ccadf2af" src="_images/color_threshold_v1_dfg.png" /></p>
+</center><center><p>Color threshold dataflow graph</p>
+</center><p>Dataflow graphs are incredibly useful in many areas to describe parallel computer applications, such as parallel computing, digital signal processing and machine learning among others. Dataflow graphs allow us to identify potential bottlenecks, parallelize operations, and optimize the overall performance of a system. The extraction of parallelism is relatively straightforward, as each compute node operates independently.</p>
+</section>
+<section id="Mapping-the-dataflow-graph-to-the-NPU">
+<h2>Mapping the dataflow graph to the NPU<a class="headerlink" href="#Mapping-the-dataflow-graph-to-the-NPU" title="Link to this heading">¶</a></h2>
+<p>In the color threshold example, the video data enters and leaves the array via the interface tile and all the processing is done by a single kernel. This kernel will run on one compute tile. This could be any one of the twenty compute tiles available in the array. In the graphic below, you can see the kernel is assigned to the compute tile at the bottom of a column.</p>
+<center><p><img alt="837ad69c7eb246e78d696ecee5b97da9" src="_images/color_threshold_v1_static_with_key.png" /></p>
+</center><center><p>Color threshold mapped to a section of the Ryzen AI NPU</p>
+</center><p>For now, we are only showing the interface tile, memory tile, and the compute tile at the bottom of the column. The other three compute tiles in the column are not used in this example and are not shown.</p>
+<p>As the threshold kernel is relatively simple and operates on one pixel at a time, the pixels can be transferred as a stream from the interface tile to the compute tile, bypassing the memory tile. The memory tile and the three remaining compute tiles in the column are unused.</p>
+<div class="alert alert-box alert-info"><p>Note that the stream switch in the memory tile is only used in this example to pass data from the interface tile to the compute tile.</p>
+</div><p>Now that we’ve see how applications can map to NPU tiles, we will look at the properties of the NPU. Before reviewing each tile in more detail, we will first consider the data movers which are found in every tile.</p>
+</section>
+<section id="Data-Movers-overview">
+<h2>Data Movers overview<a class="headerlink" href="#Data-Movers-overview" title="Link to this heading">¶</a></h2>
+<section id="Data-movers-definition">
+<h3>Data movers definition<a class="headerlink" href="#Data-movers-definition" title="Link to this heading">¶</a></h3>
+<p>Data movers are among the most important components of the NPU architecture. So, what exactly is a data mover?</p>
+<blockquote>
+<div><p>Data movers are dedicated hardware blocks, that are responsible for the efficient transfer and marshalling of data in the NPU. Data movers implement advanced data indexing schemes, referred to as multi-dimensional data movement patterns, which are critical for AI/ML algorithms. They are programmable blocks whose operations are controlled via data structures called buffer descriptors.</p>
+</div></blockquote>
+<p>Each tile has two independent types of data movers, one to convert from streams to memory (S2MM) and another to convert from memory to stream (MM2S). These data movers are connected to the stream interconnect via stream channels of 32-bit each.</p>
+</section>
+<section id="Buffer-descriptors">
+<h3>Buffer descriptors<a class="headerlink" href="#Buffer-descriptors" title="Link to this heading">¶</a></h3>
+<p>A data transfer is defined by a buffer descriptor (BD). Buffer descriptors contain all the information to produce a data transfer operation and can also point to the next BD to continue data transfer after the current transfer is complete. You will see more on buffer descriptors in section 4 when developing custom applications.</p>
+</section>
+<section id="Ubiquitous">
+<h3>Ubiquitous<a class="headerlink" href="#Ubiquitous" title="Link to this heading">¶</a></h3>
+<p>Multiple data movers are present in every compute, memory and interface tile of an NPU array. There are two data movers in each direction in the compute and interface tiles. There are six data movers in each direction in the memory tile. Memory tiles have more data movers as their main function in the NPU is to move data efficiently between interface and compute tiles.</p>
+</section>
+<section id="Link-terminators">
+<h3>Link terminators<a class="headerlink" href="#Link-terminators" title="Link to this heading">¶</a></h3>
+<p>Every stream connection is terminated at its source tile and destination tile by a data mover. The source data mover serializes the information, whereas the destination data mover de-serializes the information.</p>
+</section>
+<section id="Array-wide-access">
+<h3>Array-wide access<a class="headerlink" href="#Array-wide-access" title="Link to this heading">¶</a></h3>
+<p>Every tile has a stream switch and sets of data movers which allow it to move data anywhere on its array.</p>
+<center><p><img alt="7a7f82173b3142078fd7527ff06567fb" src="_images/ryzenai_array_streaming_interfaces_animations.svg" /></p>
+</center><center><p>Ryzen AI NPU Streaming network - move data from any tile to any tile</p>
+</center></section>
+<section id="Sophisticated-multi-dimensional-data-movement">
+<h3>Sophisticated multi-dimensional data movement<a class="headerlink" href="#Sophisticated-multi-dimensional-data-movement" title="Link to this heading">¶</a></h3>
+<p>The data movers in all tile types can access memory using 3-dimensional address generators, in other words you have 3 indices to access data. In addition to this, the data movers in the memory tiles can access data using 4-dimensional address generators or 4 indices. Again, this further emphasizes the main “data movement” function of the memory tiles.</p>
+</section>
+<section id="Statically-defined,-data-%22push-architecture%22">
+<h3>Statically-defined, data “push architecture”<a class="headerlink" href="#Statically-defined,-data-%22push-architecture%22" title="Link to this heading">¶</a></h3>
+<p>In contrast to cache-based architectures (e.g., x86 CPUs), the NPU’s data movers are key to realizing its data <em>“push architecture”</em>. The data transfer traffic and connections are defined at compilation time, guaranteeing determinism.</p>
+<p>In the color threshold example, the interface tile moves data to the compute tile using data movers and the streaming interconnect.</p>
+<div class="alert alert-box alert-success"><p>Data movers are ubiquitous and provide efficient data transfer throughout the Ryzen AI NPU array.</p>
+</div><hr class="docutils" />
+</section>
+</section>
+<section id="Compute-Tile-properties">
+<h2>Compute Tile properties<a class="headerlink" href="#Compute-Tile-properties" title="Link to this heading">¶</a></h2>
+<p>Inside a compute tile is the processor core that we call the AI Engine (AIE). These processor cores are not general-purpose processors. Instead, they are optimized for machine learning computation such as matrix multiplication and accumulation.</p>
+<p>Each compute tile has an AI Engine processor, data memory, connections to its nearest neighboring compute tiles (blue lines), access to a network of streaming connections that traverse the NPU (red lines) and data movers (data movers not shown) which are used to send and receive data on the streaming network.</p>
+<center><p><img alt="60819dfa05564861a095a2a3218b1dcd" src="_images/compute_tile_with_all_connections.svg" /></p>
+</center><center><p>Compute Tile</p>
+</center><section id="AI-Engine">
+<h3>AI Engine<a class="headerlink" href="#AI-Engine" title="Link to this heading">¶</a></h3>
+<p>An AI Engine is a processor that has been optimized for Machine Learning and DSP workloads. Compared to a modern x86 desktop processor each AI Engine is much smaller, and more efficient when carrying out Machine Learning operations (matrix multiply, multiply and accumulate). These optimizations reduce power consumption, for a laptop this means enhanced AI functionality while maintaining a long battery life.</p>
+<p>AMD has different variants of the AI Engine processors. Ryzen AI uses the AIE-ML variant, optimized for AI computation.</p>
+<p>The AIE-ML is a Single Instruction Multiple Data (SIMD) and Very Long Instruction Word (VLIW) processor that supports both fixed-point and floating-point precision using specialized hardware.</p>
+<p>In addition to the Data Memory, the AIE-ML has a local 16KB of program memory that is used to store the VLIW instructions.</p>
+<center><p><img alt="e55edf6b79a84dfb9a1170486c1ce9d3" src="_images/ai_engine_processor.png" /></p>
+</center><center><p>AIE-ML Architecture</p>
+</center></section>
+<section id="No-interrupts">
+<h3>No interrupts<a class="headerlink" href="#No-interrupts" title="Link to this heading">¶</a></h3>
+<p>Unlike control flow CPUs, the AI Engines in the compute tiles do not have interrupts as they are not required in a dataflow architecture. The absence of the variable latencies arising from interrupt response times dramatically improves the real time performance and determinism of kernels running on AI Engines.</p>
+</section>
+<section id="Multiple-kernels-per-tile">
+<h3>Multiple kernels per tile<a class="headerlink" href="#Multiple-kernels-per-tile" title="Link to this heading">¶</a></h3>
+<p>In the color threshold example, a single <em>kernel</em> is running on the compute tile. Compute tiles can run one or more kernels. Programs instructions run sequentially on the AIE, so if multiple software kernels are assigned to an AIE the kernels will run sequentially. However, the kernel instructions can take advantage of the VLIW and SIMD capabilities of the AIE.</p>
+</section>
+<section id="Vector-Processing-Units">
+<h3>Vector Processing Units<a class="headerlink" href="#Vector-Processing-Units" title="Link to this heading">¶</a></h3>
+<section id="SIMD">
+<h4>SIMD<a class="headerlink" href="#SIMD" title="Link to this heading">¶</a></h4>
+<p>The vector processor enables fine-grain level parallelism with its Single Instruction Multiple Data (SIMD) operations. In SIMD architectures, a single instruction can process multiple pieces of data simultaneously.</p>
+<p>There are two independent SIMD vector processors in the AI Engine, one for fixed-point and another for floating-point number formats, although only one can be used per clock cycle. The vector processor units supports a variety of number formats and operations.</p>
+<p>24x 256-bit wide vector registers and 32x 256-bit wide accumulator registers are available for SIMD. There are dedicated vector accumulator registers to carry out <a class="reference external" href="https://en.wikipedia.org/wiki/Multiply%E2%80%93accumulate_operation">multiply accumulate operations</a> (MACs). This operation is extremely common in ML layers such as convolution. Having dedicated support for multiply accumulate operation saves data movement, thus higher efficiency.</p>
+</section>
+<section id="VLIW">
+<h4>VLIW<a class="headerlink" href="#VLIW" title="Link to this heading">¶</a></h4>
+<p>Very Long Instruction Word (VLIW) architectures bundle multiple operations into long instruction words, which are then executed in parallel. The AI Engine supports up to 6 operations that can be executed in parallel: two loads and one store from data memory, one scalar operation, one vector operation and one register move. This means that while data is being fetched or stored from data memory, the vector processor can process other data. The vector processor can produce 64, 32 or 16 output
+lanes.</p>
+<p>As an example, an AIE can achieve 512 MAC/cycle when operating using <code class="docutils literal notranslate"><span class="pre">int4</span></code> x <code class="docutils literal notranslate"><span class="pre">int8</span></code> number formats. The NPU and hence each AIE is clocked at 1 GHz which means that each core can achieve 512 int4 x int8 GMAC per second.</p>
+</section>
+</section>
+<section id="Scalar-unit">
+<h3>Scalar unit<a class="headerlink" href="#Scalar-unit" title="Link to this heading">¶</a></h3>
+<p>The scalar processor has a scalar arithmetic unit that supports basic add/subtract, compare, multiply and move. The scalar unit is not intended for high performance computation and in general is used to manage program control flow.</p>
+</section>
+<section id="Supported-number-formats">
+<h3>Supported number formats<a class="headerlink" href="#Supported-number-formats" title="Link to this heading">¶</a></h3>
+<p>The AI Engine supports a variety of number formats, the table below shows the supported (real) number formats and the performance they achieve in MAC/cycle.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Operand 1</p></th>
+<th class="head"><p>Operand 2</p></th>
+<th class="head"><p>MAC/cycle</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>int8</p></td>
+<td><p>int4</p></td>
+<td><p>512</p></td>
+</tr>
+<tr class="row-odd"><td><p>int8</p></td>
+<td><p>int8</p></td>
+<td><p>256</p></td>
+</tr>
+<tr class="row-even"><td><p>int16</p></td>
+<td><p>int8</p></td>
+<td><p>128</p></td>
+</tr>
+<tr class="row-odd"><td><p>int16</p></td>
+<td><p>int16</p></td>
+<td><p>64</p></td>
+</tr>
+<tr class="row-even"><td><p>bfloat16</p></td>
+<td><p>bfloat16</p></td>
+<td><p>128</p></td>
+</tr>
+</tbody>
+</table>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Bfloat16_floating-point_format">bfloat16</a> is commonly used in machine learning and more recently <em>int4</em> is gaining adoption.</p>
+<p>Please, refer to the <a class="reference external" href="https://docs.xilinx.com/r/en-US/am020-versal-aie-ml/Functional-Overview?section=sqv1632376492701__table_pfr_cdt_jrb">Architecture Manual</a> to find out more details about supported number formats (both real and complex).</p>
+</section>
+<section id="Data-memory">
+<h3>Data memory<a class="headerlink" href="#Data-memory" title="Link to this heading">¶</a></h3>
+<p>The compute tile includes its own dedicated high-speed 64KB data memory. The vector processor can also access the data memory of neighboring compute tiles (north, south and west), amounting for 256KB of memory, accessed as one contiguous memory. Additionally, the compute tile has two stream-to-memory and two memory-to-stream interfaces to move data in and out from/to non-neighboring tiles.</p>
+<center><p><img alt="8f3ceefb398441d0add343d885ae73dd" src="_images/ai_engine_memory.png" /></p>
+</center><center><p>Compute Tile - data memory</p>
+</center><section id="No-cache">
+<h4>No cache<a class="headerlink" href="#No-cache" title="Link to this heading">¶</a></h4>
+<p>Unlike, traditional CPU architectures. There is no cache in the processor or in the array. This allows deterministic and low latency processing, which benefits real-time processing and overall system performance. Caches typically carry a high silicon and power consumption cost.</p>
+<p>The data memory in a compute tile can be accessed by its own vector processor, the compute tile in the north, south and east. This capability is complemented by the data movers to move data from non-neighboring tiles.</p>
+<div class="alert alert-box alert-success"><p>Neighboring data communication enhanced with data movers enables efficient data movement in the NPU.</p>
+</div></section>
+<section id="Memory-banks">
+<h4>Memory banks<a class="headerlink" href="#Memory-banks" title="Link to this heading">¶</a></h4>
+<p>Each compute tile features 64KB high-speed random-access memory, a total of 8 physical banks, organized into 4 logical banks of 16 KB each.</p>
+<p>These memory banks can be accessed by neighboring compute tiles (north, south and east) and the data movers. Each memory bank has built-in memory arbitration and synchronization to manage request from many different sources.</p>
+<p>This local memory is accessed by the kernels to perform the computation. A 64KB memory may seem small, however, it is enough for data flow applications, where the movement of data is implicit.</p>
+</section>
+<section id="Compute-tile-Data-movers">
+<h4>Compute tile Data movers<a class="headerlink" href="#Compute-tile-Data-movers" title="Link to this heading">¶</a></h4>
+<p>Compute tiles have data movers that complement the nearest neighbor interfaces to move allow data to be moved from the compute tile to anywhere in the array.</p>
+<p>Each compute tile has 4 data movers. 2 data movers are associated with input data streams and 2 are associated with output data streams.</p>
+</section>
+<section id="Compute-tile-data-moving-performance">
+<h4>Compute tile data moving performance<a class="headerlink" href="#Compute-tile-data-moving-performance" title="Link to this heading">¶</a></h4>
+<p>Each AI Engine is capable of <strong>2x</strong> 256-bit load and <strong>1x</strong> 256-bit store operation per cycle to its own local data memory or to the data memories of its neighboring compute tiles.</p>
+<p>Each data mover (there are two in each direction) within the compute tile can perform <strong>2x</strong> 32-bit load/store per cycle.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Communication</p></th>
+<th class="head"><p>Load</p></th>
+<th class="head"><p>Store</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Neighboring</p></td>
+<td><p>512-bits/cycle</p></td>
+<td><p>256-bits/cycle</p></td>
+</tr>
+<tr class="row-odd"><td><p>Non-neighboring</p></td>
+<td><p>64-bits/cycle</p></td>
+<td><p>64-bits/cycle</p></td>
+</tr>
+</tbody>
+</table>
+<p>Where possible, using shared memories between neighboring tiles will give the highest performance. Non-neighboring tiles will have to use data movers to transfer data. Data movers will also be used to multicast or broadcast data from one to many tiles.</p>
+<p>Note that, each hop through a stream interconnect adds a few cycles of latency. Tiles far away from each other will have higher latency for data transfers. In a column of four compute tiles, or and array with 20 tiles, this is not a significant consideration.</p>
+</section>
+</section>
+<section id="Scaling-performance">
+<h3>Scaling performance<a class="headerlink" href="#Scaling-performance" title="Link to this heading">¶</a></h3>
+<p>In the previous section we mentioned two levels of parallelism in the compute tile:</p>
+<ol class="arabic simple">
+<li><p>Instruction level parallelism with VLIW</p></li>
+<li><p>Data level parallelism with SIMD</p></li>
+</ol>
+<p>As each compute tile operates independently, multi-core is a third level of parallelism. Tiles in the NPU array are connected vertically and horizontally allowing multiple compute tiles to be assigned to an application to scale up the performance.</p>
+<p>The Ryzen AI NPU has 20 compute tile and can achieve a combined 20 int4 TOPs.</p>
+<hr class="docutils" />
+</section>
+</section>
+<section id="Memory-Tile-properties">
+<h2>Memory Tile properties<a class="headerlink" href="#Memory-Tile-properties" title="Link to this heading">¶</a></h2>
+<p>The memory tile is a 512KB high-speed random-access memory that complements the data memory on the compute tile.</p>
+<center><p><img alt="0f1652254b7943c290d16dc9cacbeecd" src="_images/mem_tile.svg" /></p>
+</center><center><p>Memory Tile</p>
+</center><p>The memory tile has 16 memory banks of 32KB each, which gives a bandwidth of up to 30 GB/s read and 30 GB/s write in parallel per memory tile. Each bank allows one read or one write every cycle.</p>
+<p>The memory tile has 6x stream to memory and 6x memory to stream data movers to move data anywhere in the array. These data movers also can access data in the neighbor memory tile (west and east). In addition, the data movers support 4-dimension address generation, zero-padding insertion, and compression.</p>
+<p>One example use case of the memory tile is to store and move data that is highly reusable, for instance activations and/or weights in a ML layer. Depending on the characteristics of the ML applications and bandwidth requirement, the AIE-ML data movement architecture supports different dataflow mappings where either the activations and/or the weights are stored in the AIE-ML memory tiles.</p>
+<p>In addition to storing reusable data, we can use the memory tile to split (partition) data to achieve data level parallel implementations.</p>
+<div class="alert alert-box alert-success"><p>The memory tile complements the data memory to achieve better dataflow mappings.</p>
+</div></section>
+<section id="Interface-Tile-properties">
+<h2>Interface Tile properties<a class="headerlink" href="#Interface-Tile-properties" title="Link to this heading">¶</a></h2>
+<p>The interface tile is responsible for moving data into and out of the array, to and from external memory. They can read data from external memory put it onto a stream interface to send to a memory or compute tile, or broadcast or multicast to several locations simultaneously. (<em>Broadcast</em> in this case means sending to all, <em>Multicast</em> means sending to selected group of tiles.) The interface tiles take data from the streaming network, potentially coming from multiple tiles, and writes it back to
+the main system memory, aggregating the data if necessary.</p>
+<center><p><img alt="76991c5618154fde88552bb54cc876c0" src="_images/if_tile.svg" /></p>
+</center><center><p>Interface Tile</p>
+</center><p>Each interface tile has 2 input and 2 output data movers. The data movers’ job is to manage the movement of data from one location to another. This may involve reading chunks of data and segmenting them before forwarding to the destination.</p>
+<p>The interface tile data movers also support compression when the data is sparse. This is where they may be many zeros in the data stream. Rather than send lots of zeros, the data mover can effectively encode the stream of data (compress it) to make more efficient use of the interface bandwidth. The data will be decompressed once it reaches its destination.</p>
+<p>Not shown, the interface tile also includes synchronization mechanisms to manage memory access.</p>
+<p>The number of interfaces tiles in an array is an indication of the number of parallel streams the array can support simultaneously. The Ryzen AI NPU has 4 interface tiles and can therefore support 4 data streams or applications. Note that column zero in the array (left most) does not contain an interface tile.</p>
+<center><p><img alt="bdbf9138070049919a5e9594b03b2d2f" src="_images/ryzenai_array_5x4_if_tiles.png" /></p>
+</center><center><p>Interface tiles</p>
+</center><section id="Gateways-to-system-memory">
+<h3>Gateways to system memory<a class="headerlink" href="#Gateways-to-system-memory" title="Link to this heading">¶</a></h3>
+<p>It is important to understand that the Ryzen AI NPU interacts with the rest of your laptop via the system memory. The interface tiles are the input and output ‘gateways’ between the NPU and system memory.</p>
+</section>
+<section id="4-data-movers-per-interface-tile">
+<h3>4 data movers per interface tile<a class="headerlink" href="#4-data-movers-per-interface-tile" title="Link to this heading">¶</a></h3>
+<p>Each interface tile has the same number of data movers (4) and the same type as the compute tiles. Two data movers are associated with input data streams and two are associated with output data streams.</p>
+</section>
+<section id="Leftmost-column-is-different">
+<h3>Leftmost column is different<a class="headerlink" href="#Leftmost-column-is-different" title="Link to this heading">¶</a></h3>
+<p>In the Ryzen AI NPU, every column typically has 1 interface tile. We say ‘typically’ because the leftmost column does not have an interface tile, as shown below. This “irregularity” is a silicon implementation detail we have ignored until now and can continue to ignore for the remainder of this tutorial. You can see this asymmetry in the image below. The two leftmost columns of compute and memory tiles can be used as a group with the single interface tile at the bottom of the second column.</p>
+<hr class="docutils" />
+</section>
+</section>
+<section id="NPU-Resource-Use">
+<h2>NPU Resource Use<a class="headerlink" href="#NPU-Resource-Use" title="Link to this heading">¶</a></h2>
+<p>Returning to the color threshold example, we will now look at resources used. This is the same graphic we saw earlier that you can refer to when reviewing the list of resources used below:</p>
+<center><p><img alt="23cb5daedd234a968cdd100389eae3bf" src="_images/color_threshold_v1_static_with_key.png" /></p>
+</center><center><p>Color threshold mapped to a section of the Ryzen AI NPU</p>
+</center><p>The following resources are used for this example:</p>
+<ul class="simple">
+<li><p>1 interface tile (purple)</p>
+<ul>
+<li><p>2 data movers (not explicitly shown)</p>
+<ul>
+<li><p>1 for stream input and 1 for stream output</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>1 compute tile (blue with 1 kernel (orange)</p>
+<ul>
+<li><p>2 memory buffers (orange and green)</p>
+<ul>
+<li><p>an input and output memory buffer in the data memory of the compute tile</p></li>
+</ul>
+</li>
+<li><p>2 data movers (not shown)</p>
+<ul>
+<li><p>1 for stream input and 1 for stream output</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Once the application has been compiled (we’ll see more on this later) it can run in any of the four columns that have interface tiles, as the resources in these columns are identical. Based on the utilization of the NPU, the system decides at runtime which column or which tile resources an application will run on.</p>
+</section>
+<section id="Multi-tenancy">
+<h2>Multi-tenancy<a class="headerlink" href="#Multi-tenancy" title="Link to this heading">¶</a></h2>
+<p>Multi-tenancy refers to a mode of operation of software where multiple independent applications or multiple instances of the same application can run on the same hardware resource or processor.</p>
+<p>Multiple different applications can run on the NPU concurrently. For example, each of the Windows Studio Effects we saw earlier are separate applications that run concurrently on the NPU in different columns. You can also run two or more instances of the same application concurrently, each instance processing different streams of data simultaneously.</p>
+<hr class="docutils" />
+</section>
+<section id="Next-Steps">
+<h2>Next Steps<a class="headerlink" href="#Next-Steps" title="Link to this heading">¶</a></h2>
+<p>In the next notebook you will learn how to use the memory tile to achieve data parallelism by scaling the number of concurrent kernels.</p>
+<hr class="docutils" />
+<center><p>Copyright© 2023 AMD, Inc</p>
+</center><center><p>SPDX-License-Identifier: MIT</p>
+</center><script type="application/vnd.jupyter.widget-state+json">
+{"state": {}, "version_major": 2, "version_minor": 0}
+</script></section>
+</section>
+
+
+           </div>
+          </div>
+          
+				  
+				  <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="3_1_Color_threshold_example.html" class="btn btn-neutral float-left" title="Loading your First Example" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="3_3_Scaled_color_threshold_example.html" class="btn btn-neutral float-right" title="Scaling Data Parallel Applications to Multiple Compute Tiles" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Advanced Micro Devices, Inc.
+      <span class="lastupdated">Last updated on December 19, 2023.
+      </span></p>
+  </div>
+
+
+
+										<div class="aem-Grid aem-Grid--16">
+											<div class="aem-GridColumn aem-GridColumn--xxxlarge--none aem-GridColumn--xsmall--16 aem-GridColumn--offset--xsmall--0 aem-GridColumn--xlarge--none aem-GridColumn--xxlarge--none aem-GridColumn--default--none aem-GridColumn--offset--large--1 aem-GridColumn--xlarge--12 aem-GridColumn--offset--default--0 aem-GridColumn--xxlarge--10 aem-GridColumn--offset--xlarge--2 aem-GridColumn--offset--xxlarge--3 aem-GridColumn--offset--xxxlarge--4 aem-GridColumn--xsmall--none aem-GridColumn--large--none aem-GridColumn aem-GridColumn--large--14 aem-GridColumn--xxxlarge--8 aem-GridColumn--default--16">
+												<div class="container-fluid sub-footer">
+
+													                    <div class="row">
+                        <div class="col-xs-24">
+                          <p><a target="_blank" href="https://www.amd.com/en/corporate/copyright">Terms and Conditions</a> | <a target="_blank" href="https://www.amd.com/en/corporate/privacy">Privacy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/cookies">Cookie Policy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/trademarks">Trademarks</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/statement-human-trafficking-forced-labor.pdf">Statement on Forced Labor</a> | <a target="_blank" href="https://www.amd.com/en/corporate/competition">Fair and Open Competition</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/amd-uk-tax-strategy.pdf">UK Tax Strategy</a> | <a target="_blank" href="https://docs.xilinx.com/v/u/9x6YvZKuWyhJId7y7RQQKA">Inclusive Terminology</a> | <a href="#cookiessettings" class="ot-sdk-show-settings">Cookies Settings</a></p>
+                        </div>
+                    </div>
+												</div>
+											</div>
+										</div>
+										
+</br>
+
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div id="cookie-consent" class="cookie-consent">
+    <p>This website uses cookies to ensure you get the best experience on our website. <a href="#" id="cookie-accept">Accept</a> | <a href="#" id="cookie-reject">Reject</a></p>
+</div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+</body>
+</html>

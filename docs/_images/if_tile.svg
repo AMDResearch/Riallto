@@ -1,0 +1,53 @@
+
+            <svg id="svg"
+            version="1.1" 
+            xmlns="http://www.w3.org/2000/svg" 
+            xmlns:xlink="http://www.w3.org/1999/xlink" 
+            width="220" 
+            height="180" 
+            viewBox="0, 0, 220, 180">
+            <defs>
+                <marker id="ic_startarrow" markerWidth="10" markerHeight="7" 
+                refX="10" refY="3.5" orient="auto">
+                <polygon points="0 0, 4 2, 0 4" fill="black" />
+                </marker>
+                <marker id="ic_endarrow" markerWidth="7" markerHeight="4" 
+                refX="0" refY="2" orient="auto" markerUnits="strokeWidth">
+                    <polygon points="0 0, 4 2, 0 4" fill="black" />
+                </marker>
+
+                <marker id="red_startarrow" markerWidth="10" markerHeight="7" 
+                refX="0" refY="2" orient="auto">
+                <polygon points="0 2, 4 0, 4 4" fill="red" />
+                </marker>
+                <marker id="red_endarrow" markerWidth="7" markerHeight="4" 
+                refX="4" refY="2" orient="auto" markerUnits="strokeWidth">
+                    <polygon points="0 0, 4 2, 0 4" fill="red" />
+                </marker>
+
+                <marker id="startarrow" markerWidth="10" markerHeight="7" 
+                refX="10" refY="3.5" orient="auto">
+                <polygon points="0 0, 4 2, 0 4" fill="black" />
+                </marker>
+                <marker id="endarrow" markerWidth="10" markerHeight="7" 
+                refX="0" refY="3.5" orient="auto" markerUnits="strokeWidth">
+                    <polygon points="0 0, 4 2, 0 4" fill="black" />
+                </marker>
+            </defs>
+            <style>                .ic_animations {                     opacity: 0.8;                 }            </style>
+            <g id="svg"><g> <rect id="if_tile0" class="if_tile" width="180" height="140" x="20" y="20" stroke="black" stroke-width="2" fill="#E0C2FF"/> </g>
+<g> <text id="text_if_tile0" class="if_tile_text" x="20" y="20" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="110.0" y="89.3" dy="1em" font-size="1"> </tspan></text></g>
+<g> <rect id="interconnect_box0" class="interconnect_box" width="40" height="40" x="30" y="30" stroke="black" stroke-width="1" fill="#DBBCBD"/> </g>
+<g> <text id="text_interconnect_box0" class="interconnect_box_text" x="30" y="30" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="50.0" y="49.3" dy="1em" font-size="1"> </tspan></text></g>
+<line id="ic_h_line0_0" class="interconnect" x1="38.0" y1="45.0" x2="58.0" y2="45.0"             stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)" />
+<line id="ic_h_line0_1" class="interconnect" x1="62.0" y1="55.0" x2="42.0" y2="55.0"             stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+<line id="ic_h_line0_2" class="interconnect" x1="45.0" y1="62.0" x2="45.0" y2="42.0"             stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+<line id="ic_h_line0_3" class="interconnect" x1="55.0" y1="38.0" x2="55.0" y2="58.0"             stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+<g> <rect id="if_tile_container0" class="if_tile_container" width="120" height="60.0" x="70" y="90.0" stroke="black" stroke-width="1" fill="#ffffff"/> </g>
+<g> <text id="text_if_tile_container0" class="if_tile_container_text" x="70" y="90.0" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="130.0" y="119.3" dy="1em" font-size="1"> </tspan></text></g>
+<g> <rect id="if_dmabox0" class="if_dmabox" width="106" height="46.0" x="77" y="97.0" stroke="black" stroke-width="1" fill="white"/> </g>
+<g> <text id="text_if_dmabox0" class="if_dmabox_text" x="77" y="97.0" fill="black" font-family="Arial, Helvetica, sans-serif"> <tspan x="92.78125" y="104.4" dy="1em" font-size="13">Interface Tile </tspan><tspan x="93.1484375" y="117.4" dy="1em" font-size="13">Data movers </tspan></text></g>
+<line id="diagonal0" class="interconnect" x1="70" y1="70" x2="90.0" y2="90.0" stroke="red" stroke-width="1" fill="none" />
+<line id="v_ic_connection0" class="interconnect" x1="50" y1="30" x2="50" y2="0" stroke="red" stroke-width="1" fill="none" />
+<path id="south_mem_connection0" stroke="black" stroke-width="1" fill="none"                d="M 130.0, 150.0,                 l0, 30"                />
+</g></svg>

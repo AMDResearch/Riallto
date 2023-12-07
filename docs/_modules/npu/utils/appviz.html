@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
+
+<!--<script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" data-document-language="true" type="text/javascript" charset="UTF-8" data-domain-script="03af8d57-0a04-47a6-8f10-322fa00d8fc7" ></script>
+<script type="text/javascript">
+function OptanonWrapper() { }
+</script>-->
+<!-- OneTrust Cookies Consent Notice end for xilinx.github.io -->
+<!-- Google Tag Manager -->
+<script type="text/plain" class="optanon-category-C0002">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5RHQV7');</script>
+<!-- End Google Tag Manager -->
+  <title>npu.utils.appviz &mdash; AMD Riallto 1.0 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/./custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/./custom_page_width.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/documentation_options.js?v=2882ecd3"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../_static/copybutton.js?v=f281be69"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-5RHQV7" height="0" width="0" style="display:none;visibility:hidden" class="optanon-category-C0002"></iframe></noscript>
+<!-- End Google Tag Manager --> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+            <a href="../../../index.html" class="icon icon-home"> AMD Riallto
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../index.html">Home</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Riallto overview</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../1_0_Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../install-riallto.html">Install Riallto</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ryzenai_video_overview.html">Riallto Video Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../1_1_ryzenai.html">Ryzen AI Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../2_1_MS_Windows_Studio_Effects.html">Windows Studio Effects</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">NPU Architecture examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../3_1_Color_threshold_example.html">Loading your first example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../3_2_Ryzenai_capabilities.html">Understanding columns and tiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../3_3_Scaled_color_threshold_example.html">Scaling applications to multiple compute tiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../3_4_Edge_detect_example.html">Optimizing data movement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../3_5_Color_detect_example.html">Multicasting and multiple kernels per tile</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Building applications</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../4_1_software_framework.html">Introduction to the Riallto software framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../4_2_write_your_kernel.html">Write your first kernel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../4_3_kernels_with_runtime_parameters.html">Using Run Time Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../4_4_threshold_kernel_with_vector_ops.html">How to use the vector processor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../4_5_describe_an_application.html">Describing an application</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../4_6_build_application.html">Building a complete application</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../4_7_using_the_memtile_in_your_applications.html">Using memory tiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../4_8_build_a_colorDetect_application.html">Reusing software kernels</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Ryzen AI Machine Learning</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../5_1_pytorch_onnx_inference.html">Inference with PyTorch and ONNX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../5_2_pytorch_onnx_re-train.html">Re-training with PyTorch and ONNX</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python Package</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html">npu</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Glossary</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Glossary.html">Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Appendix_Review_of_Image_Processing_Concepts.html">Review of Image Processing concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../prerequisites-driver.html">Install the NPU driver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../prerequisites-aie-license.html">Get an AIE license</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../prerequisites-wsl.html">Enable WSL</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">AMD Riallto</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+      <li>npu.utils.appviz</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for npu.utils.appviz</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Copyright (C) 2023 Advanced Micro Devices, Inc. All rights reserved.</span>
+<span class="c1"># SPDX-License-Identifier: MIT</span>
+
+<span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">copy</span><span class="p">,</span> <span class="n">deepcopy</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Tuple</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span>
+<span class="kn">import</span> <span class="nn">npu.utils.svg</span> <span class="k">as</span> <span class="nn">svg</span>
+<span class="kn">import</span> <span class="nn">npu.utils.svg_config</span> <span class="k">as</span> <span class="nn">config</span>
+
+<span class="n">_ct_color</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="mi">0</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;kernel&#39;</span><span class="p">:</span> <span class="n">config</span><span class="o">.</span><span class="n">dark_pink</span><span class="p">,</span>
+        <span class="s1">&#39;inbuf&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">config</span><span class="o">.</span><span class="n">light_pink</span><span class="p">,</span> <span class="n">config</span><span class="o">.</span><span class="n">light_red</span><span class="p">],</span>
+        <span class="s1">&#39;outbuf&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">config</span><span class="o">.</span><span class="n">dark_pink</span><span class="p">,</span> <span class="n">config</span><span class="o">.</span><span class="n">lilac</span><span class="p">]},</span>
+    <span class="mi">1</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;kernel&#39;</span><span class="p">:</span> <span class="n">config</span><span class="o">.</span><span class="n">yellow</span><span class="p">,</span>
+        <span class="s1">&#39;inbuf&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">config</span><span class="o">.</span><span class="n">orange</span><span class="p">,</span> <span class="n">config</span><span class="o">.</span><span class="n">purple</span><span class="p">],</span>
+        <span class="s1">&#39;outbuf&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">config</span><span class="o">.</span><span class="n">yellow</span><span class="p">,</span> <span class="n">config</span><span class="o">.</span><span class="n">orange</span><span class="p">]},</span>
+    <span class="mi">2</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;kernel&#39;</span><span class="p">:</span> <span class="n">config</span><span class="o">.</span><span class="n">dark_blue</span><span class="p">,</span>
+        <span class="s1">&#39;inbuf&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">config</span><span class="o">.</span><span class="n">light_blue</span><span class="p">,</span> <span class="n">config</span><span class="o">.</span><span class="n">lilac</span><span class="p">],</span>
+        <span class="s1">&#39;outbuf&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">config</span><span class="o">.</span><span class="n">dark_blue</span><span class="p">,</span> <span class="n">config</span><span class="o">.</span><span class="n">pink</span><span class="p">]},</span>
+    <span class="mi">3</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;kernel&#39;</span><span class="p">:</span> <span class="n">config</span><span class="o">.</span><span class="n">red</span><span class="p">,</span>
+        <span class="s1">&#39;inbuf&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">config</span><span class="o">.</span><span class="n">light_red</span><span class="p">,</span> <span class="n">config</span><span class="o">.</span><span class="n">green</span><span class="p">],</span>
+        <span class="s1">&#39;outbuf&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">config</span><span class="o">.</span><span class="n">red</span><span class="p">,</span> <span class="n">config</span><span class="o">.</span><span class="n">light_orange</span><span class="p">]}</span>
+<span class="p">}</span>
+
+
+<div class="viewcode-block" id="AppViz">
+<a class="viewcode-back" href="../../../npu.utils.html#npu.utils.appviz.AppViz">[docs]</a>
+<span class="k">class</span> <span class="nc">AppViz</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Visualize the Dataflow Graph in a column of the NPU&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">metadata</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_kanimate_duration</span> <span class="o">=</span> <span class="mi">4</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_md</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parse_metadata</span><span class="p">(</span><span class="n">metadata</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_loc_conv</span> <span class="o">=</span> <span class="p">{</span><span class="mi">2</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_appname</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_md</span><span class="p">[</span><span class="s1">&#39;application&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_col_svg</span> <span class="o">=</span> <span class="n">svg</span><span class="o">.</span><span class="n">RyzenAiColumn</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ct_color</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">_ct_color</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_drawn_kernels</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_draw_kernels</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ct2mt_counter</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_mt2ct_counter</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_mt2ct_passthrough</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;found&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_dbuf_colors</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_draw_connections_sorted</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_draw_key</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">_draw_key</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">kernels</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">kname</span><span class="p">,</span> <span class="n">k</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_drawn_kernels</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">p</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">([</span><span class="n">kname</span><span class="p">,</span> <span class="n">k</span><span class="p">[</span><span class="s1">&#39;kcolor&#39;</span><span class="p">]])</span>
+            <span class="n">kernels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_col_svg</span><span class="o">.</span><span class="n">generate_key</span><span class="p">(</span><span class="n">kernels</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_draw_kernels</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Draws the kernels onto the appropriate tiles</span>
+<span class="sd">            Returns a dict containing a reference to all</span>
+<span class="sd">            the drawn kernels that can be used for</span>
+<span class="sd">            appending buffers and connections to the</span>
+<span class="sd">            kernels&quot;&quot;&quot;</span>
+        <span class="n">drawn_kernels</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_md</span><span class="p">[</span><span class="s1">&#39;kernels&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">k</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;CT&quot;</span><span class="p">:</span>
+                <span class="n">info</span> <span class="o">=</span> <span class="p">{}</span>
+                <span class="n">info</span><span class="p">[</span><span class="s1">&#39;row&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_loc_conv</span><span class="p">[</span><span class="n">k</span><span class="p">[</span><span class="s1">&#39;tloc&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">]]</span>
+                <span class="n">info</span><span class="p">[</span><span class="s1">&#39;kcolor&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ct_color</span><span class="p">[</span><span class="n">info</span><span class="p">[</span><span class="s1">&#39;row&#39;</span><span class="p">]][</span><span class="s1">&#39;kernel&#39;</span><span class="p">]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_col_svg</span><span class="o">.</span><span class="n">aie_tiles</span><span class="p">[</span><span class="n">info</span><span class="p">[</span><span class="s1">&#39;row&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">add_kernel</span><span class="p">(</span>
+                        <span class="n">info</span><span class="p">[</span><span class="s1">&#39;kcolor&#39;</span><span class="p">],</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">_kanimate_duration</span><span class="p">)</span>
+                <span class="n">drawn_kernels</span><span class="p">[</span><span class="n">k</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">info</span>
+
+        <span class="k">return</span> <span class="n">drawn_kernels</span>
+
+    <span class="k">def</span> <span class="nf">_get_output_buffer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">kernelidx</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="n">color</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ct_color</span><span class="p">[</span><span class="n">kernelidx</span><span class="p">][</span><span class="s1">&#39;outbuf&#39;</span><span class="p">]:</span>
+            <span class="n">color</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ct_color</span><span class="p">[</span><span class="n">kernelidx</span><span class="p">][</span><span class="s1">&#39;outbuf&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ct_color</span><span class="p">[</span><span class="n">kernelidx</span><span class="p">][</span><span class="s1">&#39;outbuf&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">color</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">color</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;Cannot display more than two output buffers for &quot;</span>
+                          <span class="sa">f</span><span class="s2">&quot;compute tile </span><span class="si">{</span><span class="n">kernelidx</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">color</span>
+
+    <span class="k">def</span> <span class="nf">_get_input_buffer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">kernelidx</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="n">color</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ct_color</span><span class="p">[</span><span class="n">kernelidx</span><span class="p">][</span><span class="s1">&#39;inbuf&#39;</span><span class="p">]:</span>
+            <span class="n">color</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ct_color</span><span class="p">[</span><span class="n">kernelidx</span><span class="p">][</span><span class="s1">&#39;inbuf&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ct_color</span><span class="p">[</span><span class="n">kernelidx</span><span class="p">][</span><span class="s1">&#39;inbuf&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">color</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">color</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;Cannot display more than two input buffers for &quot;</span>
+                          <span class="sa">f</span><span class="s2">&quot;compute tile </span><span class="si">{</span><span class="n">kernelidx</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">color</span>
+
+    <span class="k">def</span> <span class="nf">_is_rtp_con</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">connection</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; determines if a connection is an RTP from the json &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">connection</span><span class="p">[</span><span class="s1">&#39;srckernel&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;user&#39;</span>
+
+    <span class="k">def</span> <span class="nf">_draw_connections_sorted</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Draw connections with a pre-defined priority&quot;&quot;&quot;</span>
+
+        <span class="n">conn</span> <span class="o">=</span> <span class="n">copy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_md</span><span class="p">[</span><span class="s1">&#39;connections&#39;</span><span class="p">])</span>
+        <span class="n">tmpconn</span> <span class="o">=</span> <span class="n">copy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_md</span><span class="p">[</span><span class="s1">&#39;connections&#39;</span><span class="p">])</span>
+
+        <span class="c1"># Draw animations starting in the IT first</span>
+        <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">conn</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_rtp_con</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">c</span><span class="p">[</span><span class="s1">&#39;srcport&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;ITout&#39;</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_draw_connection</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+                    <span class="n">tmpconn</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">tmpconn</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+        <span class="n">conn</span> <span class="o">=</span> <span class="n">copy</span><span class="p">(</span><span class="n">tmpconn</span><span class="p">)</span>
+
+        <span class="c1"># Draw animations starting in the MT second. Run twice for ping-pong</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">conn</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="k">if</span> <span class="n">c</span><span class="p">[</span><span class="s1">&#39;srcport&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;MTout&#39;</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_draw_connection</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="nb">bool</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+                    <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                        <span class="n">tmpconn</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ct2mt_counter</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_mt2ct_counter</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">conn</span> <span class="o">=</span> <span class="n">copy</span><span class="p">(</span><span class="n">tmpconn</span><span class="p">)</span>
+
+        <span class="c1"># Draw animations ending in the MT third. Run twice for ping-pong</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">conn</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="k">if</span> <span class="n">c</span><span class="p">[</span><span class="s1">&#39;sinkport&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;MTin&#39;</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_draw_connection</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="nb">bool</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+                    <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                        <span class="n">tmpconn</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+        <span class="n">conn</span> <span class="o">=</span> <span class="n">copy</span><span class="p">(</span><span class="n">tmpconn</span><span class="p">)</span>
+
+        <span class="c1"># Draw remaining animations</span>
+        <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">conn</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_draw_connection</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_draw_connection</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">dbuf</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Draws kernels, buffers and data movement</span>
+
+<span class="sd">        Iterates through the connections, drawing the kernel, buffers and</span>
+<span class="sd">        data movement.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">src</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_md</span><span class="p">[</span><span class="s1">&#39;kernels&#39;</span><span class="p">][</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;srckernel&#39;</span><span class="p">]]</span>
+        <span class="n">dst</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_md</span><span class="p">[</span><span class="s1">&#39;kernels&#39;</span><span class="p">][</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;sinkkernel&#39;</span><span class="p">]]</span>
+
+        <span class="k">if</span> <span class="n">src</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;CT&#39;</span> <span class="ow">and</span> <span class="n">dst</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;CT&#39;</span><span class="p">:</span>
+            <span class="n">src_row</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_drawn_kernels</span><span class="p">[</span><span class="n">src</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]][</span><span class="s1">&#39;row&#39;</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_col_svg</span><span class="o">.</span><span class="n">aie_tiles</span><span class="p">[</span><span class="n">src_row</span><span class="p">]</span><span class="o">.</span><span class="n">add_buffer</span><span class="p">(</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">_drawn_kernels</span><span class="p">[</span><span class="n">src</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]][</span><span class="s1">&#39;kcolor&#39;</span><span class="p">],</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">_kanimate_duration</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>
+                            <span class="n">start_empty</span><span class="o">=</span><span class="ow">not</span> <span class="nb">bool</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_draw_ct2ct_data_movement</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">dst</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">src</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;IT&#39;</span> <span class="ow">and</span> <span class="n">dst</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;CT&#39;</span><span class="p">:</span>
+            <span class="n">dst_row</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_drawn_kernels</span><span class="p">[</span><span class="n">dst</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]][</span><span class="s1">&#39;row&#39;</span><span class="p">]</span>
+            <span class="n">bufcol</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_input_buffer</span><span class="p">(</span><span class="n">dst_row</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_col_svg</span><span class="o">.</span><span class="n">aie_tiles</span><span class="p">[</span><span class="n">dst_row</span><span class="p">]</span><span class="o">.</span><span class="n">add_buffer</span><span class="p">(</span>
+                            <span class="n">bufcol</span><span class="p">,</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">_kanimate_duration</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>
+                            <span class="n">start_empty</span><span class="o">=</span><span class="nb">bool</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_draw_ub_ic_ingress</span><span class="p">(</span><span class="n">dst</span><span class="p">,</span> <span class="n">bufcol</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">src</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;CT&#39;</span> <span class="ow">and</span> <span class="n">dst</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;IT&#39;</span><span class="p">:</span>
+            <span class="n">src_row</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_drawn_kernels</span><span class="p">[</span><span class="n">src</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]][</span><span class="s1">&#39;row&#39;</span><span class="p">]</span>
+            <span class="n">bufcol</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_output_buffer</span><span class="p">(</span><span class="n">src_row</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_col_svg</span><span class="o">.</span><span class="n">aie_tiles</span><span class="p">[</span><span class="n">src_row</span><span class="p">]</span><span class="o">.</span><span class="n">add_buffer</span><span class="p">(</span>
+                            <span class="n">bufcol</span><span class="p">,</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">_kanimate_duration</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>
+                            <span class="n">start_empty</span><span class="o">=</span><span class="ow">not</span> <span class="nb">bool</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_draw_ub_ic_egress</span><span class="p">(</span><span class="n">src</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">src</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;CT&#39;</span> <span class="ow">and</span> <span class="n">dst</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;MT&#39;</span><span class="p">:</span>
+            <span class="n">src_row</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_drawn_kernels</span><span class="p">[</span><span class="n">src</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]][</span><span class="s1">&#39;row&#39;</span><span class="p">]</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">dbuf</span><span class="p">:</span>
+                <span class="n">bufcol</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_output_buffer</span><span class="p">(</span><span class="n">src_row</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_dbuf_colors</span><span class="p">[</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">bufcol</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">bufcol</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dbuf_colors</span><span class="p">[</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]]</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">_col_svg</span><span class="o">.</span><span class="n">mem_tiles</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">add_buffer</span><span class="p">(</span>
+                        <span class="n">bufcol</span><span class="p">,</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">_kanimate_duration</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>
+                        <span class="n">start_empty</span><span class="o">=</span><span class="n">dbuf</span><span class="p">,</span>
+                        <span class="n">color2</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">purple</span><span class="p">,</span>
+                        <span class="n">delay</span><span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ct2mt_counter</span><span class="o">/</span><span class="mi">5</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">dbuf</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_col_svg</span><span class="o">.</span><span class="n">aie_tiles</span><span class="p">[</span><span class="n">src_row</span><span class="p">]</span><span class="o">.</span><span class="n">add_buffer</span><span class="p">(</span>
+                                <span class="n">bufcol</span><span class="p">,</span>
+                                <span class="bp">self</span><span class="o">.</span><span class="n">_kanimate_duration</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>
+                                <span class="n">start_empty</span><span class="o">=</span><span class="nb">bool</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+
+                <span class="bp">self</span><span class="o">.</span><span class="n">_draw_ct2mem_ic</span><span class="p">(</span><span class="n">src</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_ct2mt_counter</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="k">if</span> <span class="n">src</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;MT&#39;</span> <span class="ow">and</span> <span class="n">dst</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;CT&#39;</span><span class="p">:</span>
+            <span class="n">dst_row</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_drawn_kernels</span><span class="p">[</span><span class="n">dst</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]][</span><span class="s1">&#39;row&#39;</span><span class="p">]</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">dbuf</span><span class="p">:</span>
+                <span class="n">dst_buf_color</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_input_buffer</span><span class="p">(</span><span class="n">dst_row</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_dbuf_colors</span><span class="p">[</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">dst_buf_color</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">dst_buf_color</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dbuf_colors</span><span class="p">[</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]]</span>
+
+            <span class="n">show_mem_buffer</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="k">if</span> <span class="s1">&#39;in_buffer&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">c</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]:</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mt2ct_passthrough</span><span class="p">[</span><span class="s1">&#39;found&#39;</span><span class="p">]:</span>
+                    <span class="n">dst_buf_color</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mt2ct_passthrough</span><span class="p">[</span><span class="s1">&#39;color&#39;</span><span class="p">]</span>
+                    <span class="n">show_mem_buffer</span> <span class="o">=</span> <span class="kc">False</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_mt2ct_passthrough</span><span class="p">[</span><span class="s1">&#39;found&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_mt2ct_passthrough</span><span class="p">[</span><span class="s1">&#39;color&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dst_buf_color</span>
+
+            <span class="k">if</span> <span class="n">show_mem_buffer</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_mt2ct_passthrough</span><span class="p">[</span><span class="s1">&#39;found&#39;</span><span class="p">])</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_col_svg</span><span class="o">.</span><span class="n">mem_tiles</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">add_buffer</span><span class="p">(</span>
+                                <span class="n">config</span><span class="o">.</span><span class="n">green</span><span class="p">,</span>
+                                <span class="bp">self</span><span class="o">.</span><span class="n">_kanimate_duration</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>
+                                <span class="n">start_empty</span><span class="o">=</span><span class="n">dbuf</span> <span class="o">^</span> <span class="nb">bool</span><span class="p">(</span><span class="n">i</span><span class="p">),</span>
+                                <span class="n">color2</span><span class="o">=</span><span class="n">dst_buf_color</span><span class="p">,</span>
+                                <span class="n">delay</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_mt2ct_counter</span><span class="o">/</span><span class="mi">5</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_col_svg</span><span class="o">.</span><span class="n">aie_tiles</span><span class="p">[</span><span class="n">dst_row</span><span class="p">]</span><span class="o">.</span><span class="n">add_buffer</span><span class="p">(</span>
+                        <span class="n">dst_buf_color</span><span class="p">,</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">_kanimate_duration</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>
+                        <span class="n">start_empty</span><span class="o">=</span><span class="n">dbuf</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">dbuf</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_draw_mem2ct_ic</span><span class="p">(</span><span class="n">dst</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">dst_buf_color</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_mt2ct_counter</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_draw_ub2mem_ic</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">dst</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_draw_mem2ub_ic</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">dst</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_draw_ct2mem_ic</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">src</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Display animation originating from CT and destination MT&quot;&quot;&quot;</span>
+
+        <span class="n">src_color</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_drawn_kernels</span><span class="p">[</span><span class="n">src</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]][</span><span class="s1">&#39;kcolor&#39;</span><span class="p">]</span>
+        <span class="n">src_row</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_loc_conv</span><span class="p">[</span><span class="n">src</span><span class="p">[</span><span class="s1">&#39;tloc&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">]]</span>
+        <span class="n">delay</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ct2mt_counter</span> <span class="o">/</span> <span class="mi">5</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">src_row</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+            <span class="n">diagonal_from_tile</span> <span class="o">=</span> <span class="n">i</span> <span class="o">==</span> <span class="n">src_row</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_col_svg</span><span class="o">.</span><span class="n">aie_tiles</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">add_ic_animation</span><span class="p">(</span>
+                    <span class="n">diagonal_from_tile</span><span class="o">=</span><span class="n">diagonal_from_tile</span><span class="p">,</span>
+                    <span class="n">south</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                    <span class="n">duration</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_kanimate_duration</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>
+                    <span class="n">delay</span><span class="o">=</span><span class="n">delay</span><span class="p">,</span>
+                    <span class="n">color</span><span class="o">=</span><span class="n">src_color</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_col_svg</span><span class="o">.</span><span class="n">mem_tiles</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">add_ic_animation</span><span class="p">(</span>
+                    <span class="n">diagonal_to_tile</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                    <span class="n">duration</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_kanimate_duration</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>
+                    <span class="n">delay</span><span class="o">=</span><span class="n">delay</span><span class="p">,</span>
+                    <span class="n">color</span><span class="o">=</span><span class="n">src_color</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ct2mt_counter</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="k">def</span> <span class="nf">_draw_mem2ct_ic</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dst</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">dst_color</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Display animation originating from MT and destination CT&quot;&quot;&quot;</span>
+
+        <span class="n">dst_row</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_loc_conv</span><span class="p">[</span><span class="n">dst</span><span class="p">[</span><span class="s1">&#39;tloc&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">]]</span>
+        <span class="n">delay</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_mt2ct_counter</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">5</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_col_svg</span><span class="o">.</span><span class="n">mem_tiles</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">add_ic_animation</span><span class="p">(</span>
+                    <span class="n">diagonal_from_tile</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                    <span class="n">duration</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_kanimate_duration</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>
+                    <span class="n">delay</span><span class="o">=</span><span class="n">delay</span><span class="p">,</span>
+                    <span class="n">color</span><span class="o">=</span><span class="n">dst_color</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">dst_row</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+            <span class="n">diagonal_to_tile</span> <span class="o">=</span> <span class="n">i</span> <span class="o">==</span> <span class="n">dst_row</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_col_svg</span><span class="o">.</span><span class="n">aie_tiles</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">add_ic_animation</span><span class="p">(</span>
+                    <span class="n">diagonal_to_tile</span><span class="o">=</span><span class="n">diagonal_to_tile</span><span class="p">,</span>
+                    <span class="n">north</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                    <span class="n">duration</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_kanimate_duration</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>
+                    <span class="n">delay</span><span class="o">=</span><span class="n">delay</span><span class="p">,</span>
+                    <span class="n">color</span><span class="o">=</span><span class="n">dst_color</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s1">&#39;in_buffer&#39;</span> <span class="ow">in</span> <span class="n">c</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_mt2ct_counter</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="k">def</span> <span class="nf">_draw_ub2mem_ic</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">src</span><span class="p">,</span> <span class="n">dst</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Display animation originating from IT and destination MT&quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="n">src</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;IT&#39;</span> <span class="ow">and</span> <span class="n">dst</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;MT&#39;</span><span class="p">:</span>
+            <span class="n">src_color</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">green</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_col_svg</span><span class="o">.</span><span class="n">mem_tiles</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">add_ic_animation</span><span class="p">(</span>
+                        <span class="n">diagonal_to_tile</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                        <span class="n">north</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                        <span class="n">duration</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_kanimate_duration</span><span class="o">*</span><span class="mi">1</span><span class="p">,</span>
+                        <span class="n">color</span><span class="o">=</span><span class="n">src_color</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_col_svg</span><span class="o">.</span><span class="n">if_tiles</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">add_dma_animation</span><span class="p">(</span>
+                        <span class="n">south_up</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                        <span class="n">duration</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_kanimate_duration</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>
+                        <span class="n">color</span><span class="o">=</span><span class="n">src_color</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_col_svg</span><span class="o">.</span><span class="n">if_tiles</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">add_ic_animation</span><span class="p">(</span>
+                        <span class="n">diagonal_from_tile</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                        <span class="n">duration</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_kanimate_duration</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>
+                        <span class="n">color</span><span class="o">=</span><span class="n">src_color</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_draw_mem2ub_ic</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">src</span><span class="p">,</span> <span class="n">dst</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Display animation originating from MT and destination IT&quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="n">src</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;MT&#39;</span> <span class="ow">and</span> <span class="n">dst</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;IT&#39;</span><span class="p">:</span>
+            <span class="n">dst_color</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">purple</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_col_svg</span><span class="o">.</span><span class="n">mem_tiles</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">add_ic_animation</span><span class="p">(</span>
+                        <span class="n">diagonal_from_tile</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                        <span class="n">south</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                        <span class="n">duration</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_kanimate_duration</span><span class="o">*</span><span class="mi">1</span><span class="p">,</span>
+                        <span class="n">color</span><span class="o">=</span><span class="n">dst_color</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_col_svg</span><span class="o">.</span><span class="n">if_tiles</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">add_ic_animation</span><span class="p">(</span>
+                        <span class="n">diagonal_to_tile</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                        <span class="n">duration</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_kanimate_duration</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>
+                        <span class="n">color</span><span class="o">=</span><span class="n">dst_color</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_col_svg</span><span class="o">.</span><span class="n">if_tiles</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">add_dma_animation</span><span class="p">(</span>
+                        <span class="n">south_down</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                        <span class="n">duration</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_kanimate_duration</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>
+                        <span class="n">color</span><span class="o">=</span><span class="n">dst_color</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_draw_ub_ic_egress</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">src</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Display animation originating from CT and destination IT&quot;&quot;&quot;</span>
+
+        <span class="n">src_color</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_drawn_kernels</span><span class="p">[</span><span class="n">src</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]][</span><span class="s1">&#39;kcolor&#39;</span><span class="p">]</span>
+        <span class="n">src_row</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_loc_conv</span><span class="p">[</span><span class="n">src</span><span class="p">[</span><span class="s1">&#39;tloc&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">]]</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">src_row</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+            <span class="n">diagonal_from_tile</span> <span class="o">=</span> <span class="n">i</span> <span class="o">==</span> <span class="n">src_row</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_col_svg</span><span class="o">.</span><span class="n">aie_tiles</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">add_ic_animation</span><span class="p">(</span>
+                    <span class="n">diagonal_from_tile</span><span class="o">=</span><span class="n">diagonal_from_tile</span><span class="p">,</span>
+                    <span class="n">south</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                    <span class="n">duration</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_kanimate_duration</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>
+                    <span class="n">color</span><span class="o">=</span><span class="n">src_color</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_col_svg</span><span class="o">.</span><span class="n">mem_tiles</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">add_ic_animation</span><span class="p">(</span>
+                    <span class="n">south</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                    <span class="n">duration</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_kanimate_duration</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>
+                    <span class="n">color</span><span class="o">=</span><span class="n">src_color</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_col_svg</span><span class="o">.</span><span class="n">if_tiles</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">add_ic_animation</span><span class="p">(</span>
+                    <span class="n">diagonal_to_tile</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                    <span class="n">duration</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_kanimate_duration</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>
+                    <span class="n">color</span><span class="o">=</span><span class="n">src_color</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_col_svg</span><span class="o">.</span><span class="n">if_tiles</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">add_dma_animation</span><span class="p">(</span>
+                    <span class="n">south_down</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                    <span class="n">duration</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_kanimate_duration</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>
+                    <span class="n">color</span><span class="o">=</span><span class="n">src_color</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_draw_ub_ic_ingress</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dst</span><span class="p">,</span> <span class="n">kcolor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Display animation originating from IT and destination CT&quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_col_svg</span><span class="o">.</span><span class="n">if_tiles</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">add_ic_animation</span><span class="p">(</span>
+                    <span class="n">diagonal_from_tile</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                    <span class="n">duration</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_kanimate_duration</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>
+                    <span class="n">color</span><span class="o">=</span><span class="n">kcolor</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_col_svg</span><span class="o">.</span><span class="n">if_tiles</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">add_dma_animation</span><span class="p">(</span>
+                    <span class="n">south_up</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                    <span class="n">duration</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_kanimate_duration</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>
+                    <span class="n">color</span><span class="o">=</span><span class="n">kcolor</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_col_svg</span><span class="o">.</span><span class="n">mem_tiles</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">add_ic_animation</span><span class="p">(</span>
+                    <span class="n">north</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                    <span class="n">duration</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_kanimate_duration</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>
+                    <span class="n">color</span><span class="o">=</span><span class="n">kcolor</span><span class="p">)</span>
+
+        <span class="n">dst_row</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_loc_conv</span><span class="p">[</span><span class="n">dst</span><span class="p">[</span><span class="s1">&#39;tloc&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">]]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">dst_row</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+            <span class="n">diagonal_to_tile</span> <span class="o">=</span> <span class="n">dst_row</span> <span class="o">==</span> <span class="n">i</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_col_svg</span><span class="o">.</span><span class="n">aie_tiles</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">add_ic_animation</span><span class="p">(</span>
+                    <span class="n">diagonal_to_tile</span><span class="o">=</span><span class="n">diagonal_to_tile</span><span class="p">,</span>
+                    <span class="n">north</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                    <span class="n">duration</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_kanimate_duration</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>
+                    <span class="n">color</span><span class="o">=</span><span class="n">kcolor</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_draw_ct2ct_data_movement</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">src</span><span class="p">,</span> <span class="n">dst</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Display animation originating from CT and destination CT</span>
+
+<span class="sd">        If the tiles are neighbor we display the animation using the</span>
+<span class="sd">        crossbar.</span>
+<span class="sd">        If they are not neighbors, we use the stream interconnect.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">src_row</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_drawn_kernels</span><span class="p">[</span><span class="n">src</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]][</span><span class="s1">&#39;row&#39;</span><span class="p">]</span>
+        <span class="n">src_kcol</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_drawn_kernels</span><span class="p">[</span><span class="n">src</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]][</span><span class="s1">&#39;kcolor&#39;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_are_neighbors</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">dst</span><span class="p">):</span>
+            <span class="n">up</span><span class="p">,</span> <span class="n">down</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_rel_neighbor_loc</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">dst</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_col_svg</span><span class="o">.</span><span class="n">aie_tiles</span><span class="p">[</span><span class="n">src_row</span><span class="o">-</span><span class="nb">int</span><span class="p">(</span><span class="n">up</span><span class="p">)]</span><span class="o">.</span><span class="n">add_mem_animation</span><span class="p">(</span>
+                    <span class="n">up_mem_to_aie</span><span class="o">=</span><span class="n">up</span><span class="p">,</span>
+                    <span class="n">down_mem_to_aie</span><span class="o">=</span><span class="n">down</span><span class="p">,</span>
+                    <span class="n">color</span><span class="o">=</span><span class="n">src_kcol</span><span class="p">,</span>
+                    <span class="n">duration</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_kanimate_duration</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">dst_row</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_drawn_kernels</span><span class="p">[</span><span class="n">dst</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]][</span><span class="s1">&#39;row&#39;</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">src_row</span> <span class="o">&gt;</span> <span class="n">dst_row</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">dst_row</span><span class="p">,</span> <span class="n">src_row</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+                    <span class="n">diagonal_to_tile</span> <span class="o">=</span> <span class="n">dst_row</span> <span class="o">==</span> <span class="n">i</span>
+                    <span class="n">diagonal_from_tile</span> <span class="o">=</span> <span class="n">src_row</span> <span class="o">==</span> <span class="n">i</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_col_svg</span><span class="o">.</span><span class="n">aie_tiles</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">add_ic_animation</span><span class="p">(</span>
+                        <span class="n">diagonal_from_tile</span><span class="o">=</span><span class="n">diagonal_from_tile</span><span class="p">,</span>
+                        <span class="n">diagonal_to_tile</span><span class="o">=</span><span class="n">diagonal_to_tile</span><span class="p">,</span>
+                        <span class="n">north</span><span class="o">=</span><span class="ow">not</span> <span class="n">diagonal_from_tile</span><span class="p">,</span>
+                        <span class="n">duration</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_kanimate_duration</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>
+                        <span class="n">color</span><span class="o">=</span><span class="n">src_kcol</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">src_row</span><span class="p">,</span> <span class="n">dst_row</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+                    <span class="n">diagonal_to_tile</span> <span class="o">=</span> <span class="n">dst_row</span> <span class="o">==</span> <span class="n">i</span>
+                    <span class="n">diagonal_from_tile</span> <span class="o">=</span> <span class="n">src_row</span> <span class="o">==</span> <span class="n">i</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_col_svg</span><span class="o">.</span><span class="n">aie_tiles</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">add_ic_animation</span><span class="p">(</span>
+                        <span class="n">diagonal_from_tile</span><span class="o">=</span><span class="n">diagonal_from_tile</span><span class="p">,</span>
+                        <span class="n">diagonal_to_tile</span><span class="o">=</span><span class="n">diagonal_to_tile</span><span class="p">,</span>
+                        <span class="n">south</span><span class="o">=</span><span class="ow">not</span> <span class="n">diagonal_to_tile</span><span class="p">,</span>
+                        <span class="n">duration</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_kanimate_duration</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>
+                        <span class="n">color</span><span class="o">=</span><span class="n">src_kcol</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_are_neighbors</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">aie1</span><span class="p">,</span> <span class="n">aie2</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Return true if two aie tiles are neighbors &quot;&quot;&quot;</span>
+        <span class="n">row_diff</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">aie1</span><span class="p">[</span><span class="s1">&#39;tloc&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">aie2</span><span class="p">[</span><span class="s1">&#39;tloc&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">row_diff</span> <span class="o">&lt;=</span> <span class="mi">1</span>
+
+    <span class="k">def</span> <span class="nf">_get_rel_neighbor_loc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">aie1</span><span class="p">,</span> <span class="n">aie2</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_are_neighbors</span><span class="p">(</span><span class="n">aie1</span><span class="p">,</span> <span class="n">aie2</span><span class="p">):</span>
+            <span class="n">row_diff</span> <span class="o">=</span> <span class="n">aie1</span><span class="p">[</span><span class="s1">&#39;tloc&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">aie2</span><span class="p">[</span><span class="s1">&#39;tloc&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+            <span class="k">return</span> <span class="n">row_diff</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">row_diff</span> <span class="o">==</span> <span class="o">+</span><span class="mi">1</span>
+
+    <span class="k">def</span> <span class="nf">_parse_metadata</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">metadata</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; parses and checks the incoming metadata &quot;&quot;&quot;</span>
+        <span class="c1"># metadata is either a filepath or a direct string of the json</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">metadata</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">metadata</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">metadata</span><span class="p">):</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">metadata</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+                <span class="n">md</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">fp</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">md</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">metadata</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Unable to parse input metadata for &quot;</span>
+                                   <span class="s2">&quot;visualizing as either a &quot;</span>
+                                   <span class="s2">&quot;file or string&quot;</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">e</span>
+        <span class="k">return</span> <span class="n">md</span>
+
+<div class="viewcode-block" id="AppViz.save">
+<a class="viewcode-back" href="../../../npu.utils.html#npu.utils.appviz.AppViz.save">[docs]</a>
+    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;saves animation to a file&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">filename</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_appname</span> <span class="o">+</span> <span class="s1">&#39;.svg&#39;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="n">filename</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_col_svg</span><span class="o">.</span><span class="n">generate_image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="n">name</span><span class="p">)</span></div>
+
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">show</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="kn">import</span> <span class="nn">tempfile</span>
+        <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+        <span class="n">tmp_dir</span> <span class="o">=</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">mkdtemp</span><span class="p">()</span>
+        <span class="n">_t</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">tmp_dir</span><span class="p">)</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;_</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_appname</span><span class="si">}</span><span class="s2">_viz.svg&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_col_svg</span><span class="o">.</span><span class="n">generate_image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="n">_t</span><span class="p">)</span>
+        <span class="kn">from</span> <span class="nn">IPython.core.display</span> <span class="kn">import</span> <span class="n">SVG</span>
+        <span class="n">display</span><span class="p">(</span><span class="n">SVG</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="n">_t</span><span class="p">))</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          
+				  
+				  <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Advanced Micro Devices, Inc.
+      <span class="lastupdated">Last updated on December 15, 2023.
+      </span></p>
+  </div>
+
+
+
+										<div class="aem-Grid aem-Grid--16">
+											<div class="aem-GridColumn aem-GridColumn--xxxlarge--none aem-GridColumn--xsmall--16 aem-GridColumn--offset--xsmall--0 aem-GridColumn--xlarge--none aem-GridColumn--xxlarge--none aem-GridColumn--default--none aem-GridColumn--offset--large--1 aem-GridColumn--xlarge--12 aem-GridColumn--offset--default--0 aem-GridColumn--xxlarge--10 aem-GridColumn--offset--xlarge--2 aem-GridColumn--offset--xxlarge--3 aem-GridColumn--offset--xxxlarge--4 aem-GridColumn--xsmall--none aem-GridColumn--large--none aem-GridColumn aem-GridColumn--large--14 aem-GridColumn--xxxlarge--8 aem-GridColumn--default--16">
+												<div class="container-fluid sub-footer">
+
+													                    <div class="row">
+                        <div class="col-xs-24">
+                          <p><a target="_blank" href="https://www.amd.com/en/corporate/copyright">Terms and Conditions</a> | <a target="_blank" href="https://www.amd.com/en/corporate/privacy">Privacy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/cookies">Cookie Policy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/trademarks">Trademarks</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/statement-human-trafficking-forced-labor.pdf">Statement on Forced Labor</a> | <a target="_blank" href="https://www.amd.com/en/corporate/competition">Fair and Open Competition</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/amd-uk-tax-strategy.pdf">UK Tax Strategy</a> | <a target="_blank" href="https://docs.xilinx.com/v/u/9x6YvZKuWyhJId7y7RQQKA">Inclusive Terminology</a> | <a href="#cookiessettings" class="ot-sdk-show-settings">Cookies Settings</a></p>
+                        </div>
+                    </div>
+												</div>
+											</div>
+										</div>
+										
+</br>
+
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+</body>
+</html>

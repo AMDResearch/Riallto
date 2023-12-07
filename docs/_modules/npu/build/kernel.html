@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
+
+<!--<script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" data-document-language="true" type="text/javascript" charset="UTF-8" data-domain-script="03af8d57-0a04-47a6-8f10-322fa00d8fc7" ></script>
+<script type="text/javascript">
+function OptanonWrapper() { }
+</script>-->
+<!-- OneTrust Cookies Consent Notice end for xilinx.github.io -->
+<!-- Google Tag Manager -->
+<script type="text/plain" class="optanon-category-C0002">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5RHQV7');</script>
+<!-- End Google Tag Manager -->
+  <title>npu.build.kernel &mdash; AMD Riallto 1.0 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/./custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/./custom_page_width.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/documentation_options.js?v=2882ecd3"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../_static/copybutton.js?v=f281be69"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-5RHQV7" height="0" width="0" style="display:none;visibility:hidden" class="optanon-category-C0002"></iframe></noscript>
+<!-- End Google Tag Manager --> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+            <a href="../../../index.html" class="icon icon-home"> AMD Riallto
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../index.html">Home</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Riallto overview</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../1_0_Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../install-riallto.html">Install Riallto</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ryzenai_video_overview.html">Riallto Video Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../1_1_ryzenai.html">Ryzen AI Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../2_1_MS_Windows_Studio_Effects.html">Windows Studio Effects</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">NPU Architecture examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../3_1_Color_threshold_example.html">Loading your first example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../3_2_Ryzenai_capabilities.html">Understanding columns and tiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../3_3_Scaled_color_threshold_example.html">Scaling applications to multiple compute tiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../3_4_Edge_detect_example.html">Optimizing data movement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../3_5_Color_detect_example.html">Multicasting and multiple kernels per tile</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Building applications</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../4_1_software_framework.html">Introduction to the Riallto software framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../4_2_write_your_kernel.html">Write your first kernel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../4_3_kernels_with_runtime_parameters.html">Using Run Time Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../4_4_threshold_kernel_with_vector_ops.html">How to use the vector processor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../4_5_describe_an_application.html">Describing an application</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../4_6_build_application.html">Building a complete application</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../4_7_using_the_memtile_in_your_applications.html">Using memory tiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../4_8_build_a_colorDetect_application.html">Reusing software kernels</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Ryzen AI Machine Learning</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../5_1_pytorch_onnx_inference.html">Inference with PyTorch and ONNX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../5_2_pytorch_onnx_re-train.html">Re-training with PyTorch and ONNX</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python Package</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html">npu</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Glossary</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Glossary.html">Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Appendix_Review_of_Image_Processing_Concepts.html">Review of Image Processing concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../prerequisites-driver.html">Install the NPU driver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../prerequisites-aie-license.html">Get an AIE license</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../prerequisites-wsl.html">Enable WSL</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">AMD Riallto</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+          <li><a href="../build.html">npu.build</a> &raquo;</li>
+      <li>npu.build.kernel</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for npu.build.kernel</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Copyright (C) 2023 Advanced Micro Devices, Inc. All rights reserved.</span>
+<span class="c1"># SPDX-License-Identifier: MIT</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">itertools</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">CppHeaderParser</span> <span class="kn">import</span> <span class="n">CppHeader</span>
+<span class="kn">from</span> <span class="nn">.kernelbuilder</span> <span class="kn">import</span> <span class="n">KernelObjectBuilder</span>
+<span class="kn">from</span> <span class="nn">.tracekernels</span> <span class="kn">import</span> <span class="n">kerneltracer</span>
+<span class="kn">from</span> <span class="nn">.kernelmeta</span> <span class="kn">import</span> <span class="n">KernelMeta</span>
+<span class="kn">from</span> <span class="nn">.buffers</span> <span class="kn">import</span> <span class="n">Buffer</span>
+<span class="kn">from</span> <span class="nn">.port</span> <span class="kn">import</span> <span class="n">BufferPort</span><span class="p">,</span> <span class="n">RTPPort</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Dict</span>
+<span class="kn">import</span> <span class="nn">re</span>
+
+
+<div class="viewcode-block" id="Kernel">
+<a class="viewcode-back" href="../../../npu.build.html#npu.build.kernel.Kernel">[docs]</a>
+<span class="k">class</span> <span class="nc">Kernel</span><span class="p">(</span><span class="n">KernelMeta</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;This class encapsulates a ComputeTile kernel C/C++ src code and methods to generate a compiled object - that compiled object </span>
+<span class="sd">    is used within MLIR to build the final xclbin application.  Additionally, the kernel is parsed for input and output ports and can </span>
+<span class="sd">    encapsulates a behavioral model to capture functional behavior and data shaping from input to output ports.  This metadata </span>
+<span class="sd">    for the kernel enables behavioral execution to verify correctness in Python and also tracing to build the final AppBuilder xclbin.   </span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    srccode : str</span>
+<span class="sd">        The C/C++ source code of the ComputeTile kernel.</span>
+<span class="sd">    srcfile : str</span>
+<span class="sd">        The C/C++ source file path.</span>
+<span class="sd">    kname : str</span>
+<span class="sd">        The name of this kernel instance.</span>
+<span class="sd">    behavioralfx : function</span>
+<span class="sd">        The behavioral function that emulates the C/C++ kernel&#39;s behavior.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">srccode</span> <span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">behavioralfx</span><span class="p">:</span><span class="n">Optional</span><span class="p">[</span><span class="n">Callable</span><span class="p">]</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">top_function</span><span class="p">:</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">requires_boilerplate</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return a new Kernel object.&quot;&quot;&quot;</span> 
+        <span class="k">if</span> <span class="n">srccode</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;.cpp&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">srccode</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;.cc&#39;</span><span class="p">):</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">srccode</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_srccode</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">srcfile</span> <span class="o">=</span> <span class="n">srccode</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_srccode</span> <span class="o">=</span> <span class="n">srccode</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">srcfile</span> <span class="o">=</span> <span class="kc">None</span> 
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_requires_boilerplate</span> <span class="o">=</span> <span class="n">requires_boilerplate</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_top_function</span> <span class="o">=</span> <span class="n">top_function</span>
+        <span class="n">kname</span><span class="p">,</span> <span class="n">_parsed_ports</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_main_function</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parse_code</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_top_function</span> <span class="o">=</span> <span class="n">kname</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">srccode</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">completed_srccode</span><span class="p">()</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">kname</span><span class="p">,</span> <span class="n">kname</span><span class="p">,</span> <span class="n">kname</span><span class="p">,</span> <span class="s2">&quot;CT&quot;</span><span class="p">,</span> <span class="n">ports</span><span class="o">=</span><span class="n">_parsed_ports</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">behavioralfx</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">behavioralfx</span> <span class="o">=</span> <span class="n">_default_behavioral_validate_bufferports</span> 
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">behavioralfx</span> <span class="o">=</span> <span class="n">behavioralfx</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">kb</span> <span class="o">=</span> <span class="n">KernelObjectBuilder</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ktype</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">srccode</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">srcfile</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_main_function_sanity_check</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_expose_ports</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">_expose_ports</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">-&gt;</span><span class="kc">None</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">ports</span><span class="p">:</span>
+            <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_parse_code</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Using CppHeader package, C++ code is parsed to discover ports and their types.&quot;&quot;&quot;</span>
+        <span class="n">parsedcpp</span> <span class="o">=</span> <span class="n">CppHeader</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_srccode</span><span class="p">,</span> <span class="n">argType</span><span class="o">=</span><span class="s1">&#39;string&#39;</span><span class="p">)</span>
+        <span class="n">allports</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parsecpp_to_ports</span><span class="p">(</span><span class="n">parsedcpp</span><span class="p">)</span>
+        <span class="n">functions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parse_functions</span><span class="p">(</span><span class="n">parsedcpp</span><span class="o">.</span><span class="n">functions</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_top_function</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">parsedname</span> <span class="o">=</span> <span class="n">parsedcpp</span><span class="o">.</span><span class="n">functions</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">parsedname</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_top_function</span>
+        <span class="k">return</span> <span class="n">parsedname</span><span class="p">,</span> <span class="n">allports</span><span class="p">,</span> <span class="n">functions</span><span class="p">[</span><span class="n">parsedname</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">_parse_functions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">functions_l</span><span class="p">:</span><span class="n">List</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">Dict</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Parse the functions list into a dict.&quot;&quot;&quot;</span>
+        <span class="n">f</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">funcname</span> <span class="ow">in</span> <span class="n">functions_l</span><span class="p">:</span>
+            <span class="n">e</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">e</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">funcname</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
+            <span class="n">e</span><span class="p">[</span><span class="s1">&#39;last&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">funcname</span> <span class="o">==</span> <span class="n">functions_l</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+            <span class="n">e</span><span class="p">[</span><span class="s1">&#39;fullsig&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">funcname</span><span class="p">[</span><span class="s1">&#39;debug&#39;</span><span class="p">]</span>
+            <span class="n">params</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">funcname</span><span class="p">[</span><span class="s1">&#39;parameters&#39;</span><span class="p">]:</span>
+                <span class="n">e_p</span> <span class="o">=</span> <span class="p">{}</span>
+                <span class="n">e_p</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
+                <span class="n">e_p</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span>
+                <span class="n">params</span><span class="p">[</span><span class="n">p</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">e_p</span>
+            <span class="n">e</span><span class="p">[</span><span class="s1">&#39;params&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">params</span>
+            <span class="n">e</span><span class="p">[</span><span class="s1">&#39;rtnType&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">funcname</span><span class="p">[</span><span class="s1">&#39;rtnType&#39;</span><span class="p">]</span>
+            <span class="n">f</span><span class="p">[</span><span class="n">funcname</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">e</span>
+        <span class="k">return</span> <span class="n">f</span>
+
+    <span class="k">def</span> <span class="nf">_main_function_sanity_check</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">-&gt;</span><span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_main_function</span><span class="p">[</span><span class="s1">&#39;rtnType&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;void&quot;</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The return type of the top_level function should be void not </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_main_function</span><span class="p">[</span><span class="s1">&#39;rtnType&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Kernel.display">
+<a class="viewcode-back" href="../../../npu.build.html#npu.build.kernel.Kernel.display">[docs]</a>
+    <span class="k">def</span> <span class="nf">display</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">-&gt;</span><span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Render the kernel code in a jupyter notebook.&quot;&quot;&quot;</span>
+        <span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">Code</span>
+        <span class="n">_code</span> <span class="o">=</span> <span class="n">Code</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_srccode</span><span class="p">,</span> <span class="n">language</span><span class="o">=</span><span class="s2">&quot;cpp&quot;</span><span class="p">)</span>
+        <span class="n">display</span><span class="p">(</span><span class="n">_code</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Kernel.completed_srccode">
+<a class="viewcode-back" href="../../../npu.build.html#npu.build.kernel.Kernel.completed_srccode">[docs]</a>
+    <span class="k">def</span> <span class="nf">completed_srccode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">-&gt;</span><span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;From the parsed information generate the source.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_requires_boilerplate</span><span class="p">:</span>
+            <span class="n">preamble</span><span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">#define NOCPP</span>
+<span class="s2">#include &lt;stdint.h&gt;</span>
+<span class="s2">#include &lt;stdio.h&gt;</span>
+<span class="s2">#include &lt;stdlib.h&gt;</span>
+<span class="s2">#define REL_WRITE 0</span>
+<span class="s2">#define REL_READ 1</span>
+<span class="s2">#include &lt;aie_api/aie.hpp&gt;</span>
+
+<span class="s2">        &quot;&quot;&quot;</span>
+            <span class="n">s</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">preamble</span><span class="si">}{</span><span class="bp">self</span><span class="o">.</span><span class="n">_srccode</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="n">sig</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_main_function</span><span class="p">[</span><span class="s1">&#39;fullsig&#39;</span><span class="p">]</span>
+            <span class="n">pattern</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;\s*&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="n">char</span><span class="p">)</span> <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">sig</span> <span class="k">if</span> <span class="n">char</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+            <span class="n">match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">match</span><span class="p">:</span>
+                <span class="n">start_index</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+                <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="p">[:</span><span class="n">start_index</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">extern &quot;C&quot; {</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="n">s</span><span class="p">[</span><span class="n">start_index</span><span class="p">:]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unable to find the function </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_top_function</span><span class="si">}</span><span class="s2"> in the src&quot;</span><span class="p">)</span>
+
+            <span class="c1"># Walk down the string until we get to the end of the function using a stack to track</span>
+            <span class="c1"># nested { }</span>
+            <span class="n">match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+            <span class="n">end_index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_find_matching_brackets</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">match</span><span class="o">.</span><span class="n">end</span><span class="p">()</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">s</span> <span class="o">=</span>  <span class="n">s</span><span class="p">[:</span><span class="n">end_index</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">} // extern end</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="n">s</span><span class="p">[</span><span class="n">end_index</span><span class="p">:]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">s</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_srccode</span><span class="si">}</span><span class="s2">&quot;</span>
+
+        <span class="k">return</span> <span class="n">s</span></div>
+
+
+    <span class="k">def</span> <span class="nf">_get_ptr_type_depth</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg</span><span class="p">)</span><span class="o">-&gt;</span><span class="nb">int</span><span class="p">:</span>
+        <span class="n">arg</span> <span class="o">=</span> <span class="n">arg</span><span class="o">.</span><span class="n">rstrip</span><span class="p">()</span>
+        <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="n">arg</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">i</span><span class="o">==</span><span class="s2">&quot;*&quot;</span><span class="p">:</span>
+                <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">break</span>
+        <span class="k">return</span> <span class="n">count</span>
+
+    <span class="k">def</span> <span class="nf">_find_matching_brackets</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">start_index</span><span class="p">:</span><span class="nb">int</span><span class="p">):</span>
+        <span class="n">stack</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">start_index</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;{&#39;</span><span class="p">:</span>
+                <span class="n">stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;}&#39;</span><span class="p">:</span>
+                <span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">stack</span><span class="p">)</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span>
+
+        <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unable to find closing brace for </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_main_function</span><span class="p">[</span><span class="s1">&#39;fullsig&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Kernel.to_cpp">
+<a class="viewcode-back" href="../../../npu.build.html#npu.build.kernel.Kernel.to_cpp">[docs]</a>
+    <span class="k">def</span> <span class="nf">to_cpp</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">-&gt;</span><span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; output source code to a .cpp file&quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1">.cpp&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+            <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">completed_srccode</span><span class="p">())</span></div>
+
+
+<div class="viewcode-block" id="Kernel.__call__">
+<a class="viewcode-back" href="../../../npu.build.html#npu.build.kernel.Kernel.__call__">[docs]</a>
+    <span class="nd">@kerneltracer</span>
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">behavioral_n_tracing</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Tracer through a ComputeTile kernel call</span>
+<span class="sd">        1. set port types to &quot;in&quot; or &quot;out&quot;</span>
+<span class="sd">        2. set input port sizes based on input array sizes</span>
+<span class="sd">        3. return tuple of output ports for use in subsequent tracing</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">behavioralfx</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Unable to trace Kernel I/O with no behavioral model for kernel </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>      
+
+        <span class="n">bufferargs</span> <span class="o">=</span> <span class="p">[</span><span class="n">a</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">args</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">BufferPort</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">Buffer</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)]</span>
+        <span class="n">rtpargs</span> <span class="o">=</span> <span class="p">[</span><span class="n">a</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">args</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="nb">int</span><span class="p">)]</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_validate_args</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">bufferargs</span><span class="p">,</span> <span class="n">rtpargs</span><span class="p">,</span> <span class="n">behavioral_n_tracing</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_set_arg_io_values</span><span class="p">(</span><span class="n">bufferargs</span><span class="p">,</span> <span class="n">rtpargs</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">behavioralfx</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+        <span class="n">output_buffers</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_outputs</span><span class="p">(</span><span class="n">behavioral_n_tracing</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">output_buffers</span></div>
+
+
+    <span class="k">def</span> <span class="nf">_validate_args</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">bufferargs</span><span class="p">,</span> <span class="n">rtpargs</span><span class="p">,</span> <span class="n">behavioral_n_tracing</span><span class="p">):</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">bufferargs</span> <span class="o">+</span> <span class="n">rtpargs</span><span class="p">):</span>
+            <span class="n">supported_argtypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">BufferPort</span><span class="p">,</span> <span class="n">Buffer</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Unable to parse some datatype(s) found in args: </span><span class="si">{</span><span class="n">args</span><span class="si">}</span><span class="s1"> ... currently supporting </span><span class="si">{</span><span class="n">supported_argtypes</span><span class="si">}</span><span class="s1"> datatypes&#39;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">bufferargs</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bufferports</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">IndexError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Kernel </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1"> called with </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">bufferargs</span><span class="p">)</span><span class="si">}</span><span class="s1">, expecting less than </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bufferports</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">behavioral_n_tracing</span> <span class="ow">is</span> <span class="kc">True</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">all</span><span class="p">([</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">bufferargs</span><span class="p">]):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Kernel </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1"> called with non-ndarray buffers while running a behavioral call&#39;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">inputbufferports</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">inputbufferports</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">bufferargs</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Kernel </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1"> called with </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">bufferargs</span><span class="p">)</span><span class="si">}</span><span class="s1"> buffer args, but previously called with </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">inputbufferports</span><span class="p">)</span><span class="si">}</span><span class="s1"> buffer args&#39;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">rtpargs</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rtpports</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Kernel </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1"> called with </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">rtpargs</span><span class="p">)</span><span class="si">}</span><span class="s1"> RTP args, but expecting </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rtpports</span><span class="p">)</span><span class="si">}</span><span class="s1"> RTP args&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_set_arg_io_values</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bufferargs</span><span class="p">,</span> <span class="n">rtpargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Map C/C++ arguments to BufferPorts and RTP ports.&#39;&#39;&#39;</span>
+        <span class="n">mapped_buffers</span> <span class="o">=</span> <span class="n">itertools</span><span class="o">.</span><span class="n">zip_longest</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bufferports</span><span class="p">,</span><span class="n">bufferargs</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">bufferport</span><span class="p">,</span> <span class="n">input_arg</span> <span class="ow">in</span> <span class="n">mapped_buffers</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">input_arg</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">bufferport</span><span class="o">.</span><span class="n">io</span> <span class="o">=</span> <span class="s1">&#39;in&#39;</span> 
+                <span class="n">bufferport</span><span class="o">.</span><span class="n">array</span> <span class="o">=</span> <span class="n">Buffer</span><span class="o">.</span><span class="n">to_ndarray</span><span class="p">(</span><span class="n">input_arg</span><span class="p">)</span>                
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">bufferport</span><span class="o">.</span><span class="n">io</span> <span class="o">=</span> <span class="s1">&#39;out&#39;</span>
+                <span class="n">bufferport</span><span class="o">.</span><span class="n">slices</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+
+        <span class="k">for</span> <span class="n">rtpport</span><span class="p">,</span> <span class="n">call_value</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rtpports</span><span class="p">,</span><span class="n">rtpargs</span><span class="p">):</span>
+            <span class="n">rtpport</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">call_value</span>
+
+
+<div class="viewcode-block" id="Kernel.create_outputs">
+<a class="viewcode-back" href="../../../npu.build.html#npu.build.kernel.Kernel.create_outputs">[docs]</a>
+    <span class="k">def</span> <span class="nf">create_outputs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">behavioral_n_tracing</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;From kernel call, produce the output value or tuple.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">behavioral_n_tracing</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">outputs</span> <span class="o">=</span> <span class="p">[</span><span class="n">Buffer</span><span class="o">.</span><span class="n">to_ndarray</span><span class="p">(</span><span class="n">op</span><span class="p">)</span> <span class="k">for</span> <span class="n">op</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">outputbufferports</span><span class="p">]</span> 
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">outputs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">outputbufferports</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">outputs</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">outputs</span></div>
+
+
+<div class="viewcode-block" id="Kernel.build">
+<a class="viewcode-back" href="../../../npu.build.html#npu.build.kernel.Kernel.build">[docs]</a>
+    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Build the kernel object file for linking into the complete application.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">kb</span><span class="o">.</span><span class="n">buildobjpath</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">kb</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">debug</span><span class="p">)</span></div>
+
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">objfile</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">build</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">kb</span><span class="o">.</span><span class="n">buildobjpath</span>
+    
+    <span class="k">def</span> <span class="nf">_parsecpp_to_ports</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parsedcpp</span><span class="p">):</span>
+        <span class="n">bufferports</span> <span class="o">=</span> <span class="p">[</span><span class="n">BufferPort</span><span class="p">(</span><span class="n">param</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">],</span> <span class="n">param</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">])</span> 
+                              <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">parsedcpp</span><span class="o">.</span><span class="n">functions</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s2">&quot;parameters&quot;</span><span class="p">]</span> 
+                              <span class="k">if</span> <span class="s1">&#39;*&#39;</span> <span class="ow">in</span> <span class="n">param</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="p">]</span>  
+              
+        <span class="n">rtpports</span> <span class="o">=</span> <span class="p">[</span><span class="n">RTPPort</span><span class="p">(</span><span class="n">param</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">],</span> <span class="n">param</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">],</span> <span class="n">c_dtype</span><span class="o">=</span><span class="n">param</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">])</span> 
+                              <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">parsedcpp</span><span class="o">.</span><span class="n">functions</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s2">&quot;parameters&quot;</span><span class="p">]</span> 
+                              <span class="k">if</span> <span class="s1">&#39;*&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">param</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="p">]</span>  
+
+        
+        <span class="k">return</span> <span class="n">bufferports</span> <span class="o">+</span> <span class="n">rtpports</span></div>
+
+    
+
+<span class="k">def</span> <span class="nf">_default_behavioral_validate_bufferports</span><span class="p">(</span><span class="n">invobj</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; A behavioural model that gives users guidance to build a behavorial model or</span>
+<span class="sd">        set array sizes before calling the kernel.&quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">invobj</span><span class="o">.</span><span class="n">ports</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">RTPPort</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">array</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Default behavioral model is being used but cannot determine shape for port </span><span class="si">{</span><span class="n">p</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> - </span><span class="se">\</span>
+<span class="s2">                                   please specify a behavioral function for this kernel or set the array sizes before </span><span class="se">\</span>
+<span class="s2">                                   using the kernel.  E.g. </span><span class="si">{</span><span class="n">p</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">.array = np.ndarray(...)&quot;</span><span class="p">)</span>
+
+</pre></div>
+
+           </div>
+          </div>
+          
+				  
+				  <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Advanced Micro Devices, Inc.
+      <span class="lastupdated">Last updated on December 15, 2023.
+      </span></p>
+  </div>
+
+
+
+										<div class="aem-Grid aem-Grid--16">
+											<div class="aem-GridColumn aem-GridColumn--xxxlarge--none aem-GridColumn--xsmall--16 aem-GridColumn--offset--xsmall--0 aem-GridColumn--xlarge--none aem-GridColumn--xxlarge--none aem-GridColumn--default--none aem-GridColumn--offset--large--1 aem-GridColumn--xlarge--12 aem-GridColumn--offset--default--0 aem-GridColumn--xxlarge--10 aem-GridColumn--offset--xlarge--2 aem-GridColumn--offset--xxlarge--3 aem-GridColumn--offset--xxxlarge--4 aem-GridColumn--xsmall--none aem-GridColumn--large--none aem-GridColumn aem-GridColumn--large--14 aem-GridColumn--xxxlarge--8 aem-GridColumn--default--16">
+												<div class="container-fluid sub-footer">
+
+													                    <div class="row">
+                        <div class="col-xs-24">
+                          <p><a target="_blank" href="https://www.amd.com/en/corporate/copyright">Terms and Conditions</a> | <a target="_blank" href="https://www.amd.com/en/corporate/privacy">Privacy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/cookies">Cookie Policy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/trademarks">Trademarks</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/statement-human-trafficking-forced-labor.pdf">Statement on Forced Labor</a> | <a target="_blank" href="https://www.amd.com/en/corporate/competition">Fair and Open Competition</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/amd-uk-tax-strategy.pdf">UK Tax Strategy</a> | <a target="_blank" href="https://docs.xilinx.com/v/u/9x6YvZKuWyhJId7y7RQQKA">Inclusive Terminology</a> | <a href="#cookiessettings" class="ot-sdk-show-settings">Cookies Settings</a></p>
+                        </div>
+                    </div>
+												</div>
+											</div>
+										</div>
+										
+</br>
+
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,224 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="svg" version="1.1" width="420" height="980" viewBox="0, 0, 420, 980">
+            <defs>
+                <marker id="ic_startarrow" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+                <polygon points="0 0, 4 2, 0 4" fill="black"/>
+                </marker>
+                <marker id="ic_endarrow" markerWidth="7" markerHeight="4" refX="0" refY="2" orient="auto" markerUnits="strokeWidth">
+                    <polygon points="0 0, 4 2, 0 4" fill="black"/>
+                </marker>
+
+                <marker id="red_startarrow" markerWidth="10" markerHeight="7" refX="0" refY="2" orient="auto">
+                <polygon points="0 2, 4 0, 4 4" fill="red"/>
+                </marker>
+                <marker id="red_endarrow" markerWidth="7" markerHeight="4" refX="4" refY="2" orient="auto" markerUnits="strokeWidth">
+                    <polygon points="0 0, 4 2, 0 4" fill="red"/>
+                </marker>
+
+                <marker id="startarrow" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+                <polygon points="0 0, 4 2, 0 4" fill="black"/>
+                </marker>
+                <marker id="endarrow" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto" markerUnits="strokeWidth">
+                    <polygon points="0 0, 4 2, 0 4" fill="black"/>
+                </marker>
+            </defs>
+            <style>                .ic_animations {                     opacity: 0.8;                 }            </style>
+            <g id="svg"><rect id="border" class="border" width="400" height="960" x="10.0" y="10.0" stroke="black" stroke-width="1" fill="white"/>
+<g> <rect id="aie_tile0" class="aie_tile" width="180" height="140" x="20" y="20" stroke="black" stroke-width="2" fill="#C2E9FF"/> </g>
+<g> <text id="text_aie_tile0" class="aie_tile_text" x="20" y="20" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="110.0" y="89.3" dy="1em" font-size="1"> </tspan></text></g>
+<g> <rect id="interconnect_box0" class="interconnect_box" width="40" height="40" x="30" y="30" stroke="black" stroke-width="1" fill="#DBBCBD"/> </g>
+<g> <text id="text_interconnect_box0" class="interconnect_box_text" x="30" y="30" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="50.0" y="49.3" dy="1em" font-size="1"> </tspan></text></g>
+<line id="ic_h_line0_0" class="interconnect" x1="38.0" y1="45.0" x2="58.0" y2="45.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+<line id="ic_h_line0_1" class="interconnect" x1="62.0" y1="55.0" x2="42.0" y2="55.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+<line id="ic_h_line0_2" class="interconnect" x1="45.0" y1="62.0" x2="45.0" y2="42.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+<line id="ic_h_line0_3" class="interconnect" x1="55.0" y1="38.0" x2="55.0" y2="58.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+<g> <rect id="aie_tile_container0" class="aie_tile_container" width="120" height="60.0" x="70" y="90.0" stroke="black" stroke-width="1" fill="#ffffff"/> </g>
+<g> <text id="text_aie_tile_container0" class="aie_tile_container_text" x="70" y="90.0" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="130.0" y="119.3" dy="1em" font-size="1"> </tspan></text></g>
+<g> <rect id="aie_box0" class="aie_box" width="46.0" height="46.0" x="77.0" y="97.0" stroke="black" stroke-width="1" fill="white"/> </g>
+<g> <text id="text_aie_box0" class="aie_box_text" x="77.0" y="97.0" fill="black" font-family="Arial, Helvetica, sans-serif"> <tspan x="94.5" y="105.6" dy="1em" font-size="12">AI </tspan><tspan x="80.5" y="117.6" dy="1em" font-size="12">Engine </tspan></text></g>
+<g> <rect id="memory_outline_0_8" x="137.0" y="97.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_1_8" x="142.75" y="97.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_2_8" x="148.5" y="97.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_3_8" x="154.25" y="97.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_4_8" x="160.0" y="97.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_5_8" x="165.75" y="97.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_6_8" x="171.5" y="97.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_7_8" x="177.25" y="97.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_0_8" x="137.0" y="97.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_1_8" x="142.75" y="97.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_2_8" x="148.5" y="97.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_3_8" x="154.25" y="97.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_4_8" x="160.0" y="97.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_5_8" x="165.75" y="97.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_6_8" x="171.5" y="97.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_7_8" x="177.25" y="97.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="local_memory_box0" class="local_memory_box" width="46.0" height="46.0" x="137.0" y="97.0" stroke="black" stroke-width="1" fill="None"/> </g>
+<g> <text id="text_local_memory_box0" class="local_memory_box_text" x="137.0" y="97.0" fill="black" font-family="Arial, Helvetica, sans-serif"> <tspan x="147.0" y="105.6" dy="1em" font-size="12">Data </tspan><tspan x="138.0" y="117.6" dy="1em" font-size="12">Memory </tspan></text></g>
+<g> <rect id="aie_tile1" class="aie_tile" width="180" height="140" x="20" y="180" stroke="black" stroke-width="2" fill="#C2E9FF"/> </g>
+<g> <text id="text_aie_tile1" class="aie_tile_text" x="20" y="180" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="110.0" y="249.3" dy="1em" font-size="1"> </tspan></text></g>
+<g> <rect id="interconnect_box1" class="interconnect_box" width="40" height="40" x="30" y="190" stroke="black" stroke-width="1" fill="#DBBCBD"/> </g>
+<g> <text id="text_interconnect_box1" class="interconnect_box_text" x="30" y="190" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="50.0" y="209.3" dy="1em" font-size="1"> </tspan></text></g>
+<line id="ic_h_line1_0" class="interconnect" x1="38.0" y1="205.0" x2="58.0" y2="205.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+<line id="ic_h_line1_1" class="interconnect" x1="62.0" y1="215.0" x2="42.0" y2="215.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+<line id="ic_h_line1_2" class="interconnect" x1="45.0" y1="222.0" x2="45.0" y2="202.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+<line id="ic_h_line1_3" class="interconnect" x1="55.0" y1="198.0" x2="55.0" y2="218.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+<g> <rect id="aie_tile_container1" class="aie_tile_container" width="120" height="60.0" x="70" y="250.0" stroke="black" stroke-width="1" fill="#ffffff"/> </g>
+<g> <text id="text_aie_tile_container1" class="aie_tile_container_text" x="70" y="250.0" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="130.0" y="279.3" dy="1em" font-size="1"> </tspan></text></g>
+<g> <rect id="aie_box1" class="aie_box" width="46.0" height="46.0" x="77.0" y="257.0" stroke="black" stroke-width="1" fill="white"/> </g>
+<g> <text id="text_aie_box1" class="aie_box_text" x="77.0" y="257.0" fill="black" font-family="Arial, Helvetica, sans-serif"> <tspan x="94.5" y="265.6" dy="1em" font-size="12">AI </tspan><tspan x="80.5" y="277.6" dy="1em" font-size="12">Engine </tspan></text></g>
+<g> <rect id="memory_outline_0_8" x="137.0" y="257.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_1_8" x="142.75" y="257.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_2_8" x="148.5" y="257.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_3_8" x="154.25" y="257.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_4_8" x="160.0" y="257.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_5_8" x="165.75" y="257.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_6_8" x="171.5" y="257.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_7_8" x="177.25" y="257.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_0_8" x="137.0" y="257.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_1_8" x="142.75" y="257.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_2_8" x="148.5" y="257.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_3_8" x="154.25" y="257.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_4_8" x="160.0" y="257.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_5_8" x="165.75" y="257.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_6_8" x="171.5" y="257.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_7_8" x="177.25" y="257.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="local_memory_box1" class="local_memory_box" width="46.0" height="46.0" x="137.0" y="257.0" stroke="black" stroke-width="1" fill="None"/> </g>
+<g> <text id="text_local_memory_box1" class="local_memory_box_text" x="137.0" y="257.0" fill="black" font-family="Arial, Helvetica, sans-serif"> <tspan x="147.0" y="265.6" dy="1em" font-size="12">Data </tspan><tspan x="138.0" y="277.6" dy="1em" font-size="12">Memory </tspan></text></g>
+<g> <rect id="aie_tile2" class="aie_tile" width="180" height="140" x="20" y="340" stroke="black" stroke-width="2" fill="#C2E9FF"/> </g>
+<g> <text id="text_aie_tile2" class="aie_tile_text" x="20" y="340" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="110.0" y="409.3" dy="1em" font-size="1"> </tspan></text></g>
+<g> <rect id="interconnect_box2" class="interconnect_box" width="40" height="40" x="30" y="350" stroke="black" stroke-width="1" fill="#DBBCBD"/> </g>
+<g> <text id="text_interconnect_box2" class="interconnect_box_text" x="30" y="350" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="50.0" y="369.3" dy="1em" font-size="1"> </tspan></text></g>
+<line id="ic_h_line2_0" class="interconnect" x1="38.0" y1="365.0" x2="58.0" y2="365.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+<line id="ic_h_line2_1" class="interconnect" x1="62.0" y1="375.0" x2="42.0" y2="375.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+<line id="ic_h_line2_2" class="interconnect" x1="45.0" y1="382.0" x2="45.0" y2="362.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+<line id="ic_h_line2_3" class="interconnect" x1="55.0" y1="358.0" x2="55.0" y2="378.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+<g> <rect id="aie_tile_container2" class="aie_tile_container" width="120" height="60.0" x="70" y="410.0" stroke="black" stroke-width="1" fill="#ffffff"/> </g>
+<g> <text id="text_aie_tile_container2" class="aie_tile_container_text" x="70" y="410.0" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="130.0" y="439.3" dy="1em" font-size="1"> </tspan></text></g>
+<g> <rect id="aie_box2" class="aie_box" width="46.0" height="46.0" x="77.0" y="417.0" stroke="black" stroke-width="1" fill="white"/> </g>
+<g> <text id="text_aie_box2" class="aie_box_text" x="77.0" y="417.0" fill="black" font-family="Arial, Helvetica, sans-serif"> <tspan x="94.5" y="425.6" dy="1em" font-size="12">AI </tspan><tspan x="80.5" y="437.6" dy="1em" font-size="12">Engine </tspan></text></g>
+<g> <rect id="memory_outline_0_8" x="137.0" y="417.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_1_8" x="142.75" y="417.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_2_8" x="148.5" y="417.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_3_8" x="154.25" y="417.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_4_8" x="160.0" y="417.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_5_8" x="165.75" y="417.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_6_8" x="171.5" y="417.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_7_8" x="177.25" y="417.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_0_8" x="137.0" y="417.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_1_8" x="142.75" y="417.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_2_8" x="148.5" y="417.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_3_8" x="154.25" y="417.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_4_8" x="160.0" y="417.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_5_8" x="165.75" y="417.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_6_8" x="171.5" y="417.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_7_8" x="177.25" y="417.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="local_memory_box2" class="local_memory_box" width="46.0" height="46.0" x="137.0" y="417.0" stroke="black" stroke-width="1" fill="None"/> </g>
+<g> <text id="text_local_memory_box2" class="local_memory_box_text" x="137.0" y="417.0" fill="black" font-family="Arial, Helvetica, sans-serif"> <tspan x="147.0" y="425.6" dy="1em" font-size="12">Data </tspan><tspan x="138.0" y="437.6" dy="1em" font-size="12">Memory </tspan></text></g>
+<g> <rect id="aie_tile3" class="aie_tile" width="180" height="140" x="20" y="500" stroke="black" stroke-width="2" fill="#C2E9FF"/> </g>
+<g> <text id="text_aie_tile3" class="aie_tile_text" x="20" y="500" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="110.0" y="569.3" dy="1em" font-size="1"> </tspan></text></g>
+<g> <rect id="interconnect_box3" class="interconnect_box" width="40" height="40" x="30" y="510" stroke="black" stroke-width="1" fill="#DBBCBD"/> </g>
+<g> <text id="text_interconnect_box3" class="interconnect_box_text" x="30" y="510" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="50.0" y="529.3" dy="1em" font-size="1"> </tspan></text></g>
+<line id="ic_h_line3_0" class="interconnect" x1="38.0" y1="525.0" x2="58.0" y2="525.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+<line id="ic_h_line3_1" class="interconnect" x1="62.0" y1="535.0" x2="42.0" y2="535.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+<line id="ic_h_line3_2" class="interconnect" x1="45.0" y1="542.0" x2="45.0" y2="522.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+<line id="ic_h_line3_3" class="interconnect" x1="55.0" y1="518.0" x2="55.0" y2="538.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+<g> <rect id="aie_tile_container3" class="aie_tile_container" width="120" height="60.0" x="70" y="570.0" stroke="black" stroke-width="1" fill="#ffffff"/> </g>
+<g> <text id="text_aie_tile_container3" class="aie_tile_container_text" x="70" y="570.0" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="130.0" y="599.3" dy="1em" font-size="1"> </tspan></text></g>
+<g> <rect id="aie_box3" class="aie_box" width="46.0" height="46.0" x="77.0" y="577.0" stroke="black" stroke-width="1" fill="white"/> </g>
+<g> <text id="text_aie_box3" class="aie_box_text" x="77.0" y="577.0" fill="black" font-family="Arial, Helvetica, sans-serif"> <tspan x="100.0" y="591.6" dy="1em" font-size="12"> </tspan></text></g>
+<g> <rect id="memory_outline_0_8" x="137.0" y="577.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_1_8" x="142.75" y="577.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_2_8" x="148.5" y="577.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_3_8" x="154.25" y="577.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_4_8" x="160.0" y="577.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_5_8" x="165.75" y="577.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_6_8" x="171.5" y="577.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_7_8" x="177.25" y="577.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_0_8" x="137.0" y="577.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_1_8" x="142.75" y="577.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_2_8" x="148.5" y="577.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_3_8" x="154.25" y="577.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_4_8" x="160.0" y="577.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_5_8" x="165.75" y="577.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_6_8" x="171.5" y="577.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_7_8" x="177.25" y="577.0" height="46.0" width="5.75" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="local_memory_box3" class="local_memory_box" width="46.0" height="46.0" x="137.0" y="577.0" stroke="black" stroke-width="1" fill="None"/> </g>
+<g> <text id="text_local_memory_box3" class="local_memory_box_text" x="137.0" y="577.0" fill="black" font-family="Arial, Helvetica, sans-serif"> <tspan x="160.0" y="591.6" dy="1em" font-size="12"> </tspan></text></g>
+<g> <rect id="mem_tile4" class="mem_tile" width="180" height="140" x="20" y="660" stroke="black" stroke-width="2" fill="#E0FFC2"/> </g>
+<g> <text id="text_mem_tile4" class="mem_tile_text" x="20" y="660" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="110.0" y="729.3" dy="1em" font-size="1"> </tspan></text></g>
+<g> <rect id="interconnect_box4" class="interconnect_box" width="40" height="40" x="30" y="670" stroke="black" stroke-width="1" fill="#DBBCBD"/> </g>
+<g> <text id="text_interconnect_box4" class="interconnect_box_text" x="30" y="670" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="50.0" y="689.3" dy="1em" font-size="1"> </tspan></text></g>
+<line id="ic_h_line4_0" class="interconnect" x1="38.0" y1="685.0" x2="58.0" y2="685.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+<line id="ic_h_line4_1" class="interconnect" x1="62.0" y1="695.0" x2="42.0" y2="695.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+<line id="ic_h_line4_2" class="interconnect" x1="45.0" y1="702.0" x2="45.0" y2="682.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+<line id="ic_h_line4_3" class="interconnect" x1="55.0" y1="678.0" x2="55.0" y2="698.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+<g> <rect id="mem_tile_container4" class="mem_tile_container" width="120" height="60.0" x="70" y="730.0" stroke="black" stroke-width="1" fill="#ffffff"/> </g>
+<g> <text id="text_mem_tile_container4" class="mem_tile_container_text" x="70" y="730.0" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="130.0" y="759.3" dy="1em" font-size="1"> </tspan></text></g>
+<g> <rect id="memory_outline_0_16" x="77.0" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_1_16" x="83.625" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_2_16" x="90.25" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_3_16" x="96.875" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_4_16" x="103.5" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_5_16" x="110.125" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_6_16" x="116.75" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_7_16" x="123.375" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_8_16" x="130.0" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_9_16" x="136.625" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_10_16" x="143.25" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_11_16" x="149.875" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_12_16" x="156.5" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_13_16" x="163.125" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_14_16" x="169.75" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_15_16" x="176.375" y="737.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="mem_tile_memory4" class="mem_tile_memory" width="106" height="46.0" x="77" y="737.0" stroke="black" stroke-width="1" fill="None"/> </g>
+<g> <text id="text_mem_tile_memory4" class="mem_tile_memory_text" x="77" y="737.0" fill="black" font-family="Arial, Helvetica, sans-serif"> <tspan x="94.0" y="744.4" dy="1em" font-size="13">Memory Tile </tspan><tspan x="93.0" y="757.4" dy="1em" font-size="13">Data movers </tspan></text></g>
+<g> <rect id="if_tile5" class="if_tile" width="180" height="140" x="20" y="820" stroke="black" stroke-width="2" fill="#E0C2FF"/> </g>
+<g> <text id="text_if_tile5" class="if_tile_text" x="20" y="820" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="110.0" y="889.3" dy="1em" font-size="1"> </tspan></text></g>
+<g> <rect id="interconnect_box5" class="interconnect_box" width="40" height="40" x="30" y="830" stroke="black" stroke-width="1" fill="#DBBCBD"/> </g>
+<g> <text id="text_interconnect_box5" class="interconnect_box_text" x="30" y="830" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="50.0" y="849.3" dy="1em" font-size="1"> </tspan></text></g>
+<line id="ic_h_line5_0" class="interconnect" x1="38.0" y1="845.0" x2="58.0" y2="845.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+<line id="ic_h_line5_1" class="interconnect" x1="62.0" y1="855.0" x2="42.0" y2="855.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+<line id="ic_h_line5_2" class="interconnect" x1="45.0" y1="862.0" x2="45.0" y2="842.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+<line id="ic_h_line5_3" class="interconnect" x1="55.0" y1="838.0" x2="55.0" y2="858.0" stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+<g> <rect id="if_tile_container5" class="if_tile_container" width="120" height="60.0" x="70" y="890.0" stroke="black" stroke-width="1" fill="#ffffff"/> </g>
+<g> <text id="text_if_tile_container5" class="if_tile_container_text" x="70" y="890.0" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="130.0" y="919.3" dy="1em" font-size="1"> </tspan></text></g>
+<g> <rect id="if_dmabox5" class="if_dmabox" width="106" height="46.0" x="77" y="897.0" stroke="black" stroke-width="" fill="white"/><animate attributeName="stroke-width" dur="0.5s" repeatCount="indefinite" values="0;                       2;0"/>
+ </g>
+<g> <text id="text_if_dmabox5" class="if_dmabox_text" x="77" y="897.0" fill="black" font-family="Arial, Helvetica, sans-serif"> <tspan x="92.0" y="904.4" dy="1em" font-size="13">Interface Tile </tspan><tspan x="93.0" y="917.4" dy="1em" font-size="13">Data movers </tspan></text></g>
+<line id="diagonal5" class="interconnect" x1="70" y1="870" x2="90.0" y2="890.0" stroke="red" stroke-width="1" fill="none"/>
+<path id="south_mem_connection5" stroke="black" stroke-width="1" fill="none" d="M 130.0, 950.0,                 l0, 30"/>
+<circle id="d_circle5" class="ic_animations" cx="90.0" cy="890.0" r="3" fill="none">            <animateMotion dur="2.0s" repeatCount="indefinite" begin="0s" path="M0, 0,                 L-20.0, -20.0,                "/>            <animate attributeName="fill" values="none;#C36D6D" dur="0.0001s" begin="0s" fill="freeze"/>            </circle>
+<circle id="d_circle5" class="ic_animations" cx="70" cy="870" r="3" fill="none">            <animateMotion dur="2.0s" repeatCount="indefinite" begin="0s" path="M0, 0,                 L20.0, 20.0,                "/>            <animate attributeName="fill" values="none;#C00000" dur="0.0001s" begin="0s" fill="freeze"/>            </circle>
+<circle id="mem_circle_east5" class="mem_animations" cx="0" cy="0" r="3" fill="none">                    <animateMotion dur="2.0s" repeatCount="indefinite" path="M 130.0, 980,                         l 0, -30                        " begin="0s"/>                    <animate attributeName="fill" values="none;#C36D6D" dur="0.0001s" begin="0s" fill="freeze"/>                    </circle>
+<circle id="mem_circle_east5" class="mem_animations" cx="0" cy="0" r="3" fill="none">                    <animateMotion dur="2.0s" repeatCount="indefinite" path="M 130.0, 950,                         l 0, 30                        " begin="0s"/>                    <animate attributeName="fill" values="none;#C00000" dur="0.0001s" begin="0s" fill="freeze"/>                    </circle>
+<line id="diagonal0" class="interconnect" x1="70" y1="70" x2="90.0" y2="90.0" stroke="red" stroke-width="1" fill="none"/>
+<line id="v_ic_connection0" class="interconnect" x1="50" y1="70" x2="50" y2="190" stroke="red" stroke-width="1" fill="none"/>
+<line id="diagonal1" class="interconnect" x1="70" y1="230" x2="90.0" y2="250.0" stroke="red" stroke-width="1" fill="none"/>
+<line id="v_ic_connection1" class="interconnect" x1="50" y1="230" x2="50" y2="350" stroke="red" stroke-width="1" fill="none"/>
+<line id="diagonal2" class="interconnect" x1="70" y1="390" x2="90.0" y2="410.0" stroke="red" stroke-width="1" fill="none"/>
+<line id="v_ic_connection2" class="interconnect" x1="50" y1="390" x2="50" y2="510" stroke="red" stroke-width="1" fill="none"/>
+<line id="diagonal3" class="interconnect" x1="70" y1="550" x2="90.0" y2="570.0" stroke="red" stroke-width="1" fill="none"/>
+<line id="v_ic_connection3" class="interconnect" x1="50" y1="550" x2="50" y2="670" stroke="red" stroke-width="1" fill="none"/>
+<line id="diagonal4" class="interconnect" x1="70" y1="710" x2="90.0" y2="730.0" stroke="red" stroke-width="1" fill="none"/>
+<line id="v_ic_connection4" class="interconnect" x1="50" y1="710" x2="50" y2="830" stroke="red" stroke-width="1" fill="none"/>
+<circle id="d_circle3" class="ic_animations" cx="70" cy="550" r="3" fill="none">            <animateMotion dur="2.0s" repeatCount="indefinite" begin="0s" path="M0, 0,                 L20.0, 20.0,                "/>            <animate attributeName="fill" values="none;#C36D6D" dur="0.0001s" begin="0s" fill="freeze"/>            </circle>
+<circle id="v_circle_north3" class="ic_animations" cx="50" cy="670" r="3" fill="none">            <animateMotion dur="2.0s" repeatCount="indefinite" begin="0s" path="M0, 0,                 L0, -120                "/>            <animate attributeName="fill" values="none;#C36D6D" dur="0.0001s" begin="0s" fill="freeze"/>            </circle>
+<circle id="d_circle3" class="ic_animations" cx="90.0" cy="570.0" r="3" fill="none">            <animateMotion dur="2.0s" repeatCount="indefinite" begin="0s" path="M0, 0,                 L-20.0, -20.0,                "/>            <animate attributeName="fill" values="none;#C00000" dur="0.0001s" begin="0s" fill="freeze"/>            </circle>
+<circle id="v_circle_south3" class="ic_animations" cx="50" cy="550" r="3" fill="none">            <animateMotion dur="2.0s" repeatCount="indefinite" begin="0s" path="M0, 0,                 L0, 120                "/>            <animate attributeName="fill" values="none;#C00000" dur="0.0001s" begin="0s" fill="freeze"/>            </circle>
+<circle id="v_circle_north4" class="ic_animations" cx="50" cy="830" r="3" fill="none">            <animateMotion dur="2.0s" repeatCount="indefinite" begin="0s" path="M0, 0,                 L0, -120                "/>            <animate attributeName="fill" values="none;#C36D6D" dur="0.0001s" begin="0s" fill="freeze"/>            </circle>
+<circle id="v_circle_south4" class="ic_animations" cx="50" cy="710" r="3" fill="none">            <animateMotion dur="2.0s" repeatCount="indefinite" begin="0s" path="M0, 0,                 L0, 120                "/>            <animate attributeName="fill" values="none;#C00000" dur="0.0001s" begin="0s" fill="freeze"/>            </circle>
+<path id="south_mem_connection0" class="mem_connections" stroke="blue" stroke-width="1" fill="none" d="M 160.0, 143.0,                 l0, 80.0,                l-30.0, 17.0,                l-30.0, 17.0"/>
+<path id="south_mem_connection0" class="mem_connections" stroke="blue" stroke-width="1" fill="none" d="M 100.0, 143.0,                 l0, 80.0,                l30.0, 17.0,                l30.0, 17.0"/>
+<line id="internal_mem_connection0" x1="123.0" y1="120.0" x2="137.0" y2="120.0" class="mem_connections" stroke="blue" stroke-width="1" fill="none"/>
+<path id="south_mem_connection1" class="mem_connections" stroke="blue" stroke-width="1" fill="none" d="M 160.0, 303.0,                 l0, 80.0,                l-30.0, 17.0,                l-30.0, 17.0"/>
+<path id="south_mem_connection1" class="mem_connections" stroke="blue" stroke-width="1" fill="none" d="M 100.0, 303.0,                 l0, 80.0,                l30.0, 17.0,                l30.0, 17.0"/>
+<line id="internal_mem_connection1" x1="123.0" y1="280.0" x2="137.0" y2="280.0" class="mem_connections" stroke="blue" stroke-width="1" fill="none"/>
+<path id="south_mem_connection2" class="mem_connections" stroke="blue" stroke-width="1" fill="none" d="M 160.0, 463.0,                 l0, 80.0,                l-30.0, 17.0,                l-30.0, 17.0"/>
+<path id="south_mem_connection2" class="mem_connections" stroke="blue" stroke-width="1" fill="none" d="M 100.0, 463.0,                 l0, 80.0,                l30.0, 17.0,                l30.0, 17.0"/>
+<line id="internal_mem_connection2" x1="123.0" y1="440.0" x2="137.0" y2="440.0" class="mem_connections" stroke="blue" stroke-width="1" fill="none"/>
+<linearGradient id="kernel_3" gradientTransform="rotate(90)"> <stop offset="0%" stop-color="white"/> <stop offset="10%" stop-color="#C00000"/> </linearGradient> <circle id="kernel_circle_3" class="kernel" cx="100.0" cy="600.0" r="20" fill="url(#kernel_3)" stroke="black" stroke-width="1" stroke-dasharray="5, 5"> <animateTransform attributeName="transform" type="rotate" from="0 100.0 600.0" to="360 100.0 600.0" dur="4s" begin="0s" repeatCount="indefinite"/> </circle> 
+<g transform="rotate(180, 139.875, 623.0) "> <rect id="buffer3_0" class="aie_tile_buffers" x="137.0" y="623.0" height="46.0" width="5.75" style="stroke:none; fill:none"> <animate attributeName="height" values="46.0;0;46.0" keyTimes="0;0.5;1" dur="4.0s" begin="0s" fill="freeze" repeatCount="indefinite"/> <animate attributeName="fill" values="none;#C36D6D;#C36D6D;#C36D6D;#C36D6D" keyTimes="0; 0.00001; 0.5; 0.50001; 1" dur="4.0s" begin="0s" fill="freeze" repeatCount="indefinite"/></rect></g>
+<g transform="rotate(180, 145.625, 623.0) "> <rect id="buffer3_1" class="aie_tile_buffers" x="142.75" y="623.0" height="46.0" width="5.75" style="stroke:none; fill:none"> <animate attributeName="height" values="0;46.0;0" keyTimes="0;0.5;1" dur="4.0s" begin="0s" fill="freeze" repeatCount="indefinite"/> <animate attributeName="fill" values="none;#C36D6D;#C36D6D;#C36D6D;#C36D6D" keyTimes="0; 0.00001; 0.5; 0.50001; 1" dur="4.0s" begin="0s" fill="freeze" repeatCount="indefinite"/></rect></g>
+<g transform="rotate(180, 151.375, 623.0) "> <rect id="buffer3_2" class="aie_tile_buffers" x="148.5" y="623.0" height="46.0" width="5.75" style="stroke:none; fill:none"> <animate attributeName="height" values="0;46.0;0" keyTimes="0;0.5;1" dur="4.0s" begin="0s" fill="freeze" repeatCount="indefinite"/> <animate attributeName="fill" values="none;#C00000;#C00000;#C00000;#C00000" keyTimes="0; 0.00001; 0.5; 0.50001; 1" dur="4.0s" begin="0s" fill="freeze" repeatCount="indefinite"/></rect></g>
+<g transform="rotate(180, 157.125, 623.0) "> <rect id="buffer3_3" class="aie_tile_buffers" x="154.25" y="623.0" height="46.0" width="5.75" style="stroke:none; fill:none"> <animate attributeName="height" values="46.0;0;46.0" keyTimes="0;0.5;1" dur="4.0s" begin="0s" fill="freeze" repeatCount="indefinite"/> <animate attributeName="fill" values="none;#C00000;#C00000;#C00000;#C00000" keyTimes="0; 0.00001; 0.5; 0.50001; 1" dur="4.0s" begin="0s" fill="freeze" repeatCount="indefinite"/></rect></g>
+<linearGradient id="kernel_1001" gradientTransform="rotate(90)"> <stop offset="0%" stop-color="white"/> <stop offset="10%" stop-color="#C00000"/> </linearGradient> <circle id="kernel_circle_1001" class="kernel" cx="260.0" cy="940.0" r="20" fill="url(#kernel_1001)" stroke="black" stroke-width="1" stroke-dasharray="5, 5"> <animateTransform attributeName="transform" type="rotate" from="0 260.0 940.0" to="360 260.0 940.0" dur="0s" begin="0s" repeatCount="indefinite"/> </circle> 
+<text class="text" x="288" y="945.0">mykernel_0</text></g></svg>

@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Building a complete Application &mdash; AMD Riallto 1.0 documentation</title><link rel="icon" type="image/x-icon" href="_static/favicon.ico">
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+      <link rel="stylesheet" href="_static/nbsphinx-code-cells.css" type="text/css" />
+      <link rel="stylesheet" href="_static/./custom.css" type="text/css" />
+      <link rel="stylesheet" href="_static/./custom_page_width.css" type="text/css" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v3.0.0-rc.17/dist/cookieconsent.css">
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/documentation_options.js?v=2882ecd3"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="_static/copybutton.js?v=f281be69"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/jquery.js"></script>
+    <script src="_static/cookie-consent.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Using Memory Tiles in your Application" href="4_7_using_the_memtile_in_your_applications.html" />
+    <link rel="prev" title="Describing an Application" href="4_5_describe_an_application.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-5RHQV7" height="0" width="0" style="display:none;visibility:hidden" class="optanon-category-C0002"></iframe></noscript>
+<!-- End Google Tag Manager --> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+            <a href="index.html" class="icon icon-home"> AMD Riallto
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Home</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Riallto overview</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="1_0_Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install-riallto.html">Install Riallto</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ryzenai_video_overview.html">Riallto Video Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1_1_ryzenai.html">Ryzen AI Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_1_MS_Windows_Studio_Effects.html">Windows Studio Effects</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">NPU Architecture examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="3_1_Color_threshold_example.html">Loading your first example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_2_Ryzenai_capabilities.html">Understanding columns and tiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_3_Scaled_color_threshold_example.html">Scaling applications to multiple compute tiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_4_Edge_detect_example.html">Optimizing data movement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_5_Color_detect_example.html">Multicasting and multiple kernels per tile</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Building applications</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="4_1_software_framework.html">Introduction to the Riallto software framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_2_write_your_kernel.html">Write your first kernel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_3_kernels_with_runtime_parameters.html">Using Run Time Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_4_threshold_kernel_with_vector_ops.html">How to use the vector processor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_5_describe_an_application.html">Describing an application</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Building a complete application</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Goals">Goals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#References">References</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Library-of-Optimized-Kernels">Library of Optimized Kernels</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Interpreting-the-metadata">Interpreting the metadata</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Exploring-metadata-for-input-and-output-buffers">Exploring metadata for input and output buffers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#Create-your-First-Callgraph">Create your First Callgraph</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Create-an-instance-of-SimpleApplication">Create an instance of <code class="docutils literal notranslate"><span class="pre">SimpleApplication</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Tracing-our-application-to-schedule-data-flow">Tracing our application to schedule data flow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Riallto-build-flow">Riallto build flow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Trace-the-callgraph">Trace the <code class="docutils literal notranslate"><span class="pre">callgraph</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Instantiate-the-kernel">Instantiate the kernel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Add-a-loop-to-the-callgraph">Add a loop to the callgraph</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Add-the-kernel-call">Add the kernel call</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Visualize-the-application">Visualize the application</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Compute-tile-locations-and-the-tloc-parameter">Compute tile locations and the <code class="docutils literal notranslate"><span class="pre">tloc</span></code> parameter</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Specify-the-location-for-a-compute-tile">Specify the location for a compute tile</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Write-the-output">Write the output</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Build-and-test-the-application">Build and test the application</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Run-the-application">Run the application</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#1.-Get-an-input-image">1. Get an input image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#2.-Call-the-NPU-device">2. Call the NPU device</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#3.-Show-the-output-image">3. Show the output image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#4.-Cleanup">4. Cleanup</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#Exercise-for-the-Reader:">Exercise for the Reader:</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Define-your-application">Define your application</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Run-your-custom-application">Run your custom application</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#Next-Steps">Next Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="4_7_using_the_memtile_in_your_applications.html">Using memory tiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_8_build_a_colorDetect_application.html">Reusing software kernels</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Ryzen AI Machine Learning</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="5_1_pytorch_onnx_inference.html">Inference with PyTorch and ONNX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5_2_pytorch_onnx_re-train.html">Re-training with PyTorch and ONNX</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python Package</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">npu</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Glossary</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Glossary.html">Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Appendix_Review_of_Image_Processing_Concepts.html">Review of Image Processing concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="prerequisites-driver.html">Install the NPU driver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="prerequisites-aie-license.html">Get an AIE license</a></li>
+<li class="toctree-l1"><a class="reference internal" href="prerequisites-wsl.html">Enable WSL</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">AMD Riallto</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Building a complete Application</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Building-a-complete-Application">
+<h1>Building a complete Application<a class="headerlink" href="#Building-a-complete-Application" title="Link to this heading">¶</a></h1>
+<section id="Goals">
+<h2>Goals<a class="headerlink" href="#Goals" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Explore the libraries of kernels available in this software framework</p></li>
+<li><p>Learn about kernel metadata</p></li>
+<li><p>Construct your first NPU graph using Riallto Python APIs</p></li>
+<li><p>Run the application you built on your Ryzen AI NPU</p></li>
+</ul>
+</section>
+<section id="References">
+<h2>References<a class="headerlink" href="#References" title="Link to this heading">¶</a></h2>
+<p><a class="reference external" href="https://mlir.llvm.org/">Multi-Level IR Compiler Framework (MLIR)</a></p>
+<p><a class="reference external" href="https://github.com/Xilinx/mlir-aie">MLIR-AIE</a></p>
+<hr class="docutils" />
+</section>
+<section id="Library-of-Optimized-Kernels">
+<h2>Library of Optimized Kernels<a class="headerlink" href="#Library-of-Optimized-Kernels" title="Link to this heading">¶</a></h2>
+<p>A library of optimized example kernels is available at <code class="docutils literal notranslate"><span class="pre">npu.lib</span></code>. Run the following cell to find out which kernels are available:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">npu.utils</span> <span class="kn">import</span> <span class="n">aiekernels</span>
+
+<span class="n">aiekernels</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&#39;AddWeighted&#39;,
+ &#39;AddWeightedScalar&#39;,
+ &#39;BitwiseAnd&#39;,
+ &#39;BitwiseAndScalar&#39;,
+ &#39;BitwiseOr&#39;,
+ &#39;BitwiseOrScalar&#39;,
+ &#39;Filter2d&#39;,
+ &#39;Filter2dScalar&#39;,
+ &#39;Gray2Rgba&#39;,
+ &#39;Gray2RgbaScalar&#39;,
+ &#39;Inverse&#39;,
+ &#39;Median&#39;,
+ &#39;MedianScalar&#39;,
+ &#39;Plus1&#39;,
+ &#39;PlusN&#39;,
+ &#39;Rgba2Gray&#39;,
+ &#39;Rgba2GrayScalar&#39;,
+ &#39;Rgba2Hue&#39;,
+ &#39;Rgba2HueScalar&#39;,
+ &#39;RgbaInverse&#39;,
+ &#39;RgbaRtpThres&#39;,
+ &#39;ThresholdGrayscale&#39;,
+ &#39;ThresholdRgba&#39;]
+</pre></div></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">AddWeighted</span></code></p>
+<ul>
+<li><p>vectorized implementation of <a class="reference external" href="https://docs.opencv.org/4.x/d2/de8/group__core__array.html#gafafb2513349db3bcff51f54ee5592a19">cv2.addWeighted()</a></p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BitwiseAnd</span></code></p>
+<ul>
+<li><p>vectorized implementation of <a class="reference external" href="https://docs.opencv.org/4.x/d2/de8/group__core__array.html#ga60b4d04b251ba5eb1392c34425497e14">cv2.bitwise_and()</a></p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BitwiseOr</span></code></p>
+<ul>
+<li><p>vectorized implementation of <a class="reference external" href="https://docs.opencv.org/4.x/d2/de8/group__core__array.html#gab85523db362a4e26ff0c703793a719b4">cv2.bitwise_and()</a></p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Gray2Rgba</span></code></p>
+<ul>
+<li><p>vectorized implementation of <a class="reference external" href="https://docs.opencv.org/4.x/d8/d01/group__imgproc__color__conversions.html#ga397ae87e1288a81d2363b61574eb8cab">cv2.cvtColor(…, cv.CV_GRAY2RGBA)</a></p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Inverse</span></code></p>
+<ul>
+<li><p>vectorized implementation of creating the negative of a grayscale image</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Rgba2Gray</span></code></p>
+<ul>
+<li><p>vectorized implementation of <a class="reference external" href="https://docs.opencv.org/4.x/d8/d01/group__imgproc__color__conversions.html#ga397ae87e1288a81d2363b61574eb8cab">cv2.cvtColor(…, cv.CV_RGBA2GRAY)</a></p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RgbaInverse</span></code></p>
+<ul>
+<li><p>vectorized implementation of creating the negative of an RGBA image</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Rgba2Hue</span></code></p>
+<ul>
+<li><p>vectorized implementation of <a class="reference external" href="https://docs.opencv.org/4.x/d8/d01/group__imgproc__color__conversions.html#ga397ae87e1288a81d2363b61574eb8cab">cv2.cvtColor(…, cv.CV_RGBA2HSV)</a></p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RgbaRtpThres</span></code></p>
+<ul>
+<li><p>vectorized implementation of <a class="reference external" href="https://docs.opencv.org/4.x/d7/d1b/group__imgproc__misc.html#gae8a4a146d1ca78c626a53577199e9c57">cv2.threshold(…)</a> only for binary threshold</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ThresholdGrayscale</span></code></p>
+<ul>
+<li><p>vectorized implementation of <a class="reference external" href="https://docs.opencv.org/4.x/d7/d1b/group__imgproc__misc.html#gae8a4a146d1ca78c626a53577199e9c57">cv2.threshold(…)</a></p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ThresholdRgba</span></code></p>
+<ul>
+<li><p>vectorized implementation of <a class="reference external" href="https://docs.opencv.org/4.x/d7/d1b/group__imgproc__misc.html#gae8a4a146d1ca78c626a53577199e9c57">cv2.threshold(…)</a> for an RGBA image</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Filter2d</span></code></p>
+<ul>
+<li><p>vectorized implementation of <a class="reference external" href="https://docs.opencv.org/4.x/d4/d86/group__imgproc__filter.html#ga27c049795ce870216ddfb366086b5a04">cv2.filter2D(…)</a></p></li>
+</ul>
+</li>
+</ul>
+<p>You will also see that some kernels have a scalar implementation.</p>
+<p>Run the following cell to check the vectorized code of one the kernel <code class="docutils literal notranslate"><span class="pre">RgbaRtpThres</span></code>:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">npu</span>
+
+<span class="n">threshold</span> <span class="o">=</span> <span class="n">npu</span><span class="o">.</span><span class="n">lib</span><span class="o">.</span><span class="n">RgbaRtpThres</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">threshold</span><span class="o">.</span><span class="n">srccode</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+// Copyright 2023 Advanced Micro Devices, Inc.
+// SPDX-License-Identifier: MIT
+
+#include &lt;stdint.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;aie_api/aie.hpp&gt;
+
+extern &#34;C&#34; {
+
+void rgba_rtp_thresh(uint8_t *in_buffer, uint8_t* out_buffer, uint32_t nbytes, uint8_t r_thresh, uint8_t g_thresh, uint8_t b_thresh) {
+    uint8_t pixel_rtps[4];
+    pixel_rtps[0] = r_thresh;
+    pixel_rtps[1] = g_thresh;
+    pixel_rtps[2] = b_thresh;
+    pixel_rtps[3] = 0;
+
+    ::aie::vector&lt;uint8_t, 64&gt; t_vec = ::aie::broadcast&lt;uint32_t, 16&gt;(*(uint32_t*)pixel_rtps).cast_to&lt;uint8_t&gt;();
+    auto sat_vec = ::aie::broadcast&lt;uint8_t, 64&gt;(255);
+    auto zero_vec = ::aie::zeros&lt;uint8_t, 64&gt;();
+
+    uint16_t loop_count = (nbytes) &gt;&gt; 6;
+    for(int j=0; j&lt; loop_count; j++){
+        auto i_buf = ::aie::load_v&lt;64&gt;(in_buffer);
+        auto lt_mask = ::aie::lt(i_buf, t_vec);
+        auto o_buf = ::aie::select(zero_vec, sat_vec, lt_mask);
+        ::aie::store_v(out_buffer, o_buf);
+
+        in_buffer += 64;
+        out_buffer += 64;
+    }
+}
+
+} // extern C
+
+</pre></div></div>
+</div>
+<p>Let us examine the kernel metadata. Execute the following cell to display the metadata for the kernel that we just defined:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">threshold</span><span class="o">.</span><span class="n">metadata</span>
+</pre></div>
+</div>
+</div>
+<section id="Interpreting-the-metadata">
+<h3>Interpreting the metadata<a class="headerlink" href="#Interpreting-the-metadata" title="Link to this heading">¶</a></h3>
+<p>At the top level of this metadata, we should see the following fields: * <strong>rgba_rtp_thresh</strong>: the root of our metadata tree * <strong>name</strong> * a unique name for this kernel instance, for example, <code class="docutils literal notranslate"><span class="pre">rgba_rtp_thresh_0</span></code> * <strong>tloc</strong> * tile location: the location on the array this tile is mapped to * <strong>ttype</strong> * tile type: the type of tile in the array into which the kernel must be placed. In this case, this will become compute tile (CT) later * <strong>buffers</strong> * a set of buffers for this kernel *
+<strong>parameters</strong> * a set of parameters for this kernel</p>
+<p>We have two sets <strong>buffers</strong>, and <strong>parameters</strong> in our kernel metadata. The general rule is that any kernel function argument of type pointer, such as <code class="docutils literal notranslate"><span class="pre">uint8_t</span> <span class="pre">*</span></code> is interpreted as a pointer to a buffer. Any argument with a non-pointer type, such as <code class="docutils literal notranslate"><span class="pre">uint32_t</span></code> is classified as a “regular” parameter.</p>
+<p>You may have noticed that the <strong>tloc</strong> field says <code class="docutils literal notranslate"><span class="pre">null</span></code>. It is <code class="docutils literal notranslate"><span class="pre">null</span></code> because this kernel has not yet been assigned to a compute tile in the array. The most common way for a kernel to get a location is to use it within an <code class="docutils literal notranslate"><span class="pre">AppBuilder</span></code> class. The <code class="docutils literal notranslate"><span class="pre">AppBuilder</span></code> will then place the kernel on a tile assigning this metadata.</p>
+<p>Alternatively, a user can specify a location up front. Then when the kernel gets used with the <code class="docutils literal notranslate"><span class="pre">AppBuilder</span></code>, the location becomes a constraint for that kernel. We will explore explicitly setting the <strong>tloc</strong> of a kernel later.</p>
+<section id="Exploring-metadata-for-input-and-output-buffers">
+<h4>Exploring metadata for input and output buffers<a class="headerlink" href="#Exploring-metadata-for-input-and-output-buffers" title="Link to this heading">¶</a></h4>
+<p>In our <code class="docutils literal notranslate"><span class="pre">threshold</span></code> kernel code, we pass two pointers, <code class="docutils literal notranslate"><span class="pre">in_buffer</span></code> and <code class="docutils literal notranslate"><span class="pre">out_buffer</span></code>. If we expand the <strong>buffers</strong> item in the metadata, we can see the corresponding entries for <code class="docutils literal notranslate"><span class="pre">in_buffer</span></code> and <code class="docutils literal notranslate"><span class="pre">out_buffer</span></code>. Expanding the buffer items, reveals the following fields for each buffer:</p>
+<ul class="simple">
+<li><p><strong>c_dtype</strong></p>
+<ul>
+<li><p>the data type in the C++ kernel code for this buffer</p></li>
+</ul>
+</li>
+<li><p><strong>direction</strong></p>
+<ul>
+<li><p>the direction of the buffer. If data is pushed into this buffer, it is an input. When the kernel writes data into the buffer, which will be pulled when the kernel completes, it is an output.</p></li>
+</ul>
+</li>
+<li><p><strong>shape</strong></p>
+<ul>
+<li><p>the shape of this buffer, in the <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.shape.html">numpy shape format</a>. This defines the dimensions of the array.</p></li>
+</ul>
+</li>
+<li><p><strong>dtype</strong></p>
+<ul>
+<li><p>the dtype of this buffer, in the <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.dtype.html">numpy dtype format</a>. The <em>dtype</em> describes how the bytes in a memory block should be interpreted.</p></li>
+</ul>
+</li>
+</ul>
+<p>The <code class="docutils literal notranslate"><span class="pre">c_dtype</span></code> is how the c application views the memory buffer. The <code class="docutils literal notranslate"><span class="pre">dtype</span></code> is how the data is represented in Python. These views could be the similar, for example, the <code class="docutils literal notranslate"><span class="pre">uint8_t</span></code> C type is similar to the uint8 Python type. Alternatively, the types can be different. For example, the Python dtype could be <code class="docutils literal notranslate"><span class="pre">uint32</span></code> viewing grouping 4x 8-bit values together if this is more convenient for the Python application. The standard C and Python rules apply if you need to cast these types within your
+C code or Python code.</p>
+<p>You may have noticed that the direction, shape, and dtype fields all null for every buffer. To understand why, we are going to have to look at our <strong>AppBuilder</strong> class.</p>
+<hr class="docutils" />
+</section>
+</section>
+</section>
+<section id="Create-your-First-Callgraph">
+<h2>Create your First Callgraph<a class="headerlink" href="#Create-your-First-Callgraph" title="Link to this heading">¶</a></h2>
+<p>In the previous examples we used a pre-defined graph template which defined the data movement for our applications. This allowed us to focus on the software kernels. As a reminder, the <code class="docutils literal notranslate"><span class="pre">RGB720PBuilder</span></code> is designed to handle 720p RGBA images and it uses a single interface tile and a single compute tile. We will look next at how to create a <code class="docutils literal notranslate"><span class="pre">callgraph</span></code> that replicates the functionality of <code class="docutils literal notranslate"><span class="pre">RGB720PBuilder</span></code> using the Riallto Python APIs.</p>
+<p>We are going to start simple and rebuild the two graph templates that we used in the previous notebook examples, consisting of one interface tile connected directly to a single compute tile.</p>
+<p>Start by making a new Python class <code class="docutils literal notranslate"><span class="pre">SimpleApplication</span></code> that inherits from the <code class="docutils literal notranslate"><span class="pre">AppBuilder</span></code> class.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">npu.build.appbuilder</span> <span class="kn">import</span> <span class="n">AppBuilder</span>
+
+
+<span class="k">class</span> <span class="nc">SimpleApplication</span><span class="p">(</span><span class="n">AppBuilder</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">callgraph</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x_in</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">x_out</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">pass</span>
+</pre></div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">SimpleApplication</span></code> has two methods:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">__init__</span></code></p>
+<ul>
+<li><p>which calls the <code class="docutils literal notranslate"><span class="pre">AppBuilder</span></code> initialization method</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">callgraph</span></code></p>
+<ul>
+<li><p>where we will specify how data flows thought the kernels</p></li>
+</ul>
+</li>
+</ul>
+<p>Notice how the <code class="docutils literal notranslate"><span class="pre">callgraph</span></code> method has two input parameters called <code class="docutils literal notranslate"><span class="pre">x_in</span></code> and <code class="docutils literal notranslate"><span class="pre">x_out</span></code>. These parameters are our application’s external inputs and outputs. We use them to exchange data between the Python code running on the x86 host and the application running on the NPU.</p>
+<p><code class="docutils literal notranslate"><span class="pre">x_in</span></code> and <code class="docutils literal notranslate"><span class="pre">x_out</span></code> are declared as <code class="docutils literal notranslate"><span class="pre">numpy</span></code> arrays which have dimension and shape. In the <code class="docutils literal notranslate"><span class="pre">callgraph</span></code> method, apart from defining the data movement between kernels, we can index and slice these arrays to partition the data into chunks that will be sequenced through our application.</p>
+<p>To mimic <code class="docutils literal notranslate"><span class="pre">RGB720pBuilder</span></code>, we define <code class="docutils literal notranslate"><span class="pre">x_in</span></code> for our input image and <code class="docutils literal notranslate"><span class="pre">x_out</span></code> for our output image. Other applications can have more buffers.</p>
+<p>Currently, the callgraph is empty. We will now proceed to populate it to replicate the functionality of <code class="docutils literal notranslate"><span class="pre">RGB720pBuilder</span></code>.</p>
+<div class="alert alert-info" role="info"><p>The <code class="docutils literal notranslate"><span class="pre">callgraph</span></code> method currently supports up to two input numpy arrays and up to two output numpy arrays.</p>
+</div><section id="Create-an-instance-of-SimpleApplication">
+<h3>Create an instance of <code class="docutils literal notranslate"><span class="pre">SimpleApplication</span></code><a class="headerlink" href="#Create-an-instance-of-SimpleApplication" title="Link to this heading">¶</a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">app_builder</span> <span class="o">=</span> <span class="n">SimpleApplication</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Tracing-our-application-to-schedule-data-flow">
+<h3>Tracing our application to schedule data flow<a class="headerlink" href="#Tracing-our-application-to-schedule-data-flow" title="Link to this heading">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">callgraph</span></code> is where the user specifies, at a high level, the arrangement of kernels and defines the data flowing through them. The <code class="docutils literal notranslate"><span class="pre">callgraph</span></code> generates an abstract internal representation of our design, which is then transformed into code and compiled into something that can be used to configure the NPU. The final outputs are the application binaries we can use to configure and run the application on the NPU.</p>
+</section>
+<section id="Riallto-build-flow">
+<h3>Riallto build flow<a class="headerlink" href="#Riallto-build-flow" title="Link to this heading">¶</a></h3>
+<p>The diagram below shows an overview of the Riallto build flow:</p>
+<center><p><img alt="0972b532f45e4b128a06f865c6fb1f18" src="_images/rough_toolflow.png" /></p>
+</center><center><p>Riallto compilation flow</p>
+</center><ol class="arabic simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">callgraph</span></code> and input and output <code class="docutils literal notranslate"><span class="pre">numpy</span></code> arrays are fed into the application tracer. This application tracer then runs the <code class="docutils literal notranslate"><span class="pre">callgraph</span></code> against the input and output <code class="docutils literal notranslate"><span class="pre">numpy</span></code> arrays, tracking how the arrays are partitioned. It also follows how data flows through the kernels and how the shape of the data is transformed as it passes through each kernel. Each kernel has an optional behavioral model that is executed while the <code class="docutils literal notranslate"><span class="pre">callgraph</span></code> is running, allowing for a behavioral simulation
+of the design.</p></li>
+<li><p>Once the <code class="docutils literal notranslate"><span class="pre">callgraph</span></code> has returned, it produces an internal abstract representation of how kernels are connected and the data schedule as it flows through these kernels and connections.</p></li>
+<li><p>At this stage, it is possible to introspect the design. The metadata of this abstract representation can be inspected to see how the kernels are placed, how they are connected, and how data flows through the design. It is also possible to visualize the application and how it is placed on a column of the array.</p></li>
+<li><p>The <em>codegen</em> stage takes the abstract representation for the application graph and transforms it into MLIR-AIE for compilation. <a class="reference external" href="https://mlir.llvm.org/">Multi-Level IR Compiler Framework (MLIR)</a> is a very popular project for <em>building reusable and extensible compiler infrastructure</em>. <a class="reference external" href="https://github.com/Xilinx/mlir-aie">MLIR-AIE</a> is a software toolchain that generates MLIR <em>Intermediate Code</em> that describes the NPU configuration and data movement for the application. If you are
+interested, you can view this intermediate code, but you do not need to use it directly or understand the generated code. You will only need to use the Riallto Python APIs to generate a callgraph, and C++ code to write software kernels.</p></li>
+<li><p>The last step is to compile the code for the software kernel(s) and the graph to generate the application binaries. We say binaries (plural) as each AI Engine used in the NPU will have a separate binary, along with the graph for the NPU. All of the binaries will be included in a single binary container file the XCLBIN (.xclbin file extension).</p></li>
+</ol>
+</section>
+<section id="Trace-the-callgraph">
+<h3>Trace the <code class="docutils literal notranslate"><span class="pre">callgraph</span></code><a class="headerlink" href="#Trace-the-callgraph" title="Link to this heading">¶</a></h3>
+<p>Use app_builder to trace the callgraph</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">x_in</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">720</span><span class="p">,</span><span class="mi">1280</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+<span class="n">x_out</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">720</span><span class="p">,</span><span class="mi">1280</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+<span class="n">app_builder</span><span class="p">(</span><span class="n">x_in</span><span class="p">,</span> <span class="n">x_out</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="alert alert-info" role="info"><p>Now we have a stub for our application class with an empty <code class="docutils literal notranslate"><span class="pre">callgraph</span></code>.</p>
+</div></section>
+<section id="Instantiate-the-kernel">
+<h3>Instantiate the kernel<a class="headerlink" href="#Instantiate-the-kernel" title="Link to this heading">¶</a></h3>
+<p>Now we will extend our <code class="docutils literal notranslate"><span class="pre">SimpleApplication</span></code> class so that it can be initialized with a kernel object. Notice that the kernel will be passed to the <code class="docutils literal notranslate"><span class="pre">SimpleApplication</span></code> class when an instance is created.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">npu.build.kernel</span> <span class="kn">import</span> <span class="n">Kernel</span>
+
+<span class="k">class</span> <span class="nc">SimpleApplication</span><span class="p">(</span><span class="n">AppBuilder</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">kernel</span><span class="p">:</span><span class="n">Kernel</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">kernel</span> <span class="o">=</span> <span class="n">kernel</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">callgraph</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x_in</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">x_out</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">pass</span>
+</pre></div>
+</div>
+</div>
+<p>With our kernel included we are ready to define our <code class="docutils literal notranslate"><span class="pre">callgraph</span></code>.</p>
+</section>
+<section id="Add-a-loop-to-the-callgraph">
+<h3>Add a loop to the callgraph<a class="headerlink" href="#Add-a-loop-to-the-callgraph" title="Link to this heading">¶</a></h3>
+<p>In our example application from the previous notebooks, we were passing in a row of a 720p image each kernel call. This means that we want to iterate over each row of the input image.</p>
+<p>We will create a <code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">loop</span></code> to iterate over the rows of our input image:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">SimpleApplication</span><span class="p">(</span><span class="n">AppBuilder</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">kernel</span><span class="p">:</span><span class="n">Kernel</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">kernel</span> <span class="o">=</span> <span class="n">kernel</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">callgraph</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x_in</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">x_out</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">rows</span> <span class="o">=</span> <span class="n">x_in</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">rows</span><span class="p">):</span>
+            <span class="k">pass</span>
+</pre></div>
+</div>
+</div>
+<p>The following code is used to iterate over the number of rows in the input image:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">rows</span> <span class="o">=</span> <span class="n">x_in</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">rows</span><span class="p">):</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">Note that: <code class="docutils literal notranslate"><span class="pre">x_in.shape</span></code> returns (720, 1280, 4) so that <code class="docutils literal notranslate"><span class="pre">x_in.shape[0]</span></code> returns 720 which is the number of rows.</div>
+<div class="line">We will shortly use <code class="docutils literal notranslate"><span class="pre">x_in.shape[1]</span> <span class="pre">*</span> <span class="pre">x_in.shape[2]</span></code>, which returns 1,280 x 4 and is the number of bytes per row.</div>
+</div>
+</section>
+<section id="Add-the-kernel-call">
+<h3>Add the kernel call<a class="headerlink" href="#Add-the-kernel-call" title="Link to this heading">¶</a></h3>
+<p>Next, we need to slice the input image along those rows, call the kernel, and pass that data into the kernel.</p>
+<p>Let us add the kernel call. We will be passing the threshold kernel from the Riallto library of optimized kernels, so the parameters for the kernel call need to match the threshold function prototype:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="n">rgba_rtp_thresh</span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">in_buffer</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="o">*</span><span class="w"> </span><span class="n">out_buffer</span><span class="p">,</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">nbytes</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">r_thresh</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">g_thresh</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">b_thresh</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We need to pass the input and output buffers, the number of bytes in each row, and the threshold value for each channel. <code class="docutils literal notranslate"><span class="pre">x_in.shape[1]*x_in.shape[2]</span></code> is equal to 1280*4 and the threshold values are 128.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">SimpleApplication</span><span class="p">(</span><span class="n">AppBuilder</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">kernel</span><span class="p">:</span> <span class="n">Kernel</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">kernel</span> <span class="o">=</span> <span class="n">kernel</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">callgraph</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x_in</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">x_out</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">rows</span> <span class="o">=</span> <span class="n">x_in</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">bytes_per_row</span> <span class="o">=</span> <span class="n">x_in</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">x_in</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">rows</span><span class="p">):</span>
+            <span class="n">kernel_output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">kernel</span><span class="p">(</span><span class="n">x_in</span><span class="p">[</span><span class="n">row</span><span class="p">],</span> <span class="n">bytes_per_row</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">128</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Visualize-the-application">
+<h3>Visualize the application<a class="headerlink" href="#Visualize-the-application" title="Link to this heading">¶</a></h3>
+<p>We can declare an instance of SimpleApplication, passing it the threshold kernel.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">app_builder</span> <span class="o">=</span> <span class="n">SimpleApplication</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="n">threshold</span><span class="p">)</span>
+<span class="n">app_builder</span><span class="p">(</span><span class="n">x_in</span><span class="p">,</span> <span class="n">x_out</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>The current state of the application can now be visualized.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">app_builder</span><span class="o">.</span><span class="n">display</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/4_6_build_application_34_0.svg" src="_images/4_6_build_application_34_0.svg" /></div>
+</div>
+<section id="Compute-tile-locations-and-the-tloc-parameter">
+<h4>Compute tile locations and the <code class="docutils literal notranslate"><span class="pre">tloc</span></code> parameter<a class="headerlink" href="#Compute-tile-locations-and-the-tloc-parameter" title="Link to this heading">¶</a></h4>
+<p>In the visualization above we can see that the kernel <code class="docutils literal notranslate"><span class="pre">rgba_rtp_thresh_0</span></code> has been mapped to the first compute tile at the bottom of the column.</p>
+<p>We can also verify this in the metadata. Expand <strong>SimpleApplication &gt; kernels &gt; rgba_rtp_thresh_0 &gt; tloc</strong></p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">app_builder</span><span class="o">.</span><span class="n">metadata</span>
+</pre></div>
+</div>
+</div>
+<p>The compute tile has been placed at location <code class="docutils literal notranslate"><span class="pre">(0,2)</span></code> in the array, where the first index is the relative column index and the second is the row. Each tile has a row number. The interface tile in this column is <code class="docutils literal notranslate"><span class="pre">(0,0)</span></code>, the memory tile is <code class="docutils literal notranslate"><span class="pre">(0,1)</span></code> and the compute tiles start at <code class="docutils literal notranslate"><span class="pre">(0,2)</span></code>.</p>
+</section>
+</section>
+<section id="Specify-the-location-for-a-compute-tile">
+<h3>Specify the location for a compute tile<a class="headerlink" href="#Specify-the-location-for-a-compute-tile" title="Link to this heading">¶</a></h3>
+<p>We can also constrain where we would like to place our kernel in the column by manually setting the tile location parameter, <code class="docutils literal notranslate"><span class="pre">tloc</span></code>, for that kernel. Try running the cell below to move the kernel to a different location and visualize the result:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">threshold</span><span class="o">.</span><span class="n">tloc</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="n">app_builder</span> <span class="o">=</span> <span class="n">SimpleApplication</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="n">threshold</span><span class="p">)</span>
+<span class="n">app_builder</span><span class="p">(</span><span class="n">x_in</span><span class="p">,</span> <span class="n">x_out</span><span class="p">)</span>
+<span class="n">app_builder</span><span class="o">.</span><span class="n">display</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/4_6_build_application_38_0.svg" src="_images/4_6_build_application_38_0.svg" /></div>
+</div>
+<p>We can see that the kernel above has moved to the top compute tile. Try moving changing the threshold kernel placement yourself.</p>
+<div class="alert alert-warning" role="warning"><p>The first value in the <code class="docutils literal notranslate"><span class="pre">tloc</span></code> tuple is the column offset. Our application uses a single column so this will always be 0.</p>
+</div><section id="Write-the-output">
+<h4>Write the output<a class="headerlink" href="#Write-the-output" title="Link to this heading">¶</a></h4>
+<p>The last step is to get the result from the NPU application and write it back to output buffer we declared earlier in external memory. To do this we need to use the <em>interface tile</em>. The compute tile where the software kernel is running does not have direct access to external system memory.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">kernel_output</span></code> is passed to the <code class="docutils literal notranslate"><span class="pre">x_out[t]</span></code>. This is equivalent to an <code class="docutils literal notranslate"><span class="pre">ITWrite()</span></code> (Interface Tile write).</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">SimpleApplication</span><span class="p">(</span><span class="n">AppBuilder</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">kernel</span><span class="p">:</span><span class="n">Kernel</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">kernel</span> <span class="o">=</span> <span class="n">kernel</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">callgraph</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x_in</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">x_out</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">rows</span> <span class="o">=</span> <span class="n">x_in</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">bytes_per_row</span> <span class="o">=</span> <span class="n">x_in</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">x_in</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">rows</span><span class="p">):</span>
+            <span class="n">kernel_output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">kernel</span><span class="p">(</span><span class="n">x_in</span><span class="p">[</span><span class="n">row</span><span class="p">],</span> <span class="n">bytes_per_row</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">128</span><span class="p">)</span>
+            <span class="n">x_out</span><span class="p">[</span><span class="n">row</span><span class="p">]</span> <span class="o">=</span> <span class="n">kernel_output</span>
+</pre></div>
+</div>
+</div>
+<p>The application is now complete. We can now visualize the final application.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_in</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">720</span><span class="p">,</span> <span class="mi">1280</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+<span class="n">x_out</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">720</span><span class="p">,</span> <span class="mi">1280</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+
+<span class="n">app_builder</span> <span class="o">=</span> <span class="n">SimpleApplication</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="n">threshold</span><span class="p">)</span>
+<span class="n">app_builder</span><span class="p">(</span><span class="n">x_in</span><span class="p">,</span> <span class="n">x_out</span><span class="p">)</span>
+
+<span class="n">app_builder</span><span class="o">.</span><span class="n">display</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/4_6_build_application_44_0.svg" src="_images/4_6_build_application_44_0.svg" /></div>
+</div>
+<p>The pink and light pink tokens in the diagram represent the flow of data into and out of our threshold kernel.</p>
+</section>
+</section>
+<section id="Build-and-test-the-application">
+<h3>Build and test the application<a class="headerlink" href="#Build-and-test-the-application" title="Link to this heading">¶</a></h3>
+<p>First, build the application. Notice we pass the Python input and output buffers to the <code class="docutils literal notranslate"><span class="pre">build()</span></code> method.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">app_builder</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">x_in</span><span class="p">,</span> <span class="n">x_out</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Using cached rgba_rtp_thresh kernel object file...
+Building the xclbin...
+Successfully Building Application... SimpleApplication.xclbin &amp; SimpleApplication.seq delivered
+</pre></div></div>
+</div>
+<hr class="docutils" />
+<section id="Run-the-application">
+<h4>Run the application<a class="headerlink" href="#Run-the-application" title="Link to this heading">¶</a></h4>
+<p>Now that the application has been built, run it to make sure that the output is as expected.</p>
+</section>
+<section id="1.-Get-an-input-image">
+<h4>1. Get an input image<a class="headerlink" href="#1.-Get-an-input-image" title="Link to this heading">¶</a></h4>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">npu.utils</span> <span class="kn">import</span> <span class="n">OpenCVImageReader</span><span class="p">,</span> <span class="n">image_plot</span>
+
+<span class="n">img</span> <span class="o">=</span> <span class="n">OpenCVImageReader</span><span class="p">(</span><span class="s1">&#39;images/jpg/ryzenai_future_starts_now.jpg&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">img</span>
+<span class="n">image_plot</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/4_6_build_application_51_0.png" src="_images/4_6_build_application_51_0.png" />
+</div>
+</div>
+</section>
+<section id="2.-Call-the-NPU-device">
+<h4>2. Call the NPU device<a class="headerlink" href="#2.-Call-the-NPU-device" title="Link to this heading">¶</a></h4>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">npu.runtime</span> <span class="kn">import</span> <span class="n">AppRunner</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">AppRunner</span><span class="p">(</span><span class="s1">&#39;SimpleApplication.xclbin&#39;</span><span class="p">)</span>
+
+<span class="c1"># Allocate app input and output buffers to exchange data with NPU</span>
+<span class="n">input_image</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">allocate</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">720</span><span class="p">,</span><span class="mi">1280</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+<span class="n">output_image</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">allocate</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">720</span><span class="p">,</span><span class="mi">1280</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+
+<span class="c1"># Load RGBA 720p image into input_image buffer</span>
+<span class="n">input_image</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">img</span>
+<span class="c1"># Pass input_image buffer to NPU</span>
+<span class="n">input_image</span><span class="o">.</span><span class="n">sync_to_npu</span><span class="p">()</span>
+
+<span class="c1"># Run app on NPU</span>
+<span class="n">app</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">input_image</span><span class="p">,</span> <span class="n">output_image</span><span class="p">)</span>
+
+<span class="c1"># Get results from NPU via output_image buffer</span>
+<span class="n">output_image</span><span class="o">.</span><span class="n">sync_from_npu</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="3.-Show-the-output-image">
+<h4>3. Show the output image<a class="headerlink" href="#3.-Show-the-output-image" title="Link to this heading">¶</a></h4>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">image_plot</span><span class="p">(</span><span class="n">output_image</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/4_6_build_application_55_0.png" src="_images/4_6_build_application_55_0.png" />
+</div>
+</div>
+</section>
+<section id="4.-Cleanup">
+<h4>4. Cleanup<a class="headerlink" href="#4.-Cleanup" title="Link to this heading">¶</a></h4>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">del</span> <span class="n">app</span>
+</pre></div>
+</div>
+</div>
+<hr class="docutils" />
+</section>
+</section>
+</section>
+<section id="Exercise-for-the-Reader:">
+<h2>Exercise for the Reader:<a class="headerlink" href="#Exercise-for-the-Reader:" title="Link to this heading">¶</a></h2>
+<p>Build your own application by using <code class="docutils literal notranslate"><span class="pre">RgbaInverse()</span></code> kernel provided in the Riallto library.</p>
+<section id="Define-your-application">
+<h3>Define your application<a class="headerlink" href="#Define-your-application" title="Link to this heading">¶</a></h3>
+<p>Import the necessary components and define your <code class="docutils literal notranslate"><span class="pre">callgraph</span></code>.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">npu.build.appbuilder</span> <span class="kn">import</span> <span class="n">AppBuilder</span>
+<span class="kn">from</span> <span class="nn">npu.build.kernel</span> <span class="kn">import</span> <span class="n">Kernel</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="k">class</span> <span class="nc">SimpleApplicationExercise</span><span class="p">(</span><span class="n">AppBuilder</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">kernel</span><span class="p">:</span><span class="n">Kernel</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">inverse</span> <span class="o">=</span> <span class="n">kernel</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">callgraph</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x_in</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">x_out</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">rows</span> <span class="o">=</span> <span class="n">x_in</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">bytes_per_row</span> <span class="o">=</span> <span class="n">x_in</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">x_in</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">rows</span><span class="p">):</span>
+            <span class="n">kernel_output</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">YOUR</span> <span class="n">CODE</span> <span class="n">GOES</span> <span class="n">HERE</span><span class="o">&gt;</span> <span class="c1"># call the RgbaInverse() kernel</span>
+            <span class="n">x_out</span><span class="p">[</span><span class="n">row</span><span class="p">]</span> <span class="o">=</span> <span class="n">kernel_output</span>
+</pre></div>
+</div>
+</div>
+<p>Define input and output buffers, visualize and build your application.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">npu.lib</span> <span class="kn">import</span> <span class="o">...</span> <span class="c1"># Import the RgbaInverse</span>
+
+<span class="n">x_in</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">720</span><span class="p">,</span> <span class="mi">1280</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+<span class="n">x_out</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">720</span><span class="p">,</span> <span class="mi">1280</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+
+<span class="n">inverse</span> <span class="o">=</span> <span class="o">...</span> <span class="c1"># instantiate the RgbaInverse</span>
+<span class="n">app_builder</span> <span class="o">=</span> <span class="n">SimpleApplicationExercise</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="n">inverse</span><span class="p">)</span>
+<span class="n">app_builder</span><span class="p">(</span><span class="n">x_in</span><span class="p">,</span> <span class="n">x_out</span><span class="p">)</span>
+
+<span class="n">app_builder</span><span class="o">.</span><span class="n">display</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">app_builder</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">x_in</span><span class="p">,</span> <span class="n">x_out</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Run-your-custom-application">
+<h3>Run your custom application<a class="headerlink" href="#Run-your-custom-application" title="Link to this heading">¶</a></h3>
+<p>Once built, load your custom application in the NPU, run it and show the results.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">npu.utils</span> <span class="kn">import</span> <span class="n">OpenCVImageReader</span><span class="p">,</span> <span class="n">image_plot</span>
+<span class="kn">from</span> <span class="nn">npu.runtime</span> <span class="kn">import</span> <span class="n">AppRunner</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">AppRunner</span><span class="p">(</span><span class="s1">&#39;SimpleApplicationExercise.xclbin&#39;</span><span class="p">)</span>
+
+<span class="c1"># Allocate app input and output buffers to exchange data with NPU</span>
+<span class="n">input_image</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">allocate</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">720</span><span class="p">,</span><span class="mi">1280</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+<span class="n">output_image</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">allocate</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">720</span><span class="p">,</span><span class="mi">1280</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+
+<span class="c1"># Load RGBA 720p image into input_image buffer</span>
+<span class="n">img</span> <span class="o">=</span> <span class="n">OpenCVImageReader</span><span class="p">(</span><span class="s1">&#39;images/jpg/ryzenai_future_starts_now.jpg&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">img</span>
+<span class="n">input_image</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">img</span>
+<span class="c1"># Pass input_image buffer to NPU</span>
+<span class="n">input_image</span><span class="o">.</span><span class="n">sync_to_npu</span><span class="p">()</span>
+
+<span class="c1"># Run app on NPU</span>
+<span class="n">app</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">input_image</span><span class="p">,</span> <span class="n">output_image</span><span class="p">)</span>
+
+<span class="c1"># Get results from NPU via output_image buffer</span>
+<span class="n">output_image</span><span class="o">.</span><span class="n">sync_from_npu</span><span class="p">()</span>
+
+<span class="c1"># Plot source and result image</span>
+<span class="n">image_plot</span><span class="p">(</span><span class="n">input_image</span><span class="p">,</span> <span class="n">output_image</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Do not forget to clean up the application.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">del</span> <span class="n">app</span>
+</pre></div>
+</div>
+</div>
+<hr class="docutils" />
+</section>
+</section>
+<section id="Next-Steps">
+<h2>Next Steps<a class="headerlink" href="#Next-Steps" title="Link to this heading">¶</a></h2>
+<p>In the next notebook you explore how to build a scaled version of the color threshold application by using the memory tile.</p>
+<hr class="docutils" />
+<center><p>Copyright© 2023 AMD, Inc</p>
+</center><center><p>SPDX-License-Identifier: MIT</p>
+</center><script type="application/vnd.jupyter.widget-state+json">
+{"state": {}, "version_major": 2, "version_minor": 0}
+</script></section>
+</section>
+
+
+           </div>
+          </div>
+          
+				  
+				  <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="4_5_describe_an_application.html" class="btn btn-neutral float-left" title="Describing an Application" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="4_7_using_the_memtile_in_your_applications.html" class="btn btn-neutral float-right" title="Using Memory Tiles in your Application" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Advanced Micro Devices, Inc.
+      <span class="lastupdated">Last updated on December 19, 2023.
+      </span></p>
+  </div>
+
+
+
+										<div class="aem-Grid aem-Grid--16">
+											<div class="aem-GridColumn aem-GridColumn--xxxlarge--none aem-GridColumn--xsmall--16 aem-GridColumn--offset--xsmall--0 aem-GridColumn--xlarge--none aem-GridColumn--xxlarge--none aem-GridColumn--default--none aem-GridColumn--offset--large--1 aem-GridColumn--xlarge--12 aem-GridColumn--offset--default--0 aem-GridColumn--xxlarge--10 aem-GridColumn--offset--xlarge--2 aem-GridColumn--offset--xxlarge--3 aem-GridColumn--offset--xxxlarge--4 aem-GridColumn--xsmall--none aem-GridColumn--large--none aem-GridColumn aem-GridColumn--large--14 aem-GridColumn--xxxlarge--8 aem-GridColumn--default--16">
+												<div class="container-fluid sub-footer">
+
+													                    <div class="row">
+                        <div class="col-xs-24">
+                          <p><a target="_blank" href="https://www.amd.com/en/corporate/copyright">Terms and Conditions</a> | <a target="_blank" href="https://www.amd.com/en/corporate/privacy">Privacy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/cookies">Cookie Policy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/trademarks">Trademarks</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/statement-human-trafficking-forced-labor.pdf">Statement on Forced Labor</a> | <a target="_blank" href="https://www.amd.com/en/corporate/competition">Fair and Open Competition</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/amd-uk-tax-strategy.pdf">UK Tax Strategy</a> | <a target="_blank" href="https://docs.xilinx.com/v/u/9x6YvZKuWyhJId7y7RQQKA">Inclusive Terminology</a> | <a href="#cookiessettings" class="ot-sdk-show-settings">Cookies Settings</a></p>
+                        </div>
+                    </div>
+												</div>
+											</div>
+										</div>
+										
+</br>
+
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div id="cookie-consent" class="cookie-consent">
+    <p>This website uses cookies to ensure you get the best experience on our website. <a href="#" id="cookie-accept">Accept</a> | <a href="#" id="cookie-reject">Reject</a></p>
+</div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+</body>
+</html>

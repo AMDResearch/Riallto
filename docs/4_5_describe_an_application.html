@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Describing an Application &mdash; AMD Riallto 1.0 documentation</title><link rel="icon" type="image/x-icon" href="_static/favicon.ico">
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+      <link rel="stylesheet" href="_static/./custom.css" type="text/css" />
+      <link rel="stylesheet" href="_static/./custom_page_width.css" type="text/css" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v3.0.0-rc.17/dist/cookieconsent.css">
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/documentation_options.js?v=2882ecd3"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="_static/copybutton.js?v=f281be69"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/jquery.js"></script>
+    <script src="_static/cookie-consent.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Building a complete Application" href="4_6_build_application.html" />
+    <link rel="prev" title="How to Use the Vector Processing Units" href="4_4_threshold_kernel_with_vector_ops.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-5RHQV7" height="0" width="0" style="display:none;visibility:hidden" class="optanon-category-C0002"></iframe></noscript>
+<!-- End Google Tag Manager --> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+            <a href="index.html" class="icon icon-home"> AMD Riallto
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Home</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Riallto overview</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="1_0_Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install-riallto.html">Install Riallto</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ryzenai_video_overview.html">Riallto Video Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1_1_ryzenai.html">Ryzen AI Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_1_MS_Windows_Studio_Effects.html">Windows Studio Effects</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">NPU Architecture examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="3_1_Color_threshold_example.html">Loading your first example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_2_Ryzenai_capabilities.html">Understanding columns and tiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_3_Scaled_color_threshold_example.html">Scaling applications to multiple compute tiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_4_Edge_detect_example.html">Optimizing data movement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_5_Color_detect_example.html">Multicasting and multiple kernels per tile</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Building applications</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="4_1_software_framework.html">Introduction to the Riallto software framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_2_write_your_kernel.html">Write your first kernel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_3_kernels_with_runtime_parameters.html">Using Run Time Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_4_threshold_kernel_with_vector_ops.html">How to use the vector processor</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Describing an application</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Goals">Goals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Dataflow-Application-Properties">Dataflow Application Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Instantiating-Kernels">Instantiating Kernels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Calling-Kernels">Calling Kernels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Describing-Data-Movement">Describing Data Movement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Using-the-AppBuilder-class">Using the AppBuilder class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Tiled-Data-Movement">Tiled Data Movement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Using-the-Interface-Tile">Using the Interface Tile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Next-Steps">Next Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="4_6_build_application.html">Building a complete application</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_7_using_the_memtile_in_your_applications.html">Using memory tiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_8_build_a_colorDetect_application.html">Reusing software kernels</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Ryzen AI Machine Learning</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="5_1_pytorch_onnx_inference.html">Inference with PyTorch and ONNX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5_2_pytorch_onnx_re-train.html">Re-training with PyTorch and ONNX</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python Package</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">npu</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Glossary</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Glossary.html">Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Appendix_Review_of_Image_Processing_Concepts.html">Review of Image Processing concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="prerequisites-driver.html">Install the NPU driver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="prerequisites-aie-license.html">Get an AIE license</a></li>
+<li class="toctree-l1"><a class="reference internal" href="prerequisites-wsl.html">Enable WSL</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">AMD Riallto</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Describing an Application</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Describing-an-Application">
+<h1>Describing an Application<a class="headerlink" href="#Describing-an-Application" title="Link to this heading">¶</a></h1>
+<section id="Goals">
+<h2>Goals<a class="headerlink" href="#Goals" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Understanding the properties of a dataflow application</p></li>
+<li><p>Learn how to describe an application using the Riallto <code class="docutils literal notranslate"><span class="pre">AppBuilder</span></code></p></li>
+<li><p>See how to instantiate kernels and describe data movement using the <em>call graph</em></p></li>
+<li><p>Understand data movement and how to use the interface tile</p></li>
+</ul>
+<hr class="docutils" />
+</section>
+<section id="Introduction">
+<h2>Introduction<a class="headerlink" href="#Introduction" title="Link to this heading">¶</a></h2>
+<p>Building an application requires a derived instance of the Riallto <code class="docutils literal notranslate"><span class="pre">AppBuilder</span></code> class where kernels will be instantiated. In the <code class="docutils literal notranslate"><span class="pre">AppBuilder</span></code> class the <code class="docutils literal notranslate"><span class="pre">callgraph()</span></code> is used describes how the kernels are connected together and how data flows through those connections.</p>
+<p>The inputs and outputs to the <code class="docutils literal notranslate"><span class="pre">callgraph</span></code> function are Python <code class="docutils literal notranslate"><span class="pre">numpy</span></code> arrays. These input and output arrays are declared on the x86 CPU and exist in user space in the external DDR5 system memory.</p>
+<p>In the following sections, you will learn about the different components of the <code class="docutils literal notranslate"><span class="pre">AppBuilder</span></code> class.</p>
+<hr class="docutils" />
+</section>
+<section id="Dataflow-Application-Properties">
+<h2>Dataflow Application Properties<a class="headerlink" href="#Dataflow-Application-Properties" title="Link to this heading">¶</a></h2>
+<p>We will start by examining the properties of an application. We will use the previously discussed edge detection example and show how the <code class="docutils literal notranslate"><span class="pre">AppBuilder</span></code> class is used to create the application.</p>
+<p>The same edge detection dataflow graph from earlier notebooks is shown below.</p>
+<center><p><img alt="17d5a6fda9834769b640f4e47cce4897" src="_images/edge_detect_dfg.png" /></p>
+</center><center><p>Edge detection dataflow graph</p>
+</center><p>With the goal of defining the <em>mapped dataflow graph</em> that will run on the NPU, let us begin by identifying key observations from the dataflow graph above:</p>
+<ul class="simple">
+<li><p><strong>one</strong> input.</p></li>
+<li><p><strong>one</strong> output.</p></li>
+<li><p><strong>four</strong> kernels: rgb2gray, filter2D, threshold, gray2rgb.</p></li>
+<li><p>The <strong>data flows linearly</strong> from the input to the output traversing the four kernels, the output buffer of one kernel becomes the input buffer of the following one</p></li>
+<li><p><strong>Kernels</strong> consume data from the input buffer and produce data into the output buffer.</p></li>
+</ul>
+<p>Now, we can focus on subtle observations based on what we learned in earlier notebooks in section 3:</p>
+<ul class="simple">
+<li><p>Every application needs to use an interface tile (gateways to system memory).</p></li>
+<li><p>Communication between kernels is done using neighboring data memory or data movers via streams.</p></li>
+<li><p>Buffers are statically allocated in data memory or the memory tile.</p></li>
+<li><p>Input data needs to be tiled to fit in data memory.</p></li>
+</ul>
+<hr class="docutils" />
+</section>
+<section id="Instantiating-Kernels">
+<h2>Instantiating Kernels<a class="headerlink" href="#Instantiating-Kernels" title="Link to this heading">¶</a></h2>
+<p>In Riallto, AIE kernels in Python become objects of a class. AIE kernels are instantiated in the <code class="docutils literal notranslate"><span class="pre">__init__</span></code> method of your class. The <code class="docutils literal notranslate"><span class="pre">__init__</span></code> code and kernel instantiations looks like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">npu.lib.kernels</span> <span class="kn">import</span> <span class="n">Rgba2Gray</span><span class="p">,</span> <span class="n">Filter2D</span><span class="p">,</span> <span class="n">Threshold</span><span class="p">,</span> <span class="n">Gray2Rgba</span>
+
+<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">rgba2gray</span> <span class="o">=</span> <span class="n">Rgba2Gray</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">filter2d</span> <span class="o">=</span> <span class="n">Filter2D</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">threshold</span> <span class="o">=</span> <span class="n">Threshold</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">gray2rgba</span> <span class="o">=</span> <span class="n">Gray2Rgba</span><span class="p">()</span>
+    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">__init__</span></code> method initializes four objects:</p>
+<ul class="simple">
+<li><p>self.rgba2gray: an instance of the <code class="docutils literal notranslate"><span class="pre">Rgba2Gray</span></code> kernel class.</p></li>
+<li><p>self.filter2d: an instance of the <code class="docutils literal notranslate"><span class="pre">Filter2D</span></code> kernel class.</p></li>
+<li><p>self.threshold: an instance of the <code class="docutils literal notranslate"><span class="pre">Threshold</span></code> kernel class.</p></li>
+<li><p>self.gray2rgba: an instance of the <code class="docutils literal notranslate"><span class="pre">Gray2Rgba</span></code> kernel class.</p></li>
+</ul>
+<p>The kernels are imported from <code class="docutils literal notranslate"><span class="pre">npu.lib.kernel</span></code>. You can also create your own kernels and instantiate them here. . We drew inspiration from Pytorch where the layers are defined in the <code class="docutils literal notranslate"><span class="pre">__init__</span></code> method. See an example <a class="reference external" href="https://pytorch.org/tutorials/beginner/blitz/neural_networks_tutorial.html">here</a></p>
+<p>Finally, the <code class="docutils literal notranslate"><span class="pre">__init__</span></code> method of the AppBuilder class (<code class="docutils literal notranslate"><span class="pre">super().__init__()</span></code>) is then called.</p>
+<div class="alert alert-box alert-info"><p>Instantiating a kernel does not run it. Kernels must be called to be executed in the application.</p>
+</div><hr class="docutils" />
+</section>
+<section id="Calling-Kernels">
+<h2>Calling Kernels<a class="headerlink" href="#Calling-Kernels" title="Link to this heading">¶</a></h2>
+<p>While we are using Python to build the application, kernels are written in C++. The output argument(s) of a kernel become the return value in Python. This is similar to what OpenCV does in the C/C++ vs Python API.</p>
+<p>For instance, the <code class="docutils literal notranslate"><span class="pre">rgb2gray</span></code> kernel function prototype in C++ is:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">rgba2gray</span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">in1</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">out1</span><span class="p">,</span><span class="w"> </span><span class="kt">int32_t</span><span class="w"> </span><span class="n">nbytes</span><span class="p">){..}</span>
+</pre></div>
+</div>
+<p>In Python the same call becomes:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">out1</span> <span class="o">=</span> <span class="n">rgb2gray</span><span class="p">(</span><span class="n">in1</span><span class="p">,</span> <span class="n">nbytes</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="alert alert-box alert-info"><p>Kernels with multiple outputs, the return will be a tuple.</p>
+</div><hr class="docutils" />
+</section>
+<section id="Describing-Data-Movement">
+<h2>Describing Data Movement<a class="headerlink" href="#Describing-Data-Movement" title="Link to this heading">¶</a></h2>
+<p>To define data movement between the kernels we use the mandatory <code class="docutils literal notranslate"><span class="pre">callgraph</span></code> method. The purpose of the <code class="docutils literal notranslate"><span class="pre">callgraph</span></code> method is to define the topology of our dataflow graph. We use it to specify how the nodes and the buffers are connected thereby describing how data flows through the graph. <code class="docutils literal notranslate"><span class="pre">callgraph</span></code> is inspired by the <a class="reference external" href="https://pytorch.org/tutorials/beginner/blitz/neural_networks_tutorial.html">Pytorch forward method</a>. It is a central part of the class that describes how our kernels are
+connected and how data is scheduled throughout our application kernels.</p>
+<p>A simplified data movement for the edge detection application is shown below:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">callgraph</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x_in</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">x_out</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+    <span class="n">rgba2gray_output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rgba2gray</span><span class="p">(</span><span class="n">x_in</span><span class="p">[</span><span class="n">tile</span><span class="p">],</span> <span class="o">...</span><span class="p">)</span>
+    <span class="n">filter2d_output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">filter2d</span><span class="p">(</span><span class="n">rgba2gray_output</span><span class="p">)</span>
+    <span class="n">threshold_output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">threshold</span><span class="p">(</span><span class="n">filter2d_output</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+    <span class="n">gray2rgba_output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gray2rgba</span><span class="p">(</span><span class="n">threshold_output</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>From the code snipped, you can see that the <code class="docutils literal notranslate"><span class="pre">callgraph</span></code> gets two input arguments <code class="docutils literal notranslate"><span class="pre">x_in</span></code> is the input data, and <code class="docutils literal notranslate"><span class="pre">x_out</span></code> is the output data (result).</p>
+<div class="alert alert-box alert-info"><p>We will discuss <code class="docutils literal notranslate"><span class="pre">x_out</span></code> in more detail later in the notebook.</p>
+</div><p>Focusing on the data movement:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">rgba2gray()</span></code> takes <code class="docutils literal notranslate"><span class="pre">x_in</span></code> and produces <code class="docutils literal notranslate"><span class="pre">rgba2gray_output</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">filter2d()</span></code> takes <code class="docutils literal notranslate"><span class="pre">rgba2gray_output</span></code> produces <code class="docutils literal notranslate"><span class="pre">filter2d_output</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">threshold()</span></code> takes <code class="docutils literal notranslate"><span class="pre">filter2d_output</span></code> and produces <code class="docutils literal notranslate"><span class="pre">threshold_output</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gray2rgba()</span></code> takes <code class="docutils literal notranslate"><span class="pre">threshold_output</span></code>and produces <code class="docutils literal notranslate"><span class="pre">gray2rgba_output</span></code></p></li>
+<li><p>We are not showing how z is moved to <code class="docutils literal notranslate"><span class="pre">x_out</span></code>, we will discuss this later</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">rgba2gray_output</span></code>, <code class="docutils literal notranslate"><span class="pre">filter2d_output</span></code>, <code class="docutils literal notranslate"><span class="pre">threshold_output</span></code>, <code class="docutils literal notranslate"><span class="pre">gray2rgba_output</span></code> are variable names for the buffers shown in the DFG above. The size of these buffers is automatically inferred. The size depends on shape of the input data. This will also be covered in more detail later.</p>
+<p><code class="docutils literal notranslate"><span class="pre">rgba2gray_output</span></code>, <code class="docutils literal notranslate"><span class="pre">filter2d_output</span></code>, <code class="docutils literal notranslate"><span class="pre">threshold_output</span></code>, <code class="docutils literal notranslate"><span class="pre">gray2rgba_output</span></code> are arbitrary names.</p>
+<div class="alert alert-box alert-info"><p>Kernels can have several arguments. For example, graph nodes can have several inputs and outputs to other nodes. For simplicity, we deliberately picked a simple example where each kernel has only one input and one output. Kernels can also have Run Time Parameters. Again, for simplicity, runtime parameters will not be shown in the code for this example.</p>
+</div><hr class="docutils" />
+</section>
+<section id="Using-the-AppBuilder-class">
+<h2>Using the AppBuilder class<a class="headerlink" href="#Using-the-AppBuilder-class" title="Link to this heading">¶</a></h2>
+<p>In Riallto, mapped dataflow graphs (applications) are implemented as classes that inherit from the <code class="docutils literal notranslate"><span class="pre">AppBuilder</span></code> class. The <code class="docutils literal notranslate"><span class="pre">callgraph</span></code> function is defined within the class and is called when the application is built.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">callgraph</span></code> function takes input and output data as its argument. The input and output data must be a <code class="docutils literal notranslate"><span class="pre">numpy</span></code> array which are then passed through a series of operations performed by the kernels before producing the final output.</p>
+<p>Below, it is a simplification of the edge detection application:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">npu.build.appbuilder</span> <span class="kn">import</span> <span class="n">AppBuilder</span>
+<span class="kn">from</span> <span class="nn">npu.lib</span> <span class="kn">import</span> <span class="n">Rgba2Gray</span><span class="p">,</span> <span class="n">Filter2D</span><span class="p">,</span> <span class="n">Threshold</span><span class="p">,</span> <span class="n">Gray2Rgba</span>
+
+<span class="k">class</span> <span class="nc">SimplifiedEdgeDetect</span><span class="p">(</span><span class="n">AppBuilder</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rgba2gray</span> <span class="o">=</span> <span class="n">Rgba2Gray</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">filter2d</span> <span class="o">=</span> <span class="n">Filter2D</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">threshold</span> <span class="o">=</span> <span class="n">Threshold</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gray2rgba</span> <span class="o">=</span> <span class="n">Gray2Rgba</span><span class="p">()</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">callgraph</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x_in</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">x_out</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+        <span class="n">rgba2gray_output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rgba2gray</span><span class="p">(</span><span class="n">x_in</span><span class="p">[</span><span class="n">tile</span><span class="p">],</span> <span class="o">...</span><span class="p">)</span>
+        <span class="n">filter2d_output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">filter2d</span><span class="p">(</span><span class="n">rgba2gray_output</span><span class="p">)</span>
+        <span class="n">threshold_output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">threshold</span><span class="p">(</span><span class="n">filter2d_output</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+        <span class="n">gray2rgba_output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gray2rgba</span><span class="p">(</span><span class="n">threshold_output</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">AppBuilder</span></code> will automatically assign each kernel to a tile and configure the data movement between kernels. Where possible data will be moved between neighboring tiles using the local data memory interfaces. Where this is not possible, the streaming network will be used.</p>
+<hr class="docutils" />
+</section>
+<section id="Tiled-Data-Movement">
+<h2>Tiled Data Movement<a class="headerlink" href="#Tiled-Data-Movement" title="Link to this heading">¶</a></h2>
+<p>We discussed in <a class="reference internal" href="3_3_Scaled_color_threshold_example.html"><span class="doc">Scaling Data Parallel Applications to Multiple Compute Tiles</span></a> that the input data needs to be partitioned to fit into the data memory of each compute tile, 64KB per compute tile. For this example there are no dependencies between pixels so data can be sent in any order to the application.</p>
+<p>If we consider a 720p image, a simple way to partition a frame is to move one row at a time into the array. We can use <code class="docutils literal notranslate"><span class="pre">numpy</span></code> slicing to do this. We can create a loop in the <code class="docutils literal notranslate"><span class="pre">callgraph()</span></code> that iterates over the image frame, moving a row of data (tile) into the array each iteration:</p>
+<p>This tiling is used to schedule the sequencing of data via the data movers (buffer descriptors configuration) and nearest neighbor communication.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">npu.build.appbuilder</span> <span class="kn">import</span> <span class="n">AppBuilder</span>
+<span class="kn">from</span> <span class="nn">npu.lib</span> <span class="kn">import</span> <span class="n">Rgba2Gray</span><span class="p">,</span> <span class="n">Filter2D</span><span class="p">,</span> <span class="n">Threshold</span><span class="p">,</span> <span class="n">Gray2Rgba</span>
+
+<span class="k">class</span> <span class="nc">SimplifiedTiledEdgeDetect</span><span class="p">(</span><span class="n">AppBuilder</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rgba2gray</span> <span class="o">=</span> <span class="n">Rgba2Gray</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">filter2d</span> <span class="o">=</span> <span class="n">Filter2D</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">threshold</span> <span class="o">=</span> <span class="n">Threshold</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gray2rgba</span> <span class="o">=</span> <span class="n">Gray2Rgba</span><span class="p">()</span>
+
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">callgraph</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x_in</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">x_out</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">tile</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">x_in</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+            <span class="n">rgba2gray_output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rgba2gray</span><span class="p">(</span><span class="n">x_in</span><span class="p">[</span><span class="n">tile</span><span class="p">],</span> <span class="o">...</span><span class="p">)</span>
+            <span class="n">filter2d_output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">filter2d</span><span class="p">(</span><span class="n">rgba2gray_output</span><span class="p">)</span>
+            <span class="n">threshold_output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">threshold</span><span class="p">(</span><span class="n">filter2d_output</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+            <span class="n">gray2rgba_output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gray2rgba</span><span class="p">(</span><span class="n">threshold_output</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="alert alert-box alert-info"><p>The input image is being processed one tile at the time.</p>
+</div><hr class="docutils" />
+</section>
+<section id="Using-the-Interface-Tile">
+<h2>Using the Interface Tile<a class="headerlink" href="#Using-the-Interface-Tile" title="Link to this heading">¶</a></h2>
+<p>Once we have defined the data movement in space, how data flow between kernels. We need to schedule the sequence of data flowing to our application, data movement in time. The amount of memory in the compute tile is limited, so we need to tile the input data. The order in which the input data is partition is what we call sequence.</p>
+<p>To define the data scheduling, we need to use the interface tile to bring data from system memory and also to push the results to system memory. The data scheduling generates the data mover configuration that it is loaded at runtime.</p>
+<p>To do this, we use the <code class="docutils literal notranslate"><span class="pre">ITRead</span></code> and <code class="docutils literal notranslate"><span class="pre">ITWrite</span></code> classes.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">ITRead</span></code> has one argument:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">inputbuffer</span></code>, the portion of the input buffer we want to read. In this case, it would be <code class="docutils literal notranslate"><span class="pre">x_in[tile]</span></code></p></li>
+</ol>
+<p>The <code class="docutils literal notranslate"><span class="pre">ITWrite</span></code> has two arguments:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">inputbuffer</span></code>, result of one of our kernels. In the example above, this would be <code class="docutils literal notranslate"><span class="pre">rgba</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bufref</span></code>, the portion of the output buffer we want to write. In this case, it would be <code class="docutils literal notranslate"><span class="pre">x_out[tile]</span></code></p></li>
+</ol>
+<p>The interface tile has the capability to move data to/from non-contiguous regions in system memory. The <code class="docutils literal notranslate"><span class="pre">ITWrite</span></code> allows us to specify how the results from kernels are moved to system memory.</p>
+<p>The diagram below shows a representation of the <code class="docutils literal notranslate"><span class="pre">ITRead()</span></code> and <code class="docutils literal notranslate"><span class="pre">ITWrite()</span></code>:</p>
+<center><p><img alt="428fefb1992d488e9956cecdb437a90f" src="_images/shared_system_memory_itread_itwrite.png" /></p>
+</center><center><p>Invalidate and flush the cache with synchronization calls</p>
+</center><p>A completed version of the edge detection application, is shown below:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">npu.build.appbuilder</span> <span class="kn">import</span> <span class="n">AppBuilder</span>
+<span class="kn">from</span> <span class="nn">npu.build.itkernel</span> <span class="kn">import</span> <span class="n">ITWrite</span>
+<span class="kn">from</span> <span class="nn">npu.lib</span> <span class="kn">import</span> <span class="n">Rgba2Gray</span><span class="p">,</span> <span class="n">Filter2D</span><span class="p">,</span> <span class="n">Threshold</span><span class="p">,</span> <span class="n">Gray2Rgba</span>
+
+<span class="k">class</span> <span class="nc">CompleteEdgeDetect</span><span class="p">(</span><span class="n">AppBuilder</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rgba2gray</span> <span class="o">=</span> <span class="n">Rgba2Gray</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">filter2d</span> <span class="o">=</span> <span class="n">Filter2D</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">threshold</span> <span class="o">=</span> <span class="n">Threshold</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gray2rgba</span> <span class="o">=</span> <span class="n">Gray2Rgba</span><span class="p">()</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">callgraph</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x_in</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">x_out</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">tile</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">x_in</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+            <span class="n">input_tile</span> <span class="o">=</span> <span class="n">ITRead</span><span class="p">(</span><span class="n">x_in</span><span class="p">[</span><span class="n">tile</span><span class="p">])</span>
+            <span class="n">rgba2gray_output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rgba2gray</span><span class="p">(</span><span class="n">input_tile</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+            <span class="n">filter2d_output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">filter2d</span><span class="p">(</span><span class="n">rgba2gray_output</span><span class="p">)</span>
+            <span class="n">threshold_output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">threshold</span><span class="p">(</span><span class="n">filter2d_output</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+            <span class="n">gray2rgba_output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gray2rgba</span><span class="p">(</span><span class="n">threshold_output</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+            <span class="n">_</span> <span class="o">=</span> <span class="n">ITWrite</span><span class="p">(</span><span class="n">gray2rgba_output</span><span class="p">,</span> <span class="n">bufref</span><span class="o">=</span><span class="n">x_out</span><span class="p">[</span><span class="n">tile</span><span class="p">])</span>
+</pre></div>
+</div>
+<div class="alert alert-box alert-info"><p><code class="docutils literal notranslate"><span class="pre">ITRead</span></code> is no needed as the data movement can be inferred by the access pattern in the tiling, however it is added in this example for simplicity.</p>
+</div><p><code class="docutils literal notranslate"><span class="pre">ITRead</span></code> and <code class="docutils literal notranslate"><span class="pre">ITWrite</span></code> APIs are used for explicit description of the data movement via the interface tile. We can also describe this data movement (implicitly) using numpy slicing. See below:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">callgraph</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x_in</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">x_out</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">tile</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">x_in</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+        <span class="n">rgba2gray_output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rgba2gray</span><span class="p">(</span><span class="n">x_in</span><span class="p">[</span><span class="n">tile</span><span class="p">],</span> <span class="o">...</span><span class="p">)</span>
+        <span class="n">filter2d_output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">filter2d</span><span class="p">(</span><span class="n">rgba2gray_output</span><span class="p">)</span>
+        <span class="n">threshold_output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">threshold</span><span class="p">(</span><span class="n">filter2d_output</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+        <span class="n">gray2rgba_output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gray2rgba</span><span class="p">(</span><span class="n">threshold_output</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+        <span class="n">x_out</span><span class="p">[</span><span class="n">tile</span><span class="p">]</span> <span class="n">gray2rgba_output</span>
+</pre></div>
+</div>
+<div class="alert alert-box alert-info"><p>In the following notebooks, we favor the implicit data movement via the interface tile using numpy slicing.</p>
+</div><hr class="docutils" />
+</section>
+<section id="Next-Steps">
+<h2>Next Steps<a class="headerlink" href="#Next-Steps" title="Link to this heading">¶</a></h2>
+<p>In the next notebooks you will build your own applications based on what you have just learned.</p>
+<hr class="docutils" />
+<center><p>Copyright© 2023 AMD, Inc</p>
+</center><center><p>SPDX-License-Identifier: MIT</p>
+</center></section>
+</section>
+
+
+           </div>
+          </div>
+          
+				  
+				  <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="4_4_threshold_kernel_with_vector_ops.html" class="btn btn-neutral float-left" title="How to Use the Vector Processing Units" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="4_6_build_application.html" class="btn btn-neutral float-right" title="Building a complete Application" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Advanced Micro Devices, Inc.
+      <span class="lastupdated">Last updated on December 19, 2023.
+      </span></p>
+  </div>
+
+
+
+										<div class="aem-Grid aem-Grid--16">
+											<div class="aem-GridColumn aem-GridColumn--xxxlarge--none aem-GridColumn--xsmall--16 aem-GridColumn--offset--xsmall--0 aem-GridColumn--xlarge--none aem-GridColumn--xxlarge--none aem-GridColumn--default--none aem-GridColumn--offset--large--1 aem-GridColumn--xlarge--12 aem-GridColumn--offset--default--0 aem-GridColumn--xxlarge--10 aem-GridColumn--offset--xlarge--2 aem-GridColumn--offset--xxlarge--3 aem-GridColumn--offset--xxxlarge--4 aem-GridColumn--xsmall--none aem-GridColumn--large--none aem-GridColumn aem-GridColumn--large--14 aem-GridColumn--xxxlarge--8 aem-GridColumn--default--16">
+												<div class="container-fluid sub-footer">
+
+													                    <div class="row">
+                        <div class="col-xs-24">
+                          <p><a target="_blank" href="https://www.amd.com/en/corporate/copyright">Terms and Conditions</a> | <a target="_blank" href="https://www.amd.com/en/corporate/privacy">Privacy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/cookies">Cookie Policy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/trademarks">Trademarks</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/statement-human-trafficking-forced-labor.pdf">Statement on Forced Labor</a> | <a target="_blank" href="https://www.amd.com/en/corporate/competition">Fair and Open Competition</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/amd-uk-tax-strategy.pdf">UK Tax Strategy</a> | <a target="_blank" href="https://docs.xilinx.com/v/u/9x6YvZKuWyhJId7y7RQQKA">Inclusive Terminology</a> | <a href="#cookiessettings" class="ot-sdk-show-settings">Cookies Settings</a></p>
+                        </div>
+                    </div>
+												</div>
+											</div>
+										</div>
+										
+</br>
+
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div id="cookie-consent" class="cookie-consent">
+    <p>This website uses cookies to ensure you get the best experience on our website. <a href="#" id="cookie-accept">Accept</a> | <a href="#" id="cookie-reject">Reject</a></p>
+</div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,2168 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>npu.build package &mdash; AMD Riallto 1.0 documentation</title><link rel="icon" type="image/x-icon" href="_static/favicon.ico">
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+      <link rel="stylesheet" href="_static/./custom.css" type="text/css" />
+      <link rel="stylesheet" href="_static/./custom_page_width.css" type="text/css" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v3.0.0-rc.17/dist/cookieconsent.css">
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/documentation_options.js?v=2882ecd3"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="_static/copybutton.js?v=f281be69"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script src="_static/js/jquery.js"></script>
+    <script src="_static/cookie-consent.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="npu.lib package" href="npu.lib.html" />
+    <link rel="prev" title="npu package" href="npu.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-5RHQV7" height="0" width="0" style="display:none;visibility:hidden" class="optanon-category-C0002"></iframe></noscript>
+<!-- End Google Tag Manager --> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+            <a href="index.html" class="icon icon-home"> AMD Riallto
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Home</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Riallto overview</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="1_0_Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install-riallto.html">Install Riallto</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ryzenai_video_overview.html">Riallto Video Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1_1_ryzenai.html">Ryzen AI Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_1_MS_Windows_Studio_Effects.html">Windows Studio Effects</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">NPU Architecture examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="3_1_Color_threshold_example.html">Loading your first example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_2_Ryzenai_capabilities.html">Understanding columns and tiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_3_Scaled_color_threshold_example.html">Scaling applications to multiple compute tiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_4_Edge_detect_example.html">Optimizing data movement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_5_Color_detect_example.html">Multicasting and multiple kernels per tile</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Building applications</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="4_1_software_framework.html">Introduction to the Riallto software framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_2_write_your_kernel.html">Write your first kernel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_3_kernels_with_runtime_parameters.html">Using Run Time Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_4_threshold_kernel_with_vector_ops.html">How to use the vector processor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_5_describe_an_application.html">Describing an application</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_6_build_application.html">Building a complete application</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_7_using_the_memtile_in_your_applications.html">Using memory tiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_8_build_a_colorDetect_application.html">Reusing software kernels</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Ryzen AI Machine Learning</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="5_1_pytorch_onnx_inference.html">Inference with PyTorch and ONNX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5_2_pytorch_onnx_re-train.html">Re-training with PyTorch and ONNX</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python Package</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">npu</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="npu.html">npu package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="npu.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">npu.build package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.lib.html">npu.lib package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html">npu.runtime package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html">npu.utils package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="npu.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="npu.html#module-npu.magic">npu.magic module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="npu.html#module-npu.repr_dict">npu.repr_dict module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="npu.html#module-npu">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Glossary</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Glossary.html">Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Appendix_Review_of_Image_Processing_Concepts.html">Review of Image Processing concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="prerequisites-driver.html">Install the NPU driver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="prerequisites-aie-license.html">Get an AIE license</a></li>
+<li class="toctree-l1"><a class="reference internal" href="prerequisites-wsl.html">Enable WSL</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">AMD Riallto</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="modules.html">npu</a> &raquo;</li>
+          <li><a href="npu.html">npu package</a> &raquo;</li>
+      <li>npu.build package</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="npu-build-package">
+<h1>npu.build package<a class="headerlink" href="#npu-build-package" title="Link to this heading">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">¶</a></h2>
+</section>
+<section id="module-npu.build.appbuilder">
+<span id="npu-build-appbuilder-module"></span><h2>npu.build.appbuilder module<a class="headerlink" href="#module-npu.build.appbuilder" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="npu.build.appbuilder.AppBuilder">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npu.build.appbuilder.</span></span><span class="sig-name descname"><span class="pre">AppBuilder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/appbuilder.html#AppBuilder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.appbuilder.AppBuilder" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This class is able to build NPU applications from a high level description
+that is specified in the callgraph() method using npu.build objects.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.appbuilder.AppBuilder.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#npu.build.appbuilder.AppBuilder.name" title="Link to this definition">¶</a></dt>
+<dd><p>The name of the application.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.appbuilder.AppBuilder.ab">
+<span class="sig-name descname"><span class="pre">ab</span></span><a class="headerlink" href="#npu.build.appbuilder.AppBuilder.ab" title="Link to this definition">¶</a></dt>
+<dd><p>The xclbin builder class used to build the final xclbin binary.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#npu.build.appxclbinbuilder.AppXclbinBuilder" title="npu.build.appxclbinbuilder.AppXclbinBuilder">AppXclbinBuilder</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.appbuilder.AppBuilder.fxtracer">
+<span class="sig-name descname"><span class="pre">fxtracer</span></span><a class="headerlink" href="#npu.build.appbuilder.AppBuilder.fxtracer" title="Link to this definition">¶</a></dt>
+<dd><p>The apptracer class used to build the application metadata.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#npu.build.apptracer.AppTracer" title="npu.build.apptracer.AppTracer">AppTracer</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.appbuilder.AppBuilder.kernels">
+<span class="sig-name descname"><span class="pre">kernels</span></span><a class="headerlink" href="#npu.build.appbuilder.AppBuilder.kernels" title="Link to this definition">¶</a></dt>
+<dd><p>Dictionary storing all unique compute tile kernels in this application.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.appbuilder.AppBuilder.connections">
+<span class="sig-name descname"><span class="pre">connections</span></span><a class="headerlink" href="#npu.build.appbuilder.AppBuilder.connections" title="Link to this definition">¶</a></dt>
+<dd><p>Dictionary storing all unique connections between kernels in this application.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.appbuilder.AppBuilder.previous_build_args">
+<span class="sig-name descname"><span class="pre">previous_build_args</span></span><a class="headerlink" href="#npu.build.appbuilder.AppBuilder.previous_build_args" title="Link to this definition">¶</a></dt>
+<dd><p>List containing the input arguments last used to build the application.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This class is typically meant to be subclassed with a custom <cite>callgraph()</cite>.
+Many examples of this subclassing pattern are in teststest_applications.py.</p>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.build.appbuilder.AppBuilder.__call__">
+<span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/appbuilder.html#AppBuilder.__call__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.appbuilder.AppBuilder.__call__" title="Link to this definition">¶</a></dt>
+<dd><p>Calling the class will execute the callgraph directly.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.build.appbuilder.AppBuilder.build">
+<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">debug</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mlir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/appbuilder.html#AppBuilder.build"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.appbuilder.AppBuilder.build" title="Link to this definition">¶</a></dt>
+<dd><p>The application is built using the callgraph call with supplied arguments.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.build.appbuilder.AppBuilder.callgraph">
+<span class="sig-name descname"><span class="pre">callgraph</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/appbuilder.html#AppBuilder.callgraph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.appbuilder.AppBuilder.callgraph" title="Link to this definition">¶</a></dt>
+<dd><p>This method should be overridden by a subclass.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.build.appbuilder.AppBuilder.display">
+<span class="sig-name descname"><span class="pre">display</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/npu/build/appbuilder.html#AppBuilder.display"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.appbuilder.AppBuilder.display" title="Link to this definition">¶</a></dt>
+<dd><p>Generates the application SVG and displays inside a IPython environment.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.build.appbuilder.AppBuilder.displaymlir">
+<span class="sig-name descname"><span class="pre">displaymlir</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">what</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/npu/build/appbuilder.html#AppBuilder.displaymlir"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.appbuilder.AppBuilder.displaymlir" title="Link to this definition">¶</a></dt>
+<dd><p>Displays part of the application in a IPython friendly way.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.build.appbuilder.AppBuilder.merge_applications">
+<span class="sig-name descname"><span class="pre">merge_applications</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">newkernels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">newconnections</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/appbuilder.html#AppBuilder.merge_applications"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.appbuilder.AppBuilder.merge_applications" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="npu.build.appbuilder.AppBuilder.metadata">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">metadata</span></span><a class="headerlink" href="#npu.build.appbuilder.AppBuilder.metadata" title="Link to this definition">¶</a></dt>
+<dd><p>Generates the application JSON and displays inside a IPython environment.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.build.appbuilder.AppBuilder.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/npu/build/appbuilder.html#AppBuilder.save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.appbuilder.AppBuilder.save" title="Link to this definition">¶</a></dt>
+<dd><p>saves animation to a file.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.build.appbuilder.AppBuilder.to_handoff">
+<span class="sig-name descname"><span class="pre">to_handoff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/appbuilder.html#AppBuilder.to_handoff"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.appbuilder.AppBuilder.to_handoff" title="Link to this definition">¶</a></dt>
+<dd><p>Converts the application into a serializable JSON file.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.build.appbuilder.AppBuilder.to_json">
+<span class="sig-name descname"><span class="pre">to_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/appbuilder.html#AppBuilder.to_json"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.appbuilder.AppBuilder.to_json" title="Link to this definition">¶</a></dt>
+<dd><p>Converts the application into JSON.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.build.appbuilder.AppBuilder.to_metadata">
+<span class="sig-name descname"><span class="pre">to_metadata</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/appbuilder.html#AppBuilder.to_metadata"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.appbuilder.AppBuilder.to_metadata" title="Link to this definition">¶</a></dt>
+<dd><p>The application is converted into the AppMetadata after tracing the callgraph() call.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.build.appbuilder.AppBuilder.to_mlir">
+<span class="sig-name descname"><span class="pre">to_mlir</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/appbuilder.html#AppBuilder.to_mlir"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.appbuilder.AppBuilder.to_mlir" title="Link to this definition">¶</a></dt>
+<dd><p>Generates the application mlir file from the metadata collected.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.build.appbuilder.AppBuilder.to_sequence">
+<span class="sig-name descname"><span class="pre">to_sequence</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/appbuilder.html#AppBuilder.to_sequence"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.appbuilder.AppBuilder.to_sequence" title="Link to this definition">¶</a></dt>
+<dd><p>Generates the application data movement sequence from the connections traced.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.build.appbuilder.AppBuilder.unique_named">
+<span class="sig-name descname"><span class="pre">unique_named</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">objs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/appbuilder.html#AppBuilder.unique_named"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.appbuilder.AppBuilder.unique_named" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.build.appbuilder.AppBuilder.validate_previous_build_args">
+<span class="sig-name descname"><span class="pre">validate_previous_build_args</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/appbuilder.html#AppBuilder.validate_previous_build_args"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.appbuilder.AppBuilder.validate_previous_build_args" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-npu.build.appmetadata">
+<span id="npu-build-appmetadata-module"></span><h2>npu.build.appmetadata module<a class="headerlink" href="#module-npu.build.appmetadata" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="npu.build.appmetadata.AppMetada">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npu.build.appmetadata.</span></span><span class="sig-name descname"><span class="pre">AppMetada</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">appname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">connections</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sequence</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/appmetadata.html#AppMetada"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.appmetadata.AppMetada" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This class contains the in-memory representation of the AppBuilder application and
+completes any unspecified application placements (E.g. ComputeTile kernel mapping).</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.appmetadata.AppMetada.appname">
+<span class="sig-name descname"><span class="pre">appname</span></span><a class="headerlink" href="#npu.build.appmetadata.AppMetada.appname" title="Link to this definition">¶</a></dt>
+<dd><p>The name of the application.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.appmetadata.AppMetada.kernels">
+<span class="sig-name descname"><span class="pre">kernels</span></span><a class="headerlink" href="#npu.build.appmetadata.AppMetada.kernels" title="Link to this definition">¶</a></dt>
+<dd><p>Dictionary storing all unique compute tile kernels in this application.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.appmetadata.AppMetada.connections">
+<span class="sig-name descname"><span class="pre">connections</span></span><a class="headerlink" href="#npu.build.appmetadata.AppMetada.connections" title="Link to this definition">¶</a></dt>
+<dd><p>Dictionary storing all unique connections between kernels in this application.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.appmetadata.AppMetada.sequence">
+<span class="sig-name descname"><span class="pre">sequence</span></span><a class="headerlink" href="#npu.build.appmetadata.AppMetada.sequence" title="Link to this definition">¶</a></dt>
+<dd><p>List containing the ordered data movements as traced in the AppBuilder’s callgraph.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.build.appmetadata.AppMetada.to_json">
+<span class="sig-name descname"><span class="pre">to_json</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/appmetadata.html#AppMetada.to_json"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.appmetadata.AppMetada.to_json" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-npu.build.apptracer">
+<span id="npu-build-apptracer-module"></span><h2>npu.build.apptracer module<a class="headerlink" href="#module-npu.build.apptracer" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="npu.build.apptracer.AppTracer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npu.build.apptracer.</span></span><span class="sig-name descname"><span class="pre">AppTracer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">application</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/apptracer.html#AppTracer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.apptracer.AppTracer" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This class manages the tracing of an AppBuilder’s callgraph method to determine:
+1. unique kernels used in the callgraph
+2. unique connections between IT, MT, and CT kernels
+3. ordered sequence of data movements between kernels using connections</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.apptracer.AppTracer.application">
+<span class="sig-name descname"><span class="pre">application</span></span><a class="headerlink" href="#npu.build.apptracer.AppTracer.application" title="Link to this definition">¶</a></dt>
+<dd><p>The AppBuilder instance passed in with a valid callgraph for tracing</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#npu.build.appbuilder.AppBuilder" title="npu.build.appbuilder.AppBuilder">AppBuilder</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.build.apptracer.AppTracer.postprocess_args">
+<span class="sig-name descname"><span class="pre">postprocess_args</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kernel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/apptracer.html#AppTracer.postprocess_args"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.apptracer.AppTracer.postprocess_args" title="Link to this definition">¶</a></dt>
+<dd><p>Postprocess args to get buffer ports, RTP values and any additional kernels that
+are passed into functions directly.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.build.apptracer.AppTracer.postprocess_kernel">
+<span class="sig-name descname"><span class="pre">postprocess_kernel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">res</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/apptracer.html#AppTracer.postprocess_kernel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.apptracer.AppTracer.postprocess_kernel" title="Link to this definition">¶</a></dt>
+<dd><p>Kernel type specific postprocessing to get the right object for tracing.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.build.apptracer.AppTracer.to_trace">
+<span class="sig-name descname"><span class="pre">to_trace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/apptracer.html#AppTracer.to_trace"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.apptracer.AppTracer.to_trace" title="Link to this definition">¶</a></dt>
+<dd><p>Using the TraceLogger class, the application’s callgraph is traced
+and returns discovered kernels and connections.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-npu.build.appxclbinbuilder">
+<span id="npu-build-appxclbinbuilder-module"></span><h2>npu.build.appxclbinbuilder module<a class="headerlink" href="#module-npu.build.appxclbinbuilder" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="npu.build.appxclbinbuilder.AppXclbinBuilder">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npu.build.appxclbinbuilder.</span></span><span class="sig-name descname"><span class="pre">AppXclbinBuilder</span></span><a class="reference internal" href="_modules/npu/build/appxclbinbuilder.html#AppXclbinBuilder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.appxclbinbuilder.AppXclbinBuilder" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#npu.build.wslbuilder.WSLBuilder" title="npu.build.wslbuilder.WSLBuilder"><code class="xref py py-class docutils literal notranslate"><span class="pre">WSLBuilder</span></code></a></p>
+<dl class="simple">
+<dt>This class manages the WSL building of the application, resulting in</dt><dd><p>the final xclbin binary that is run on the NPU.</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.appxclbinbuilder.AppXclbinBuilder.xclbin">
+<span class="sig-name descname"><span class="pre">xclbin</span></span><a class="headerlink" href="#npu.build.appxclbinbuilder.AppXclbinBuilder.xclbin" title="Link to this definition">¶</a></dt>
+<dd><p>Path to the NPU executable xclbin file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.appxclbinbuilder.AppXclbinBuilder.buildlog">
+<span class="sig-name descname"><span class="pre">buildlog</span></span><a class="headerlink" href="#npu.build.appxclbinbuilder.AppXclbinBuilder.buildlog" title="Link to this definition">¶</a></dt>
+<dd><p>Path to the WSL build logfile.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.build.appxclbinbuilder.AppXclbinBuilder.build">
+<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">appname</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mlir_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">debug</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/appxclbinbuilder.html#AppXclbinBuilder.build"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.appxclbinbuilder.AppXclbinBuilder.build" title="Link to this definition">¶</a></dt>
+<dd><p>Toplevel call to build the xclbin</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>appname</strong> (<em>string</em>) – The desired final name of the xclbin.</p></li>
+<li><p><strong>mlir_file</strong> (<em>string</em>) – The filepath containing the MLIR to compile.</p></li>
+<li><p><strong>kernels</strong> (<em>list</em>) – The list of kernels that need to be compiled first before building the xclbin.</p></li>
+<li><p><strong>debug</strong> (<em>boolean</em>) – Optional setting to deliver extra logging and debug messages from the build.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.build.appxclbinbuilder.AppXclbinBuilder.build_kernels">
+<span class="sig-name descname"><span class="pre">build_kernels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kernels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">debug</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/appxclbinbuilder.html#AppXclbinBuilder.build_kernels"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.appxclbinbuilder.AppXclbinBuilder.build_kernels" title="Link to this definition">¶</a></dt>
+<dd><p>Build the ComputeTile kernel object files if not done already.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-npu.build.buffers">
+<span id="npu-build-buffers-module"></span><h2>npu.build.buffers module<a class="headerlink" href="#module-npu.build.buffers" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="npu.build.buffers.Buffer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npu.build.buffers.</span></span><span class="sig-name descname"><span class="pre">Buffer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">slices</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">buffertiletype</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">disable_unique_name_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/buffers.html#Buffer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.buffers.Buffer" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#npu.build.kernelmeta.KernelMeta" title="npu.build.kernelmeta.KernelMeta"><code class="xref py py-class docutils literal notranslate"><span class="pre">KernelMeta</span></code></a></p>
+<dl class="simple">
+<dt>This class is a superclass used for IT Buffers and MT Buffer objects.  The class</dt><dd><p>contains a numpy array and any slices used to index into that array.  These slices
+need tracked as data moving to/from IT and MT buffers will result in DMA buffer descriptors
+based on those slices.</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.buffers.Buffer._array">
+<span class="sig-name descname"><span class="pre">_array</span></span><a class="headerlink" href="#npu.build.buffers.Buffer._array" title="Link to this definition">¶</a></dt>
+<dd><p>The underlying buffer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.buffers.Buffer.slices">
+<span class="sig-name descname"><span class="pre">slices</span></span><a class="headerlink" href="#npu.build.buffers.Buffer.slices" title="Link to this definition">¶</a></dt>
+<dd><p>TAn ordered list of slices to index into the underlying array.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="npu.build.buffers.Buffer.array">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">array</span></span><a class="headerlink" href="#npu.build.buffers.Buffer.array" title="Link to this definition">¶</a></dt>
+<dd><p>return the array after applying the tracked slices.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.build.buffers.Buffer.createports">
+<span class="sig-name descname"><span class="pre">createports</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_inputs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_outputs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">port_slices</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/buffers.html#Buffer.createports"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.buffers.Buffer.createports" title="Link to this definition">¶</a></dt>
+<dd><p>Create a set of bufferports for this Buffer object.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="npu.build.buffers.Buffer.dtype">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#npu.build.buffers.Buffer.dtype" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="npu.build.buffers.Buffer.nbytes">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">nbytes</span></span><a class="headerlink" href="#npu.build.buffers.Buffer.nbytes" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="npu.build.buffers.Buffer.shape">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">shape</span></span><a class="headerlink" href="#npu.build.buffers.Buffer.shape" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.build.buffers.Buffer.to_metadata">
+<span class="sig-name descname"><span class="pre">to_metadata</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/buffers.html#Buffer.to_metadata"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.buffers.Buffer.to_metadata" title="Link to this definition">¶</a></dt>
+<dd><p>Produces a dict of the metadata for the kernel</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.build.buffers.Buffer.to_ndarray">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">to_ndarray</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/buffers.html#Buffer.to_ndarray"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.buffers.Buffer.to_ndarray" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="npu.build.buffers.ITBuffer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npu.build.buffers.</span></span><span class="sig-name descname"><span class="pre">ITBuffer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">slices</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">setitem_itkernel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/buffers.html#ITBuffer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.buffers.ITBuffer" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#npu.build.buffers.Buffer" title="npu.build.buffers.Buffer"><code class="xref py py-class docutils literal notranslate"><span class="pre">Buffer</span></code></a></p>
+<p>An Interface Tile Buffer subclass from Buffer.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.build.buffers.ITBuffer.ndarray_to_itb_port">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ndarray_to_itb_port</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">setitem_itkernel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/buffers.html#ITBuffer.ndarray_to_itb_port"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.buffers.ITBuffer.ndarray_to_itb_port" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.build.buffers.ITBuffer.ndarray_to_itbuffer">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ndarray_to_itbuffer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">setitem_itkernel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/buffers.html#ITBuffer.ndarray_to_itbuffer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.buffers.ITBuffer.ndarray_to_itbuffer" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="npu.build.buffers.MTBuffer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npu.build.buffers.</span></span><span class="sig-name descname"><span class="pre">MTBuffer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">slices</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reuse_buffername</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mtmode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'passthrough'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/buffers.html#MTBuffer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.buffers.MTBuffer" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#npu.build.buffers.Buffer" title="npu.build.buffers.Buffer"><code class="xref py py-class docutils literal notranslate"><span class="pre">Buffer</span></code></a></p>
+<p>A Memory Tile Buffer subclass from Buffer.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.build.buffers.MTBuffer.to_metadata">
+<span class="sig-name descname"><span class="pre">to_metadata</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/buffers.html#MTBuffer.to_metadata"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.buffers.MTBuffer.to_metadata" title="Link to this definition">¶</a></dt>
+<dd><p>Produces a dict of the metadata for the kernel</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-npu.build.connections">
+<span id="npu-build-connections-module"></span><h2>npu.build.connections module<a class="headerlink" href="#module-npu.build.connections" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="npu.build.connections.Connection">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npu.build.connections.</span></span><span class="sig-name descname"><span class="pre">Connection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">src_sink_tuple</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/connections.html#Connection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.connections.Connection" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="simple">
+<dt>This class holds the source and sink objects for a connection within</dt><dd><p>an NPU application.  Sources and sinks can be IT, MT, or CTs and
+the name of a connection can be split up to obtain dictionary keys for the
+src, src_port, snk and snk_port which is then used in AppBuilder tracing.</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Connections are point to point links.  Broadcast links are inferred by analyzing multiple Connection objects.
+Connection names are built as srcname__srcportname___snkname___snkportname.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.connections.Connection.srckernel">
+<span class="sig-name descname"><span class="pre">srckernel</span></span><a class="headerlink" href="#npu.build.connections.Connection.srckernel" title="Link to this definition">¶</a></dt>
+<dd><p>The source kernel (IT, MT, or CT) for this connection.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.connections.Connection.srcport">
+<span class="sig-name descname"><span class="pre">srcport</span></span><a class="headerlink" href="#npu.build.connections.Connection.srcport" title="Link to this definition">¶</a></dt>
+<dd><p>The source port for this connection.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.connections.Connection.sinkkernel">
+<span class="sig-name descname"><span class="pre">sinkkernel</span></span><a class="headerlink" href="#npu.build.connections.Connection.sinkkernel" title="Link to this definition">¶</a></dt>
+<dd><p>The sink kernel (IT, MT, or CT) for this connection.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.connections.Connection.sinkport">
+<span class="sig-name descname"><span class="pre">sinkport</span></span><a class="headerlink" href="#npu.build.connections.Connection.sinkport" title="Link to this definition">¶</a></dt>
+<dd><p>The sink port for this connection.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.connections.Connection.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#npu.build.connections.Connection.name" title="Link to this definition">¶</a></dt>
+<dd><p>Name of this connection constructed from snk/src names.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.connections.Connection.dtype">
+<span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#npu.build.connections.Connection.dtype" title="Link to this definition">¶</a></dt>
+<dd><p>Type information for the connection.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.connections.Connection.ctype">
+<span class="sig-name descname"><span class="pre">ctype</span></span><a class="headerlink" href="#npu.build.connections.Connection.ctype" title="Link to this definition">¶</a></dt>
+<dd><p>The implementation type of this connection, E.g. ‘rtp’, ‘objfifo,pingpong’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-npu.build.itkernel">
+<span id="npu-build-itkernel-module"></span><h2>npu.build.itkernel module<a class="headerlink" href="#module-npu.build.itkernel" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="npu.build.itkernel.ITKernel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npu.build.itkernel.</span></span><span class="sig-name descname"><span class="pre">ITKernel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fxname</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/itkernel.html#ITKernel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.itkernel.ITKernel" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#npu.build.kernelmeta.KernelMeta" title="npu.build.kernelmeta.KernelMeta"><code class="xref py py-class docutils literal notranslate"><span class="pre">KernelMeta</span></code></a></p>
+<dl class="simple">
+<dt>This class is a superclass for all Kernels that run against Interface Tile buffers.</dt><dd><p>These kernels can take an optional bufref to reuse an existing IT Buffer or by default
+create a new IT buffer when called.</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.itkernel.ITKernel.itbuf">
+<span class="sig-name descname"><span class="pre">itbuf</span></span><a class="headerlink" href="#npu.build.itkernel.ITKernel.itbuf" title="Link to this definition">¶</a></dt>
+<dd><p>The Interface Tile Buffer that is used within a ITKernel.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#npu.build.port.BufferPort" title="npu.build.port.BufferPort">BufferPort</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="npu.build.itkernel.ITRead">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npu.build.itkernel.</span></span><span class="sig-name descname"><span class="pre">ITRead</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputbuffer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/itkernel.html#ITRead"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.itkernel.ITRead" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This class is used to implement an IT Read Call.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.itkernel.ITRead.inputbuffer">
+<span class="sig-name descname"><span class="pre">inputbuffer</span></span><a class="headerlink" href="#npu.build.itkernel.ITRead.inputbuffer" title="Link to this definition">¶</a></dt>
+<dd><p>The buffer that is to be read.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#npu.build.port.BufferPort" title="npu.build.port.BufferPort">BufferPort</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="npu.build.itkernel.ITReadCall">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npu.build.itkernel.</span></span><span class="sig-name descname"><span class="pre">ITReadCall</span></span><a class="reference internal" href="_modules/npu/build/itkernel.html#ITReadCall"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.itkernel.ITReadCall" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#npu.build.itkernel.ITKernel" title="npu.build.itkernel.ITKernel"><code class="xref py py-class docutils literal notranslate"><span class="pre">ITKernel</span></code></a></p>
+<p>This class is used to execute the IT Read kernel.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.build.itkernel.ITReadCall.__call__">
+<span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputbuffer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">behavioral_n_tracing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/itkernel.html#ITReadCall.__call__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.itkernel.ITReadCall.__call__" title="Link to this definition">¶</a></dt>
+<dd><p>IT Read is called.  Behaviorally, the input buffer is returned.  For
+tracing, the inputbuffer is also returned.  Note that ITReads are not traced
+using the &#64;kerneltracer decorator - ITRead usgae is mostly for code readability.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="npu.build.itkernel.ITWrite">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npu.build.itkernel.</span></span><span class="sig-name descname"><span class="pre">ITWrite</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputbuffer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bufref</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/itkernel.html#ITWrite"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.itkernel.ITWrite" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This class is used to wrap a ITWriteCall object using __new__.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.itkernel.ITWrite.inputbuffer">
+<span class="sig-name descname"><span class="pre">inputbuffer</span></span><a class="headerlink" href="#npu.build.itkernel.ITWrite.inputbuffer" title="Link to this definition">¶</a></dt>
+<dd><p>The buffer to be written into an IT Buffer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#npu.build.port.BufferPort" title="npu.build.port.BufferPort">BufferPort</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.itkernel.ITWrite.buferf">
+<span class="sig-name descname"><span class="pre">buferf</span></span><a class="headerlink" href="#npu.build.itkernel.ITWrite.buferf" title="Link to this definition">¶</a></dt>
+<dd><p>Optional existing IT Buffer that is used for storing the incoming write.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#npu.build.port.BufferPort" title="npu.build.port.BufferPort">BufferPort</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="npu.build.itkernel.ITWriteCall">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npu.build.itkernel.</span></span><span class="sig-name descname"><span class="pre">ITWriteCall</span></span><a class="reference internal" href="_modules/npu/build/itkernel.html#ITWriteCall"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.itkernel.ITWriteCall" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#npu.build.itkernel.ITKernel" title="npu.build.itkernel.ITKernel"><code class="xref py py-class docutils literal notranslate"><span class="pre">ITKernel</span></code></a></p>
+<p>This class is used to execute the IT Write kernel.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.build.itkernel.ITWriteCall.__call__">
+<span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputbuffer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bufref</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">behavioral_n_tracing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/itkernel.html#ITWriteCall.__call__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.itkernel.ITWriteCall.__call__" title="Link to this definition">¶</a></dt>
+<dd><p>IT Write is called.  Behaviorally, the input buffer is returned.  For
+tracing, an IT Buffer is returned to track data movement</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-npu.build.kernel">
+<span id="npu-build-kernel-module"></span><h2>npu.build.kernel module<a class="headerlink" href="#module-npu.build.kernel" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="npu.build.kernel.Kernel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npu.build.kernel.</span></span><span class="sig-name descname"><span class="pre">Kernel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">srccode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">behavioralfx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_function</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">requires_boilerplate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/kernel.html#Kernel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.kernel.Kernel" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#npu.build.kernelmeta.KernelMeta" title="npu.build.kernelmeta.KernelMeta"><code class="xref py py-class docutils literal notranslate"><span class="pre">KernelMeta</span></code></a></p>
+<p>This class encapsulates a ComputeTile kernel C/C++ src code and methods to generate a compiled object - that compiled object
+is used within MLIR to build the final xclbin application.  Additionally, the kernel is parsed for input and output ports and can
+encapsulates a behavioral model to capture functional behavior and data shaping from input to output ports.  This metadata
+for the kernel enables behavioral execution to verify correctness in Python and also tracing to build the final AppBuilder xclbin.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.kernel.Kernel.srccode">
+<span class="sig-name descname"><span class="pre">srccode</span></span><a class="headerlink" href="#npu.build.kernel.Kernel.srccode" title="Link to this definition">¶</a></dt>
+<dd><p>The C/C++ source code of the ComputeTile kernel.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.kernel.Kernel.srcfile">
+<span class="sig-name descname"><span class="pre">srcfile</span></span><a class="headerlink" href="#npu.build.kernel.Kernel.srcfile" title="Link to this definition">¶</a></dt>
+<dd><p>The C/C++ source file path.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.kernel.Kernel.kname">
+<span class="sig-name descname"><span class="pre">kname</span></span><a class="headerlink" href="#npu.build.kernel.Kernel.kname" title="Link to this definition">¶</a></dt>
+<dd><p>The name of this kernel instance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.kernel.Kernel.behavioralfx">
+<span class="sig-name descname"><span class="pre">behavioralfx</span></span><a class="headerlink" href="#npu.build.kernel.Kernel.behavioralfx" title="Link to this definition">¶</a></dt>
+<dd><p>The behavioral function that emulates the C/C++ kernel’s behavior.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>function</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.build.kernel.Kernel.__call__">
+<span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">behavioral_n_tracing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/kernel.html#Kernel.__call__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.kernel.Kernel.__call__" title="Link to this definition">¶</a></dt>
+<dd><p>Tracer through a ComputeTile kernel call
+1. set port types to “in” or “out”
+2. set input port sizes based on input array sizes
+3. return tuple of output ports for use in subsequent tracing</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.build.kernel.Kernel.build">
+<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">debug</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/kernel.html#Kernel.build"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.kernel.Kernel.build" title="Link to this definition">¶</a></dt>
+<dd><p>Build the kernel object file for linking into the complete application.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.build.kernel.Kernel.completed_srccode">
+<span class="sig-name descname"><span class="pre">completed_srccode</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/npu/build/kernel.html#Kernel.completed_srccode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.kernel.Kernel.completed_srccode" title="Link to this definition">¶</a></dt>
+<dd><p>From the parsed information generate the source.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.build.kernel.Kernel.create_outputs">
+<span class="sig-name descname"><span class="pre">create_outputs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">behavioral_n_tracing</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/kernel.html#Kernel.create_outputs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.kernel.Kernel.create_outputs" title="Link to this definition">¶</a></dt>
+<dd><p>From kernel call, produce the output value or tuple.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.build.kernel.Kernel.display">
+<span class="sig-name descname"><span class="pre">display</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/npu/build/kernel.html#Kernel.display"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.kernel.Kernel.display" title="Link to this definition">¶</a></dt>
+<dd><p>Render the kernel code in a jupyter notebook.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="npu.build.kernel.Kernel.objfile">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">objfile</span></span><a class="headerlink" href="#npu.build.kernel.Kernel.objfile" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.build.kernel.Kernel.to_cpp">
+<span class="sig-name descname"><span class="pre">to_cpp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/npu/build/kernel.html#Kernel.to_cpp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.kernel.Kernel.to_cpp" title="Link to this definition">¶</a></dt>
+<dd><p>output source code to a .cpp file</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-npu.build.kernelbuilder">
+<span id="npu-build-kernelbuilder-module"></span><h2>npu.build.kernelbuilder module<a class="headerlink" href="#module-npu.build.kernelbuilder" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="npu.build.kernelbuilder.KernelObjectBuilder">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npu.build.kernelbuilder.</span></span><span class="sig-name descname"><span class="pre">KernelObjectBuilder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">srccode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">srcfile</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/kernelbuilder.html#KernelObjectBuilder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.kernelbuilder.KernelObjectBuilder" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#npu.build.wslbuilder.WSLBuilder" title="npu.build.wslbuilder.WSLBuilder"><code class="xref py py-class docutils literal notranslate"><span class="pre">WSLBuilder</span></code></a></p>
+<dl class="simple">
+<dt>This class builds ComputeTile kernel C/C++ into object files for linking into applications.</dt><dd><p>There is also caching support so that a kernel is only built one-time.</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.kernelbuilder.KernelObjectBuilder.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#npu.build.kernelbuilder.KernelObjectBuilder.name" title="Link to this definition">¶</a></dt>
+<dd><p>The name of the kernel.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.kernelbuilder.KernelObjectBuilder.srccode">
+<span class="sig-name descname"><span class="pre">srccode</span></span><a class="headerlink" href="#npu.build.kernelbuilder.KernelObjectBuilder.srccode" title="Link to this definition">¶</a></dt>
+<dd><p>The C/C++ source code of the ComputeTile kernel.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.kernelbuilder.KernelObjectBuilder.srcfile">
+<span class="sig-name descname"><span class="pre">srcfile</span></span><a class="headerlink" href="#npu.build.kernelbuilder.KernelObjectBuilder.srcfile" title="Link to this definition">¶</a></dt>
+<dd><p>The C/C++ source file path.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Notes</p>
+<p>The cache of object files aleady built can be cleared by running KernelObjectBuilder.clear_cache().</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.build.kernelbuilder.KernelObjectBuilder.build">
+<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">debug</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/kernelbuilder.html#KernelObjectBuilder.build"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.kernelbuilder.KernelObjectBuilder.build" title="Link to this definition">¶</a></dt>
+<dd><p>Build the kernel object file and copy it to self.prebuilt_objpath.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.build.kernelbuilder.KernelObjectBuilder.cached_objfile_exists">
+<span class="sig-name descname"><span class="pre">cached_objfile_exists</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/kernelbuilder.html#KernelObjectBuilder.cached_objfile_exists"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.kernelbuilder.KernelObjectBuilder.cached_objfile_exists" title="Link to this definition">¶</a></dt>
+<dd><p>Check if cached object file exists built from identical source code.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.build.kernelbuilder.KernelObjectBuilder.clear_cache">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">clear_cache</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/kernelbuilder.html#KernelObjectBuilder.clear_cache"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.kernelbuilder.KernelObjectBuilder.clear_cache" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.kernelbuilder.KernelObjectBuilder.prebuilt_path">
+<span class="sig-name descname"><span class="pre">prebuilt_path</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'c:\\users\\catha\\appdata\\local\\riallto\\riallto_venv\\lib\\site-packages\\npu\\build\\..\\lib\\cached'</span></em><a class="headerlink" href="#npu.build.kernelbuilder.KernelObjectBuilder.prebuilt_path" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.build.kernelbuilder.KernelObjectBuilder.update_cache_md5">
+<span class="sig-name descname"><span class="pre">update_cache_md5</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/kernelbuilder.html#KernelObjectBuilder.update_cache_md5"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.kernelbuilder.KernelObjectBuilder.update_cache_md5" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-npu.build.kernelmeta">
+<span id="npu-build-kernelmeta-module"></span><h2>npu.build.kernelmeta module<a class="headerlink" href="#module-npu.build.kernelmeta" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="npu.build.kernelmeta.KernelMeta">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npu.build.kernelmeta.</span></span><span class="sig-name descname"><span class="pre">KernelMeta</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shortname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ktype</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ttype</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ports</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tloc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">disable_unique_name_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/kernelmeta.html#KernelMeta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.kernelmeta.KernelMeta" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This class is a superclass for all Kernels in this package - including IT, MT, and CT kernels.  it keeps track of unique names for
+kernels as they are instantiated and has helper functions to identify and iterate over kernel ports.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.kernelmeta.KernelMeta.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#npu.build.kernelmeta.KernelMeta.name" title="Link to this definition">¶</a></dt>
+<dd><p>The name of this kernel.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.kernelmeta.KernelMeta.shortname">
+<span class="sig-name descname"><span class="pre">shortname</span></span><a class="headerlink" href="#npu.build.kernelmeta.KernelMeta.shortname" title="Link to this definition">¶</a></dt>
+<dd><p>an abbreviated name for use in application metadata.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.kernelmeta.KernelMeta.ktype">
+<span class="sig-name descname"><span class="pre">ktype</span></span><a class="headerlink" href="#npu.build.kernelmeta.KernelMeta.ktype" title="Link to this definition">¶</a></dt>
+<dd><p>The kernel type - will be defined by the operation performed (E.g. ‘mtpassthrough’ for a MemoryTile passthrough operation).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.kernelmeta.KernelMeta.ttype">
+<span class="sig-name descname"><span class="pre">ttype</span></span><a class="headerlink" href="#npu.build.kernelmeta.KernelMeta.ttype" title="Link to this definition">¶</a></dt>
+<dd><p>The kernel tile type - valid values are ‘IT’, ‘MT’ or ‘CT’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.kernelmeta.KernelMeta.ports">
+<span class="sig-name descname"><span class="pre">ports</span></span><a class="headerlink" href="#npu.build.kernelmeta.KernelMeta.ports" title="Link to this definition">¶</a></dt>
+<dd><p>The kernel ports which are defined by the kernel operation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.kernelmeta.KernelMeta.tloc">
+<span class="sig-name descname"><span class="pre">tloc</span></span><a class="headerlink" href="#npu.build.kernelmeta.KernelMeta.tloc" title="Link to this definition">¶</a></dt>
+<dd><p>The requested Tile location for this kernel as an (x,y) pair.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.kernelmeta.KernelMeta.disable_unique_name_id">
+<span class="sig-name descname"><span class="pre">disable_unique_name_id</span></span><a class="headerlink" href="#npu.build.kernelmeta.KernelMeta.disable_unique_name_id" title="Link to this definition">¶</a></dt>
+<dd><p>Optional flag for disabling a unique name for this kernel.  If set, the name input argument will be used.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="npu.build.kernelmeta.KernelMeta.bufferports">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bufferports</span></span><a class="headerlink" href="#npu.build.kernelmeta.KernelMeta.bufferports" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="npu.build.kernelmeta.KernelMeta.inputbufferports">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">inputbufferports</span></span><a class="headerlink" href="#npu.build.kernelmeta.KernelMeta.inputbufferports" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="npu.build.kernelmeta.KernelMeta.metadata">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">metadata</span></span><a class="headerlink" href="#npu.build.kernelmeta.KernelMeta.metadata" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="npu.build.kernelmeta.KernelMeta.outputbufferports">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">outputbufferports</span></span><a class="headerlink" href="#npu.build.kernelmeta.KernelMeta.outputbufferports" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.build.kernelmeta.KernelMeta.reset_unique_names">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">reset_unique_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/kernelmeta.html#KernelMeta.reset_unique_names"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.kernelmeta.KernelMeta.reset_unique_names" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="npu.build.kernelmeta.KernelMeta.rtpports">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">rtpports</span></span><a class="headerlink" href="#npu.build.kernelmeta.KernelMeta.rtpports" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.build.kernelmeta.KernelMeta.to_metadata">
+<span class="sig-name descname"><span class="pre">to_metadata</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/kernelmeta.html#KernelMeta.to_metadata"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.kernelmeta.KernelMeta.to_metadata" title="Link to this definition">¶</a></dt>
+<dd><p>Produces a dict of the metadata for the kernel</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.build.kernelmeta.KernelMeta.unique_name">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">unique_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kernelname</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/kernelmeta.html#KernelMeta.unique_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.kernelmeta.KernelMeta.unique_name" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.kernelmeta.KernelMeta.used_names">
+<span class="sig-name descname"><span class="pre">used_names</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#npu.build.kernelmeta.KernelMeta.used_names" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-npu.build.mlirbuilder">
+<span id="npu-build-mlirbuilder-module"></span><h2>npu.build.mlirbuilder module<a class="headerlink" href="#module-npu.build.mlirbuilder" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="npu.build.mlirbuilder.MLIRBuilder">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npu.build.mlirbuilder.</span></span><span class="sig-name descname"><span class="pre">MLIRBuilder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">metadata</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(4,</span> <span class="pre">1,</span> <span class="pre">1)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/mlirbuilder.html#MLIRBuilder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.mlirbuilder.MLIRBuilder" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This class builds an MLIR representation of an application starting from AppMetadata.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.mlirbuilder.MLIRBuilder.metadata">
+<span class="sig-name descname"><span class="pre">metadata</span></span><a class="headerlink" href="#npu.build.mlirbuilder.MLIRBuilder.metadata" title="Link to this definition">¶</a></dt>
+<dd><p>The application metadata.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AppMetadata</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.mlirbuilder.MLIRBuilder.app">
+<span class="sig-name descname"><span class="pre">app</span></span><a class="headerlink" href="#npu.build.mlirbuilder.MLIRBuilder.app" title="Link to this definition">¶</a></dt>
+<dd><p>The json representation of an application metadata.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>JSON</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.mlirbuilder.MLIRBuilder.kernels">
+<span class="sig-name descname"><span class="pre">kernels</span></span><a class="headerlink" href="#npu.build.mlirbuilder.MLIRBuilder.kernels" title="Link to this definition">¶</a></dt>
+<dd><p>Dictionary storing all unique compute tile kernels in this application.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.mlirbuilder.MLIRBuilder.connections">
+<span class="sig-name descname"><span class="pre">connections</span></span><a class="headerlink" href="#npu.build.mlirbuilder.MLIRBuilder.connections" title="Link to this definition">¶</a></dt>
+<dd><p>Dictionary storing all unique connections between kernels in this application.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.mlirbuilder.MLIRBuilder.sequence">
+<span class="sig-name descname"><span class="pre">sequence</span></span><a class="headerlink" href="#npu.build.mlirbuilder.MLIRBuilder.sequence" title="Link to this definition">¶</a></dt>
+<dd><p>List of the application data movements between kernels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.mlirbuilder.MLIRBuilder.config">
+<span class="sig-name descname"><span class="pre">config</span></span><a class="headerlink" href="#npu.build.mlirbuilder.MLIRBuilder.config" title="Link to this definition">¶</a></dt>
+<dd><p>Tuple containing number of CT, MT, IT tiles that can be used to build the MLIR.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.build.mlirbuilder.MLIRBuilder.to_mlir">
+<span class="sig-name descname"><span class="pre">to_mlir</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/mlirbuilder.html#MLIRBuilder.to_mlir"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.mlirbuilder.MLIRBuilder.to_mlir" title="Link to this definition">¶</a></dt>
+<dd><p>Toplevel method to generate the application MLIR.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-npu.build.mlirconnections">
+<span id="npu-build-mlirconnections-module"></span><h2>npu.build.mlirconnections module<a class="headerlink" href="#module-npu.build.mlirconnections" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="npu.build.mlirconnections.MLIRConnect">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npu.build.mlirconnections.</span></span><span class="sig-name descname"><span class="pre">MLIRConnect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">src</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dsts</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Set</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nbytes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">apptiles</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">appkernels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/mlirconnections.html#MLIRConnect"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.mlirconnections.MLIRConnect" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This class represents a connection in MLIR between kernels.  Broadcast connections are supported.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.mlirconnections.MLIRConnect.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#npu.build.mlirconnections.MLIRConnect.name" title="Link to this definition">¶</a></dt>
+<dd><p>MLIR variable name of this connection.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.mlirconnections.MLIRConnect.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#npu.build.mlirconnections.MLIRConnect.id" title="Link to this definition">¶</a></dt>
+<dd><p>Incrementing unique id for this connection.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.mlirconnections.MLIRConnect.src">
+<span class="sig-name descname"><span class="pre">src</span></span><a class="headerlink" href="#npu.build.mlirconnections.MLIRConnect.src" title="Link to this definition">¶</a></dt>
+<dd><p>The source kernel and port.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.mlirconnections.MLIRConnect.dsts">
+<span class="sig-name descname"><span class="pre">dsts</span></span><a class="headerlink" href="#npu.build.mlirconnections.MLIRConnect.dsts" title="Link to this definition">¶</a></dt>
+<dd><p>List of destination sink kernel and ports.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.mlirconnections.MLIRConnect.nbytes">
+<span class="sig-name descname"><span class="pre">nbytes</span></span><a class="headerlink" href="#npu.build.mlirconnections.MLIRConnect.nbytes" title="Link to this definition">¶</a></dt>
+<dd><p>Number of bytes transferred on this connection.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.mlirconnections.MLIRConnect.offset">
+<span class="sig-name descname"><span class="pre">offset</span></span><a class="headerlink" href="#npu.build.mlirconnections.MLIRConnect.offset" title="Link to this definition">¶</a></dt>
+<dd><p>Buffer offset for the source data transfer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.mlirconnections.MLIRConnect.config">
+<span class="sig-name descname"><span class="pre">config</span></span><a class="headerlink" href="#npu.build.mlirconnections.MLIRConnect.config" title="Link to this definition">¶</a></dt>
+<dd><p>Tuple containing number of CT, MT, IT tiles that can be used to build the MLIR.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.build.mlirconnections.MLIRConnect.next_id">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">next_id</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/mlirconnections.html#MLIRConnect.next_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.mlirconnections.MLIRConnect.next_id" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.build.mlirconnections.MLIRConnect.reset_id">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">reset_id</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/mlirconnections.html#MLIRConnect.reset_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.mlirconnections.MLIRConnect.reset_id" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.mlirconnections.MLIRConnect.unique_id">
+<span class="sig-name descname"><span class="pre">unique_id</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-1</span></em><a class="headerlink" href="#npu.build.mlirconnections.MLIRConnect.unique_id" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="npu.build.mlirconnections.ObjectFIFO">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npu.build.mlirconnections.</span></span><span class="sig-name descname"><span class="pre">ObjectFIFO</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">src</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dsts</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Set</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nbytes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">apptiles</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">appkernels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/mlirconnections.html#ObjectFIFO"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.mlirconnections.ObjectFIFO" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#npu.build.mlirconnections.MLIRConnect" title="npu.build.mlirconnections.MLIRConnect"><code class="xref py py-class docutils literal notranslate"><span class="pre">MLIRConnect</span></code></a></p>
+<p>This class represents an object fifo connection in MLIR between kernels.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.mlirconnections.ObjectFIFO.elementname">
+<span class="sig-name descname"><span class="pre">elementname</span></span><a class="headerlink" href="#npu.build.mlirconnections.ObjectFIFO.elementname" title="Link to this definition">¶</a></dt>
+<dd><p>MLIR objectfifo element name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.mlirconnections.ObjectFIFO.subviewname">
+<span class="sig-name descname"><span class="pre">subviewname</span></span><a class="headerlink" href="#npu.build.mlirconnections.ObjectFIFO.subviewname" title="Link to this definition">¶</a></dt>
+<dd><p>MLIR objectfifo subview name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.build.mlirconnections.ObjectFIFO.to_mlir_acquire">
+<span class="sig-name descname"><span class="pre">to_mlir_acquire</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">io</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indent</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/mlirconnections.html#ObjectFIFO.to_mlir_acquire"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.mlirconnections.ObjectFIFO.to_mlir_acquire" title="Link to this definition">¶</a></dt>
+<dd><p>Return the MLIR text for objectfifo acquire calls.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.build.mlirconnections.ObjectFIFO.to_mlir_declare">
+<span class="sig-name descname"><span class="pre">to_mlir_declare</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/mlirconnections.html#ObjectFIFO.to_mlir_declare"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.mlirconnections.ObjectFIFO.to_mlir_declare" title="Link to this definition">¶</a></dt>
+<dd><p>Return the MLIR text for declaring this object</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.build.mlirconnections.ObjectFIFO.to_mlir_release">
+<span class="sig-name descname"><span class="pre">to_mlir_release</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">io</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indent</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/mlirconnections.html#ObjectFIFO.to_mlir_release"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.mlirconnections.ObjectFIFO.to_mlir_release" title="Link to this definition">¶</a></dt>
+<dd><p>Return the MLIR text for objectfifo release calls.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-npu.build.mlirsequencebuilder">
+<span id="npu-build-mlirsequencebuilder-module"></span><h2>npu.build.mlirsequencebuilder module<a class="headerlink" href="#module-npu.build.mlirsequencebuilder" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="npu.build.mlirsequencebuilder.MLIRSequnceBuilder">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npu.build.mlirsequencebuilder.</span></span><span class="sig-name descname"><span class="pre">MLIRSequnceBuilder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">app_metadata</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aietiles</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cons_broadcasts</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/mlirsequencebuilder.html#MLIRSequnceBuilder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.mlirsequencebuilder.MLIRSequnceBuilder" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This class generates the MLIR Sequence dialect that describes datamovment to and from
+The NPU.  This is accomplished by analyzing the datamovement for IT Buffers discovered by
+running the AppBuilder callgraph.  The required sync signals are also generated.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.mlirsequencebuilder.MLIRSequnceBuilder._metadata">
+<span class="sig-name descname"><span class="pre">_metadata</span></span><a class="headerlink" href="#npu.build.mlirsequencebuilder.MLIRSequnceBuilder._metadata" title="Link to this definition">¶</a></dt>
+<dd><p>The application metadata.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AppMetadata</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.mlirsequencebuilder.MLIRSequnceBuilder.aietiles">
+<span class="sig-name descname"><span class="pre">aietiles</span></span><a class="headerlink" href="#npu.build.mlirsequencebuilder.MLIRSequnceBuilder.aietiles" title="Link to this definition">¶</a></dt>
+<dd><p>List of AIE tiles in this application.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.mlirsequencebuilder.MLIRSequnceBuilder._userbuffers">
+<span class="sig-name descname"><span class="pre">_userbuffers</span></span><a class="headerlink" href="#npu.build.mlirsequencebuilder.MLIRSequnceBuilder._userbuffers" title="Link to this definition">¶</a></dt>
+<dd><p>Dictionary of IT Buffers discovered during application tracing.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.mlirsequencebuilder.MLIRSequnceBuilder._ubname2externid">
+<span class="sig-name descname"><span class="pre">_ubname2externid</span></span><a class="headerlink" href="#npu.build.mlirsequencebuilder.MLIRSequnceBuilder._ubname2externid" title="Link to this definition">¶</a></dt>
+<dd><p>Dictionary of unique incrementing IDs for IT Buffers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.mlirsequencebuilder.MLIRSequnceBuilder._ingress_ub">
+<span class="sig-name descname"><span class="pre">_ingress_ub</span></span><a class="headerlink" href="#npu.build.mlirsequencebuilder.MLIRSequnceBuilder._ingress_ub" title="Link to this definition">¶</a></dt>
+<dd><p>Dictionary of incoming IT Buffers to the NPU array.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.mlirsequencebuilder.MLIRSequnceBuilder._egress_ub">
+<span class="sig-name descname"><span class="pre">_egress_ub</span></span><a class="headerlink" href="#npu.build.mlirsequencebuilder.MLIRSequnceBuilder._egress_ub" title="Link to this definition">¶</a></dt>
+<dd><p>Dictionary of outgoing IT Buffers from the NPU array.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.mlirsequencebuilder.MLIRSequnceBuilder._ingress_egress_ub">
+<span class="sig-name descname"><span class="pre">_ingress_egress_ub</span></span><a class="headerlink" href="#npu.build.mlirsequencebuilder.MLIRSequnceBuilder._ingress_egress_ub" title="Link to this definition">¶</a></dt>
+<dd><p>Dictionary of IT Buffers if the buffer is both input and output to the NPU array.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.mlirsequencebuilder.MLIRSequnceBuilder._constants_table">
+<span class="sig-name descname"><span class="pre">_constants_table</span></span><a class="headerlink" href="#npu.build.mlirsequencebuilder.MLIRSequnceBuilder._constants_table" title="Link to this definition">¶</a></dt>
+<dd><p>Dictionary of constants used in the MLIR sequence specification.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.mlirsequencebuilder.MLIRSequnceBuilder._cons_broadcasts">
+<span class="sig-name descname"><span class="pre">_cons_broadcasts</span></span><a class="headerlink" href="#npu.build.mlirsequencebuilder.MLIRSequnceBuilder._cons_broadcasts" title="Link to this definition">¶</a></dt>
+<dd><p>List of broadcast connection names.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="npu.build.mlirsequencebuilder.MLIRSequnceBuilder.mlir">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">mlir</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#npu.build.mlirsequencebuilder.MLIRSequnceBuilder.mlir" title="Link to this definition">¶</a></dt>
+<dd><p>Generates the MLIR sequence dialect from the callgraph traced sequence.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="npu.build.mlirsequencebuilder.UBDataMovement">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npu.build.mlirsequencebuilder.</span></span><span class="sig-name descname"><span class="pre">UBDataMovement</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ubname:</span> <span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">symname:</span> <span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape:</span> <span class="pre">tuple</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype:</span> <span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tilesizes:</span> <span class="pre">List[int]</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim:</span> <span class="pre">List[int]</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">srcoffsets:</span> <span class="pre">List[int]</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">snkoffsets:</span> <span class="pre">List[int]</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/mlirsequencebuilder.html#UBDataMovement"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.mlirsequencebuilder.UBDataMovement" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.mlirsequencebuilder.UBDataMovement.dim">
+<span class="sig-name descname"><span class="pre">dim</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#npu.build.mlirsequencebuilder.UBDataMovement.dim" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.mlirsequencebuilder.UBDataMovement.dtype">
+<span class="sig-name descname"><span class="pre">dtype</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#npu.build.mlirsequencebuilder.UBDataMovement.dtype" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.mlirsequencebuilder.UBDataMovement.shape">
+<span class="sig-name descname"><span class="pre">shape</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">tuple</span></em><a class="headerlink" href="#npu.build.mlirsequencebuilder.UBDataMovement.shape" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.mlirsequencebuilder.UBDataMovement.snkoffsets">
+<span class="sig-name descname"><span class="pre">snkoffsets</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#npu.build.mlirsequencebuilder.UBDataMovement.snkoffsets" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.mlirsequencebuilder.UBDataMovement.srcoffsets">
+<span class="sig-name descname"><span class="pre">srcoffsets</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#npu.build.mlirsequencebuilder.UBDataMovement.srcoffsets" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.mlirsequencebuilder.UBDataMovement.symname">
+<span class="sig-name descname"><span class="pre">symname</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#npu.build.mlirsequencebuilder.UBDataMovement.symname" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.mlirsequencebuilder.UBDataMovement.tilesizes">
+<span class="sig-name descname"><span class="pre">tilesizes</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#npu.build.mlirsequencebuilder.UBDataMovement.tilesizes" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.mlirsequencebuilder.UBDataMovement.ubname">
+<span class="sig-name descname"><span class="pre">ubname</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#npu.build.mlirsequencebuilder.UBDataMovement.ubname" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-npu.build.mlirtiles">
+<span id="npu-build-mlirtiles-module"></span><h2>npu.build.mlirtiles module<a class="headerlink" href="#module-npu.build.mlirtiles" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="npu.build.mlirtiles.BufferTile">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npu.build.mlirtiles.</span></span><span class="sig-name descname"><span class="pre">BufferTile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">buffers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/mlirtiles.html#BufferTile"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.mlirtiles.BufferTile" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#npu.build.mlirtiles.Tile" title="npu.build.mlirtiles.Tile"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tile</span></code></a></p>
+<p>Class to represent IT and MT Tiles in MLIR.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.build.mlirtiles.BufferTile.is_used">
+<span class="sig-name descname"><span class="pre">is_used</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/mlirtiles.html#BufferTile.is_used"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.mlirtiles.BufferTile.is_used" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="npu.build.mlirtiles.CTTile">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npu.build.mlirtiles.</span></span><span class="sig-name descname"><span class="pre">CTTile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/mlirtiles.html#CTTile"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.mlirtiles.CTTile" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#npu.build.mlirtiles.Tile" title="npu.build.mlirtiles.Tile"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tile</span></code></a></p>
+<p>This class represents a CT Tile in MLIR.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.mlirtiles.CTTile.tloc">
+<span class="sig-name descname"><span class="pre">tloc</span></span><a class="headerlink" href="#npu.build.mlirtiles.CTTile.tloc" title="Link to this definition">¶</a></dt>
+<dd><p>The x,y coordinates of this tile.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.mlirtiles.CTTile.kernel">
+<span class="sig-name descname"><span class="pre">kernel</span></span><a class="headerlink" href="#npu.build.mlirtiles.CTTile.kernel" title="Link to this definition">¶</a></dt>
+<dd><p>Dictionary describing the kernel placed on this tile.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.mlirtiles.CTTile.objfifos_produce">
+<span class="sig-name descname"><span class="pre">objfifos_produce</span></span><a class="headerlink" href="#npu.build.mlirtiles.CTTile.objfifos_produce" title="Link to this definition">¶</a></dt>
+<dd><p>list of objectfifos used as a producer by this tile.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.mlirtiles.CTTile.objfifos_consume">
+<span class="sig-name descname"><span class="pre">objfifos_consume</span></span><a class="headerlink" href="#npu.build.mlirtiles.CTTile.objfifos_consume" title="Link to this definition">¶</a></dt>
+<dd><p>list of objectfifos used as a consumer by this tile.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.build.mlirtiles.CTTile.is_used">
+<span class="sig-name descname"><span class="pre">is_used</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/mlirtiles.html#CTTile.is_used"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.mlirtiles.CTTile.is_used" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="npu.build.mlirtiles.CTTile.objfifos">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">objfifos</span></span><a class="headerlink" href="#npu.build.mlirtiles.CTTile.objfifos" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.build.mlirtiles.CTTile.to_mlir">
+<span class="sig-name descname"><span class="pre">to_mlir</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">indent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'</span>&#160;&#160; <span class="pre">'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/mlirtiles.html#CTTile.to_mlir"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.mlirtiles.CTTile.to_mlir" title="Link to this definition">¶</a></dt>
+<dd><p>Return the MLIR string to represent this tile.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.build.mlirtiles.CTTile.to_mlir_kernel_declare">
+<span class="sig-name descname"><span class="pre">to_mlir_kernel_declare</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/mlirtiles.html#CTTile.to_mlir_kernel_declare"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.mlirtiles.CTTile.to_mlir_kernel_declare" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.build.mlirtiles.CTTile.to_mlir_tile_declare">
+<span class="sig-name descname"><span class="pre">to_mlir_tile_declare</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">indent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/mlirtiles.html#CTTile.to_mlir_tile_declare"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.mlirtiles.CTTile.to_mlir_tile_declare" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="npu.build.mlirtiles.ITTile">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npu.build.mlirtiles.</span></span><span class="sig-name descname"><span class="pre">ITTile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">buffers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/mlirtiles.html#ITTile"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.mlirtiles.ITTile" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#npu.build.mlirtiles.BufferTile" title="npu.build.mlirtiles.BufferTile"><code class="xref py py-class docutils literal notranslate"><span class="pre">BufferTile</span></code></a></p>
+<p>Class to represent IT Tiles in MLIR.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="npu.build.mlirtiles.MEMTile">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npu.build.mlirtiles.</span></span><span class="sig-name descname"><span class="pre">MEMTile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">buffers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/mlirtiles.html#MEMTile"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.mlirtiles.MEMTile" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#npu.build.mlirtiles.BufferTile" title="npu.build.mlirtiles.BufferTile"><code class="xref py py-class docutils literal notranslate"><span class="pre">BufferTile</span></code></a></p>
+<p>Class to represent MT Tiles in MLIR.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="npu.build.mlirtiles.Tile">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npu.build.mlirtiles.</span></span><span class="sig-name descname"><span class="pre">Tile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/mlirtiles.html#Tile"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.mlirtiles.Tile" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This class represents a Tile in MLIR.  IT, MT and CT Tiles are supported.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.mlirtiles.Tile.tloc">
+<span class="sig-name descname"><span class="pre">tloc</span></span><a class="headerlink" href="#npu.build.mlirtiles.Tile.tloc" title="Link to this definition">¶</a></dt>
+<dd><p>The x,y coordinates of this tile.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.mlirtiles.Tile.tvarname">
+<span class="sig-name descname"><span class="pre">tvarname</span></span><a class="headerlink" href="#npu.build.mlirtiles.Tile.tvarname" title="Link to this definition">¶</a></dt>
+<dd><p>The MLIR variable name for this tile.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.build.mlirtiles.Tile.to_mlir_tile_declare">
+<span class="sig-name descname"><span class="pre">to_mlir_tile_declare</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">indent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/mlirtiles.html#Tile.to_mlir_tile_declare"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.mlirtiles.Tile.to_mlir_tile_declare" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-npu.build.mtkernel">
+<span id="npu-build-mtkernel-module"></span><h2>npu.build.mtkernel module<a class="headerlink" href="#module-npu.build.mtkernel" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="npu.build.mtkernel.MTConcat">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npu.build.mtkernel.</span></span><span class="sig-name descname"><span class="pre">MTConcat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputbuffers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/mtkernel.html#MTConcat"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.mtkernel.MTConcat" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This class is used to wrap a MTConcatCall object using __new__.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.mtkernel.MTConcat.inputbuffers">
+<span class="sig-name descname"><span class="pre">inputbuffers</span></span><a class="headerlink" href="#npu.build.mtkernel.MTConcat.inputbuffers" title="Link to this definition">¶</a></dt>
+<dd><p>The list of bufferPorts to be concatenated.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.mtkernel.MTConcat.buferf">
+<span class="sig-name descname"><span class="pre">buferf</span></span><a class="headerlink" href="#npu.build.mtkernel.MTConcat.buferf" title="Link to this definition">¶</a></dt>
+<dd><p>Optional existing MT Buffer that is used for storing the incoming BufferPorts.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#npu.build.port.BufferPort" title="npu.build.port.BufferPort">BufferPort</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="npu.build.mtkernel.MTConcatCall">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npu.build.mtkernel.</span></span><span class="sig-name descname"><span class="pre">MTConcatCall</span></span><a class="reference internal" href="_modules/npu/build/mtkernel.html#MTConcatCall"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.mtkernel.MTConcatCall" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#npu.build.mtkernel.MTKernel" title="npu.build.mtkernel.MTKernel"><code class="xref py py-class docutils literal notranslate"><span class="pre">MTKernel</span></code></a></p>
+<p>This class is used to execute the MT Concat kernel.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.build.mtkernel.MTConcatCall.__call__">
+<span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputbuffers</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">behavioral_n_tracing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/mtkernel.html#MTConcatCall.__call__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.mtkernel.MTConcatCall.__call__" title="Link to this definition">¶</a></dt>
+<dd><p>MT Concat is called.  Behaviorally, the input buffers are concatenated into a single array and
+that final array is returned.  For tracing, the correct number of input BufferPorts are created
+and are used in tracing of the application.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="npu.build.mtkernel.MTKernel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npu.build.mtkernel.</span></span><span class="sig-name descname"><span class="pre">MTKernel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fxname</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/mtkernel.html#MTKernel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.mtkernel.MTKernel" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#npu.build.kernelmeta.KernelMeta" title="npu.build.kernelmeta.KernelMeta"><code class="xref py py-class docutils literal notranslate"><span class="pre">KernelMeta</span></code></a></p>
+<dl class="simple">
+<dt>This class is a superclass for all MemoryTile Kernels that run against Memory Tile buffers.</dt><dd><p>These kernels can take an optional bufref to reuse an existing MT Buffer or by default
+create a new MT buffer when called.</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.mtkernel.MTKernel.mtbuf">
+<span class="sig-name descname"><span class="pre">mtbuf</span></span><a class="headerlink" href="#npu.build.mtkernel.MTKernel.mtbuf" title="Link to this definition">¶</a></dt>
+<dd><p>The Memory Tile Buffer that is used within a MTKernel.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#npu.build.port.BufferPort" title="npu.build.port.BufferPort">BufferPort</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="npu.build.mtkernel.MTPassThrough">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npu.build.mtkernel.</span></span><span class="sig-name descname"><span class="pre">MTPassThrough</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputbuffer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/mtkernel.html#MTPassThrough"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.mtkernel.MTPassThrough" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This class is used to wrap a MTPassThroughCall object using __new__.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.mtkernel.MTPassThrough.inputbuffer">
+<span class="sig-name descname"><span class="pre">inputbuffer</span></span><a class="headerlink" href="#npu.build.mtkernel.MTPassThrough.inputbuffer" title="Link to this definition">¶</a></dt>
+<dd><p>The buffer to be written into an MT Buffer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#npu.build.port.BufferPort" title="npu.build.port.BufferPort">BufferPort</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.mtkernel.MTPassThrough.buferf">
+<span class="sig-name descname"><span class="pre">buferf</span></span><a class="headerlink" href="#npu.build.mtkernel.MTPassThrough.buferf" title="Link to this definition">¶</a></dt>
+<dd><p>Optional existing MT Buffer that is used for storing the incoming write.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#npu.build.port.BufferPort" title="npu.build.port.BufferPort">BufferPort</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="npu.build.mtkernel.MTPassThroughCall">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npu.build.mtkernel.</span></span><span class="sig-name descname"><span class="pre">MTPassThroughCall</span></span><a class="reference internal" href="_modules/npu/build/mtkernel.html#MTPassThroughCall"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.mtkernel.MTPassThroughCall" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#npu.build.mtkernel.MTKernel" title="npu.build.mtkernel.MTKernel"><code class="xref py py-class docutils literal notranslate"><span class="pre">MTKernel</span></code></a></p>
+<p>This class is used to execute the MT PassThrough kernel.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.build.mtkernel.MTPassThroughCall.__call__">
+<span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputbuffer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">behavioral_n_tracing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/mtkernel.html#MTPassThroughCall.__call__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.mtkernel.MTPassThroughCall.__call__" title="Link to this definition">¶</a></dt>
+<dd><p>MT PassThrough is called.  Behaviorally, the input buffer is returned.  For
+tracing, an MT Buffer is returned to track data movement</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="npu.build.mtkernel.MTSplit">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npu.build.mtkernel.</span></span><span class="sig-name descname"><span class="pre">MTSplit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/mtkernel.html#MTSplit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.mtkernel.MTSplit" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This class is used to wrap a MTSplitCall object using __new__.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.mtkernel.MTSplit.inputbuffer">
+<span class="sig-name descname"><span class="pre">inputbuffer</span></span><a class="headerlink" href="#npu.build.mtkernel.MTSplit.inputbuffer" title="Link to this definition">¶</a></dt>
+<dd><p>The buffer to be written into an MT Buffer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#npu.build.port.BufferPort" title="npu.build.port.BufferPort">BufferPort</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.mtkernel.MTSplit.numsplits">
+<span class="sig-name descname"><span class="pre">numsplits</span></span><a class="headerlink" href="#npu.build.mtkernel.MTSplit.numsplits" title="Link to this definition">¶</a></dt>
+<dd><p>The number of buffer splits requested to be returned.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.mtkernel.MTSplit.buferf">
+<span class="sig-name descname"><span class="pre">buferf</span></span><a class="headerlink" href="#npu.build.mtkernel.MTSplit.buferf" title="Link to this definition">¶</a></dt>
+<dd><p>Optional existing MT Buffer that is used for storing the incoming write.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#npu.build.port.BufferPort" title="npu.build.port.BufferPort">BufferPort</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="npu.build.mtkernel.MTSplitCall">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npu.build.mtkernel.</span></span><span class="sig-name descname"><span class="pre">MTSplitCall</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">numsplits</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/mtkernel.html#MTSplitCall"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.mtkernel.MTSplitCall" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#npu.build.mtkernel.MTKernel" title="npu.build.mtkernel.MTKernel"><code class="xref py py-class docutils literal notranslate"><span class="pre">MTKernel</span></code></a></p>
+<p>This class is used to execute the MT Split kernel.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.build.mtkernel.MTSplitCall.__call__">
+<span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputbuffer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">behavioral_n_tracing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/mtkernel.html#MTSplitCall.__call__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.mtkernel.MTSplitCall.__call__" title="Link to this definition">¶</a></dt>
+<dd><p>MT Split is called.  Behaviorally, the input buffer is split into numsplit arrays and
+those arrays are returned.  For tracing, the correct number of output BufferPorts are created
+and are used in tracing of the application.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-npu.build.port">
+<span id="npu-build-port-module"></span><h2>npu.build.port module<a class="headerlink" href="#module-npu.build.port" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="npu.build.port.BufferPort">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npu.build.port.</span></span><span class="sig-name descname"><span class="pre">BufferPort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pdtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">array</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">slices</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">io</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ctype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/port.html#BufferPort"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.port.BufferPort" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#npu.build.port.Port" title="npu.build.port.Port"><code class="xref py py-class docutils literal notranslate"><span class="pre">Port</span></code></a></p>
+<p>This class represents a kernel port that contains a buffer.  That buffer is held as a NumPy
+array and can be sliced to collect an offset into the array if DMA transfers are used to
+move the buffer.  All IT and MT ports are bufferports, whereas CT kernels can have a
+mix of RTP and BufferPorts.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.port.BufferPort._array">
+<span class="sig-name descname"><span class="pre">_array</span></span><a class="headerlink" href="#npu.build.port.BufferPort._array" title="Link to this definition">¶</a></dt>
+<dd><p>The underlying buffer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.port.BufferPort.slices">
+<span class="sig-name descname"><span class="pre">slices</span></span><a class="headerlink" href="#npu.build.port.BufferPort.slices" title="Link to this definition">¶</a></dt>
+<dd><p>TAn ordered list of slices to index into the underlying array.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="npu.build.port.BufferPort.array">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">array</span></span><a class="headerlink" href="#npu.build.port.BufferPort.array" title="Link to this definition">¶</a></dt>
+<dd><p>Returns the array after all slices have been applied.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.build.port.BufferPort.copy">
+<span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">newparent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">newslices</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/port.html#BufferPort.copy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.port.BufferPort.copy" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="npu.build.port.BufferPort.nbytes">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">nbytes</span></span><a class="headerlink" href="#npu.build.port.BufferPort.nbytes" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="npu.build.port.BufferPort.offset">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">offset</span></span><a class="headerlink" href="#npu.build.port.BufferPort.offset" title="Link to this definition">¶</a></dt>
+<dd><p>Return the byte offset into the original array after slices are applied.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="npu.build.port.BufferPort.shape">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">shape</span></span><a class="headerlink" href="#npu.build.port.BufferPort.shape" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.build.port.BufferPort.to_metadata">
+<span class="sig-name descname"><span class="pre">to_metadata</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/port.html#BufferPort.to_metadata"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.port.BufferPort.to_metadata" title="Link to this definition">¶</a></dt>
+<dd><p>produce a dict of metadata for the port</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="npu.build.port.Port">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npu.build.port.</span></span><span class="sig-name descname"><span class="pre">Port</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pdtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">io</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ctype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c_dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/port.html#Port"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.port.Port" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This class holds the attributes for a Kernel port in an AppBuilder application.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.port.Port.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#npu.build.port.Port.name" title="Link to this definition">¶</a></dt>
+<dd><p>Name of this connection constructed from snk/src names.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.port.Port.pdtype">
+<span class="sig-name descname"><span class="pre">pdtype</span></span><a class="headerlink" href="#npu.build.port.Port.pdtype" title="Link to this definition">¶</a></dt>
+<dd><p>The port datatype.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.port.Port.io">
+<span class="sig-name descname"><span class="pre">io</span></span><a class="headerlink" href="#npu.build.port.Port.io" title="Link to this definition">¶</a></dt>
+<dd><p>The port direction, either ‘in’ or ‘out’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.port.Port.ctype">
+<span class="sig-name descname"><span class="pre">ctype</span></span><a class="headerlink" href="#npu.build.port.Port.ctype" title="Link to this definition">¶</a></dt>
+<dd><p>The connection type of this port.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.port.Port.parent">
+<span class="sig-name descname"><span class="pre">parent</span></span><a class="headerlink" href="#npu.build.port.Port.parent" title="Link to this definition">¶</a></dt>
+<dd><p>The Kernel object that contains this Port.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#npu.build.kernel.Kernel" title="npu.build.kernel.Kernel">Kernel</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.port.Port.c_dtype">
+<span class="sig-name descname"><span class="pre">c_dtype</span></span><a class="headerlink" href="#npu.build.port.Port.c_dtype" title="Link to this definition">¶</a></dt>
+<dd><p>Type information for the connection.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="npu.build.port.Port.metadata">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">metadata</span></span><a class="headerlink" href="#npu.build.port.Port.metadata" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.build.port.Port.to_metadata">
+<span class="sig-name descname"><span class="pre">to_metadata</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/port.html#Port.to_metadata"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.port.Port.to_metadata" title="Link to this definition">¶</a></dt>
+<dd><p>produce a dict of metadata for the port</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="npu.build.port.RTPPort">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npu.build.port.</span></span><span class="sig-name descname"><span class="pre">RTPPort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c_dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/port.html#RTPPort"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.port.RTPPort" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#npu.build.port.Port" title="npu.build.port.Port"><code class="xref py py-class docutils literal notranslate"><span class="pre">Port</span></code></a></p>
+<p>This class represents a Run Time Parameter (RTP) port to a Kernel.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.port.RTPPort.value">
+<span class="sig-name descname"><span class="pre">value</span></span><a class="headerlink" href="#npu.build.port.RTPPort.value" title="Link to this definition">¶</a></dt>
+<dd><p>the RTP’s value that is updated by userspace writes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.build.port.RTPPort.copy">
+<span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">newparent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/port.html#RTPPort.copy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.port.RTPPort.copy" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.build.port.RTPPort.to_metadata">
+<span class="sig-name descname"><span class="pre">to_metadata</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/port.html#RTPPort.to_metadata"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.port.RTPPort.to_metadata" title="Link to this definition">¶</a></dt>
+<dd><p>produce a dict of metadata for the port</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-npu.build.sequence">
+<span id="npu-build-sequence-module"></span><h2>npu.build.sequence module<a class="headerlink" href="#module-npu.build.sequence" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="npu.build.sequence.SequenceList">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npu.build.sequence.</span></span><span class="sig-name descname"><span class="pre">SequenceList</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">connections</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/sequence.html#SequenceList"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.sequence.SequenceList" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This class hold sequences as an ordered list and produces the metadata for each
+sequence item.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.build.sequence.SequenceList.to_seqitems">
+<span class="sig-name descname"><span class="pre">to_seqitems</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/sequence.html#SequenceList.to_seqitems"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.sequence.SequenceList.to_seqitems" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-npu.build.tracekernels">
+<span id="npu-build-tracekernels-module"></span><h2>npu.build.tracekernels module<a class="headerlink" href="#module-npu.build.tracekernels" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="npu.build.tracekernels.isfunctraceable">
+<span class="sig-prename descclassname"><span class="pre">npu.build.tracekernels.</span></span><span class="sig-name descname"><span class="pre">isfunctraceable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/tracekernels.html#isfunctraceable"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.tracekernels.isfunctraceable" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="npu.build.tracekernels.kerneltracer">
+<span class="sig-prename descclassname"><span class="pre">npu.build.tracekernels.</span></span><span class="sig-name descname"><span class="pre">kerneltracer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/tracekernels.html#kerneltracer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.tracekernels.kerneltracer" title="Link to this definition">¶</a></dt>
+<dd><p>Wrapper around traced functions to enable logging of calls in the global TraceLogger.</p>
+</dd></dl>
+
+</section>
+<section id="module-npu.build.tracelogger">
+<span id="npu-build-tracelogger-module"></span><h2>npu.build.tracelogger module<a class="headerlink" href="#module-npu.build.tracelogger" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="npu.build.tracelogger.TraceLogger">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npu.build.tracelogger.</span></span><span class="sig-name descname"><span class="pre">TraceLogger</span></span><a class="reference internal" href="_modules/npu/build/tracelogger.html#TraceLogger"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.tracelogger.TraceLogger" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Global class used for tracing an AppBuilder callgraph.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.build.tracelogger.TraceLogger.clear_trace_objects">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">clear_trace_objects</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/tracelogger.html#TraceLogger.clear_trace_objects"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.tracelogger.TraceLogger.clear_trace_objects" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.tracelogger.TraceLogger.is_traceenabled">
+<span class="sig-name descname"><span class="pre">is_traceenabled</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#npu.build.tracelogger.TraceLogger.is_traceenabled" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.tracelogger.TraceLogger.trace_kernelcalls">
+<span class="sig-name descname"><span class="pre">trace_kernelcalls</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#npu.build.tracelogger.TraceLogger.trace_kernelcalls" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.build.tracelogger.TraceLogger.update_trace_objects">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">update_trace_objects</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">newkernelcall</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/tracelogger.html#TraceLogger.update_trace_objects"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.tracelogger.TraceLogger.update_trace_objects" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-npu.build.userspace">
+<span id="npu-build-userspace-module"></span><h2>npu.build.userspace module<a class="headerlink" href="#module-npu.build.userspace" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="npu.build.userspace.UserspaceRTP">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npu.build.userspace.</span></span><span class="sig-name descname"><span class="pre">UserspaceRTP</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/build/userspace.html#UserspaceRTP"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.userspace.UserspaceRTP" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#npu.build.kernelmeta.KernelMeta" title="npu.build.kernelmeta.KernelMeta"><code class="xref py py-class docutils literal notranslate"><span class="pre">KernelMeta</span></code></a></p>
+<p>This class contains a userspace port for acessing NPU runtime paraemters (RTP).</p>
+</dd></dl>
+
+</section>
+<section id="module-npu.build.utils">
+<span id="npu-build-utils-module"></span><h2>npu.build.utils module<a class="headerlink" href="#module-npu.build.utils" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="npu.build.utils.check_wsl_install">
+<span class="sig-prename descclassname"><span class="pre">npu.build.utils.</span></span><span class="sig-name descname"><span class="pre">check_wsl_install</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/npu/build/utils.html#check_wsl_install"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.utils.check_wsl_install" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="npu.build.utils.is_win">
+<span class="sig-prename descclassname"><span class="pre">npu.build.utils.</span></span><span class="sig-name descname"><span class="pre">is_win</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/npu/build/utils.html#is_win"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.utils.is_win" title="Link to this definition">¶</a></dt>
+<dd><p>Returns true if we are running this on windows.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="npu.build.utils.wsl_prefix">
+<span class="sig-prename descclassname"><span class="pre">npu.build.utils.</span></span><span class="sig-name descname"><span class="pre">wsl_prefix</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/npu/build/utils.html#wsl_prefix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.utils.wsl_prefix" title="Link to this definition">¶</a></dt>
+<dd><p>if we are running this on windows return the appropriate wsl prefix.</p>
+</dd></dl>
+
+</section>
+<section id="module-npu.build.wslbuilder">
+<span id="npu-build-wslbuilder-module"></span><h2>npu.build.wslbuilder module<a class="headerlink" href="#module-npu.build.wslbuilder" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="npu.build.wslbuilder.WSLBuilder">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npu.build.wslbuilder.</span></span><span class="sig-name descname"><span class="pre">WSLBuilder</span></span><a class="reference internal" href="_modules/npu/build/wslbuilder.html#WSLBuilder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.wslbuilder.WSLBuilder" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This class contains methods to call into WSL to build NPU CT kernels and applications.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.build.wslbuilder.WSLBuilder._tmp_dir">
+<span class="sig-name descname"><span class="pre">_tmp_dir</span></span><a class="headerlink" href="#npu.build.wslbuilder.WSLBuilder._tmp_dir" title="Link to this definition">¶</a></dt>
+<dd><p>The temporary directory where builds will occur.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>TemporaryDirectory</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-npu.build">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-npu.build" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="npu.build.wslpath">
+<span class="sig-prename descclassname"><span class="pre">npu.build.</span></span><span class="sig-name descname"><span class="pre">wslpath</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">winpath</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/npu/build.html#wslpath"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.build.wslpath" title="Link to this definition">¶</a></dt>
+<dd><p>From the windows path create the equivalent WSL path</p>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          
+				  
+				  <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="npu.html" class="btn btn-neutral float-left" title="npu package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="npu.lib.html" class="btn btn-neutral float-right" title="npu.lib package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Advanced Micro Devices, Inc.
+      <span class="lastupdated">Last updated on December 19, 2023.
+      </span></p>
+  </div>
+
+
+
+										<div class="aem-Grid aem-Grid--16">
+											<div class="aem-GridColumn aem-GridColumn--xxxlarge--none aem-GridColumn--xsmall--16 aem-GridColumn--offset--xsmall--0 aem-GridColumn--xlarge--none aem-GridColumn--xxlarge--none aem-GridColumn--default--none aem-GridColumn--offset--large--1 aem-GridColumn--xlarge--12 aem-GridColumn--offset--default--0 aem-GridColumn--xxlarge--10 aem-GridColumn--offset--xlarge--2 aem-GridColumn--offset--xxlarge--3 aem-GridColumn--offset--xxxlarge--4 aem-GridColumn--xsmall--none aem-GridColumn--large--none aem-GridColumn aem-GridColumn--large--14 aem-GridColumn--xxxlarge--8 aem-GridColumn--default--16">
+												<div class="container-fluid sub-footer">
+
+													                    <div class="row">
+                        <div class="col-xs-24">
+                          <p><a target="_blank" href="https://www.amd.com/en/corporate/copyright">Terms and Conditions</a> | <a target="_blank" href="https://www.amd.com/en/corporate/privacy">Privacy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/cookies">Cookie Policy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/trademarks">Trademarks</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/statement-human-trafficking-forced-labor.pdf">Statement on Forced Labor</a> | <a target="_blank" href="https://www.amd.com/en/corporate/competition">Fair and Open Competition</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/amd-uk-tax-strategy.pdf">UK Tax Strategy</a> | <a target="_blank" href="https://docs.xilinx.com/v/u/9x6YvZKuWyhJId7y7RQQKA">Inclusive Terminology</a> | <a href="#cookiessettings" class="ot-sdk-show-settings">Cookies Settings</a></p>
+                        </div>
+                    </div>
+												</div>
+											</div>
+										</div>
+										
+</br>
+
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div id="cookie-consent" class="cookie-consent">
+    <p>This website uses cookies to ensure you get the best experience on our website. <a href="#" id="cookie-accept">Accept</a> | <a href="#" id="cookie-reject">Reject</a></p>
+</div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+</body>
+</html>

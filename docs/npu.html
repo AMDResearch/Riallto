@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>npu package &mdash; AMD Riallto 1.0 documentation</title><link rel="icon" type="image/x-icon" href="_static/favicon.ico">
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+      <link rel="stylesheet" href="_static/./custom.css" type="text/css" />
+      <link rel="stylesheet" href="_static/./custom_page_width.css" type="text/css" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v3.0.0-rc.17/dist/cookieconsent.css">
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/documentation_options.js?v=2882ecd3"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="_static/copybutton.js?v=f281be69"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script src="_static/js/jquery.js"></script>
+    <script src="_static/cookie-consent.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="npu.build package" href="npu.build.html" />
+    <link rel="prev" title="npu" href="modules.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-5RHQV7" height="0" width="0" style="display:none;visibility:hidden" class="optanon-category-C0002"></iframe></noscript>
+<!-- End Google Tag Manager --> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+            <a href="index.html" class="icon icon-home"> AMD Riallto
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Home</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Riallto overview</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="1_0_Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install-riallto.html">Install Riallto</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ryzenai_video_overview.html">Riallto Video Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1_1_ryzenai.html">Ryzen AI Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_1_MS_Windows_Studio_Effects.html">Windows Studio Effects</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">NPU Architecture examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="3_1_Color_threshold_example.html">Loading your first example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_2_Ryzenai_capabilities.html">Understanding columns and tiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_3_Scaled_color_threshold_example.html">Scaling applications to multiple compute tiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_4_Edge_detect_example.html">Optimizing data movement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_5_Color_detect_example.html">Multicasting and multiple kernels per tile</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Building applications</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="4_1_software_framework.html">Introduction to the Riallto software framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_2_write_your_kernel.html">Write your first kernel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_3_kernels_with_runtime_parameters.html">Using Run Time Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_4_threshold_kernel_with_vector_ops.html">How to use the vector processor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_5_describe_an_application.html">Describing an application</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_6_build_application.html">Building a complete application</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_7_using_the_memtile_in_your_applications.html">Using memory tiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_8_build_a_colorDetect_application.html">Reusing software kernels</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Ryzen AI Machine Learning</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="5_1_pytorch_onnx_inference.html">Inference with PyTorch and ONNX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5_2_pytorch_onnx_re-train.html">Re-training with PyTorch and ONNX</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python Package</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">npu</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">npu package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#subpackages">Subpackages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html">npu.build package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.lib.html">npu.lib package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html">npu.runtime package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html">npu.utils package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-npu.magic">npu.magic module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#npu.magic.kernel_magic"><code class="docutils literal notranslate"><span class="pre">kernel_magic</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-npu.repr_dict">npu.repr_dict module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#npu.repr_dict.ReprDict"><code class="docutils literal notranslate"><span class="pre">ReprDict</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-npu">Module contents</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#npu">NPU</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Glossary</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Glossary.html">Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Appendix_Review_of_Image_Processing_Concepts.html">Review of Image Processing concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="prerequisites-driver.html">Install the NPU driver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="prerequisites-aie-license.html">Get an AIE license</a></li>
+<li class="toctree-l1"><a class="reference internal" href="prerequisites-wsl.html">Enable WSL</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">AMD Riallto</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="modules.html">npu</a> &raquo;</li>
+      <li>npu package</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="npu-package">
+<h1>npu package<a class="headerlink" href="#npu-package" title="Link to this heading">¶</a></h1>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Link to this heading">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="npu.build.html">npu.build package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="npu.build.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="npu.build.html#module-npu.build.appbuilder">npu.build.appbuilder module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="npu.build.html#npu.build.appbuilder.AppBuilder"><code class="docutils literal notranslate"><span class="pre">AppBuilder</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.appbuilder.AppBuilder.name"><code class="docutils literal notranslate"><span class="pre">AppBuilder.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.appbuilder.AppBuilder.ab"><code class="docutils literal notranslate"><span class="pre">AppBuilder.ab</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.appbuilder.AppBuilder.fxtracer"><code class="docutils literal notranslate"><span class="pre">AppBuilder.fxtracer</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.appbuilder.AppBuilder.kernels"><code class="docutils literal notranslate"><span class="pre">AppBuilder.kernels</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.appbuilder.AppBuilder.connections"><code class="docutils literal notranslate"><span class="pre">AppBuilder.connections</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.appbuilder.AppBuilder.previous_build_args"><code class="docutils literal notranslate"><span class="pre">AppBuilder.previous_build_args</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.appbuilder.AppBuilder.__call__"><code class="docutils literal notranslate"><span class="pre">AppBuilder.__call__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.appbuilder.AppBuilder.build"><code class="docutils literal notranslate"><span class="pre">AppBuilder.build()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.appbuilder.AppBuilder.callgraph"><code class="docutils literal notranslate"><span class="pre">AppBuilder.callgraph()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.appbuilder.AppBuilder.display"><code class="docutils literal notranslate"><span class="pre">AppBuilder.display()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.appbuilder.AppBuilder.displaymlir"><code class="docutils literal notranslate"><span class="pre">AppBuilder.displaymlir()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.appbuilder.AppBuilder.merge_applications"><code class="docutils literal notranslate"><span class="pre">AppBuilder.merge_applications()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.appbuilder.AppBuilder.metadata"><code class="docutils literal notranslate"><span class="pre">AppBuilder.metadata</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.appbuilder.AppBuilder.save"><code class="docutils literal notranslate"><span class="pre">AppBuilder.save()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.appbuilder.AppBuilder.to_handoff"><code class="docutils literal notranslate"><span class="pre">AppBuilder.to_handoff()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.appbuilder.AppBuilder.to_json"><code class="docutils literal notranslate"><span class="pre">AppBuilder.to_json()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.appbuilder.AppBuilder.to_metadata"><code class="docutils literal notranslate"><span class="pre">AppBuilder.to_metadata()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.appbuilder.AppBuilder.to_mlir"><code class="docutils literal notranslate"><span class="pre">AppBuilder.to_mlir()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.appbuilder.AppBuilder.to_sequence"><code class="docutils literal notranslate"><span class="pre">AppBuilder.to_sequence()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.appbuilder.AppBuilder.unique_named"><code class="docutils literal notranslate"><span class="pre">AppBuilder.unique_named()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.appbuilder.AppBuilder.validate_previous_build_args"><code class="docutils literal notranslate"><span class="pre">AppBuilder.validate_previous_build_args()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="npu.build.html#module-npu.build.appmetadata">npu.build.appmetadata module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="npu.build.html#npu.build.appmetadata.AppMetada"><code class="docutils literal notranslate"><span class="pre">AppMetada</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.appmetadata.AppMetada.appname"><code class="docutils literal notranslate"><span class="pre">AppMetada.appname</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.appmetadata.AppMetada.kernels"><code class="docutils literal notranslate"><span class="pre">AppMetada.kernels</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.appmetadata.AppMetada.connections"><code class="docutils literal notranslate"><span class="pre">AppMetada.connections</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.appmetadata.AppMetada.sequence"><code class="docutils literal notranslate"><span class="pre">AppMetada.sequence</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.appmetadata.AppMetada.to_json"><code class="docutils literal notranslate"><span class="pre">AppMetada.to_json()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="npu.build.html#module-npu.build.apptracer">npu.build.apptracer module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="npu.build.html#npu.build.apptracer.AppTracer"><code class="docutils literal notranslate"><span class="pre">AppTracer</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.apptracer.AppTracer.application"><code class="docutils literal notranslate"><span class="pre">AppTracer.application</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.apptracer.AppTracer.postprocess_args"><code class="docutils literal notranslate"><span class="pre">AppTracer.postprocess_args()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.apptracer.AppTracer.postprocess_kernel"><code class="docutils literal notranslate"><span class="pre">AppTracer.postprocess_kernel()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.apptracer.AppTracer.to_trace"><code class="docutils literal notranslate"><span class="pre">AppTracer.to_trace()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="npu.build.html#module-npu.build.appxclbinbuilder">npu.build.appxclbinbuilder module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="npu.build.html#npu.build.appxclbinbuilder.AppXclbinBuilder"><code class="docutils literal notranslate"><span class="pre">AppXclbinBuilder</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.appxclbinbuilder.AppXclbinBuilder.xclbin"><code class="docutils literal notranslate"><span class="pre">AppXclbinBuilder.xclbin</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.appxclbinbuilder.AppXclbinBuilder.buildlog"><code class="docutils literal notranslate"><span class="pre">AppXclbinBuilder.buildlog</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.appxclbinbuilder.AppXclbinBuilder.build"><code class="docutils literal notranslate"><span class="pre">AppXclbinBuilder.build()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.appxclbinbuilder.AppXclbinBuilder.build_kernels"><code class="docutils literal notranslate"><span class="pre">AppXclbinBuilder.build_kernels()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="npu.build.html#module-npu.build.buffers">npu.build.buffers module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="npu.build.html#npu.build.buffers.Buffer"><code class="docutils literal notranslate"><span class="pre">Buffer</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.buffers.Buffer._array"><code class="docutils literal notranslate"><span class="pre">Buffer._array</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.buffers.Buffer.slices"><code class="docutils literal notranslate"><span class="pre">Buffer.slices</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.buffers.Buffer.array"><code class="docutils literal notranslate"><span class="pre">Buffer.array</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.buffers.Buffer.createports"><code class="docutils literal notranslate"><span class="pre">Buffer.createports()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.buffers.Buffer.dtype"><code class="docutils literal notranslate"><span class="pre">Buffer.dtype</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.buffers.Buffer.nbytes"><code class="docutils literal notranslate"><span class="pre">Buffer.nbytes</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.buffers.Buffer.shape"><code class="docutils literal notranslate"><span class="pre">Buffer.shape</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.buffers.Buffer.to_metadata"><code class="docutils literal notranslate"><span class="pre">Buffer.to_metadata()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.buffers.Buffer.to_ndarray"><code class="docutils literal notranslate"><span class="pre">Buffer.to_ndarray()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="npu.build.html#npu.build.buffers.ITBuffer"><code class="docutils literal notranslate"><span class="pre">ITBuffer</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.buffers.ITBuffer.ndarray_to_itb_port"><code class="docutils literal notranslate"><span class="pre">ITBuffer.ndarray_to_itb_port()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.buffers.ITBuffer.ndarray_to_itbuffer"><code class="docutils literal notranslate"><span class="pre">ITBuffer.ndarray_to_itbuffer()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="npu.build.html#npu.build.buffers.MTBuffer"><code class="docutils literal notranslate"><span class="pre">MTBuffer</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.buffers.MTBuffer.to_metadata"><code class="docutils literal notranslate"><span class="pre">MTBuffer.to_metadata()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="npu.build.html#module-npu.build.connections">npu.build.connections module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="npu.build.html#npu.build.connections.Connection"><code class="docutils literal notranslate"><span class="pre">Connection</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.connections.Connection.srckernel"><code class="docutils literal notranslate"><span class="pre">Connection.srckernel</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.connections.Connection.srcport"><code class="docutils literal notranslate"><span class="pre">Connection.srcport</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.connections.Connection.sinkkernel"><code class="docutils literal notranslate"><span class="pre">Connection.sinkkernel</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.connections.Connection.sinkport"><code class="docutils literal notranslate"><span class="pre">Connection.sinkport</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.connections.Connection.name"><code class="docutils literal notranslate"><span class="pre">Connection.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.connections.Connection.dtype"><code class="docutils literal notranslate"><span class="pre">Connection.dtype</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.connections.Connection.ctype"><code class="docutils literal notranslate"><span class="pre">Connection.ctype</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="npu.build.html#module-npu.build.itkernel">npu.build.itkernel module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="npu.build.html#npu.build.itkernel.ITKernel"><code class="docutils literal notranslate"><span class="pre">ITKernel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.itkernel.ITKernel.itbuf"><code class="docutils literal notranslate"><span class="pre">ITKernel.itbuf</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="npu.build.html#npu.build.itkernel.ITRead"><code class="docutils literal notranslate"><span class="pre">ITRead</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.itkernel.ITRead.inputbuffer"><code class="docutils literal notranslate"><span class="pre">ITRead.inputbuffer</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="npu.build.html#npu.build.itkernel.ITReadCall"><code class="docutils literal notranslate"><span class="pre">ITReadCall</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.itkernel.ITReadCall.__call__"><code class="docutils literal notranslate"><span class="pre">ITReadCall.__call__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="npu.build.html#npu.build.itkernel.ITWrite"><code class="docutils literal notranslate"><span class="pre">ITWrite</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.itkernel.ITWrite.inputbuffer"><code class="docutils literal notranslate"><span class="pre">ITWrite.inputbuffer</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.itkernel.ITWrite.buferf"><code class="docutils literal notranslate"><span class="pre">ITWrite.buferf</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="npu.build.html#npu.build.itkernel.ITWriteCall"><code class="docutils literal notranslate"><span class="pre">ITWriteCall</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.itkernel.ITWriteCall.__call__"><code class="docutils literal notranslate"><span class="pre">ITWriteCall.__call__()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="npu.build.html#module-npu.build.kernel">npu.build.kernel module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="npu.build.html#npu.build.kernel.Kernel"><code class="docutils literal notranslate"><span class="pre">Kernel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.kernel.Kernel.srccode"><code class="docutils literal notranslate"><span class="pre">Kernel.srccode</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.kernel.Kernel.srcfile"><code class="docutils literal notranslate"><span class="pre">Kernel.srcfile</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.kernel.Kernel.kname"><code class="docutils literal notranslate"><span class="pre">Kernel.kname</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.kernel.Kernel.behavioralfx"><code class="docutils literal notranslate"><span class="pre">Kernel.behavioralfx</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.kernel.Kernel.__call__"><code class="docutils literal notranslate"><span class="pre">Kernel.__call__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.kernel.Kernel.build"><code class="docutils literal notranslate"><span class="pre">Kernel.build()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.kernel.Kernel.completed_srccode"><code class="docutils literal notranslate"><span class="pre">Kernel.completed_srccode()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.kernel.Kernel.create_outputs"><code class="docutils literal notranslate"><span class="pre">Kernel.create_outputs()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.kernel.Kernel.display"><code class="docutils literal notranslate"><span class="pre">Kernel.display()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.kernel.Kernel.objfile"><code class="docutils literal notranslate"><span class="pre">Kernel.objfile</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.kernel.Kernel.to_cpp"><code class="docutils literal notranslate"><span class="pre">Kernel.to_cpp()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="npu.build.html#module-npu.build.kernelbuilder">npu.build.kernelbuilder module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="npu.build.html#npu.build.kernelbuilder.KernelObjectBuilder"><code class="docutils literal notranslate"><span class="pre">KernelObjectBuilder</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.kernelbuilder.KernelObjectBuilder.name"><code class="docutils literal notranslate"><span class="pre">KernelObjectBuilder.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.kernelbuilder.KernelObjectBuilder.srccode"><code class="docutils literal notranslate"><span class="pre">KernelObjectBuilder.srccode</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.kernelbuilder.KernelObjectBuilder.srcfile"><code class="docutils literal notranslate"><span class="pre">KernelObjectBuilder.srcfile</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.kernelbuilder.KernelObjectBuilder.build"><code class="docutils literal notranslate"><span class="pre">KernelObjectBuilder.build()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.kernelbuilder.KernelObjectBuilder.cached_objfile_exists"><code class="docutils literal notranslate"><span class="pre">KernelObjectBuilder.cached_objfile_exists()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.kernelbuilder.KernelObjectBuilder.clear_cache"><code class="docutils literal notranslate"><span class="pre">KernelObjectBuilder.clear_cache()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.kernelbuilder.KernelObjectBuilder.prebuilt_path"><code class="docutils literal notranslate"><span class="pre">KernelObjectBuilder.prebuilt_path</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.kernelbuilder.KernelObjectBuilder.update_cache_md5"><code class="docutils literal notranslate"><span class="pre">KernelObjectBuilder.update_cache_md5()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="npu.build.html#module-npu.build.kernelmeta">npu.build.kernelmeta module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="npu.build.html#npu.build.kernelmeta.KernelMeta"><code class="docutils literal notranslate"><span class="pre">KernelMeta</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.kernelmeta.KernelMeta.name"><code class="docutils literal notranslate"><span class="pre">KernelMeta.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.kernelmeta.KernelMeta.shortname"><code class="docutils literal notranslate"><span class="pre">KernelMeta.shortname</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.kernelmeta.KernelMeta.ktype"><code class="docutils literal notranslate"><span class="pre">KernelMeta.ktype</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.kernelmeta.KernelMeta.ttype"><code class="docutils literal notranslate"><span class="pre">KernelMeta.ttype</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.kernelmeta.KernelMeta.ports"><code class="docutils literal notranslate"><span class="pre">KernelMeta.ports</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.kernelmeta.KernelMeta.tloc"><code class="docutils literal notranslate"><span class="pre">KernelMeta.tloc</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.kernelmeta.KernelMeta.disable_unique_name_id"><code class="docutils literal notranslate"><span class="pre">KernelMeta.disable_unique_name_id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.kernelmeta.KernelMeta.bufferports"><code class="docutils literal notranslate"><span class="pre">KernelMeta.bufferports</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.kernelmeta.KernelMeta.inputbufferports"><code class="docutils literal notranslate"><span class="pre">KernelMeta.inputbufferports</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.kernelmeta.KernelMeta.metadata"><code class="docutils literal notranslate"><span class="pre">KernelMeta.metadata</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.kernelmeta.KernelMeta.outputbufferports"><code class="docutils literal notranslate"><span class="pre">KernelMeta.outputbufferports</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.kernelmeta.KernelMeta.reset_unique_names"><code class="docutils literal notranslate"><span class="pre">KernelMeta.reset_unique_names()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.kernelmeta.KernelMeta.rtpports"><code class="docutils literal notranslate"><span class="pre">KernelMeta.rtpports</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.kernelmeta.KernelMeta.to_metadata"><code class="docutils literal notranslate"><span class="pre">KernelMeta.to_metadata()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.kernelmeta.KernelMeta.unique_name"><code class="docutils literal notranslate"><span class="pre">KernelMeta.unique_name()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.kernelmeta.KernelMeta.used_names"><code class="docutils literal notranslate"><span class="pre">KernelMeta.used_names</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="npu.build.html#module-npu.build.mlirbuilder">npu.build.mlirbuilder module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="npu.build.html#npu.build.mlirbuilder.MLIRBuilder"><code class="docutils literal notranslate"><span class="pre">MLIRBuilder</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.mlirbuilder.MLIRBuilder.metadata"><code class="docutils literal notranslate"><span class="pre">MLIRBuilder.metadata</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.mlirbuilder.MLIRBuilder.app"><code class="docutils literal notranslate"><span class="pre">MLIRBuilder.app</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.mlirbuilder.MLIRBuilder.kernels"><code class="docutils literal notranslate"><span class="pre">MLIRBuilder.kernels</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.mlirbuilder.MLIRBuilder.connections"><code class="docutils literal notranslate"><span class="pre">MLIRBuilder.connections</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.mlirbuilder.MLIRBuilder.sequence"><code class="docutils literal notranslate"><span class="pre">MLIRBuilder.sequence</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.mlirbuilder.MLIRBuilder.config"><code class="docutils literal notranslate"><span class="pre">MLIRBuilder.config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.mlirbuilder.MLIRBuilder.to_mlir"><code class="docutils literal notranslate"><span class="pre">MLIRBuilder.to_mlir()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="npu.build.html#module-npu.build.mlirconnections">npu.build.mlirconnections module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="npu.build.html#npu.build.mlirconnections.MLIRConnect"><code class="docutils literal notranslate"><span class="pre">MLIRConnect</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.mlirconnections.MLIRConnect.name"><code class="docutils literal notranslate"><span class="pre">MLIRConnect.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.mlirconnections.MLIRConnect.id"><code class="docutils literal notranslate"><span class="pre">MLIRConnect.id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.mlirconnections.MLIRConnect.src"><code class="docutils literal notranslate"><span class="pre">MLIRConnect.src</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.mlirconnections.MLIRConnect.dsts"><code class="docutils literal notranslate"><span class="pre">MLIRConnect.dsts</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.mlirconnections.MLIRConnect.nbytes"><code class="docutils literal notranslate"><span class="pre">MLIRConnect.nbytes</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.mlirconnections.MLIRConnect.offset"><code class="docutils literal notranslate"><span class="pre">MLIRConnect.offset</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.mlirconnections.MLIRConnect.config"><code class="docutils literal notranslate"><span class="pre">MLIRConnect.config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.mlirconnections.MLIRConnect.next_id"><code class="docutils literal notranslate"><span class="pre">MLIRConnect.next_id()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.mlirconnections.MLIRConnect.reset_id"><code class="docutils literal notranslate"><span class="pre">MLIRConnect.reset_id()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.mlirconnections.MLIRConnect.unique_id"><code class="docutils literal notranslate"><span class="pre">MLIRConnect.unique_id</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="npu.build.html#npu.build.mlirconnections.ObjectFIFO"><code class="docutils literal notranslate"><span class="pre">ObjectFIFO</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.mlirconnections.ObjectFIFO.elementname"><code class="docutils literal notranslate"><span class="pre">ObjectFIFO.elementname</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.mlirconnections.ObjectFIFO.subviewname"><code class="docutils literal notranslate"><span class="pre">ObjectFIFO.subviewname</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.mlirconnections.ObjectFIFO.to_mlir_acquire"><code class="docutils literal notranslate"><span class="pre">ObjectFIFO.to_mlir_acquire()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.mlirconnections.ObjectFIFO.to_mlir_declare"><code class="docutils literal notranslate"><span class="pre">ObjectFIFO.to_mlir_declare()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.mlirconnections.ObjectFIFO.to_mlir_release"><code class="docutils literal notranslate"><span class="pre">ObjectFIFO.to_mlir_release()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="npu.build.html#module-npu.build.mlirsequencebuilder">npu.build.mlirsequencebuilder module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="npu.build.html#npu.build.mlirsequencebuilder.MLIRSequnceBuilder"><code class="docutils literal notranslate"><span class="pre">MLIRSequnceBuilder</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.mlirsequencebuilder.MLIRSequnceBuilder._metadata"><code class="docutils literal notranslate"><span class="pre">MLIRSequnceBuilder._metadata</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.mlirsequencebuilder.MLIRSequnceBuilder.aietiles"><code class="docutils literal notranslate"><span class="pre">MLIRSequnceBuilder.aietiles</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.mlirsequencebuilder.MLIRSequnceBuilder._userbuffers"><code class="docutils literal notranslate"><span class="pre">MLIRSequnceBuilder._userbuffers</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.mlirsequencebuilder.MLIRSequnceBuilder._ubname2externid"><code class="docutils literal notranslate"><span class="pre">MLIRSequnceBuilder._ubname2externid</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.mlirsequencebuilder.MLIRSequnceBuilder._ingress_ub"><code class="docutils literal notranslate"><span class="pre">MLIRSequnceBuilder._ingress_ub</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.mlirsequencebuilder.MLIRSequnceBuilder._egress_ub"><code class="docutils literal notranslate"><span class="pre">MLIRSequnceBuilder._egress_ub</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.mlirsequencebuilder.MLIRSequnceBuilder._ingress_egress_ub"><code class="docutils literal notranslate"><span class="pre">MLIRSequnceBuilder._ingress_egress_ub</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.mlirsequencebuilder.MLIRSequnceBuilder._constants_table"><code class="docutils literal notranslate"><span class="pre">MLIRSequnceBuilder._constants_table</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.mlirsequencebuilder.MLIRSequnceBuilder._cons_broadcasts"><code class="docutils literal notranslate"><span class="pre">MLIRSequnceBuilder._cons_broadcasts</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.mlirsequencebuilder.MLIRSequnceBuilder.mlir"><code class="docutils literal notranslate"><span class="pre">MLIRSequnceBuilder.mlir</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="npu.build.html#npu.build.mlirsequencebuilder.UBDataMovement"><code class="docutils literal notranslate"><span class="pre">UBDataMovement</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.mlirsequencebuilder.UBDataMovement.dim"><code class="docutils literal notranslate"><span class="pre">UBDataMovement.dim</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.mlirsequencebuilder.UBDataMovement.dtype"><code class="docutils literal notranslate"><span class="pre">UBDataMovement.dtype</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.mlirsequencebuilder.UBDataMovement.shape"><code class="docutils literal notranslate"><span class="pre">UBDataMovement.shape</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.mlirsequencebuilder.UBDataMovement.snkoffsets"><code class="docutils literal notranslate"><span class="pre">UBDataMovement.snkoffsets</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.mlirsequencebuilder.UBDataMovement.srcoffsets"><code class="docutils literal notranslate"><span class="pre">UBDataMovement.srcoffsets</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.mlirsequencebuilder.UBDataMovement.symname"><code class="docutils literal notranslate"><span class="pre">UBDataMovement.symname</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.mlirsequencebuilder.UBDataMovement.tilesizes"><code class="docutils literal notranslate"><span class="pre">UBDataMovement.tilesizes</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.mlirsequencebuilder.UBDataMovement.ubname"><code class="docutils literal notranslate"><span class="pre">UBDataMovement.ubname</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="npu.build.html#module-npu.build.mlirtiles">npu.build.mlirtiles module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="npu.build.html#npu.build.mlirtiles.BufferTile"><code class="docutils literal notranslate"><span class="pre">BufferTile</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.mlirtiles.BufferTile.is_used"><code class="docutils literal notranslate"><span class="pre">BufferTile.is_used()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="npu.build.html#npu.build.mlirtiles.CTTile"><code class="docutils literal notranslate"><span class="pre">CTTile</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.mlirtiles.CTTile.tloc"><code class="docutils literal notranslate"><span class="pre">CTTile.tloc</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.mlirtiles.CTTile.kernel"><code class="docutils literal notranslate"><span class="pre">CTTile.kernel</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.mlirtiles.CTTile.objfifos_produce"><code class="docutils literal notranslate"><span class="pre">CTTile.objfifos_produce</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.mlirtiles.CTTile.objfifos_consume"><code class="docutils literal notranslate"><span class="pre">CTTile.objfifos_consume</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.mlirtiles.CTTile.is_used"><code class="docutils literal notranslate"><span class="pre">CTTile.is_used()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.mlirtiles.CTTile.objfifos"><code class="docutils literal notranslate"><span class="pre">CTTile.objfifos</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.mlirtiles.CTTile.to_mlir"><code class="docutils literal notranslate"><span class="pre">CTTile.to_mlir()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.mlirtiles.CTTile.to_mlir_kernel_declare"><code class="docutils literal notranslate"><span class="pre">CTTile.to_mlir_kernel_declare()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.mlirtiles.CTTile.to_mlir_tile_declare"><code class="docutils literal notranslate"><span class="pre">CTTile.to_mlir_tile_declare()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="npu.build.html#npu.build.mlirtiles.ITTile"><code class="docutils literal notranslate"><span class="pre">ITTile</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="npu.build.html#npu.build.mlirtiles.MEMTile"><code class="docutils literal notranslate"><span class="pre">MEMTile</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="npu.build.html#npu.build.mlirtiles.Tile"><code class="docutils literal notranslate"><span class="pre">Tile</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.mlirtiles.Tile.tloc"><code class="docutils literal notranslate"><span class="pre">Tile.tloc</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.mlirtiles.Tile.tvarname"><code class="docutils literal notranslate"><span class="pre">Tile.tvarname</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.mlirtiles.Tile.to_mlir_tile_declare"><code class="docutils literal notranslate"><span class="pre">Tile.to_mlir_tile_declare()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="npu.build.html#module-npu.build.mtkernel">npu.build.mtkernel module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="npu.build.html#npu.build.mtkernel.MTConcat"><code class="docutils literal notranslate"><span class="pre">MTConcat</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.mtkernel.MTConcat.inputbuffers"><code class="docutils literal notranslate"><span class="pre">MTConcat.inputbuffers</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.mtkernel.MTConcat.buferf"><code class="docutils literal notranslate"><span class="pre">MTConcat.buferf</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="npu.build.html#npu.build.mtkernel.MTConcatCall"><code class="docutils literal notranslate"><span class="pre">MTConcatCall</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.mtkernel.MTConcatCall.__call__"><code class="docutils literal notranslate"><span class="pre">MTConcatCall.__call__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="npu.build.html#npu.build.mtkernel.MTKernel"><code class="docutils literal notranslate"><span class="pre">MTKernel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.mtkernel.MTKernel.mtbuf"><code class="docutils literal notranslate"><span class="pre">MTKernel.mtbuf</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="npu.build.html#npu.build.mtkernel.MTPassThrough"><code class="docutils literal notranslate"><span class="pre">MTPassThrough</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.mtkernel.MTPassThrough.inputbuffer"><code class="docutils literal notranslate"><span class="pre">MTPassThrough.inputbuffer</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.mtkernel.MTPassThrough.buferf"><code class="docutils literal notranslate"><span class="pre">MTPassThrough.buferf</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="npu.build.html#npu.build.mtkernel.MTPassThroughCall"><code class="docutils literal notranslate"><span class="pre">MTPassThroughCall</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.mtkernel.MTPassThroughCall.__call__"><code class="docutils literal notranslate"><span class="pre">MTPassThroughCall.__call__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="npu.build.html#npu.build.mtkernel.MTSplit"><code class="docutils literal notranslate"><span class="pre">MTSplit</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.mtkernel.MTSplit.inputbuffer"><code class="docutils literal notranslate"><span class="pre">MTSplit.inputbuffer</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.mtkernel.MTSplit.numsplits"><code class="docutils literal notranslate"><span class="pre">MTSplit.numsplits</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.mtkernel.MTSplit.buferf"><code class="docutils literal notranslate"><span class="pre">MTSplit.buferf</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="npu.build.html#npu.build.mtkernel.MTSplitCall"><code class="docutils literal notranslate"><span class="pre">MTSplitCall</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.mtkernel.MTSplitCall.__call__"><code class="docutils literal notranslate"><span class="pre">MTSplitCall.__call__()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="npu.build.html#module-npu.build.port">npu.build.port module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="npu.build.html#npu.build.port.BufferPort"><code class="docutils literal notranslate"><span class="pre">BufferPort</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.port.BufferPort._array"><code class="docutils literal notranslate"><span class="pre">BufferPort._array</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.port.BufferPort.slices"><code class="docutils literal notranslate"><span class="pre">BufferPort.slices</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.port.BufferPort.array"><code class="docutils literal notranslate"><span class="pre">BufferPort.array</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.port.BufferPort.copy"><code class="docutils literal notranslate"><span class="pre">BufferPort.copy()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.port.BufferPort.nbytes"><code class="docutils literal notranslate"><span class="pre">BufferPort.nbytes</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.port.BufferPort.offset"><code class="docutils literal notranslate"><span class="pre">BufferPort.offset</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.port.BufferPort.shape"><code class="docutils literal notranslate"><span class="pre">BufferPort.shape</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.port.BufferPort.to_metadata"><code class="docutils literal notranslate"><span class="pre">BufferPort.to_metadata()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="npu.build.html#npu.build.port.Port"><code class="docutils literal notranslate"><span class="pre">Port</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.port.Port.name"><code class="docutils literal notranslate"><span class="pre">Port.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.port.Port.pdtype"><code class="docutils literal notranslate"><span class="pre">Port.pdtype</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.port.Port.io"><code class="docutils literal notranslate"><span class="pre">Port.io</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.port.Port.ctype"><code class="docutils literal notranslate"><span class="pre">Port.ctype</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.port.Port.parent"><code class="docutils literal notranslate"><span class="pre">Port.parent</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.port.Port.c_dtype"><code class="docutils literal notranslate"><span class="pre">Port.c_dtype</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.port.Port.metadata"><code class="docutils literal notranslate"><span class="pre">Port.metadata</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.port.Port.to_metadata"><code class="docutils literal notranslate"><span class="pre">Port.to_metadata()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="npu.build.html#npu.build.port.RTPPort"><code class="docutils literal notranslate"><span class="pre">RTPPort</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.port.RTPPort.value"><code class="docutils literal notranslate"><span class="pre">RTPPort.value</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.port.RTPPort.copy"><code class="docutils literal notranslate"><span class="pre">RTPPort.copy()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.port.RTPPort.to_metadata"><code class="docutils literal notranslate"><span class="pre">RTPPort.to_metadata()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="npu.build.html#module-npu.build.sequence">npu.build.sequence module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="npu.build.html#npu.build.sequence.SequenceList"><code class="docutils literal notranslate"><span class="pre">SequenceList</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.sequence.SequenceList.to_seqitems"><code class="docutils literal notranslate"><span class="pre">SequenceList.to_seqitems()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="npu.build.html#module-npu.build.tracekernels">npu.build.tracekernels module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="npu.build.html#npu.build.tracekernels.isfunctraceable"><code class="docutils literal notranslate"><span class="pre">isfunctraceable()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="npu.build.html#npu.build.tracekernels.kerneltracer"><code class="docutils literal notranslate"><span class="pre">kerneltracer()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="npu.build.html#module-npu.build.tracelogger">npu.build.tracelogger module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="npu.build.html#npu.build.tracelogger.TraceLogger"><code class="docutils literal notranslate"><span class="pre">TraceLogger</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.tracelogger.TraceLogger.clear_trace_objects"><code class="docutils literal notranslate"><span class="pre">TraceLogger.clear_trace_objects()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.tracelogger.TraceLogger.is_traceenabled"><code class="docutils literal notranslate"><span class="pre">TraceLogger.is_traceenabled</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.tracelogger.TraceLogger.trace_kernelcalls"><code class="docutils literal notranslate"><span class="pre">TraceLogger.trace_kernelcalls</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.tracelogger.TraceLogger.update_trace_objects"><code class="docutils literal notranslate"><span class="pre">TraceLogger.update_trace_objects()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="npu.build.html#module-npu.build.userspace">npu.build.userspace module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="npu.build.html#npu.build.userspace.UserspaceRTP"><code class="docutils literal notranslate"><span class="pre">UserspaceRTP</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="npu.build.html#module-npu.build.utils">npu.build.utils module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="npu.build.html#npu.build.utils.check_wsl_install"><code class="docutils literal notranslate"><span class="pre">check_wsl_install()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="npu.build.html#npu.build.utils.is_win"><code class="docutils literal notranslate"><span class="pre">is_win()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="npu.build.html#npu.build.utils.wsl_prefix"><code class="docutils literal notranslate"><span class="pre">wsl_prefix()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="npu.build.html#module-npu.build.wslbuilder">npu.build.wslbuilder module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="npu.build.html#npu.build.wslbuilder.WSLBuilder"><code class="docutils literal notranslate"><span class="pre">WSLBuilder</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="npu.build.html#npu.build.wslbuilder.WSLBuilder._tmp_dir"><code class="docutils literal notranslate"><span class="pre">WSLBuilder._tmp_dir</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="npu.build.html#module-npu.build">Module contents</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="npu.build.html#npu.build.wslpath"><code class="docutils literal notranslate"><span class="pre">wslpath()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="npu.lib.html">npu.lib package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="npu.lib.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="npu.lib.applications.html">npu.lib.applications package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="npu.lib.applications.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.lib.applications.html#module-npu.lib.applications.videoapps">npu.lib.applications.videoapps module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.lib.applications.html#module-npu.lib.applications">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="npu.lib.cached.html">npu.lib.cached package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="npu.lib.cached.html#module-npu.lib.cached">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="npu.lib.kernels.html">npu.lib.kernels package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="npu.lib.kernels.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.lib.kernels.html#module-npu.lib.kernels.addweighted">npu.lib.kernels.addweighted module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.lib.kernels.html#module-npu.lib.kernels.bitwiseand">npu.lib.kernels.bitwiseand module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.lib.kernels.html#module-npu.lib.kernels.bitwiseor">npu.lib.kernels.bitwiseor module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.lib.kernels.html#module-npu.lib.kernels.filter2d">npu.lib.kernels.filter2d module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.lib.kernels.html#module-npu.lib.kernels.gray2rgba">npu.lib.kernels.gray2rgba module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.lib.kernels.html#module-npu.lib.kernels.inrange">npu.lib.kernels.inrange module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.lib.kernels.html#module-npu.lib.kernels.inverse">npu.lib.kernels.inverse module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.lib.kernels.html#module-npu.lib.kernels.kernelgenerator">npu.lib.kernels.kernelgenerator module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.lib.kernels.html#module-npu.lib.kernels.median">npu.lib.kernels.median module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.lib.kernels.html#module-npu.lib.kernels.plusn">npu.lib.kernels.plusn module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.lib.kernels.html#module-npu.lib.kernels.rgba2gray">npu.lib.kernels.rgba2gray module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.lib.kernels.html#module-npu.lib.kernels.rgba2hue">npu.lib.kernels.rgba2hue module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.lib.kernels.html#module-npu.lib.kernels.rgba_inverse">npu.lib.kernels.rgba_inverse module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.lib.kernels.html#module-npu.lib.kernels.threshold">npu.lib.kernels.threshold module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.lib.kernels.html#module-npu.lib.kernels">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="npu.lib.html#module-npu.lib">Module contents</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="npu.lib.html#library-of-prebuilts">Library of prebuilts</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="npu.lib.html#applications">Applications</a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.lib.html#kernels">Kernels</a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.lib.html#graphs">Graphs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="npu.runtime.html">npu.runtime package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="npu.runtime.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="npu.runtime.html#module-npu.runtime.aie_host_utils">npu.runtime.aie_host_utils module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="npu.runtime.html#npu.runtime.aie_host_utils.print_dolphin"><code class="docutils literal notranslate"><span class="pre">print_dolphin()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="npu.runtime.html#module-npu.runtime.apprunner">npu.runtime.apprunner module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="npu.runtime.html#npu.runtime.apprunner.AppRunner"><code class="docutils literal notranslate"><span class="pre">AppRunner</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.apprunner.AppRunner.xclbin_name"><code class="docutils literal notranslate"><span class="pre">AppRunner.xclbin_name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.apprunner.AppRunner.fw_sequence"><code class="docutils literal notranslate"><span class="pre">AppRunner.fw_sequence</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.apprunner.AppRunner.handoff"><code class="docutils literal notranslate"><span class="pre">AppRunner.handoff</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.apprunner.AppRunner.Signature"><code class="docutils literal notranslate"><span class="pre">AppRunner.Signature</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.apprunner.AppRunner.__del__"><code class="docutils literal notranslate"><span class="pre">AppRunner.__del__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.apprunner.AppRunner.__delete__"><code class="docutils literal notranslate"><span class="pre">AppRunner.__delete__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.apprunner.AppRunner.allocate"><code class="docutils literal notranslate"><span class="pre">AppRunner.allocate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.apprunner.AppRunner.call"><code class="docutils literal notranslate"><span class="pre">AppRunner.call()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.apprunner.AppRunner.display"><code class="docutils literal notranslate"><span class="pre">AppRunner.display()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.apprunner.AppRunner.dropdownrtpupdate"><code class="docutils literal notranslate"><span class="pre">AppRunner.dropdownrtpupdate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.apprunner.AppRunner.metadata"><code class="docutils literal notranslate"><span class="pre">AppRunner.metadata</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.apprunner.AppRunner.rtpsliders"><code class="docutils literal notranslate"><span class="pre">AppRunner.rtpsliders()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.apprunner.AppRunner.rtpupdate"><code class="docutils literal notranslate"><span class="pre">AppRunner.rtpupdate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.apprunner.AppRunner.rtpwidgets"><code class="docutils literal notranslate"><span class="pre">AppRunner.rtpwidgets()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.apprunner.AppRunner.save"><code class="docutils literal notranslate"><span class="pre">AppRunner.save()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="npu.runtime.html#npu.runtime.apprunner.IPUAppAlreadyLoaded"><code class="docutils literal notranslate"><span class="pre">IPUAppAlreadyLoaded</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="npu.runtime.html#npu.runtime.apprunner.PynqBuffer"><code class="docutils literal notranslate"><span class="pre">PynqBuffer</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.apprunner.PynqBuffer.bo"><code class="docutils literal notranslate"><span class="pre">PynqBuffer.bo</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.apprunner.PynqBuffer.cacheable"><code class="docutils literal notranslate"><span class="pre">PynqBuffer.cacheable</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.apprunner.PynqBuffer.free_memory"><code class="docutils literal notranslate"><span class="pre">PynqBuffer.free_memory()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.apprunner.PynqBuffer.sync_from_npu"><code class="docutils literal notranslate"><span class="pre">PynqBuffer.sync_from_npu()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.apprunner.PynqBuffer.sync_to_npu"><code class="docutils literal notranslate"><span class="pre">PynqBuffer.sync_to_npu()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="npu.runtime.html#module-npu.runtime.kernelinstance">npu.runtime.kernelinstance module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="npu.runtime.html#npu.runtime.kernelinstance.KernelInstance"><code class="docutils literal notranslate"><span class="pre">KernelInstance</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.kernelinstance.KernelInstance._portlist"><code class="docutils literal notranslate"><span class="pre">KernelInstance._portlist</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.kernelinstance.KernelInstance._tloc"><code class="docutils literal notranslate"><span class="pre">KernelInstance._tloc</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="npu.runtime.html#module-npu.runtime.pyxrt">npu.runtime.pyxrt module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.bo"><code class="docutils literal notranslate"><span class="pre">bo</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.bo.address"><code class="docutils literal notranslate"><span class="pre">bo.address()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.bo.cacheable"><code class="docutils literal notranslate"><span class="pre">bo.cacheable</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.bo.device_only"><code class="docutils literal notranslate"><span class="pre">bo.device_only</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.bo.flags"><code class="docutils literal notranslate"><span class="pre">bo.flags</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.bo.host_only"><code class="docutils literal notranslate"><span class="pre">bo.host_only</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.bo.map"><code class="docutils literal notranslate"><span class="pre">bo.map()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.bo.normal"><code class="docutils literal notranslate"><span class="pre">bo.normal</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.bo.p2p"><code class="docutils literal notranslate"><span class="pre">bo.p2p</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.bo.read"><code class="docutils literal notranslate"><span class="pre">bo.read()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.bo.size"><code class="docutils literal notranslate"><span class="pre">bo.size()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.bo.svm"><code class="docutils literal notranslate"><span class="pre">bo.svm</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.bo.sync"><code class="docutils literal notranslate"><span class="pre">bo.sync()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.bo.write"><code class="docutils literal notranslate"><span class="pre">bo.write()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.device"><code class="docutils literal notranslate"><span class="pre">device</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.device.get_info"><code class="docutils literal notranslate"><span class="pre">device.get_info()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.device.get_xclbin_uuid"><code class="docutils literal notranslate"><span class="pre">device.get_xclbin_uuid()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.device.load_xclbin"><code class="docutils literal notranslate"><span class="pre">device.load_xclbin()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.device.register_xclbin"><code class="docutils literal notranslate"><span class="pre">device.register_xclbin()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.ert_cmd_state"><code class="docutils literal notranslate"><span class="pre">ert_cmd_state</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.ert_cmd_state.ERT_CMD_STATE_ABORT"><code class="docutils literal notranslate"><span class="pre">ert_cmd_state.ERT_CMD_STATE_ABORT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.ert_cmd_state.ERT_CMD_STATE_COMPLETED"><code class="docutils literal notranslate"><span class="pre">ert_cmd_state.ERT_CMD_STATE_COMPLETED</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.ert_cmd_state.ERT_CMD_STATE_ERROR"><code class="docutils literal notranslate"><span class="pre">ert_cmd_state.ERT_CMD_STATE_ERROR</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.ert_cmd_state.ERT_CMD_STATE_NEW"><code class="docutils literal notranslate"><span class="pre">ert_cmd_state.ERT_CMD_STATE_NEW</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.ert_cmd_state.ERT_CMD_STATE_NORESPONSE"><code class="docutils literal notranslate"><span class="pre">ert_cmd_state.ERT_CMD_STATE_NORESPONSE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.ert_cmd_state.ERT_CMD_STATE_QUEUED"><code class="docutils literal notranslate"><span class="pre">ert_cmd_state.ERT_CMD_STATE_QUEUED</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.ert_cmd_state.ERT_CMD_STATE_SKCRASHED"><code class="docutils literal notranslate"><span class="pre">ert_cmd_state.ERT_CMD_STATE_SKCRASHED</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.ert_cmd_state.ERT_CMD_STATE_SKERROR"><code class="docutils literal notranslate"><span class="pre">ert_cmd_state.ERT_CMD_STATE_SKERROR</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.ert_cmd_state.ERT_CMD_STATE_SUBMITTED"><code class="docutils literal notranslate"><span class="pre">ert_cmd_state.ERT_CMD_STATE_SUBMITTED</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.ert_cmd_state.ERT_CMD_STATE_TIMEOUT"><code class="docutils literal notranslate"><span class="pre">ert_cmd_state.ERT_CMD_STATE_TIMEOUT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.ert_cmd_state.name"><code class="docutils literal notranslate"><span class="pre">ert_cmd_state.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.ert_cmd_state.value"><code class="docutils literal notranslate"><span class="pre">ert_cmd_state.value</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.hw_context"><code class="docutils literal notranslate"><span class="pre">hw_context</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.kernel"><code class="docutils literal notranslate"><span class="pre">kernel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.kernel.cu_access_mode"><code class="docutils literal notranslate"><span class="pre">kernel.cu_access_mode</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.kernel.exclusive"><code class="docutils literal notranslate"><span class="pre">kernel.exclusive</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.kernel.group_id"><code class="docutils literal notranslate"><span class="pre">kernel.group_id()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.kernel.none"><code class="docutils literal notranslate"><span class="pre">kernel.none</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.kernel.shared"><code class="docutils literal notranslate"><span class="pre">kernel.shared</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.run"><code class="docutils literal notranslate"><span class="pre">run</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.run.add_callback"><code class="docutils literal notranslate"><span class="pre">run.add_callback()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.run.set_arg"><code class="docutils literal notranslate"><span class="pre">run.set_arg()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.run.start"><code class="docutils literal notranslate"><span class="pre">run.start()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.run.state"><code class="docutils literal notranslate"><span class="pre">run.state()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.run.wait"><code class="docutils literal notranslate"><span class="pre">run.wait()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.uuid"><code class="docutils literal notranslate"><span class="pre">uuid</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.uuid.to_string"><code class="docutils literal notranslate"><span class="pre">uuid.to_string()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.xclBOSyncDirection"><code class="docutils literal notranslate"><span class="pre">xclBOSyncDirection</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.xclBOSyncDirection.XCL_BO_SYNC_BO_AIE_TO_GMIO"><code class="docutils literal notranslate"><span class="pre">xclBOSyncDirection.XCL_BO_SYNC_BO_AIE_TO_GMIO</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.xclBOSyncDirection.XCL_BO_SYNC_BO_FROM_DEVICE"><code class="docutils literal notranslate"><span class="pre">xclBOSyncDirection.XCL_BO_SYNC_BO_FROM_DEVICE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.xclBOSyncDirection.XCL_BO_SYNC_BO_GMIO_TO_AIE"><code class="docutils literal notranslate"><span class="pre">xclBOSyncDirection.XCL_BO_SYNC_BO_GMIO_TO_AIE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.xclBOSyncDirection.XCL_BO_SYNC_BO_TO_DEVICE"><code class="docutils literal notranslate"><span class="pre">xclBOSyncDirection.XCL_BO_SYNC_BO_TO_DEVICE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.xclBOSyncDirection.name"><code class="docutils literal notranslate"><span class="pre">xclBOSyncDirection.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.xclBOSyncDirection.value"><code class="docutils literal notranslate"><span class="pre">xclBOSyncDirection.value</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.xclbin"><code class="docutils literal notranslate"><span class="pre">xclbin</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.xclbin.get_axlf"><code class="docutils literal notranslate"><span class="pre">xclbin.get_axlf()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.xclbin.get_kernels"><code class="docutils literal notranslate"><span class="pre">xclbin.get_kernels()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.xclbin.get_mems"><code class="docutils literal notranslate"><span class="pre">xclbin.get_mems()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.xclbin.get_uuid"><code class="docutils literal notranslate"><span class="pre">xclbin.get_uuid()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.xclbin.get_xsa_name"><code class="docutils literal notranslate"><span class="pre">xclbin.get_xsa_name()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.xclbin.xclbinip"><code class="docutils literal notranslate"><span class="pre">xclbin.xclbinip</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.xclbin.xclbinkernel"><code class="docutils literal notranslate"><span class="pre">xclbin.xclbinkernel</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.xclbin.xclbinmem"><code class="docutils literal notranslate"><span class="pre">xclbin.xclbinmem</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.xclbinip_vector"><code class="docutils literal notranslate"><span class="pre">xclbinip_vector</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.xclbinip_vector.append"><code class="docutils literal notranslate"><span class="pre">xclbinip_vector.append()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.xclbinip_vector.clear"><code class="docutils literal notranslate"><span class="pre">xclbinip_vector.clear()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.xclbinip_vector.extend"><code class="docutils literal notranslate"><span class="pre">xclbinip_vector.extend()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.xclbinip_vector.insert"><code class="docutils literal notranslate"><span class="pre">xclbinip_vector.insert()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.xclbinip_vector.pop"><code class="docutils literal notranslate"><span class="pre">xclbinip_vector.pop()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.xclbinkernel_vector"><code class="docutils literal notranslate"><span class="pre">xclbinkernel_vector</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.xclbinkernel_vector.append"><code class="docutils literal notranslate"><span class="pre">xclbinkernel_vector.append()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.xclbinkernel_vector.clear"><code class="docutils literal notranslate"><span class="pre">xclbinkernel_vector.clear()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.xclbinkernel_vector.extend"><code class="docutils literal notranslate"><span class="pre">xclbinkernel_vector.extend()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.xclbinkernel_vector.insert"><code class="docutils literal notranslate"><span class="pre">xclbinkernel_vector.insert()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.xclbinkernel_vector.pop"><code class="docutils literal notranslate"><span class="pre">xclbinkernel_vector.pop()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.xclbinmem_vector"><code class="docutils literal notranslate"><span class="pre">xclbinmem_vector</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.xclbinmem_vector.append"><code class="docutils literal notranslate"><span class="pre">xclbinmem_vector.append()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.xclbinmem_vector.clear"><code class="docutils literal notranslate"><span class="pre">xclbinmem_vector.clear()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.xclbinmem_vector.extend"><code class="docutils literal notranslate"><span class="pre">xclbinmem_vector.extend()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.xclbinmem_vector.insert"><code class="docutils literal notranslate"><span class="pre">xclbinmem_vector.insert()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.xclbinmem_vector.pop"><code class="docutils literal notranslate"><span class="pre">xclbinmem_vector.pop()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.xrt_info_device"><code class="docutils literal notranslate"><span class="pre">xrt_info_device</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.xrt_info_device.bdf"><code class="docutils literal notranslate"><span class="pre">xrt_info_device.bdf</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.xrt_info_device.dynamic_regions"><code class="docutils literal notranslate"><span class="pre">xrt_info_device.dynamic_regions</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.xrt_info_device.electrical"><code class="docutils literal notranslate"><span class="pre">xrt_info_device.electrical</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.xrt_info_device.host"><code class="docutils literal notranslate"><span class="pre">xrt_info_device.host</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.xrt_info_device.interface_uuid"><code class="docutils literal notranslate"><span class="pre">xrt_info_device.interface_uuid</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.xrt_info_device.kdma"><code class="docutils literal notranslate"><span class="pre">xrt_info_device.kdma</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.xrt_info_device.m2m"><code class="docutils literal notranslate"><span class="pre">xrt_info_device.m2m</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.xrt_info_device.max_clock_frequency_mhz"><code class="docutils literal notranslate"><span class="pre">xrt_info_device.max_clock_frequency_mhz</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.xrt_info_device.mechanical"><code class="docutils literal notranslate"><span class="pre">xrt_info_device.mechanical</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.xrt_info_device.memory"><code class="docutils literal notranslate"><span class="pre">xrt_info_device.memory</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.xrt_info_device.name"><code class="docutils literal notranslate"><span class="pre">xrt_info_device.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.xrt_info_device.nodma"><code class="docutils literal notranslate"><span class="pre">xrt_info_device.nodma</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.xrt_info_device.offline"><code class="docutils literal notranslate"><span class="pre">xrt_info_device.offline</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.xrt_info_device.pcie_info"><code class="docutils literal notranslate"><span class="pre">xrt_info_device.pcie_info</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.xrt_info_device.platform"><code class="docutils literal notranslate"><span class="pre">xrt_info_device.platform</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.xrt_info_device.thermal"><code class="docutils literal notranslate"><span class="pre">xrt_info_device.thermal</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.xrt_info_device.value"><code class="docutils literal notranslate"><span class="pre">xrt_info_device.value</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.pyxrt.xrt_info_device.vmr"><code class="docutils literal notranslate"><span class="pre">xrt_info_device.vmr</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="npu.runtime.html#module-npu.runtime.sequence">npu.runtime.sequence module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="npu.runtime.html#npu.runtime.sequence.Coord"><code class="docutils literal notranslate"><span class="pre">Coord</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.sequence.Coord.col"><code class="docutils literal notranslate"><span class="pre">Coord.col</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.sequence.Coord.row"><code class="docutils literal notranslate"><span class="pre">Coord.row</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="npu.runtime.html#npu.runtime.sequence.Operation"><code class="docutils literal notranslate"><span class="pre">Operation</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.sequence.Operation.opcode"><code class="docutils literal notranslate"><span class="pre">Operation.opcode</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.sequence.Operation.words"><code class="docutils literal notranslate"><span class="pre">Operation.words</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.sequence.Operation.bdId"><code class="docutils literal notranslate"><span class="pre">Operation.bdId</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.sequence.Operation.coords"><code class="docutils literal notranslate"><span class="pre">Operation.coords</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.sequence.Operation.config"><code class="docutils literal notranslate"><span class="pre">Operation.config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#id0"><code class="docutils literal notranslate"><span class="pre">Operation.bdId</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.sequence.Operation.bin"><code class="docutils literal notranslate"><span class="pre">Operation.bin</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#id1"><code class="docutils literal notranslate"><span class="pre">Operation.config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#id2"><code class="docutils literal notranslate"><span class="pre">Operation.coords</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#id3"><code class="docutils literal notranslate"><span class="pre">Operation.opcode</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.sequence.Operation.str"><code class="docutils literal notranslate"><span class="pre">Operation.str</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#id4"><code class="docutils literal notranslate"><span class="pre">Operation.words</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="npu.runtime.html#npu.runtime.sequence.OperationFactory"><code class="docutils literal notranslate"><span class="pre">OperationFactory()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="npu.runtime.html#npu.runtime.sequence.ParseBDId"><code class="docutils literal notranslate"><span class="pre">ParseBDId()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="npu.runtime.html#npu.runtime.sequence.ParseOpCodeString"><code class="docutils literal notranslate"><span class="pre">ParseOpCodeString()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="npu.runtime.html#npu.runtime.sequence.ParseTileCoords"><code class="docutils literal notranslate"><span class="pre">ParseTileCoords()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="npu.runtime.html#npu.runtime.sequence.RTPOp"><code class="docutils literal notranslate"><span class="pre">RTPOp</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.sequence.RTPOp.addr"><code class="docutils literal notranslate"><span class="pre">RTPOp.addr</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.sequence.RTPOp.value"><code class="docutils literal notranslate"><span class="pre">RTPOp.value</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.sequence.RTPOp.rtpidx"><code class="docutils literal notranslate"><span class="pre">RTPOp.rtpidx</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#id5"><code class="docutils literal notranslate"><span class="pre">RTPOp.addr</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.sequence.RTPOp.bin"><code class="docutils literal notranslate"><span class="pre">RTPOp.bin</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.sequence.RTPOp.opcode"><code class="docutils literal notranslate"><span class="pre">RTPOp.opcode</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#id6"><code class="docutils literal notranslate"><span class="pre">RTPOp.rtpidx</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.sequence.RTPOp.str"><code class="docutils literal notranslate"><span class="pre">RTPOp.str</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#id7"><code class="docutils literal notranslate"><span class="pre">RTPOp.value</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.sequence.RTPOp.words"><code class="docutils literal notranslate"><span class="pre">RTPOp.words</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="npu.runtime.html#npu.runtime.sequence.Sequence"><code class="docutils literal notranslate"><span class="pre">Sequence</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.sequence.Sequence._in_file"><code class="docutils literal notranslate"><span class="pre">Sequence._in_file</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.sequence.Sequence._str_contents"><code class="docutils literal notranslate"><span class="pre">Sequence._str_contents</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.sequence.Sequence.config_words"><code class="docutils literal notranslate"><span class="pre">Sequence.config_words</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.sequence.Sequence.operations"><code class="docutils literal notranslate"><span class="pre">Sequence.operations</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.sequence.Sequence.mlir_rtps"><code class="docutils literal notranslate"><span class="pre">Sequence.mlir_rtps</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.sequence.Sequence.bin"><code class="docutils literal notranslate"><span class="pre">Sequence.bin</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.sequence.Sequence.buffer"><code class="docutils literal notranslate"><span class="pre">Sequence.buffer</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.sequence.Sequence.rtp_words"><code class="docutils literal notranslate"><span class="pre">Sequence.rtp_words</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.runtime.html#npu.runtime.sequence.Sequence.txt"><code class="docutils literal notranslate"><span class="pre">Sequence.txt()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="npu.runtime.html#npu.runtime.sequence.createOpBin"><code class="docutils literal notranslate"><span class="pre">createOpBin()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="npu.runtime.html#npu.runtime.sequence.isCT"><code class="docutils literal notranslate"><span class="pre">isCT()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="npu.runtime.html#npu.runtime.sequence.isIT"><code class="docutils literal notranslate"><span class="pre">isIT()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="npu.runtime.html#npu.runtime.sequence.isMT"><code class="docutils literal notranslate"><span class="pre">isMT()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="npu.runtime.html#npu.runtime.sequence.parse_word"><code class="docutils literal notranslate"><span class="pre">parse_word()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="npu.runtime.html#module-npu.runtime">Module contents</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="npu.runtime.html#runtime">Runtime</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="npu.utils.html">npu.utils package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="npu.utils.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="npu.utils.html#module-npu.utils.aiekernels">npu.utils.aiekernels module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="npu.utils.html#npu.utils.aiekernels.aiekernels"><code class="docutils literal notranslate"><span class="pre">aiekernels()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="npu.utils.html#module-npu.utils.appviz">npu.utils.appviz module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="npu.utils.html#npu.utils.appviz.AppViz"><code class="docutils literal notranslate"><span class="pre">AppViz</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.appviz.AppViz.save"><code class="docutils literal notranslate"><span class="pre">AppViz.save()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.appviz.AppViz.show"><code class="docutils literal notranslate"><span class="pre">AppViz.show</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="npu.utils.html#module-npu.utils.display_widget">npu.utils.display_widget module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="npu.utils.html#npu.utils.display_widget.DisplayImage"><code class="docutils literal notranslate"><span class="pre">DisplayImage</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.display_widget.DisplayImage._image_widget"><code class="docutils literal notranslate"><span class="pre">DisplayImage._image_widget</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.display_widget.DisplayImage._button_widget"><code class="docutils literal notranslate"><span class="pre">DisplayImage._button_widget</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.display_widget.DisplayImage.exit"><code class="docutils literal notranslate"><span class="pre">DisplayImage.exit</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.display_widget.DisplayImage.frame"><code class="docutils literal notranslate"><span class="pre">DisplayImage.frame()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="npu.utils.html#module-npu.utils.imgplot">npu.utils.imgplot module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="npu.utils.html#npu.utils.imgplot.image_plot"><code class="docutils literal notranslate"><span class="pre">image_plot()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="npu.utils.html#module-npu.utils.imgread">npu.utils.imgread module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="npu.utils.html#npu.utils.imgread.OpenCVImageReader"><code class="docutils literal notranslate"><span class="pre">OpenCVImageReader</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.imgread.OpenCVImageReader.img"><code class="docutils literal notranslate"><span class="pre">OpenCVImageReader.img</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="npu.utils.html#module-npu.utils.nputop">npu.utils.nputop module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="npu.utils.html#npu.utils.nputop.nputop"><code class="docutils literal notranslate"><span class="pre">nputop()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="npu.utils.html#module-npu.utils.svg">npu.utils.svg module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="npu.utils.html#npu.utils.svg.AieTile"><code class="docutils literal notranslate"><span class="pre">AieTile</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.svg.AieTile.MAX_BUFFERS"><code class="docutils literal notranslate"><span class="pre">AieTile.MAX_BUFFERS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.svg.AieTile.add_buffer"><code class="docutils literal notranslate"><span class="pre">AieTile.add_buffer()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.svg.AieTile.add_kernel"><code class="docutils literal notranslate"><span class="pre">AieTile.add_kernel()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.svg.AieTile.add_mem_animation"><code class="docutils literal notranslate"><span class="pre">AieTile.add_mem_animation()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.svg.AieTile.add_memory_outlines"><code class="docutils literal notranslate"><span class="pre">AieTile.add_memory_outlines()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.svg.AieTile.add_multiple_kernel"><code class="docutils literal notranslate"><span class="pre">AieTile.add_multiple_kernel()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.svg.AieTile.draw_memory_connections"><code class="docutils literal notranslate"><span class="pre">AieTile.draw_memory_connections()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.svg.AieTile.generate_image"><code class="docutils literal notranslate"><span class="pre">AieTile.generate_image()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.svg.AieTile.get_aie_buffers_svg"><code class="docutils literal notranslate"><span class="pre">AieTile.get_aie_buffers_svg()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.svg.AieTile.get_aie_kernels_svg"><code class="docutils literal notranslate"><span class="pre">AieTile.get_aie_kernels_svg()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.svg.AieTile.get_aie_svg"><code class="docutils literal notranslate"><span class="pre">AieTile.get_aie_svg()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="npu.utils.html#npu.utils.svg.Box"><code class="docutils literal notranslate"><span class="pre">Box</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.svg.Box.append"><code class="docutils literal notranslate"><span class="pre">Box.append</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.svg.Box.box"><code class="docutils literal notranslate"><span class="pre">Box.box</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="npu.utils.html#npu.utils.svg.IfTile"><code class="docutils literal notranslate"><span class="pre">IfTile</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.svg.IfTile.add_dma_animation"><code class="docutils literal notranslate"><span class="pre">IfTile.add_dma_animation()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.svg.IfTile.add_ic_animation"><code class="docutils literal notranslate"><span class="pre">IfTile.add_ic_animation()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.svg.IfTile.add_single_tile_mem_animation"><code class="docutils literal notranslate"><span class="pre">IfTile.add_single_tile_mem_animation()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.svg.IfTile.draw_external_memory_connections"><code class="docutils literal notranslate"><span class="pre">IfTile.draw_external_memory_connections()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.svg.IfTile.generate_image"><code class="docutils literal notranslate"><span class="pre">IfTile.generate_image()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.svg.IfTile.get_if_tile_svg"><code class="docutils literal notranslate"><span class="pre">IfTile.get_if_tile_svg()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="npu.utils.html#npu.utils.svg.Image"><code class="docutils literal notranslate"><span class="pre">Image</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.svg.Image.generate_svg_file"><code class="docutils literal notranslate"><span class="pre">Image.generate_svg_file()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.svg.Image.hide_key"><code class="docutils literal notranslate"><span class="pre">Image.hide_key()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.svg.Image.show_key"><code class="docutils literal notranslate"><span class="pre">Image.show_key()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="npu.utils.html#npu.utils.svg.Kernel"><code class="docutils literal notranslate"><span class="pre">Kernel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.svg.Kernel.get_kernel_svg"><code class="docutils literal notranslate"><span class="pre">Kernel.get_kernel_svg()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="npu.utils.html#npu.utils.svg.KernelArc"><code class="docutils literal notranslate"><span class="pre">KernelArc</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="npu.utils.html#npu.utils.svg.MemTile"><code class="docutils literal notranslate"><span class="pre">MemTile</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.svg.MemTile.MAX_BUFFERS"><code class="docutils literal notranslate"><span class="pre">MemTile.MAX_BUFFERS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.svg.MemTile.add_buffer"><code class="docutils literal notranslate"><span class="pre">MemTile.add_buffer()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.svg.MemTile.add_ic_animation"><code class="docutils literal notranslate"><span class="pre">MemTile.add_ic_animation()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.svg.MemTile.add_memory_outlines"><code class="docutils literal notranslate"><span class="pre">MemTile.add_memory_outlines()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.svg.MemTile.add_single_tile_ic_animation"><code class="docutils literal notranslate"><span class="pre">MemTile.add_single_tile_ic_animation()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.svg.MemTile.draw_memory_connections"><code class="docutils literal notranslate"><span class="pre">MemTile.draw_memory_connections()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.svg.MemTile.generate_image"><code class="docutils literal notranslate"><span class="pre">MemTile.generate_image()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.svg.MemTile.get_buffers_svg"><code class="docutils literal notranslate"><span class="pre">MemTile.get_buffers_svg()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.svg.MemTile.get_mem_tile_svg"><code class="docutils literal notranslate"><span class="pre">MemTile.get_mem_tile_svg()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="npu.utils.html#npu.utils.svg.MemoryBox"><code class="docutils literal notranslate"><span class="pre">MemoryBox</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.svg.MemoryBox.add_buffer"><code class="docutils literal notranslate"><span class="pre">MemoryBox.add_buffer()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.svg.MemoryBox.add_memory_outlines"><code class="docutils literal notranslate"><span class="pre">MemoryBox.add_memory_outlines()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="npu.utils.html#npu.utils.svg.RyzenAiArray"><code class="docutils literal notranslate"><span class="pre">RyzenAiArray</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.svg.RyzenAiArray.draw_app_box"><code class="docutils literal notranslate"><span class="pre">RyzenAiArray.draw_app_box()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.svg.RyzenAiArray.draw_system_memory"><code class="docutils literal notranslate"><span class="pre">RyzenAiArray.draw_system_memory()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.svg.RyzenAiArray.generate_svg"><code class="docutils literal notranslate"><span class="pre">RyzenAiArray.generate_svg()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.svg.RyzenAiArray.generate_svg_image"><code class="docutils literal notranslate"><span class="pre">RyzenAiArray.generate_svg_image()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.svg.RyzenAiArray.hide_aie_tiles"><code class="docutils literal notranslate"><span class="pre">RyzenAiArray.hide_aie_tiles()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.svg.RyzenAiArray.hide_if_tiles"><code class="docutils literal notranslate"><span class="pre">RyzenAiArray.hide_if_tiles()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.svg.RyzenAiArray.hide_interconnect"><code class="docutils literal notranslate"><span class="pre">RyzenAiArray.hide_interconnect()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.svg.RyzenAiArray.hide_mem_tiles"><code class="docutils literal notranslate"><span class="pre">RyzenAiArray.hide_mem_tiles()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.svg.RyzenAiArray.hide_memory_connections"><code class="docutils literal notranslate"><span class="pre">RyzenAiArray.hide_memory_connections()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.svg.RyzenAiArray.hide_tiles"><code class="docutils literal notranslate"><span class="pre">RyzenAiArray.hide_tiles()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.svg.RyzenAiArray.show_aie_tiles"><code class="docutils literal notranslate"><span class="pre">RyzenAiArray.show_aie_tiles()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.svg.RyzenAiArray.show_if_tiles"><code class="docutils literal notranslate"><span class="pre">RyzenAiArray.show_if_tiles()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.svg.RyzenAiArray.show_interconnect"><code class="docutils literal notranslate"><span class="pre">RyzenAiArray.show_interconnect()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.svg.RyzenAiArray.show_mem_tiles"><code class="docutils literal notranslate"><span class="pre">RyzenAiArray.show_mem_tiles()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.svg.RyzenAiArray.show_tiles"><code class="docutils literal notranslate"><span class="pre">RyzenAiArray.show_tiles()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.svg.RyzenAiArray.update_hidden_tiles"><code class="docutils literal notranslate"><span class="pre">RyzenAiArray.update_hidden_tiles()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="npu.utils.html#npu.utils.svg.RyzenAiColumn"><code class="docutils literal notranslate"><span class="pre">RyzenAiColumn</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.svg.RyzenAiColumn.draw_system_memory"><code class="docutils literal notranslate"><span class="pre">RyzenAiColumn.draw_system_memory()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.svg.RyzenAiColumn.generate_column_svg"><code class="docutils literal notranslate"><span class="pre">RyzenAiColumn.generate_column_svg()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.svg.RyzenAiColumn.generate_image"><code class="docutils literal notranslate"><span class="pre">RyzenAiColumn.generate_image()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.svg.RyzenAiColumn.generate_key"><code class="docutils literal notranslate"><span class="pre">RyzenAiColumn.generate_key()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.svg.RyzenAiColumn.hide_compute_tile"><code class="docutils literal notranslate"><span class="pre">RyzenAiColumn.hide_compute_tile()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.svg.RyzenAiColumn.hide_interface_tile"><code class="docutils literal notranslate"><span class="pre">RyzenAiColumn.hide_interface_tile()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.svg.RyzenAiColumn.hide_memory_tile"><code class="docutils literal notranslate"><span class="pre">RyzenAiColumn.hide_memory_tile()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.svg.RyzenAiColumn.show_compute_tile"><code class="docutils literal notranslate"><span class="pre">RyzenAiColumn.show_compute_tile()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.svg.RyzenAiColumn.show_interface_tile"><code class="docutils literal notranslate"><span class="pre">RyzenAiColumn.show_interface_tile()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.svg.RyzenAiColumn.show_memory_tile"><code class="docutils literal notranslate"><span class="pre">RyzenAiColumn.show_memory_tile()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="npu.utils.html#npu.utils.svg.SystemMemory"><code class="docutils literal notranslate"><span class="pre">SystemMemory</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.svg.SystemMemory.add_buffer"><code class="docutils literal notranslate"><span class="pre">SystemMemory.add_buffer()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.svg.SystemMemory.svg"><code class="docutils literal notranslate"><span class="pre">SystemMemory.svg</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="npu.utils.html#npu.utils.svg.Tile"><code class="docutils literal notranslate"><span class="pre">Tile</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.svg.Tile.add_ic_animation"><code class="docutils literal notranslate"><span class="pre">Tile.add_ic_animation()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.svg.Tile.add_single_tile_ic_animation"><code class="docutils literal notranslate"><span class="pre">Tile.add_single_tile_ic_animation()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.svg.Tile.add_single_tile_mem_animation"><code class="docutils literal notranslate"><span class="pre">Tile.add_single_tile_mem_animation()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.svg.Tile.clear_ic_animation"><code class="docutils literal notranslate"><span class="pre">Tile.clear_ic_animation()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.svg.Tile.draw_ic_connections"><code class="docutils literal notranslate"><span class="pre">Tile.draw_ic_connections()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.svg.Tile.get_hide_tile_svg"><code class="docutils literal notranslate"><span class="pre">Tile.get_hide_tile_svg()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.svg.Tile.get_ic_animations_svg"><code class="docutils literal notranslate"><span class="pre">Tile.get_ic_animations_svg()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.svg.Tile.get_ic_connections_svg"><code class="docutils literal notranslate"><span class="pre">Tile.get_ic_connections_svg()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.svg.Tile.get_memory_animations_svg"><code class="docutils literal notranslate"><span class="pre">Tile.get_memory_animations_svg()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.svg.Tile.get_memory_connections_svg"><code class="docutils literal notranslate"><span class="pre">Tile.get_memory_connections_svg()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.svg.Tile.get_tile_svg"><code class="docutils literal notranslate"><span class="pre">Tile.get_tile_svg()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.svg.Tile.hide_tile"><code class="docutils literal notranslate"><span class="pre">Tile.hide_tile()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.svg.Tile.show_all"><code class="docutils literal notranslate"><span class="pre">Tile.show_all()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.svg.Tile.show_tile"><code class="docutils literal notranslate"><span class="pre">Tile.show_tile()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="npu.utils.html#module-npu.utils.svg_config">npu.utils.svg_config module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="npu.utils.html#npu.utils.svg_config.get_text_width"><code class="docutils literal notranslate"><span class="pre">get_text_width()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="npu.utils.html#npu.utils.svg_config.get_tile_x"><code class="docutils literal notranslate"><span class="pre">get_tile_x()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="npu.utils.html#npu.utils.svg_config.get_tile_y"><code class="docutils literal notranslate"><span class="pre">get_tile_y()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="npu.utils.html#module-npu.utils.test_device">npu.utils.test_device module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="npu.utils.html#npu.utils.test_device.get_device_status"><code class="docutils literal notranslate"><span class="pre">get_device_status()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="npu.utils.html#npu.utils.test_device.get_driver_version"><code class="docutils literal notranslate"><span class="pre">get_driver_version()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="npu.utils.html#npu.utils.test_device.reset_npu"><code class="docutils literal notranslate"><span class="pre">reset_npu()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="npu.utils.html#npu.utils.test_device.test_device_status"><code class="docutils literal notranslate"><span class="pre">test_device_status()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="npu.utils.html#npu.utils.test_device.test_driver_version"><code class="docutils literal notranslate"><span class="pre">test_driver_version()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="npu.utils.html#npu.utils.test_device.version_to_tuple"><code class="docutils literal notranslate"><span class="pre">version_to_tuple()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="npu.utils.html#module-npu.utils.videoapps">npu.utils.videoapps module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="npu.utils.html#npu.utils.videoapps.videoapps"><code class="docutils literal notranslate"><span class="pre">videoapps()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="npu.utils.html#module-npu.utils.xbutil">npu.utils.xbutil module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="npu.utils.html#npu.utils.xbutil.XBUtil"><code class="docutils literal notranslate"><span class="pre">XBUtil</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.xbutil.XBUtil.app_count"><code class="docutils literal notranslate"><span class="pre">XBUtil.app_count</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.xbutil.XBUtil.app_exists"><code class="docutils literal notranslate"><span class="pre">XBUtil.app_exists()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.xbutil.XBUtil.app_table"><code class="docutils literal notranslate"><span class="pre">XBUtil.app_table</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.xbutil.XBUtil.apps"><code class="docutils literal notranslate"><span class="pre">XBUtil.apps()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.xbutil.XBUtil.list_apps"><code class="docutils literal notranslate"><span class="pre">XBUtil.list_apps()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.xbutil.XBUtil.loaded_functions"><code class="docutils literal notranslate"><span class="pre">XBUtil.loaded_functions</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.xbutil.XBUtil.num_riallto_streams"><code class="docutils literal notranslate"><span class="pre">XBUtil.num_riallto_streams</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.utils.html#npu.utils.xbutil.XBUtil.num_wse_streams"><code class="docutils literal notranslate"><span class="pre">XBUtil.num_wse_streams</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="npu.utils.html#module-npu.utils">Module contents</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="npu.utils.html#utilities">Utilities</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">¶</a></h2>
+</section>
+<section id="module-npu.magic">
+<span id="npu-magic-module"></span><h2>npu.magic module<a class="headerlink" href="#module-npu.magic" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="npu.magic.kernel_magic">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npu.magic.</span></span><span class="sig-name descname"><span class="pre">kernel_magic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/magic.html#kernel_magic"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.magic.kernel_magic" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Magics</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.magic.kernel_magic.kernel">
+<span class="sig-name descname"><span class="pre">kernel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cell</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/magic.html#kernel_magic.kernel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.magic.kernel_magic.kernel" title="Link to this definition">¶</a></dt>
+<dd><p>Specify a compute tile C++ kernel and return an npu.build.Kernel object.</p>
+<p>This cell magic command allows users to input C++ kernel code within
+a Jupyter notebook cell. It then returns a corresponding Kernel object
+that can be compiled into an object file for use in a Riallto application.
+The Cpp source must return a void type, input and output buffers are specified
+as pointer types, as parameters are specified with non-pointer types.</p>
+<p>Header files included in the directory where the notebook is are permitted.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>cell</strong> (<em>str</em>) – The string content of the cell, expected to be C++ code defining
+the kernel.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>Kernel</strong> – Returns a Kernel object that has the same name as the last function
+defined in the cell magic. See npu.build.Kernel.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>object</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>In a Jupyter notebook %%kernel cell</p>
+<dl>
+<dt>void passthrough(uint8_t <em>in_buffer, uint8_t</em> out_buffer, uint32_t nbytes) {</dt><dd><dl class="simple">
+<dt>for(int i=0; i&lt;nbytes; i++) {</dt><dd><p>out_buffer[i] = in_buffer[i];</p>
+</dd>
+</dl>
+<p>}</p>
+</dd>
+</dl>
+<p>}</p>
+<p>This will construct a passthrough npu.build.Kernel object that can be used within
+a callgraph to construct a complete application.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.magic.kernel_magic.magics">
+<span class="sig-name descname"><span class="pre">magics</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'cell':</span> <span class="pre">{'kernel':</span> <span class="pre">'kernel'},</span> <span class="pre">'line':</span> <span class="pre">{}}</span></em><a class="headerlink" href="#npu.magic.kernel_magic.magics" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.magic.kernel_magic.registered">
+<span class="sig-name descname"><span class="pre">registered</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#npu.magic.kernel_magic.registered" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-npu.repr_dict">
+<span id="npu-repr-dict-module"></span><h2>npu.repr_dict module<a class="headerlink" href="#module-npu.repr_dict" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="npu.repr_dict.ReprDict">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npu.repr_dict.</span></span><span class="sig-name descname"><span class="pre">ReprDict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rootname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'root'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expanded</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/npu/repr_dict.html#ReprDict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#npu.repr_dict.ReprDict" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p>
+<p>Subclass of the built-in dict that will display using the JupyterLab
+JSON repr.</p>
+<p>The class is recursive in that any entries that are also dictionaries
+will be converted to ReprDict objects when returned.</p>
+</dd></dl>
+
+</section>
+<section id="module-npu">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-npu" title="Link to this heading">¶</a></h2>
+<section id="npu">
+<h3>NPU<a class="headerlink" href="#npu" title="Link to this heading">¶</a></h3>
+<p>Documentation is available in the docstrings and online at <a class="reference external" href="https://riallto.ai">https://riallto.ai</a>.</p>
+<dl class="simple">
+<dt>Provides</dt><dd><ol class="arabic simple">
+<li><p>An easy-to-use runtime library to run custom applications on the NPU.</p></li>
+<li><p>APIs for building custom applications.</p></li>
+<li><p>Useful utilities to test and introspect your designs.</p></li>
+</ol>
+</dd>
+</dl>
+<section id="available-subpackages">
+<h4>Available subpackages<a class="headerlink" href="#available-subpackages" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>build</dt><dd><p>Tools for building applications.</p>
+</dd>
+<dt>lib</dt><dd><p>Libraries of prebuilt kernels and graphs.</p>
+</dd>
+<dt>runtime</dt><dd><p>Runtime libraries based on XRT.</p>
+</dd>
+<dt>utils</dt><dd><p>Utilities for building, testing and visualization.</p>
+</dd>
+</dl>
+</section>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          
+				  
+				  <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="modules.html" class="btn btn-neutral float-left" title="npu" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="npu.build.html" class="btn btn-neutral float-right" title="npu.build package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Advanced Micro Devices, Inc.
+      <span class="lastupdated">Last updated on December 19, 2023.
+      </span></p>
+  </div>
+
+
+
+										<div class="aem-Grid aem-Grid--16">
+											<div class="aem-GridColumn aem-GridColumn--xxxlarge--none aem-GridColumn--xsmall--16 aem-GridColumn--offset--xsmall--0 aem-GridColumn--xlarge--none aem-GridColumn--xxlarge--none aem-GridColumn--default--none aem-GridColumn--offset--large--1 aem-GridColumn--xlarge--12 aem-GridColumn--offset--default--0 aem-GridColumn--xxlarge--10 aem-GridColumn--offset--xlarge--2 aem-GridColumn--offset--xxlarge--3 aem-GridColumn--offset--xxxlarge--4 aem-GridColumn--xsmall--none aem-GridColumn--large--none aem-GridColumn aem-GridColumn--large--14 aem-GridColumn--xxxlarge--8 aem-GridColumn--default--16">
+												<div class="container-fluid sub-footer">
+
+													                    <div class="row">
+                        <div class="col-xs-24">
+                          <p><a target="_blank" href="https://www.amd.com/en/corporate/copyright">Terms and Conditions</a> | <a target="_blank" href="https://www.amd.com/en/corporate/privacy">Privacy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/cookies">Cookie Policy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/trademarks">Trademarks</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/statement-human-trafficking-forced-labor.pdf">Statement on Forced Labor</a> | <a target="_blank" href="https://www.amd.com/en/corporate/competition">Fair and Open Competition</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/amd-uk-tax-strategy.pdf">UK Tax Strategy</a> | <a target="_blank" href="https://docs.xilinx.com/v/u/9x6YvZKuWyhJId7y7RQQKA">Inclusive Terminology</a> | <a href="#cookiessettings" class="ot-sdk-show-settings">Cookies Settings</a></p>
+                        </div>
+                    </div>
+												</div>
+											</div>
+										</div>
+										
+</br>
+
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div id="cookie-consent" class="cookie-consent">
+    <p>This website uses cookies to ensure you get the best experience on our website. <a href="#" id="cookie-accept">Accept</a> | <a href="#" id="cookie-reject">Reject</a></p>
+</div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+</body>
+</html>

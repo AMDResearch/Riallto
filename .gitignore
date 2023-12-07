@@ -1,0 +1,11 @@
+# Python cache files
+######################
+__pycache__/
+
+
+# WSL build files
+######################
+install/temp
+install/tests
+install/installed
+install/tarballs/*.tar.gz
