@@ -1,0 +1,64 @@
+{
+    "application": "color_threshold_1_tile_1080p",
+    "kernels": {
+        "threshold4ChLine_0": {
+            "name": "threshold4ChLine_0",
+            "type": "CT",
+            "ktype": "threshold4ChLine",
+            "tloc": [0, 2],
+            "ports": {
+                "inptr": {
+                    "name": "inptr",
+                    "dtype": "uint8_t *",
+                    "ctype": null
+                },
+                "outptr": {
+                    "name": "outptr",
+                    "dtype": "uint8_t *",
+                    "ctype": null
+                },
+                "lineWidth": {
+                    "name": "lineWidth",
+                    "dtype": "int32_t",
+                    "ctype": "gfdgd"
+                },
+                "thresholdValue1": {
+                    "name": "thresholdValue1",
+                    "dtype": "int16_t",
+                    "ctype": "rtp",
+                    "value": 200,
+                    "c_dtype": "int16_t"
+                },
+                "thresholdValue2": {
+                    "name": "thresholdValue2",
+                    "dtype": "int16_t",
+                    "ctype": "rtp",
+                    "value": 200,
+                    "c_dtype": "int16_t"
+                },
+                "thresholdValue3": {
+                    "name": "thresholdValue3",
+                    "dtype": "int16_t",
+                    "ctype": "rtp",
+                    "value": 200,
+                    "c_dtype": "int16_t"
+                },
+                "thresholdValue4": {
+                    "name": "thresholdValue4",
+                    "dtype": "int16_t",
+                    "ctype": "rtp",
+                    "value": 0,
+                    "c_dtype": "int16_t"
+                },
+                "thresholdType": {
+                    "name": "thresholdType",
+                    "dtype": "int8_t",
+                    "ctype": "rtp",
+                    "value": 0,
+                    "c_dtype": "int8_t"
+                }
+
+            }
+        }
+    }
+}

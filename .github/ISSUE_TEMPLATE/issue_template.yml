@@ -1,0 +1,73 @@
+name: Notebook Issue Report
+description: File an issue report
+title: "[Notebook Issue]: "
+labels: ["Issue"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report an issue!
+  - type: checkboxes
+    attributes:
+      label: Is there an existing [issue](https://github.com/AMDResearch/Riallto/issues) or [discussion](https://github.com/AMDResearch/Riallto/discussions) related to your problem?
+      description: Please search to see if an issue already exists for this.
+      options:
+      - label: I have searched the existing issues
+        required: true
+  - type: dropdown
+    id: notebook
+    attributes:
+      label: Notebook
+      description: What notebook are you having issues with?
+      options:
+        - 1_0_Introduction.ipynb
+        - 1_1_ryzenai.ipynb
+        - 2_1_MS_Windows_Studio_Effects.ipynb
+        - 3_1_Color_threshold_example.ipynb
+        - 3_2_Ryzenai_capabilities.ipynb
+        - 3_3_Scaled_color_threshold_example.ipynb
+        - 3_4_Edge_detect_example.ipynb
+        - 3_5_Color_detect_example.ipynb
+        - 4_1_software_framework.ipynb
+        - 4_2_write_your_kernel.ipynb
+        - 4_3_kernels_with_runtime_parameters.ipynb
+        - 4_4_threshold_kernel_with_vector_ops.ipynb
+        - 4_5_describe_an_application.ipynb
+        - 4_6_build_application.ipynb
+        - 4_7_using_the_memtile_in_your_applications.ipynb
+        - 4_8_build_a_colorDetect_application.ipynb
+        - 5_1_pytorch_onnx_inference.ipynb
+        - 5_2_pytorch_onnx_re-train.ipynb
+        - Appendix_Review_of_Image_Processing_Concepts.ipynb
+        - Glossary.ipynb
+    validations:
+      required: true
+  - type: textarea
+    id: section
+    attributes:
+      label: Section
+      description: |
+        Please describe in which section you are having problems
+
+        Tip: Copy the section name directly from the notebook
+      render: markdown
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Please describe the problem(s) you are facing
+      render: markdown
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Anything else?
+      description: |
+        Anything else that you would like to include?
+
+        Tip: You can attach images or log files by clicking this area to highlight it and then dragging files in. If you are adding code, we suggest you use [code snippets](https://docs.github.com/en/github/writing-on-github/creating-and-highlighting-code-blocks).
+    validations:
+      required: false

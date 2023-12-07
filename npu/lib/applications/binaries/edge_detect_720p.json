@@ -1,0 +1,176 @@
+{"application" : "edge_detect_720p",
+    "kernels": {
+        "addWeightedLine_0": {
+            "name": "addWeightedLine_0",
+            "type": "CT",
+            "ktype": "addWeightedLine",
+            "tloc": [0, 5],
+            "ports": {
+                "in1": {
+                    "name": "in1",
+                    "dtype": "uint8_t *",
+                    "ctype": null
+                },
+                "in2": {
+                    "name": "in2",
+                    "dtype": "uint8_t *",
+                    "ctype": null
+                },
+                "out": {
+                    "name": "out",
+                    "dtype": "uint8_t *",
+                    "ctype": null
+                },
+                "tileWidth": {
+                    "name": "tileWidth",
+                    "dtype": "int32_t",
+                    "ctype": "fhdgd"
+                },
+                "alpha": {
+                    "name": "alpha",
+                    "dtype": "int16_t",
+                    "ctype": "rtp",
+                    "value": 16384,
+                    "c_dtype": "int16_t"
+                },
+                "beta": {
+                    "name": "beta",
+                    "dtype": "int16_t",
+                    "ctype": "rtp",
+                    "value": 0,
+                    "c_dtype": "int16_t"
+                },
+                "gamma": {
+                    "name": "gamma",
+                    "dtype": "int8_t",
+                    "ctype": "rtp",
+                    "value": 0,
+                    "c_dtype": "int8_t"
+                }
+            }
+        },
+	"threshold" : {
+            "name": "threshold_0",
+            "type": "CT",
+            "ktype": "threshold",
+            "tloc": [0, 4],
+            "ports" : {
+                "lineIn0": {
+                    "name": "linIn0",
+                    "dtype": "uint8_t *",
+                    "ctype": null
+                },
+                "out": {
+                    "name": "out",
+                    "dtype": "uint8_t *",
+                    "ctype": null
+                },
+                "thresholdValue": {
+                    "name": "thresholdValue",
+                    "dtype": "int8_t",
+                    "ctype": "rtp",
+                    "value": 40,
+                    "c_dtype": "int8_t"
+                }
+            }
+        },
+	"filter2dline" : {
+            "name": "filter2dline_0",
+            "type": "CT",
+            "ktype": "filter2dline",
+            "tloc": [0, 3],
+            "ports": {
+                "lineIn0": {
+                    "name": "linIn0",
+                    "dtype": "uint8_t *",
+                    "ctype": null
+                },
+                "lineIn1": {
+                    "name": "linIn1",
+                    "dtype": "uint8_t *",
+                    "ctype": null
+                },
+                "lineIn2": {
+                    "name": "linIn2",
+                    "dtype": "uint8_t *",
+                    "ctype": null
+                },
+                "out": {
+                    "name": "out",
+                    "dtype": "uint8_t *",
+                    "ctype": null
+                },
+                "lineWidth": {
+                    "name": "lineWidth",
+                    "dtype": "uint32_t",
+                    "ctype": "dfwsf" 
+                },
+                "weight_0_0": {
+                    "name": "weight_0_0",
+                    "dtype": "int16_t",
+                    "ctype": "rtp",
+                    "value": 0,
+                    "c_dtype": "int16_t"
+                },
+                "weight_0_1": {
+                    "name": "weight_0_1",
+                    "dtype": "int16_t",
+                    "ctype": "rtp",
+                    "value": 4096,
+                    "c_dtype": "int16_t"
+                },
+                "weight_0_2": {
+                    "name": "weight_0_2",
+                    "dtype": "int16_t",
+                    "ctype": "rtp",
+                    "value": 0,
+                    "c_dtype": "int16_t"
+                },
+                "weight_1_0": {
+                    "name": "weight_1_0",
+                    "dtype": "int16_t",
+                    "ctype": "rtp",
+                    "value": 4096,
+                    "c_dtype": "int16_t"
+                },
+                "weight_1_1": {
+                    "name": "weight_1_1",
+                    "dtype": "int16_t",
+                    "ctype": "rtp",
+                    "value": -16384,
+                    "c_dtype": "int16_t"
+                },
+                "weight_1_2": {
+                    "name": "weight_1_2",
+                    "dtype": "int16_t",
+                    "ctype": "rtp",
+                    "value": 4096,
+                    "c_dtype": "int16_t"
+                },
+                "weight_2_0": {
+                    "name": "weight_2_0",
+                    "dtype": "int16_t",
+                    "ctype": "rtp",
+                    "value": 0,
+                    "c_dtype": "int16_t"
+                },
+                "weight_2_1": {
+                    "name": "weight_2_1",
+                    "dtype": "int16_t",
+                    "ctype": "rtp",
+                    "value": 4096,
+                    "c_dtype": "int16_t"
+                },
+                "weight_2_2": {
+                    "name": "weight_2_2",
+                    "dtype": "int16_t",
+                    "ctype": "rtp",
+                    "value": 0,
+                    "c_dtype": "int16_t"
+                }
+		
+	    }
+	}
+	
+    }
+}
