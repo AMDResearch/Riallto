@@ -37,13 +37,14 @@
 <body class="wy-body-for-nav">
 
 <!-- Google Tag Manager -->
+<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-JK8T9PJNL0"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'G-JK8T9PJNL0'); 
+  gtag('config', 'G-JK8T9PJNL0');
 </script>
 <!-- End Google Tag Manager --> 
   <div class="wy-grid-for-nav">
@@ -114,6 +115,10 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="modules.html">npu</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">FAQ</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Riallto FAQ</a></li>
+</ul>
 <p class="caption" role="heading"><span class="caption-text">Glossary</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="Glossary.html">Glossary</a></li>
@@ -175,7 +180,7 @@
 <section id="System-Architecture">
 <h2>System Architecture<a class="headerlink" href="#System-Architecture" title="Link to this heading">¶</a></h2>
 <p>These examples assume you are using a laptop with a <a class="reference external" href="https://www.amd.com/en/products/ryzen-ai">Ryzen 7040 “Phoenix” APU with the Ryzen AI NPU</a> and an integrated webcam, or compatible hardware. The typical architecture of the system for the examples is shown below.</p>
-<center><p><img alt="ab3dd6be8e1a46a2b91290a83fa62e39" src="_images/system_architecture.png" /></p>
+<center><p><img alt="2306c5b904ed498694cd30a3f97e5030" src="_images/system_architecture.png" /></p>
 </center><center><p>Ryzen 7040 connected to system memory, webcam and display</p>
 </center><p>The AMD Ryzen 7040 “Phoenix” family of laptop and desktop processors has an <em>AMD Zen 4</em> <strong>CPU</strong> (which is an x86 CPU), and <em>Ryzen AI</em> <strong>NPU</strong> integrated into the same chip, as indicated in the image.</p>
 <p>The APU is connected to system memory. System memory is used as the interface between the NPU and the rest of the system. For example, the webcam, controlled by the CPU, will place input data into system memory where the NPU can read it. The NPU will write its results to system memory where it can then be accessed by the CPU and sent to the display.</p>
@@ -185,7 +190,7 @@
 <h2>Video Pipeline<a class="headerlink" href="#Video-Pipeline" title="Link to this heading">¶</a></h2>
 <p>The CPU controls the webcam and display that are used as the data source and sink for the application. The CPU will configure the webcam which will write input data to system memory. The NPU will read the webcam data and write its results back to system memory where the CPU can access the results for the display.</p>
 <p>This diagram shows a simplified representation of the capture-to-display video processing pipeline of your laptop.</p>
-<center><p><img alt="f6a65c6dd70c4c39a1102dad5dc53ad5" src="_images/pipeline_flow_of_data.png" /></p>
+<center><p><img alt="1c1cd44115d54e228507bc1bfdaca8cd" src="_images/pipeline_flow_of_data.png" /></p>
 </center><center><p>Simplified Ryzen AI NPU video processing pipeline</p>
 </center><p>This is the same video pipeline that Microsoft Windows Studio Effects uses for automatic framing, gaze adjustment and background effects.</p>
 </section>
@@ -193,7 +198,7 @@
 <h2>Ryzen AI NPU Architecture<a class="headerlink" href="#Ryzen-AI-NPU-Architecture" title="Link to this heading">¶</a></h2>
 <p>The Ryzen AI NPU is any array of compute, memory and interface tiles. There are 20 compute tiles arranged in a 4x5 grid of rows and columns. There are 5 memory tiles and 4 interfaces tiles. Interface tiles connect the NPU to system memory. You will notice an asymmetry in the number of interface tiles and memory tiles.</p>
 <p>Tiles are connected to each other through a network of streaming interfaces.</p>
-<center><p><img alt="dfd0ba5b054e47d5b17970d5201d7fdf" src="_images/ryzenai_array_5x4.png" /></p>
+<center><p><img alt="41f36cc033564eff9e579eeadde6ab49" src="_images/ryzenai_array_5x4.png" /></p>
 </center><center><p>Ryzen AI NPU organization</p>
 </center><p>Compute tiles are where the program or subprograms of a software application are run. Memory and interface tiles move data into and out of the NPU and marshal data movement within the array. Each of the tiles, their features, and interfaces will be introduced in more detail as we progress through these notebooks.</p>
 <hr class="docutils" />
@@ -206,7 +211,7 @@
 <p>In the example, you will be able to set the threshold value <span class="math notranslate nohighlight">\(tv\)</span> and see the effect it has on the output video.</p>
 <p>The threshold algorithm is applied to each of the red, blue and green color channels in the original image separately. Pixel values in each channel that are below the threshold become black. The remaining pixels become red, green or blue respectively. Note that we assign minimum and maximum color values. The outputs of the three color channels are re-combined to create the final image.</p>
 <p>The image below shows an example of the operation of the thresholding function. Using the Original image shown on the left, the image is split into its three color channels. Each channel is processed by the threshold function with a given threshold value. The three channels will be recombined to form the processed output image. The output image will depend on the values of the threshold values used for each channel.</p>
-<center><p><img alt="11044bdc9bbb43628603640110a8c1f8" src="_images/toucan_color_threshold.png" /></p>
+<center><p><img alt="cdfa8c9b388244c8be7be0b59ce6658e" src="_images/toucan_color_threshold.png" /></p>
 </center><center><p>Example of the color threshold algorithm</p>
 </center><hr class="docutils" />
 </section>
@@ -336,8 +341,8 @@ currently running on the NPU. Check the utilization of the NPU by running the fo
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2023, Advanced Micro Devices, Inc.
-      <span class="lastupdated">Last updated on December 19, 2023.
+    <p>&#169; Copyright 2024, Advanced Micro Devices, Inc.
+      <span class="lastupdated">Last updated on January 17, 2024.
       </span></p>
   </div>
 

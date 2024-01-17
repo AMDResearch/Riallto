@@ -36,13 +36,14 @@
 <body class="wy-body-for-nav">
 
 <!-- Google Tag Manager -->
+<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-JK8T9PJNL0"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'G-JK8T9PJNL0'); 
+  gtag('config', 'G-JK8T9PJNL0');
 </script>
 <!-- End Google Tag Manager --> 
   <div class="wy-grid-for-nav">
@@ -149,6 +150,10 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="modules.html">npu</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">FAQ</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Riallto FAQ</a></li>
+</ul>
 <p class="caption" role="heading"><span class="caption-text">Glossary</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="Glossary.html">Glossary</a></li>
@@ -205,7 +210,7 @@
 <section id="NPU-column-architecture">
 <h2>NPU column architecture<a class="headerlink" href="#NPU-column-architecture" title="Link to this heading">¶</a></h2>
 <p>The NPU is a 2D array of tiles that can be grouped into columns.</p>
-<center><p><img alt="e34b801b2f284a61b986afa112be6c70" src="_images/aie_column.svg" /></p>
+<center><p><img alt="e81cfa84b5694daabcf7edaf5282aabb" src="_images/aie_column.svg" /></p>
 </center><center><p>Ryzen AI NPU Column</p>
 </center><p>A column consists of:</p>
 <ul class="simple">
@@ -234,14 +239,14 @@ one interface tile.</p>
 <p>Returning to the color threshold example; this is one of the simplest examples we can build for the Ryzen AI NPU. Its dataflow graph and the corresponding mapping to the NPU column are shown below. (Dataflow graphs were introduced in the <a class="reference external" href="https://www.riallto.ai/ryzenai_video_overview.html">Riallto overview video</a>) in section 1. As a reminder, a dataflow graph is a graphical representation of a computation or a workflow, where nodes represent operations or tasks, and edges or connections
 between nodes represent the flow of data between these operations.</p>
 <p>The color threshold example’s dataflow graph has a single node connected via memory buffers to its input and output. In general, each node in a dataflow graph is associated with one or more programs or subprograms that it will execute for a given application to run successfully. The programs are referred to throughout these notebooks as <em>software kernels</em> or simply <em>kernels</em>. The color threshold application has one node and one kernel.</p>
-<center><p><img alt="8d571ab86f7a47e18dbe44a2ccadf2af" src="_images/color_threshold_v1_dfg.png" /></p>
+<center><p><img alt="83849ff409934f67a25d2116ede597be" src="_images/color_threshold_v1_dfg.png" /></p>
 </center><center><p>Color threshold dataflow graph</p>
 </center><p>Dataflow graphs are incredibly useful in many areas to describe parallel computer applications, such as parallel computing, digital signal processing and machine learning among others. Dataflow graphs allow us to identify potential bottlenecks, parallelize operations, and optimize the overall performance of a system. The extraction of parallelism is relatively straightforward, as each compute node operates independently.</p>
 </section>
 <section id="Mapping-the-dataflow-graph-to-the-NPU">
 <h2>Mapping the dataflow graph to the NPU<a class="headerlink" href="#Mapping-the-dataflow-graph-to-the-NPU" title="Link to this heading">¶</a></h2>
 <p>In the color threshold example, the video data enters and leaves the array via the interface tile and all the processing is done by a single kernel. This kernel will run on one compute tile. This could be any one of the twenty compute tiles available in the array. In the graphic below, you can see the kernel is assigned to the compute tile at the bottom of a column.</p>
-<center><p><img alt="837ad69c7eb246e78d696ecee5b97da9" src="_images/color_threshold_v1_static_with_key.png" /></p>
+<center><p><img alt="bca3ce61e115465dabd84f44031fa0a3" src="_images/color_threshold_v1_static_with_key.png" /></p>
 </center><center><p>Color threshold mapped to a section of the Ryzen AI NPU</p>
 </center><p>For now, we are only showing the interface tile, memory tile, and the compute tile at the bottom of the column. The other three compute tiles in the column are not used in this example and are not shown.</p>
 <p>As the threshold kernel is relatively simple and operates on one pixel at a time, the pixels can be transferred as a stream from the interface tile to the compute tile, bypassing the memory tile. The memory tile and the three remaining compute tiles in the column are unused.</p>
@@ -273,7 +278,7 @@ between nodes represent the flow of data between these operations.</p>
 <section id="Array-wide-access">
 <h3>Array-wide access<a class="headerlink" href="#Array-wide-access" title="Link to this heading">¶</a></h3>
 <p>Every tile has a stream switch and sets of data movers which allow it to move data anywhere on its array.</p>
-<center><p><img alt="7a7f82173b3142078fd7527ff06567fb" src="_images/ryzenai_array_streaming_interfaces_animations.svg" /></p>
+<center><p><img alt="d6e05f8cc80d49df8eb7e537e718d785" src="_images/ryzenai_array_streaming_interfaces_animations.svg" /></p>
 </center><center><p>Ryzen AI NPU Streaming network - move data from any tile to any tile</p>
 </center></section>
 <section id="Sophisticated-multi-dimensional-data-movement">
@@ -292,7 +297,7 @@ between nodes represent the flow of data between these operations.</p>
 <h2>Compute Tile properties<a class="headerlink" href="#Compute-Tile-properties" title="Link to this heading">¶</a></h2>
 <p>Inside a compute tile is the processor core that we call the AI Engine (AIE). These processor cores are not general-purpose processors. Instead, they are optimized for machine learning computation such as matrix multiplication and accumulation.</p>
 <p>Each compute tile has an AI Engine processor, data memory, connections to its nearest neighboring compute tiles (blue lines), access to a network of streaming connections that traverse the NPU (red lines) and data movers (data movers not shown) which are used to send and receive data on the streaming network.</p>
-<center><p><img alt="60819dfa05564861a095a2a3218b1dcd" src="_images/compute_tile_with_all_connections.svg" /></p>
+<center><p><img alt="7642c2129aaa49299d832e70c144c475" src="_images/compute_tile_with_all_connections.svg" /></p>
 </center><center><p>Compute Tile</p>
 </center><section id="AI-Engine">
 <h3>AI Engine<a class="headerlink" href="#AI-Engine" title="Link to this heading">¶</a></h3>
@@ -300,7 +305,7 @@ between nodes represent the flow of data between these operations.</p>
 <p>AMD has different variants of the AI Engine processors. Ryzen AI uses the AIE-ML variant, optimized for AI computation.</p>
 <p>The AIE-ML is a Single Instruction Multiple Data (SIMD) and Very Long Instruction Word (VLIW) processor that supports both fixed-point and floating-point precision using specialized hardware.</p>
 <p>In addition to the Data Memory, the AIE-ML has a local 16KB of program memory that is used to store the VLIW instructions.</p>
-<center><p><img alt="e55edf6b79a84dfb9a1170486c1ce9d3" src="_images/ai_engine_processor.png" /></p>
+<center><p><img alt="a3146446d8674a7daa8368c4cba4f2b0" src="_images/ai_engine_processor.png" /></p>
 </center><center><p>AIE-ML Architecture</p>
 </center></section>
 <section id="No-interrupts">
@@ -369,7 +374,7 @@ lanes.</p>
 <section id="Data-memory">
 <h3>Data memory<a class="headerlink" href="#Data-memory" title="Link to this heading">¶</a></h3>
 <p>The compute tile includes its own dedicated high-speed 64KB data memory. The vector processor can also access the data memory of neighboring compute tiles (north, south and west), amounting for 256KB of memory, accessed as one contiguous memory. Additionally, the compute tile has two stream-to-memory and two memory-to-stream interfaces to move data in and out from/to non-neighboring tiles.</p>
-<center><p><img alt="8f3ceefb398441d0add343d885ae73dd" src="_images/ai_engine_memory.png" /></p>
+<center><p><img alt="c846950dd657480a89080990a67fcf23" src="_images/ai_engine_memory.png" /></p>
 </center><center><p>Compute Tile - data memory</p>
 </center><section id="No-cache">
 <h4>No cache<a class="headerlink" href="#No-cache" title="Link to this heading">¶</a></h4>
@@ -429,7 +434,7 @@ lanes.</p>
 <section id="Memory-Tile-properties">
 <h2>Memory Tile properties<a class="headerlink" href="#Memory-Tile-properties" title="Link to this heading">¶</a></h2>
 <p>The memory tile is a 512KB high-speed random-access memory that complements the data memory on the compute tile.</p>
-<center><p><img alt="0f1652254b7943c290d16dc9cacbeecd" src="_images/mem_tile.svg" /></p>
+<center><p><img alt="4254a0b15c904644ba339f39ca91c8ea" src="_images/mem_tile.svg" /></p>
 </center><center><p>Memory Tile</p>
 </center><p>The memory tile has 16 memory banks of 32KB each, which gives a bandwidth of up to 30 GB/s read and 30 GB/s write in parallel per memory tile. Each bank allows one read or one write every cycle.</p>
 <p>The memory tile has 6x stream to memory and 6x memory to stream data movers to move data anywhere in the array. These data movers also can access data in the neighbor memory tile (west and east). In addition, the data movers support 4-dimension address generation, zero-padding insertion, and compression.</p>
@@ -441,13 +446,13 @@ lanes.</p>
 <h2>Interface Tile properties<a class="headerlink" href="#Interface-Tile-properties" title="Link to this heading">¶</a></h2>
 <p>The interface tile is responsible for moving data into and out of the array, to and from external memory. They can read data from external memory put it onto a stream interface to send to a memory or compute tile, or broadcast or multicast to several locations simultaneously. (<em>Broadcast</em> in this case means sending to all, <em>Multicast</em> means sending to selected group of tiles.) The interface tiles take data from the streaming network, potentially coming from multiple tiles, and writes it back to
 the main system memory, aggregating the data if necessary.</p>
-<center><p><img alt="76991c5618154fde88552bb54cc876c0" src="_images/if_tile.svg" /></p>
+<center><p><img alt="594289a8d3354c5884e924e3e8af0632" src="_images/if_tile.svg" /></p>
 </center><center><p>Interface Tile</p>
 </center><p>Each interface tile has 2 input and 2 output data movers. The data movers’ job is to manage the movement of data from one location to another. This may involve reading chunks of data and segmenting them before forwarding to the destination.</p>
 <p>The interface tile data movers also support compression when the data is sparse. This is where they may be many zeros in the data stream. Rather than send lots of zeros, the data mover can effectively encode the stream of data (compress it) to make more efficient use of the interface bandwidth. The data will be decompressed once it reaches its destination.</p>
 <p>Not shown, the interface tile also includes synchronization mechanisms to manage memory access.</p>
 <p>The number of interfaces tiles in an array is an indication of the number of parallel streams the array can support simultaneously. The Ryzen AI NPU has 4 interface tiles and can therefore support 4 data streams or applications. Note that column zero in the array (left most) does not contain an interface tile.</p>
-<center><p><img alt="bdbf9138070049919a5e9594b03b2d2f" src="_images/ryzenai_array_5x4_if_tiles.png" /></p>
+<center><p><img alt="9321f41c2ae141a3b77a69ca14b6b791" src="_images/ryzenai_array_5x4_if_tiles.png" /></p>
 </center><center><p>Interface tiles</p>
 </center><section id="Gateways-to-system-memory">
 <h3>Gateways to system memory<a class="headerlink" href="#Gateways-to-system-memory" title="Link to this heading">¶</a></h3>
@@ -466,7 +471,7 @@ the main system memory, aggregating the data if necessary.</p>
 <section id="NPU-Resource-Use">
 <h2>NPU Resource Use<a class="headerlink" href="#NPU-Resource-Use" title="Link to this heading">¶</a></h2>
 <p>Returning to the color threshold example, we will now look at resources used. This is the same graphic we saw earlier that you can refer to when reviewing the list of resources used below:</p>
-<center><p><img alt="23cb5daedd234a968cdd100389eae3bf" src="_images/color_threshold_v1_static_with_key.png" /></p>
+<center><p><img alt="2050f86a6e1d4266a77ef4ad9d7913b0" src="_images/color_threshold_v1_static_with_key.png" /></p>
 </center><center><p>Color threshold mapped to a section of the Ryzen AI NPU</p>
 </center><p>The following resources are used for this example:</p>
 <ul class="simple">
@@ -526,8 +531,8 @@ the main system memory, aggregating the data if necessary.</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2023, Advanced Micro Devices, Inc.
-      <span class="lastupdated">Last updated on December 19, 2023.
+    <p>&#169; Copyright 2024, Advanced Micro Devices, Inc.
+      <span class="lastupdated">Last updated on January 17, 2024.
       </span></p>
   </div>
 

@@ -37,13 +37,14 @@
 <body class="wy-body-for-nav">
 
 <!-- Google Tag Manager -->
+<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-JK8T9PJNL0"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'G-JK8T9PJNL0'); 
+  gtag('config', 'G-JK8T9PJNL0');
 </script>
 <!-- End Google Tag Manager --> 
   <div class="wy-grid-for-nav">
@@ -134,6 +135,10 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="modules.html">npu</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">FAQ</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Riallto FAQ</a></li>
+</ul>
 <p class="caption" role="heading"><span class="caption-text">Glossary</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="Glossary.html">Glossary</a></li>
@@ -200,7 +205,7 @@ memories.</p>
 <section id="Dataflow-and-Task-Level-Parallelism">
 <h2>Dataflow and Task Level Parallelism<a class="headerlink" href="#Dataflow-and-Task-Level-Parallelism" title="Link to this heading">¶</a></h2>
 <p>The edge detection dataflow graph is shown below.</p>
-<center><p><img alt="883205c1a9e04ac2a6e3269ceed4ba3c" src="_images/edge_detect_dfg.png" /></p>
+<center><p><img alt="038b94bc34b6464994ecc459bb348721" src="_images/edge_detect_dfg.png" /></p>
 </center><center><p>Edge detection dataflow graph</p>
 </center><p>There are four kernels in this application:</p>
 <ul class="simple">
@@ -212,7 +217,7 @@ memories.</p>
 <p>Each (compute) kernel can start operating on the input buffer as soon as it receives sufficient data from the previous kernel. In the case of this algorithm, a 3x3 2D filter is used where each kernel needs two full lines of the image plus the next three pixels for each calculation. The dataflow graph shows a sequential chain of operations with only data dependencies between sequential kernels. i.e., the last kernel <code class="docutils literal notranslate"><span class="pre">gray2rgb</span></code> depends on data from <code class="docutils literal notranslate"><span class="pre">threshold</span></code>, <code class="docutils literal notranslate"><span class="pre">threshold</span></code> depends on
 <code class="docutils literal notranslate"><span class="pre">filter2D</span></code> and so on.</p>
 <p>In the image below you can see the result of the edge detection.</p>
-<center><p><img alt="4192101d77714b159a88c52cc7352e61" src="_images/toucan_edge_detect.png" /></p>
+<center><p><img alt="5fa1d5ee07564aab810c5a0210bcb157" src="_images/toucan_edge_detect.png" /></p>
 </center><center><p>Edge detection algorithm</p>
 </center><hr class="docutils" />
 </section>
@@ -306,7 +311,7 @@ immediate speed-up to the whole application as we are now using 4x the number of
 </div>
 <div class="alert alert-box alert-info"><p>You will call this API when you build your own applications.</p>
 </div><p>You can visualize the output in the animation below.</p>
-<center><p><img alt="af69123e5c974c8fa4e57f228b4e2396" src="_images/edge_detect.svg" /></p>
+<center><p><img alt="905bed8bea3a43cc9f7ed044e3e0032d" src="_images/edge_detect.svg" /></p>
 </center><center><p>Edge detect mapping to the NPU</p>
 </center><hr class="docutils" />
 </section>
@@ -316,7 +321,7 @@ immediate speed-up to the whole application as we are now using 4x the number of
 <h3>Compute tile data memory<a class="headerlink" href="#Compute-tile-data-memory" title="Link to this heading">¶</a></h3>
 <p>We saw in previous sections that the data memory in the compute tiles is 64KB in size and arranged into 8 banks of 8KB each. There are four memory ports to the data memory, north, south, east and west represented in blue in the diagram below. The memory port on the west is connected to the local AI Engine.</p>
 <p>Each of the banks can be accessed independently through these ports, although only one port can access a bank at a time. Different banks can be accessed simultaneously.</p>
-<center><p><img alt="1d62d281015f4f14ad8c89048897248d" src="_images/mem_tile_banks.png" /></p>
+<center><p><img alt="885827c447f34f10b8e0958e1c2bc83f" src="_images/mem_tile_banks.png" /></p>
 </center><center><p>Compute tile memory interfaces</p>
 </center><p>The data memory also has synchronizers and arbiters that will control access to the memory banks.</p>
 <p>The data memory can also be accessed via stream interfaces from non-neighboring tiles. This tile can send data to non-neighboring tiles via the same interfaces. The stream interfaces are the only way to move data from interface or memory tiles into and out of compute tiles. They are used in every Ryzen AI application. As the stream interfaces have been discussed in previous sections, they will not be discussed in this example.</p>
@@ -328,7 +333,7 @@ immediate speed-up to the whole application as we are now using 4x the number of
 <section id="Accessing-multiple-memories-from-a-single-AI-Engine-processor">
 <h3>Accessing multiple memories from a single AI Engine processor<a class="headerlink" href="#Accessing-multiple-memories-from-a-single-AI-Engine-processor" title="Link to this heading">¶</a></h3>
 <p>Each AI Engine processor has the capability to access a total of four distinct data memories. The first one is its own local data memory located within its own tile, memory to the east of the AI Engine. Additionally, there are three other data memories situated in the adjacent compute tiles, namely to the north, south, and west.</p>
-<center><p><img alt="a31bbaf295284415ad148652f2a07a90" src="_images/aie_access_neighbor_memory.svg" /></p>
+<center><p><img alt="36c8aec2108a4b2e88e3a9ddbda20dd8" src="_images/aie_access_neighbor_memory.svg" /></p>
 </center><center><p>Single compute tile, multiple data memory interfaces</p>
 </center><p>The AI Engine processor can access data memories up to four times the size of its own local data memory, which effectively means it can access a 256KB memory pool. Furthermore, multiple AI Engines can collaborate by sharing access to the same memory, enhancing the overall performance of applications running on the NPU. This shared memory arrangement allows data to be accessed directly between kernels executing on different AI Engines. For instance, one kernel running on a processor can write
 results to a data memory, whether it is the one in its own tile or a neighboring tile. Subsequently, another kernel executing on a neighboring tile can retrieve these results from the same data memory. This boosts application performance while minimizing data transfers, which, in turn, reduces efficiency and lowers power consumption.</p>
@@ -338,7 +343,7 @@ results to a data memory, whether it is the one in its own tile or a neighboring
 <section id="Accessing-the-same-memory-from-different-AI-Engine-processors">
 <h3>Accessing the same memory from different AI Engine processors<a class="headerlink" href="#Accessing-the-same-memory-from-different-AI-Engine-processors" title="Link to this heading">¶</a></h3>
 <p>Another perspective on the data memories is that a memory within a single tile can be accessed by up to <strong>four</strong> AI Engine processors: the AI Engine in the same tile and up to <em>three</em> AI Engines in adjacent tiles situated to the north, south, and east, as indicated in the diagram:</p>
-<center><p><img alt="834d0699a2b44b37901b78f063865414" src="_images/aie_single_memory_access.svg" /></p>
+<center><p><img alt="8e90ffbc9050460e95b3b3cce35d3bb9" src="_images/aie_single_memory_access.svg" /></p>
 </center><center><p>Single data memory accessed from AI Engine in its own tile, and neighboring tiles</p>
 </center><p>It is important to clarify that tiles positioned at the edges of the NPU array can have fewer memory connections as they may lack neighbors in some directions. For instance, the tiles in the top row do not have a neighboring tile to the north. Consequently, these top-row tiles do not have a memory interface to the north and cannot share their memory data in that direction.</p>
 <p>Most AI Engines can access three data memories in their neighboring compute tiles to the north, south and west, as shown above.</p>
@@ -369,7 +374,7 @@ results to a data memory, whether it is the one in its own tile or a neighboring
 <li><p>For an <span class="math notranslate nohighlight">\(4 \times 5\)</span> NPU array, there are <span class="math notranslate nohighlight">\(8\)</span> tiles that can access 4 local data memories.</p></li>
 </ul>
 <p>These tiles are colored blue in the diagram below.</p>
-<center><p><img alt="242e0f5521fb429da4b5918b27fa5345" src="_images/ryzenai_array_nsew_memory_connections_color_by_type.svg" /></p>
+<center><p><img alt="7db6b48b1b9948629c798ed9c0b4b1ac" src="_images/ryzenai_array_nsew_memory_connections_color_by_type.svg" /></p>
 </center><p><center><p>Memory connectivity of compute tiles, coloured by type; 2 connections, 3 connections,
 4 connections</p>
 </center></p><p>This architecture helps minimizing <em>data movement</em> as data can be read in place from one compute tile and processed in another. This also helps <em>data reuse</em> as data does not have to be transferred to the memory of every compute tile that needs this data. The compute tiles contain synchronizers and locks to control access to memory buffers between different compute tiles.</p>
@@ -401,7 +406,7 @@ results to a data memory, whether it is the one in its own tile or a neighboring
 </ol>
 <p>This is the essence of ping-pong buffering. Rather than a sequential set of steps, both kernels operate concurrently.</p>
 <p>You can see an animation illustrating these steps and ping-pong buffers:</p>
-<center><p><img alt="7d946955e6754f64abb2f2454f44eb1b" src="_images/ping_pong_buffer.gif" /></p>
+<center><p><img alt="b177d90a18be44f4a8cddca89a2e9bd8" src="_images/ping_pong_buffer.gif" /></p>
 </center><center><p>Ping-pong buffer communication between two neighboring compute tiles</p>
 </center><p>In the top compute tile, there is a pink kernel that generates data. This data is stored in two separate buffers, one pink and one orange. These buffers are located in different banks within the data memory.</p>
 <p>In the second compute tile, there is a green kernel that consumes data from these two buffers.</p>
@@ -413,11 +418,11 @@ results to a data memory, whether it is the one in its own tile or a neighboring
 <section id="Overlapping-Compute-and-Data-movement">
 <h2>Overlapping Compute and Data movement<a class="headerlink" href="#Overlapping-Compute-and-Data-movement" title="Link to this heading">¶</a></h2>
 <p>Assuming the data is generated by one tile and consumed by the other at the same rate, by using ping pong buffers data can be transferred and processed continuously by both compute tiles. The alternative would be for the first tile to transfer data, wait for the next tile to process it before computing and sending new data. You can see the effect of a sequential execution in the image below. The blue kernel cannot start processing until the data movement of the orange kernel completes.</p>
-<center><p><img alt="c70c21998da142e09922a74d4cb9c3c1" src="_images/trace_sequential_execution.png" /></p>
+<center><p><img alt="9f4ed2f0268c4e85b9fcca3ca4973d42" src="_images/trace_sequential_execution.png" /></p>
 </center><center><p>Sequential execution of two kernels</p>
 </center><p>Overlapping compute and data movement increases the utilization of the processors in the compute tiles, significantly improving the performance of the application. The image below shows a task parallel execution, where each kernel runs independently. The ping pong buffering allows to overlap the data transfer and computation as shown in the image. The availability of data still triggers the execution of the compute kernels, however in this scenario both of them run simultaneously. This concept
 can be extrapolated to a data flow graph with more kernels.</p>
-<center><p><img alt="47392e8bb1b2456190a93a0c0eae4b57" src="_images/trace_overlapped_execution.png" /></p>
+<center><p><img alt="bc9708b7bc8d4eda994bbe7ade654c2a" src="_images/trace_overlapped_execution.png" /></p>
 </center><center><p>Sequential execution of two kernels</p>
 </center><p>Note that if the first kernel is mapped to the compute tile at the top of a column, and the second kernel to the tile below it, ping-pong buffer can be placed in the data memory for either tile. The flexibility of this architecture is a big advantage for more complicated designs where resources may be constrained.</p>
 <p>In this simple example we assumed two banks were used for ping-pong buffering. The number of buffers used will depend on factors including the size of the data that needs to be transferred between tiles, the rates data is generated and consumed in each tile, and any other data dependencies - for example a kernel may require data from more than one source. An application may use multiple memory banks to overlap data movement and compute.</p>
@@ -455,8 +460,8 @@ can be extrapolated to a data flow graph with more kernels.</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2023, Advanced Micro Devices, Inc.
-      <span class="lastupdated">Last updated on December 19, 2023.
+    <p>&#169; Copyright 2024, Advanced Micro Devices, Inc.
+      <span class="lastupdated">Last updated on January 17, 2024.
       </span></p>
   </div>
 

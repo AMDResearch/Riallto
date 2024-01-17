@@ -37,13 +37,14 @@
 <body class="wy-body-for-nav">
 
 <!-- Google Tag Manager -->
+<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-JK8T9PJNL0"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'G-JK8T9PJNL0'); 
+  gtag('config', 'G-JK8T9PJNL0');
 </script>
 <!-- End Google Tag Manager --> 
   <div class="wy-grid-for-nav">
@@ -124,6 +125,10 @@
 <p class="caption" role="heading"><span class="caption-text">Python Package</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="modules.html">npu</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">FAQ</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Riallto FAQ</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Glossary</span></p>
 <ul>
@@ -232,7 +237,7 @@ UBUNTU_CODENAME=focal
 <section id="Programming-the-NPU">
 <h2>Programming the NPU<a class="headerlink" href="#Programming-the-NPU" title="Link to this heading">¶</a></h2>
 <p>To recap, the Ryzen AI NPU is a dataflow architecture. Data flows through a series of compute nodes within the NPU. Each node is assigned specific processing tasks. Data is directed only to the nodes where it is needed for computation.</p>
-<center><p><img alt="745d13456f73414a8a791ef9f1b5e51e" src="_images/edge_detect_dfg.png" /></p>
+<center><p><img alt="74a962c96d07458eba69264b275f624e" src="_images/edge_detect_dfg.png" /></p>
 </center><center><p>Example dataflow graph of the edge detection application</p>
 </center><p>A Ryzen AI dataflow application consists of: * the software kernels that run on compute nodes * the NPU graph that defines the tile connectivity and the movement of data between the tiles</p>
 <p>To build an application for the NPU, we need to create dataflow programs. A dataflow program effectively translates the application, as described by its dataflow graph, into code that can be compiled into an executable application for the NPU.</p>
@@ -456,8 +461,8 @@ a callgraph to construct a complete application.
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2023, Advanced Micro Devices, Inc.
-      <span class="lastupdated">Last updated on December 20, 2023.
+    <p>&#169; Copyright 2024, Advanced Micro Devices, Inc.
+      <span class="lastupdated">Last updated on January 17, 2024.
       </span></p>
   </div>
 

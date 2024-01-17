@@ -37,13 +37,14 @@
 <body class="wy-body-for-nav">
 
 <!-- Google Tag Manager -->
+<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-JK8T9PJNL0"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'G-JK8T9PJNL0'); 
+  gtag('config', 'G-JK8T9PJNL0');
 </script>
 <!-- End Google Tag Manager --> 
   <div class="wy-grid-for-nav">
@@ -123,6 +124,10 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="modules.html">npu</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">FAQ</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Riallto FAQ</a></li>
+</ul>
 <p class="caption" role="heading"><span class="caption-text">Glossary</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="Glossary.html">Glossary</a></li>
@@ -171,7 +176,7 @@
 <section id="Build-a-Color-Detection-Application">
 <h2>Build a Color Detection Application<a class="headerlink" href="#Build-a-Color-Detection-Application" title="Link to this heading">¶</a></h2>
 <p>We are going to build a simpler version of the color detection application we saw in a previous notebook. The image below shows the data flow graph that we are going to implement:</p>
-<center><p><img alt="a5099343011d458e87c18d7b3f6e03ff" src="_images/color_detect_dev_dfg.png" /></p>
+<center><p><img alt="d209ca82710b4e9d8044467c1eb1684e" src="_images/color_detect_dev_dfg.png" /></p>
 </center><center><p>Color detection data flow graph</p>
 </center><ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">rgb2hsv()</span></code> converts the RGBA input image to <a class="reference external" href="https://en.wikipedia.org/wiki/HSL_and_HSV">HSV (Hue Saturation Value)</a>. This will allow us to use Hue to select a range of colors to filter.</p></li>
@@ -353,7 +358,7 @@ Successfully Building Application... ColorDetectApplication.xclbin &amp; ColorDe
 <section id="Exercise-for-the-Reader">
 <h2>Exercise for the Reader<a class="headerlink" href="#Exercise-for-the-Reader" title="Link to this heading">¶</a></h2>
 <p>In this exercise, you are going to work with grayscale input and output images. As you can see the in the image below, there are two working branches. The edges will be overlaid on the inverse of the input image. The source image is multicast to the <code class="docutils literal notranslate"><span class="pre">filter2D</span></code> and to the <code class="docutils literal notranslate"><span class="pre">inverse</span></code> kernels, the output of the <code class="docutils literal notranslate"><span class="pre">filter2D</span></code> processed by the <code class="docutils literal notranslate"><span class="pre">threshold</span></code> kernel. Finally, the edges are overlaid on top of the inverse image using the <code class="docutils literal notranslate"><span class="pre">bitwiseor</span></code> kernel.</p>
-<center><p><img alt="8c3c854f443845c3903523201a3a9e13" src="_images/edge_detect_exercise_reader.png" /></p>
+<center><p><img alt="2e58b71743554db68430d2b043c546c2" src="_images/edge_detect_exercise_reader.png" /></p>
 </center><center><p>Edge detection exercise for the reader</p>
 </center><section id="Define-your-pipeline-application">
 <h3>Define your pipeline application<a class="headerlink" href="#Define-your-pipeline-application" title="Link to this heading">¶</a></h3>
@@ -503,8 +508,8 @@ Successfully Building Application... ColorDetectApplication.xclbin &amp; ColorDe
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2023, Advanced Micro Devices, Inc.
-      <span class="lastupdated">Last updated on December 19, 2023.
+    <p>&#169; Copyright 2024, Advanced Micro Devices, Inc.
+      <span class="lastupdated">Last updated on January 17, 2024.
       </span></p>
   </div>
 

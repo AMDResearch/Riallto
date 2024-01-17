@@ -37,13 +37,14 @@
 <body class="wy-body-for-nav">
 
 <!-- Google Tag Manager -->
+<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-JK8T9PJNL0"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'G-JK8T9PJNL0'); 
+  gtag('config', 'G-JK8T9PJNL0');
 </script>
 <!-- End Google Tag Manager --> 
   <div class="wy-grid-for-nav">
@@ -127,6 +128,10 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="modules.html">npu</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">FAQ</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Riallto FAQ</a></li>
+</ul>
 <p class="caption" role="heading"><span class="caption-text">Glossary</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="Glossary.html">Glossary</a></li>
@@ -191,7 +196,7 @@ both of which are provided for you.</p>
 <h2>The <em>pass-through</em> Application<a class="headerlink" href="#The-pass-through-Application" title="Link to this heading">¶</a></h2>
 <p>We will start with a simple <em>pass-through</em> application. For this application the NPU will read an image as the input, move it to a compute tile, and write it back unaltered to our output. This is like a Ryzen AI equivalent to a “hello world” application typically used in C programming. We will not do any real computation in the array, but we will use this application to test that the toolchain and application work correctly.</p>
 <p>The NPU and the x86 CPU in the Ryzen 7000 processor share access to external memory. For Ryzen AI laptops this is DDR5 that is shared with the main x86 CPU and also with the iGPU.</p>
-<center><p><img alt="9bfb22c6fa24412483c699fc53b62458" src="_images/shared_system_memory.png" /></p>
+<center><p><img alt="e3af70c2067843cf9603733e1daf74f2" src="_images/shared_system_memory.png" /></p>
 </center><center><p>x86 CPU and NPU shared access to external memory</p>
 </center><p>The NPU only has access to this external memory. The CPU has access to all system peripherals and is responsible for providing input data to the NPU and reading back the results. For example, the CPU can read data from a webcam, make it available to the NPU, read back the results, and display them on a laptop’s screen.</p>
 <p>The NPU application needs an input data buffer and an output data buffer. Data buffers in this context mean area(s) in memory where data will temporarily reside as it is processed by the NPU. The input and output data buffers will be allocated by the x86 processor in external memory.</p>
@@ -226,7 +231,7 @@ back to external memory.</p>
 <p>The application will process an entire row of the image at a time. This is the tiling process we described in an earlier notebook. Each RGBA pixel (Red, Green, Blue, Alpha) is 32-bits or 4-bytes and there are 1,280 pixels in a row. The data movers are pre-configured for transfers of 4 x 1,280 = 5,120 bytes.</p>
 <p>The dataflow graph for this application is illustrated below, along with its mapping to a section of an NPU column. Note again that only one compute tile is used for this application and that this is the compute tile at the bottom of an NPU column. For simplicity, the three empty compute tiles in the rest of the column are not shown here.</p>
 <p>The use of the bottom compute tile is important because the graph has been configured to work specifically with this tile, as defined in the template graph.</p>
-<center><p><img alt="6cec132b97e54cb0af94b6ddef64b01a" src="_images/pass-through_DFG_and_Mapping.svg" /></p>
+<center><p><img alt="c53757bb9ce0417ebca88a182b0f0921" src="_images/pass-through_DFG_and_Mapping.svg" /></p>
 </center><center><p>Pass-through DFG and mapping with RGB720pBuilder</p>
 </center><p>In later notebooks, you will see how to write kernels for more than one compute tile, how to create your own mapped dataflow graph, and how to build the complete application for the Ryzen AI NPU. For now, this is a convenient way to get started. We can ignore details of the graph initially and focus first on how software kernels are written and how the whole application is built and executed.</p>
 <p>Execute each code cell below as you progress through the notebook.</p>
@@ -514,7 +519,7 @@ Successfully Building Application... passthrough.xclbin &amp; passthrough.seq de
 </div>
 </div>
 <p>The buffers created by the CPU may reside in the x86 cache. The Zen 4 CPU has L1, L2 and L3 cache which must be invalidated and flushed to ensure the copies of the buffers in external memory are up-to-date.</p>
-<center><p><img alt="26a946ab64f2497f983d527c62f0d297" src="_images/shared_system_memory_sync_calls.png" /></p>
+<center><p><img alt="7e8ac51ec53b4f4f835ed32d8be0fb8e" src="_images/shared_system_memory_sync_calls.png" /></p>
 </center><center><p>Invalidate and flush the cache with synchronization calls</p>
 </center><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">sync_to_npu()</span></code> is used to flush data from the CPU cache to the input buffer in external memory. It ensures that any modifications made in the CPU cache are reflected in the external memory’s input buffer, keeping the data consistent between these two locations.</p></li>
@@ -691,8 +696,8 @@ void mykernel(uint8_t *in_buffer, uint8_t *out_buffer, uint32_t nbytes)
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2023, Advanced Micro Devices, Inc.
-      <span class="lastupdated">Last updated on December 20, 2023.
+    <p>&#169; Copyright 2024, Advanced Micro Devices, Inc.
+      <span class="lastupdated">Last updated on January 17, 2024.
       </span></p>
   </div>
 
