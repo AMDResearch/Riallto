@@ -3,8 +3,8 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Riallto - an exploration framework for the AMD Ryzen AI NPU
-======================================================================
+Riallto - an exploration framework for the AMD Ryzen AI NPU
+===========================================================
 
 Introduction
 ------------
@@ -84,6 +84,14 @@ For support, go to the `Riallto GitHub discussions forum <https://github.com/AMD
 
    modules
    
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+   :caption: FAQ
+
+      
+   faq   
+
 .. toctree::
    :maxdepth: 1
    :hidden:

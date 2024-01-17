@@ -36,7 +36,15 @@
 <body class="wy-body-for-nav">
 
 <!-- Google Tag Manager -->
-<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-5RHQV7" height="0" width="0" style="display:none;visibility:hidden" class="optanon-category-C0002"></iframe></noscript>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JK8T9PJNL0"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-JK8T9PJNL0');
+</script>
 <!-- End Google Tag Manager --> 
   <div class="wy-grid-for-nav">
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
@@ -106,6 +114,10 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="modules.html">npu</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">FAQ</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Riallto FAQ</a></li>
+</ul>
 <p class="caption" role="heading"><span class="caption-text">Glossary</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="Glossary.html">Glossary</a></li>
@@ -164,7 +176,7 @@
 <h2>Dataflow Application Properties<a class="headerlink" href="#Dataflow-Application-Properties" title="Link to this heading">¶</a></h2>
 <p>We will start by examining the properties of an application. We will use the previously discussed edge detection example and show how the <code class="docutils literal notranslate"><span class="pre">AppBuilder</span></code> class is used to create the application.</p>
 <p>The same edge detection dataflow graph from earlier notebooks is shown below.</p>
-<center><p><img alt="17d5a6fda9834769b640f4e47cce4897" src="_images/edge_detect_dfg.png" /></p>
+<center><p><img alt="8dccb367f43940e198c94d6478fe4a16" src="_images/edge_detect_dfg.png" /></p>
 </center><center><p>Edge detection dataflow graph</p>
 </center><p>With the goal of defining the <em>mapped dataflow graph</em> that will run on the NPU, let us begin by identifying key observations from the dataflow graph above:</p>
 <ul class="simple">
@@ -321,7 +333,7 @@ connected and how data is scheduled throughout our application kernels.</p>
 </ol>
 <p>The interface tile has the capability to move data to/from non-contiguous regions in system memory. The <code class="docutils literal notranslate"><span class="pre">ITWrite</span></code> allows us to specify how the results from kernels are moved to system memory.</p>
 <p>The diagram below shows a representation of the <code class="docutils literal notranslate"><span class="pre">ITRead()</span></code> and <code class="docutils literal notranslate"><span class="pre">ITWrite()</span></code>:</p>
-<center><p><img alt="428fefb1992d488e9956cecdb437a90f" src="_images/shared_system_memory_itread_itwrite.png" /></p>
+<center><p><img alt="0e759aba7abe4c0bb1ccf18e50fe5959" src="_images/shared_system_memory_itread_itwrite.png" /></p>
 </center><center><p>Invalidate and flush the cache with synchronization calls</p>
 </center><p>A completed version of the edge detection application, is shown below:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">npu.build.appbuilder</span> <span class="kn">import</span> <span class="n">AppBuilder</span>
@@ -383,8 +395,8 @@ connected and how data is scheduled throughout our application kernels.</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2023, Advanced Micro Devices, Inc.
-      <span class="lastupdated">Last updated on December 19, 2023.
+    <p>&#169; Copyright 2024, Advanced Micro Devices, Inc.
+      <span class="lastupdated">Last updated on January 17, 2024.
       </span></p>
   </div>
 

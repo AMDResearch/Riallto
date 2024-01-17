@@ -37,7 +37,15 @@
 <body class="wy-body-for-nav">
 
 <!-- Google Tag Manager -->
-<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-5RHQV7" height="0" width="0" style="display:none;visibility:hidden" class="optanon-category-C0002"></iframe></noscript>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JK8T9PJNL0"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-JK8T9PJNL0');
+</script>
 <!-- End Google Tag Manager --> 
   <div class="wy-grid-for-nav">
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
@@ -106,6 +114,10 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="modules.html">npu</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">FAQ</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Riallto FAQ</a></li>
+</ul>
 <p class="caption" role="heading"><span class="caption-text">Glossary</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="Glossary.html">Glossary</a></li>
@@ -163,7 +175,7 @@
 <p>A new color detection application will be used to demonstrate the multicast data movement capabilities of the NPU. This algorithm identifies those pixels in an input video stream whose color values fall within specified ranges and highlights them.</p>
 <p>This is an example of what we refer to as a <em>branched dataflow</em>. <em>Branch</em> in this instance means that the same data is sent to multiple kernels. There are two such branches in the dataflow graph below. The first is at the output of the input buffer and the second is at the output of the rgb2hsv node.</p>
 <p>In contrast to the earlier scaled color threshold application, where data was partitioned before being sent to individual kernels, this application dispatches the same data to multiple kernels. When executing the application, you will be able to specify the color ranges and see their effects.</p>
-<center><p><img alt="36a3c2232335447da94072b08e7df143" src="_images/color_detect_dfg.png" /></p>
+<center><p><img alt="4ecad69ea88a4257950f6994b97c1209" src="_images/color_detect_dfg.png" /></p>
 </center><center><p>Color detection logical pipeline</p>
 </center><p>The application has four kernels which will map to four kernels. Each kernel will be mapped to one compute tile.</p>
 <ul class="simple">
@@ -176,7 +188,7 @@
 <p>From the dataflow graph, you can see the input data stream is multicast to the <code class="docutils literal notranslate"><span class="pre">rgb2hsv</span></code> and the <code class="docutils literal notranslate"><span class="pre">mask</span></code> kernels. The output HSV data from <code class="docutils literal notranslate"><span class="pre">rgb2hsv</span></code> is also multicast and streamed to the two <code class="docutils literal notranslate"><span class="pre">inRange</span></code> kernels. Unlike in cached architectures where this multicast could lead into two independent copies, the NPU has dedicated hardware to handle broadcast efficiently via the network stream interconnect.</p>
 <p>The NPU also has <a class="reference external" href="https://en.wikipedia.org/wiki/Broadcasting_(networking)">broadcast</a> capabilities enabled via the network of stream interconnect.</p>
 <p>In the image below you can see the result of the color detection algorithm for a particular set of range values.</p>
-<center><p><img alt="e32f300cf0a64587b5ea173e39392ac3" src="_images/toucan_color_detect.png" /></p>
+<center><p><img alt="c174fe2ec8b2465d8e01b9d97017d673" src="_images/toucan_color_detect.png" /></p>
 </center><center><p>Color detection algorithm</p>
 </center><div class="alert alert-box alert-success"><p>The NPU array has efficient support for multicast and broadcast of data.</p>
 </div></section>
@@ -235,9 +247,9 @@ combination of data movers and the streaming interconnect, and also nearest neig
 <table border="0" width="75%" style="border: 0px; background:white"><tr style="border: 0px; background:white"><td style="border: 0px; background:white; text-align: center; vertical-align: middle;"><p>Step 1</p>
 </td><td style="border: 0px; background:white; text-align: center; vertical-align: middle;"><p>Step 2</p>
 </td><td style="border: 0px; background:white; text-align: center; vertical-align: middle;"><p>Step 3</p>
-</td></tr><tr style="border: 0px;"><td style="border: 0px; background:white; text-align: center; vertical-align: middle;"><p><img alt="c54aa5cc25414b878463b32e6ccc4cab" src="_images/trailer_example_step1_if_tile.svg" /></p>
-</td><td style="border: 0px; background:white; text-align: center; vertical-align: middle;"><p><img alt="6f02b541af3f4838862b5970ffedb2d2" src="_images/trailer_example_step1_mem_tile.svg" /></p>
-</td><td style="border: 0px; background:white; text-align: center; vertical-align: middle;"><p><img alt="e76ddb55ccbf4f83975bf2818824b03f" src="_images/trailer_example_step3_aie0_data_push.svg" /></p>
+</td></tr><tr style="border: 0px;"><td style="border: 0px; background:white; text-align: center; vertical-align: middle;"><p><img alt="07d13f5945594724b0ee1ad6a8052df6" src="_images/trailer_example_step1_if_tile.svg" /></p>
+</td><td style="border: 0px; background:white; text-align: center; vertical-align: middle;"><p><img alt="217fbe74753f4faca0e33b1ca35cd0ef" src="_images/trailer_example_step1_mem_tile.svg" /></p>
+</td><td style="border: 0px; background:white; text-align: center; vertical-align: middle;"><p><img alt="640ffff0559145518e766be4ff5389f4" src="_images/trailer_example_step3_aie0_data_push.svg" /></p>
 </td></tr><tr style="border: 0px; background:white"><td style="border: 0px; background:white; text-align: center; vertical-align: middle;"><p>Step 1</p>
 </td><td style="border: 0px; background:white; text-align: center; vertical-align: middle;"><p>Step 2</p>
 </td><td style="border: 0px; background:white; text-align: center; vertical-align: middle;"><p>Step 3</p>
@@ -263,9 +275,9 @@ compute tile.</p></li>
 <table border="0" width="75%" style="border: 0px; background:white"><tr style="border: 0px; background:white"><td style="border: 0px; background:white; text-align: center; vertical-align: middle;"><p>Step 4</p>
 </td><td style="border: 0px; background:white; text-align: center; vertical-align: middle;"><p>Step 5</p>
 </td><td style="border: 0px; background:white; text-align: center; vertical-align: middle;"><p>Step 6</p>
-</td></tr><tr style="border: 0px;"><td style="border: 0px; background:white; text-align: center; vertical-align: middle;"><p><img alt="3e8acb7555d241a787eaabc071c56e3f" src="_images/trailer_example_step3_aie1_data_push.svg" /></p>
-</td><td style="border: 0px; background:white; text-align: center; vertical-align: middle;"><p><img alt="fa395c289f75411ab2e3f763ecb8e86f" src="_images/trailer_example_step4_aie2_3.svg" /></p>
-</td><td style="border: 0px; background:white; text-align: center; vertical-align: middle;"><p><img alt="2625c65fb7b44e55a698e4f15872dd31" src="_images/trailer_example_full.svg" /></p>
+</td></tr><tr style="border: 0px;"><td style="border: 0px; background:white; text-align: center; vertical-align: middle;"><p><img alt="bf88907b0d0f41f8914334cc3b3ec61c" src="_images/trailer_example_step3_aie1_data_push.svg" /></p>
+</td><td style="border: 0px; background:white; text-align: center; vertical-align: middle;"><p><img alt="fb7db798722e4235bd701aaab0c25c49" src="_images/trailer_example_step4_aie2_3.svg" /></p>
+</td><td style="border: 0px; background:white; text-align: center; vertical-align: middle;"><p><img alt="ceee407ec35a4c1999f685004d6790b4" src="_images/trailer_example_full.svg" /></p>
 </td></tr><tr style="border: 0px; background:white"><td style="border: 0px; background:white; text-align: center; vertical-align: middle;"><p>Step 4</p>
 </td><td style="border: 0px; background:white; text-align: center; vertical-align: middle;"><p>Step 5</p>
 </td><td style="border: 0px; background:white; text-align: center; vertical-align: middle;"><p>Step 6</p>
@@ -363,7 +375,7 @@ compute tile.</p></li>
 <p>The compute tile is capable of running multiple kernels, however the execution is sequential and one kernel cannot start until the previous finishes.</p>
 <p>The benefit of having multiple kernels in a single tile is that the communication happens using a single buffer. There is no need for ping-pong buffer.</p>
 <p>The animation below shows an example of multiple kernels running in one tile. The orange kernel produces data in the orange buffer. This in turn is consumed by the yellow kernel that produces the yellow data.</p>
-<center><p><img alt="eece889928214c32a1994fa6002e9cd2" src="_images/multiple_kernels_single_tile.svg" /></p>
+<center><p><img alt="348b937f5c71468db592fef674b41cea" src="_images/multiple_kernels_single_tile.svg" /></p>
 </center><center><p>Multiple kernels in a single tile</p>
 </center><hr class="docutils" />
 </section>
@@ -400,8 +412,8 @@ compute tile.</p></li>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2023, Advanced Micro Devices, Inc.
-      <span class="lastupdated">Last updated on December 19, 2023.
+    <p>&#169; Copyright 2024, Advanced Micro Devices, Inc.
+      <span class="lastupdated">Last updated on January 17, 2024.
       </span></p>
   </div>
 

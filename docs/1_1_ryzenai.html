@@ -36,7 +36,15 @@
 <body class="wy-body-for-nav">
 
 <!-- Google Tag Manager -->
-<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-5RHQV7" height="0" width="0" style="display:none;visibility:hidden" class="optanon-category-C0002"></iframe></noscript>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JK8T9PJNL0"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-JK8T9PJNL0');
+</script>
 <!-- End Google Tag Manager --> 
   <div class="wy-grid-for-nav">
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
@@ -103,6 +111,10 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="modules.html">npu</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">FAQ</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Riallto FAQ</a></li>
+</ul>
 <p class="caption" role="heading"><span class="caption-text">Glossary</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="Glossary.html">Glossary</a></li>
@@ -160,12 +172,12 @@
 <h2>The Future of AI<a class="headerlink" href="#The-Future-of-AI" title="Link to this heading">¶</a></h2>
 <p>AI is transforming our computing experience in similar ways to how the worldwide web did when it was introduced in 1989. And like the web, AI will continue to evolve. Today’s AI applications are just the forerunners for what will be a whole new era of computing. Envisage a future where every consumer laptop or desktop comes equipped with a specialized AI coprocessor tailored to handle machine learning tasks efficiently. From enhancing image recognition and natural language processing to
 revolutionizing virtual assistants and personalized recommendations, the impact on our daily computing experiences will be immense.</p>
-<center><p><img alt="82e0b84d5fa8486e894073783c35dee5" src="_images/ai_applications.png" /></p>
+<center><p><img alt="ba0bfdcc919b4d99a44a6167ccb27c28" src="_images/ai_applications.png" /></p>
 </center><center><p>Personal AI assistants are transforming the way we sue are computing devices to create, work and play.</p>
 </center><p>If you’re a professional making content, designing graphics, creating presentations, or working on a personal project, picture this: when you begin sketching or outlining your ideas in your chosen software, the AI system activates. As you draw, the AI analyzes your work, offering real-time suggestions on techniques and artistic styles that might align with your creative direction. While you are experimenting with colors, the AI can provide complementary color palette suggestions based on the
 mood and theme of your work. If you are struggling with a particular element, such as drawing a realistic animal or selecting the right arrangement, the AI will generate a selection of reference images or designs. As you work, AI will apply dynamic filters and effects to your artwork, allowing you to instantly preview different visual outcomes and helping you make smarter creative decisions. Over time, your personal AI will remember and learn from your creative artistic choices and preferences.
 It becomes attuned to your unique style, enabling it to provide increasingly relevant suggestions.</p>
-<center><p><img alt="c29815663f574a998544eaf1ebe083f8" src="_images/ai_application_features.png" /></p>
+<center><p><img alt="5e54122e83394047a98efe80eb8be0d4" src="_images/ai_application_features.png" /></p>
 </center><center><p>Selected AI application domains</p>
 </center><p>Virtual assistants, which are already a significant part of our lives, will reach new heights of efficiency and personalization. These assistants will better understand context, tone, and intent, enabling them to assist you with an even wider range of tasks, from managing your schedule to providing in-depth research for your work.</p>
 <p>AI recommenders today suggest what to read, what to buy, what to stream next and more. While often effective, these systems can lead to the frustration of endless scrolling when the recommendations miss the mark. Advanced <em>personalized</em> recommenders, be it for entertainment, shopping, or learning, have the potential to become incredibly precise. Imagine receiving recommendations for news articles, books, and music that <em>perfectly</em> resonate with your preferences, enabling the discovery of
@@ -190,7 +202,7 @@ cloud introduces the risk of personal data compromise, making local processing a
 learning.</p>
 <p>To surpass the capabilities of CPUs or GPUs and achieve greater efficiency in machine learning, a new specialized architecture, designed only for machine learning tasks is emerging.</p>
 <p>A Neural Processing Unit (NPU) is a new class of processing unit designed to excel in machine learning inference tasks. An NPU significantly boosts the speed and efficiency of machine learning tasks on your computer. NPUs can also be referred to as <em>Inference Processing Units</em> or IPUs. You may see the NPU referred to as an <em>IPU</em> in some Ryzen AI documentation. Once the Ryzen AI driver is installed on your computer, you will see a device named <em>IPU</em> in the Windows Device Manager.</p>
-<center><p><img alt="9c614d2635f949f29284d658f430b18d" src="_images/Domain-specific_accelerators.png" /></p>
+<center><p><img alt="96a07ad3c3924a9a8b393042eff1d44e" src="_images/Domain-specific_accelerators.png" /></p>
 </center><center><p>The power-performance advantage of domain-specific accelerators</p>
 </center><p>The power-performance advantage of domain-specific accelerators like the NPU are highlighted by the graphic above. In many cases, it is not that the CPU or GPU cannot perform some of these effects. What really matters is that it cannot do them as efficiently as the NPU.</p>
 <p>Ultimately, everybody wants a laptop that is light to carry, stays cool, and will last as long as possible on a single charge. These are the key benefits enabled by Ryzen AI.</p>
@@ -199,7 +211,7 @@ learning.</p>
 <section id="Ryzen-AI-NPU">
 <h2>Ryzen AI NPU<a class="headerlink" href="#Ryzen-AI-NPU" title="Link to this heading">¶</a></h2>
 <p>The <a class="reference external" href="https://www.amd.com/en/processors/ryzen">Ryzen 7000 desktop and laptop chips</a> were introduced in 2023. Alongside the main x86 CPU, Ryzen 7000 has a new type of coprocessor, a <em>Neural Processing Unit</em> (NPU), based on the XDNA™ AI Engine architecture. This new NPU is called <a class="reference external" href="https://www.amd.com/en/products/ryzen-ai">Ryzen AI</a>.</p>
-<center><p><img alt="71fe61893c1d4f2ba1da86ba27c90797" src="_images/ryzen_ai_labels.png" /></p>
+<center><p><img alt="6a075038814441cb8757b1d3967145e3" src="_images/ryzen_ai_labels.png" /></p>
 </center><center><p>Ryzen 7040 ‘Phoenix’ mobile processor</p>
 </center><p>Unlike the main x86 Zen 4 CPU based on a Von Neumann architecture, Ryzen AI is a specialized dataflow architecture that provides performance and responsiveness for AI applications, at lower power.</p>
 <p>When you run AI workloads locally on an NPU you can get higher performance and lower latency which translates into faster responses, all of this while being more energy efficient. Responsiveness is critical for real-time applications. For example, video conferencing will suffer with higher latencies causing the video stream to stutter, or the audio stream to glitch.</p>
@@ -238,8 +250,8 @@ learning.</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2023, Advanced Micro Devices, Inc.
-      <span class="lastupdated">Last updated on December 19, 2023.
+    <p>&#169; Copyright 2024, Advanced Micro Devices, Inc.
+      <span class="lastupdated">Last updated on January 17, 2024.
       </span></p>
   </div>
 
