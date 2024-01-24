@@ -286,12 +286,13 @@ def _test_appbuild(app, *args):
 
 def check_npu():
     """Utility to check that the IPU is available before a runtime test runs, otherwise skip test."""
-    if not get_device_status() == "OK":
-        pytest.skip('Skipping test because the IPU device is not enabled on this device.')
-    xbu = XBUtil()
-    for app in xbu.list_apps():
-        if app.endswith("IPURiallto"):
-            pytest.skip('Skipping test because the IPU is in an unstable state.')
+    if os.name == "nt":
+        if not get_device_status() == "OK":
+            pytest.skip('Skipping test because the IPU device is not enabled on this device.')
+        xbu = XBUtil()
+        for app in xbu.list_apps():
+            if app.endswith("IPURiallto"):
+                pytest.skip('Skipping test because the IPU is in an unstable state.')
 
 
 def reset_device():
@@ -313,15 +314,16 @@ def manage_testing(request):
     Also save all the test specific artifacts to a given location."""
     yield
 
-    test_name = request.node.name
-    os.makedirs(Path('logs'), exist_ok=True)
-    logdir = Path(f'logs/{test_name}')
-    if os.path.exists(logdir) and os.path.isdir(logdir):
-        shutil.rmtree(logdir)
-    os.makedirs(logdir, exist_ok=True)
-    for f in Path.cwd().glob('*.xclbin'):
-        shutil.move(f, logdir)
-    for f in Path.cwd().glob('*.seq'):
-        shutil.move(f, logdir)
-    for f in Path.cwd().glob('*.mlir'):
-        shutil.move(f, logdir)
+    if os.name == "nt":
+        test_name = request.node.name
+        os.makedirs(Path('logs'), exist_ok=True)
+        logdir = Path(f'logs/{test_name}')
+        if os.path.exists(logdir) and os.path.isdir(logdir):
+            shutil.rmtree(logdir)
+        os.makedirs(logdir, exist_ok=True)
+        for f in Path.cwd().glob('*.xclbin'):
+            shutil.move(f, logdir)
+        for f in Path.cwd().glob('*.seq'):
+            shutil.move(f, logdir)
+        for f in Path.cwd().glob('*.mlir'):
+            shutil.move(f, logdir)

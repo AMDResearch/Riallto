@@ -7,4 +7,5 @@ from .xbutil import XBUtil
 def nputop():
     """ Uses XBUtil to display all currently running applications in an ipywidgets
     form suitable for JupyterLab """
-    XBUtil().apps()
+    #XBUtil().apps()
+    print(f"nputop is not currently supported in linux due to changes in the xbutil api")

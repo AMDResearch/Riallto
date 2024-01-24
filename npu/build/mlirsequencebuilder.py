@@ -293,7 +293,7 @@ class MLIRSequnceBuilder:
         self._constants_table = {}
         self._add_constant(0)
         self._add_constant(1)
-        ubs = self._ingress_ub | self._egress_ub
+        ubs = {**self._ingress_ub, **self._egress_ub}
         for ub in ubs.values():
             self._add_constant(max(ub.tilesizes))
             self._add_constant(len(ub.dim))
@@ -384,7 +384,7 @@ class MLIRSequnceBuilder:
                     self._egress_ub[s["snkkernelname"]].dim.append([0])
                 else:
                     self._egress_ub[s["snkkernelname"]].dim.append(s["snkslices"])
-        self._ingress_egress_ub = self._ingress_ub | self._egress_ub
+        self._ingress_egress_ub = {**self._ingress_ub, **self._egress_ub}
      
 
     def _check(self)->None:

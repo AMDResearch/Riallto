@@ -21,6 +21,8 @@ import json
 from npu.utils.xbutil import XBUtil
 import ipywidgets as widget
 from IPython.display import display
+import subprocess
+import platform
 
 dtype_to_maxval = {
     "uint32_t" : 4294967296,
@@ -48,6 +50,15 @@ def _updatebar(huebar: widget.Image , min:int, max: int):
 class IPUAppAlreadyLoaded(Exception):
     pass
 
+def register_unsigned_xclbin(xclbin_file:str)->None:
+    """ runs the script that allows an unsigned xclbin to run on Linux based systems """
+    if platform.system() == "Linux": 
+        try:
+            cmd = ["sudo", "XILINX_XRT=/opt/xilinx/xrt", "/opt/xilinx/xrt/amdxdna/setup_xclbin_firmware.sh", "-dev", "Phoenix", "-xclbin", xclbin_file]
+            output = subprocess.check_output(cmd, stderr=subprocess.STDOUT)
+        except subprocess.CalledProcessError as e:
+            print(f"Error trying to register the unsigned xclbin \n\n {e.output.decode()}")
+            raise e
 
 class AppRunner:
     """This class abstracts the necessary setup steps of an NPU
@@ -78,8 +89,11 @@ class AppRunner:
         """Returns a new AppRunner object."""
 
         self._process_handoff_metadata(xclbin_name, handoff)
-        self.xbutil = XBUtil()
-        self._stability_checks()
+
+        # Extra stability checks for windows
+        if platform.system() == "Windows": 
+            self.xbutil = XBUtil()
+            self._stability_checks()
 
         # If sequence given, use it, otherwise look for same name as xclbin
         if fw_sequence:
@@ -87,7 +101,11 @@ class AppRunner:
         else:
             self.sequence = ipr.Sequence(os.path.splitext(xclbin_name)[0] + '.seq', first_parse=True)
 
+        register_unsigned_xclbin(xclbin_name)
         xclbin = ipr.xclbin(xclbin_name)
+
+        # Run the script to allow this unsigned firmware xclbin to run
+
         self.kernel_params = self._get_kernel_info(xclbin_name)
         self.device =  self._get_device()
 
@@ -517,7 +535,9 @@ loaded on the device.\n\n{self.xbutil.app_table}""")
 
         run = self.kernel(self.instr, len(self.sequence.buffer), *run_args)
         ert_state = run.wait(5000) # 5 second timeout
-        if ert_state.value != 4:
+
+        # Currently this check is only working with the windows bindings
+        if (ert_state.value != 4) and (platform.system() == "Windows"): 
             raise RuntimeError(f"Returned state is {ert_state}: {ert_state.value}, expected <ert_cmd_state.ERT_CMD_STATE_COMPLETED: 4>")
 
     def __delete__(self, instance):

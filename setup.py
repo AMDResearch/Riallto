@@ -15,6 +15,17 @@ an AIEBuild license from https://www.xilinx.com/getlicense.
 """
 
 from setuptools import find_packages, setup
+import platform
+
+# Windows and linux have different bindings version, so we need to add
+# the appropriate constraint based on the platform.
+required_python_version = ""
+if platform.system() == 'Linux':
+    required_python_version = "3.10.*"
+elif platform.system() == 'Windows':
+    required_python_version = "3.9.*"
+else:
+    raise OSError(f'Unknown Operating System: {platform.os.name} {platform.system()}')
 
 setup(
     name="npu",
@@ -39,7 +50,7 @@ setup(
             'lib/applications/binaries/*'],
     },
     packages=find_packages(),
-    python_requires="==3.9.*",
+    python_requires=f"=={required_python_version}",
     install_requires=[
         "numpy",
         "pytest",

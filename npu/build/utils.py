@@ -2,11 +2,21 @@
 # SPDX-License-Identifier: MIT
 
 import os
+import re
 import subprocess
 
 def is_win()->bool:
     """ Returns true if we are running this on windows."""
     return os.name == "nt"
+
+def is_win_path(path:str)->bool:
+    """ Returns true if the path above is a windows path """
+    newpath = path.split('\\')
+    return newpath[0].endswith(':')
+
+def is_wsl_win_path(path:str)->bool:
+    """ Returns true if this is a windows path into WSL """
+    return path.startswith("\\\\wsl.localhost")
 
 def wsl_prefix()->str:
     """ if we are running this on windows return the appropriate wsl prefix."""

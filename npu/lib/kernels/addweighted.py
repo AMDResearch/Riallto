@@ -18,7 +18,7 @@ class AddWeighted():
     """
 
     def __new__(cls, *args):
-        cpp = str(Path(__file__).parent / "cpp" / "addweighted.cpp")
+        cpp = str(Path(__file__).parent / "cpp" / "addWeighted.cpp")
         return KernelObjCall(cpp, cls.behavioralfx, *args)
 
     def behavioralfx(self):
@@ -40,5 +40,5 @@ class AddWeightedScalar():
     """Scalar implementation of the `cv2.AddWeighted` function"""
 
     def __new__(cls, *args):
-        cpp = str(Path(__file__).parent / "cpp" / "addweighted_scalar.cpp")
+        cpp = str(Path(__file__).parent / "cpp" / "addWeighted_scalar.cpp")
         return KernelObjCall(cpp, AddWeighted.behavioralfx, *args)

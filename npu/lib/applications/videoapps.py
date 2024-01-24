@@ -42,7 +42,7 @@ def _get_full_path(xclbin: str = None) -> str:
 
 
 def _find_closest_resolution(cam_h: int = None,
-                             cam_w: int = None) -> tuple[int, int]:
+                             cam_w: int = None):
     """Find the closes available resolution
 
     Find the nearest resolution in each dimension and use it if it matches
@@ -65,7 +65,7 @@ def _find_closest_resolution(cam_h: int = None,
     return resolution
 
 
-def _get_webcam_resolution(cap) -> tuple[int, int]:
+def _get_webcam_resolution(cap):
     """Get webcam resolution"""
     cam_w = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
     cam_h = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))

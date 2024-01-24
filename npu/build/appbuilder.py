@@ -9,6 +9,7 @@ from .sequence import SequenceList
 from .appxclbinbuilder import AppXclbinBuilder
 from .utils import check_wsl_install
 from typing import Optional
+from sys import platform
 import json
 
 class AppBuilder:
@@ -41,7 +42,8 @@ class AppBuilder:
     def __init__(self, name=None) -> None:
         """Return a new AppBuilder object."""
 
-        check_wsl_install()
+        if not platform == 'linux': 
+            check_wsl_install()
 
         self.name = type(self).__name__ if name is None else name
         self.ab = AppXclbinBuilder()
