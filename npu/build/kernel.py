@@ -113,6 +113,7 @@ class Kernel(KernelMeta):
 #define REL_WRITE 0
 #define REL_READ 1
 #include <aie_api/aie.hpp>
+#include "kernels/kernels.hpp"
 
         """
             s = f"{preamble}{self._srccode}"
