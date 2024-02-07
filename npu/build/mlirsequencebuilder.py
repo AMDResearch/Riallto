@@ -28,7 +28,7 @@ class UBDataMovement:
     snkoffsets: List[int] = field(default_factory=lambda: [])
 
 class MLIRSequnceBuilder:
-    """This class generates the MLIR Sequence dialect that describes datamovment to and from
+    """This class generates the MLIR Sequence dialect that describes datamovement to and from
     The NPU.  This is accomplished by analyzing the datamovement for IT Buffers discovered by 
     running the AppBuilder callgraph.  The required sync signals are also generated.
     
@@ -229,7 +229,7 @@ class MLIRSequnceBuilder:
         itemsize = int(str(dtype)[1:])//8
         
         if new_shape[-1] % 4 != 0:
-            raise ValueError(f'Lowest dimension of shape has to be divisble by 4. lowest dimension={new_shape[-1]} {shape=}')
+            raise ValueError(f'Lowest dimension of shape has to be divisible by 4. lowest dimension={new_shape[-1]} {shape=}')
 
         if itemsize > 4:
             new_shape[-1] *= (itemsize//4)
@@ -280,7 +280,7 @@ class MLIRSequnceBuilder:
         return s
 
     def _to_seq_portsig(self)->str:
-        """ Generates the portsignature for the sequence func.func call in the generated MLIR."""
+        """ Generates the port signature for the sequence func.func call in the generated MLIR."""
         s = ''
         for i,ub in enumerate(self._ingress_egress_ub.values()):
             s += f"%{ub.ubname} : memref<{self._generate_ub_memref(ub)}>"
