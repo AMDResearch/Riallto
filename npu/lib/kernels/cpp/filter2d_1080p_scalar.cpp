@@ -7,9 +7,9 @@
 extern "C" {
 
 void filter2d_1080p(uint8_t *in_buffer, uint8_t *out_buffer,
-	      int16_t coeff_0_0, int16_t coeff_0_1, int16_t coeff_0_2,
-	      int16_t coeff_1_0, int16_t coeff_1_1, int16_t coeff_1_2,
-	      int16_t coeff_2_0, int16_t coeff_2_1, int16_t coeff_2_2) {
+        int16_t coeff_0_0, int16_t coeff_0_1, int16_t coeff_0_2,
+        int16_t coeff_1_0, int16_t coeff_1_1, int16_t coeff_1_2,
+        int16_t coeff_2_0, int16_t coeff_2_1, int16_t coeff_2_2) {
 
      int16_t filter[3][3];
      filter[0][0] = coeff_0_0;
