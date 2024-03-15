@@ -3,7 +3,7 @@ name: Windows Riallto CI Testing
 on:
   push:
     branches:
-      - master
+      - main
     paths-ignore:
       - 'README.md'
       - 'CONTRIBUTING.md'
