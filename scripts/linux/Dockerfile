@@ -1,3 +1,6 @@
+# Copyright (C) 2023 Advanced Micro Devices, Inc. All rights reserved.
+# SPDX-License-Identifier: MIT
+
 FROM ubuntu:22.04 as base
 
 ARG LIC_MAC = "00:00:00:00"

@@ -1,4 +1,7 @@
 #!/bin/bash
+#
+# Copyright (C) 2023 Advanced Micro Devices, Inc. All rights reserved.
+# SPDX-License-Identifier: MIT
 
 docker run -dit --rm --name riallto_docker \
         --cap-add=NET_ADMIN \
