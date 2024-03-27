@@ -5,5 +5,5 @@ Currently in pre-release and not externally supported.
 ### Requirements
 This has only been tested on Ubuntu-22.04 with the following packages required.
 
-* Docker
+* Docker [install steps](https://docs.docker.com/engine/install/ubuntu/)
 * `unzip`
