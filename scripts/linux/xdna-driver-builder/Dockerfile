@@ -31,6 +31,7 @@ RUN dpkg -i /root/linux/linux-libc-*.deb
 
 RUN git config --global url."https://github.com/".insteadOf "git@github.com:"
 RUN cd /root && git clone https://github.com/amd/xdna-driver.git --recursive
+RUN cd /root/xdna-driver && git checkout 036c6a49693f04c31e0bba2ab2cf8f7fb59b39e8
 
 RUN apt-get install -y cmake jq pkg-config wget libdrm-dev 
 RUN apt-get install -y python3-pip

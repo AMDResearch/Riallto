@@ -6,8 +6,8 @@
 
 ## Checks to make sure that all the required tarballs and license are in the directory 
 if [ ! -f "./pynqMLIR-AIE.tar.gz" ]; then
-	echo "Error! pynqMLIR-AIE.tar.gz is missing"
-	exit 1
+	echo "Error! pynqMLIR-AIE.tar.gz is missing, downloading from opendownloads"
+	wget -O pynqMLIR-AIE.tar.gz https://www.xilinx.com/bin/public/openDownload?filename=pynqMLIR_AIE_py310_v0.9.tar.gz 
 fi
 
 if [ ! -f "./xilinx_tools.tar.gz" ]; then
