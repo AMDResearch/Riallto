@@ -7,19 +7,10 @@ struct linebuffer_t{
     uint8_t* line2;
 };
 
-// line 0 always previous row/line
-// line 1 always central row/line
-// line 2 always next row/line
 template<int TWidth>
 linebuffer_t linebuffer(uint8_t * input, uint32_t num_lines) {
     static uint8_t linebuffer[3][TWidth];
     static uint32_t count = 0;
-
-    //     This is techniquly wrong as in the first call, only row 0 is loaded
-    // while first output pixel requires the first 2 rows. It cannot be solved
-    // with the current framework. Therefore, the first output row is not
-    // valid; the second output row is the correct first row with mirrored
-    // boundary. The last output row is the correct second last row.
 
     memcpy(linebuffer[count%3], input, TWidth);
 
