@@ -222,21 +222,27 @@ class MLIRSequnceBuilder:
         return offset
     
     def _change_to_int32(self, shape, dtype):
-    
+
         mod_shape = np.zeros(shape).squeeze()
         new_shape = list(mod_shape.shape[:])
 
         itemsize = int(str(dtype)[1:])//8
-        
-        if new_shape[-1] % 4 != 0:
-            raise ValueError(f'Lowest dimension of shape has to be divisble by 4. lowest dimension={new_shape[-1]} {shape=}')
+
+        if not new_shape and itemsize == 4:
+            return (1,)
+
+        if (new_shape[-1]*itemsize) % 4 != 0:
+            raise ValueError(f'Lowest dimension number of bytes has to be '
+                             f'divisible by 4. lowest dimension={new_shape[-1]}'
+                             f' bytes per item={itemsize}')
 
         if itemsize > 4:
             new_shape[-1] *= (itemsize//4)
         else:
             new_shape[-1] //= (4//itemsize)
 
-        return np.zeros(tuple(new_shape)).squeeze().shape
+        converted_shape = np.zeros(tuple(new_shape)).squeeze().shape
+        return converted_shape if converted_shape else (1,)
 
     def _generate_ub_memref(self, ub:UBDataMovement)->str:
         new_shape = self._change_to_int32(ub.shape, ub.dtype)
