@@ -1,20 +1,12 @@
 # Copyright (C) 2023 Advanced Micro Devices, Inc. All rights reserved.
 # SPDX-License-Identifier: MIT
 
-from typing import Tuple
-from npu.build.sequence import SequenceList
-from ..runtime.sequence import Sequence
-import copy
-
+import os
+from typing import Tuple, List
 from dataclasses import dataclass, field
-from typing import List
 import numpy as np
 
-from pathlib import Path
-import os
 STATE_DIR = os.path.dirname(__file__)
-
-import sys
 
 @dataclass
 class UBDataMovement:
