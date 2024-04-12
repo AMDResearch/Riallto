@@ -19,8 +19,9 @@ class UBDataMovement:
     srcoffsets: List[int] = field(default_factory=lambda: [])
     snkoffsets: List[int] = field(default_factory=lambda: [])
 
+
 class MLIRSequnceBuilder:
-    """This class generates the MLIR Sequence dialect that describes datamovment to and from
+    """This class generates the MLIR Sequence dialect that describes datamovement to and from
     The NPU.  This is accomplished by analyzing the datamovement for IT Buffers discovered by
     running the AppBuilder callgraph.  The required sync signals are also generated.
 
@@ -143,7 +144,7 @@ class MLIRSequnceBuilder:
             raise RuntimeError("user buffer with no transfers?")
 
     def _extract_static_data_movement_pattern(self, ub)->List[List[List[int]]]:
-        """ Extracts the static datamovement pattern from the sequence, ortherwise
+        """ Extracts the static datamovement pattern from the sequence, otherwise
         throws and error that the sequence is changing over time, which we do not currently
         support.
 
@@ -175,7 +176,7 @@ class MLIRSequnceBuilder:
             lengths[3] = 1 if len(ub_shape) < 4 else ub_shape[-4]
         elif isinstance(init, tuple):
             if len(init) > 2:
-                raise RuntimeError(f"Not yet supporting transfers with more dimensions than 2")
+                raise RuntimeError("Not yet supporting transfers with more dimensions than 2")
             offsets[0] = init[0].start
             offsets[1] = init[1].start
             lengths[3] = int(ub.shape[0]/(init[0].stop - init[0].start))
@@ -395,6 +396,6 @@ class MLIRSequnceBuilder:
 
     def _check_ub(self, ub:UBDataMovement)->None:
         if not all(len(d) <= 1 for d in ub.dim):
-            raise RuntimeError(f"Currently only support two dimensions (support coming soon)")
+            raise RuntimeError("Currently only support two dimensions (support coming soon)")
         if not len(set(ub.tilesizes)) == 1:
-            raise RuntimeError(f"Currently we only support datamovement to and from a userbuffer where the tile size is static across the whole sequence (support coming soon)")
+            raise RuntimeError("Currently we only support datamovement to and from a userbuffer where the tile size is static across the whole sequence (support coming soon)")
