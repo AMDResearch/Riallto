@@ -29,11 +29,11 @@ def passthrough_behavior(invobj):
     invobj.out_buffer.array = invobj.in_buffer.array
 
 
-def _appbuild_and_test(datatype, two_dimension=False):
+def _appbuild_and_test(datatype, shapein=None):
     check_npu()
     # get bytes per item
     bpi = np.dtype(datatype).itemsize
-    shape = (4//bpi, 8//bpi) if two_dimension else (4//bpi)
+    shape = shapein if shapein else (4//bpi)
     buffin = np.zeros(shape=shape, dtype=datatype)
     buffout = np.zeros(buffin.shape, dtype=buffin.dtype)
 
@@ -71,24 +71,15 @@ def test_appbuild_good_shapes_1d(datatype):
     _appbuild_and_test(datatype)
 
 
-@pytest.mark.parametrize('datatype', [np.uint8, np.uint16, np.uint32])
-def test_appbuild_good_shapes_2d(datatype):
-    _appbuild_and_test(datatype, True)
+@pytest.mark.parametrize('dimension', ['np.uint8; (4, 12)', 'np.uint16; (8, 2)',
+                                      'np.uint32; (2, 3)'])
+def test_appbuild_good_shapes_2d(dimension):
+    dtype, shape = dimension.split(';')
+    _appbuild_and_test(eval(dtype), eval(shape))
 
 
 @pytest.mark.parametrize('datatype', [np.uint8, np.uint16])
 def test_appbuild_bad_shapes(datatype):
-    check_npu()
-    shape = (1, 1)
-    buffin = np.zeros(shape=shape, dtype=datatype)
-    buffout = np.zeros(buffin.shape, dtype=buffin.dtype)
-
-    kernel_src0 = kernel_src.replace('#define N 4', f'#define N 1')
-
-    passthrough = Kernel(kernel_src0)
-    passthrough.behavioralfx = passthrough_behavior
-    trace_app = SingleKernelCall(passthrough)
-
     with pytest.raises(ValueError) as valerror:
-        trace_app.build(buffin, buffout)
+        _appbuild_and_test(datatype, (1, 1))
     assert 'Cannot move non 4B array' in str(valerror.value)
