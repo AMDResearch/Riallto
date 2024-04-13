@@ -23,7 +23,7 @@ class KernelObjectBuilder(WSLBuilder):
 
     Notes
     -----
-    The cache of object files aleady built can be cleared by running KernelObjectBuilder.clear_cache().
+    The cache of object files already built can be cleared by running KernelObjectBuilder.clear_cache().
     """
 
     prebuilt_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'lib', 'cached')
