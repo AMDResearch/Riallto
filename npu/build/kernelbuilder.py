@@ -2,7 +2,6 @@
 # SPDX-License-Identifier: MIT
 
 import os
-import re
 from . import wslpath
 from .wslbuilder import WSLBuilder
 from .utils import wsl_prefix
