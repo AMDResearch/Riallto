@@ -12,7 +12,7 @@ template <typename T, int N, int MAX>
 void addweighted_aie(const T* in_buffer1, const T*  in_buffer2, T* out_buffer,
                         const uint32_t nbytes,
                         const int16_t alphaFixedPoint, const int16_t betaFixedPoint, const T gamma) {
-    
+
     ::aie::set_saturation(aie::saturation_mode::saturate); // Needed to saturate properly to uint8
 
     ::aie::vector<int16_t, N> coeff(alphaFixedPoint, betaFixedPoint);
@@ -33,7 +33,7 @@ void addweighted_aie(const T* in_buffer1, const T*  in_buffer2, T* out_buffer,
                 gamma_acc, coeff, 0, data_buf1, data_buf2); // weight[0] * data_buf1 + weight[1] * data_buf2
             ::aie::store_v(out_buffer, acc.template to_vector<T>(SRS_SHIFT));
             out_buffer += N;
-        }        
+        }
 }
 
 extern "C" {

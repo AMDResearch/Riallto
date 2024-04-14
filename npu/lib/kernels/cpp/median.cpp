@@ -9,9 +9,9 @@
 constexpr unsigned VecFactor = 32;
 
 __attribute__((always_inline))
-aie::vector<uint8, 32> vsort3(aie::vector<uint8,32> &line0, 
-                              aie::vector<uint8,32> &line1, 
-                              aie::vector<uint8,32> &line2) 
+aie::vector<uint8, 32> vsort3(aie::vector<uint8,32> &line0,
+                              aie::vector<uint8,32> &line1,
+                              aie::vector<uint8,32> &line2)
 {
   aie::vector<uint8,32> tmp1 = aie::min(line0, line1);
   aie::vector<uint8,32> tmp2 = aie::max(line0, line1);
@@ -20,9 +20,9 @@ aie::vector<uint8, 32> vsort3(aie::vector<uint8,32> &line0,
   return aie::max(tmp1, tmp3);
 }
 
-void median1D_aie(uint8_t *in_buffer, uint8_t *out_buffer, uint32_t nbytes) 
+void median1D_aie(uint8_t *in_buffer, uint8_t *out_buffer, uint32_t nbytes)
 {
-  aie::vector<uint8, 32> line0, line1, line2, prev; 
+  aie::vector<uint8, 32> line0, line1, line2, prev;
   aie::vector<uint8, 64> buf;
 
   // Left of nbytes, border extension by mirroring
