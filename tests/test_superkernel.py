@@ -5,7 +5,7 @@ import pytest
 import os
 from npu.build.kernel import Kernel
 
-kernel_src = '''
+gray_out_src = '''
 #include "kernels.hpp"
 
 extern "C" {
@@ -22,24 +22,14 @@ void passthrough(uint8_t *in_buffer, uint8_t *out_buffer) {
 '''
 
 
+def function_behavior(invobj):
+    invobj.out_buffer.array = invobj.in_buffer.array
+
+
 def test_superkernel_build():
-    cpp_file = 'passthrough.cpp'
-
-    with open(cpp_file, 'w', encoding='utf-8', newline='\n') as file:
-        file.write(kernel_src)
-
-    class PassThrough():
-        def __new__(cls, *args):
-            kobj = Kernel(cpp_file, cls.behavioralfx)
-            return kobj(*args) if len(args) > 0 else kobj
-
-        def behavioralfx(self):
-            self.out_buffer.array = self.in_buffer.array
-
-    # build kernel
-    passthrough = PassThrough()
+    krnobj = Kernel(gray_out_src)
+    krnobj.behavioralfx = function_behavior
     # lunch build and then assert
-    assert (objfile := passthrough.objfile)
+    assert (objfile := krnobj.objfile)
     # remove header files
     os.remove(objfile)
-    os.remove(cpp_file)
