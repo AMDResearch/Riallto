@@ -1,20 +1,12 @@
 # Copyright (C) 2023 Advanced Micro Devices, Inc. All rights reserved.
 # SPDX-License-Identifier: MIT
 
-from typing import Tuple
-from npu.build.sequence import SequenceList
-from ..runtime.sequence import Sequence
-import copy
-
+import os
+from typing import Tuple, List
 from dataclasses import dataclass, field
-from typing import List
 import numpy as np
 
-from pathlib import Path
-import os
 STATE_DIR = os.path.dirname(__file__)
-
-import sys
 
 @dataclass
 class UBDataMovement:
@@ -27,11 +19,12 @@ class UBDataMovement:
     srcoffsets: List[int] = field(default_factory=lambda: [])
     snkoffsets: List[int] = field(default_factory=lambda: [])
 
+
 class MLIRSequnceBuilder:
-    """This class generates the MLIR Sequence dialect that describes datamovment to and from
-    The NPU.  This is accomplished by analyzing the datamovement for IT Buffers discovered by 
+    """This class generates the MLIR Sequence dialect that describes datamovement to and from
+    The NPU.  This is accomplished by analyzing the datamovement for IT Buffers discovered by
     running the AppBuilder callgraph.  The required sync signals are also generated.
-    
+
     Attributes
     ----------
     _metadata : AppMetadata
@@ -43,11 +36,11 @@ class MLIRSequnceBuilder:
     _ubname2externid  : dict
         Dictionary of unique incrementing IDs for IT Buffers.
     _ingress_ub : dict
-        Dictionary of incoming IT Buffers to the NPU array.    
+        Dictionary of incoming IT Buffers to the NPU array.
     _egress_ub : dict
-        Dictionary of outgoing IT Buffers from the NPU array.  
+        Dictionary of outgoing IT Buffers from the NPU array.
     _ingress_egress_ub : dict
-        Dictionary of IT Buffers if the buffer is both input and output to the NPU array.  
+        Dictionary of IT Buffers if the buffer is both input and output to the NPU array.
     _constants_table : dict
         Dictionary of constants used in the MLIR sequence specification.
     _cons_broadcasts : list
@@ -55,7 +48,7 @@ class MLIRSequnceBuilder:
     """
 
     def __init__(self, app_metadata, aietiles, cons_broadcasts)->None:
-        """Return a new SequenceBuilder object.""" 
+        """Return a new SequenceBuilder object."""
         self._metadata = app_metadata
         self.aietiles = aietiles
         self._userbuffers = {}
@@ -76,7 +69,7 @@ class MLIRSequnceBuilder:
         s = f"func.func @sequence({self._to_seq_portsig()}) {{\n"
         s += f"{self._generate_constants(indent='    ')}\n"
         s += f"{self._generate_rtps(indent='    ')}\n"
-        
+
         for _,ub in self._egress_ub.items():
             s += f"{self._generate_ub_memcpy_nd(ub.ubname, 1, ub, indent='    ')}\n"
 
@@ -84,7 +77,7 @@ class MLIRSequnceBuilder:
             s += f"{self._generate_ub_memcpy_nd(ub.ubname, 0, ub, indent='    ')}\n"
 
         s += f"{self._generate_sync(indent='    ')}"
-        
+
         s += f"    return\n"
         s += f"}}\n"
         return s
@@ -98,7 +91,7 @@ class MLIRSequnceBuilder:
 
 
     def _analyse_transfers(self, ub:UBDataMovement)->Tuple[List[int], List[int], List[int]]:
-        """" Returns a list of transfer lengths too and from a userbuffer.""" 
+        """" Returns a list of transfer lengths too and from a userbuffer."""
         sizes = []
         num_dims = []
         steps = []
@@ -109,7 +102,7 @@ class MLIRSequnceBuilder:
                     num_dims = len(d)
                     if len(d) > 2:
                         raise RuntimeError("Currently restricted to 2D shim transfers")
-                    sizes.append((d[0].stop - d[0].start) * (d[1].stop - d[1].start))    
+                    sizes.append((d[0].stop - d[0].start) * (d[1].stop - d[1].start))
                 elif isinstance(d, list):
                     _visitor(d)
                 elif isinstance(d, slice):
@@ -120,7 +113,7 @@ class MLIRSequnceBuilder:
                     sizes.append(max(ub.tilesizes))
 
         _visitor(ub.dim)
-        return (sizes, steps, num_dims) 
+        return (sizes, steps, num_dims)
 
     def _check_transfers(self, ub:UBDataMovement)->None:
         sizes, steps, num_dims = self._analyse_transfers(ub)
@@ -150,8 +143,8 @@ class MLIRSequnceBuilder:
         else:
             raise RuntimeError("user buffer with no transfers?")
 
-    def _extract_static_data_movement_pattern(self, ub)->List[List[List[int]]]: 
-        """ Extracts the static datamovement pattern from the sequence, ortherwise
+    def _extract_static_data_movement_pattern(self, ub)->List[List[List[int]]]:
+        """ Extracts the static datamovement pattern from the sequence, otherwise
         throws and error that the sequence is changing over time, which we do not currently
         support.
 
@@ -166,7 +159,7 @@ class MLIRSequnceBuilder:
         strides = [0,0,0]
 
         self._check_transfers(ub)
-        init = self._get_first_transfer(ub) 
+        init = self._get_first_transfer(ub)
         ub_shape = self._change_to_int32(ub.shape, ub.dtype)
         if isinstance(init, int):
             init = self._change_to_int32_offset(init, ub.dtype)
@@ -183,11 +176,11 @@ class MLIRSequnceBuilder:
             lengths[3] = 1 if len(ub_shape) < 4 else ub_shape[-4]
         elif isinstance(init, tuple):
             if len(init) > 2:
-                raise RuntimeError(f"Not yet supporting transfers with more dimensions than 2")
-            offsets[0] = init[0].start 
+                raise RuntimeError("Not yet supporting transfers with more dimensions than 2")
+            offsets[0] = init[0].start
             offsets[1] = init[1].start
-            lengths[3] = int(ub.shape[0]/(init[0].stop - init[0].start)) 
-            lengths[2] = int(ub.shape[1]/(init[1].stop - init[1].start)) 
+            lengths[3] = int(ub.shape[0]/(init[0].stop - init[0].start))
+            lengths[2] = int(ub.shape[1]/(init[1].stop - init[1].start))
             lengths[1] = init[0].stop - init[0].start
             lengths[0] = int((init[1].stop - init[1].start)/4)
             strides[2] = (init[0].stop - init[0].start)*int((ub.shape[1])/4)
@@ -203,7 +196,7 @@ class MLIRSequnceBuilder:
         l = [1 if (x == 0) or (x == 1) else x for x in t[1]]
         s = t[2]
         ret =  f'[%c{o[3]}, %c{o[2]}, %c{o[1]}, %c{o[0]}]'
-        ret += f'[%c{l[3]}, %c{l[2]}, %c{l[1]}, %c{l[0]}]' 
+        ret += f'[%c{l[3]}, %c{l[2]}, %c{l[1]}, %c{l[0]}]'
         ret += f'[%c{s[2]}, %c{s[1]}, %c{s[0]}]'
         return ret
 
@@ -213,30 +206,36 @@ class MLIRSequnceBuilder:
 
         if offset % 4 != 0:
             raise ValueError(f"Must be divisible by 4 {offset=}")
-        
+
         if itemsize > 4:
             offset *= (itemsize//4)
         else:
             offset //= (4//itemsize)
 
         return offset
-    
+
     def _change_to_int32(self, shape, dtype):
-    
+
         mod_shape = np.zeros(shape).squeeze()
         new_shape = list(mod_shape.shape[:])
 
         itemsize = int(str(dtype)[1:])//8
-        
-        if new_shape[-1] % 4 != 0:
-            raise ValueError(f'Lowest dimension of shape has to be divisble by 4. lowest dimension={new_shape[-1]} {shape=}')
+
+        if not new_shape and itemsize == 4:
+            return (1,)
+
+        if (new_shape[-1]*itemsize) % 4 != 0:
+            raise ValueError(f'Lowest dimension number of bytes has to be '
+                             f'divisible by 4. lowest dimension={new_shape[-1]}'
+                             f' bytes per item={itemsize}')
 
         if itemsize > 4:
             new_shape[-1] *= (itemsize//4)
         else:
             new_shape[-1] //= (4//itemsize)
 
-        return np.zeros(tuple(new_shape)).squeeze().shape
+        converted_shape = np.zeros(tuple(new_shape)).squeeze().shape
+        return converted_shape if converted_shape else (1,)
 
     def _generate_ub_memref(self, ub:UBDataMovement)->str:
         new_shape = self._change_to_int32(ub.shape, ub.dtype)
@@ -356,7 +355,7 @@ class MLIRSequnceBuilder:
                 if s["srckernelname"] not in self._ingress_ub:
                     c_ub = self._userbuffers[s['srckernelname']]
                     self._ingress_ub[s["srckernelname"]] = UBDataMovement(
-                            ubname=s["srckernelname"], 
+                            ubname=s["srckernelname"],
                             symname=s["name"],
                             shape= c_ub['shape'],
                             dtype=self._get_ub_dtype_mlir_str(c_ub))
@@ -372,7 +371,7 @@ class MLIRSequnceBuilder:
             if s["snkkernelname"] in self._userbuffers:
                 if s["snkkernelname"] not in self._egress_ub:
                     self._egress_ub[s["snkkernelname"]] = UBDataMovement(
-                            ubname=s["snkkernelname"], 
+                            ubname=s["snkkernelname"],
                             symname=s["name"],
                             shape=self._userbuffers[s['snkkernelname']]['shape'],
                             dtype=self._get_ub_dtype_mlir_str(c_ub))
@@ -385,7 +384,7 @@ class MLIRSequnceBuilder:
                 else:
                     self._egress_ub[s["snkkernelname"]].dim.append(s["snkslices"])
         self._ingress_egress_ub = self._ingress_ub | self._egress_ub
-     
+
 
     def _check(self)->None:
         for _,ub in self._ingress_ub.items():
@@ -397,6 +396,6 @@ class MLIRSequnceBuilder:
 
     def _check_ub(self, ub:UBDataMovement)->None:
         if not all(len(d) <= 1 for d in ub.dim):
-            raise RuntimeError(f"Currently only support two dimensions (support coming soon)")
+            raise RuntimeError("Currently only support two dimensions (support coming soon)")
         if not len(set(ub.tilesizes)) == 1:
-            raise RuntimeError(f"Currently we only support datamovement to and from a userbuffer where the tile size is static across the whole sequence (support coming soon)")
+            raise RuntimeError("Currently we only support datamovement to and from a userbuffer where the tile size is static across the whole sequence (support coming soon)")
