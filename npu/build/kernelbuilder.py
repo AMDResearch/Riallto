@@ -2,7 +2,6 @@
 # SPDX-License-Identifier: MIT
 
 import os
-import re
 from . import wslpath
 from .wslbuilder import WSLBuilder
 from .utils import wsl_prefix
@@ -24,7 +23,7 @@ class KernelObjectBuilder(WSLBuilder):
 
     Notes
     -----
-    The cache of object files aleady built can be cleared by running KernelObjectBuilder.clear_cache().
+    The cache of object files already built can be cleared by running KernelObjectBuilder.clear_cache().
     """
 
     prebuilt_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'lib', 'cached')
@@ -36,7 +35,7 @@ class KernelObjectBuilder(WSLBuilder):
             WSLBuilder()._wslcall(f"{wsl_prefix()}rm", [f"{wslpath(prebuilt_files)}"])
 
     def __init__(self, name, srccode, srcfile) -> None:
-        """Return a new KernelObjectBuilder object.""" 
+        """Return a new KernelObjectBuilder object."""
         super().__init__()
 
         self.name = name
@@ -58,7 +57,7 @@ class KernelObjectBuilder(WSLBuilder):
         if self.cached_objfile_exists():
             print(f"Using cached {self.name} kernel object file...")
 
-            self._wslcall(f"{wsl_prefix()}cp", [f"{wslpath(self.prebuilt_objpath)}", f"{wslpath(self.buildobjpath)}"], debug)  
+            self._wslcall(f"{wsl_prefix()}cp", [f"{wslpath(self.prebuilt_objpath)}", f"{wslpath(self.buildobjpath)}"], debug)
         else:
             print(f"Building the {self.name} kernel...")
 
@@ -66,12 +65,15 @@ class KernelObjectBuilder(WSLBuilder):
                 fp.write(self.srccode)
 
             if self.srcfile is not None or self.getheaders:
-                if bool(glob.glob(os.path.join(self.srcpath, '*.h'))):
-                    headerfiles = os.path.join(self.srcpath, "*.h")
-                    self._wslcall(f"{wsl_prefix()}cp", [f"{wslpath(headerfiles)}", f"{wslpath(self.build_path)}"], debug)  
+                for extension in ['*.h', '*.hh', '*.hpp', '*.hxx', '*.h++']:
+                    if bool(glob.glob(os.path.join(self.srcpath, extension))):
+                        headerfiles = os.path.join(self.srcpath, extension)
+                        self._wslcall(f"{wsl_prefix()}cp",
+                                      [f"{wslpath(headerfiles)}",
+                                       f"{wslpath(self.build_path)}"], debug)
 
             self._wslcall(f"{wsl_prefix()}bash", [f"{wslpath(self.build_path)}/kernel_build.sh", f"{self.name}"], debug)
-            self._wslcall(f"{wsl_prefix()}cp", [f"{wslpath(self.buildobjpath)}", f"{wslpath(self.prebuilt_objpath)}"], debug)                      
+            self._wslcall(f"{wsl_prefix()}cp", [f"{wslpath(self.buildobjpath)}", f"{wslpath(self.prebuilt_objpath)}"], debug)
 
         self.update_cache_md5()
 
@@ -80,17 +82,17 @@ class KernelObjectBuilder(WSLBuilder):
 
         if not os.path.exists(self.prebuilt_md5path):
             return False
-        
+
         if not os.path.exists(self.prebuilt_objpath):
-            return False        
-        
+            return False
+
         srccode_md5 = hashlib.md5(self.srccode.encode('utf-8')).hexdigest()
         oldsrccode_md5 = open(self.prebuilt_md5path,'r').read()
         if srccode_md5 != oldsrccode_md5:
             return False
         else:
             return True
-        
+
     def update_cache_md5(self):
         srccode_md5 = hashlib.md5(self.srccode.encode('utf-8')).hexdigest()
         with open(self.prebuilt_md5path,'w') as fh:
