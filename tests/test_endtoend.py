@@ -154,9 +154,6 @@ void ident(uint8_t *in_buffer, uint8_t* out_buffer)
 
     trace_app.build(imgbuffer_in,imgbuffer_out)
 
-    from npu.runtime.apprunner import register_unsigned_xclbin
-    register_unsigned_xclbin("SimpleKernelITTiling.xclbin")
-
     device = ipr.device(0)
     xclbin = ipr.xclbin("SimpleKernelITTiling.xclbin")
 
