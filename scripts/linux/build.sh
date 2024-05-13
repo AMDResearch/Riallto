@@ -3,6 +3,8 @@
 # Copyright (C) 2023 Advanced Micro Devices, Inc. All rights reserved.
 # SPDX-License-Identifier: MIT
 
+set -e
+
 DRIVER_TARBALL=ubuntu24.04_npu_drivers.tar.gz
 MIN_KERNEL_VERSION="6.8.8+"
 NPU_FIRMWARE="/lib/firmware/amdnpu/1502_00/npu.sbin"
@@ -68,7 +70,6 @@ else
 fi
 
 if [ $build_kernel_and_xrt -eq 1 ]; then
-	exit 1
 	# Building the driver and kernel version and installing it
 	# First check to make sure that secure boot is disabled.
 	if mokutil --sb-state | grep -q "enabled"; then
@@ -85,14 +86,16 @@ if [ $build_kernel_and_xrt -eq 1 ]; then
 		pushd xdna-driver-builder
 		./build.sh
 		popd
+	else
+		echo "Kernel and driver tarball already exists."
 	fi
 
 
-	if [[ "$kernel_version" == "$MIN_KERNEL_VERSION" ]]; then
+	if [[ "$kernel_version" != "$MIN_KERNEL_VERSION" ]]; then
 		echo "To install Riallto requires upgrading your kernel to ${MIN_KERNEL_VERSION}"
 		echo "After upgrading you will have to restart your machine and rerun this script"
 		while true; do
-			read -p "Are you happy to continue? (Y/N)" answer
+			read -p "Are you happy to continue? [Y/N]  " answer
 			case $answer in
 				[Yy]* ) echo "You chose yes, attempting to update kernel"; break;;
 				[Nn]* ) echo "Exiting"; exit 1;;
@@ -107,7 +110,7 @@ if [ $build_kernel_and_xrt -eq 1 ]; then
 			sudo dpkg -i linux-image*_amd64.deb
 			sudo dpkg -i linux-libc*_amd64.deb
 		popd
-		echo "\033[31mPlease now restart your machine and rerun the script.\033[0m"
+		echo -e "\033[31mPlease now restart your machine and rerun the script.\033[0m"
 		exit 1
 	fi
 fi
@@ -115,9 +118,11 @@ fi
 # Install the NPU drivers (xdna-driver)
 if [ ! -f "${NPU_FIRMWARE}" ]; then	
 	npu_install_tmp_dir=$(mktemp -d)
+	tar -xzvf "./xdna-driver-builder/${DRIVER_TARBALL}" -C "${npu_install_tmp_dir}"
 	pushd $npu_install_tmp_dir/root/debs
 		sudo -E dpkg -i xrt_*-amd64-xrt.deb
 		sudo -E dpkg -i xrt_plugin*-amdxdna.deb 
+		sudo apt -y --fix-broken install 
 	popd
 fi
 #########################################################
