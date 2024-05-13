@@ -3,7 +3,6 @@
 
 FROM ubuntu:24.04 as base
 
-ARG LIC_MAC="00:15:5d:fe:46:53"
 ENV LIC_MAC=${LIC_MAC}
 
 SHELL ["/bin/bash", "-c"]
