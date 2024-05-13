@@ -1,15 +1,15 @@
 # Copyright (C) 2023 Advanced Micro Devices, Inc. All rights reserved.
 # SPDX-License-Identifier: MIT
 
-FROM ubuntu:22.04 as base
+FROM ubuntu:24.04 as base
 
-ARG LIC_MAC="00:00:00:00"
+ARG LIC_MAC="00:15:5d:fe:46:53"
 ENV LIC_MAC=${LIC_MAC}
 
 SHELL ["/bin/bash", "-c"]
 
 RUN apt-get update
-RUN apt-get install -y sudo
+RUN apt-get install -y sudo adduser
 
 RUN useradd -m riallto
 RUN adduser riallto sudo
@@ -31,9 +31,9 @@ ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
 RUN DEBIAN_FRONTEND=noninteractive TZ=Etc/UTC sudo -E apt-get install -y tzdata
 
-COPY xrtdeps.sh /home/riallto
-RUN sudo chmod +x /home/riallto/xrtdeps.sh 
-RUN sudo /home/riallto/xrtdeps.sh -docker
+RUN git clone https://github.com/amd/xdna-driver.git --recursive --depth=1 
+RUN sudo chmod +x /home/riallto/xdna-driver/xrt/src/runtime_src/tools/scripts/xrtdeps.sh 
+RUN sudo /home/riallto/xdna-driver/xrt/src/runtime_src/tools/scripts/xrtdeps.sh -docker
 
 COPY /root/debs npu_ubuntu_debs
 
@@ -44,10 +44,10 @@ RUN sudo dpkg -i npu_ubuntu_debs/linux-libc*_amd64.deb
 RUN sudo apt-get install -y dkms udev python3
 RUN sudo apt-get install -y python3-pip ocl-icd-opencl-dev uuid-dev
 
-RUN sudo dpkg -i npu_ubuntu_debs/xrt_*-amd64-xrt.deb
-RUN sudo dpkg -i npu_ubuntu_debs/xrt_plugin*-amdxdna.deb
+RUN sudo -E dpkg -i npu_ubuntu_debs/xrt_*-amd64-xrt.deb
+RUN sudo -E dpkg -i npu_ubuntu_debs/xrt_plugin*-amdxdna.deb
 
-RUN git clone https://github.com/STFleming/Riallto -b linux_bringup
+RUN git clone https://github.com/STFleming/Riallto -b linux_bringup --depth=1 
 
 SHELL ["/bin/bash", "-l", "-c"]
 
@@ -57,6 +57,9 @@ RUN sed -i '6,9d' ~/.bashrc # remove interactive only mode in bashrc
 RUN echo "export LD_LIBRARY_PATH=\$LD_LIBRARY_PATH:/opt/xilinx/xrt/lib"
 
 # Setup Riallto
+RUN sudo apt-get install -y python3-venv
+RUN python3 -m venv ~/riallto_venv
+RUN echo "source ~/riallto_venv/bin/activate" >> ~/.bashrc
 RUN source ~/.bashrc && cd ~/Riallto/scripts/wsl/ && chmod +x ubuntu_deps.sh && sudo ./ubuntu_deps.sh
 RUN source ~/.bashrc && cd ~/Riallto/scripts/wsl/ && python3 -m pip install -r requirements.txt
 RUN python3 -m pip install ~/Riallto
@@ -78,8 +81,8 @@ RUN sudo -E echo 'sudo ip link add vmnic0 type dummy || true' >> /opt/mlir_setti
 RUN sudo -E echo 'sudo ip link set vmnic0 addr ${LIC_MAC} || true' >> /opt/mlir_settings.sh
 
 # Install Jupyterhub/notebooks
-RUN python3 -m pip install jupyterhub
-RUN python3 -m pip install notebook 
+RUN source ~/.bashrc && python3 -m pip install jupyterhub
+RUN source ~/.bashrc && python3 -m pip install notebook 
 
 # Install the ONNX Runtime for 5_* notebooks
 #COPY onnxruntime_linux /home/riallto/onnxruntime_linux

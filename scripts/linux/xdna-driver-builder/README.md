@@ -9,7 +9,7 @@ Run the following command to build the tarball with the debs.
 ```
 
 This will take a while.
-The expected output is a `ubuntu22.04_npu_drivers.tar.gz` tarball.
+The expected output is a `ubuntu24.04_npu_drivers.tar.gz` tarball.
 
 ### Setting up your system
 
@@ -17,10 +17,10 @@ First disable secure boot from the bios of your system.
 
 Extract the tarball, and update the kernel.
 ```
-tar -xzvf ubuntu22.04_npu_drivers.tar.gz
-sudo dpkg -i ./root/debs/linux-headers-6.7.0-rc8+*_amd64.deb
-sudo dpkg -i ./root/debs/linux-image-6.7.0-rc8+_6.7.0*_amd64.deb 
-sudo dpkg -i ./root/debs/linux-libc-6.7.0-rc8+_6.7.0*_amd64.deb 
+tar -xzvf ubuntu24.04_npu_drivers.tar.gz
+sudo dpkg -i ./root/debs/linux-headers-*_amd64.deb
+sudo dpkg -i ./root/debs/linux-image-*_amd64.deb 
+sudo dpkg -i ./root/debs/linux-libc-*_amd64.deb 
 ```
 
 Once that has completed restart your machine.
@@ -40,5 +40,3 @@ error: bad shim signature
 ```
 This means that secure boot has not been disabled from the machine and it cannot run the necessary kernel version.
 
-* When I install the XRT debian package I get an error saying that xocl could not be installed?
-That's okay and can be ignored for now, things should still work, this should be fixed in later driver versions.

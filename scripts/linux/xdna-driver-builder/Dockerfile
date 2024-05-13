@@ -1,7 +1,7 @@
 # Copyright (C) 2023 Advanced Micro Devices, Inc. All rights reserved.
 # SPDX-License-Identifier: MIT
 
-FROM ubuntu:22.04 as base
+FROM ubuntu:24.04 as base
 
 ARG DEBIAN_FRONTEND=noninteractive
 
@@ -31,16 +31,16 @@ RUN dpkg -i /root/linux/linux-libc-*.deb
 
 RUN git config --global url."https://github.com/".insteadOf "git@github.com:"
 RUN cd /root && git clone https://github.com/amd/xdna-driver.git --recursive
-RUN cd /root/xdna-driver && git checkout 036c6a49693f04c31e0bba2ab2cf8f7fb59b39e8
+#RUN cd /root/xdna-driver && git checkout 036c6a49693f04c31e0bba2ab2cf8f7fb59b39e8
 
 RUN apt-get install -y cmake jq pkg-config wget libdrm-dev 
 RUN apt-get install -y python3-pip
 RUN apt-get install -y ocl-icd-opencl-dev
 
-RUN find /root/xdna-driver -type f -exec sed -i 's/\$(shell uname -r)/6.7.0-rc8+/g' {} +
-RUN find /root/xdna-driver -type f -exec sed -i 's/\$(uname -r)/6.7.0-rc8+/g' {} +
-RUN find /root/xdna-driver -type f -exec sed -i 's/\$(\/bin\/uname -r)/6.7.0-rc8+/g' {} +
-RUN find /root/xdna-driver -type f -exec sed -i 's/`uname -r`/6.7.0-rc8+/g' {} +
+RUN find /root/xdna-driver -type f -exec sed -i 's/\$(shell uname -r)/6.8.8+/g' {} +
+RUN find /root/xdna-driver -type f -exec sed -i 's/\$(uname -r)/6.8.8+/g' {} +
+RUN find /root/xdna-driver -type f -exec sed -i 's/\$(\/bin\/uname -r)/6.8.8+/g' {} +
+RUN find /root/xdna-driver -type f -exec sed -i 's/`uname -r`/6.8.8+/g' {} +
 RUN /root/xdna-driver/xrt/src/runtime_src/tools/scripts/xrtdeps.sh -docker
 
 RUN cd /root/xdna-driver/build && ./build.sh -release
