@@ -84,34 +84,6 @@ RUN sudo -E echo 'sudo ip link set vmnic0 addr ${LIC_MAC} || true' >> /opt/mlir_
 RUN source ~/.bashrc && python3 -m pip install jupyterhub
 RUN source ~/.bashrc && python3 -m pip install notebook 
 
-# Install the ONNX Runtime for 5_* notebooks
-#COPY onnxruntime_linux /home/riallto/onnxruntime_linux
-#
-#RUN python3 -m pip install torch==2.1.0
-#RUN python3 -m pip install torchvision==0.16.0
-#RUN python3 -m pip install scikit-learn==1.3.2
-#RUN python3 -m pip install seaborn==0.13.0
-#RUN python3 -m pip install onnx==1.15.0
-#RUN python3 -m pip install onnxruntime-extensions
-#RUN python3 -m pip install tqdm
-#
-#RUN cd /home/riallto/onnxruntime_linux && \
-#      python3 -m pip install wheels/onnxruntime*.whl
-#
-#RUN cd /home/riallto/onnxruntime_linux && \
-#      python3 -m pip install wheels/voe*.whl
-#
-#RUN cd /home/riallto/onnxruntime_linux && \
-#      python3 -m pip install wheels/vai_q_onnx*.whl --no-deps
-#
-#RUN cd /home/riallto/onnxruntime_linux && \
-#      sudo tar -xzvf lib.tar.gz
-#
-#ENV LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/mlir-aie/lib:/opt/xilinx/xrt/lib:/home/riallto/onnxruntime_linux/lib
-#ENV XLNX_VART_FIRMWARE=/home/riallto/onnxruntime_linux/AMD_AIE2_4x4_Overlay.xclbin
-#ENV XLNX_TARGET_NAME=AMD_AIE2_4x4_Overlay
-#ENV NUM_OF_DPU_RUNNERS=1
-
 #Cleanup a bit
 RUN rm -rf /home/riallto/*.tar.gz
 
