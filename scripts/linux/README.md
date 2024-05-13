@@ -28,7 +28,7 @@ This command will check the kernel version is currently configured and if the xd
 To finish upgrading the kernel to 6.8.8+.
 
 7. __Re run the `./setup_riallto_linux.sh <your license file>` script.__
-This will build the Riallto docker.
+This will build the Riallto docker and will take about 30 minutes.
 
 ## Testing the installation
 Inside this directory there are a few scripts.
