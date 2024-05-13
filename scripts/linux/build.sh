@@ -52,24 +52,23 @@ echo "Found a License file associated with MAC address $MAC"
 build_kernel_and_xrt=0
 kernel_version=$(uname -r)
 
-# Check that the current kernel version is greater than the minimum version
-version_ge() {
-	test "$(echo -e "$1\n$2" | sort -V | head -n1)" != "$1"
-}
-
-if version_ge $kernel_version $MIN_KERNEL_VERSION; then
+if [[ "$kernel_version" == "$MIN_KERNEL_VERSION" ]]; then
 	echo "Kernel version is okay, is NPU available?"	
 	if [ -f "${NPU_FIRMWARE}" ]; then	
 		echo "NPU is available, just setting up Riallto"
-		build_kernel_and_xrt = 0;			
+		build_kernel_and_xrt=0;			
 	else
-		build_kernel_and_xrt = 1
+		build_kernel_and_xrt=1
 	fi
 else
-	build_kernel_and_xrt = 1
+	echo "Kernel version is not the correct version for running Riallto"	
+	echo "A non mainline linux kernel will have to be installed"
+	echo "Kernel version=$kernel_version  need at least  $MIN_KERNEL_VERSION"
+	build_kernel_and_xrt=1
 fi
 
 if [ $build_kernel_and_xrt -eq 1 ]; then
+	exit 1
 	# Building the driver and kernel version and installing it
 	# First check to make sure that secure boot is disabled.
 	if mokutil --sb-state | grep -q "enabled"; then
@@ -89,7 +88,7 @@ if [ $build_kernel_and_xrt -eq 1 ]; then
 	fi
 
 
-	if version_ge $kernel_version $MIN_KERNEL_VERSION; then
+	if [[ "$kernel_version" == "$MIN_KERNEL_VERSION" ]]; then
 		echo "To install Riallto requires upgrading your kernel to ${MIN_KERNEL_VERSION}"
 		echo "After upgrading you will have to restart your machine and rerun this script"
 		while true; do
@@ -108,7 +107,7 @@ if [ $build_kernel_and_xrt -eq 1 ]; then
 			sudo dpkg -i linux-image*_amd64.deb
 			sudo dpkg -i linux-libc*_amd64.deb
 		popd
-		echo "Please now restart your machine and rerun the script"
+		echo "\033[31mPlease now restart your machine and rerun the script.\033[0m"
 		exit 1
 	fi
 fi
