@@ -19,7 +19,7 @@ sudo usermod -aG docker $USER
 3. __Obtain a license file for Riallto.__
 Please follow the [guide here](https://riallto.ai/prerequisites-aie-license.html#prerequisites-aie-license)
 
-4. __Disable secure boot from your bios settings.__ Since we have to use an experimental kernel version it is required to disable secure boot before it can be used.
+4. __Disable secure boot from your bios settings.__ Since we have to use an experimental kernel version it is required to disable secure boot before it can be used. There is a [guide](https://learn.microsoft.com/en-us/windows-hardware/manufacture/desktop/disabling-secure-boot?view=windows-11) from Microsoft here, but often the steps depend on your hardware manufacturer.
 
 5. __Run `./setup_riallto_linux.sh <your license file>`.__
 This command will check the kernel version is currently configured and if the xdna-driver has been installed. If not it will build the required kernel version and install it. This takes about 1 hour to run and after completing successfully the user will be asked to restart.
