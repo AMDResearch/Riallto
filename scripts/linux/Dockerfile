@@ -3,6 +3,7 @@
 
 FROM ubuntu:24.04 as base
 
+ARG BUILD_TEMPDIR
 ARG LIC_MAC=00:00:00:00:00:00
 ENV LIC_MAC=${LIC_MAC}
 
@@ -35,7 +36,7 @@ RUN git clone https://github.com/amd/xdna-driver.git --recursive --depth=1
 RUN sudo chmod +x /home/riallto/xdna-driver/xrt/src/runtime_src/tools/scripts/xrtdeps.sh 
 RUN sudo /home/riallto/xdna-driver/xrt/src/runtime_src/tools/scripts/xrtdeps.sh -docker
 
-COPY /root/debs npu_ubuntu_debs
+COPY $BUILD_TEMPDIR/root/debs npu_ubuntu_debs
 
 RUN sudo dpkg -i npu_ubuntu_debs/linux-headers*_amd64.deb
 RUN sudo dpkg -i npu_ubuntu_debs/linux-image*_amd64.deb
@@ -72,7 +73,7 @@ RUN cd ~/Riallto/scripts/wsl/ && chmod +x setup_env.sh && sudo -E ./setup_env.sh
 RUN sudo sed -i '340 i\        "subtype":"DPU",' /opt/mlir-aie/python/aie/compiler/aiecc/main.py
 
 # Setup license
-COPY Xilinx.lic /opt/
+COPY $BUILD_TEMPDIR/Xilinx.lic /opt/
 RUN sudo apt-get install -y iproute2
 
 # For external license
