@@ -64,12 +64,11 @@ class KernelObjectBuilder(WSLBuilder):
             with open(os.path.join(self.build_path, f"{self.name}.cc"), "w") as fp:
                 fp.write(self.srccode)
 
-            if self.srcfile is not None or self.getheaders: 
+            if self.srcfile is not None or self.getheaders:
                 for extension in ['*.h', '*.hh', '*.hpp', '*.hxx', '*.h++']:
-                    if bool(glob.glob(os.path.join(self.srcpath, extension))):
-                        headerfiles = os.path.join(self.srcpath, extension)
+                    for hfile in glob.glob(os.path.join(self.srcpath, extension)):
                         self._wslcall(f"{wsl_prefix()}cp",
-                                      [f"{wslpath(headerfiles)}",
+                                      [f"{wslpath(hfile)}",
                                        f"{wslpath(self.build_path)}"], debug)
 
             self._wslcall(f"{wsl_prefix()}bash", [f"{wslpath(self.build_path)}/kernel_build.sh", f"{self.name}"], debug)
