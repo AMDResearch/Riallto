@@ -66,7 +66,7 @@ RUN source ~/.bashrc && cd ~/Riallto/scripts/wsl/ && python3 -m pip install -r r
 RUN python3 -m pip install ~/Riallto
 
 # Install MLIR-AIE and Xilinx tools
-COPY *.tar.gz /home/riallto/
+COPY $BUILD_TEMPDIR/*.tar.gz /home/riallto/
 RUN cd ~/Riallto/scripts/wsl/ && chmod +x setup_env.sh && sudo -E ./setup_env.sh /home/riallto/xilinx_tools.tar.gz /home/riallto/pynqMLIR-AIE.tar.gz && sudo chmod -R a+rwx /opt/
 
 # Patch the MLIR-AIE xclbin metadata generation
