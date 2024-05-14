@@ -9,7 +9,7 @@ Currently this driver has not been merged into the main Linux kernel, so a `6.8.
 On an NPU enabled laptop running Ubuntu 24.04.
 
 1. __Setup Docker.__ 
-You can follow the steps [here](https://docs.docker.com/desktop/install/ubuntu/).
+You can follow the steps [here](https://docs.docker.com/engine/install/ubuntu/).
 
 2. __Add your user to the docker user group.__ (May require relogin)
 ```
