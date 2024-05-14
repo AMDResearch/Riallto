@@ -120,7 +120,7 @@ if [ ! -f "${NPU_FIRMWARE}" ]; then
 	npu_install_tmp_dir=$(mktemp -d)
 	tar -xzvf "./xdna-driver-builder/${DRIVER_TARBALL}" -C "${npu_install_tmp_dir}"
 	pushd $npu_install_tmp_dir/root/debs
-		sudo apt -y --fix-broken install # Need to fix after kernel bump 
+		sudo apt -y --fix-broken install 
 		sudo -E dpkg -i xrt_*-amd64-xrt.deb
 		sudo -E dpkg -i xrt_plugin*-amdxdna.deb 
 	popd
@@ -129,28 +129,40 @@ fi
 
 ########### Riallto Docker image construction ###########
 echo "Building Riallto docker image" 
+build_tmp=./_work
+rm -rf $build_tmp
+mkdir -p $build_tmp
+
 ## Checks to make sure that all the required tarballs and license are in the directory 
 if [ ! -f "./pynqMLIR-AIE.tar.gz" ]; then
 	echo "Error! pynqMLIR-AIE.tar.gz is missing, downloading from opendownloads..."
-	wget -O pynqMLIR-AIE.tar.gz https://www.xilinx.com/bin/public/openDownload?filename=pynqMLIR_AIE_py312_v0.9.tar.gz 
+	wget -O $build_tmp/pynqMLIR-AIE.tar.gz https://www.xilinx.com/bin/public/openDownload?filename=pynqMLIR_AIE_py312_v0.9.tar.gz 
+else
+	cp pynqMLIR-AIE.tar.gz $build_tmp
 fi
 
 if [ ! -f "./xilinx_tools.tar.gz" ]; then
 	echo "xilinx_tools.tar.gz is missing, downloading it from opendownloads..."
-	wget -O riallto_installer.zip https://www.xilinx.com/bin/public/openDownload?filename=Riallto-v1.0.zip
-	unzip riallto_installer.zip
-        mv Riallto_v1.0/Riallto/downloads/xilinx_tools_latest.tar.gz ./xilinx_tools.tar.gz	
+	wget -O $build_tmp/riallto_installer.zip https://www.xilinx.com/bin/public/openDownload?filename=Riallto-v1.0.zip
+	pushd $build_tmp
+		unzip riallto_installer.zip
+        	mv Riallto_v1.0/Riallto/downloads/xilinx_tools_latest.tar.gz ./xilinx_tools.tar.gz	
+	popd
+else
+	cp xilinx_tools.tar.gz $build_tmp
 fi
 
-cp $LIC_FILE Xilinx.lic
+cp $LIC_FILE $build_tmp/Xilinx.lic
 
-tar -xzvf ./xdna-driver-builder/${DRIVER_TARBALL} -C ./
+tar -xzvf ./xdna-driver-builder/${DRIVER_TARBALL} -C $build_tmp/
 
 docker build \
 	--build-arg BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ') \
 	--build-arg LIC_MAC=$MAC \
+	--build-arg BUILD_TEMPDIR=$build_tmp \
        	-t riallto:latest \
 	./
 
+rm -rf $build_tmp
 #####################################################
 
