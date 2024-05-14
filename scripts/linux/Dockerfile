@@ -14,6 +14,7 @@ RUN apt-get install -y sudo adduser
 
 RUN useradd -m riallto
 RUN adduser riallto sudo
+RUN adduser riallto video 
 RUN echo 'riallto ALL=(ALL) NOPASSWD: ALL' > /etc/sudoers.d/riallto
 USER riallto
 ENV HOME /home/riallto
