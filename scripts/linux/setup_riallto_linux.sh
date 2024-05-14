@@ -115,14 +115,14 @@ if [ $build_kernel_and_xrt -eq 1 ]; then
 	fi
 fi
 
-sudo apt -y --fix-broken install 
 # Install the NPU drivers (xdna-driver)
 if [ ! -f "${NPU_FIRMWARE}" ]; then	
 	npu_install_tmp_dir=$(mktemp -d)
 	tar -xzvf "./xdna-driver-builder/${DRIVER_TARBALL}" -C "${npu_install_tmp_dir}"
 	pushd $npu_install_tmp_dir/root/debs
-		sudo -E dpkg -i xrt_*-amd64-xrt.deb
-		sudo -E dpkg -i xrt_plugin*-amdxdna.deb 
+		sudo -E dpkg -i xrt_*-amd64-xrt.deb || true
+		sudo -E dpkg -i xrt_plugin*-amdxdna.deb || true 
+		sudo apt -y --fix-broken install 
 	popd
 fi
 #########################################################
