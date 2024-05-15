@@ -14,7 +14,7 @@ ARG GROUP_NAME
 SHELL ["/bin/bash", "-c"]
 
 RUN apt-get update
-RUN apt-get install -y sudo adduser
+RUN apt-get install -y sudo adduser perl
 
 RUN deluser --remove-home $(getent passwd | awk -F: -v uid="$USER_ID" '$3 == uid {print $1}') || echo "Ignoring error, as uid:${USER_ID} does not exist" 
 RUN groupadd -g ${GROUP_ID} ${GROUP_NAME} || echo "Ignoring error, as ${GROUP_NAME} already exists"
