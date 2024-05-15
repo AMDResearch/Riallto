@@ -7,12 +7,18 @@ ARG BUILD_TEMPDIR
 ARG LIC_MAC=00:00:00:00:00:00
 ENV LIC_MAC=${LIC_MAC}
 
+ARG USER_ID
+ARG GROUP_ID
+ARG GROUP_NAME
+
 SHELL ["/bin/bash", "-c"]
 
 RUN apt-get update
 RUN apt-get install -y sudo adduser
 
-RUN useradd -m riallto
+RUN deluser --remove-home $(getent passwd | awk -F: -v uid="$USER_ID" '$3 == uid {print $1}') || echo "Ignoring error, as uid:${USER_ID} does not exist" 
+RUN groupadd -g ${GROUP_ID} ${GROUP_NAME} || echo "Ignoring error, as ${GROUP_NAME} already exists"
+RUN useradd -u $USER_ID -g $GROUP_ID -ms /bin/bash riallto
 RUN adduser riallto sudo
 RUN adduser riallto video 
 RUN echo 'riallto ALL=(ALL) NOPASSWD: ALL' > /etc/sudoers.d/riallto

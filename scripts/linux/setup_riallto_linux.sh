@@ -133,6 +133,10 @@ build_tmp=./_work
 rm -rf $build_tmp
 mkdir -p $build_tmp
 
+USER_ID=`id -u`
+GROUP_ID=`id -g`
+GROUP_NAME=`id -g -n`
+
 ## Checks to make sure that all the required tarballs and license are in the directory 
 if [ ! -f "./pynqMLIR-AIE.tar.gz" ]; then
 	echo "Error! pynqMLIR-AIE.tar.gz is missing, downloading from opendownloads..."
@@ -159,6 +163,9 @@ tar -xzvf ./xdna-driver-builder/${DRIVER_TARBALL} -C $build_tmp/
 docker build \
 	--build-arg BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ') \
 	--build-arg LIC_MAC=$MAC \
+        --build-arg USER_ID=${USER_ID} \
+        --build-arg GROUP_ID=${GROUP_ID} \
+        --build-arg GROUP_NAME=${GROUP_NAME} \
 	--build-arg BUILD_TEMPDIR=$build_tmp \
        	-t riallto:latest \
 	./
