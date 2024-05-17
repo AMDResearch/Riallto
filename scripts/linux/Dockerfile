@@ -20,7 +20,6 @@ RUN deluser --remove-home $(getent passwd | awk -F: -v uid="$USER_ID" '$3 == uid
 RUN groupadd -g ${GROUP_ID} ${GROUP_NAME} || echo "Ignoring error, as ${GROUP_NAME} already exists"
 RUN useradd -u $USER_ID -g $GROUP_ID -ms /bin/bash riallto
 RUN adduser riallto sudo
-RUN adduser riallto video 
 RUN echo 'riallto ALL=(ALL) NOPASSWD: ALL' > /etc/sudoers.d/riallto
 USER riallto
 ENV HOME /home/riallto
