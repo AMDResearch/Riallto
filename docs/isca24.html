@@ -197,36 +197,38 @@
             <div itemprop="articleBody">
 
               <section id="isca24">
-                <h1>Designing for the Neural Processing Unit on AMD Ryzen AI with Open-Source Tools<a class="headerlink"
+                <h1>Designing for the Neural Processing Unit on AMD Ryzen™ AI with Open-Source Tools<a class="headerlink"
                     href="#isca24" title="Link to this heading">¶</a></h1>
               </section>
               <section id="abstract">
                 <h2>Abstract<a class="headerlink" href="#abstract" title="Link to this heading">¶</a></h2>
 
                 <p>
-                  In this tutorial, we will describe the
-                  <a class="reference external"
-                    href="https://www.amd.com/en/products/processors/consumer/ryzen-ai.html">AMD Ryzen AI</a>
-                  architecture platform, discuss the neural processing unit (NPU),
-                  and provide hands-on experience with the open-source software tools to implement designs.
-                  AMD Ryzen AI is the first in a new class of NPUs designed for x86 computers. Built on the
+                  This tutorial introduces the Neural Processing Unit (NPU) on the 
+                  <a class="reference external" href="https://www.amd.com/en/products/processors/consumer/ryzen-ai.html">AMD Ryzen™ AI</a>
+                  APU and provides hands-on programming experience with open-source software tools. 
+                  The <a class="reference external" href="https://www.amd.com/en/products/processors/consumer/ryzen-ai.html">AMD Ryzen™ AI</a>
+                  platform is the first in a new class of NPUs designed for x86 computers. The NPU is built on the
                   <a class="reference external" href="https://www.amd.com/en/technologies/xdna.html">AMD XDNA™</a>
-                  spatial dataflow computer architecture, the NPU consists of a tiled array of AI Engine processors,
-                  a set of VLIW vector processors with adaptable interconnect, designed to offer lower latency and
-                  better energy efficiency.
+                  spatial dataflow computer architecture, and consists of a tiled array of AI Engine processors, 
+                  a set of VLIW vector processors with adaptable interconnect, designed to offer lower latency and better energy efficiency.
                 </p>
 
                 <p>
                   Participants will first gain insight into the system architecture of an x86 Ryzen AI processor and the
-                  AI Engine
-                  compute and data movement capabilities through AMD’s newly released
-                  <a class="reference external" href="https://riallto.ai/">Riallto</a>
-                  open-source exploration framework.
-                  Riallto lets users explore the NPU architecture and the programming tools that are available for Ryzen
-                  AI running
-                  on Jupyter notebooks. A hands-on tutorial will guide attendees through a series of examples showing
-                  how to program the
-                  NPU using vision processing, AI, and the steps towards building other designs for Ryzen AI.
+                  AI Engine compute and data movement capabilities through the
+                  <a class="reference external" href="https://riallto.ai/">Riallto</a> open-source exploration framework.
+                  Riallto lets users explore the NPU architecture and its programming tools running on Jupyter notebooks. 
+                  
+                  This hands-on tutorial will guide attendees through a series of vision processing examples illustrating various NPU architectural features. 
+                  You will also see how to program the NPU using Riallto. 
+                  Then, the IRON AIE programming guide and examples introduce the participants to writing their own compute kernel and data movement. 
+                  This Interface Representation for hands-ON (IRON) is an API for close-to-metal programming of the AIE-array.
+                  It is an open-access toolkit enabling performance engineers to build fast and efficient, 
+                  often specialized designs through a Python API for MLIR-AIE, AMD MLIR dialect representing the AIE-array.
+                  Finally, we will briefly show how the 
+                  <a class="reference external" href="https://ryzenai.docs.amd.com/en/latest/index.html">AMD Ryzen™ AI Software</a> allows users to seamlessly run AI inference on the
+                  <a class="reference external" href="https://www.amd.com/en/products/processors/consumer/ryzen-ai.html">AMD Ryzen™ AI</a> based PC. 
                 </p>
 
               </section>
@@ -274,16 +276,19 @@
                       </td>
                       <td>
                         <p>Write your own compute kernel and connectivity</p><br>
+                        <p>IRON AIE</p>
                         <p>AMD Ryzen AI Software</p><br>
-                        <p>MLIR-AIE</p>
                       </td>
                     </tr>
                   </tbody>
                 </table>
                 </p>
 
-                <p>Reference material can be found here: <a class="reference external"
-                    href="https://riallto.ai/">riallto.ai</a>.</p>
+                <p>Reference material can be found here:
+                  <a class="reference external" href="https://riallto.ai/">riallto.ai</a>, 
+                  <a class="reference external" href="https://github.com/Xilinx/mlir-aie/blob/main/programming_guide/README.md">IRON AIE programming guide</a> and
+                  <a class="reference external" href="https://github.com/Xilinx/mlir-aie/tree/main/programming_examples">examples</a>
+                </p>
 
               </section>
 
@@ -314,14 +319,14 @@
               <section id="registration">
                 <h2>Register<a class="headerlink" href="#registration" title="Link to this heading">¶</a></h2>
 
-                <p><span class="icon-calendar">29 June - 3 July, 2024</span></p>
+                <p><span class="icon-calendar">30 June, 2024</span></p>
 
                 <p><span class="icon-time">9:00 AM - 12:30 PM</span></p>
 
                 <p><span class="icon-map">In Person:&nbsp; Check the ISCA 2024 site for more information.&nbsp;<a
                       href="https://iscaconf.org/isca2024/">https://iscaconf.org/isca2024/</a></span></p>
 
-                <p><a href="https://iscaconf.org/isca2024/"><span class="icon-check-circle">Register</span></a></p>
+                <p><a href="https://www.iscaconf.org/isca2024/attend/register.php"><span class="icon-check-circle">Register</span></a></p>
 
 
                 <div class="toctree-wrapper compound">
