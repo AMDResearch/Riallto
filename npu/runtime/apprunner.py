@@ -123,11 +123,7 @@ Try shutting down/restarting all other jupyter notebooks and try again.""")
         else creates a new device.
         """
         
-        try:  
-            objects = gc.get_objects()  
-        except Exception as e:  
-            print(f"Encountered an exception during gc.get_objects(): {e}")  
-            objects = []
+        objects = gc.get_objects()
 
         for obj in objects:
             try:
