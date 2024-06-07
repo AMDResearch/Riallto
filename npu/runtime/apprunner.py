@@ -122,10 +122,21 @@ Try shutting down/restarting all other jupyter notebooks and try again.""")
         if there is gets the device from previously allocated AppRunner or
         else creates a new device.
         """
-        for obj in gc.get_objects():
-            if isinstance(obj, type(self)) and (obj != self):
-                if obj.device is not None:
-                    return obj.device
+        
+        try:  
+            objects = gc.get_objects()  
+        except Exception as e:  
+            print(f"Encountered an exception during gc.get_objects(): {e}")  
+            objects = []
+
+        for obj in objects:
+            try:
+                if isinstance(obj, type(self)) and (obj != self):
+                    if obj.device is not None:
+                        return obj.device
+            except Exception as e:
+                print(f"Encountered an exception during isinstance check: {e}")
+                continue
         return ipr.device(0)
 
     def _process_handoff_metadata(self, xclbin_name:str, handoff:Optional[str]=None)->None: 
