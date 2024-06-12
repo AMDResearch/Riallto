@@ -44,10 +44,6 @@ RUN sudo /home/riallto/xdna-driver/xrt/src/runtime_src/tools/scripts/xrtdeps.sh 
 
 COPY $BUILD_TEMPDIR/root/debs npu_ubuntu_debs
 
-RUN sudo dpkg -i npu_ubuntu_debs/linux-headers*_amd64.deb
-RUN sudo dpkg -i npu_ubuntu_debs/linux-image*_amd64.deb
-RUN sudo dpkg -i npu_ubuntu_debs/linux-libc*_amd64.deb
-
 RUN sudo apt-get install -y dkms udev python3
 RUN sudo apt-get install -y python3-pip ocl-icd-opencl-dev uuid-dev
 

@@ -6,8 +6,12 @@
 set -e
 
 DRIVER_TARBALL=ubuntu24.04_npu_drivers.tar.gz
-MIN_KERNEL_VERSION="6.8.8+"
+REQUIRED_KERNEL_VERSION="6.10.0-061000rc2-generic"
 NPU_FIRMWARE="/lib/firmware/amdnpu/1502_00/npu.sbin"
+KERNEL_HEADERS=linux-headers-6.10.0-061000rc2_6.10.0-061000rc2.202406022333_all.deb
+KERNEL_HEADERS_GENERIC=linux-headers-6.10.0-061000rc2-generic_6.10.0-061000rc2.202406022333_amd64.deb 
+KERNEL_MODULES=linux-modules-6.10.0-061000rc2-generic_6.10.0-061000rc2.202406022333_amd64.deb
+KERNEL_IMAGE=linux-image-unsigned-6.10.0-061000rc2-generic_6.10.0-061000rc2.202406022333_amd64.deb
 
 # Check that we are on Ubuntu24.04
 distro_info=$(lsb_release -d)
@@ -51,35 +55,60 @@ echo "Found a License file associated with MAC address $MAC"
 
 ######### Kernel and NPU driver check / install ###########
 # Check to see if the kernel version and NPU driver is already installed
-build_kernel_and_xrt=0
+build_xrt=0
 kernel_version=$(uname -r)
 
-if [[ "$kernel_version" == "$MIN_KERNEL_VERSION" ]]; then
+if [[ "$kernel_version" == "$REQUIRED_KERNEL_VERSION" ]]; then
 	echo "Kernel version is okay, is NPU available?"	
-	if [ -f "${NPU_FIRMWARE}" ]; then	
-		echo "NPU is available, just setting up Riallto"
-		build_kernel_and_xrt=0;			
-	else
-		build_kernel_and_xrt=1
-	fi
 else
-	echo "Kernel version is not the correct version for running Riallto"	
-	echo "A non mainline linux kernel will have to be installed"
-	echo "Kernel version=$kernel_version  need at least  $MIN_KERNEL_VERSION"
-	build_kernel_and_xrt=1
-fi
-
-if [ $build_kernel_and_xrt -eq 1 ]; then
-	# Building the driver and kernel version and installing it
+	echo "To install Riallto requires upgrading your kernel to ${REQUIRED_KERNEL_VERSION}"
+	echo "WARNING: This can be quite disruptive to your system configuration."
+	echo "After upgrading you will have to restart your machine and rerun this script"
+	while true; do
+		read -p "Are you happy to continue? [Y/N]  " answer
+		case $answer in
+			[Yy]* ) echo "You chose yes, attempting to update kernel"; break;;
+			[Nn]* ) echo "Exiting"; exit 1;;
+			* ) echo "Please chose Y or N.";;
+		esac
+	done
+		
 	# First check to make sure that secure boot is disabled.
 	if mokutil --sb-state | grep -q "enabled"; then
 		echo "Secure boot is currently enabled."
 		echo "To install Riallto on Linux currently requires a" 
-		echo "non-mainline kernel version ${MIN_KERNEL_VERSION}."
+		echo "non-mainline kernel version ${REQUIRED_KERNEL_VERSION}."
 	       	echo "If you would like to continue with the installation "
 	        echo "please disable secure boot in your bios settings and rerun this script."
 		exit 1	
 	fi
+
+	_kbump_dir=$(mktemp -d)
+
+	wget -P ${_kbump_dir} https://kernel.ubuntu.com/mainline/v6.10-rc2/amd64/$KERNEL_HEADERS_GENERIC
+	wget -P ${_kbump_dir} https://kernel.ubuntu.com/mainline/v6.10-rc2/amd64/$KERNEL_HEADERS
+	wget -P ${_kbump_dir} https://kernel.ubuntu.com/mainline/v6.10-rc2/amd64/$KERNEL_IMAGE
+	wget -P ${_kbump_dir} https://kernel.ubuntu.com/mainline/v6.10-rc2/amd64/$KERNEL_MODULES
+
+	pushd $_kbump_dir/
+		sudo dpkg -i $KERNEL_HEADERS
+		sudo dpkg -i $KERNEL_HEADERS_GENERIC 
+		sudo dpkg -i $KERNEL_MODULES 
+		sudo dpkg -i $KERNEL_IMAGE 
+	popd
+	echo -e "\033[31mPlease now restart your machine and rerun the script.\033[0m"
+	exit 1
+fi
+
+if [ -f "${NPU_FIRMWARE}" ]; then	
+	echo "NPU is available, just setting up Riallto"
+	build_xrt=0;			
+else
+	build_xrt=1
+fi
+
+if [ $build_xrt -eq 1 ]; then
+	# Building the NPU driver version and installing it
 	
 	if [ ! -f "./xdna-driver-builder/${DRIVER_TARBALL}" ]; then
 		echo "xdna-driver-builder/${DRIVER_TARBALL} is missing, building it from scratch"
@@ -87,32 +116,9 @@ if [ $build_kernel_and_xrt -eq 1 ]; then
 		./build.sh
 		popd
 	else
-		echo "Kernel and driver tarball already exists."
+		echo "Driver tarball already exists."
 	fi
 
-
-	if [[ "$kernel_version" != "$MIN_KERNEL_VERSION" ]]; then
-		echo "To install Riallto requires upgrading your kernel to ${MIN_KERNEL_VERSION}"
-		echo "After upgrading you will have to restart your machine and rerun this script"
-		while true; do
-			read -p "Are you happy to continue? [Y/N]  " answer
-			case $answer in
-				[Yy]* ) echo "You chose yes, attempting to update kernel"; break;;
-				[Nn]* ) echo "Exiting"; exit 1;;
-				* ) echo "Please chose Y or N.";;
-			esac
-		done
-			
-		kernel_bump_tmp_dir=$(mktemp -d)
-		tar -xzvf "./xdna-driver-builder/${DRIVER_TARBALL}" -C "${kernel_bump_tmp_dir}"
-		pushd $kernel_bump_tmp_dir/root/debs
-			sudo dpkg -i linux-headers*_amd64.deb
-			sudo dpkg -i linux-image*_amd64.deb
-			sudo dpkg -i linux-libc*_amd64.deb
-		popd
-		echo -e "\033[31mPlease now restart your machine and rerun the script.\033[0m"
-		exit 1
-	fi
 fi
 
 # Install the NPU drivers (xdna-driver)
