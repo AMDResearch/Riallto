@@ -49,10 +49,10 @@ def function_behavior(invobj):
     invobj.out_buffer.array = invobj.in_buffer.array
 
 
-@pytest.mark.parametrize('superkernel', ['gray_out_src', 'color_detect_src'])
-def test_superkernel_build(superkernel):
+@pytest.mark.parametrize('kernel_fusion', ['gray_out_src', 'color_detect_src'])
+def test_kernel_fusion_build(kernel_fusion):
     check_npu()
-    krnobj = Kernel(eval(superkernel))
+    krnobj = Kernel(eval(kernel_fusion))
     krnobj.behavioralfx = function_behavior
     # lunch build and then assert
     assert (objfile := krnobj.objfile)
