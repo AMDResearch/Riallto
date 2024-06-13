@@ -143,7 +143,7 @@ def test_callgraph_inverse_itread_behavioral():
     assert np.all(app.callgraph(imgbuffer) == 255)
 
 
-def _test_callgraph_singlekernel_build(krn, shape=(1024)):
+def _test_callgraph_singlekernel_build(krn, shape=(1024,)):
     """Behavioral test of a single kernel that has nbytes as RTPs."""
 
     imgbuffer = np.zeros(shape=shape, dtype=np.uint8)

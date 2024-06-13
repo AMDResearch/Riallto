@@ -54,8 +54,8 @@ extern "C" {
 
 void pluschain(uint8_t *in_buffer, uint8_t *out_buffer) {
     uint8_t outbuf[N];
-    plusone_aie1(in_buffer, outbuf, N);
-    plusn_aie1(outbuf, outbuf, N, 2);
+    plusone_aie(in_buffer, outbuf, N);
+    plusn_aie(outbuf, outbuf, N, 2);
 }
 
 } // extern "C"
@@ -74,6 +74,6 @@ def test_kernel_fusion_build(kernel_fusion):
     krnobj.behavioralfx = function_behavior
     # lunch build and then assert
     assert (objfile := krnobj.objfile)
-    _test_callgraph_singlekernel_nbytes_build(krnobj)
+    _test_callgraph_singlekernel_build(krnobj)
     # remove object file
     os.remove(objfile)
