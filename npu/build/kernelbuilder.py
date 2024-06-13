@@ -8,7 +8,6 @@ from .utils import wsl_prefix
 import hashlib
 import glob
 
-
 class KernelObjectBuilder(WSLBuilder):
     """This class builds ComputeTile kernel C/C++ into object files for linking into applications.
        There is also caching support so that a kernel is only built one-time.
