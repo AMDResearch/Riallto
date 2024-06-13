@@ -3,7 +3,7 @@
 
 #include <aie_api/aie.hpp>
 
-const int32_t SRS_SHIFT = 12;
+const int32_t ACC_SHIFT = 12;
 
 #define KERNEL_WIDTH 3
 
@@ -64,7 +64,7 @@ void filter2d_3lines_aie(uint8_t *lineIn0, uint8_t *lineIn1, uint8_t *lineIn2, u
     acc       = mul_ops::mac(acc, kernel_vec, 2*Points, data_buf3, 0);
 
     // Store result
-    ::aie::store_v(out_buffer, acc.to_vector<uint8>(SRS_SHIFT-8)); out_buffer+=VecFactor;
+    ::aie::store_v(out_buffer, acc.to_vector<uint8>(ACC_SHIFT-8)); out_buffer+=VecFactor;
 
     // middle of line, no border extension needed
     for (int i = 2*VecFactor; i < nbytes-1; i+=VecFactor) {
@@ -90,7 +90,7 @@ void filter2d_3lines_aie(uint8_t *lineIn0, uint8_t *lineIn1, uint8_t *lineIn2, u
         acc       = mul_ops::mac(acc, kernel_vec, 2*Points, data_buf3, 0);
 
         // Store result
-        ::aie::store_v(out_buffer, acc.to_vector<uint8>(SRS_SHIFT-8)); out_buffer+=VecFactor;
+        ::aie::store_v(out_buffer, acc.to_vector<uint8>(ACC_SHIFT-8)); out_buffer+=VecFactor;
     }
 
     // right of line, border extension by mirroring
@@ -113,6 +113,6 @@ void filter2d_3lines_aie(uint8_t *lineIn0, uint8_t *lineIn1, uint8_t *lineIn2, u
     acc       = mul_ops::mac(acc, kernel_vec, 2*Points, data_buf3, 0);
 
     // Store result
-    ::aie::store_v(out_buffer, acc.to_vector<uint8>(SRS_SHIFT-8)); out_buffer+=VecFactor;
+    ::aie::store_v(out_buffer, acc.to_vector<uint8>(ACC_SHIFT-8)); out_buffer+=VecFactor;
 }
 
