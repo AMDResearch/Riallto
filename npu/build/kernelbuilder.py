@@ -7,7 +7,6 @@ from .wslbuilder import WSLBuilder
 from .utils import wsl_prefix
 import hashlib
 import glob
-import shutil
 
 
 class KernelObjectBuilder(WSLBuilder):
