@@ -67,7 +67,7 @@ def function_behavior(invobj):
 
 #@pytest.mark.parametrize('kernel_fusion', ['gray_out_src', 'color_detect_src',
 #                                           'lib_src'])
-@pytest.mark.parametrize('superkernel', ['lib_src'])
+@pytest.mark.parametrize('kernel_fusion', ['lib_src'])
 def test_kernel_fusion_build(kernel_fusion):
     check_npu()
     krnobj = Kernel(eval(kernel_fusion))
