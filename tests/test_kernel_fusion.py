@@ -5,6 +5,7 @@ import pytest
 import os
 from npu.build.kernel import Kernel
 from .test_applications import check_npu
+from .test_callgraphs import _test_callgraph_singlekernel_build
 
 gray_out_src = '''
 #include "kernels.hpp"
@@ -44,18 +45,35 @@ void colordetect(uint8_t *in_buffer, uint8_t *out_buffer) {
 } // extern "C"
 '''
 
+lib_src = '''
+#include "kernels.hpp"
+
+extern "C" {
+
+#define N 720
+
+void pluschain(uint8_t *in_buffer, uint8_t *out_buffer) {
+    uint8_t outbuf[N];
+    plusone_aie1(in_buffer, outbuf, N);
+    plusn_aie1(outbuf, outbuf, N, 2);
+}
+
+} // extern "C"
+'''
 
 def function_behavior(invobj):
     invobj.out_buffer.array = invobj.in_buffer.array
 
 
-@pytest.mark.parametrize('kernel_fusion', ['gray_out_src', 'color_detect_src'])
+#@pytest.mark.parametrize('kernel_fusion', ['gray_out_src', 'color_detect_src',
+#                                           'lib_src'])
+@pytest.mark.parametrize('superkernel', ['lib_src'])
 def test_kernel_fusion_build(kernel_fusion):
     check_npu()
     krnobj = Kernel(eval(kernel_fusion))
     krnobj.behavioralfx = function_behavior
     # lunch build and then assert
     assert (objfile := krnobj.objfile)
-    #_test_callgraph_singlekernel_nbytes_build(krnobj)
+    _test_callgraph_singlekernel_nbytes_build(krnobj)
     # remove object file
     os.remove(objfile)

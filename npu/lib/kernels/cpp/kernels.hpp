@@ -27,3 +27,5 @@ void rgba2hue_aie(uint8_t *in_buffer, uint8_t *out_buffer, uint32_t nbytes);
 void rgba2hue_aie_scalar(uint8_t *in_buffer, uint8_t *out_buffer, uint32_t nbytes);
 void threshold_grayscale_aie(uint8_t *in_buffer, uint8_t *out_buffer, int32_t nbytes, uint8_t thresh_val, uint8_t max_val, uint8_t threshold_type);
 void threshold_rgba_aie(uint8_t *in_buffer, uint8_t *out_buffer, int32_t nbytes, uint8_t thresholdValue1, uint8_t thresholdValue2, uint8_t thresholdValue3, uint8_t thresholdValue4, uint8_t maxValue1, uint8_t maxValue2, uint8_t maxValue3, uint8_t maxValue4, uint8_t threshold_type);
+void plusn_aie1(uint8_t *in_buffer, uint8_t* out_buffer, uint32_t nbytes, uint8_t n);
+void plusone_aie1(uint8_t *in_buffer, uint8_t* out_buffer, uint32_t nbytes);

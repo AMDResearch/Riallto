@@ -1,8 +1,6 @@
 // Copyright 2023 Advanced Micro Devices, Inc.
 // SPDX-License-Identifier: MIT
 
-#define NOCPP
-
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
