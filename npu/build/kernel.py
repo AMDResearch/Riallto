@@ -114,7 +114,6 @@ class Kernel(KernelMeta):
 #define REL_READ 1
 #include <aie_api/aie.hpp>
 
-
         """
             s = f"{preamble}{self._srccode}"
             sig = self._main_function['fullsig']
