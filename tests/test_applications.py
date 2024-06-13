@@ -37,6 +37,16 @@ class SimpleInvAppMTPassThrough(AppBuilder):
         return x
 
 
+class SingleKernelCall(AppBuilder):
+    """Application class for testing a single kernel call."""
+    def __init__(self, k):
+        self.k = k
+        super().__init__()
+
+    def callgraph(self, xin, xout):
+        """ Callgraph that call the kernel once"""
+        xout[:] = self.k(xin)
+
 class SimpleKernelITTiling(AppBuilder):
     """Application class for testing tiling on a single kernel."""
     def __init__(self, k):

@@ -70,9 +70,12 @@ class KernelObjectBuilder(WSLBuilder):
             shutil.copytree(KERNELS_DIR, self.build_path + '/kernels/')
 
             if self.srcfile is not None or self.getheaders:
-                if bool(glob.glob(os.path.join(self.srcpath, '*.h'))):
-                    headerfiles = os.path.join(self.srcpath, "*.h")
-                    self._wslcall(f"{wsl_prefix()}cp", [f"{wslpath(headerfiles)}", f"{wslpath(self.build_path)}"], debug)
+                for extension in ['*.h', '*.hh', '*.hpp', '*.hxx', '*.h++']:
+                    if bool(glob.glob(os.path.join(self.srcpath, extension))):
+                        headerfiles = os.path.join(self.srcpath, extension)
+                        self._wslcall(f"{wsl_prefix()}cp",
+                                      [f"{wslpath(headerfiles)}",
+                                       f"{wslpath(self.build_path)}"], debug)
 
             self._wslcall(f"{wsl_prefix()}bash", [f"{wslpath(self.build_path)}/kernel_build.sh", f"{self.name}"], debug)
             self._wslcall(f"{wsl_prefix()}cp", [f"{wslpath(self.buildobjpath)}", f"{wslpath(self.prebuilt_objpath)}"], debug)

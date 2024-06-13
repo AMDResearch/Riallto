@@ -6,7 +6,11 @@ param(
   [string]$repoPath = "Riallto"
 )
 
+# Replace slashes and spaces
 $repoPathWSL = "/mnt/" + ($repoPath -replace ":", "").Replace("\", "/").Replace(" ", "\ ").ToLower()
+
+# Replace special characters
+$repoPathWSL = $repoPathWSL -replace '\(', '\(' -replace '\)', '\)'
 
 $wslName = "Riallto"
 
