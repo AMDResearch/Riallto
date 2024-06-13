@@ -8,7 +8,8 @@ from .test_applications import check_npu
 from .test_callgraphs import _test_callgraph_singlekernel_build
 
 gray_out_src = '''
-#include "kernels.hpp"
+#include "gray2rgba.cpp"
+#include "rgba2gray.cpp"
 
 extern "C" {
 
@@ -23,9 +24,11 @@ void grayout(uint8_t *in_buffer, uint8_t *out_buffer) {
 } // extern "C"
 '''
 
-
 color_detect_src = '''
-#include "kernels.hpp"
+#include "rgba2hue.cpp"
+#include "inrange.cpp"
+#include "gray2rgba.cpp"
+#include "bitwiseAnd.cpp"
 
 extern "C" {
 
@@ -39,14 +42,15 @@ void colordetect(uint8_t *in_buffer, uint8_t *out_buffer) {
     rgba2hue_aie(in_buffer, rgba2hue_buff, N*4);
     in_range_aie(rgba2hue_buff, in_range_buff, N, 50, 151);
     gray2rgba_aie(in_range_buff, gray2rgba_buff, N);
-    bitwiseAND_aie(in_buffer, gray2rgba_buff, out_buffer, N);
+    bitwiseAND_aie<uint8_t, 64>(in_buffer, gray2rgba_buff, out_buffer, N);
 }
 
 } // extern "C"
 '''
 
 lib_src = '''
-#include "kernels.hpp"
+#include "plus1.cpp"
+#include "plusn.cpp"
 
 extern "C" {
 
@@ -65,9 +69,8 @@ def function_behavior(invobj):
     invobj.out_buffer.array = invobj.in_buffer.array
 
 
-#@pytest.mark.parametrize('kernel_fusion', ['gray_out_src', 'color_detect_src',
-#                                           'lib_src'])
-@pytest.mark.parametrize('kernel_fusion', ['lib_src'])
+@pytest.mark.parametrize('kernel_fusion', ['gray_out_src', 'color_detect_src',
+                                           'lib_src'])
 def test_kernel_fusion_build(kernel_fusion):
     check_npu()
     krnobj = Kernel(eval(kernel_fusion))
