@@ -42,7 +42,31 @@ void colordetect(uint8_t *in_buffer, uint8_t *out_buffer) {
     rgba2hue_aie(in_buffer, rgba2hue_buff, N*4);
     in_range_aie(rgba2hue_buff, in_range_buff, N, 50, 151);
     gray2rgba_aie(in_range_buff, gray2rgba_buff, N);
-    bitwiseAND_aie<uint8_t, 64>(in_buffer, gray2rgba_buff, out_buffer, N);
+    bitwiseAND_aie<uint8_t, 64>(in_buffer, gray2rgba_buff, out_buffer, N*4);
+}
+
+} // extern "C"
+'''
+
+edge_overlaid_src = '''
+#include "rgba2gray.cpp"
+#include "gray2rgba.cpp"
+#include "filter2d_720p.cpp"
+#include "addWeighted.cpp"
+
+extern "C" {
+
+#define N 720
+
+void edge(uint8_t *in_buffer, uint8_t *out_buffer) {
+    uint8_t graybuffer[N];
+    uint8_t f2dbuffer[N];
+    uint8_t rgbabuffer[N*4];
+
+    rgba2gray_aie(in_buffer, graybuffer, N*4);
+    filter2d_720p_aie(graybuffer, f2dbuffer, 0, -4096, 0, -4096, 16384, -4096, 0, -4096, 0);
+    gray2rgba_aie(f2dbuffer, rgbabuffer, N);
+    addweighted_aie<uint8_t, 64, UINT8_MAX>(in_buffer, rgbabuffer, out_buffer, N*4, 0, 0, 0);
 }
 
 } // extern "C"
@@ -70,7 +94,8 @@ def function_behavior(invobj):
 
 
 @pytest.mark.parametrize('kernel_fusion', ['gray_out_src', 'color_detect_src',
-                                           'lib_src'])
+                                           'edge_overlaid_src', 'lib_src'])
+
 def test_kernel_fusion_build(kernel_fusion):
     check_npu()
     krnobj = Kernel(eval(kernel_fusion))
