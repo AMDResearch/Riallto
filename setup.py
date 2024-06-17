@@ -52,7 +52,7 @@ setup(
     packages=find_packages(),
     python_requires=f"=={required_python_version}",
     install_requires=[
-        "numpy",
+        "numpy==1.*",
         "pytest",
         "pytest-cov",
         "opencv-python",
