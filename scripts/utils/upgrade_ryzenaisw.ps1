@@ -8,8 +8,10 @@ param (
 & uninstall_onnx.ps1
 
 # Unzip and cd into the RyzenAI-SW package
-Expand-Archive -Path $zipPath -DestinationPath .
 $zipFolderName = [System.IO.Path]::GetFileNameWithoutExtension($zipPath)
+if (-Not (Test-Path $zipFolderName)) {
+    Expand-Archive -Path $zipPath -DestinationPath .
+}
 cd ".\$zipFolderName"
 
 # Install the required Python packages
