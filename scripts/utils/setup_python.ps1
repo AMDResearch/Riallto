@@ -62,7 +62,7 @@ function Install-Python($version) {
 		
 		# Install Python without UI
 		try {
-			Start-Process -FilePath "$env:TEMP\python-$version-amd64.exe" -ArgumentList "/passive InstallAllUsers=0 PrependPath=1 Include_launcher=1" -Wait -NoNewWindow
+			Start-Process -FilePath "$env:TEMP\python-$version-amd64.exe" -ArgumentList "/passive InstallAllUsers=1 PrependPath=1 Include_launcher=1" -Wait -NoNewWindow
 		} catch {
 			Write-Host "Failed to install Python, make sure you are running this as administrator or install Python manually" -ForegroundColor red -BackgroundColor black
 		}
