@@ -10,12 +10,17 @@ param (
 # Unzip and cd into the RyzenAI-SW package
 Expand-Archive -Path $zipPath -DestinationPath .
 $zipFolderName = [System.IO.Path]::GetFileNameWithoutExtension($zipPath)
-cd ".\$zipFolderName\$zipFolderName"
+cd ".\$zipFolderName"
 
 # Install the required Python packages
-py -m pip install .\voe-4.0-win_amd64\onnxruntime_vitisai-1.15.1-cp39-cp39-win_amd64.whl
-py -m pip install .\voe-4.0-win_amd64\voe-0.1.0-cp39-cp39-win_amd64.whl
-py -m pip install .\vai_q_onnx-1.16.0+69bc4f2-py2.py3-none-any.whl
+try {
+    py -m pip install .\voe-4.0-win_amd64\onnxruntime_vitisai-1.15.1-cp39-cp39-win_amd64.whl
+    py -m pip install .\voe-4.0-win_amd64\voe-0.1.0-cp39-cp39-win_amd64.whl
+    py -m pip install .\vai_q_onnx-1.16.0+69bc4f2-py2.py3-none-any.whl
+} catch {
+    Write-Output "Failed to install RyzenAI-SW wheels"
+    Exit 1
+}
 
 # Our python env site-packages directory
 $siteDir = (py -m pip show pip | Select-String "Location:").Line.Split(" ")[1]
@@ -29,11 +34,20 @@ $dllFiles = @(
     "C:\Windows\System32\AMD\xdp_core.dll"
 )
 
-foreach ($dll in $dllFiles) {
-    Copy-Item -Path $dll -Destination "$siteDir\onnxruntime\capi\"
+try {
+    foreach ($dll in $dllFiles) {
+        Copy-Item -Path $dll -Destination "$siteDir\onnxruntime\capi\"
+    }
+} catch {
+    Write-Output "Failed to copy dlls to $siteDir\onnxruntime\capi"
 }
+
 
 # Copy xclbin and config to Riallto notebooks folder
 $destinationDir = "C:\users\$Env:UserName\AppData\Roaming\riallto_notebooks\onnx\xclbins"
-Copy-Item -Path .\voe-4.0-win_amd64\vaip_config.json -Destination $destinationDir
-Copy-Item -Path .\voe-4.0-win_amd64\1x4.xclbin -Destination $destinationDir
+try {
+    Copy-Item -Path .\voe-4.0-win_amd64\vaip_config.json -Destination $destinationDir
+    Copy-Item -Path .\voe-4.0-win_amd64\1x4.xclbin -Destination $destinationDir
+} catch {
+    Write-Output "Failed to copy files to $destinationDir"
+}
