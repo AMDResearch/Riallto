@@ -12,7 +12,7 @@ The Riallto installer is separated into 'Lite' and 'Full' installation versions.
 
 The steps below will allow you to get quickly started using the 'Lite' version of Riallto. For details on requirements and installation for the 'Full' version, follow the instructions in the [Install Riallto](https://riallto.ai/install-riallto.html) guide.
 
-* [Download and unzip the the v10.1109.8.100 IPU driver](https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ipu_stack_rel_silicon_1.0.zip). You will need to create an AMD account if you do not have one.
+* [Download and unzip the the v10.1109.8.128 IPU driver](https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ipu_stack_rel_silicon_prod_1.1.zip). You will need to create an AMD account if you do not have one.
 * Open a Windows Command Prompt, or Powershell, as administrator.
 * Change directory to the unzipped IPU driver directory, then run the `amd_install_kipudrv.bat` file. Press Enter if prompted.
 * Confirm the IPU driver has installed correctly by running the following command in a Powershell terminal and checking the output matches that of the figure below:
