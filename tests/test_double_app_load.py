@@ -10,14 +10,15 @@ from .test_applications import SimplePlusN
 
 
 def _get_full_path(xclbin: str = None) -> str:
-    binaries = os.path.dirname(os.path.abspath(__file__)) + '/../npu/lib/applications/binaries/'
+    binaries = os.path.dirname(os.path.abspath(__file__)) \
+        + '/../npu/lib/applications/binaries/'
     return os.path.abspath(os.path.join(binaries, xclbin))
 
 
 def test_double_load_custom_app():
     """Tests loading two applications with the same name/UUID simultaneously"""
     check_npu()
-    array = np.arange(256,dtype=np.uint8)
+    array = np.arange(256, dtype=np.uint8)
     n = 5
 
     trace_app = SimplePlusN()
@@ -58,6 +59,6 @@ def test_videoapp_five_loads():
         assert app[i]
 
     with pytest.raises(RuntimeError) as valerror:
-        app1 = AppRunner(appbin)
+        AppRunner(appbin)
     assert 'There is currently no free space on the NPU' in str(valerror.value)
     del app
