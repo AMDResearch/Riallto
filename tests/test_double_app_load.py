@@ -24,8 +24,8 @@ def test_double_load(manage_testing):
         app_alt = AppRunner("SimplePlusN.xclbin")
     except IPUAppAlreadyLoaded:
         print(f"Test passed")
-    else:
+    except Exception as e:
         del app
-        raise RuntimeError("Test Failed, wrong error received")
+        raise RuntimeError(f"Test Failed, wrong error received\n {e}")
 
     del app
