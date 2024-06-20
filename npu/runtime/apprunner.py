@@ -117,7 +117,7 @@ Try shutting down/restarting all other jupyter notebooks and try again.""")
         """
         for obj in gc.get_objects():
             if isinstance(obj, type(self)) and (obj != self):
-                if getattr(obj, "device", None) is not None:
+                if getattr(obj, "device", None):
                     return obj.device
         return ipr.device(0)
 
