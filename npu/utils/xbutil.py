@@ -116,7 +116,7 @@ class XBUtil:
 
     @property
     def num_riallto_streams(self)->int:
-        return self.loaded_functions.count("RIALLTO_KERNEL:GRAPHINST") #does this still work?
+        return sum(1 for app in self.loaded_functions if 'Riallto' in app)
 
     def _get_loaded_functions(self)->List[str]:
         """ Returns a list of the loaded functions on the NPU from xbutil. """
@@ -132,7 +132,7 @@ class XBUtil:
         return self._get_loaded_functions()
 
     def _check_xbutil_install(self):
-        """ Returns true if xbutil.exe is avaialbe. """
+        """ Returns true if xbutil.exe is available. """
         _ = self._cmd(['examine', '-d'])
 
     def _cmd(self, cmdlist:List[str])->Dict:
@@ -159,9 +159,9 @@ class XBUtil:
         return set(t)
 
     def _check_devices(self)->None:
-        """ raises an error if a problem is detected with the device. """
+        """Raises an error if a problem is detected with the device. """
         if len(self._devices) > 1:
-            raise RuntimeError(f"Unable to determine which device is the NPU, devices found = {self._devices}")
+            raise RuntimeError("Unable to determine which device is the NPU, "
+                               f"devices found = {self._devices}")
         if len(self._devices) == 0:
-            raise RuntimeError(f"Unable to find any NPU devices via XBUtil")
-
+            raise RuntimeError("Unable to find any NPU devices via XBUtil")

@@ -149,14 +149,10 @@ Try shutting down/restarting all other jupyter notebooks and try again.""")
         trying to load the application 
         """
         if self.xbutil.app_count >= 4:
-            raise RuntimeError(f"""There is currently no free space on the NPU to run this application, 
-have you tried closing other applications that you are running or disabling WSE? 
-\n\n{self.xbutil.app_table}""")
-        if self.xbutil.app_exists(self.kernel_name):
-            raise IPUAppAlreadyLoaded(f"""Currently only one instance of an application can be running at 
-a time on the NPU and there is already an application with name {self.kernel_name}
-loaded on the device.\n\n{self.xbutil.app_table}""")
-
+            raise RuntimeError("There is currently no free space on the NPU "
+                               "to run this application, have you tried closing"
+                               " other applications that you are running or "
+                               f"disabling WSE? \n\n{self.xbutil.app_table}")
 
     def _apply_metadata(self):
         """ Tries to associate metadata with RTP commands in the sequence."""
