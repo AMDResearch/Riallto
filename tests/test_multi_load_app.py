@@ -59,6 +59,8 @@ def test_videoapp_five_loads():
         assert app[i]
 
     with pytest.raises(RuntimeError) as valerror:
-        AppRunner(appbin)
-    assert 'There is currently no free space on the NPU' in str(valerror.value)
+        app1 = AppRunner(appbin)
+        assert 'There is currently no free space on the NPU' in str(valerror.value)
+        del app1
+
     del app
