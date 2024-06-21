@@ -1,7 +1,6 @@
 # Copyright (C) 2023 Advanced Micro Devices, Inc. All rights reserved.
 # SPDX-License-Identifier: MIT
 
-import os
 from io import FileIO
 from pathlib import Path
 from typing import List, Dict, Set
@@ -47,10 +46,10 @@ class XBUtil:
 
     @property
     def app_table(self)->str:
-        """ Returns a table of all the apps currently loaded onto the NPU device. """
+        """Returns a table of the apps currently loaded onto the NPU device"""
         s = "Currently loaded apps:\n"
-        for a in self.list_apps():
-            s += f"\t{a}\n"
+        for app in self.list_apps():
+            s += f"\t{list(app.keys())[0]}\n"
         return s
 
     def list_apps(self)->List[str]:
@@ -60,13 +59,13 @@ class XBUtil:
         wse_pattern = "IPUV1CNN"
         riallto_pattern = "Riallto"
         for f in self._get_loaded_functions():
-            appname = list(f.keys())[0]
-            if appname.endswith(riallto_pattern) or appname.endswith(wse_pattern):
+            name = list(f.keys())[0]
+            if name.endswith(riallto_pattern) or name.endswith(wse_pattern):
                 l.append(f)
         return l
 
     def _apps(self)->None:
-        """ displays all apps that are running on the NPU
+        """ displays all apps that are running on the NPU 
         device using an IPython widget """
         import ipywidgets as widgets
         from IPython.display import display
@@ -76,20 +75,25 @@ class XBUtil:
         while True:
             apps = self.list_apps()
             if len(apps) > 0:
-                max_app_name = max(len(max(apps, key=len)), 10)
+                max_app_name = max(len(max([list(a.keys())[0] for a in apps],
+                                           key=len)), 10)
             else:
                 max_app_name = 10
 
             s = "Currently Running NPU apps: (update rate 1s)\n"
-            s = f"| {'app name': <{max_app_name}} | {'Num columns': <14} | {'start column': <14} |\n"
+            s = f"| {'app name': <{max_app_name}} | {'Num columns': <14} | "
+            s+= f"{'start column': <14} |\n"
             s += '-'*max_app_name + '-'*38 + '\n'
 
             if len(apps) == 0:
-                s += ' '*( (int)((max_app_name+38)/2) - 12) + "No apps currently loaded\n"
+                s += ' '*( (int)((max_app_name+38)/2) - 12)
+                s += "No apps currently loaded\n"
             else:
                 for a in apps:
                     appname = list(a.keys())[0]
-                    s += f"  {appname: <{max_app_name}}   { a[appname]['num_cols']: <14}   { a[appname]['start_col']: <14}  \n"
+                    s += f"| {appname: <{max_app_name}} | "
+                    s += f"{ a[appname]['num_cols']: <14} | "
+                    s += f"{ a[appname]['start_col']: <14} |\n"
             output2.append_stdout(s)
             output1.outputs = output2.outputs
             output2.outputs = ()
@@ -100,7 +104,6 @@ class XBUtil:
         import threading
         thread = threading.Thread(target=self._apps)
         thread.start()
-
 
     @property
     def app_count(self)->int:
@@ -121,11 +124,11 @@ class XBUtil:
         l = []
         d = self._cmd(['examine', '-d', self.devid, '-r', 'dynamic-regions',
                        '-r', 'aie-partitions'])
+
         for f, col in zip(d['devices'][0]['dynamic_regions'][0]['compute_units'],
                           d['devices'][0]['aie_partitions']['partitions']):
             l.append({f['name']: {'start_col': str(col['start_col']),
                                   'num_cols': str(col['num_cols'])}})
-
         return l
 
     @property
