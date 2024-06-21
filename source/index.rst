@@ -109,4 +109,5 @@ For support, go to the `Riallto GitHub discussions forum <https://github.com/AMD
    Install the NPU driver<prerequisites-driver>
    Get an AIE license<prerequisites-aie-license>
    Enable WSL<prerequisites-wsl>
+   Update RyzenAI-SW<upgrade-ryzenaisw>
 
