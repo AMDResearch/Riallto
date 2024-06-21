@@ -12,6 +12,13 @@ import time
 XBUTIL_DIR = Path("C:\\Windows\\System32\\AMD")
 
 
+def _map_list_to_list(appsmap: list) -> List[str]:
+    applist = []
+    for app in appsmap:
+        applist.append(list(app.keys())[0])
+    return applist
+
+
 class XBUtil:
 
     def __init__(self):
@@ -38,10 +45,9 @@ class XBUtil:
         """ Returns true if an app with the given name is
         present on the NPU device """
         riallto_pattern = "Riallto"
-        for f in self._get_loaded_functions():
-            appname = list(f.keys())[0]
-            if appname.endswith(riallto_pattern):
-                if appname.startswith(name):
+        for f in _map_list_to_list(self._get_loaded_functions()):
+            if f.endswith(riallto_pattern):
+                if f.startswith(name):
                     return True
         return False
 
@@ -135,7 +141,7 @@ class XBUtil:
     @property
     def loaded_functions(self) -> List[str]:
         """ Returns a list of loaded functions on the NPU. Applications can have multiple functions."""
-        return self._get_loaded_functions()
+        return _map_list_to_list(self._get_loaded_functions())
 
     def _check_xbutil_install(self):
         """ Returns true if xbutil.exe is available. """
