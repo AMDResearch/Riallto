@@ -31,4 +31,4 @@ extern "C" {
     void bitwiseOr(uint8_t *in_buffer1, uint8_t *in_buffer2, uint8_t *out_buffer, int32_t nbytes) {
         bitwiseOR_aie<uint8_t, 64>(in_buffer1, in_buffer2, out_buffer, nbytes);
     }
-} 
+}

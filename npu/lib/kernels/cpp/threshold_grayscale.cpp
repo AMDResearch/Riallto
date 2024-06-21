@@ -15,7 +15,7 @@ enum _threshold_type {
 };
 
 template <typename T, int N>
-__attribute__((noinline)) void threshold_aie(
+__attribute__((noinline)) void threshold_grayscale_aie(
     T* in_buffer, T* out_buffer, const int32_t nbytes, const T& thresh_val, const T& max_val, const uint8_t threshold_type) {
     ::aie::vector<T, N> constants;
     ::aie::vector<T, N> data_out;
@@ -27,7 +27,7 @@ __attribute__((noinline)) void threshold_aie(
     switch (threshold_type) {
         case XF_THRESHOLD_TYPE_TRUNC:
             for (int j = 0; j < nbytes; j += N) // 16x samples per loop
-            chess_prepare_for_pipelining chess_loop_range(14, ) { 
+            chess_prepare_for_pipelining chess_loop_range(14, ) {
                 ::aie::vector<T, N> data_buf1 = ::aie::load_v(in_buffer); // in:00++15|_________|_________|_________
                 in_buffer += N;
                 data_out = ::aie::min(constants[1], data_buf1);
@@ -37,7 +37,7 @@ __attribute__((noinline)) void threshold_aie(
             break;
         case XF_THRESHOLD_TYPE_BINARY:
             for (int j = 0; j < nbytes; j += N) // 16x samples per loop
-            chess_prepare_for_pipelining chess_loop_range(14, ) { 
+            chess_prepare_for_pipelining chess_loop_range(14, ) {
                 ::aie::vector<T, N> data_buf1 = ::aie::load_v(in_buffer); // in:00++15|_________|_________|_________
                 in_buffer += N;
                 temp_val = ::aie::lt(constants[1], data_buf1);
@@ -48,7 +48,7 @@ __attribute__((noinline)) void threshold_aie(
             break;
         case XF_THRESHOLD_TYPE_BINARY_INV:
             for (int j = 0; j < nbytes; j += N) // 16x samples per loop
-            chess_prepare_for_pipelining chess_loop_range(14, ) { 
+            chess_prepare_for_pipelining chess_loop_range(14, ) {
                 ::aie::vector<T, N> data_buf1 = ::aie::load_v(in_buffer); // in:00++15|_________|_________|_________
                 in_buffer += N;
                 temp_val = ::aie::lt(constants[1], data_buf1);
@@ -59,7 +59,7 @@ __attribute__((noinline)) void threshold_aie(
             break;
         case XF_THRESHOLD_TYPE_TOZERO:
             for (int j = 0; j < nbytes; j += N) // 16x samples per loop
-            chess_prepare_for_pipelining chess_loop_range(14, ) { 
+            chess_prepare_for_pipelining chess_loop_range(14, ) {
                 ::aie::vector<T, N> data_buf1 = ::aie::load_v(in_buffer); // in:00++15|_________|_________|_________
                 in_buffer += N;
                 temp_val = ::aie::lt(constants[1], data_buf1);
@@ -70,7 +70,7 @@ __attribute__((noinline)) void threshold_aie(
             break;
         case XF_THRESHOLD_TYPE_TOZERO_INV:
            for (int j = 0; j < nbytes; j += N) // 16x samples per loop
-            chess_prepare_for_pipelining chess_loop_range(14, ) { 
+            chess_prepare_for_pipelining chess_loop_range(14, ) {
                 ::aie::vector<T, N> data_buf1 = ::aie::load_v(in_buffer); // in:00++15|_________|_________|_________
                 in_buffer += N;
                 temp_val = ::aie::lt(constants[1], data_buf1);
@@ -81,7 +81,7 @@ __attribute__((noinline)) void threshold_aie(
             break;
         default:
             for (int j = 0; j < nbytes; j += N) // 16x samples per loop
-            chess_prepare_for_pipelining chess_loop_range(14, ) { 
+            chess_prepare_for_pipelining chess_loop_range(14, ) {
                 ::aie::vector<T, N> data_buf1 = ::aie::load_v(in_buffer); // in:00++15|_________|_________|_________
                 in_buffer += N;
                 data_out = ::aie::min(constants[1], data_buf1);
@@ -94,6 +94,6 @@ __attribute__((noinline)) void threshold_aie(
 
 extern "C" {
     void threshold_grayscale(uint8_t *in_buffer, uint8_t *out_buffer, int32_t nbytes, uint8_t thresh_val, uint8_t max_val, uint8_t threshold_type) {
-        threshold_aie<uint8_t, 64>(in_buffer, out_buffer, nbytes, thresh_val, max_val, threshold_type);
-    } 
+        threshold_grayscale_aie<uint8_t, 64>(in_buffer, out_buffer, nbytes, thresh_val, max_val, threshold_type);
+    }
 }
