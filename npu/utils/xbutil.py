@@ -8,8 +8,6 @@ from typing import List, Dict, Set
 import subprocess
 import tempfile
 import json
-import shutil
-import sys
 import time
 
 XBUTIL_DIR = Path("C:\Windows\System32\AMD")
@@ -17,9 +15,9 @@ XBUTIL_DIR = Path("C:\Windows\System32\AMD")
 class XBUtil:
 
     def __init__(self):
-        """ A class that wraps xbutil so that information can be 
+        """ A class that wraps xbutil so that information can be
         parsed about currently running applications on the NPU
-        device. 
+        device.
 
         Attributes
         ----------
@@ -37,12 +35,13 @@ class XBUtil:
         self.devid = next(iter(self._devices))
 
     def app_exists(self, name:str)->bool:
-        """ Returns true if an app with the given name is 
+        """ Returns true if an app with the given name is
         present on the NPU device """
         riallto_pattern = "Riallto"
         for f in self._get_loaded_functions():
-            if f.endswith(riallto_pattern):
-                if f.startswith(name):
+            appname = list(f.keys())[0]
+            if appname.endswith(riallto_pattern):
+                if appname.startswith(name):
                     return True
         return False
 
@@ -58,14 +57,13 @@ class XBUtil:
         """ Lists all the apps running on the
         NPU device """
         l = []
-        wse_pattern = "IPUV1CNN" 
+        wse_pattern = "IPUV1CNN"
         riallto_pattern = "Riallto"
         for f in self._get_loaded_functions():
-            if f.endswith(riallto_pattern):
+            appname = list(f.keys())[0]
+            if appname.endswith(riallto_pattern) or appname.endswith(wse_pattern):
                 l.append(f)
-            elif f.endswith(wse_pattern):
-                l.append(f)
-        return l 
+        return l
 
     def _apps(self)->None:
         """ displays all apps that are running on the NPU
@@ -78,20 +76,20 @@ class XBUtil:
         while True:
             apps = self.list_apps()
             if len(apps) > 0:
-                max_app_name = max(len(max(apps, key=len)), 10) 
+                max_app_name = max(len(max(apps, key=len)), 10)
             else:
-                max_app_name = 10 
+                max_app_name = 10
 
-            s = f"Currently Running NPU apps: (update rate 1s)\n"
+            s = "Currently Running NPU apps: (update rate 1s)\n"
             s = f"| {'app name': <{max_app_name}} | {'Num columns': <14} | {'start column': <14} |\n"
             s += '-'*max_app_name + '-'*38 + '\n'
 
             if len(apps) == 0:
-                s += ' '*( (int)((max_app_name+38)/2) - 12) + "No apps currently loaded\n"  
+                s += ' '*( (int)((max_app_name+38)/2) - 12) + "No apps currently loaded\n"
             else:
-
                 for a in apps:
-                    s += f"  {a: <{max_app_name}}   {1: <14}   {'?': <14}  \n"
+                    appname = list(a.keys())[0]
+                    s += f"  {appname: <{max_app_name}}   { a[appname]['num_cols']: <14}   { a[appname]['start_col']: <14}  \n"
             output2.append_stdout(s)
             output1.outputs = output2.outputs
             output2.outputs = ()
@@ -121,9 +119,13 @@ class XBUtil:
     def _get_loaded_functions(self)->List[str]:
         """ Returns a list of the loaded functions on the NPU from xbutil. """
         l = []
-        d = self._cmd(['examine', '-d', self.devid, '-r', 'dynamic-regions'])
-        for f in d['devices'][0]['dynamic_regions'][0]['compute_units']:
-            l.append(f['name'])
+        d = self._cmd(['examine', '-d', self.devid, '-r', 'dynamic-regions',
+                       '-r', 'aie-partitions'])
+        for f, col in zip(d['devices'][0]['dynamic_regions'][0]['compute_units'],
+                          d['devices'][0]['aie_partitions']['partitions']):
+            l.append({f['name']: {'start_col': str(col['start_col']),
+                                  'num_cols': str(col['num_cols'])}})
+
         return l
 
     @property
@@ -140,7 +142,7 @@ class XBUtil:
         try:
             tmp_dir = tempfile.mkdtemp()
             _t = Path(tmp_dir) / "temp.json"
-            output = subprocess.check_output([self._xbutil]  
+            output = subprocess.check_output([self._xbutil]
                                              + cmdlist
                                              + ['-f', 'json', '-o', _t.absolute(), '--force']
                                              , stderr=subprocess.STDOUT)
