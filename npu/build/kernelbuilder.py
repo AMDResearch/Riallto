@@ -7,6 +7,7 @@ from .wslbuilder import WSLBuilder
 from .utils import wsl_prefix
 import hashlib
 import glob
+import shutil
 
 
 KERNELS_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'lib', 'kernels', 'cpp')
