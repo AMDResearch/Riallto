@@ -9,7 +9,8 @@ import tempfile
 import json
 import time
 
-XBUTIL_DIR = Path("C:\Windows\System32\AMD")
+XBUTIL_DIR = Path("C:\\Windows\\System32\\AMD")
+
 
 class XBUtil:
 
@@ -33,7 +34,7 @@ class XBUtil:
         self._check_devices()
         self.devid = next(iter(self._devices))
 
-    def app_exists(self, name:str)->bool:
+    def app_exists(self, name: str) -> bool:
         """ Returns true if an app with the given name is
         present on the NPU device """
         riallto_pattern = "Riallto"
@@ -45,32 +46,32 @@ class XBUtil:
         return False
 
     @property
-    def app_table(self)->str:
+    def app_table(self) -> str:
         """Returns a table of the apps currently loaded onto the NPU device"""
         s = "Currently loaded apps:\n"
         for app in self.list_apps():
             s += f"\t{list(app.keys())[0]}\n"
         return s
 
-    def list_apps(self)->List[str]:
+    def list_apps(self) -> List[str]:
         """ Lists all the apps running on the
         NPU device """
-        l = []
+        applist = []
         wse_pattern = "IPUV1CNN"
         riallto_pattern = "Riallto"
         for f in self._get_loaded_functions():
             name = list(f.keys())[0]
             if name.endswith(riallto_pattern) or name.endswith(wse_pattern):
-                l.append(f)
-        return l
+                applist.append(f)
+        return applist
 
-    def _apps(self)->None:
-        """ displays all apps that are running on the NPU 
+    def _apps(self) -> None:
+        """ displays all apps that are running on the NPU
         device using an IPython widget """
         import ipywidgets as widgets
         from IPython.display import display
         output1 = widgets.Output()
-        output2 = widgets.Output() # Multiple widgets to avoid flickering during update
+        output2 = widgets.Output()  # Multiple widgets to avoid flickering during update
         display(output1)
         while True:
             apps = self.list_apps()
@@ -82,11 +83,11 @@ class XBUtil:
 
             s = "Currently Running NPU apps: (update rate 1s)\n"
             s = f"| {'app name': <{max_app_name}} | {'Num columns': <14} | "
-            s+= f"{'start column': <14} |\n"
+            s += f"{'start column': <14} |\n"
             s += '-'*max_app_name + '-'*38 + '\n'
 
             if len(apps) == 0:
-                s += ' '*( (int)((max_app_name+38)/2) - 12)
+                s += ' '*((int)((max_app_name+38)/2) - 12)
                 s += "No apps currently loaded\n"
             else:
                 for a in apps:
@@ -99,40 +100,40 @@ class XBUtil:
             output2.outputs = ()
             time.sleep(1)
 
-    def apps(self)->None:
+    def apps(self) -> None:
         """ Starts a thread displaying all the apps in an ipython widget. """
         import threading
         thread = threading.Thread(target=self._apps)
         thread.start()
 
     @property
-    def app_count(self)->int:
+    def app_count(self) -> int:
         """ The total number of running apps """
         return self.num_wse_streams + self.num_riallto_streams
 
     @property
-    def num_wse_streams(self)->int:
+    def num_wse_streams(self) -> int:
         """ Returns the current number of active WSE streams """
         return self.loaded_functions.count('DPU_1x4:IPUV1CNN')
 
     @property
-    def num_riallto_streams(self)->int:
+    def num_riallto_streams(self) -> int:
         return sum(1 for app in self.loaded_functions if 'Riallto' in app)
 
-    def _get_loaded_functions(self)->List[str]:
+    def _get_loaded_functions(self) -> List[str]:
         """ Returns a list of the loaded functions on the NPU from xbutil. """
-        l = []
+        applist = []
         d = self._cmd(['examine', '-d', self.devid, '-r', 'dynamic-regions',
                        '-r', 'aie-partitions'])
 
         for f, col in zip(d['devices'][0]['dynamic_regions'][0]['compute_units'],
                           d['devices'][0]['aie_partitions']['partitions']):
-            l.append({f['name']: {'start_col': str(col['start_col']),
-                                  'num_cols': str(col['num_cols'])}})
-        return l
+            applist.append({f['name']: {'start_col': str(col['start_col']),
+                                        'num_cols': str(col['num_cols'])}})
+        return applist
 
     @property
-    def loaded_functions(self)->List[str]:
+    def loaded_functions(self) -> List[str]:
         """ Returns a list of loaded functions on the NPU. Applications can have multiple functions."""
         return self._get_loaded_functions()
 
@@ -140,21 +141,22 @@ class XBUtil:
         """ Returns true if xbutil.exe is available. """
         _ = self._cmd(['examine', '-d'])
 
-    def _cmd(self, cmdlist:List[str])->Dict:
+    def _cmd(self, cmdlist: List[str]) -> Dict:
         """ Runs an xbutil.exe command to produce a json report that is parsed into a dict and returned. """
         try:
             tmp_dir = tempfile.mkdtemp()
             _t = Path(tmp_dir) / "temp.json"
             output = subprocess.check_output([self._xbutil]
                                              + cmdlist
-                                             + ['-f', 'json', '-o', _t.absolute(), '--force']
-                                             , stderr=subprocess.STDOUT)
+                                             + ['-f', 'json', '-o',
+                                                _t.absolute(), '--force'],
+                                             stderr=subprocess.STDOUT)
             return json.load(FileIO(_t.absolute()))
         except subprocess.CalledProcessError as e:
             print(f"xbutil command failed.\n\n {e.output.decode()}")
             raise e
 
-    def _get_devices(self)->Set[str]:
+    def _get_devices(self) -> Set[str]:
         """ Get the set of devices on this machine"""
         t = []
         examine_out = self._cmd(['examine', '-d'])
@@ -163,7 +165,7 @@ class XBUtil:
             t.append(d['bdf'])
         return set(t)
 
-    def _check_devices(self)->None:
+    def _check_devices(self) -> None:
         """Raises an error if a problem is detected with the device. """
         if len(self._devices) > 1:
             raise RuntimeError("Unable to determine which device is the NPU, "
