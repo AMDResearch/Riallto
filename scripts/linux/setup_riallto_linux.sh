@@ -153,7 +153,7 @@ fi
 
 if [ ! -f "./xilinx_tools.tar.gz" ]; then
 	echo "xilinx_tools.tar.gz is missing, downloading it from opendownloads..."
-	wget -O $build_tmp/riallto_installer.zip https://www.xilinx.com/bin/public/openDownload?filename=Riallto-v1.0.zip
+	wget -O $build_tmp/riallto_installer.zip https://www.xilinx.com/bin/public/openDownload?filename=Riallto-v1.1.zip  
 	pushd $build_tmp
 		unzip riallto_installer.zip
         	mv Riallto_v1.0/Riallto/downloads/xilinx_tools_latest.tar.gz ./xilinx_tools.tar.gz	
