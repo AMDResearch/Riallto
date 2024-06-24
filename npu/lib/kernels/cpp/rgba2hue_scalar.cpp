@@ -21,7 +21,7 @@ void rgba2hue_aie_scalar(uint8_t *in_buffer, uint8_t *out_buffer, const uint32_t
 
         if (rgbMax == 0 || rgbMax == rgbMin)
             h = 0;
-        else if (rgbMax == r) 
+        else if (rgbMax == r)
             h = 0 + 85 * (g - b) / (rgbMax - rgbMin); // h = 0 + 42.5*(g - b) / (rgbMax - rgbMin);
         else if (rgbMax == g)
             h = 85*2 + 85 * (b - r) / (rgbMax - rgbMin); // h = 85 + 42.5*(b - r) / (rgbMax - rgbMin);

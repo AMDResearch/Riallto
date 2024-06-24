@@ -4,12 +4,10 @@
 #include "linebuffer.h"
 #include <aie_api/aie.hpp>
 
-extern "C" {
-
-void filter2d_1080p(uint8_t *in_buffer, uint8_t *out_buffer,
-	      int16_t coeff_0_0, int16_t coeff_0_1, int16_t coeff_0_2,
-	      int16_t coeff_1_0, int16_t coeff_1_1, int16_t coeff_1_2,
-	      int16_t coeff_2_0, int16_t coeff_2_1, int16_t coeff_2_2) {
+void filter2d_1080p_aie(uint8_t *in_buffer, uint8_t *out_buffer,
+        int16_t coeff_0_0, int16_t coeff_0_1, int16_t coeff_0_2,
+        int16_t coeff_1_0, int16_t coeff_1_1, int16_t coeff_1_2,
+        int16_t coeff_2_0, int16_t coeff_2_1, int16_t coeff_2_2) {
 
      int16_t filter[3][3];
      filter[0][0] = coeff_0_0;
@@ -25,7 +23,18 @@ void filter2d_1080p(uint8_t *in_buffer, uint8_t *out_buffer,
 
      linebuffer_t lb = linebuffer<1920>(in_buffer, 1079);
      filter2d_3lines_aie(lb.line0, lb.line1, lb.line2, out_buffer, 1920, filter_ptr);
+}
+
+extern "C" {
+
+void filter2d_1080p(uint8_t *in_buffer, uint8_t *out_buffer,
+        int16_t coeff_0_0, int16_t coeff_0_1, int16_t coeff_0_2,
+        int16_t coeff_1_0, int16_t coeff_1_1, int16_t coeff_1_2,
+        int16_t coeff_2_0, int16_t coeff_2_1, int16_t coeff_2_2) {
+
+     filter2d_1080p_aie(in_buffer, out_buffer, coeff_0_0, coeff_0_1, coeff_0_2,
+                        coeff_1_0, coeff_1_1, coeff_1_2, coeff_2_0, coeff_2_1,
+                        coeff_2_2);
   }
 
 }
-
