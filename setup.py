@@ -60,6 +60,7 @@ setup(
         "CppHeaderParser",
         "jupyterlab",
         "ipywidgets",
-        "pillow>=10.0.0"
+        "pillow>=10.0.0",
+        "ml_dtypes"
     ],
     description="Riallto is a simple framework for programming and interacting with the AMD IPU device.")

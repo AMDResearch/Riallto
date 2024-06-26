@@ -202,7 +202,10 @@ class MLIRSequnceBuilder:
 
     def _change_to_int32_offset(self, offset, dtype):
 
-        itemsize = int(str(dtype)[1:])//8
+        if dtype == "bf16":
+            itemsize = 2
+        else:
+            itemsize = int(str(dtype)[1:])//8
 
         if offset % 4 != 0:
             raise ValueError(f"Must be divisible by 4 {offset=}")
@@ -219,7 +222,11 @@ class MLIRSequnceBuilder:
         mod_shape = np.zeros(shape).squeeze()
         new_shape = list(mod_shape.shape[:])
 
-        itemsize = int(str(dtype)[1:])//8
+        if dtype == "bf16":
+            itemsize = 2
+        else:
+            itemsize = int(str(dtype)[1:])//8
+
 
         if not new_shape and itemsize == 4:
             return (1,)
@@ -330,6 +337,7 @@ class MLIRSequnceBuilder:
 
     def _get_ub_dtype_mlir_str(self, ub)->str:
         typemap = {
+                "bfloat16" : "bf16",
                 "uint8"    : "i8",
                 "uint16"   : "i16",
                 "uint32"   : "i32",
