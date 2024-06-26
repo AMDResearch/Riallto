@@ -300,7 +300,8 @@ def check_npu():
         pytest.skip('Skipping test because the IPU device is not enabled on this device.')
     xbu = XBUtil()
     for app in xbu.list_apps():
-        if app.endswith("IPURiallto"):
+        appname = list(app.keys())[0]
+        if appname.endswith("IPURiallto"):
             pytest.skip('Skipping test because the IPU is in an unstable state.')
 
 

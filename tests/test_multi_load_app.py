@@ -6,6 +6,7 @@ import numpy as np
 import os
 from .test_applications import check_npu
 from npu.runtime import AppRunner
+from npu.utils.xbutil import XBUtil
 from .test_applications import SimplePlusN
 
 
@@ -28,21 +29,26 @@ def test_double_load_custom_app():
     assert app
     app1 = AppRunner("SimplePlusN.xclbin")
     assert app1
-    del app, app1
+    appsreport = XBUtil()
+    assert appsreport.app_count == 2
+    del app, app1, appsreport
 
 
-@pytest.mark.parametrize('numapps', [2, 3, 4])
-def test_videoapp_n_loads(numapps):
+@pytest.mark.parametrize('numappsreport', [2, 3, 4])
+def test_videoapp_n_loads(numappsreport):
     """Load N instances of the same app. Test should pass"""
     check_npu()
     appbin = _get_full_path("color_threshold_v2_720p.xclbin")
     app = []
-    for _ in range(numapps):
+    for _ in range(numappsreport):
         app.append(AppRunner(appbin))
 
-    for i in range(numapps):
+    appsreport = XBUtil()
+    assert appsreport.app_count == numappsreport
+
+    for i in range(numappsreport):
         assert app[i]
-    del app
+    del app, appsreport
 
 
 def test_videoapp_five_loads():
@@ -58,9 +64,12 @@ def test_videoapp_five_loads():
     for i in range(4):
         assert app[i]
 
+    appsreport = XBUtil()
+    assert appsreport.app_count == 4
+
     with pytest.raises(RuntimeError) as verr:
         app1 = AppRunner(appbin)
-        assert 'There is currently no free space on the NPU' in str(verr.value)
         del app1
+    assert 'There is currently no free space on the NPU' in str(verr.value)
 
-    del app
+    del app, appsreport
