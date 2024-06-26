@@ -7,6 +7,10 @@ param (
 
 & uninstall_onnx.ps1
 
+# Enter venv
+$venvPath = Join-Path -Path $PSScriptRoot -ChildPath "activate_venv.ps1"
+. $venvPath
+
 # Unzip and cd into the RyzenAI-SW package
 $zipFolderName = [System.IO.Path]::GetFileNameWithoutExtension($zipPath)
 if (-Not (Test-Path $zipFolderName)) {
