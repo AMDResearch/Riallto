@@ -31,7 +31,7 @@ on:
 jobs:
   birman-tests:
     name: not-birman-15-linux-tests
-    runs-on: self-hosted
+    runs-on: self-hosted-linux
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -40,4 +40,5 @@ jobs:
   
       - name: run pytests 
         run: |
+          ls ./
           ./Riallto/.github/workflows/linux_ci_script.sh 
