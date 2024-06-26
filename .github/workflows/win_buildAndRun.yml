@@ -31,7 +31,7 @@ on:
 jobs:
   birman-tests:
     name: not-birman-15-tests
-    runs-on: self-hosted
+    runs-on: self-hosted-windows
     steps:
       - name: Checkout
         uses: actions/checkout@v2
