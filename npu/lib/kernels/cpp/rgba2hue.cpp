@@ -34,17 +34,17 @@ __attribute__((inline)) void xf_extract_rgb(uint8_t* ptr_rgba,
 
 __attribute__((inline)) void comp_divisor_16b(::aie::vector<uint8_t, 32> divisor,
                                              ::aie::vector<uint16_t, 32>& divisor_select) {
-    const int step = 0; 
-    using lut_type_uint16 = aie::lut<4, uint16, uint16>;	
-    lut_type_uint16 inv_lut_16b(num_entries_lut_inv_16b, 
+    const int step = 0;
+    using lut_type_uint16 = aie::lut<4, uint16, uint16>;
+    lut_type_uint16 inv_lut_16b(num_entries_lut_inv_16b,
                         lut_inv_16b_ab,lut_inv_16b_cd);
-    aie::parallel_lookup<uint8, lut_type_uint16, aie::lut_oor_policy::truncate> 
+    aie::parallel_lookup<uint8, lut_type_uint16, aie::lut_oor_policy::truncate>
         lookup_inv_16b(inv_lut_16b, step);
 
     aie::vector<uint8,16> input1, input2;
     aie::vector<uint16,16> res1, res2;
-    input1 = divisor.extract<16>(0);    
-    input2 = divisor.extract<16>(1);    
+    input1 = divisor.extract<16>(0);
+    input2 = divisor.extract<16>(1);
     res1 = lookup_inv_16b.fetch(input1.cast_to<uint8>());
     res2 = lookup_inv_16b.fetch(input2.cast_to<uint8>());
     divisor_select = aie::concat(res1, res2);
@@ -60,7 +60,7 @@ __attribute__((noinline)) void rgba2hue_aie(uint8_t *in_buffer, uint8_t *out_buf
 
     ::aie::vector<int16_t, 32> eightFive      = aie::zeros<int16_t, 32>();
     eightFive[0] = 85; eightFive[1] = -85;
-    ::aie::vector<int16_t, 32> one            = aie::broadcast<int16_t, 32>(1);   
+    ::aie::vector<int16_t, 32> one            = aie::broadcast<int16_t, 32>(1);
     ::aie::vector<int16_t, 32> twoEightFive   = aie::broadcast<int16_t, 32>(171); // 170 + 1
     ::aie::vector<int16_t, 32> fourEightFive  = aie::broadcast<int16_t, 32>(341); // 340 + 1
 
@@ -99,7 +99,7 @@ __attribute__((noinline)) void rgba2hue_aie(uint8_t *in_buffer, uint8_t *out_buf
         aie::mask<32> sel2 = aie::eq(rgbMax, g);
         auto          tmp2 = aie::select(tmp1, hg, sel2);
         aie::mask<32> sel3 = aie::eq(divisor, zero32);
-        hue                = aie::select(tmp2, zero32, sel3);       
+        hue                = aie::select(tmp2, zero32, sel3);
 
         ::aie::store_v(out_buffer, hue);
         in_buffer += 128;

@@ -52,7 +52,7 @@ setup(
     packages=find_packages(),
     python_requires=f"=={required_python_version}",
     install_requires=[
-        "numpy==1.*",
+        "numpy<2.0",
         "pytest",
         "pytest-cov",
         "opencv-python",
@@ -63,4 +63,4 @@ setup(
         "pillow>=10.0.0",
         "ml_dtypes"
     ],
-    description="Riallto is a simple framework for programming and interacting with the AMD IPU device.")
+    description="Riallto is a simple framework for programming and interacting with the AMD NPU device.")

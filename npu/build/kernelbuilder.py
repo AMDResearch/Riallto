@@ -7,6 +7,10 @@ from .wslbuilder import WSLBuilder
 from .utils import wsl_prefix
 import hashlib
 import glob
+import shutil
+
+
+KERNELS_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'lib', 'kernels', 'cpp')
 
 class KernelObjectBuilder(WSLBuilder):
     """This class builds ComputeTile kernel C/C++ into object files for linking into applications.
@@ -63,6 +67,7 @@ class KernelObjectBuilder(WSLBuilder):
 
             with open(os.path.join(self.build_path, f"{self.name}.cc"), "w") as fp:
                 fp.write(self.srccode)
+            shutil.copytree(KERNELS_DIR, self.build_path + '/kernels/')
 
             if self.srcfile is not None or self.getheaders:
                 for extension in ['*.h', '*.hh', '*.hpp', '*.hxx', '*.h++']:

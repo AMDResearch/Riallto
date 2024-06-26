@@ -286,7 +286,7 @@ class MLIRSequnceBuilder:
         return s
 
     def _to_seq_portsig(self)->str:
-        """ Generates the portsignature for the sequence func.func call in the generated MLIR."""
+        """ Generates the port signature for the sequence func.func call in the generated MLIR."""
         s = ''
         for i,ub in enumerate(self._ingress_egress_ub.values()):
             s += f"%{ub.ubname} : memref<{self._generate_ub_memref(ub)}>"

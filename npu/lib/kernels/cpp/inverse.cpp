@@ -6,9 +6,8 @@
 #include <stdlib.h>
 #include <aie_api/aie.hpp>
 
-extern "C" {
 
-void inverse(uint8_t *in_buffer, uint8_t* out_buffer, uint32_t nbytes) {
+void inverse_aie(uint8_t *in_buffer, uint8_t* out_buffer, uint32_t nbytes) {
     ::aie::vector<uint8_t, 32> buffer;
     ::aie::vector<uint8_t, 32> inverted_buffer;
     uint16_t loop_count = (nbytes) >> 5;
@@ -19,6 +18,12 @@ void inverse(uint8_t *in_buffer, uint8_t* out_buffer, uint32_t nbytes) {
         ::aie::store_v((uint8_t*)out_buffer, inverted_buffer);
         out_buffer += 32;
     }
-} 
+}
+
+extern "C" {
+
+void inverse(uint8_t *in_buffer, uint8_t* out_buffer, uint32_t nbytes) {
+    inverse_aie(in_buffer, out_buffer, nbytes);
+}
 
 }

@@ -6,9 +6,9 @@
 #include <stdlib.h>
 #include <aie_api/aie.hpp>
 
-extern "C" {
 
-void in_range(uint8_t *in_buffer, uint8_t* out_buffer, uint32_t nbytes, uint8_t range_low, uint8_t range_high) {
+void in_range_aie(uint8_t *in_buffer, uint8_t* out_buffer, uint32_t nbytes,
+                  uint8_t range_low, uint8_t range_high) {
 
     uint16_t loop_count = nbytes >> 6; // Divide by 32 as we're operating 64 pixels at a time
 
@@ -22,12 +22,19 @@ void in_range(uint8_t *in_buffer, uint8_t* out_buffer, uint32_t nbytes, uint8_t 
         auto mask_low  = ::aie::ge(buffer, range_low); // Generate boolean mask indicating weather the pixel is greater or equal than the threshold
         auto mask_high = ::aie::le(buffer, range_high); // Generate boolean mask indicating weather the pixel is less or equal than the threshold
         auto mask = mask_low & mask_high;
-        
+
         auto data_out = ::aie::select(zeros_buf, ones_buf, mask); // Generate pixel out based on the mask
 
         ::aie::store_v(out_buffer, data_out); // Write the result vector to data memory
         out_buffer += 64; // Increment the 64 positions the output pointer to data memory
     }
+}
+
+extern "C" {
+
+void in_range(uint8_t *in_buffer, uint8_t* out_buffer, uint32_t nbytes, uint8_t range_low, uint8_t range_high) {
+
+    in_range_aie(in_buffer, out_buffer, nbytes, range_low, range_high);
 }
 
 } // extern C

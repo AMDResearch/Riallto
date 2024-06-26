@@ -9,7 +9,7 @@ from .sequence import SequenceList
 from .appxclbinbuilder import AppXclbinBuilder
 from .utils import check_wsl_install
 from typing import Optional
-from sys import platform
+import platform
 import json
 
 class AppBuilder:
@@ -42,7 +42,7 @@ class AppBuilder:
     def __init__(self, name=None) -> None:
         """Return a new AppBuilder object."""
 
-        if not platform == 'linux': 
+        if platform.system() == 'Windows':
             check_wsl_install()
 
         self.name = type(self).__name__ if name is None else name
@@ -69,16 +69,16 @@ class AppBuilder:
     def to_metadata(self, *args):
         """ The application is converted into the AppMetadata after tracing the callgraph() call."""
         self.previous_build_args = args
-        self.kernels, self.connections = self.fxtracer.to_trace(*args)     
+        self.kernels, self.connections = self.fxtracer.to_trace(*args)
 
         return AppMetada(self.name,
-                         self.unique_named(self.kernels), 
+                         self.unique_named(self.kernels),
                          self.unique_named(self.connections),
                          self.to_sequence())
 
     def to_handoff(self, *args, file=None):
         """ Converts the application into a serializable JSON file."""
-        self.previous_build_args = args        
+        self.previous_build_args = args
         with open(file, 'w') as f:
             json.dump(self.to_json(*args), f, default = lambda o: '<not serialisable>')
 
@@ -86,10 +86,10 @@ class AppBuilder:
         """ Converts the application into JSON."""
         self.previous_build_args = args
         return self.to_metadata(*args).to_json()
-    
+
     @property
     def metadata(self, *args):
-        """ Generates the application JSON and displays inside a IPython environment."""                
+        """ Generates the application JSON and displays inside a IPython environment."""
         from npu import ReprDict
         self.validate_previous_build_args()
         return ReprDict(self.to_json(*self.previous_build_args), rootname=self.name)
@@ -106,7 +106,7 @@ class AppBuilder:
 
     def display(self)->None:
         """ Generates the application SVG and displays inside a IPython environment."""
-        from npu.utils.appviz import AppViz        
+        from npu.utils.appviz import AppViz
         self.validate_previous_build_args()
         _viz = AppViz(self.to_json(*self.previous_build_args))
         _viz.show
@@ -133,15 +133,15 @@ class AppBuilder:
             self.ab.build(self.name, f"{self.name}.mlir", self.kernels, debug)
         else:
             self.ab.build(self.name, mlir, self.kernels, debug)
-            
+
     def __add__(self, app_component):
         if isinstance(app_component, Connection):
             self.merge_applications(app_component.kernels, [app_component])
             return self
-        
+
         if isinstance(app_component, AppBuilder):
             self.merge_applications(app_component.kernels, app_component.connections)
-            return self    
+            return self
 
         raise TypeError(f"{app_component} of type {type(app_component)} is not supported")
 
@@ -152,7 +152,7 @@ class AppBuilder:
 
     def merge_applications(self, newkernels, newconnections):
         self.connections.extend(newconnections)
-        self.kernels.extend(newkernels)        
+        self.kernels.extend(newkernels)
 
     def unique_named(self, objs):
         unique_objs = list(set(objs))
@@ -162,4 +162,4 @@ class AppBuilder:
 
         unique_objs_byname_list.sort(key= lambda x : x.name)
 
-        return unique_objs_byname_list 
+        return unique_objs_byname_list

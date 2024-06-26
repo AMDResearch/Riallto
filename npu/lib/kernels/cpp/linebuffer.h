@@ -19,8 +19,8 @@ linebuffer_t linebuffer(uint8_t * input, uint32_t num_lines) {
     // (counter + 2) % 3 === (counter - 1) % 3 is the central row.
 
     linebuffer_t lb;
-    
-    if (count == 0) { // no valid output can be generated as the second row 
+
+    if (count == 0) { // no valid output can be generated as the second row
                       // has not arrived
         lb.line0 = linebuffer[0];
         lb.line1 = linebuffer[0];
@@ -34,7 +34,7 @@ linebuffer_t linebuffer(uint8_t * input, uint32_t num_lines) {
             // line 2 is next row
         lb.line0 = linebuffer[(count+1)%3];
         lb.line1 = linebuffer[(count+2)%3];
-        lb.line2 = linebuffer[count%3]; 
+        lb.line2 = linebuffer[count%3];
     }
 
     // reset count is necessary

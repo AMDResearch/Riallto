@@ -9,6 +9,7 @@ import numpy as np
 from pathlib import Path
 from npu.utils.test_device import get_device_status, reset_npu
 from npu.utils.xbutil import XBUtil
+import platform
 
 from npu.build.appbuilder import AppBuilder
 from npu.build.kernelbuilder import KernelObjectBuilder
@@ -296,12 +297,13 @@ def _test_appbuild(app, *args):
 
 def check_npu():
     """Utility to check that the IPU is available before a runtime test runs, otherwise skip test."""
-    if os.name == "nt":
+    if platform.system() == 'Windows':
         if not get_device_status() == "OK":
             pytest.skip('Skipping test because the IPU device is not enabled on this device.')
         xbu = XBUtil()
         for app in xbu.list_apps():
-            if app.endswith("IPURiallto"):
+            appname = list(app.keys())[0]
+            if appname.endswith("IPURiallto"):
                 pytest.skip('Skipping test because the IPU is in an unstable state.')
 
 
@@ -324,7 +326,7 @@ def manage_testing(request):
     Also save all the test specific artifacts to a given location."""
     yield
 
-    if os.name == "nt":
+    if platform.system() == 'Windows':
         test_name = request.node.name
         os.makedirs(Path('logs'), exist_ok=True)
         logdir = Path(f'logs/{test_name}')
