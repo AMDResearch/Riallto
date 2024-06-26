@@ -2,10 +2,12 @@
 # SPDX-License-Identifier: MIT
 
 from .xbutil import XBUtil
-
+import platform
 
 def nputop():
     """ Uses XBUtil to display all currently running applications in an ipywidgets
     form suitable for JupyterLab """
-    #XBUtil().apps()
-    print(f"nputop is not currently supported in linux due to changes in the xbutil api")
+    if platform.system() == "Windows":
+        XBUtil().apps()
+    else:
+        print(f"nputop is not currently supported in linux due to changes in the xbutil api")
