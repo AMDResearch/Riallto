@@ -13,6 +13,6 @@ docker run -dit --rm --name riallto_ci \
         riallto:latest \
         /bin/bash 
 
-docker exec -it riallto_ci /bin/bash -c "source ~/.bashrc && cd /workspace/Riallto && python3 -m pip install. && python3 -m pytest ./tests"
+docker exec -it riallto_ci /bin/bash -c "source ~/.bashrc && cd /workspace/ && python3 -m pip install . && python3 -m pytest ./tests"
 
 docker container stop riallto_ci || true

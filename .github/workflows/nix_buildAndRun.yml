@@ -41,4 +41,4 @@ jobs:
       - name: run pytests 
         run: |
           ls ./
-          ./Riallto/.github/workflows/linux_ci_script.sh 
+          ./.github/workflows/linux_ci_script.sh 
