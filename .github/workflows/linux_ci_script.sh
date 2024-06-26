@@ -15,4 +15,3 @@ docker run -dit --rm --name riallto_ci \
 
 docker exec -i riallto_ci /bin/bash -c "source ~/.bashrc && cd /workspace/ && python3 -m pip install . && python3 -m pytest ./tests"
 
-docker container stop riallto_ci || true
