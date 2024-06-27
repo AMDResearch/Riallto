@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: MIT
 
 docker container stop riallto_pytest || true
+docker container wait riallto_pytest || true
 
 docker run -dit --rm --name riallto_pytest \
         --cap-add=NET_ADMIN \

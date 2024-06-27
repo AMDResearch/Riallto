@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: MIT
 
 docker container stop riallto_ci || true
+docker container wait riallto_ci || true
 
 docker run -dit --rm --name riallto_ci \
         --cap-add=NET_ADMIN \

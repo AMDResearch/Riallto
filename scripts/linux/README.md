@@ -33,6 +33,6 @@ This will build the Riallto docker and will take about 20 minutes.
 ## Running Riallto / Running Tests
 Inside this directory there are a few scripts.
 
-* `launch_jupyter.sh` - will launch a jupyterlab server from a docker container allowing you to use Riallto notebooks.
+* `launch_jupyter.sh <notebooks directory>` - will launch a jupyterlab server from a docker container allowing you to use Riallto notebooks in the directory provided (usually Riallto/notebooks).
 * `run_pytest.sh` - will run a suit of pytests to test the operation of your NPU device and the Riallto installation.
 
