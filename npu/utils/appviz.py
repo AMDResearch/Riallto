@@ -144,11 +144,19 @@ class AppViz:
 
         if src['type'] == 'CT' and dst['type'] == 'CT':
             src_row = self._drawn_kernels[src['name']]['row']
+            dst_row = self._drawn_kernels[dst['name']]['row']
             for i in range(2):
                 self._col_svg.aie_tiles[src_row].add_buffer(
                             self._drawn_kernels[src['name']]['kcolor'],
                             self._kanimate_duration/2,
                             start_empty=not bool(i))
+                # if CTs are non neighbors we need to add double buffer in dst
+                if not self._are_neighbors(src, dst):
+                    self._col_svg.aie_tiles[dst_row].add_buffer(
+                            self._drawn_kernels[src['name']]['kcolor'],
+                            self._kanimate_duration/2,
+                            start_empty= bool(i))
+
             self._draw_ct2ct_data_movement(src, dst)
 
         if src['type'] == 'IT' and dst['type'] == 'CT':
@@ -205,7 +213,8 @@ class AppViz:
                 dst_buf_color = self._dbuf_colors[c['name']]
 
             show_mem_buffer = True
-            if 'in_buffer' not in c['name']:
+            mtmode = src.get('mtmode')
+            if mtmode == 'passthrough':
                 if self._mt2ct_passthrough['found']:
                     dst_buf_color = self._mt2ct_passthrough['color']
                     show_mem_buffer = False
@@ -226,7 +235,7 @@ class AppViz:
                         self._kanimate_duration/2,
                         start_empty=dbuf)
             if not dbuf:
-                self._draw_mem2ct_ic(dst, c, dst_buf_color)
+                self._draw_mem2ct_ic(dst, c, dst_buf_color, mtmode)
             else:
                 self._mt2ct_counter += 1
 
@@ -256,11 +265,11 @@ class AppViz:
                     color=src_color)
         self._ct2mt_counter += 1
 
-    def _draw_mem2ct_ic(self, dst, c, dst_color) -> None:
+    def _draw_mem2ct_ic(self, dst, c, dst_color, mtmode=None) -> None:
         """Display animation originating from MT and destination CT"""
 
         dst_row = self._loc_conv[dst['tloc'][1]]
-        delay = (self._mt2ct_counter-1) / 5
+        delay = self._mt2ct_counter / 5
 
         self._col_svg.mem_tiles[0].add_ic_animation(
                     diagonal_from_tile=1,
@@ -276,8 +285,7 @@ class AppViz:
                     duration=self._kanimate_duration/2,
                     delay=delay,
                     color=dst_color)
-        if 'in_buffer' in c['name']:
-            self._mt2ct_counter += 1
+        self._mt2ct_counter += int(mtmode == 'split')
 
     def _draw_ub2mem_ic(self, src, dst) -> None:
         """Display animation originating from IT and destination MT"""
