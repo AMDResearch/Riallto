@@ -220,7 +220,10 @@ class MLIRSequnceBuilder:
     def _change_to_int32(self, shape, dtype):
 
         mod_shape = np.zeros(shape).squeeze()
-        new_shape = list(mod_shape.shape[:])
+        if shape == (1,):
+            new_shape = [1]
+        else:
+            new_shape = list(mod_shape.shape[:])
 
         if dtype == "bf16":
             itemsize = 2
@@ -378,6 +381,7 @@ class MLIRSequnceBuilder:
 
             if s["snkkernelname"] in self._userbuffers:
                 if s["snkkernelname"] not in self._egress_ub:
+                    c_ub = self._userbuffers[s['snkkernelname']]
                     self._egress_ub[s["snkkernelname"]] = UBDataMovement(
                             ubname=s["snkkernelname"],
                             symname=s["name"],
