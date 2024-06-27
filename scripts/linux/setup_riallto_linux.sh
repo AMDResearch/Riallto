@@ -13,6 +13,34 @@ KERNEL_HEADERS_GENERIC=linux-headers-6.10.0-061000rc2-generic_6.10.0-061000rc2.2
 KERNEL_MODULES=linux-modules-6.10.0-061000rc2-generic_6.10.0-061000rc2.202406022333_amd64.deb
 KERNEL_IMAGE=linux-image-unsigned-6.10.0-061000rc2-generic_6.10.0-061000rc2.202406022333_amd64.deb
 
+############# CHECKS ##################################
+# Check to ensure key URLs are accessible
+URLS=(
+"https://kernel.ubuntu.com/mainline/v6.10-rc2/amd64/"
+"https://www.xilinx.com/bin/public/openDownload?filename=pynqMLIR_AIE_py312_v0.9.tar.gz"
+"https://www.xilinx.com/bin/public/openDownload?filename=Riallto-v1.1.zip"
+"https://github.com/amd/xdna-driver.git"
+"https://github.com/AMDResearch/Riallto.git"
+)
+
+for URL in "${URLS[@]}"; do
+        if curl --output /dev/null --silent --head --fail "$URL"; then
+                echo "[CHECK OK] URL is reachable: $URL"
+        else
+                echo "WARNING: [CHECK FAILED] URL is not reachable: $URL"
+                echo "Some parts of the installation might not work correctly."
+                while true; do
+                        read -p "Are you happy to continue? [Y/N]  " answer
+                        case $answer in
+                                [Yy]* ) echo "Continuing..."; break;;
+                                [Nn]* ) echo "Exiting"; exit 1;;
+                                * ) echo "Please chose Y or N.";;
+                        esac
+                done
+
+        fi
+done
+
 # Check that we are on Ubuntu24.04
 distro_info=$(lsb_release -d)
 if [[ $distro_info != *"Ubuntu 24.04"* ]]; then
