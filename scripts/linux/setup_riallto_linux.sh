@@ -21,6 +21,7 @@ URLS=(
 "https://www.xilinx.com/bin/public/openDownload?filename=Riallto-v1.1.zip"
 "https://github.com/amd/xdna-driver.git"
 "https://github.com/AMDResearch/Riallto.git"
+"https://docker.io/library/ubuntu"
 )
 
 for URL in "${URLS[@]}"; do
