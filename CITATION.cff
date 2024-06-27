@@ -31,5 +31,5 @@ authors:
   given-names: "Lu"
 title: "Riallto: an open-source exploration framework for first time users of the AMD Ryzen AI NPU"
 version: 1.0
-date-released: 2021-12-12
+date-released: 2023-12-12
 url: "https://github.com/AMDResearch/Riallto"
