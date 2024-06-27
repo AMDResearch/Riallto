@@ -18,6 +18,6 @@ cmd+=" -w /workspace riallto:latest /bin/bash"
 echo " running $cmd"
 eval $cmd
 
-docker exec -it riallto_jupyter /bin/bash -c " sudo chmod 666 /dev/video* && source ~/.bashrc && cd /notebooks && python3 -m jupyterlab --ip=0.0.0.0 --port=8888 --no-browser --NotebookApp.token=''"
+docker exec -it riallto_jupyter /bin/bash -c "(sudo chmod 666 /dev/video* || true) && source ~/.bashrc && cd /notebooks && python3 -m jupyterlab --ip=0.0.0.0 --port=8888 --no-browser --NotebookApp.token=''"
 
 docker container stop riallto_jupyter || true
