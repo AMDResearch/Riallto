@@ -3,7 +3,7 @@
 IPU Driver
 ==========
 
-The latest release of Riallto (v1.0) only supports the IPU driver version 10.1009.8.100. You can download the driver from the `Ryzen AI Software Platform page <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ipu_stack_rel_silicon_1.0.zip>`_. You will need to register an AMD account to access this page. 
+The latest release of Riallto (v1.1) only supports IPU driver versions >10.1009.8.100. You can download the latest driver from the `Ryzen AI Software Platform page <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ipu_stack_rel_silicon_1.0.zip>`_. You will need to register an AMD account to access this page.
 
 Installation
 ------------
