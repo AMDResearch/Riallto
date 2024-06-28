@@ -50,7 +50,7 @@ RUN sudo apt-get install -y python3-pip ocl-icd-opencl-dev uuid-dev
 RUN sudo -E dpkg -i npu_ubuntu_debs/xrt_*-amd64-xrt.deb
 RUN sudo -E dpkg -i npu_ubuntu_debs/xrt_plugin*-amdxdna.deb
 
-RUN git clone https://github.com/STFleming/Riallto -b linux_bringup --depth=1 
+RUN git clone https://github.com/AMDResearch/Riallto -b v1.1 --depth=1 
 
 SHELL ["/bin/bash", "-l", "-c"]
 
