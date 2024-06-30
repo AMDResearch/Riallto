@@ -22,7 +22,7 @@ class DisplayImage:
 
     def __init__(self, resize: int = 1):
         """ returns a DisplayImage object """
-        self._image_widget = widgets.Image(format='png')
+        self._image_widget = widgets.Image(format='jpeg')
         self._display()
         self._button_widget = widgets.Button(description='Stop')
         self._button_widget.on_click(self._stop_video)
@@ -45,7 +45,7 @@ class DisplayImage:
         """ Sets the current image on the widget """
         rows, cols, _ = value.shape
         frame = cv2.resize(value, (cols//self._resize, rows//self._resize))
-        _, img = cv2.imencode('.png', frame)
+        _, img = cv2.imencode('.jpeg', frame)
 
         img_array = np.array(img)
         self._image_widget.value = memoryview(img_array.tobytes())
