@@ -20,7 +20,7 @@ class DisplayImage:
         set by the button widget and read by the display widget to step the video.
     """
 
-    def __init__(self, , resize: int = 1):
+    def __init__(self, resize: int = 1):
         """ returns a DisplayImage object """
         self._image_widget = widgets.Image(format='jpeg')
         self._display()
