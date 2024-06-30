@@ -1,0 +1,1008 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>PyTorch and ONNX Flow for Training &#8212; Riallto - An exploration framework for Ryzen AI</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=a1ed0ca2" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/5_2_pytorch_onnx_re-train';</script>
+    <script src="../_static/cookie-consent.js?v=2793a0fe"></script>
+    <script src="../_static/custom.js?v=4ce5a416"></script>
+    <link rel="canonical" href="https://cathalmccabe.github.io/Riallto/notebooks/5_2_pytorch_onnx_re-train.html" />
+    <link rel="icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="npu" href="../modules.html" />
+    <link rel="prev" title="Run Machine Learning Inference on the NPU with PyTorch and ONNX" href="5_1_pytorch_onnx_inference.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Riallto - An exploration framework for Ryzen AI</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Riallto - an exploration framework for the AMD Ryzen AI NPU
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Riallto Overview</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="1_0_Introduction.html">Welcome to Riallto</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../install-riallto.html">Install Riallto</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../install-riallto-linux.html">Riallto Ubuntu 24.04 setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install-riallto-windows.html">Install Riallto on Windows</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ryzenai_video_overview.html">Riallto Video Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1_1_ryzenai.html">Understanding the Ryzen AI NPU</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_1_MS_Windows_Studio_Effects.html">Windows Studio Effects</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Riallto Overview</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="3_1_Color_threshold_example.html">Loading your First Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_2_Ryzenai_capabilities.html">Ryzen AI column architecture and tiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_3_Scaled_color_threshold_example.html">Scaling <em>Data Parallel</em> Applications to Multiple Compute Tiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_4_Edge_detect_example.html">Optimizing Data Movement with Shared Data Memories</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_5_Color_detect_example.html">Multicast, broadcast, and multiple kernels in a single compute tile</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Building Applications</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="4_1_software_framework.html">Exploration Software Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_2_write_your_kernel.html">Write your Own Kernel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_3_kernels_with_runtime_parameters.html">Run Time Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_4_threshold_kernel_with_vector_ops.html">How to Use the Vector Processing Units</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_5_describe_an_application.html">Describing an Application</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_6_build_application.html">Building a complete Application</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_7_using_the_memtile_in_your_applications.html">Using Memory Tiles in your Application</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_8_build_a_colorDetect_application.html">Reusing Software Kernels</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Ryzen AI Machine Learning</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="5_1_pytorch_onnx_inference.html">Run Machine Learning Inference on the NPU with PyTorch and ONNX</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">PyTorch and ONNX Flow for Training</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python Package</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../modules.html">npu</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../npu.html">npu package</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../npu.build.html">npu.build package</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../npu.lib.html">npu.lib package</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../npu.lib.applications.html">npu.lib.applications package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../npu.lib.cached.html">npu.lib.cached package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../npu.lib.kernels.html">npu.lib.kernels package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../npu.runtime.html">npu.runtime package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../npu.utils.html">npu.utils package</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">FAQ</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">Riallto FAQ</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Glossary</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Glossary.html">Glossary</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Appendix_Review_of_Image_Processing_Concepts.html">Review of Image Processing Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prerequisites-driver.html">IPU Driver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prerequisites-aie-license.html">AIE Build License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prerequisites-wsl.html">Install WSL</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/notebooks/5_2_pytorch_onnx_re-train.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>PyTorch and ONNX Flow for Training</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goals">Goals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-import-packages">Step 1: Import Packages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-prepare-the-model">Step 2: Prepare the Model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-model-for-re-training-using-transfer-learning">Load model for re-training using transfer learning</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-re-training">Model re-training</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-convert-model-to-onnx-format">Step 3: Convert Model to ONNX Format</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-the-onnx-model">Visualize the ONNX model</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-quantize-the-model">Step 4: Quantize the Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-deploy-the-model-on-npu-for-inference">Step 5: Deploy the Model on NPU for Inference</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#licenses">Licenses</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="pytorch-and-onnx-flow-for-training">
+<h1>PyTorch and ONNX Flow for Training<a class="headerlink" href="#pytorch-and-onnx-flow-for-training" title="Link to this heading">#</a></h1>
+<section id="goals">
+<h2>Goals<a class="headerlink" href="#goals" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Learn how to re-training a model using PyTorch</p></li>
+<li><p>Learn how to export a trained model to ONNX</p></li>
+<li><p>Learn how to quantize an ONNX model to run inference on the NPU</p></li>
+</ul>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<p><strong><a class="reference external" href="https://ryzenai.docs.amd.com/en/latest/getstartex.html">Ryzen AI Software Platform</a></strong></p>
+<p><strong><a class="reference external" href="https://onnxruntime.ai/docs/execution-providers/Vitis-AI-ExecutionProvider.html">Vitis AI Execution Provider</a></strong></p>
+<p><strong><a class="reference external" href="https://github.com/EN10/CIFAR">CIFAR10</a></strong></p>
+<hr class="docutils" />
+<div class="alert alert-box alert-warning">
+<p>This is not currently supported on the Linux release of Riallto.</p>
+</div><div class="alert alert-box alert-warning"> 
+<p>Running this re-training notebook will generate model files that will overwrite the existing trained quantized file in the <code class="docutils literal notranslate"><span class="pre">onnx</span></code> folder.</p>
+<p>Please make sure you rename any existing model files in the <code class="docutils literal notranslate"><span class="pre">onnx</span></code> folder to save them.</p>
+<p>The names of the model files that will be written are the following:</p>
+<ol class="arabic simple">
+<li><p>The trained ResNet-50 model on the CIFAR-10 dataset is: <code class="docutils literal notranslate"><span class="pre">onnx\resnet_trained_for_cifar10.pt</span></code>.</p></li>
+<li><p>The trained ResNet-50 model on the CIFAR-10 dataset in ONNX format is: <code class="docutils literal notranslate"><span class="pre">onnx\resnet_trained_for_cifar10.onnx</span></code>.</p></li>
+<li><p>The trained quantized ResNet-50 model on the CIFAR-10 dataset in ONNX format is: <code class="docutils literal notranslate"><span class="pre">onnx/resnet.qdq.U8S8.onnx</span></code></p></li>
+</ol>
+</div>   </section>
+<hr class="docutils" />
+<section id="step-1-import-packages">
+<h2>Step 1: Import Packages<a class="headerlink" href="#step-1-import-packages" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
+<span class="kn">from</span> <span class="nn">torch.utils.data</span> <span class="kn">import</span> <span class="n">DataLoader</span><span class="p">,</span> <span class="n">Dataset</span>
+
+<span class="kn">import</span> <span class="nn">torchvision</span>
+<span class="kn">import</span> <span class="nn">torchvision.transforms</span> <span class="k">as</span> <span class="nn">transforms</span>
+<span class="kn">from</span> <span class="nn">torchvision.models</span> <span class="kn">import</span> <span class="n">ResNet50_Weights</span><span class="p">,</span> <span class="n">resnet50</span>
+<span class="kn">from</span> <span class="nn">torchvision.datasets</span> <span class="kn">import</span> <span class="n">CIFAR10</span>
+
+<span class="kn">import</span> <span class="nn">vai_q_onnx</span>
+<span class="kn">from</span> <span class="nn">onnxruntime.quantization</span> <span class="kn">import</span> <span class="n">CalibrationDataReader</span><span class="p">,</span> <span class="n">QuantType</span><span class="p">,</span> <span class="n">QuantFormat</span>
+<span class="kn">import</span> <span class="nn">random</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="step-2-prepare-the-model">
+<h2>Step 2: Prepare the Model<a class="headerlink" href="#step-2-prepare-the-model" title="Link to this heading">#</a></h2>
+<p>Let us retrain the <a class="reference external" href="https://arxiv.org/pdf/1512.03385.pdf">ResNet-50 model</a> from PyTorch Hub using the CIFAR-10 dataset.</p>
+<p>The CIFAR-10 dataset is used to retrain the default model using the <a class="reference external" href="https://www.youtube.com/watch?v=BqqfQnyjmgg&amp;amp;list=PLo2EIpI_JMQtNtKNFFSMNIZwspj8H7-sQ&amp;amp;index=3">transfer learning technique</a>.</p>
+<div class="alert alert-box alert-warning">
+Make sure that the CIFAR-10 dataset is downloaded. For steps refer to the previous notebook.
+</div><section id="load-model-for-re-training-using-transfer-learning">
+<h3>Load model for re-training using transfer learning<a class="headerlink" href="#load-model-for-re-training-using-transfer-learning" title="Link to this heading">#</a></h3>
+<p>The pre-trained ResNet-50 model trained on 1,000 class ImageNet dataset by default has fully connected (FC) layer of output size 1,000. This means that it produces a 1,000-dimensional vector, where each dimension corresponds to a class in the ImageNet dataset.</p>
+<p>We use transfer learning to select a set of pre-trained weights for the model and then customize the model’s classifier by replacing its FC layers. The modification includes adding two linear layers, one with 2,048 input features and 64 output features, followed by a ReLU activation function, and another linear layer with 64 input features and 10 output features. This adaptation transforms the ResNet-50 model into a classifier suitable for a specific task with 10 classes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># License 1 (see end of notebook)</span>
+
+<span class="k">def</span> <span class="nf">load_resnet_model</span><span class="p">():</span>
+    <span class="n">weights</span> <span class="o">=</span> <span class="n">ResNet50_Weights</span><span class="o">.</span><span class="n">DEFAULT</span>
+    <span class="n">resnet</span> <span class="o">=</span> <span class="n">resnet50</span><span class="p">(</span><span class="n">weights</span><span class="o">=</span><span class="n">weights</span><span class="p">)</span>
+    <span class="n">resnet</span><span class="o">.</span><span class="n">fc</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">2048</span><span class="p">,</span> <span class="mi">64</span><span class="p">),</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">resnet</span>
+
+
+<span class="c1"># For updating learning rate</span>
+<span class="k">def</span> <span class="nf">update_lr</span><span class="p">(</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">lr</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">param_group</span> <span class="ow">in</span> <span class="n">optimizer</span><span class="o">.</span><span class="n">param_groups</span><span class="p">:</span>
+        <span class="n">param_group</span><span class="p">[</span><span class="s2">&quot;lr&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">lr</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="model-re-training">
+<h3>Model re-training<a class="headerlink" href="#model-re-training" title="Link to this heading">#</a></h3>
+<p>Define the CIFAR-10 dataset directory</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">global</span> <span class="n">models_dir</span><span class="p">,</span> <span class="n">data_dir</span>
+<span class="n">models_dir</span> <span class="o">=</span> <span class="s2">&quot;.</span><span class="se">\\</span><span class="s2">onnx&quot;</span>
+<span class="n">data_dir</span><span class="o">=</span> <span class="s2">&quot;.</span><span class="se">\\</span><span class="s2">onnx</span><span class="se">\\</span><span class="s2">data&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The training process runs over 500 images with a <code class="docutils literal notranslate"><span class="pre">batch_size</span></code> of 100, i.e., over the total 50,000 images in the train set.</p>
+<p>The training process takes approximately 10 minutes to complete each epoch. Number of epochs can be varied to optimize the accuracy of the model.</p>
+<p>At the end of this process, we will save the trained model as an ONNX model and then we will also quantize this model.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># License 1 (see end of notebook)</span>
+
+<span class="k">def</span> <span class="nf">prepare_model</span><span class="p">(</span><span class="n">num_epochs</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="c1"># Seed everything to 0</span>
+    <span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&quot;cuda&quot;</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s2">&quot;cpu&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Hyper-parameters</span>
+    <span class="n">num_epochs</span> <span class="o">=</span> <span class="n">num_epochs</span>
+    <span class="n">learning_rate</span> <span class="o">=</span> <span class="mf">0.001</span>
+
+    <span class="c1"># Image preprocessing modules</span>
+    <span class="n">transform</span> <span class="o">=</span> <span class="n">transforms</span><span class="o">.</span><span class="n">Compose</span><span class="p">(</span>
+        <span class="p">[</span><span class="n">transforms</span><span class="o">.</span><span class="n">Pad</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span> <span class="n">transforms</span><span class="o">.</span><span class="n">RandomHorizontalFlip</span><span class="p">(),</span> <span class="n">transforms</span><span class="o">.</span><span class="n">RandomCrop</span><span class="p">(</span><span class="mi">32</span><span class="p">),</span> <span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">()]</span>
+    <span class="p">)</span>
+
+    <span class="c1"># CIFAR-10 dataset</span>
+    <span class="n">train_dataset</span> <span class="o">=</span> <span class="n">torchvision</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">CIFAR10</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="n">data_dir</span><span class="p">,</span> <span class="n">train</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">transform</span><span class="p">,</span> <span class="n">download</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">test_dataset</span> <span class="o">=</span> <span class="n">torchvision</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">CIFAR10</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="n">data_dir</span><span class="p">,</span> <span class="n">train</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">())</span>
+
+    <span class="c1"># Data loader</span>
+    <span class="n">train_loader</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="n">train_dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">test_loader</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="n">test_dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="n">model</span> <span class="o">=</span> <span class="n">load_resnet_model</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+
+    <span class="c1"># Loss and optimizer</span>
+    <span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span>
+    <span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="n">learning_rate</span><span class="p">)</span>
+
+    <span class="c1"># Train the model</span>
+    <span class="n">total_step</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">train_loader</span><span class="p">)</span>
+    <span class="n">curr_lr</span> <span class="o">=</span> <span class="n">learning_rate</span>
+    <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_epochs</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">images</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">train_loader</span><span class="p">):</span>
+            <span class="n">images</span> <span class="o">=</span> <span class="n">images</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+            <span class="n">labels</span> <span class="o">=</span> <span class="n">labels</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+            <span class="c1"># Forward pass</span>
+            <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">images</span><span class="p">)</span>
+            <span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+            <span class="c1"># Backward and optimize</span>
+            <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+            <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+            <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">100</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span>
+                    <span class="s2">&quot;Epoch [</span><span class="si">{}</span><span class="s2">/</span><span class="si">{}</span><span class="s2">], Step [</span><span class="si">{}</span><span class="s2">/</span><span class="si">{}</span><span class="s2">] Loss: </span><span class="si">{:.4f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                        <span class="n">epoch</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">num_epochs</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">total_step</span><span class="p">,</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+                    <span class="p">)</span>
+                <span class="p">)</span>
+        <span class="c1"># Decay learning rate</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">epoch</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">20</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">curr_lr</span> <span class="o">/=</span> <span class="mi">3</span>
+            <span class="n">update_lr</span><span class="p">(</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">curr_lr</span><span class="p">)</span>
+
+    <span class="c1"># Test the model</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">num_epochs</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+            <span class="n">correct</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">for</span> <span class="n">images</span><span class="p">,</span> <span class="n">labels</span> <span class="ow">in</span> <span class="n">test_loader</span><span class="p">:</span>
+                <span class="n">images</span> <span class="o">=</span> <span class="n">images</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+                <span class="n">labels</span> <span class="o">=</span> <span class="n">labels</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+                <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">images</span><span class="p">)</span>
+                <span class="n">_</span><span class="p">,</span> <span class="n">predicted</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">outputs</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+                <span class="n">total</span> <span class="o">+=</span> <span class="n">labels</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+                <span class="n">correct</span> <span class="o">+=</span> <span class="p">(</span><span class="n">predicted</span> <span class="o">==</span> <span class="n">labels</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+
+            <span class="n">accuracy</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">correct</span> <span class="o">/</span> <span class="n">total</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Accuracy of the model on the test images: </span><span class="si">{}</span><span class="s2"> %&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">accuracy</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">model</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run training</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">prepare_model</span><span class="p">(</span><span class="n">num_epochs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [1/1], Step [100/500] Loss: 1.0127
+Epoch [1/1], Step [200/500] Loss: 0.9769
+Epoch [1/1], Step [300/500] Loss: 0.8371
+Epoch [1/1], Step [400/500] Loss: 0.4864
+Epoch [1/1], Step [500/500] Loss: 0.7878
+Accuracy of the model on the test images: 77.61 %
+</pre></div>
+</div>
+</div>
+</div>
+<p>Save the trained PyTorch model by running the following cell:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">&quot;cpu&quot;</span><span class="p">)</span>
+<span class="n">model_path</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">models_dir</span><span class="si">}</span><span class="s2">/resnet_trained_for_cifar10.pt&quot;</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">model_path</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>After completing the training process, observe the following output:</p>
+<ul class="simple">
+<li><p>The trained ResNet-50 model on the CIFAR-10 dataset is saved at the following location: <code class="docutils literal notranslate"><span class="pre">onnx/resnet_trained_for_cifar10.pt</span></code>.</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="step-3-convert-model-to-onnx-format">
+<h2>Step 3: Convert Model to ONNX Format<a class="headerlink" href="#step-3-convert-model-to-onnx-format" title="Link to this heading">#</a></h2>
+<p>Run the following cell to save the trained model as an ONNX model:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">save_onnx_model</span><span class="p">(</span><span class="n">model</span><span class="p">):</span>
+    <span class="n">dummy_inputs</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+    <span class="n">input_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;input&#39;</span><span class="p">]</span>
+    <span class="n">output_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;output&#39;</span><span class="p">]</span>
+    <span class="n">dynamic_axes</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;input&#39;</span><span class="p">:</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="s1">&#39;batch_size&#39;</span><span class="p">},</span> <span class="s1">&#39;output&#39;</span><span class="p">:</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="s1">&#39;batch_size&#39;</span><span class="p">}}</span>
+    <span class="n">onnx_model_path</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">models_dir</span><span class="si">}</span><span class="s2">/resnet_trained_for_cifar10.onnx&quot;</span>
+    <span class="n">torch</span><span class="o">.</span><span class="n">onnx</span><span class="o">.</span><span class="n">export</span><span class="p">(</span>
+        <span class="n">model</span><span class="p">,</span>
+        <span class="n">dummy_inputs</span><span class="p">,</span>
+        <span class="n">onnx_model_path</span><span class="p">,</span>
+        <span class="n">export_params</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">opset_version</span><span class="o">=</span><span class="mi">13</span><span class="p">,</span>
+        <span class="n">input_names</span><span class="o">=</span><span class="n">input_names</span><span class="p">,</span>
+        <span class="n">output_names</span><span class="o">=</span><span class="n">output_names</span><span class="p">,</span>
+        <span class="n">dynamic_axes</span><span class="o">=</span><span class="n">dynamic_axes</span><span class="p">,</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Save model</span>
+<span class="n">save_onnx_model</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>After completing this process, observe the following output:</p>
+<ul class="simple">
+<li><p>The trained ResNet-50 model on the CIFAR-10 dataset is saved at the following location in ONNX format: <code class="docutils literal notranslate"><span class="pre">onnx/resnet_trained_for_cifar10.onnx</span></code>.</p></li>
+</ul>
+<section id="visualize-the-onnx-model">
+<h3>Visualize the ONNX model<a class="headerlink" href="#visualize-the-onnx-model" title="Link to this heading">#</a></h3>
+<p>Generated and adapted using Netron</p>
+<blockquote>
+<div><p>Netron is a viewer for neural network, deep learning and machine learning models.</p>
+</div></blockquote>
+<div class="alert alert-box alert-warning">
+<p><strong>Note</strong> this is an image of the default model we are using. If you have modified or re-trained your model, please visit <a class="reference external" href="https://netron.app/">Netron</a> to generate a graph for your model.</p>
+</div><center>
+    <img src="images/png/short_onnx_unquantized_model.png" alt="onnx_graph" style="max-height: 700px; width:auto; height:auto;">
+</center>
+<center><strong>ResNet-50 ONNX model</strong></center></section>
+</section>
+<hr class="docutils" />
+<section id="step-4-quantize-the-model">
+<h2>Step 4: Quantize the Model<a class="headerlink" href="#step-4-quantize-the-model" title="Link to this heading">#</a></h2>
+<p>Quantizing AI models from floating-point to 8-bit integers reduces computational power and the memory footprint required for inference. For model quantization, you can either use <a class="reference external" href="https://ryzenai.docs.amd.com/en/latest/vai_quant/vai_q_onnx.html">Vitis AI quantizer</a> or <a class="reference external" href="https://ryzenai.docs.amd.com/en/latest/olive_quant.html">Microsoft Olive</a>. This example utilizes the Vitis AI ONNX quantizer workflow.</p>
+<p>This will generate a quantized model using QDQ quant format and UInt8 activation type and Int8 weight type. After the run is completed, the quantized ONNX model <code class="docutils literal notranslate"><span class="pre">resnet.qdq.U8S8.onnx</span></code> is saved to <code class="docutils literal notranslate"><span class="pre">onnx/resnet.qdq.U8S8.onnx</span></code>.</p>
+<p>For more information on representation of quantized ONNX models (e.g., QDQ quant format, UInt8 activation type and Int8 weight type) see <a class="reference external" href="https://onnxruntime.ai/docs/performance/model-optimizations/quantization.html#onnx-quantization-representation-format">here</a></p>
+<p>The  <code class="docutils literal notranslate"><span class="pre">quantize_static</span></code> function applies static quantization to the model.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">onnxruntime.quantization</span> <span class="kn">import</span> <span class="n">QuantFormat</span><span class="p">,</span> <span class="n">QuantType</span>
+<span class="kn">import</span> <span class="nn">vai_q_onnx</span>
+
+<span class="n">vai_q_onnx</span><span class="o">.</span><span class="n">quantize_static</span><span class="p">(</span>
+    <span class="n">input_model_path</span><span class="p">,</span>
+    <span class="n">output_model_path</span><span class="p">,</span>
+    <span class="n">dr</span><span class="p">,</span>
+    <span class="n">quant_format</span><span class="o">=</span><span class="n">QuantFormat</span><span class="o">.</span><span class="n">QDQ</span><span class="p">,</span>
+    <span class="n">calibrate_method</span><span class="o">=</span><span class="n">vai_q_onnx</span><span class="o">.</span><span class="n">PowerOfTwoMethod</span><span class="o">.</span><span class="n">MinMSE</span><span class="p">,</span>
+    <span class="n">activation_type</span><span class="o">=</span><span class="n">QuantType</span><span class="o">.</span><span class="n">QUInt8</span><span class="p">,</span>
+    <span class="n">weight_type</span><span class="o">=</span><span class="n">QuantType</span><span class="o">.</span><span class="n">QInt8</span><span class="p">,</span>
+    <span class="n">enable_dpu</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
+    <span class="n">extra_options</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;ActivationSymmetric&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}</span> 
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>The parameters of this function are:</p>
+<ul class="simple">
+<li><p><strong>input_model_path</strong>: (String) The file path of the model to be quantized.</p></li>
+<li><p><strong>output_model_path</strong>: (String) The file path where the quantized model will be saved.</p></li>
+<li><p><strong>dr</strong>: (Object or None) Calibration data reader that enumerates the calibration data and producing inputs for the original model. In this example, CIFAR10 dataset is used for calibration during the quantization process.</p></li>
+<li><p><strong>quant_format</strong>: (String) Specifies the quantization format of the model. In this example we have used the QDQ quant format.</p></li>
+<li><p><strong>calibrate_method</strong>:(String) In this example this parameter is set to <code class="docutils literal notranslate"><span class="pre">vai_q_onnx.PowerOfTwoMethod.MinMSE</span></code> to apply power-of-2 scale quantization.</p></li>
+<li><p><strong>activation_type</strong>: (String) Data type of activation tensors after quantization. In this example, it is set to QUInt8 (Quantized Unsigned Int 8).</p></li>
+<li><p><strong>weight_type</strong>: (String) Data type of weight tensors after quantization. In this example, it is set to QInt8 (Quantized Int 8).</p></li>
+</ul>
+<p>Run the following cell to define the calibration data reader (<code class="docutils literal notranslate"><span class="pre">resnet_calibration_reader</span></code>):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># License 2 (see end of notebook)</span>
+
+<span class="k">class</span> <span class="nc">CIFAR10DataSet</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">data_dir</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">train_path</span> <span class="o">=</span> <span class="n">data_dir</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">vld_path</span> <span class="o">=</span> <span class="n">data_dir</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span><span class="s2">&quot;fit&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stage</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="n">transform</span> <span class="o">=</span> <span class="n">transforms</span><span class="o">.</span><span class="n">Compose</span><span class="p">(</span>
+            <span class="p">[</span><span class="n">transforms</span><span class="o">.</span><span class="n">Pad</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span> <span class="n">transforms</span><span class="o">.</span><span class="n">RandomHorizontalFlip</span><span class="p">(),</span> <span class="n">transforms</span><span class="o">.</span><span class="n">RandomCrop</span><span class="p">(</span><span class="mi">32</span><span class="p">),</span> <span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">()]</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">train_dataset</span> <span class="o">=</span> <span class="n">CIFAR10</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">train_path</span><span class="p">,</span> <span class="n">train</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">transform</span><span class="p">,</span> <span class="n">download</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">val_dataset</span> <span class="o">=</span> <span class="n">CIFAR10</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">vld_path</span><span class="p">,</span> <span class="n">train</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">transform</span><span class="p">,</span> <span class="n">download</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">PytorchResNetDataset</span><span class="p">(</span><span class="n">Dataset</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span> <span class="o">=</span> <span class="n">dataset</span>
+
+    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
+        <span class="n">sample</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+        <span class="n">input_data</span> <span class="o">=</span> <span class="n">sample</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">label</span> <span class="o">=</span> <span class="n">sample</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">input_data</span><span class="p">,</span> <span class="n">label</span>
+
+
+<span class="k">def</span> <span class="nf">create_dataloader</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">):</span>
+    <span class="n">cifar10_dataset</span> <span class="o">=</span> <span class="n">CIFAR10DataSet</span><span class="p">(</span><span class="n">data_dir</span><span class="p">)</span>
+    <span class="n">_</span><span class="p">,</span> <span class="n">val_set</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">random_split</span><span class="p">(</span><span class="n">cifar10_dataset</span><span class="o">.</span><span class="n">val_dataset</span><span class="p">,</span> <span class="p">[</span><span class="mi">49000</span><span class="p">,</span> <span class="mi">1000</span><span class="p">])</span>
+    <span class="n">benchmark_dataloader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">PytorchResNetDataset</span><span class="p">(</span><span class="n">val_set</span><span class="p">),</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">drop_last</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">benchmark_dataloader</span>
+
+
+<span class="k">class</span> <span class="nc">ResnetCalibrationDataReader</span><span class="p">(</span><span class="n">CalibrationDataReader</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_dir</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">16</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">iterator</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">create_dataloader</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">get_next</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">images</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">iterator</span><span class="p">)</span>
+            <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;input&quot;</span><span class="p">:</span> <span class="n">images</span><span class="o">.</span><span class="n">numpy</span><span class="p">()}</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+
+
+<span class="k">def</span> <span class="nf">resnet_calibration_reader</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">16</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">ResnetCalibrationDataReader</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Run the following cell to quantize and save the model:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># License 2 (see end of notebook)</span>
+
+<span class="c1"># `input_model_path` is the path to the original, unquantized ONNX model.</span>
+<span class="n">input_model_path</span> <span class="o">=</span> <span class="s2">&quot;onnx/resnet_trained_for_cifar10.onnx&quot;</span>
+
+<span class="c1"># `output_model_path` is the path where the quantized model will be saved.</span>
+<span class="n">output_model_path</span> <span class="o">=</span> <span class="s2">&quot;onnx/resnet.qdq.U8S8.onnx&quot;</span>
+
+<span class="c1"># `calibration_dataset_path` is the path to the dataset used for calibration during quantization.</span>
+<span class="n">calibration_dataset_path</span> <span class="o">=</span> <span class="s2">&quot;onnx/data/&quot;</span>
+
+<span class="c1"># `dr` (Data Reader) is an instance of ResNet50DataReader, which is a utility class that </span>
+<span class="c1"># reads the calibration dataset and prepares it for the quantization process.</span>
+<span class="n">dr</span> <span class="o">=</span> <span class="n">resnet_calibration_reader</span><span class="p">(</span><span class="n">calibration_dataset_path</span><span class="p">)</span>
+
+<span class="n">vai_q_onnx</span><span class="o">.</span><span class="n">quantize_static</span><span class="p">(</span>
+    <span class="n">input_model_path</span><span class="p">,</span>
+    <span class="n">output_model_path</span><span class="p">,</span>
+    <span class="n">dr</span><span class="p">,</span>
+    <span class="n">quant_format</span><span class="o">=</span><span class="n">QuantFormat</span><span class="o">.</span><span class="n">QDQ</span><span class="p">,</span>
+    <span class="n">calibrate_method</span><span class="o">=</span><span class="n">vai_q_onnx</span><span class="o">.</span><span class="n">PowerOfTwoMethod</span><span class="o">.</span><span class="n">MinMSE</span><span class="p">,</span>
+    <span class="n">activation_type</span><span class="o">=</span><span class="n">QuantType</span><span class="o">.</span><span class="n">QUInt8</span><span class="p">,</span>
+    <span class="n">weight_type</span><span class="o">=</span><span class="n">QuantType</span><span class="o">.</span><span class="n">QInt8</span><span class="p">,</span>
+    <span class="n">enable_dpu</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">extra_options</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;ActivationSymmetric&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}</span> 
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Calibrated and quantized model saved at:&#39;</span><span class="p">,</span> <span class="n">output_model_path</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Finding optimal threshold for each tensor using PowerOfTwoMethod.MinMSE algorithm ...
+Calibrated and quantized model saved at: onnx/resnet.qdq.U8S8.onnx
+</pre></div>
+</div>
+</div>
+</div>
+<p>After completing the quantization process, observe the following output:</p>
+<ul class="simple">
+<li><p>The quantized ResNet-50 model on the CIFAR-10 dataset is saved at the following location in ONNX format: <code class="docutils literal notranslate"><span class="pre">onnx/resnet.qdq.U8S8.onnx</span></code>.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="step-5-deploy-the-model-on-npu-for-inference">
+<h2>Step 5: Deploy the Model on NPU for Inference<a class="headerlink" href="#step-5-deploy-the-model-on-npu-for-inference" title="Link to this heading">#</a></h2>
+<div class="alert alert-box alert-warning">
+<p>To run Inference using the model generated in this notebook please refer to the <a class="reference internal" href="5_1_pytorch_onnx_inference.html"><span class="std std-doc">PyTorch ONNX Inference</span></a> notebook.</p>
+</div></section>
+<hr class="docutils" />
+<section id="licenses">
+<h2>Licenses<a class="headerlink" href="#licenses" title="Link to this heading">#</a></h2>
+<p>License 1</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># -------------------------------------------------------------------------</span>
+<span class="c1"># Copyright (c) Microsoft Corporation. All rights reserved.</span>
+<span class="c1"># Licensed under the MIT License.</span>
+<span class="c1"># --------------------------------------------------------------------------</span>
+</pre></div>
+</div>
+<p>License 2</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#################################################################################  </span>
+<span class="c1"># License</span>
+<span class="c1"># Ryzen AI is licensed under `MIT License &lt;https://github.com/amd/ryzen-ai-documentation/blob/main/License&gt;`_ . Refer to the `LICENSE File &lt;https://github.com/amd/ryzen-ai-documentation/blob/main/License&gt;`_ for the full license text and copyright notice.</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<center>
+Copyright&copy; 2023 AMD, Inc
+</center>
+<center>
+SPDX-License-Identifier: MIT
+</center></section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="5_1_pytorch_onnx_inference.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Run Machine Learning Inference on the NPU with PyTorch and ONNX</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../modules.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">npu</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goals">Goals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-import-packages">Step 1: Import Packages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-prepare-the-model">Step 2: Prepare the Model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-model-for-re-training-using-transfer-learning">Load model for re-training using transfer learning</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-re-training">Model re-training</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-convert-model-to-onnx-format">Step 3: Convert Model to ONNX Format</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-the-onnx-model">Visualize the ONNX model</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-quantize-the-model">Step 4: Quantize the Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-deploy-the-model-on-npu-for-inference">Step 5: Deploy the Model on NPU for Inference</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#licenses">Licenses</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Advanced Micro Devices, Inc.
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <p>
+<div class="aem-Grid aem-Grid--16">
+<div class="aem-GridColumn aem-GridColumn--xxxlarge--none aem-GridColumn--xsmall--16 aem-GridColumn--offset--xsmall--0 aem-GridColumn--xlarge--none aem-GridColumn--xxlarge--none aem-GridColumn--default--none aem-GridColumn--offset--large--1 aem-GridColumn--xlarge--12 aem-GridColumn--offset--default--0 aem-GridColumn--xxlarge--10 aem-GridColumn--offset--xlarge--2 aem-GridColumn--offset--xxlarge--3 aem-GridColumn--offset--xxxlarge--4 aem-GridColumn--xsmall--none aem-GridColumn--large--none aem-GridColumn aem-GridColumn--large--14 aem-GridColumn--xxxlarge--8 aem-GridColumn--default--16">
+<div class="container-fluid sub-footer">
+
+<div class="row">
+<div class="col-xs-24">
+<p><a target="_blank" href="https://www.amd.com/en/corporate/copyright">Terms and Conditions</a> | <a target="_blank" href="https://www.amd.com/en/corporate/privacy">Privacy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/cookies">Cookie Policy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/trademarks">Trademarks</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/statement-human-trafficking-forced-labor.pdf">Statement on Forced Labor</a> | <a target="_blank" href="https://www.amd.com/en/corporate/competition">Fair and Open Competition</a> <br> <a target="_blank" href="https://www.amd.com/system/files/documents/amd-uk-tax-strategy.pdf">UK Tax Strategy</a> | <a target="_blank" href="https://docs.xilinx.com/v/u/9x6YvZKuWyhJId7y7RQQKA">Inclusive Terminology</a> | <a href="#cookiessettings" class="ot-sdk-show-settings">Cookies Settings</a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="cookie-consent" class="cookie-consent">
+<p>This website uses cookies to ensure you get the best experience on our website. <a href="#" id="cookie-accept">Accept</a> | <a href="#" id="cookie-reject">Reject</a></p>
+</div>
+</p>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

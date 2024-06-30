@@ -15,7 +15,6 @@
 *.project text eol=crlf
 *.cproject text eol=crlf
 *.inf text eol=crlf
-*.lic text eol=crlf
 
 # These are binary so should never be modified by git.
 *.exe binary 

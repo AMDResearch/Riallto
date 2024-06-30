@@ -1,0 +1,94 @@
+
+            <svg id="svg"
+            version="1.1" 
+            xmlns="http://www.w3.org/2000/svg" 
+            xmlns:xlink="http://www.w3.org/1999/xlink" 
+            width="220" 
+            height="180" 
+            viewBox="0, 0, 220, 180">
+            <defs>
+                <marker id="ic_startarrow" markerWidth="10" markerHeight="7" 
+                refX="10" refY="3.5" orient="auto">
+                <polygon points="0 0, 4 2, 0 4" fill="black" />
+                </marker>
+                <marker id="ic_endarrow" markerWidth="7" markerHeight="4" 
+                refX="0" refY="2" orient="auto" markerUnits="strokeWidth">
+                    <polygon points="0 0, 4 2, 0 4" fill="black" />
+                </marker>
+
+                <marker id="red_startarrow" markerWidth="10" markerHeight="7" 
+                refX="0" refY="2" orient="auto">
+                <polygon points="0 2, 4 0, 4 4" fill="red" />
+                </marker>
+                <marker id="red_endarrow" markerWidth="7" markerHeight="4" 
+                refX="4" refY="2" orient="auto" markerUnits="strokeWidth">
+                    <polygon points="0 0, 4 2, 0 4" fill="red" />
+                </marker>
+
+                <marker id="startarrow" markerWidth="10" markerHeight="7" 
+                refX="10" refY="3.5" orient="auto">
+                <polygon points="0 0, 4 2, 0 4" fill="black" />
+                </marker>
+                <marker id="endarrow" markerWidth="10" markerHeight="7" 
+                refX="0" refY="3.5" orient="auto" markerUnits="strokeWidth">
+                    <polygon points="0 0, 4 2, 0 4" fill="black" />
+                </marker>
+            </defs>
+            <style>                .ic_animations {                     opacity: 0.8;                 }            </style>
+            <g id="svg"><g> <rect id="mem_tile0" class="mem_tile" width="180" height="140" x="20" y="20" stroke="black" stroke-width="2" fill="#E0FFC2"/> </g>
+<g> <text id="text_mem_tile0" class="mem_tile_text" x="20" y="20" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="110.0" y="89.3" dy="1em" font-size="1"> </tspan></text></g>
+<g> <rect id="interconnect_box0" class="interconnect_box" width="40" height="40" x="30" y="30" stroke="black" stroke-width="1" fill="#DBBCBD"/> </g>
+<g> <text id="text_interconnect_box0" class="interconnect_box_text" x="30" y="30" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="50.0" y="49.3" dy="1em" font-size="1"> </tspan></text></g>
+<line id="ic_h_line0_0" class="interconnect" x1="38.0" y1="45.0" x2="58.0" y2="45.0"             stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)" />
+<line id="ic_h_line0_1" class="interconnect" x1="62.0" y1="55.0" x2="42.0" y2="55.0"             stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+<line id="ic_h_line0_2" class="interconnect" x1="45.0" y1="62.0" x2="45.0" y2="42.0"             stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+<line id="ic_h_line0_3" class="interconnect" x1="55.0" y1="38.0" x2="55.0" y2="58.0"             stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+<g> <rect id="mem_tile_container0" class="mem_tile_container" width="120" height="60.0" x="70" y="90.0" stroke="black" stroke-width="1" fill="#ffffff"/> </g>
+<g> <text id="text_mem_tile_container0" class="mem_tile_container_text" x="70" y="90.0" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="130.0" y="119.3" dy="1em" font-size="1"> </tspan></text></g>
+<g> <rect id="memory_outline_0_16" x="77.0" y="97.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_1_16" x="83.625" y="97.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_2_16" x="90.25" y="97.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_3_16" x="96.875" y="97.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_4_16" x="103.5" y="97.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_5_16" x="110.125" y="97.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_6_16" x="116.75" y="97.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_7_16" x="123.375" y="97.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_8_16" x="130.0" y="97.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_9_16" x="136.625" y="97.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_10_16" x="143.25" y="97.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_11_16" x="149.875" y="97.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_12_16" x="156.5" y="97.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_13_16" x="163.125" y="97.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_14_16" x="169.75" y="97.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="memory_outline_15_16" x="176.375" y="97.0" height="46.0" width="6.625" style="stroke:#f0f0f0; fill:#fefefe; stroke-opacity:0.5"> </rect> </g>
+<g> <rect id="mem_tile_memory0" class="mem_tile_memory" width="106" height="46.0" x="77" y="97.0" stroke="black" stroke-width="" fill="None"/><animate attributeName="stroke-width" dur="0.5s"                       repeatCount="indefinite" values="0;                       2;0" />
+ </g>
+<g> <text id="text_mem_tile_memory0" class="mem_tile_memory_text" x="77" y="97.0" fill="black" font-family="Arial, Helvetica, sans-serif"> <tspan x="130.0" y="110.9" dy="1em" font-size="13"> </tspan></text></g>
+<circle id="v_circle_south0" class="ic_animations" cx="50" cy="0" r="3" fill="none">            <animateMotion dur="2s" repeatCount="indefinite" begin="0s"                path="M0, 0,                 L0, 30                " />            <animate attributeName="fill"                values="none;#E69F00" dur="0.0001s" begin="0s" fill="freeze"                />            </circle>
+<circle id="v_circle_south0" class="ic_animations" cx="50" cy="0" r="3" fill="none">            <animateMotion dur="2s" repeatCount="indefinite" begin="0.5s"                path="M0, 0,                 L0, 30                " />            <animate attributeName="fill"                values="none;#FF0000" dur="0.0001s" begin="0.5s" fill="freeze"                />            </circle>
+<circle id="v_circle_south0" class="ic_animations" cx="50" cy="0" r="3" fill="none">            <animateMotion dur="2s" repeatCount="indefinite" begin="1s"                path="M0, 0,                 L0, 30                " />            <animate attributeName="fill"                values="none;#0072B2" dur="0.0001s" begin="1s" fill="freeze"                />            </circle>
+<circle id="v_circle_south0" class="ic_animations" cx="50" cy="0" r="3" fill="none">            <animateMotion dur="2s" repeatCount="indefinite" begin="1.5s"                path="M0, 0,                 L0, 30                " />            <animate attributeName="fill"                values="none;#CC79A7" dur="0.0001s" begin="1.5s" fill="freeze"                />            </circle>
+<circle id="d_circle0" class="ic_animations" cx="70" cy="70" r="3" fill="none">            <animateMotion dur="2s" repeatCount="indefinite" begin="2s"                path="M0, 0,                 L20.0, 20.0,                "/>            <animate attributeName="fill"                values="none;#E69F00" dur="0.0001s" begin="2s" fill="freeze"                />            </circle>
+<circle id="d_circle0" class="ic_animations" cx="70" cy="70" r="3" fill="none">            <animateMotion dur="2s" repeatCount="indefinite" begin="2.5s"                path="M0, 0,                 L20.0, 20.0,                "/>            <animate attributeName="fill"                values="none;#FF0000" dur="0.0001s" begin="2.5s" fill="freeze"                />            </circle>
+<circle id="d_circle0" class="ic_animations" cx="70" cy="70" r="3" fill="none">            <animateMotion dur="2s" repeatCount="indefinite" begin="3s"                path="M0, 0,                 L20.0, 20.0,                "/>            <animate attributeName="fill"                values="none;#0072B2" dur="0.0001s" begin="3s" fill="freeze"                />            </circle>
+<circle id="d_circle0" class="ic_animations" cx="70" cy="70" r="3" fill="none">            <animateMotion dur="2s" repeatCount="indefinite" begin="3.5s"                path="M0, 0,                 L20.0, 20.0,                "/>            <animate attributeName="fill"                values="none;#CC79A7" dur="0.0001s" begin="3.5s" fill="freeze"                />            </circle>
+<line id="diagonal0" class="interconnect" x1="70" y1="70" x2="90.0" y2="90.0" stroke="red" stroke-width="1" fill="none" />
+<line id="v_ic_connection0" class="interconnect" x1="50" y1="30" x2="50" y2="0" stroke="red" stroke-width="1" fill="none" />
+<line id="v_ic_connection0" class="interconnect" x1="50" y1="70" x2="50" y2="190" stroke="red" stroke-width="1" fill="none" />
+<g transform="rotate(180, 80.3125, 143.0) "> <rect id="buffer0_0" class="mem_tile_buffers" x="77.0" y="143.0" height="46.0" width="6.625" style="stroke:none; fill:none"> <animate attributeName="height" values="0;46.0;0" keyTimes="0;0.5;1" dur="0.0001s" begin="0s" fill="freeze" repeatCount="frezee" /> <animate attributeName="fill" values="none;white;white;white;white" keyTimes="0; 0.00001; 0.5; 0.50001; 1" dur="0.0001s" begin="0s" fill="freeze" repeatCount="frezee" /></rect></g>
+<g transform="rotate(180, 86.9375, 143.0) "> <rect id="buffer0_1" class="mem_tile_buffers" x="83.625" y="143.0" height="46.0" width="6.625" style="stroke:none; fill:none"> <animate attributeName="height" values="0;46.0;0" keyTimes="0;0.5;1" dur="0.0001s" begin="0s" fill="freeze" repeatCount="frezee" /> <animate attributeName="fill" values="none;white;white;white;white" keyTimes="0; 0.00001; 0.5; 0.50001; 1" dur="0.0001s" begin="0s" fill="freeze" repeatCount="frezee" /></rect></g>
+<g transform="rotate(180, 93.5625, 143.0) "> <rect id="buffer0_2" class="mem_tile_buffers" x="90.25" y="143.0" height="46.0" width="6.625" style="stroke:none; fill:none"> <animate attributeName="height" values="0;46.0;0" keyTimes="0;0.5;1" dur="0.0001s" begin="0s" fill="freeze" repeatCount="frezee" /> <animate attributeName="fill" values="none;white;white;white;white" keyTimes="0; 0.00001; 0.5; 0.50001; 1" dur="0.0001s" begin="0s" fill="freeze" repeatCount="frezee" /></rect></g>
+<g transform="rotate(180, 100.1875, 143.0) "> <rect id="buffer0_3" class="mem_tile_buffers" x="96.875" y="143.0" height="46.0" width="6.625" style="stroke:none; fill:none"> <animate attributeName="height" values="0;46.0;0" keyTimes="0;0.5;1" dur="0.0001s" begin="0s" fill="freeze" repeatCount="frezee" /> <animate attributeName="fill" values="none;white;white;white;white" keyTimes="0; 0.00001; 0.5; 0.50001; 1" dur="0.0001s" begin="0s" fill="freeze" repeatCount="frezee" /></rect></g>
+<g transform="rotate(180, 106.8125, 143.0) "> <rect id="buffer0_4" class="mem_tile_buffers" x="103.5" y="143.0" height="46.0" width="6.625" style="stroke:none; fill:none"> <animate attributeName="height" values="0;46.0;0" keyTimes="0;0.5;1" dur="0.0001s" begin="0s" fill="freeze" repeatCount="frezee" /> <animate attributeName="fill" values="none;white;white;white;white" keyTimes="0; 0.00001; 0.5; 0.50001; 1" dur="0.0001s" begin="0s" fill="freeze" repeatCount="frezee" /></rect></g>
+<g transform="rotate(180, 113.4375, 143.0) "> <rect id="buffer0_5" class="mem_tile_buffers" x="110.125" y="143.0" height="46.0" width="6.625" style="stroke:none; fill:none"> <animate attributeName="height" values="0;46.0;0" keyTimes="0;0.5;1" dur="0.0001s" begin="0s" fill="freeze" repeatCount="frezee" /> <animate attributeName="fill" values="none;white;white;white;white" keyTimes="0; 0.00001; 0.5; 0.50001; 1" dur="0.0001s" begin="0s" fill="freeze" repeatCount="frezee" /></rect></g>
+<g transform="rotate(180, 120.0625, 143.0) "> <rect id="buffer0_6" class="mem_tile_buffers" x="116.75" y="143.0" height="46.0" width="6.625" style="stroke:none; fill:none"> <animate attributeName="height" values="0;46.0;0" keyTimes="0;0.5;1" dur="0.0001s" begin="0s" fill="freeze" repeatCount="frezee" /> <animate attributeName="fill" values="none;white;white;white;white" keyTimes="0; 0.00001; 0.5; 0.50001; 1" dur="0.0001s" begin="0s" fill="freeze" repeatCount="frezee" /></rect></g>
+<g transform="rotate(180, 126.6875, 143.0) "> <rect id="buffer0_7" class="mem_tile_buffers" x="123.375" y="143.0" height="46.0" width="6.625" style="stroke:none; fill:none"> <animate attributeName="height" values="0;46.0;0" keyTimes="0;0.5;1" dur="0.0001s" begin="0s" fill="freeze" repeatCount="frezee" /> <animate attributeName="fill" values="none;white;white;white;white" keyTimes="0; 0.00001; 0.5; 0.50001; 1" dur="0.0001s" begin="0s" fill="freeze" repeatCount="frezee" /></rect></g>
+<g transform="rotate(180, 133.3125, 143.0) "> <rect id="buffer0_8" class="mem_tile_buffers" x="130.0" y="143.0" height="46.0" width="6.625" style="stroke:none; fill:none"> <animate attributeName="height" values="0;46.0;0" keyTimes="0;0.5;1" dur="4s" begin="4s" fill="freeze" repeatCount="indefinite" /> <animate attributeName="fill" values="none;#E69F00;#E69F00;#4B0092;#4B0092" keyTimes="0; 0.00001; 0.5; 0.50001; 1" dur="4s" begin="4s" fill="freeze" repeatCount="indefinite" /></rect></g>
+<g transform="rotate(180, 139.9375, 143.0) "> <rect id="buffer0_9" class="mem_tile_buffers" x="136.625" y="143.0" height="46.0" width="6.625" style="stroke:none; fill:none"> <animate attributeName="height" values="0;46.0;0" keyTimes="0;0.5;1" dur="4s" begin="4.1s" fill="freeze" repeatCount="indefinite" /> <animate attributeName="fill" values="none;#FF0000;#FF0000;#4B0092;#4B0092" keyTimes="0; 0.00001; 0.5; 0.50001; 1" dur="4s" begin="4.1s" fill="freeze" repeatCount="indefinite" /></rect></g>
+<g transform="rotate(180, 146.5625, 143.0) "> <rect id="buffer0_10" class="mem_tile_buffers" x="143.25" y="143.0" height="46.0" width="6.625" style="stroke:none; fill:none"> <animate attributeName="height" values="0;46.0;0" keyTimes="0;0.5;1" dur="4s" begin="4.2s" fill="freeze" repeatCount="indefinite" /> <animate attributeName="fill" values="none;#0072B2;#0072B2;#4B0092;#4B0092" keyTimes="0; 0.00001; 0.5; 0.50001; 1" dur="4s" begin="4.2s" fill="freeze" repeatCount="indefinite" /></rect></g>
+<g transform="rotate(180, 153.1875, 143.0) "> <rect id="buffer0_11" class="mem_tile_buffers" x="149.875" y="143.0" height="46.0" width="6.625" style="stroke:none; fill:none"> <animate attributeName="height" values="0;46.0;0" keyTimes="0;0.5;1" dur="4s" begin="4.3s" fill="freeze" repeatCount="indefinite" /> <animate attributeName="fill" values="none;#CC79A7;#CC79A7;#4B0092;#4B0092" keyTimes="0; 0.00001; 0.5; 0.50001; 1" dur="4s" begin="4.3s" fill="freeze" repeatCount="indefinite" /></rect></g>
+<g transform="rotate(180, 159.8125, 143.0) "> <rect id="buffer0_12" class="mem_tile_buffers" x="156.5" y="143.0" height="46.0" width="6.625" style="stroke:none; fill:none"> <animate attributeName="height" values="0;46.0;0" keyTimes="0;0.5;1" dur="4s" begin="6s" fill="freeze" repeatCount="indefinite" /> <animate attributeName="fill" values="none;#E69F00;#E69F00;#4B0092;#4B0092" keyTimes="0; 0.00001; 0.5; 0.50001; 1" dur="4s" begin="6s" fill="freeze" repeatCount="indefinite" /></rect></g>
+<g transform="rotate(180, 166.4375, 143.0) "> <rect id="buffer0_13" class="mem_tile_buffers" x="163.125" y="143.0" height="46.0" width="6.625" style="stroke:none; fill:none"> <animate attributeName="height" values="0;46.0;0" keyTimes="0;0.5;1" dur="4s" begin="6.1s" fill="freeze" repeatCount="indefinite" /> <animate attributeName="fill" values="none;#FF0000;#FF0000;#4B0092;#4B0092" keyTimes="0; 0.00001; 0.5; 0.50001; 1" dur="4s" begin="6.1s" fill="freeze" repeatCount="indefinite" /></rect></g>
+<g transform="rotate(180, 173.0625, 143.0) "> <rect id="buffer0_14" class="mem_tile_buffers" x="169.75" y="143.0" height="46.0" width="6.625" style="stroke:none; fill:none"> <animate attributeName="height" values="0;46.0;0" keyTimes="0;0.5;1" dur="4s" begin="6.2s" fill="freeze" repeatCount="indefinite" /> <animate attributeName="fill" values="none;#0072B2;#0072B2;#4B0092;#4B0092" keyTimes="0; 0.00001; 0.5; 0.50001; 1" dur="4s" begin="6.2s" fill="freeze" repeatCount="indefinite" /></rect></g>
+<g transform="rotate(180, 179.6875, 143.0) "> <rect id="buffer0_15" class="mem_tile_buffers" x="176.375" y="143.0" height="46.0" width="6.625" style="stroke:none; fill:none"> <animate attributeName="height" values="0;46.0;0" keyTimes="0;0.5;1" dur="4s" begin="6.3s" fill="freeze" repeatCount="indefinite" /> <animate attributeName="fill" values="none;#CC79A7;#CC79A7;#4B0092;#4B0092" keyTimes="0; 0.00001; 0.5; 0.50001; 1" dur="4s" begin="6.3s" fill="freeze" repeatCount="indefinite" /></rect></g>
+</g></svg>

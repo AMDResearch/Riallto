@@ -1,0 +1,48 @@
+# _config.yml
+title: Riallto - An exploration framework for Ryzen AI
+root: index
+author: 'Advanced Micro Devices, Inc.'
+copyright: '2024'
+
+html:
+  baseurl: https://cathalmccabe.github.io/Riallto/
+  repository_provider: github
+  favicon: "./images/favicon.ico"
+  footer:
+    content: "Advanced Micro Devices, Inc. (c) 2024"
+  extra_footer: |
+    <p>
+    <div class="aem-Grid aem-Grid--16">
+    <div class="aem-GridColumn aem-GridColumn--xxxlarge--none aem-GridColumn--xsmall--16 aem-GridColumn--offset--xsmall--0 aem-GridColumn--xlarge--none aem-GridColumn--xxlarge--none aem-GridColumn--default--none aem-GridColumn--offset--large--1 aem-GridColumn--xlarge--12 aem-GridColumn--offset--default--0 aem-GridColumn--xxlarge--10 aem-GridColumn--offset--xlarge--2 aem-GridColumn--offset--xxlarge--3 aem-GridColumn--offset--xxxlarge--4 aem-GridColumn--xsmall--none aem-GridColumn--large--none aem-GridColumn aem-GridColumn--large--14 aem-GridColumn--xxxlarge--8 aem-GridColumn--default--16">
+    <div class="container-fluid sub-footer">
+
+    <div class="row">
+    <div class="col-xs-24">
+    <p><a target="_blank" href="https://www.amd.com/en/corporate/copyright">Terms and Conditions</a> | <a target="_blank" href="https://www.amd.com/en/corporate/privacy">Privacy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/cookies">Cookie Policy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/trademarks">Trademarks</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/statement-human-trafficking-forced-labor.pdf">Statement on Forced Labor</a> | <a target="_blank" href="https://www.amd.com/en/corporate/competition">Fair and Open Competition</a> <br> <a target="_blank" href="https://www.amd.com/system/files/documents/amd-uk-tax-strategy.pdf">UK Tax Strategy</a> | <a target="_blank" href="https://docs.xilinx.com/v/u/9x6YvZKuWyhJId7y7RQQKA">Inclusive Terminology</a> | <a href="#cookiessettings" class="ot-sdk-show-settings">Cookies Settings</a></p>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div id="cookie-consent" class="cookie-consent">
+    <p>This website uses cookies to ensure you get the best experience on our website. <a href="#" id="cookie-accept">Accept</a> | <a href="#" id="cookie-reject">Reject</a></p>
+    </div>
+    </p>
+
+repository:
+  url: https://github.com/cathalmccabe/Riallto
+  provider: github
+
+execute:
+  execute_notebooks: 'off'
+  show_execution_count: true
+  allow_errors: true
+  timeout: 1000
+
+sphinx:
+  extra_extensions:
+    - sphinx.ext.autodoc
+    - sphinx.ext.napoleon
+    - sphinx_autodoc_typehints
+  config:
+    html_show_copyright: true

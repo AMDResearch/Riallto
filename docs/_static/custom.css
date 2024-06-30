@@ -1,0 +1,167 @@
+/* Terminal output formatting */
+.output_stdout, .output_stderr {
+    background-color: var(--jp-cell-output-area-bg); /* Background color variable */
+    color: var(--jp-content-font-color1); /* Text color variable */
+    font-family: "Courier New", Courier, monospace; /* Monospace font */
+    padding: 10px; /* Some padding for better readability */
+    border-radius: 5px; /* Rounded corners */
+}
+
+.output_stderr {
+    color: var(--jp-error-color); /* Error color variable */
+}
+
+.output_stdout .copybtn, .output_stderr .copybtn {
+    display: none;
+}
+
+/* Button to expand images to full screen */
+button.expand-btn {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    padding: 5px;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.image-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.alert.alert-box h3, h4 {
+    margin: 0.5rem 0 0.05rem 0;
+}
+
+/* Success alert styling */
+[data-mode="light"] .alert.alert-box.alert-success {
+    --bs-success-color: #0c5a3d; /* Green text color */
+    --bs-success-bg: #d4edda; /* Light green background */
+    --bs-success-border-color: #c3e6cb; /* Lighter green border */
+    --bs-success-link-color: #0c5a3d; /* Green link color */
+    h3, p{
+        color: #29313d;
+    }}
+
+/* Info alert styling */
+[data-mode="light"] .alert-info {
+    --bs-alert-color: #0c3d5a; /* Blue text color */
+    --bs-alert-bg: #cde8ff; /* Light blue background */
+    --bs-alert-border-color: #b5dcff; /* Lighter blue border */
+    --bs-alert-link-color: #0c3d5a; /* Blue link color */
+}
+
+/* Warning alert styling */
+[data-mode="light"] .alert-warning {
+    --bs-alert-color: #5a3d0c; /* Amber text color */
+    --bs-alert-bg: #fff3cd; /* Light amber background */
+    --bs-alert-border-color: #ffecb5; /* Lighter amber border */
+    --bs-alert-link-color: #5a3d0c; /* Amber link color */
+}
+
+
+
+
+/* Dark mode specific adjustments */
+[data-mode="dark"] {
+    .output_stdout, .output_stderr {
+        background-color: #1e1e1e; /* Dark background color */
+        color: #d4d4d4; /* Light text color */
+    }
+    
+    .output_stderr {
+        color: #f48771; /* Red text for errors */
+    }
+
+    button.expand-btn {
+        background: rgba(255, 255, 255, 0.5);
+        color: black;
+    }
+}
+
+/* Specific alert styles for dark mode */
+[data-mode="dark"] .alert.alert-box.alert-success {
+    --bs-success-color: #215746; /* Light green text color */
+    --bs-success-bg: #a3d9b1; /* Dark green background */
+    --bs-success-border-color: #a3d9b1; /* Darker green border */
+    --bs-success-link-color: #317d5b; /* Light green link color */
+
+    h3, p{
+        color: #495057;
+    }
+}
+
+[data-mode="dark"] .alert-info {
+    --bs-alert-color: #a8c4e8; /* Light blue text color */
+    --bs-alert-bg: #1a3d5c; /* Dark blue background */
+    --bs-alert-border-color: #2a4d6c; /* Darker blue border */
+    --bs-alert-link-color: #a8c4e8; /* Light blue link color */
+}
+
+[data-mode="dark"] .alert-warning {
+    --bs-alert-color: #fff4e5; /* Light yellow text color */
+    --bs-alert-bg: #d53600; /* Dark amber background */
+    --bs-alert-border-color: #d53600; /* Darker amber border */
+    --bs-alert-link-color: #fff4e5; /* Light yellow link color */
+}
+
+[data-mode="dark"] .widget-label {
+   color: white;
+}
+
+
+/* Cookie consent banner */
+.cookie-consent-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px;
+  background: #333;
+  color: #fff;
+  text-align: center;
+}
+
+.cookie-consent-banner p {
+  margin: 0;
+}
+
+.cookie-consent-banner button {
+  background: #fff;
+  color: #333;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+/* Cookie consent banner styles */
+.cookie-consent {
+    display: none;
+    position: fixed;
+    bottom: 0; /* Updated to position at the bottom */
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    z-index: 1000; /* Ensures the banner appears above other elements */
+    p {
+       color: #fff
+    }
+}
+
+.cookie-consent a {
+    color: #4CAF50;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/* Style the "Reject" button */
+.cookie-consent #cookie-reject {
+    color: #ff5252; /* Adjust the color as needed */
+}

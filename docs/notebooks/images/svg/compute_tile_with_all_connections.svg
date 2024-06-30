@@ -1,0 +1,62 @@
+
+            <svg id="svg" 
+            version="1.1" 
+            xmlns="http://www.w3.org/2000/svg" 
+            xmlns:xlink="http://www.w3.org/1999/xlink" 
+            width="220" 
+            height="180" 
+            viewBox="0, 0, 220, 180">
+            <defs>
+                <marker id="ic_startarrow" markerWidth="10" markerHeight="7" 
+                refX="10" refY="3.5" orient="auto">
+                <polygon points="0 0, 4 2, 0 4" fill="black" />
+                </marker>
+                <marker id="ic_endarrow" markerWidth="7" markerHeight="4" 
+                refX="0" refY="2" orient="auto" markerUnits="strokeWidth">
+                    <polygon points="0 0, 4 2, 0 4" fill="black" />
+                </marker>
+                
+                <marker id="red_startarrow" markerWidth="10" markerHeight="7" 
+                refX="0" refY="2" orient="auto">
+                <polygon points="0 2, 4 0, 4 4" fill="red" />
+                </marker>
+                <marker id="red_endarrow" markerWidth="7" markerHeight="4" 
+                refX="4" refY="2" orient="auto" markerUnits="strokeWidth">
+                    <polygon points="0 0, 4 2, 0 4" fill="red" />
+                </marker>
+
+                <marker id="startarrow" markerWidth="10" markerHeight="7" 
+                refX="10" refY="3.5" orient="auto">
+                <polygon points="0 0, 4 2, 0 4" fill="black" />
+                </marker>
+                <marker id="endarrow" markerWidth="10" markerHeight="7" 
+                refX="0" refY="3.5" orient="auto" markerUnits="strokeWidth">
+                    <polygon points="0 0, 4 2, 0 4" fill="black" />
+                </marker>
+            </defs>
+            <style>            .ic_animations {                 opacity: 0.8;             }        </style>'
+            <g id="svg"><g> <rect id="aie_tile0" class="aie_tile" width="180" height="140" x="20" y="20" stroke="black" stroke-width="2" fill="#C2E9FF"/> </g>
+<g> <text id="text_aie_tile0" class="aie_tile_text" x="20" y="20" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="110.0" y="89.3" dy="1em" font-size="1"> </tspan></text></g>
+<g> <rect id="interconnect_box0" class="interconnect_box" width="40" height="40" x="30" y="30" stroke="black" stroke-width="1" fill="#DBBCBD"/> </g>
+<g> <text id="text_interconnect_box0" class="interconnect_box_text" x="30" y="30" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="50.0" y="49.3" dy="1em" font-size="1"> </tspan></text></g>
+<line id="ic_h_line0_0" class="interconnect" x1="38.0" y1="45.0" x2="58.0" y2="45.0"             stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)" />
+<line id="ic_h_line0_1" class="interconnect" x1="62.0" y1="55.0" x2="42.0" y2="55.0"             stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+<line id="ic_h_line0_2" class="interconnect" x1="45.0" y1="62.0" x2="45.0" y2="42.0"             stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+<line id="ic_h_line0_3" class="interconnect" x1="55.0" y1="38.0" x2="55.0" y2="58.0"             stroke="black" stroke-width="1" fill="none" marker-end="url(#ic_endarrow)"/>
+<g> <rect id="aie_tile_container0" class="aie_tile_container" width="120" height="60.0" x="70" y="90.0" stroke="black" stroke-width="1" fill="#ffffff"/> </g>
+<g> <text id="text_aie_tile_container0" class="aie_tile_container_text" x="70" y="90.0" fill="" font-family="Arial, Helvetica, sans-serif"> <tspan x="130.0" y="119.3" dy="1em" font-size="1"> </tspan></text></g>
+<g> <rect id="aie_box0" class="aie_box" width="46.0" height="46.0" x="77.0" y="97.0" stroke="black" stroke-width="1" fill="white"/> </g>
+<g> <text id="text_aie_box0" class="aie_box_text" x="77.0" y="97.0" fill="black" font-family="Arial, Helvetica, sans-serif"> <tspan x="94.5" y="105.6" dy="1em" font-size="12">AI </tspan><tspan x="80.5" y="117.6" dy="1em" font-size="12">Engine </tspan></text></g>
+<g> <rect id="local_memory_box0" class="local_memory_box" width="46.0" height="46.0" x="137.0" y="97.0" stroke="black" stroke-width="1" fill="white"/> </g>
+<g> <text id="text_local_memory_box0" class="local_memory_box_text" x="137.0" y="97.0" fill="black" font-family="Arial, Helvetica, sans-serif"> <tspan x="147.0" y="105.6" dy="1em" font-size="12">Data </tspan><tspan x="138.0" y="117.6" dy="1em" font-size="12">Memory </tspan></text></g>
+<path id="north_mem_connection0" class="mem_connections" stroke="blue" stroke-width="1" fill="none"                d="M 130.0, 90.0,                 l0, -100.0,                "                />
+<path id="south_mem_connection0" class="mem_connections" stroke="blue" stroke-width="1" fill="none"                d="M 130.0, 150.0,                 l0, 100.0"                />
+<line id="east_mem_connection0" x1="183.0" y1="120.0"                 x2="277.0" y2="120.0"                 class="mem_connections" stroke="blue" stroke-width="1" fill="none" />
+<line id="west_mem_connection0" x1="77.0" y1="120.0"                 x2="-17.0" y2="120.0"                 stroke="blue" stroke-width="1" fill="none" />
+<line id="internal_mem_connection0" x1="123.0" y1="120.0"                 x2="137.0" y2="120.0"                 class="mem_connections"  stroke="blue" stroke-width="1" fill="none" />
+<line id="diagonal0" class="interconnect" x1="70" y1="70" x2="90.0" y2="90.0" stroke="red" stroke-width="1" fill="none" />
+<line id="h_ic_connection0" class="interconnect"  x1="50" y1="30" x2="50" y2="0" stroke="red" stroke-width="1" fill="none" />
+<line id="v_ic_connection0" class="interconnect" x1="50" y1="70" x2="50" y2="190" stroke="red" stroke-width="1" fill="none" />
+<line id="h_ic_connection0" class="interconnect" x1="70" y1="50" x2="230" y2="50" stroke="red" stroke-width="1" fill="none" />
+<line id="h_ic_connection0" class="interconnect" x1="30" y1="50" x2="0" y2="50" stroke="red" stroke-width="1" fill="none" />
+</g></svg>

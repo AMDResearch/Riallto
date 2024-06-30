@@ -1,0 +1,691 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Sphinx Build &#8212; Riallto - An exploration framework for Ryzen AI</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=a1ed0ca2" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/sphinx_build';</script>
+    <script src="../_static/cookie-consent.js?v=2793a0fe"></script>
+    <script src="../_static/custom.js?v=4ce5a416"></script>
+    <link rel="canonical" href="https://cathalmccabe.github.io/Riallto/notebooks/sphinx_build.html" />
+    <link rel="icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Riallto - An exploration framework for Ryzen AI</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Riallto - an exploration framework for the AMD Ryzen AI NPU
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Riallto Overview</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="1_0_Introduction.html">Welcome to Riallto</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../install-riallto.html">Install Riallto</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../install-riallto-linux.html">Riallto Ubuntu 24.04 setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install-riallto-windows.html">Install Riallto on Windows</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ryzenai_video_overview.html">Riallto Video Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1_1_ryzenai.html">Understanding the Ryzen AI NPU</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_1_MS_Windows_Studio_Effects.html">Windows Studio Effects</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Riallto Overview</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="3_1_Color_threshold_example.html">Loading your First Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_2_Ryzenai_capabilities.html">Ryzen AI column architecture and tiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_3_Scaled_color_threshold_example.html">Scaling <em>Data Parallel</em> Applications to Multiple Compute Tiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_4_Edge_detect_example.html">Optimizing Data Movement with Shared Data Memories</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_5_Color_detect_example.html">Multicast, broadcast, and multiple kernels in a single compute tile</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Building Applications</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="4_1_software_framework.html">Exploration Software Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_2_write_your_kernel.html">Write your Own Kernel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_3_kernels_with_runtime_parameters.html">Run Time Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_4_threshold_kernel_with_vector_ops.html">How to Use the Vector Processing Units</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_5_describe_an_application.html">Describing an Application</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_6_build_application.html">Building a complete Application</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_7_using_the_memtile_in_your_applications.html">Using Memory Tiles in your Application</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_8_build_a_colorDetect_application.html">Reusing Software Kernels</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Ryzen AI Machine Learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="5_1_pytorch_onnx_inference.html">Run Machine Learning Inference on the NPU with PyTorch and ONNX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5_2_pytorch_onnx_re-train.html">PyTorch and ONNX Flow for Training</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python Package</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../modules.html">npu</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../npu.html">npu package</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../npu.build.html">npu.build package</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../npu.lib.html">npu.lib package</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../npu.lib.applications.html">npu.lib.applications package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../npu.lib.cached.html">npu.lib.cached package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../npu.lib.kernels.html">npu.lib.kernels package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../npu.runtime.html">npu.runtime package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../npu.utils.html">npu.utils package</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">FAQ</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">Riallto FAQ</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Glossary</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Glossary.html">Glossary</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Appendix_Review_of_Image_Processing_Concepts.html">Review of Image Processing Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prerequisites-driver.html">IPU Driver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prerequisites-aie-license.html">AIE Build License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prerequisites-wsl.html">Install WSL</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/notebooks/sphinx_build.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Sphinx Build</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Sphinx Build</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pandoc">pandoc</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tips">Tips</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#embeded-ipynb-outside-docs-folder">Embeded .ipynb outside docs folder;</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#embed-html">Embed HTML</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cookie-script">Cookie script</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#build-warnings-errors">Build warnings, errors</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="sphinx-build">
+<h1>Sphinx Build<a class="headerlink" href="#sphinx-build" title="Link to this heading">#</a></h1>
+<p>On a Phoenix Laptop with PHX PYNQ installed, and local copy of repo;</p>
+<p>Do a windows install of Sphinx</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">U</span> <span class="n">sphinx</span>
+</pre></div>
+</div>
+<p>Ref: <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/installation.html#windows">https://www.sphinx-doc.org/en/master/usage/installation.html#windows</a></p>
+<p>Activate the Riallto venv</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">activate_venv</span><span class="o">.</span><span class="n">ps1</span>
+</pre></div>
+</div>
+<p>Install the following in the venv</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">sphinx</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">recommonmark</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">sphinx_markdown_tables</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">nbsphinx</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">nbsphinx</span><span class="o">-</span><span class="n">link</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">pandoc</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">sphinx_copybutton</span>
+</pre></div>
+</div>
+<section id="pandoc">
+<h2>pandoc<a class="headerlink" href="#pandoc" title="Link to this heading">#</a></h2>
+<p>Pandoc is written in Haskell. The pip package is only a wrapper. Need to install pandoc.</p>
+<p>Download windows installer:
+<a class="github reference external" href="https://github.com/jgm/pandoc/releases/tag/3.1.8">jgm/pandoc</a></p>
+<p>To rerun webpage build:</p>
+<ul class="simple">
+<li><p>Take a copy of the make.bat and source folder in this branch.</p></li>
+<li><p>Copy the source folder and make.bat to the docs folder in master.</p></li>
+<li><p>In docs directory; run: <code class="docutils literal notranslate"><span class="pre">./make.bat</span> <span class="pre">html</span></code></p></li>
+</ul>
+<p>This will create a build folder with the generated pages.</p>
+<ul class="simple">
+<li><p>Copy the contents of ./build/html to the docs folder on this GitHub repository and push to update the docs.</p></li>
+</ul>
+<p>Documentation is hosted using GitHub pages. In the repository settings, enable GitHub pages, and set the pages to build from <code class="docutils literal notranslate"><span class="pre">docs</span></code> in this branch .</p>
+<p>Steps to reproduce webpages from scratch:</p>
+<ul class="simple">
+<li><p>In the docs directory; run: <code class="docutils literal notranslate"><span class="pre">sphinx-quickstart</span></code> to setup the Sphinx config</p></li>
+<li><p>copy the <a class="reference external" href="http://conf.py">conf.py</a> settings from this directory (edit as required)</p></li>
+<li><p>run <code class="docutils literal notranslate"><span class="pre">sphinx-apidoc</span> <span class="pre">-o</span> <span class="pre">source/</span> <span class="pre">./npu</span></code> to auto generate the tempaltes for the source code</p></li>
+<li><p>Edit the index.rst to change the homapage and to icnlude/exclude notebook files.
+Notebooks are not in the docs directory. Sphinx can’t access anything outside the docs directory directly. <code class="docutils literal notranslate"><span class="pre">npsphinx-link</span></code> is used to add .nblink files in the docs folder that link to the notbeookk folder. Image link is not working. npsphinx may support this with “extra-media” but I don’t have this working. For now the images directory is copied to the docs dir. This could be symlinks in Linux.</p></li>
+<li><p>run <code class="docutils literal notranslate"><span class="pre">./make.bat</span> <span class="pre">html</span></code> to generate the webpages</p></li>
+</ul>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="tips">
+<h1>Tips<a class="headerlink" href="#tips" title="Link to this heading">#</a></h1>
+<section id="embeded-ipynb-outside-docs-folder">
+<h2>Embeded .ipynb outside docs folder;<a class="headerlink" href="#embeded-ipynb-outside-docs-folder" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>pip install nbsphinx</p></li>
+<li><p>pip install nbsphinx-link</p></li>
+<li><p>pip install pandoc
+Create a .nblink file inside the doc folder
+Inside this file add</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;./relative/path/to/.ipynb&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="embed-html">
+<h2>Embed HTML<a class="headerlink" href="#embed-html" title="Link to this heading">#</a></h2>
+<p>.. raw:: html
+:file: filename.html</p>
+</section>
+<section id="cookie-script">
+<h2>Cookie script<a class="headerlink" href="#cookie-script" title="Link to this heading">#</a></h2>
+<p>Comment out this script when testing pages locally, otherwise cookie is never set and cookie prompt loads on every page</p>
+<p><code class="docutils literal notranslate"><span class="pre">source\_themes\xilinx\layout</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;!--&lt;script src=&quot;https://cdn.cookielaw.org/scripttemplates/otSDKStub.js&quot; data-document-language=&quot;true&quot; type=&quot;text/javascript&quot; charset=&quot;UTF-8&quot; data-domain-script=&quot;03af8d57-0a04-47a6-8f10-322fa00d8fc7&quot; &gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+function OptanonWrapper() { }
+&lt;/script&gt;--&gt;
+&lt;!-- OneTrust Cookies Consent Notice end for xilinx.github.io --&gt;
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>dir<span class="w"> </span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Volume in drive C is OS
+ Volume Serial Number is 2AAE-4EBE
+
+ Directory of C:\Users\catha\OneDrive\Documents\PHX-PYNQ-Dev-0.5\docs
+
+29/09/2023  15:03    &lt;DIR&gt;          .
+29/09/2023  08:53    &lt;DIR&gt;          ..
+29/09/2023  08:37    &lt;DIR&gt;          .ipynb_checkpoints
+29/09/2023  13:52    &lt;DIR&gt;          build
+22/09/2023  11:58               697 drivers.md
+26/09/2023  15:54    &lt;DIR&gt;          images
+22/09/2023  11:58               723 licenses.md
+29/09/2023  09:11               791 make.bat
+29/09/2023  08:39               593 Makefile
+22/09/2023  11:58             1,543 onnxruntime.md
+29/09/2023  13:55    &lt;DIR&gt;          source
+29/09/2023  15:03            12,042 sphinx_build.ipynb
+22/09/2023  11:58               584 wsl.md
+               7 File(s)         16,973 bytes
+               6 Dir(s)  523,455,508,480 bytes free
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="build-warnings-errors">
+<h1>Build warnings, errors<a class="headerlink" href="#build-warnings-errors" title="Link to this heading">#</a></h1>
+<p>Most issues or warnings are due to the way notebooks have been written mixing markdown with HTML, or in the case of docstrings - the docstring format used.</p>
+<p>This warnings are “won’t fix” and should not be causing issues in the docs html build.</p>
+<p>This is due to more than one <code class="docutils literal notranslate"><span class="pre">kernel</span></code> object in the Python package. It only affects the cross linking of the object to its documentation. In this case it seems to cross link to the correct object so does not cause an issue.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">c</span><span class="p">:</span>\<span class="n">users</span>\<span class="n">catha</span>\<span class="n">appdata</span>\<span class="n">local</span>\<span class="n">riallto</span>\<span class="n">riallto_venv</span>\<span class="n">lib</span>\<span class="n">site</span><span class="o">-</span><span class="n">packages</span>\<span class="n">npu</span>\<span class="n">build</span>\<span class="n">port</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="n">docstring</span> <span class="n">of</span> <span class="n">npu</span><span class="o">.</span><span class="n">build</span><span class="o">.</span><span class="n">port</span><span class="o">.</span><span class="n">Port</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span> <span class="n">WARNING</span><span class="p">:</span> <span class="n">more</span> <span class="n">than</span> <span class="n">one</span> <span class="n">target</span> <span class="n">found</span> <span class="k">for</span> <span class="n">cross</span><span class="o">-</span><span class="n">reference</span> <span class="s1">&#39;Kernel&#39;</span><span class="p">:</span> <span class="n">npu</span><span class="o">.</span><span class="n">build</span><span class="o">.</span><span class="n">kernel</span><span class="o">.</span><span class="n">Kernel</span><span class="p">,</span> <span class="n">npu</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">svg</span><span class="o">.</span><span class="n">Kernel</span>
+</pre></div>
+</div>
+<p>This is due to a HTML <div> object spanning multiple lines. It does not seem to cause an issue in the html build</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">C</span><span class="p">:</span>\<span class="n">Users</span>\<span class="n">catha</span>\<span class="n">OneDrive</span>\<span class="n">Documents</span>\<span class="n">riallto</span>\<span class="n">docs</span>\<span class="n">source</span>\<span class="mi">4_2</span><span class="n">_write_your_kernel</span><span class="o">.</span><span class="n">nblink</span><span class="p">:</span><span class="mi">185</span><span class="p">:</span> <span class="n">WARNING</span><span class="p">:</span> <span class="n">Inline</span> <span class="n">interpreted</span> <span class="n">text</span> <span class="ow">or</span> <span class="n">phrase</span> <span class="n">reference</span> <span class="n">start</span><span class="o">-</span><span class="n">string</span> <span class="n">without</span> <span class="n">end</span><span class="o">-</span><span class="n">string</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>These are different objects with the same name in the Python package. The suggested fix woudl need to be added to docstrings which is not desirable. No fix for now.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<span class="n">c</span><span class="p">:</span>\<span class="n">users</span>\<span class="n">catha</span>\<span class="n">appdata</span>\<span class="n">local</span>\<span class="n">riallto</span>\<span class="n">riallto_venv</span>\<span class="n">lib</span>\<span class="n">site</span><span class="o">-</span><span class="n">packages</span>\<span class="n">npu</span>\<span class="n">lib</span>\<span class="n">kernels</span>\<span class="n">filter2d</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="n">docstring</span> <span class="n">of</span> <span class="n">npu</span><span class="o">.</span><span class="n">lib</span><span class="o">.</span><span class="n">kernels</span><span class="o">.</span><span class="n">filter2d</span><span class="o">.</span><span class="n">Filter2dScalar</span><span class="p">:</span><span class="mi">4</span><span class="p">:</span> <span class="n">WARNING</span><span class="p">:</span> <span class="n">duplicate</span> <span class="n">label</span> <span class="n">npu</span><span class="o">.</span><span class="n">lib</span><span class="o">.</span><span class="n">kernels</span><span class="p">:</span><span class="n">keyword</span> <span class="n">parameter</span><span class="p">,</span> <span class="n">other</span> <span class="n">instance</span> <span class="ow">in</span> <span class="n">C</span><span class="p">:</span>\<span class="n">Users</span>\<span class="n">catha</span>\<span class="n">OneDrive</span>\<span class="n">Documents</span>\<span class="n">riallto</span>\<span class="n">docs</span>\<span class="n">source</span>\<span class="n">npu</span><span class="o">.</span><span class="n">lib</span><span class="o">.</span><span class="n">kernels</span><span class="o">.</span><span class="n">rst</span>
+<span class="n">c</span><span class="p">:</span>\<span class="n">users</span>\<span class="n">catha</span>\<span class="n">appdata</span>\<span class="n">local</span>\<span class="n">riallto</span>\<span class="n">riallto_venv</span>\<span class="n">lib</span>\<span class="n">site</span><span class="o">-</span><span class="n">packages</span>\<span class="n">npu</span>\<span class="n">runtime</span>\<span class="n">sequence</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="n">docstring</span> <span class="n">of</span> <span class="n">npu</span><span class="o">.</span><span class="n">runtime</span><span class="o">.</span><span class="n">sequence</span><span class="o">.</span><span class="n">Operation</span><span class="o">.</span><span class="n">bdId</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span> <span class="n">WARNING</span><span class="p">:</span> <span class="n">duplicate</span> <span class="nb">object</span> <span class="n">description</span> <span class="n">of</span> <span class="n">npu</span><span class="o">.</span><span class="n">runtime</span><span class="o">.</span><span class="n">sequence</span><span class="o">.</span><span class="n">Operation</span><span class="o">.</span><span class="n">bdId</span><span class="p">,</span> <span class="n">other</span> <span class="n">instance</span> <span class="ow">in</span> <span class="n">npu</span><span class="o">.</span><span class="n">runtime</span><span class="p">,</span> <span class="n">use</span> <span class="p">:</span><span class="n">no</span><span class="o">-</span><span class="n">index</span><span class="p">:</span> <span class="k">for</span> <span class="n">one</span> <span class="n">of</span> <span class="n">them</span>
+<span class="n">c</span><span class="p">:</span>\<span class="n">users</span>\<span class="n">catha</span>\<span class="n">appdata</span>\<span class="n">local</span>\<span class="n">riallto</span>\<span class="n">riallto_venv</span>\<span class="n">lib</span>\<span class="n">site</span><span class="o">-</span><span class="n">packages</span>\<span class="n">npu</span>\<span class="n">runtime</span>\<span class="n">sequence</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="n">docstring</span> <span class="n">of</span> <span class="n">npu</span><span class="o">.</span><span class="n">runtime</span><span class="o">.</span><span class="n">sequence</span><span class="o">.</span><span class="n">Operation</span><span class="o">.</span><span class="n">config</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span> <span class="n">WARNING</span><span class="p">:</span> <span class="n">duplicate</span> <span class="nb">object</span> <span class="n">description</span> <span class="n">of</span> <span class="n">npu</span><span class="o">.</span><span class="n">runtime</span><span class="o">.</span><span class="n">sequence</span><span class="o">.</span><span class="n">Operation</span><span class="o">.</span><span class="n">config</span><span class="p">,</span> <span class="n">other</span> <span class="n">instance</span> <span class="ow">in</span> <span class="n">npu</span><span class="o">.</span><span class="n">runtime</span><span class="p">,</span> <span class="n">use</span> <span class="p">:</span><span class="n">no</span><span class="o">-</span><span class="n">index</span><span class="p">:</span> <span class="k">for</span> <span class="n">one</span> <span class="n">of</span> <span class="n">them</span>
+<span class="n">c</span><span class="p">:</span>\<span class="n">users</span>\<span class="n">catha</span>\<span class="n">appdata</span>\<span class="n">local</span>\<span class="n">riallto</span>\<span class="n">riallto_venv</span>\<span class="n">lib</span>\<span class="n">site</span><span class="o">-</span><span class="n">packages</span>\<span class="n">npu</span>\<span class="n">runtime</span>\<span class="n">sequence</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="n">docstring</span> <span class="n">of</span> <span class="n">npu</span><span class="o">.</span><span class="n">runtime</span><span class="o">.</span><span class="n">sequence</span><span class="o">.</span><span class="n">Operation</span><span class="o">.</span><span class="n">coords</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span> <span class="n">WARNING</span><span class="p">:</span> <span class="n">duplicate</span> <span class="nb">object</span> <span class="n">description</span> <span class="n">of</span> <span class="n">npu</span><span class="o">.</span><span class="n">runtime</span><span class="o">.</span><span class="n">sequence</span><span class="o">.</span><span class="n">Operation</span><span class="o">.</span><span class="n">coords</span><span class="p">,</span> <span class="n">other</span> <span class="n">instance</span> <span class="ow">in</span> <span class="n">npu</span><span class="o">.</span><span class="n">runtime</span><span class="p">,</span> <span class="n">use</span> <span class="p">:</span><span class="n">no</span><span class="o">-</span><span class="n">index</span><span class="p">:</span> <span class="k">for</span> <span class="n">one</span> <span class="n">of</span> <span class="n">them</span>
+<span class="n">c</span><span class="p">:</span>\<span class="n">users</span>\<span class="n">catha</span>\<span class="n">appdata</span>\<span class="n">local</span>\<span class="n">riallto</span>\<span class="n">riallto_venv</span>\<span class="n">lib</span>\<span class="n">site</span><span class="o">-</span><span class="n">packages</span>\<span class="n">npu</span>\<span class="n">runtime</span>\<span class="n">sequence</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="n">docstring</span> <span class="n">of</span> <span class="n">npu</span><span class="o">.</span><span class="n">runtime</span><span class="o">.</span><span class="n">sequence</span><span class="o">.</span><span class="n">Operation</span><span class="o">.</span><span class="n">opcode</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span> <span class="n">WARNING</span><span class="p">:</span> <span class="n">duplicate</span> <span class="nb">object</span> <span class="n">description</span> <span class="n">of</span> <span class="n">npu</span><span class="o">.</span><span class="n">runtime</span><span class="o">.</span><span class="n">sequence</span><span class="o">.</span><span class="n">Operation</span><span class="o">.</span><span class="n">opcode</span><span class="p">,</span> <span class="n">other</span> <span class="n">instance</span> <span class="ow">in</span> <span class="n">npu</span><span class="o">.</span><span class="n">runtime</span><span class="p">,</span> <span class="n">use</span> <span class="p">:</span><span class="n">no</span><span class="o">-</span><span class="n">index</span><span class="p">:</span> <span class="k">for</span> <span class="n">one</span> <span class="n">of</span> <span class="n">them</span>
+<span class="n">c</span><span class="p">:</span>\<span class="n">users</span>\<span class="n">catha</span>\<span class="n">appdata</span>\<span class="n">local</span>\<span class="n">riallto</span>\<span class="n">riallto_venv</span>\<span class="n">lib</span>\<span class="n">site</span><span class="o">-</span><span class="n">packages</span>\<span class="n">npu</span>\<span class="n">runtime</span>\<span class="n">sequence</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="n">docstring</span> <span class="n">of</span> <span class="n">npu</span><span class="o">.</span><span class="n">runtime</span><span class="o">.</span><span class="n">sequence</span><span class="o">.</span><span class="n">Operation</span><span class="o">.</span><span class="n">words</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span> <span class="n">WARNING</span><span class="p">:</span> <span class="n">duplicate</span> <span class="nb">object</span> <span class="n">description</span> <span class="n">of</span> <span class="n">npu</span><span class="o">.</span><span class="n">runtime</span><span class="o">.</span><span class="n">sequence</span><span class="o">.</span><span class="n">Operation</span><span class="o">.</span><span class="n">words</span><span class="p">,</span> <span class="n">other</span> <span class="n">instance</span> <span class="ow">in</span> <span class="n">npu</span><span class="o">.</span><span class="n">runtime</span><span class="p">,</span> <span class="n">use</span> <span class="p">:</span><span class="n">no</span><span class="o">-</span><span class="n">index</span><span class="p">:</span> <span class="k">for</span> <span class="n">one</span> <span class="n">of</span> <span class="n">them</span>
+<span class="n">c</span><span class="p">:</span>\<span class="n">users</span>\<span class="n">catha</span>\<span class="n">appdata</span>\<span class="n">local</span>\<span class="n">riallto</span>\<span class="n">riallto_venv</span>\<span class="n">lib</span>\<span class="n">site</span><span class="o">-</span><span class="n">packages</span>\<span class="n">npu</span>\<span class="n">runtime</span>\<span class="n">sequence</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="n">docstring</span> <span class="n">of</span> <span class="n">npu</span><span class="o">.</span><span class="n">runtime</span><span class="o">.</span><span class="n">sequence</span><span class="o">.</span><span class="n">RTPOp</span><span class="o">.</span><span class="n">addr</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span> <span class="n">WARNING</span><span class="p">:</span> <span class="n">duplicate</span> <span class="nb">object</span> <span class="n">description</span> <span class="n">of</span> <span class="n">npu</span><span class="o">.</span><span class="n">runtime</span><span class="o">.</span><span class="n">sequence</span><span class="o">.</span><span class="n">RTPOp</span><span class="o">.</span><span class="n">addr</span><span class="p">,</span> <span class="n">other</span> <span class="n">instance</span> <span class="ow">in</span> <span class="n">npu</span><span class="o">.</span><span class="n">runtime</span><span class="p">,</span> <span class="n">use</span> <span class="p">:</span><span class="n">no</span><span class="o">-</span><span class="n">index</span><span class="p">:</span> <span class="k">for</span> <span class="n">one</span> <span class="n">of</span> <span class="n">them</span>
+<span class="n">c</span><span class="p">:</span>\<span class="n">users</span>\<span class="n">catha</span>\<span class="n">appdata</span>\<span class="n">local</span>\<span class="n">riallto</span>\<span class="n">riallto_venv</span>\<span class="n">lib</span>\<span class="n">site</span><span class="o">-</span><span class="n">packages</span>\<span class="n">npu</span>\<span class="n">runtime</span>\<span class="n">sequence</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="n">docstring</span> <span class="n">of</span> <span class="n">npu</span><span class="o">.</span><span class="n">runtime</span><span class="o">.</span><span class="n">sequence</span><span class="o">.</span><span class="n">RTPOp</span><span class="o">.</span><span class="n">rtpidx</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span> <span class="n">WARNING</span><span class="p">:</span> <span class="n">duplicate</span> <span class="nb">object</span> <span class="n">description</span> <span class="n">of</span> <span class="n">npu</span><span class="o">.</span><span class="n">runtime</span><span class="o">.</span><span class="n">sequence</span><span class="o">.</span><span class="n">RTPOp</span><span class="o">.</span><span class="n">rtpidx</span><span class="p">,</span> <span class="n">other</span> <span class="n">instance</span> <span class="ow">in</span> <span class="n">npu</span><span class="o">.</span><span class="n">runtime</span><span class="p">,</span> <span class="n">use</span> <span class="p">:</span><span class="n">no</span><span class="o">-</span><span class="n">index</span><span class="p">:</span> <span class="k">for</span> <span class="n">one</span> <span class="n">of</span> <span class="n">them</span>
+<span class="n">c</span><span class="p">:</span>\<span class="n">users</span>\<span class="n">catha</span>\<span class="n">appdata</span>\<span class="n">local</span>\<span class="n">riallto</span>\<span class="n">riallto_venv</span>\<span class="n">lib</span>\<span class="n">site</span><span class="o">-</span><span class="n">packages</span>\<span class="n">npu</span>\<span class="n">runtime</span>\<span class="n">sequence</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="n">docstring</span> <span class="n">of</span> <span class="n">npu</span><span class="o">.</span><span class="n">runtime</span><span class="o">.</span><span class="n">sequence</span><span class="o">.</span><span class="n">RTPOp</span><span class="o">.</span><span class="n">value</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span> <span class="n">WARNING</span><span class="p">:</span> <span class="n">duplicate</span> <span class="nb">object</span> <span class="n">description</span> <span class="n">of</span> <span class="n">npu</span><span class="o">.</span><span class="n">runtime</span><span class="o">.</span><span class="n">sequence</span><span class="o">.</span><span class="n">RTPOp</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">other</span> <span class="n">instance</span> <span class="ow">in</span> <span class="n">npu</span><span class="o">.</span><span class="n">runtime</span><span class="p">,</span> <span class="n">use</span> <span class="p">:</span><span class="n">no</span><span class="o">-</span><span class="n">indexe</span> <span class="n">of</span> <span class="n">them</span><span class="p">:</span> <span class="k">for</span>  <span class="n">of</span> <span class="n">them</span>
+</pre></div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Sphinx Build</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pandoc">pandoc</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tips">Tips</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#embeded-ipynb-outside-docs-folder">Embeded .ipynb outside docs folder;</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#embed-html">Embed HTML</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cookie-script">Cookie script</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#build-warnings-errors">Build warnings, errors</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Advanced Micro Devices, Inc.
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <p>
+<div class="aem-Grid aem-Grid--16">
+<div class="aem-GridColumn aem-GridColumn--xxxlarge--none aem-GridColumn--xsmall--16 aem-GridColumn--offset--xsmall--0 aem-GridColumn--xlarge--none aem-GridColumn--xxlarge--none aem-GridColumn--default--none aem-GridColumn--offset--large--1 aem-GridColumn--xlarge--12 aem-GridColumn--offset--default--0 aem-GridColumn--xxlarge--10 aem-GridColumn--offset--xlarge--2 aem-GridColumn--offset--xxlarge--3 aem-GridColumn--offset--xxxlarge--4 aem-GridColumn--xsmall--none aem-GridColumn--large--none aem-GridColumn aem-GridColumn--large--14 aem-GridColumn--xxxlarge--8 aem-GridColumn--default--16">
+<div class="container-fluid sub-footer">
+
+<div class="row">
+<div class="col-xs-24">
+<p><a target="_blank" href="https://www.amd.com/en/corporate/copyright">Terms and Conditions</a> | <a target="_blank" href="https://www.amd.com/en/corporate/privacy">Privacy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/cookies">Cookie Policy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/trademarks">Trademarks</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/statement-human-trafficking-forced-labor.pdf">Statement on Forced Labor</a> | <a target="_blank" href="https://www.amd.com/en/corporate/competition">Fair and Open Competition</a> <br> <a target="_blank" href="https://www.amd.com/system/files/documents/amd-uk-tax-strategy.pdf">UK Tax Strategy</a> | <a target="_blank" href="https://docs.xilinx.com/v/u/9x6YvZKuWyhJId7y7RQQKA">Inclusive Terminology</a> | <a href="#cookiessettings" class="ot-sdk-show-settings">Cookies Settings</a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="cookie-consent" class="cookie-consent">
+<p>This website uses cookies to ensure you get the best experience on our website. <a href="#" id="cookie-accept">Accept</a> | <a href="#" id="cookie-reject">Reject</a></p>
+</div>
+</p>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

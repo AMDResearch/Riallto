@@ -1,0 +1,1053 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Write your Own Kernel &#8212; Riallto - An exploration framework for Ryzen AI</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=a1ed0ca2" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/4_2_write_your_kernel';</script>
+    <script src="../_static/cookie-consent.js?v=2793a0fe"></script>
+    <script src="../_static/custom.js?v=4ce5a416"></script>
+    <link rel="canonical" href="https://cathalmccabe.github.io/Riallto/notebooks/4_2_write_your_kernel.html" />
+    <link rel="icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Run Time Parameters" href="4_3_kernels_with_runtime_parameters.html" />
+    <link rel="prev" title="Exploration Software Framework" href="4_1_software_framework.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Riallto - An exploration framework for Ryzen AI</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Riallto - an exploration framework for the AMD Ryzen AI NPU
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Riallto Overview</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="1_0_Introduction.html">Welcome to Riallto</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../install-riallto.html">Install Riallto</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../install-riallto-linux.html">Riallto Ubuntu 24.04 setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install-riallto-windows.html">Install Riallto on Windows</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ryzenai_video_overview.html">Riallto Video Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1_1_ryzenai.html">Understanding the Ryzen AI NPU</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_1_MS_Windows_Studio_Effects.html">Windows Studio Effects</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Riallto Overview</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="3_1_Color_threshold_example.html">Loading your First Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_2_Ryzenai_capabilities.html">Ryzen AI column architecture and tiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_3_Scaled_color_threshold_example.html">Scaling <em>Data Parallel</em> Applications to Multiple Compute Tiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_4_Edge_detect_example.html">Optimizing Data Movement with Shared Data Memories</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_5_Color_detect_example.html">Multicast, broadcast, and multiple kernels in a single compute tile</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Building Applications</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="4_1_software_framework.html">Exploration Software Framework</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Write your Own Kernel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_3_kernels_with_runtime_parameters.html">Run Time Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_4_threshold_kernel_with_vector_ops.html">How to Use the Vector Processing Units</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_5_describe_an_application.html">Describing an Application</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_6_build_application.html">Building a complete Application</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_7_using_the_memtile_in_your_applications.html">Using Memory Tiles in your Application</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_8_build_a_colorDetect_application.html">Reusing Software Kernels</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Ryzen AI Machine Learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="5_1_pytorch_onnx_inference.html">Run Machine Learning Inference on the NPU with PyTorch and ONNX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5_2_pytorch_onnx_re-train.html">PyTorch and ONNX Flow for Training</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python Package</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../modules.html">npu</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../npu.html">npu package</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../npu.build.html">npu.build package</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../npu.lib.html">npu.lib package</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../npu.lib.applications.html">npu.lib.applications package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../npu.lib.cached.html">npu.lib.cached package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../npu.lib.kernels.html">npu.lib.kernels package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../npu.runtime.html">npu.runtime package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../npu.utils.html">npu.utils package</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">FAQ</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">Riallto FAQ</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Glossary</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Glossary.html">Glossary</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Appendix_Review_of_Image_Processing_Concepts.html">Review of Image Processing Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prerequisites-driver.html">IPU Driver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prerequisites-aie-license.html">AIE Build License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prerequisites-wsl.html">Install WSL</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/notebooks/4_2_write_your_kernel.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Write your Own Kernel</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goals">Goals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-pass-through-application">The <em>pass-through</em> Application</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataflow-graph-and-predefined-template">Dataflow graph and predefined template</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#riallto-rgb720pbuilder-template">Riallto RGB720pBuilder template</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources-used-by-the-pass-through-application">Resources Used by the pass-through Application</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#define-the-pass-through-software-kernel">Define the <em>pass-through</em> Software Kernel</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#anatomy-of-a-kernel">Anatomy of a Kernel</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-the-pass-through-application">Building the pass-through Application</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#invoking-the-application-builder">Invoking the Application Builder</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-an-application">Running an Application</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-the-application-output">Verify the application output</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#write-your-own-kernel-and-rebuild-the-application">Write your own Kernel and Rebuild the Application</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#next-steps">Next Steps</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="write-your-own-kernel">
+<h1>Write your Own Kernel<a class="headerlink" href="#write-your-own-kernel" title="Link to this heading">#</a></h1>
+<section id="goals">
+<h2>Goals<a class="headerlink" href="#goals" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Understand the process of building and running applications on the NPU</p></li>
+<li><p>Learn about the AI Engine’s C++ APIs</p></li>
+<li><p>Write your first AI Engine kernel in C++</p></li>
+<li><p>Build and run a simple application for the first time using the kernel you wrote</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<p><strong><a class="reference external" href="https://en.wikipedia.org/wiki/RGBA_color_model">RGBA Color Model</a></strong></p>
+<p><strong><a class="reference external" href="https://www.xilinx.com/htmldocs/xilinx2023_2/aiengine_api/aie_api/doc/index.html">AI Engine’s C++ APIs</a></strong></p>
+</section>
+<hr class="docutils" />
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<p>This notebook explains the process for building applications on the NPU. Example code is provided for an introductory application which is intended to be easy to understand and verify. You will see the source code for the software kernel that runs in a compute tile. For the NPU graph, a template from the Riallto library is used. Details of NPU graphs will be covered in the next notebook. This notebook will focus on how to build a whole application from kernel source code and a graph template, both of which are provided for you.</p>
+<p>You will see the process of building and running the simple application. Once you have successfully completed these steps, you will be shown how to re-use the same graph template with a software kernel that you will write. You will then see how to build and run this custom application.</p>
+</section>
+<hr class="docutils" />
+<section id="the-pass-through-application">
+<h2>The <em>pass-through</em> Application<a class="headerlink" href="#the-pass-through-application" title="Link to this heading">#</a></h2>
+<p>We will start with a simple <em>pass-through</em> application. For this application the NPU will read an image as the input, move it to a compute tile, and write it back unaltered to our output. This is like a Ryzen AI equivalent to a “hello world” application typically used in C programming. We will not do any real computation in the array, but we will use this application to test that the toolchain and application work correctly.</p>
+<p>The NPU and the x86 CPU in the Ryzen 7000 processor share access to external memory. For Ryzen AI laptops this is DDR5 that is shared with the main x86 CPU and also with the iGPU.</p>
+<center><img src="./images/png/shared_system_memory.png" style="max-height: 365px; width:auto; height:auto;"></center>
+<center><strong>x86 CPU and NPU shared access to external memory </strong></center><p>The NPU only has access to this external memory. The CPU has access to all system peripherals and is responsible for providing input data to the NPU and reading back the results. For example, the CPU can read data from a webcam, make it available to the NPU, read back the results, and display them on a laptop’s screen.</p>
+<p>The NPU application needs an input data buffer and an output data buffer. Data buffers in this context mean area(s) in memory where data will temporarily reside as it is processed by the NPU. The input and output data buffers will be allocated by the x86 processor in external memory.</p>
+<p>The x86 CPU will allocate these buffers, load the input buffer with the initial image, and allow the NPU to read from it. Once the NPU has processed the image, it will save the results in the output buffer, which the CPU can access.</p>
+<p>For this application, the input and returned output image will be identical.</p>
+<p>The CPU is also responsible for launching the application on the NPU. The Python code in this notebook handles buffer allocation, reads image data from a file, places it into the input buffer, and later retrieves it from the output buffer. The software kernel on the NPU simply reads data from the input buffer and writes it to the output buffer without making any changes, hence the name <em>pass-through</em> kernel.</p>
+<section id="dataflow-graph-and-predefined-template">
+<h3>Dataflow graph and predefined template<a class="headerlink" href="#dataflow-graph-and-predefined-template" title="Link to this heading">#</a></h3>
+<p>In section 3, we introduced a color threshold example application. The dataflow graph for our pass-through application and its mapping to the NPU closely resemble the color threshold example. The main differences are as follows:</p>
+<ul class="simple">
+<li><p>Basic pass-through kernel</p>
+<ul>
+<li><p>Our pass-through kernel is simpler; it reads the input data and writes the same data as output</p></li>
+</ul>
+</li>
+<li><p>Single 720p <a class="reference external" href="https://en.wikipedia.org/wiki/RGBA_color_model">RGBA</a> image</p>
+<ul>
+<li><p>Our application processes a single 720p RGBA image at a time, as opposed to a continuous video stream</p></li>
+</ul>
+</li>
+<li><p>Predefined graph template</p>
+<ul>
+<li><p>We use a predefined graph template known as the <code class="docutils literal notranslate"><span class="pre">RGB720pBuilder</span></code> template, which is available from the Riallto <code class="docutils literal notranslate"><span class="pre">npu</span></code> package</p></li>
+</ul>
+</li>
+</ul>
+<section id="riallto-rgb720pbuilder-template">
+<h4>Riallto RGB720pBuilder template<a class="headerlink" href="#riallto-rgb720pbuilder-template" title="Link to this heading">#</a></h4>
+<div class="alert alert-box alert-info">
+<p>Data movement both in space and time to/from the kernel is defined by the graph. In this example, the data movement is provided by <code class="docutils literal notranslate"><span class="pre">RGB720pBuilder</span></code>.</p>
+</div>
+<p>The pre-defined <code class="docutils literal notranslate"><span class="pre">RGB720pBuilder</span></code> is a mapped dataflow graph that uses an interface tile and a single compute tile in an NPU column. We say “mapped” here because the application is mapped to specific tiles in the column - in this case the template is configured to use the bottom compute tile in a column. The interface tile data movers are pre-configured to handle <em>720p</em> RGBA images (1280x720 pixels).  They pass the data to the first compute tile and move the resulting data from the compute tile back to external memory.</p>
+<p>The application will process an entire row of the image at a time. This is the tiling process we described in an earlier notebook. Each RGBA pixel (Red, Green, Blue, Alpha) is 32-bits or 4-bytes and there are 1,280 pixels in a row. The data movers are pre-configured for  transfers of 4 x 1,280 = 5,120 bytes.</p>
+<p>The dataflow graph for this application is illustrated below, along with its mapping to a section of an NPU column. Note again that only one compute tile is used for this application and that this is the compute tile at the bottom of an NPU column. For simplicity, the three empty compute tiles in the rest of the column are not shown here.</p>
+<p>The use of the bottom compute tile is important because the graph has been configured to work specifically with this tile, as defined in the template graph.</p>
+<center><img src="./images/svg/pass-through_DFG_and_Mapping.svg" style="max-height: 400px; width:auto; height:auto;"></center>
+<center><strong>Pass-through DFG and mapping with <em>RGB720pBuilder</em></strong></center><p>In later notebooks, you will see how to write kernels for more than one compute tile, how to create your own mapped dataflow graph, and how to build the complete application for the Ryzen AI NPU. For now, this is a convenient way to get started. We can ignore details of the graph initially and focus first on how software kernels are written and how the whole application is built and executed.</p>
+<p>Execute each code cell below as you progress through the notebook.</p>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="resources-used-by-the-pass-through-application">
+<h2>Resources Used by the pass-through Application<a class="headerlink" href="#resources-used-by-the-pass-through-application" title="Link to this heading">#</a></h2>
+<p>The resources used in this application are similar to those used in the color threshold example.</p>
+<ul class="simple">
+<li><p>1 interface tile</p>
+<ul>
+<li><p>2 data movers</p>
+<ul>
+<li><p>1 for stream input and 1 for stream output</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>1 compute tile with 1 kernel (with the pass-through kernel)</p>
+<ul>
+<li><p>2 memory buffers</p>
+<ul>
+<li><p>An input and output memory buffer in the data memory of the compute tile</p></li>
+</ul>
+</li>
+<li><p>2 data movers</p>
+<ul>
+<li><p>1 for stream input and 1 for stream output</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="alert alert-box alert-info">
+     Note that only the stream switch in the memory tile is used in this example
+</div></section>
+<hr class="docutils" />
+<section id="define-the-pass-through-software-kernel">
+<h2>Define the <em>pass-through</em> Software Kernel<a class="headerlink" href="#define-the-pass-through-software-kernel" title="Link to this heading">#</a></h2>
+<p>The Riallto <code class="docutils literal notranslate"><span class="pre">npu</span></code> Python package is needed for every Riallto notebook. Start by importing this module.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">npu</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next, we will define the simple pass-through kernel. The kernel is written in C++ but is wrapped in a Python object by passing it to our <code class="docutils literal notranslate"><span class="pre">%%kernel</span></code> cell magic. Everything after the first line will be interpreted by the backend tools as C/C++ code.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">kernel</span>
+
+void passthrough(uint8_t *in_buffer, uint8_t *out_buffer, uint32_t nbytes)
+{
+    for(int i=0; i&lt;nbytes; i++) {
+        out_buffer[i] = in_buffer[i];
+    }
+}
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">passthrough()</span></code> function takes three parameters: <code class="docutils literal notranslate"><span class="pre">in_buffer</span></code>, <code class="docutils literal notranslate"><span class="pre">out_buffer</span></code> and <code class="docutils literal notranslate"><span class="pre">nbytes</span></code>. It copies <code class="docutils literal notranslate"><span class="pre">nbytes</span></code> of data in bytes from one memory location (referred to by <code class="docutils literal notranslate"><span class="pre">in_buffer</span></code>) to another memory location (referred to by <code class="docutils literal notranslate"><span class="pre">out_buffer</span></code>).</p>
+<p>This magic creates a Python <code class="docutils literal notranslate"><span class="pre">Kernel</span></code> object called <code class="docutils literal notranslate"><span class="pre">passthrough</span></code> that we will pass later into a graph builder to generate the application.</p>
+<p>We will be able to use the Python kernel object in the Riallto flow to work with the underlying C++ software kernel.</p>
+<p>We can check the Python object has been created and verify it is a <em>Kernel</em> type:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">passthrough</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;npu.build.kernel.Kernel at 0x182e5048ca0&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>The C code associated with this software kernel will be compiled later into an object file. It will then be linked to the data movement in the graph.</p>
+</section>
+<hr class="docutils" />
+<section id="anatomy-of-a-kernel">
+<h2>Anatomy of a Kernel<a class="headerlink" href="#anatomy-of-a-kernel" title="Link to this heading">#</a></h2>
+<p>At this stage, let us consider a few points about kernels:</p>
+<p><strong>Input/output buffers</strong><br />
+When data is pushed to the software kernel (which is running in a compute tile), it is written into a data buffer in the local data memory of the compute tile. The pointers to these buffers will be passed into the software kernel and are references to these buffers. In the signature of the <code class="docutils literal notranslate"><span class="pre">passthrough</span></code> function, there are two buffers:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">uint8_t</span> <span class="pre">*in_buffer</span></code></p>
+<ul>
+<li><p>pointer to the input buffer.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">uint8_t</span> <span class="pre">*out_buffer</span></code></p>
+<ul>
+<li><p>pointer to the output buffer.</p></li>
+</ul>
+</li>
+</ul>
+<p>Each of these buffers has type <code class="docutils literal notranslate"><span class="pre">uint8_t</span></code>, which is a type for a unsigned 8-bit integer. In the main body of the C code (in the for loop), we will access these buffers one byte at a time. The size of these buffers (<code class="docutils literal notranslate"><span class="pre">nbytes</span></code>) are defined in the mapped data flow graph.</p>
+<p><strong>Kernels operate on chunks of data sent to them via the graph</strong><br />
+Compute tiles have a limited amount of local data memory. Most applications will process much more data than can be stored in the local data memories of the compute tiles. The graph schedules the partition of data into smaller segments for the kernel to process. The data partitioning or the number of bytes in each segment must be explicitly managed by the programmer so our <code class="docutils literal notranslate"><span class="pre">passthrough</span></code> function has a parameter, <code class="docutils literal notranslate"><span class="pre">nbytes</span></code> to specify the number of bytes to be transferred.  The parameter is user-configurable and can be set when the application is running.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">passthrough()</span></code> function iterates over the <code class="docutils literal notranslate"><span class="pre">nbytes</span></code> of data, reading from the input buffer, and writing to the output buffer:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">&lt;</span><span class="n">nbytes</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">out_buffer</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">in_buffer</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>When do kernels execute?</strong><br />
+Execution of a kernel by an AI Engine is triggered when a full payload of data has been received by the compute tile’s input buffers. This is controlled by the data movement in the graph. For this application, there is only one input. Compute tiles with several inputs will need to wait until all their buffers are ready before they can execute.
+Once a kernel has completed, data movers in the compute tile move the contents of the output buffer from the tile to their next destination.</p>
+</section>
+<hr class="docutils" />
+<section id="building-the-pass-through-application">
+<h2>Building the pass-through Application<a class="headerlink" href="#building-the-pass-through-application" title="Link to this heading">#</a></h2>
+<p>We need to map our dataflow graph to the NPU so that the compute and data movement requirements of our kernel are met. For this example, we can use a pre-defined Riallto template called <code class="docutils literal notranslate"><span class="pre">RGB720pBuilder</span></code> which we import from the <code class="docutils literal notranslate"><span class="pre">npu</span></code> package’s libraries.  The <code class="docutils literal notranslate"><span class="pre">RGB720pBuilder</span></code> is specially designed for RGBA 720p applications that run on a single compute tile with one input and one output buffer. Furthermore, it accesses and moves data in units of 1 image row of 1,280 pixels at a time. We saw earlier this corresponds to transfers of 5,120 bytes at a time.</p>
+<p>We will instantiate an object of type <code class="docutils literal notranslate"><span class="pre">RGB720pBuilder</span></code> and parameterize it with our <code class="docutils literal notranslate"><span class="pre">pass-through</span></code> kernel as shown below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">npu.lib.graphs.graph_1ct</span> <span class="kn">import</span> <span class="n">RGB720pBuilder</span>
+
+<span class="n">app_builder</span> <span class="o">=</span> <span class="n">RGB720pBuilder</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="n">passthrough</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can confirm that the application is being mapped as we expect by calling the <code class="docutils literal notranslate"><span class="pre">display()</span></code> method of our <code class="docutils literal notranslate"><span class="pre">app_builder</span></code> object to render the mapped dataflow graph. Note this graph matches the graph we saw earlier in this notebook. Note that the diagram below shows a whole NPU column (including three empty compute tiles that are not used in the application). The diagram above did not display the top three unused compute tiles. Nonetheless, the two diagrams are functionally identical.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">app_builder</span><span class="o">.</span><span class="n">display</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/5db036031595fced0a99cf6b7fd3efd3d892290aca1d9df3845036f7c21d1d13.svg" src="../_images/5db036031595fced0a99cf6b7fd3efd3d892290aca1d9df3845036f7c21d1d13.svg" /></div>
+</div>
+<p>The pass-through kernel has been given the name <code class="docutils literal notranslate"><span class="pre">passthrough_0</span></code> and mapped to the bottom compute tile. The visualization shows the interface tile reading data from external memory (not shown), represented by the animated red tokens, and then moving data into the compute tile. This matches the <code class="docutils literal notranslate"><span class="pre">in_buffer</span></code> in our example kernel. The software kernel will start executing. Once it is completed, the compute tile pushes data back to the interface tile which writes the resulting image back to <code class="docutils literal notranslate"><span class="pre">out_buffer</span></code> in external memory.</p>
+<section id="invoking-the-application-builder">
+<h3>Invoking the Application Builder<a class="headerlink" href="#invoking-the-application-builder" title="Link to this heading">#</a></h3>
+<p>We have the code for the software kernel, and we have a graph for the dataflow application. We can now build our application by invoking <code class="docutils literal notranslate"><span class="pre">app_builder.build()</span></code> method to create the files we will need to program the NPU.</p>
+<div class="alert alert-box alert-info">
+     Note that the build process will take about 2 minutes.
+</div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">input_image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">720</span><span class="p">,</span><span class="mi">1280</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+<span class="n">output_image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">720</span><span class="p">,</span><span class="mi">1280</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+
+<span class="n">app_builder</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">input_image</span><span class="p">,</span> <span class="n">output_image</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Building the passthrough kernel...
+Building the xclbin...
+Successfully Building Application... passthrough.xclbin &amp; passthrough.seq delivered
+</pre></div>
+</div>
+</div>
+</div>
+<p>When the build completes successfully, you will see four output files generated in the current directory.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">passthrough_0.mlir</span></code></p>
+<ul>
+<li><p>contains the MLIR code for the kernel.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">passthrough_0.seq</span></code></p>
+<ul>
+<li><p>contains a runtime sequence for runtime configurable parts of the application along with external data movement sequencing. We will cover this in a later notebook.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">passthrough_0.json</span></code></p>
+<ul>
+<li><p>The JSON data encompasses details about the application, such as the kernels used, their assignment to tiles, tile connections, and data movement sequencing (equivalent to the information in the passthrough_0.seq file).</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">passthrough_0.xclbin</span></code></p>
+<ul>
+<li><p>contains the kernel code binary object for the compute tile, and how the application data movement is configured within the array.</p></li>
+</ul>
+</li>
+</ul>
+<p>The MLIR file can be opened as a text file if you would like to review the contents, although the MLIR code is not intended to be easily human readable. The sequence file is a sequence of numbers.</p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/JSON">JavaScript Object Notation (JSON)</a> is a lightweight data interchange format. It is a text-based format for representing structured data that is easy for humans to read and write, and easy for machines to parse and generate.</p>
+<p>The JSON metadata can also be accessed in a notebook by the <code class="docutils literal notranslate"><span class="pre">metadata</span></code> object:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">app_builder</span><span class="o">.</span><span class="n">metadata</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Incidentally, the metadata is used to generate the NPU visualizations.</p>
+<p>We will use these files to run our application.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="running-an-application">
+<h2>Running an Application<a class="headerlink" href="#running-an-application" title="Link to this heading">#</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">OpenCVImageReader()</span></code> is a Riallto utility which uses OpenCV to return an RGBA numpy representation of an image file.</p>
+<p>It will be used to load a 720p image for us to experiment with. <code class="docutils literal notranslate"><span class="pre">image_plot()</span></code> displays the image in a notebook.</p>
+<p>Run the following code cell to load the image and display it:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">npu.utils</span> <span class="kn">import</span> <span class="n">OpenCVImageReader</span><span class="p">,</span> <span class="n">image_plot</span>
+
+<span class="n">img</span> <span class="o">=</span> <span class="n">OpenCVImageReader</span><span class="p">(</span><span class="s1">&#39;images/jpg/ryzenai_future_starts_now.jpg&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">img</span>
+<span class="n">image_plot</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/b69ad2c7ae3f9b39af18ffa95715dbaee086e9422c3e488ac9cb589fafdf838d.png" src="../_images/b69ad2c7ae3f9b39af18ffa95715dbaee086e9422c3e488ac9cb589fafdf838d.png" />
+</div>
+</div>
+<p>Next, we will carry out the following steps to run our application:</p>
+<ol class="arabic simple">
+<li><p>Create an application object from the xclbin we built above.</p></li>
+</ol>
+<p>The <code class="docutils literal notranslate"><span class="pre">AppRunner</span></code> configures the NPU and loads the executable software kernels to all compute tiles used in the application. The software kernels will start running immediately waiting for payload of data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">npu.runtime</span> <span class="kn">import</span> <span class="n">AppRunner</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">AppRunner</span><span class="p">(</span><span class="s1">&#39;passthrough.xclbin&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p><code class="docutils literal notranslate"><span class="pre">allocate()</span></code> is used to create input and output data buffers with the application object for transferring data into and out of our application. These buffers are created by the x86 CPU and exist in the external DDR5 system memory.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Allocate app input and output buffers to exchange data with NPU</span>
+<span class="n">input_image</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">allocate</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">720</span><span class="p">,</span><span class="mi">1280</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">output_image</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">allocate</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">720</span><span class="p">,</span><span class="mi">1280</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Copy the input image into the data buffers.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load RGBA 720p image into input_image buffer</span>
+<span class="n">input_image</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">img</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The buffers created by the CPU may reside in the x86 cache. The Zen 4 CPU has L1, L2 and L3 cache which must be invalidated and flushed to ensure the copies of the buffers in external memory are up-to-date.</p>
+<center><img src="./images/png/shared_system_memory_sync_calls.png" style="max-height: 365px; width:auto; height:auto;"></center>
+<center><strong>Invalidate and flush the cache with synchronization calls </strong></center><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">sync_to_npu()</span></code> is used to flush data from the CPU cache to the input buffer in external memory. It ensures that any modifications made in the CPU cache are reflected in the external memory’s input buffer, keeping the data consistent between these two locations.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sync_to_cpu()</span></code> is used to invalidate the output memory buffer that may reside in the CPU cache. It guarantees that when the CPU reads the results from this buffer, it retrieves the most recent data in external memory which has been written from the NPU.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pass input_image buffer to NPU</span>
+<span class="n">input_image</span><span class="o">.</span><span class="n">sync_to_npu</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>Run the application.</p></li>
+</ol>
+<p><code class="docutils literal notranslate"><span class="pre">call()</span></code> instruct the interface tile to start the data movement based on the application sequence file.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run app on NPU</span>
+<span class="n">app</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">input_image</span><span class="p">,</span> <span class="n">output_image</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The last step is to synchronize the output from the NPU. <code class="docutils literal notranslate"><span class="pre">sync_from_npu()</span></code> invalidates the CPU cache for the output memory buffer ensuring the CPU accesses data the buffer from external memory.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get results from NPU via output_image buffer </span>
+<span class="n">output_image</span><span class="o">.</span><span class="n">sync_from_npu</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="verify-the-application-output">
+<h3>Verify the application output<a class="headerlink" href="#verify-the-application-output" title="Link to this heading">#</a></h3>
+<p>We can verify that the image in the output buffer is identical to the input image. Use numpy build-in method to check if the arrays are equal and plot the image.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compare the arrays for equality</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Are the arrays are equal?: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">array_equal</span><span class="p">(</span><span class="n">input_image</span><span class="p">,</span><span class="w"> </span><span class="n">output_image</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">image_plot</span><span class="p">(</span><span class="n">output_image</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Are the arrays are equal?: True
+</pre></div>
+</div>
+<img alt="../_images/b69ad2c7ae3f9b39af18ffa95715dbaee086e9422c3e488ac9cb589fafdf838d.png" src="../_images/b69ad2c7ae3f9b39af18ffa95715dbaee086e9422c3e488ac9cb589fafdf838d.png" />
+</div>
+</div>
+<p>Finally, we need to delete the buffers and application, otherwise the application will remain loaded onto the NPU device.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">del</span> <span class="n">app</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="write-your-own-kernel-and-rebuild-the-application">
+<h2>Write your own Kernel and Rebuild the Application<a class="headerlink" href="#write-your-own-kernel-and-rebuild-the-application" title="Link to this heading">#</a></h2>
+<p>You can now experiment by creating your own software kernel to run on the compute tile. Instead of passing the input image directly to the output as we did earlier, try inverting the image by subtracting 255 from each pixel’s RGB bytes, or come up with your own idea.</p>
+<p>Your application will use the same graph as we used earlier, so you need to use a 720p image as input. Your application also needs to process the image pixel by pixel.</p>
+<div class="alert alert-box alert-warning">
+<p>Make sure to leave the fourth byte of each pixel unchanged so that you do not invert the alpha channel values! The alpha channel specifies transparency for the image.</p>
+</div><p>Modify the C++ code in the cell below to include your own code.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">kernel</span>
+
+void mykernel(uint8_t *in_buffer, uint8_t *out_buffer, uint32_t nbytes)
+{
+    // Your code here &lt;&lt;&lt;&lt;&lt;&lt;
+
+}
+</pre></div>
+</div>
+</div>
+</div>
+<p>Once you have defined your kernel, run the cell below to verify that the mapped data flow graph is identical to the pass-through application.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">myapp</span> <span class="o">=</span> <span class="n">RGB720pBuilder</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="n">mykernel</span><span class="p">)</span>
+<span class="n">myapp</span><span class="o">.</span><span class="n">display</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Once you finished your kernel code, run the cell below to build it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">input_image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">720</span><span class="p">,</span><span class="mi">1280</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+<span class="n">output_image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">720</span><span class="p">,</span><span class="mi">1280</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+
+<span class="n">myapp</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">input_image</span><span class="p">,</span> <span class="n">output_image</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Once it has built, run the next cell to display your output.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">npu.runtime</span> <span class="kn">import</span> <span class="n">AppRunner</span>
+<span class="n">my_app</span> <span class="o">=</span> <span class="n">AppRunner</span><span class="p">(</span><span class="s1">&#39;mykernel.xclbin&#39;</span><span class="p">)</span>
+
+<span class="n">input_image</span> <span class="o">=</span> <span class="n">my_app</span><span class="o">.</span><span class="n">allocate</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">720</span><span class="p">,</span><span class="mi">1280</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">output_image</span> <span class="o">=</span> <span class="n">my_app</span><span class="o">.</span><span class="n">allocate</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">720</span><span class="p">,</span><span class="mi">1280</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+
+<span class="n">input_image</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">img</span>
+<span class="n">input_image</span><span class="o">.</span><span class="n">sync_to_npu</span><span class="p">()</span>
+
+<span class="n">my_app</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">input_image</span><span class="p">,</span> <span class="n">output_image</span><span class="p">)</span>
+
+<span class="n">output_image</span><span class="o">.</span><span class="n">sync_from_npu</span><span class="p">()</span>
+<span class="n">image_plot</span><span class="p">(</span><span class="n">output_image</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Do not forget to tidy up after running your application.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">del</span> <span class="n">my_app</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="next-steps">
+<h2>Next Steps<a class="headerlink" href="#next-steps" title="Link to this heading">#</a></h2>
+<p>In the next notebook you are going to write a kernel that features Runtime Parameters (RTPs) that can be updated at runtime.</p>
+<hr class="docutils" />
+<center>
+Copyright&copy; 2023 AMD, Inc
+</center>
+<center>
+SPDX-License-Identifier: MIT
+</center></section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="4_1_software_framework.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Exploration Software Framework</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="4_3_kernels_with_runtime_parameters.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Run Time Parameters</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goals">Goals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-pass-through-application">The <em>pass-through</em> Application</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataflow-graph-and-predefined-template">Dataflow graph and predefined template</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#riallto-rgb720pbuilder-template">Riallto RGB720pBuilder template</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources-used-by-the-pass-through-application">Resources Used by the pass-through Application</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#define-the-pass-through-software-kernel">Define the <em>pass-through</em> Software Kernel</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#anatomy-of-a-kernel">Anatomy of a Kernel</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-the-pass-through-application">Building the pass-through Application</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#invoking-the-application-builder">Invoking the Application Builder</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-an-application">Running an Application</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-the-application-output">Verify the application output</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#write-your-own-kernel-and-rebuild-the-application">Write your own Kernel and Rebuild the Application</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#next-steps">Next Steps</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Advanced Micro Devices, Inc.
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <p>
+<div class="aem-Grid aem-Grid--16">
+<div class="aem-GridColumn aem-GridColumn--xxxlarge--none aem-GridColumn--xsmall--16 aem-GridColumn--offset--xsmall--0 aem-GridColumn--xlarge--none aem-GridColumn--xxlarge--none aem-GridColumn--default--none aem-GridColumn--offset--large--1 aem-GridColumn--xlarge--12 aem-GridColumn--offset--default--0 aem-GridColumn--xxlarge--10 aem-GridColumn--offset--xlarge--2 aem-GridColumn--offset--xxlarge--3 aem-GridColumn--offset--xxxlarge--4 aem-GridColumn--xsmall--none aem-GridColumn--large--none aem-GridColumn aem-GridColumn--large--14 aem-GridColumn--xxxlarge--8 aem-GridColumn--default--16">
+<div class="container-fluid sub-footer">
+
+<div class="row">
+<div class="col-xs-24">
+<p><a target="_blank" href="https://www.amd.com/en/corporate/copyright">Terms and Conditions</a> | <a target="_blank" href="https://www.amd.com/en/corporate/privacy">Privacy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/cookies">Cookie Policy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/trademarks">Trademarks</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/statement-human-trafficking-forced-labor.pdf">Statement on Forced Labor</a> | <a target="_blank" href="https://www.amd.com/en/corporate/competition">Fair and Open Competition</a> <br> <a target="_blank" href="https://www.amd.com/system/files/documents/amd-uk-tax-strategy.pdf">UK Tax Strategy</a> | <a target="_blank" href="https://docs.xilinx.com/v/u/9x6YvZKuWyhJId7y7RQQKA">Inclusive Terminology</a> | <a href="#cookiessettings" class="ot-sdk-show-settings">Cookies Settings</a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="cookie-consent" class="cookie-consent">
+<p>This website uses cookies to ensure you get the best experience on our website. <a href="#" id="cookie-accept">Accept</a> | <a href="#" id="cookie-reject">Reject</a></p>
+</div>
+</p>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
