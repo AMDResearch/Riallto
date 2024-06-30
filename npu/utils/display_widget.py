@@ -43,7 +43,7 @@ class DisplayImage:
     def frame(self, value) -> None:
         """ Sets the current image on the widget """
         pil_image = PIL.Image.fromarray(value)
-        cols, rows, _ = value.shape
+        rows, cols, _ = value.shape
         pil_image = pil_image.resize((cols//self._resize, rows//self._resize))
         b = BytesIO()
         pil_image.save(b, format='jpeg')
