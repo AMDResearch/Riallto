@@ -23,7 +23,7 @@ The steps below will allow you to get quickly started using the 'Lite' version o
 
 ![IPU driver dialog](docs/images/ipu_driver.png)
 
-* [Download and unzip the Riallto installer](https://www.xilinx.com/bin/public/openDownload?filename=Riallto-v1.0.zip). 
+* [Download and unzip the Riallto installer](https://www.amd.com/bin/public/amdOpenDownload?filename=Riallto-v1.1.zip). 
 * Navigate to the `installer.exe` using the File Explorer and run as administrator, making sure the 'Lite' install option is selected when prompted, as shown in the figure below. 
 
 ![Riallto installer options](docs/images/installer.png)
