@@ -44,8 +44,7 @@ class DisplayImage:
         """ Sets the current image on the widget """
         pil_image = PIL.Image.fromarray(value)
         cols, rows, _ = value.shape
-        pil_image = pil_image.resize((cols//self._resize, rows//self._resize),
-                                     PIL.Image.ANTIALIAS)
+        pil_image = pil_image.resize((cols//self._resize, rows//self._resize))
         b = BytesIO()
         pil_image.save(b, format='jpeg')
         self._image_widget.value = b.getvalue()
