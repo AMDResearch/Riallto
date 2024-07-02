@@ -47,3 +47,4 @@ parts:
             - file: prerequisites-driver.rst
             - file: prerequisites-aie-license
             - file: prerequisites-wsl.rst
+            - file: upgrade-ryzenaisw.rst
