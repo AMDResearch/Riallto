@@ -129,8 +129,8 @@ else
 	exit 1
 fi
 
-if [ -f "${NPU_FIRMWARE}" ]; then	
-	echo "NPU is available, just setting up Riallto"
+if [ -f "./xdna-driver-builder/${DRIVER_TARBALL}" ]; then	
+	echo "NPU driver is available, just setting up Riallto"
 	build_xrt=0;			
 else
 	build_xrt=1
@@ -150,7 +150,7 @@ if [ $build_xrt -eq 1 ]; then
 
 fi
 
-# Install the NPU drivers (xdna-driver)
+# Build the NPU drivers (xdna-driver)
 if [ ! -f "${NPU_FIRMWARE}" ]; then	
 	npu_install_tmp_dir=$(mktemp -d)
 	tar -xzvf "./xdna-driver-builder/${DRIVER_TARBALL}" -C "${npu_install_tmp_dir}"
@@ -185,9 +185,9 @@ if [ ! -f "./xilinx_tools.tar.gz" ]; then
 	wget -O $build_tmp/riallto_installer.zip https://www.xilinx.com/bin/public/openDownload?filename=Riallto-v1.1.zip  
 	pushd $build_tmp
 		unzip riallto_installer.zip
-        	mv Riallto_v1.1/Riallto/downloads/xilinx_tools_latest.tar.gz ./xilinx_tools.tar.gz	
+        	mv Riallto-v1.1/Riallto/downloads/xilinx_tools_latest.tar.gz ./xilinx_tools.tar.gz	
 	popd
-	cp $build_tmp/Riallto_v1.1/eula.txt ./
+	cp $build_tmp/Riallto-v1.1/eula.txt ./
 else
 	cp xilinx_tools.tar.gz $build_tmp
 fi
