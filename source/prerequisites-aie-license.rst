@@ -5,11 +5,19 @@ AIE Build License
 
 To run any of the build time examples, you will need an AIE build license. Execute these instructions after the 'Full' install has completed.
 
-You will require the WSL instance MAC address in order to apply for a AIE build license. You can get your WSL MAC address by running the following command in Powershell:
+You will require your network adapters MAC address on Linux and the WSL instance MAC address on Windows in order to apply for a AIE build license. 
+
+On Windows you can get your WSL MAC address by running the following command in Powershell:
 
 .. code-block:: console
 
     wsl -d Riallto ip -brief link show eth0
+
+On Ubuntu you can get your MAC address by running the following command in your terminal, and selecting your appropriate network interface:
+
+.. code-block:: console
+
+    ip -brief link show 
 
 Next, go to the `AMD Product Licensing page <https://www.xilinx.com/getlicense>`_ and generate a node locked license for AI Engine tools. You will need to create an AMD account if you do not have one.
 

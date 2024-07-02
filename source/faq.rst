@@ -105,5 +105,5 @@ How can I contribute to Riallto?
 Is there a Linux version of Riallto?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
--  No, not currently, though this may change in the future
+- Yes, since Riallto v1.1 Linux is supported starting from Ubuntu 24.04 and the 6.10 Linux kernel. 
 
