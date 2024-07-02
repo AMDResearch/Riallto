@@ -26,13 +26,16 @@ utils
 """
 
 from .utils.test_device import get_driver_version, version_to_tuple
+import platform
 
 __supported_driver__ = "10.1109.8.100"
-__installed_driver__ = get_driver_version()
 
-if version_to_tuple(__installed_driver__) < version_to_tuple(__supported_driver__):
-    raise ValueError(f"""Detected driver: {__installed_driver__}, supported driver version is >={__supported_driver__}, 
-              go to https://riallto.ai/prerequisites-driver.html for driver setup instructions.""")
+if platform.system() == 'Windows':
+    __installed_driver__ = get_driver_version()
+    
+    if version_to_tuple(__installed_driver__) < version_to_tuple(__supported_driver__):
+        raise ValueError(f"""Detected driver: {__installed_driver__}, supported driver version is >={__supported_driver__},
+                  go to https://riallto.ai/prerequisites-driver.html for driver setup instructions.""")
 
 from .repr_dict import ReprDict
 from .magic import kernel_magic

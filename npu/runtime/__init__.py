@@ -44,8 +44,9 @@ your data.
 
 """
 
+import platform
 import os
-if os.name == 'nt':
+if platform.system() == 'Windows':
     os.add_dll_directory(os.path.join('C:\\', 'Windows', 'System32', 'AMD'))
 
 from .pyxrt import device, xclbin

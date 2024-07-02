@@ -43,7 +43,7 @@ class MLIRBuilder:
         MLIRConnect.reset_id()
 
         self.aietiles, self.memtiles, self.sdmatiles = self._parse_tiles(config)
-        self.tiles = self.sdmatiles | self.memtiles | self.aietiles 
+        self.tiles = {**self.sdmatiles,  **self.memtiles, **self.aietiles} 
         self._map_kernels_to_tiles()
 
         self._cons_src2dst = self._populate_src2dst_cons_dict()

@@ -8,6 +8,8 @@ import cv2
 import inspect
 import numpy as np
 import colorsys
+import time
+import platform
 import matplotlib.pyplot as plt
 import ipywidgets as widget
 from IPython.display import display
@@ -42,7 +44,7 @@ def _get_full_path(xclbin: str = None) -> str:
 
 
 def _find_closest_resolution(cam_h: int = None,
-                             cam_w: int = None) -> tuple[int, int]:
+                             cam_w: int = None):
     """Find the closes available resolution
 
     Find the nearest resolution in each dimension and use it if it matches
@@ -65,7 +67,7 @@ def _find_closest_resolution(cam_h: int = None,
     return resolution
 
 
-def _get_webcam_resolution(cap) -> tuple[int, int]:
+def _get_webcam_resolution(cap):
     """Get webcam resolution"""
     cam_w = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
     cam_h = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
@@ -158,7 +160,9 @@ class VideoApplication:
 
     def _get_resolution(self, videosource):
         if isinstance(videosource, int):
-            if videosource == 0:
+            if platform.system() == 'Linux':
+                prop = cv2.CAP_V4L2
+            elif videosource == 0:
                 prop = cv2.CAP_MSMF
             else:
                 prop = cv2.CAP_DSHOW
@@ -178,19 +182,9 @@ class VideoApplication:
             self.cam_h, self.cam_w = \
                 _find_closest_resolution(self.cam_h, self.cam_w)
 
-    def _get_resolution_file(self, filename):
-        self._cap = cv2.VideoCapture(filename)
-
-        self._resize = not _set_supported_webcam_resolution(self._cap)
-        self.cam_h, self.cam_w = _get_webcam_resolution(self._cap)
-
-        self._camres = self.cam_w, self.cam_h
-        if self._resize:
-            self.cam_h, self.cam_w = \
-                _find_closest_resolution(self.cam_h, self.cam_w)
-
     def start(self):
         """Start the video processing"""
+        time.sleep(0.3)
         ret, _ = self._cap.read()
         if not self._cap.isOpened() or not ret:
             self._cap.release()
