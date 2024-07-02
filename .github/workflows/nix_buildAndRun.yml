@@ -1,4 +1,4 @@
-name: Windows Riallto CI Testing 
+name: Linux Riallto CI Testing 
 
 on:
   push:
@@ -30,8 +30,8 @@ on:
 
 jobs:
   birman-tests:
-    name: not-birman-15-tests
-    runs-on: self-hosted-windows
+    name: not-birman-15-linux-tests
+    runs-on: self-hosted-linux
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -40,4 +40,5 @@ jobs:
   
       - name: run pytests 
         run: |
-          activate_venv.ps1 ; py.exe -m pip install .; py.exe -m pytest ./tests
+          ls ./
+          ./.github/workflows/linux_ci_script.sh 

@@ -15,10 +15,21 @@ an AIEBuild license from https://www.xilinx.com/getlicense.
 """
 
 from setuptools import find_packages, setup
+import platform
+
+# Windows and linux have different bindings version, so we need to add
+# the appropriate constraint based on the platform.
+required_python_version = ""
+if platform.system() == 'Linux':
+    required_python_version = "3.12.*"
+elif platform.system() == 'Windows':
+    required_python_version = "3.9.*"
+else:
+    raise OSError(f'Unknown Operating System: {platform.os.name} {platform.system()}')
 
 setup(
     name="npu",
-    version='1.0',
+    version='1.1',
     package_data={
         '': ['*.py', '*.pyd', '*.so', '*.dll', 'Makefile', '.h', '.cpp',
             'tests/*',
@@ -39,7 +50,7 @@ setup(
             'lib/applications/binaries/*'],
     },
     packages=find_packages(),
-    python_requires="==3.9.*",
+    python_requires=f"=={required_python_version}",
     install_requires=[
         "numpy<2.0",
         "pytest",
@@ -49,6 +60,7 @@ setup(
         "CppHeaderParser",
         "jupyterlab",
         "ipywidgets",
-        "pillow>=10.0.0"
+        "pillow>=10.0.0",
+        "ml_dtypes"
     ],
-    description="Riallto is a simple framework for programming and interacting with the AMD IPU device.")
+    description="Riallto is a simple framework for programming and interacting with the AMD NPU device.")

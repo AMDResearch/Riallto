@@ -21,6 +21,9 @@ import json
 from npu.utils.xbutil import XBUtil
 import ipywidgets as widget
 from IPython.display import display
+import subprocess
+import platform
+from warnings import warn
 
 dtype_to_maxval = {
     "uint32_t" : 4294967296,
@@ -48,7 +51,6 @@ def _updatebar(huebar: widget.Image , min:int, max: int):
 class IPUAppAlreadyLoaded(Exception):
     pass
 
-
 class AppRunner:
     """This class abstracts the necessary setup steps of an NPU
     application and enables a simple interface with the accelerator
@@ -60,26 +62,29 @@ class AppRunner:
     xclbin_name : str
         Name of xclbin file
     fw_sequence : str
-        Name of the firmware sequence, typically same name as the 
+        Name of the firmware sequence, typically same name as the
         xclbin file
     handoff : str
-        Name of the metadata handoff file, typically a .json file 
+        Name of the metadata handoff file, typically a .json file
         with the same name as the xclbin and firmware files
 
     Note
     ----
-    This class is primarily built on top of the python bindings to 
+    This class is primarily built on top of the python bindings to
     XRT (Xilinx Runtime Library). You can read more about the runtime
     in the documentation at https://xilinx.github.io/XRT/.
-    
+
     """
 
     def __init__(self, xclbin_name:str, fw_sequence:Optional[str]=None, handoff:Optional[str]=None):
         """Returns a new AppRunner object."""
 
         self._process_handoff_metadata(xclbin_name, handoff)
-        self.xbutil = XBUtil()
-        self._stability_checks()
+
+        # Extra stability checks for windows
+        if platform.system() == "Windows":
+            self.xbutil = XBUtil()
+            self._stability_checks()
 
         # If sequence given, use it, otherwise look for same name as xclbin
         if fw_sequence:
@@ -88,6 +93,9 @@ class AppRunner:
             self.sequence = ipr.Sequence(os.path.splitext(xclbin_name)[0] + '.seq', first_parse=True)
 
         xclbin = ipr.xclbin(xclbin_name)
+
+        # Run the script to allow this unsigned firmware xclbin to run
+
         self.kernel_params = self._get_kernel_info(xclbin_name)
         self.device =  self._get_device()
 
@@ -95,7 +103,7 @@ class AppRunner:
             self.device.register_xclbin(xclbin)
         except RuntimeError as e:
             print(str(e))
-            print("""Failed to register xclbin. Is another application running? 
+            print("""Failed to register xclbin. Is another application running?
 Try shutting down/restarting all other jupyter notebooks and try again.""")
             raise
 
@@ -111,17 +119,22 @@ Try shutting down/restarting all other jupyter notebooks and try again.""")
         self._allocated_arrays = []
 
     def _get_device(self):
-        """ Checks to see if there is already an AppRunner that exists. 
+        """ Checks to see if there is already an AppRunner that exists.
         if there is gets the device from previously allocated AppRunner or
         else creates a new device.
         """
+
         for obj in gc.get_objects():
-            if isinstance(obj, type(self)) and (obj != self):
-                if getattr(obj, "device", None):
-                    return obj.device
+            try:
+                if isinstance(obj, type(self)) and (obj != self):
+                    if getattr(obj, "device", None):
+                        return obj.device
+            except Exception as e:
+                warn(f"Encountered an exception during isinstance check: {e}")
+                continue
         return ipr.device(0)
 
-    def _process_handoff_metadata(self, xclbin_name:str, handoff:Optional[str]=None)->None: 
+    def _process_handoff_metadata(self, xclbin_name:str, handoff:Optional[str]=None)->None:
         """ Parses the handoff metadata if it exists and uses that to set the
         kernel name. If no metadata exists then parse the kernel name from
         the xclbin.
@@ -146,7 +159,7 @@ Try shutting down/restarting all other jupyter notebooks and try again.""")
 
     def _stability_checks(self)->None:
         """ Checks to ensure that the NPU is in a sensible state before
-        trying to load the application 
+        trying to load the application
         """
         if self.xbutil.app_count >= 4:
             raise RuntimeError("There is currently no free space on the NPU "
@@ -184,7 +197,7 @@ Try shutting down/restarting all other jupyter notebooks and try again.""")
                                             "dtype" : port["c_dtype"],
                                             "init_val" : port["value"]
                                         }
-                                self.rtps[k["name"]][port["name"]] = pdict 
+                                self.rtps[k["name"]][port["name"]] = pdict
                                 setattr(d, port["name"], self.sequence.mlir_rtps[d._tloc][idx])
                         idx = idx + 1
 
@@ -513,7 +526,9 @@ Try shutting down/restarting all other jupyter notebooks and try again.""")
 
         run = self.kernel(self.instr, len(self.sequence.buffer), *run_args)
         ert_state = run.wait(5000) # 5 second timeout
-        if ert_state.value != 4:
+
+        # Currently this check is only working with the windows bindings
+        if (ert_state.value != 4) and (platform.system() == "Windows"):
             raise RuntimeError(f"Returned state is {ert_state}: {ert_state.value}, expected <ert_cmd_state.ERT_CMD_STATE_COMPLETED: 4>")
 
     def __delete__(self, instance):
@@ -548,7 +563,7 @@ Try shutting down/restarting all other jupyter notebooks and try again.""")
         return self.kernel_params['signature']
 
 class PynqBuffer(np.ndarray):
-    """This is a subclass of numpy.ndarray. This class is 
+    """This is a subclass of numpy.ndarray. This class is
     intended to be constructed using the AppRunner.allocate()
     method and should not be used as a standalone.
 
@@ -559,12 +574,12 @@ class PynqBuffer(np.ndarray):
     cacheable: bool
         Typically host buffers will not be cacheable, but instr
         buffers will always be.
-    
+
     Note
     ----
-    It's important to free the buffer memory after use -- this 
+    It's important to free the buffer memory after use -- this
     can be done with the `free_memory()` method. The AppRunner
-    class tracks the allocated buffers and clears the buffers 
+    class tracks the allocated buffers and clears the buffers
     automatically when the object has been deleted.
 
     """

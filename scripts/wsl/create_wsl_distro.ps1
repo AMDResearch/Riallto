@@ -42,6 +42,15 @@ function New-Ubuntu {
 		}
 	}
 
+	# Confirm download succeeded
+	Write-Output "Checking if $downloadPath\ubuntuLTS.appx successfully downloaded"
+	if (-Not ((Test-Path -Path $downloadPath\ubuntuLTS.appx) -Or (Test-Path -Path $downloadPath\ubuntuLTS.zip))) {
+			Write-Output "Could not find downloaded Ubuntu WSL image"
+			Write-Output "ubuntuLTS.appx or ubuntuLTS.zip not found in $downloadPath"
+			Write-Output "Please make sure you have access to https://aka.ms/wslubuntu2004"
+			Exit 1
+	}
+
 	try {
 		Write-Output "Creating new Ubuntu WSL instance"
 		if (-Not (Test-Path -Path $downloadPath\ubuntuLTS.zip)){

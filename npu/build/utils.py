@@ -1,16 +1,15 @@
 # Copyright (C) 2023 Advanced Micro Devices, Inc. All rights reserved.
 # SPDX-License-Identifier: MIT
 
-import os
-import re
+import platform
 import subprocess
 
 def is_win()->bool:
-    """ Returns true if we are running this on windows."""
-    return os.name == "nt"
+    """ Returns true if we are running this on Windows."""
+    return platform.system() == 'Windows'
 
 def is_win_path(path:str)->bool:
-    """ Returns true if the path above is a windows path """
+    """ Returns true if the path above is a Windows path """
     newpath = path.split('\\')
     return newpath[0].endswith(':')
 

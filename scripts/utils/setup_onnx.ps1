@@ -17,9 +17,9 @@ function Get-Wheels() {
 
     Write-Host "Downloading ONNX Runtime wheels"
     try {
-        Invoke-WebRequest -Uri "https://github.com/amd/RyzenAI-SW/raw/56c064821408cf1f7fe3035a303cb3982b6be903/demo/cloud-to-client/wheels/onnxruntime_vitisai-1.15.1-cp39-cp39-win_amd64.whl" -OutFile "$wheelDest\onnxruntime_vitisai-1.15.1-cp39-cp39-win_amd64.whl"
-        Invoke-WebRequest -Uri "https://github.com/amd/RyzenAI-SW/raw/56c064821408cf1f7fe3035a303cb3982b6be903/demo/cloud-to-client/wheels/voe-0.1.0-cp39-cp39-win_amd64.whl" -OutFile "$wheelDest\voe-0.1.0-cp39-cp39-win_amd64.whl"
-        Invoke-WebRequest -Uri "https://github.com/amd/RyzenAI-SW/raw/944ffbbc3a3031cf70871d5a3147490f6a2f24f4/tutorial/RyzenAI_quant_tutorial/onnx_example/pkgs/vai_q_onnx-1.16.0+60e82ab-py2.py3-none-any.whl" -OutFile "$wheelDest\vai_q_onnx-1.16.0+60e82ab-py2.py3-none-any.whl"
+        Invoke-WebRequest -Uri "https://github.com/amd/RyzenAI-SW/raw/c9d3db1418c0f7ae15a617fa0b79f12d8dbf6e24/demo/cloud-to-client/wheels/onnxruntime_vitisai-1.15.1-cp39-cp39-win_amd64.whl" -OutFile "$wheelDest\onnxruntime_vitisai-1.15.1-cp39-cp39-win_amd64.whl"
+        Invoke-WebRequest -Uri "https://github.com/amd/RyzenAI-SW/raw/c9d3db1418c0f7ae15a617fa0b79f12d8dbf6e24/demo/cloud-to-client/wheels/voe-0.1.0-cp39-cp39-win_amd64.whl" -OutFile "$wheelDest\voe-0.1.0-cp39-cp39-win_amd64.whl"
+        Invoke-WebRequest -Uri "https://github.com/amd/RyzenAI-SW/raw/c9d3db1418c0f7ae15a617fa0b79f12d8dbf6e24/tutorial/RyzenAI_quant_tutorial/onnx_example/pkgs/vai_q_onnx-1.16.0+60e82ab-py2.py3-none-any.whl" -OutFile "$wheelDest\vai_q_onnx-1.16.0+60e82ab-py2.py3-none-any.whl"
     } catch {
         Write-Host "Failed to download ONNX Runtime wheels: $_"
     }
@@ -89,8 +89,8 @@ function Get-Binaries() {
     
     try {
         # Download xclbins and jsons
-        Invoke-WebRequest -Uri "https://github.com/amd/RyzenAI-SW/raw/56c064821408cf1f7fe3035a303cb3982b6be903/demo/cloud-to-client/xclbin/1x4.xclbin" -OutFile "$xclbinDest\1x4.xclbin"
-        Invoke-WebRequest -Uri "https://github.com/amd/RyzenAI-SW/raw/56c064821408cf1f7fe3035a303cb3982b6be903/demo/cloud-to-client/models/vaip_config.json" -OutFile "$xclbinDest\vaip_config.json"
+        Invoke-WebRequest -Uri "https://github.com/amd/RyzenAI-SW/raw/c9d3db1418c0f7ae15a617fa0b79f12d8dbf6e24/demo/cloud-to-client/xclbin/1x4.xclbin" -OutFile "$xclbinDest\1x4.xclbin"
+        Invoke-WebRequest -Uri "https://github.com/amd/RyzenAI-SW/raw/c9d3db1418c0f7ae15a617fa0b79f12d8dbf6e24/demo/cloud-to-client/models/vaip_config.json" -OutFile "$xclbinDest\vaip_config.json"
 
     } catch {
         Write-Host "Failed to download xclbins from https://github.com/amd/RyzenAI-SW: $_"

@@ -36,7 +36,7 @@ class KernelObjectBuilder(WSLBuilder):
     def clear_cache(cls):
         if os.path.exists(cls.prebuilt_path) and glob.glob(os.path.join(cls.prebuilt_path, '*.o')):
             prebuilt_files = os.path.join(cls.prebuilt_path, "*.o")
-            WSLBuilder()._wslcall(f"{wsl_prefix()}rm", [f"{wslpath(prebuilt_files)}"])
+            WSLBuilder()._wslcall(f"{wsl_prefix()}rm", ["-rf",f"{wslpath(prebuilt_files)}"])
 
     def __init__(self, name, srccode, srcfile) -> None:
         """Return a new KernelObjectBuilder object."""
@@ -71,10 +71,9 @@ class KernelObjectBuilder(WSLBuilder):
 
             if self.srcfile is not None or self.getheaders:
                 for extension in ['*.h', '*.hh', '*.hpp', '*.hxx', '*.h++']:
-                    if bool(glob.glob(os.path.join(self.srcpath, extension))):
-                        headerfiles = os.path.join(self.srcpath, extension)
+                    for hfile in glob.glob(os.path.join(self.srcpath, extension)):
                         self._wslcall(f"{wsl_prefix()}cp",
-                                      [f"{wslpath(headerfiles)}",
+                                      [f"{wslpath(hfile)}",
                                        f"{wslpath(self.build_path)}"], debug)
 
             self._wslcall(f"{wsl_prefix()}bash", [f"{wslpath(self.build_path)}/kernel_build.sh", f"{self.name}"], debug)

@@ -202,7 +202,10 @@ class MLIRSequnceBuilder:
 
     def _change_to_int32_offset(self, offset, dtype):
 
-        itemsize = int(str(dtype)[1:])//8
+        if dtype == "bf16":
+            itemsize = 2
+        else:
+            itemsize = int(str(dtype)[1:])//8
 
         if offset % 4 != 0:
             raise ValueError(f"Must be divisible by 4 {offset=}")
@@ -217,9 +220,16 @@ class MLIRSequnceBuilder:
     def _change_to_int32(self, shape, dtype):
 
         mod_shape = np.zeros(shape).squeeze()
-        new_shape = list(mod_shape.shape[:])
+        if shape == (1,):
+            new_shape = [1]
+        else:
+            new_shape = list(mod_shape.shape[:])
 
-        itemsize = int(str(dtype)[1:])//8
+        if dtype == "bf16":
+            itemsize = 2
+        else:
+            itemsize = int(str(dtype)[1:])//8
+
 
         if not new_shape and itemsize == 4:
             return (1,)
@@ -292,7 +302,7 @@ class MLIRSequnceBuilder:
         self._constants_table = {}
         self._add_constant(0)
         self._add_constant(1)
-        ubs = self._ingress_ub | self._egress_ub
+        ubs = {**self._ingress_ub, **self._egress_ub}
         for ub in ubs.values():
             self._add_constant(max(ub.tilesizes))
             self._add_constant(len(ub.dim))
@@ -330,6 +340,7 @@ class MLIRSequnceBuilder:
 
     def _get_ub_dtype_mlir_str(self, ub)->str:
         typemap = {
+                "bfloat16" : "bf16",
                 "uint8"    : "i8",
                 "uint16"   : "i16",
                 "uint32"   : "i32",
@@ -370,6 +381,7 @@ class MLIRSequnceBuilder:
 
             if s["snkkernelname"] in self._userbuffers:
                 if s["snkkernelname"] not in self._egress_ub:
+                    c_ub = self._userbuffers[s['snkkernelname']]
                     self._egress_ub[s["snkkernelname"]] = UBDataMovement(
                             ubname=s["snkkernelname"],
                             symname=s["name"],
@@ -383,8 +395,7 @@ class MLIRSequnceBuilder:
                     self._egress_ub[s["snkkernelname"]].dim.append([0])
                 else:
                     self._egress_ub[s["snkkernelname"]].dim.append(s["snkslices"])
-        self._ingress_egress_ub = self._ingress_ub | self._egress_ub
-
+        self._ingress_egress_ub = {**self._ingress_ub, **self._egress_ub}
 
     def _check(self)->None:
         for _,ub in self._ingress_ub.items():
