@@ -1,0 +1,877 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Reusing Software Kernels &#8212; Riallto - An exploration framework for Ryzen AI</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=a1ed0ca2" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/4_8_build_a_colorDetect_application';</script>
+    <script src="../_static/cookie-consent.js?v=2793a0fe"></script>
+    <script src="../_static/custom.js?v=4ce5a416"></script>
+    <link rel="canonical" href="https://cathalmccabe.github.io/Riallto/notebooks/4_8_build_a_colorDetect_application.html" />
+    <link rel="icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Run Machine Learning Inference on the NPU with PyTorch and ONNX" href="5_1_pytorch_onnx_inference.html" />
+    <link rel="prev" title="Using Memory Tiles in your Application" href="4_7_using_the_memtile_in_your_applications.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Riallto - An exploration framework for Ryzen AI</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Riallto - an exploration framework for the AMD Ryzen AI NPU
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Riallto Overview</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="1_0_Introduction.html">Welcome to Riallto</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../install-riallto.html">Install Riallto</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../install-riallto-linux.html">Riallto Ubuntu 24.04 setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install-riallto-windows.html">Install Riallto on Windows</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ryzenai_video_overview.html">Riallto Video Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1_1_ryzenai.html">Understanding the Ryzen AI NPU</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_1_MS_Windows_Studio_Effects.html">Windows Studio Effects</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Riallto Overview</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="3_1_Color_threshold_example.html">Loading your First Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_2_Ryzenai_capabilities.html">Ryzen AI column architecture and tiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_3_Scaled_color_threshold_example.html">Scaling <em>Data Parallel</em> Applications to Multiple Compute Tiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_4_Edge_detect_example.html">Optimizing Data Movement with Shared Data Memories</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_5_Color_detect_example.html">Multicast, broadcast, and multiple kernels in a single compute tile</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Building Applications</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="4_1_software_framework.html">Exploration Software Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_2_write_your_kernel.html">Write your Own Kernel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_3_kernels_with_runtime_parameters.html">Run Time Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_4_threshold_kernel_with_vector_ops.html">How to Use the Vector Processing Units</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_5_describe_an_application.html">Describing an Application</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_6_build_application.html">Building a complete Application</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_7_using_the_memtile_in_your_applications.html">Using Memory Tiles in your Application</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Reusing Software Kernels</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Ryzen AI Machine Learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="5_1_pytorch_onnx_inference.html">Run Machine Learning Inference on the NPU with PyTorch and ONNX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5_2_pytorch_onnx_re-train.html">PyTorch and ONNX Flow for Training</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python Package</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../modules.html">npu</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../npu.html">npu package</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../npu.build.html">npu.build package</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../npu.lib.html">npu.lib package</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../npu.lib.applications.html">npu.lib.applications package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../npu.lib.cached.html">npu.lib.cached package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../npu.lib.kernels.html">npu.lib.kernels package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../npu.runtime.html">npu.runtime package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../npu.utils.html">npu.utils package</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">FAQ</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">Riallto FAQ</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Glossary</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Glossary.html">Glossary</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Appendix_Review_of_Image_Processing_Concepts.html">Review of Image Processing Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prerequisites-driver.html">IPU Driver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prerequisites-aie-license.html">AIE Build License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prerequisites-wsl.html">Install WSL</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/notebooks/4_8_build_a_colorDetect_application.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Reusing Software Kernels</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goals">Goals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#build-a-color-detection-application">Build a Color Detection Application</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-kernels-and-modules">Import kernels and modules</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-the-color-detection-application-class">Create the color detection application class</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#memory-tile-multicast">Memory tile multicast</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instantiate-the-color-detection-class">Instantiate the color detection class</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#build-the-color-detection-application">Build the color detection application</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-the-application">Visualize the Application</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#run-the-application">Run the application</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-for-the-reader">Exercise for the Reader</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#define-your-pipeline-application">Define your pipeline application</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#run-your-custom-application">Run your custom application</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="reusing-software-kernels">
+<h1>Reusing Software Kernels<a class="headerlink" href="#reusing-software-kernels" title="Link to this heading">#</a></h1>
+<section id="goals">
+<h2>Goals<a class="headerlink" href="#goals" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Learn how to build an application from the library of available software kernels</p></li>
+<li><p>See an example of multicasting data from the memory tile</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="build-a-color-detection-application">
+<h2>Build a Color Detection Application<a class="headerlink" href="#build-a-color-detection-application" title="Link to this heading">#</a></h2>
+<p>We are going to build a simpler version of the color detection application we saw in a previous notebook. The image below shows the data flow graph that we are going to implement:</p>
+<center><img src="./images/png/color_detect_dev_dfg.png" style="max-height: 150px; width:auto; height:auto;"></center>
+<center><strong>Color detection data flow graph</strong></center><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">rgb2hsv()</span></code> converts the RGBA input image to <a class="reference external" href="https://en.wikipedia.org/wiki/HSL_and_HSV">HSV (Hue Saturation Value)</a>. This will allow us to use Hue to select a range of colors to filter.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">inRange()</span></code> is used for color-based image segmentation. It can isolate or filter out pixels in an image that fall within a specified color range, while ignoring the pixels outside that range. The hue value of each pixel will be compared against a range of values that you can specify. The range of values are passed as runtime parameters to the software kernel.</p>
+<p>The output of <code class="docutils literal notranslate"><span class="pre">inRange()</span></code> is effectively a mask where pixels within the range are set to their max value, or set to zero if they are outside the range.</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rgb2gray()</span></code> converts the output to grayscale.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bitwiseand()</span></code> carries out a bitwise AND between the mask and the original input image. Pixels within the range will be unchanged. Pixels outside the range will be filtered out. This will be the output returned from the application.</p></li>
+</ul>
+<p>In this example the <code class="docutils literal notranslate"><span class="pre">rgb2hsv</span></code> and <code class="docutils literal notranslate"><span class="pre">bitwiseand</span></code> software kernels will be mapped to two different compute tiles. Both these software kernels need the input data as indicated in the graph. You will see how the input data is <em>multicast</em> by the memory tile to the two software kernels.</p>
+<div class="alert alert-info" role="info">
+  <i>Broadcast</i> sends data from one source to <i>every</i> node in a system. <i>Multicast</i> sends data from one source to <b>selected</b> nodes in the system.
+</div>
+<section id="import-kernels-and-modules">
+<h3>Import kernels and modules<a class="headerlink" href="#import-kernels-and-modules" title="Link to this heading">#</a></h3>
+<p>Start by importing the software kernels that we will use in the design:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">npu.lib</span> <span class="kn">import</span> <span class="n">Rgba2Hue</span><span class="p">,</span> <span class="n">Gray2Rgba</span><span class="p">,</span> <span class="n">BitwiseAnd</span><span class="p">,</span> <span class="n">InRange</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next import the modules we will need:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">npu.build.appbuilder</span> <span class="kn">import</span> <span class="n">AppBuilder</span>
+<span class="kn">from</span> <span class="nn">npu.build.mtkernel</span> <span class="kn">import</span> <span class="n">MTPassThrough</span> <span class="c1"># Memory Tile modules</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="create-the-color-detection-application-class">
+<h3>Create the color detection application class<a class="headerlink" href="#create-the-color-detection-application-class" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Instantiate each of the kernels in the <code class="docutils literal notranslate"><span class="pre">__init__</span></code> method.</p></li>
+<li><p>Define the call graph as per the dataflow graph.</p></li>
+</ul>
+<p>As before, this application will process 720p (1280x720) RGBA images, and one row will be passed to the application for each iteration.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">ColorDetectApplication</span><span class="p">(</span><span class="n">AppBuilder</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rgba2hue</span> <span class="o">=</span> <span class="n">Rgba2Hue</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">inrange</span> <span class="o">=</span> <span class="n">InRange</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gray2rgba</span> <span class="o">=</span> <span class="n">Gray2Rgba</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bitwiseand</span> <span class="o">=</span> <span class="n">BitwiseAnd</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mtbuffer_in</span> <span class="o">=</span> <span class="n">MTPassThrough</span><span class="p">()</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">callgraph</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x_in</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">x_out</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">rows</span> <span class="o">=</span> <span class="n">x_in</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">bytes_per_row</span> <span class="o">=</span> <span class="n">x_in</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">x_in</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">rows</span><span class="p">):</span>
+            <span class="n">multicast_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mtbuffer_in</span><span class="p">(</span><span class="n">x_in</span><span class="p">[</span><span class="n">row</span><span class="p">])</span>
+            <span class="n">rgba2hue_output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rgba2hue</span><span class="p">(</span><span class="n">multicast_data</span><span class="p">,</span> <span class="n">bytes_per_row</span><span class="p">)</span>
+            <span class="n">inrange_output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">inrange</span><span class="p">(</span><span class="n">rgba2hue_output</span><span class="p">,</span> <span class="n">x_in</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">79</span><span class="p">)</span>
+            <span class="n">gray2rgba_output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gray2rgba</span><span class="p">(</span><span class="n">inrange_output</span><span class="p">,</span> <span class="n">x_in</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+            <span class="n">bitwiseand_output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bitwiseand</span><span class="p">(</span><span class="n">gray2rgba_output</span><span class="p">,</span> <span class="n">multicast_data</span><span class="p">,</span> <span class="n">bytes_per_row</span><span class="p">)</span>
+            <span class="n">x_out</span><span class="p">[</span><span class="n">row</span><span class="p">]</span> <span class="o">=</span> <span class="n">bitwiseand_output</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="memory-tile-multicast">
+<h3>Memory tile multicast<a class="headerlink" href="#memory-tile-multicast" title="Link to this heading">#</a></h3>
+<p>Notice that <code class="docutils literal notranslate"><span class="pre">multicast_data</span></code> is the output or returned object from the <code class="docutils literal notranslate"><span class="pre">MTPassThrough()</span></code> method. <code class="docutils literal notranslate"><span class="pre">multicast_data</span></code> is then used as an input parameter to both <code class="docutils literal notranslate"><span class="pre">rgba2hue()</span></code> and <code class="docutils literal notranslate"><span class="pre">bitwiseand()</span></code>. When building the graph for this application, the Riallto <em>tracer</em> will determine the connections between software kernels. It will implement the movement of this data as a multicast from the memory tile to the two software kernels.</p>
+<p>In this example we only need to multicast to two compute tiles. In larger application we can use multicast to send data to many compute tiles. The mechanism is the same when data is sent from a memory tile to all (compute) tiles, but rather than call this “multicast”, the correct terminology for this operation is “broadcast”.</p>
+</section>
+<section id="instantiate-the-color-detection-class">
+<h3>Instantiate the color detection class<a class="headerlink" href="#instantiate-the-color-detection-class" title="Link to this heading">#</a></h3>
+<p>Declare an instance of the class and allocate an input and an output buffer.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">app_builder</span> <span class="o">=</span> <span class="n">ColorDetectApplication</span><span class="p">()</span>
+
+<span class="n">x_in</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">720</span><span class="p">,</span> <span class="mi">1280</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+<span class="n">x_out</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">720</span><span class="p">,</span> <span class="mi">1280</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="build-the-color-detection-application">
+<h3>Build the color detection application<a class="headerlink" href="#build-the-color-detection-application" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">app_builder</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">x_in</span><span class="p">,</span> <span class="n">x_out</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Using cached rgba2hue kernel object file...
+Using cached in_range kernel object file...
+Using cached gray2rgba kernel object file...
+Using cached bitwiseand kernel object file...
+Building the xclbin...
+Successfully Building Application... ColorDetectApplication.xclbin &amp; ColorDetectApplication.seq delivered
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="visualize-the-application">
+<h2>Visualize the Application<a class="headerlink" href="#visualize-the-application" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">app_builder</span><span class="o">.</span><span class="n">display</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/7eba3b3dd9139f40ead64bef9eb99408e0ff4f1d40e1534b8ee091e15779e903.svg" src="../_images/7eba3b3dd9139f40ead64bef9eb99408e0ff4f1d40e1534b8ee091e15779e903.svg" /></div>
+</div>
+<p>You can see how each of the four software kernels has been mapped to the NPU column and how data moves between kernels. Notice that the memory tile multicasts data to the top compute tile (<code class="docutils literal notranslate"><span class="pre">rgba2hue_0</span></code> software kernel) and to the bottom compute tile (<code class="docutils literal notranslate"><span class="pre">bitwiseand_0</span></code>). This is the fork in the dataflow graph we saw earlier.</p>
+<p>In the animation you can also see that <code class="docutils literal notranslate"><span class="pre">in_range_0</span></code> consumes data from the <code class="docutils literal notranslate"><span class="pre">rgba2_hue_0</span></code> output buffer directly via nearest neighbor communication. The same happens for <code class="docutils literal notranslate"><span class="pre">gray2rgba_0</span></code> and <code class="docutils literal notranslate"><span class="pre">bitwiseand_0</span></code> consuming data from the data memory at its north, which correspond to the output data from <code class="docutils literal notranslate"><span class="pre">rgba2hue_0</span></code> and <code class="docutils literal notranslate"><span class="pre">gray2rgba_0</span></code> respectively.</p>
+<p>Note that in this application we are using both nearest-neighbor communication and data movers to transfer intermediate results between tiles.</p>
+<section id="run-the-application">
+<h3>Run the application<a class="headerlink" href="#run-the-application" title="Link to this heading">#</a></h3>
+<p>We are going to load the application in the NPU using the <code class="docutils literal notranslate"><span class="pre">ImageLooper720p</span></code> visualization helper.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">npu.lib.graphs.image_looper_720p</span> <span class="kn">import</span> <span class="n">ImageLooper720p</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">ImageLooper720p</span><span class="p">(</span><span class="n">img</span><span class="o">=</span><span class="s1">&#39;images/jpg/ryzenai_future_starts_now.jpg&#39;</span><span class="p">,</span>
+                      <span class="n">xclbin</span><span class="o">=</span><span class="s1">&#39;ColorDetectApplication.xclbin&#39;</span><span class="p">,</span>
+                      <span class="n">rtps</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;range_low&quot;</span> <span class="p">:</span> <span class="p">{</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;hueslider&quot;</span><span class="p">,</span> <span class="s2">&quot;min&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;max&quot;</span> <span class="p">:</span> <span class="mi">255</span><span class="p">,</span> <span class="s2">&quot;rangehigh&quot;</span><span class="p">:</span> <span class="s2">&quot;range_high&quot;</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Hue range&quot;</span><span class="p">}})</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">app</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "20a7bc2569894b95ba93d434b58a7f46", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "28be1747da594a58b593577739687e20", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "a6ab66599ff649a3a90d8eba50cc5873", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="exercise-for-the-reader">
+<h2>Exercise for the Reader<a class="headerlink" href="#exercise-for-the-reader" title="Link to this heading">#</a></h2>
+<p>In this exercise, you are going to work with grayscale input and output images. As you can see the in the image below, there are two working branches. The edges will be overlaid on the inverse of the input image. The source image is multicast to the <code class="docutils literal notranslate"><span class="pre">filter2D</span></code> and to the <code class="docutils literal notranslate"><span class="pre">inverse</span></code> kernels, the output of the <code class="docutils literal notranslate"><span class="pre">filter2D</span></code> processed by the <code class="docutils literal notranslate"><span class="pre">threshold</span></code> kernel. Finally, the edges are overlaid on top of the inverse image using the <code class="docutils literal notranslate"><span class="pre">bitwiseor</span></code> kernel.</p>
+<center><img src="./images/png/edge_detect_exercise_reader.png" style="max-height: 180px; width:auto; height:auto;"></center>
+<center><strong>Edge detection exercise for the reader</strong></center><section id="define-your-pipeline-application">
+<h3>Define your pipeline application<a class="headerlink" href="#define-your-pipeline-application" title="Link to this heading">#</a></h3>
+<p>Import the necessary components and define your <code class="docutils literal notranslate"><span class="pre">callgraph</span></code>.</p>
+<p>For the <code class="docutils literal notranslate"><span class="pre">ThresholdGrayscale</span></code> kernel, set:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">max_val</span></code> to 255</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">threshold_type</span></code> to <code class="docutils literal notranslate"><span class="pre">0</span></code></p></li>
+</ul>
+<p>For the <code class="docutils literal notranslate"><span class="pre">Filter2d</span></code> note that we are using <code class="docutils literal notranslate"><span class="pre">f2doperator</span></code> to define the kernel operator for the convolution. The operation <code class="docutils literal notranslate"><span class="pre">*f2doperator.tolist()</span></code> unpacks the nine values and pass them as argument to the kernel call. Do not forget to multiply them by 4096 (already done in the code).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">npu.build.appbuilder</span> <span class="kn">import</span> <span class="n">AppBuilder</span>
+<span class="kn">from</span> <span class="nn">npu.build.mtkernel</span> <span class="kn">import</span> <span class="n">MTPassThrough</span>
+<span class="kn">from</span> <span class="nn">npu.lib</span> <span class="kn">import</span> <span class="o">...</span> <span class="c1"># Import the , Filter2D and ThresholdGrayscale, bitwiseor, Inverse</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="k">class</span> <span class="nc">InverseEdgeDetectApplication</span><span class="p">(</span><span class="n">AppBuilder</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># create an instance of the necessary kernels</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">filter2d</span> <span class="o">=</span> <span class="o">...</span> <span class="c1"># instantiate filter2d</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">threshold</span> <span class="o">=</span> <span class="o">...</span> <span class="c1"># instantiate threshold grayscale</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">inverse</span> <span class="o">=</span> <span class="o">...</span> <span class="c1"># instantiate inverse</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bitor</span> <span class="o">=</span> <span class="o">...</span> <span class="c1"># instantiate bitwise or</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mtbuffer_in</span> <span class="o">=</span> <span class="o">...</span> <span class="c1"># MTPassThrough</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">callgraph</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x_in</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">x_out</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">f2doperator</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]],</span> <span class="n">dtype</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">int16</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span> <span class="o">*</span> <span class="mi">4096</span>
+        <span class="n">rows</span> <span class="o">=</span> <span class="n">x_in</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">rows</span><span class="p">):</span>
+            <span class="n">input_buffer</span> <span class="o">=</span> <span class="o">...</span> <span class="c1"># call MTPassThrough</span>
+            <span class="n">filter2d_buffer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">filter2d</span><span class="p">(</span><span class="n">input_buffer</span><span class="p">,</span> <span class="o">*</span><span class="n">f2doperator</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+            <span class="c1"># &lt;your code goes here&gt;</span>
+            <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bitor</span><span class="p">(</span><span class="n">threshold_buffer</span><span class="p">,</span> <span class="n">inverse_buffer</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span> <span class="c1"># call bitwiseor </span>
+            <span class="n">x_out</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">output</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Display and build your application.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># define input and output grayscale buffers</span>
+<span class="n">x_in</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">720</span><span class="p">,</span> <span class="mi">1280</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+<span class="n">x_out</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">720</span><span class="p">,</span> <span class="mi">1280</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+
+<span class="n">app_builder</span> <span class="o">=</span> <span class="n">InverseEdgeDetectApplication</span><span class="p">()</span>
+<span class="n">app_builder</span><span class="p">(</span><span class="n">x_in</span><span class="p">,</span> <span class="n">x_out</span><span class="p">)</span>
+
+<span class="n">app_builder</span><span class="o">.</span><span class="n">display</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If you are happy with the kernel placement, build your application. Otherwise, use the <code class="docutils literal notranslate"><span class="pre">tloc</span></code> attribute to place the kernels.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">app_builder</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">x_in</span><span class="p">,</span> <span class="n">x_out</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="run-your-custom-application">
+<h3>Run your custom application<a class="headerlink" href="#run-your-custom-application" title="Link to this heading">#</a></h3>
+<p>Once built, load your custom application in the NPU, run it and show the results:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">npu.utils</span> <span class="kn">import</span> <span class="n">OpenCVImageReader</span><span class="p">,</span> <span class="n">image_plot</span>
+<span class="kn">from</span> <span class="nn">npu.runtime</span> <span class="kn">import</span> <span class="n">AppRunner</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">AppRunner</span><span class="p">(</span><span class="s1">&#39;InverseEdgeDetectApplication.xclbin&#39;</span><span class="p">)</span>
+
+<span class="c1"># Allocate app input and output buffers to exchange data with NPU</span>
+<span class="n">input_image</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">allocate</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">720</span><span class="p">,</span> <span class="mi">1280</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+<span class="n">output_image</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">allocate</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">720</span><span class="p">,</span> <span class="mi">1280</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+
+<span class="c1"># Load RGBA 720p image into input_image buffer</span>
+<span class="n">img</span> <span class="o">=</span> <span class="n">OpenCVImageReader</span><span class="p">(</span><span class="s1">&#39;images/jpg/ryzenai_future_starts_now.jpg&#39;</span><span class="p">,</span> <span class="n">grayscale</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">img</span>
+<span class="n">input_image</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">img</span>
+<span class="c1"># Pass input_image buffer to NPU</span>
+<span class="n">input_image</span><span class="o">.</span><span class="n">sync_to_npu</span><span class="p">()</span>
+
+<span class="c1"># Run app on NPU</span>
+<span class="n">app</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">input_image</span><span class="p">,</span> <span class="n">output_image</span><span class="p">)</span>
+
+<span class="c1"># Get results from NPU via output_image buffer</span>
+<span class="n">output_image</span><span class="o">.</span><span class="n">sync_from_npu</span><span class="p">()</span>
+
+<span class="c1"># Plot source and result images</span>
+<span class="n">image_plot</span><span class="p">(</span><span class="n">input_image</span><span class="p">,</span> <span class="n">output_image</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Do not forget to clean up the application.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">del</span> <span class="n">app</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can also use the <code class="docutils literal notranslate"><span class="pre">VideoApplication</span></code> helper function to feed your application from the webcam.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">npu.lib</span> <span class="kn">import</span> <span class="n">VideoApplication</span><span class="p">,</span> <span class="n">pxtype</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">VideoApplication</span><span class="p">(</span><span class="s1">&#39;InverseEdgeDetectApplication.xclbin&#39;</span><span class="p">,</span> <span class="n">pxtype_in</span><span class="o">=</span><span class="n">pxtype</span><span class="o">.</span><span class="n">GRAY</span><span class="p">,</span> <span class="n">pxtype_out</span><span class="o">=</span><span class="n">pxtype</span><span class="o">.</span><span class="n">GRAY</span><span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">rtps</span> <span class="o">=</span> <span class="p">{}</span> <span class="c1"># add list of desired RTPs</span>
+<span class="n">app</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
+<p>By reusing software kernels from the Riallto library, you saw how to create and build a new NPU application. You can create new software kernels and reuse existing kernels from the Riallto library to create new custom applications.</p>
+<hr class="docutils" />
+<center>
+Copyright&copy; 2023 AMD, Inc
+</center>
+<center>
+SPDX-License-Identifier: MIT
+</center></section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="4_7_using_the_memtile_in_your_applications.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Using Memory Tiles in your Application</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="5_1_pytorch_onnx_inference.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Run Machine Learning Inference on the NPU with PyTorch and ONNX</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goals">Goals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#build-a-color-detection-application">Build a Color Detection Application</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-kernels-and-modules">Import kernels and modules</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-the-color-detection-application-class">Create the color detection application class</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#memory-tile-multicast">Memory tile multicast</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instantiate-the-color-detection-class">Instantiate the color detection class</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#build-the-color-detection-application">Build the color detection application</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-the-application">Visualize the Application</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#run-the-application">Run the application</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-for-the-reader">Exercise for the Reader</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#define-your-pipeline-application">Define your pipeline application</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#run-your-custom-application">Run your custom application</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Advanced Micro Devices, Inc.
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <p>
+<div class="aem-Grid aem-Grid--16">
+<div class="aem-GridColumn aem-GridColumn--xxxlarge--none aem-GridColumn--xsmall--16 aem-GridColumn--offset--xsmall--0 aem-GridColumn--xlarge--none aem-GridColumn--xxlarge--none aem-GridColumn--default--none aem-GridColumn--offset--large--1 aem-GridColumn--xlarge--12 aem-GridColumn--offset--default--0 aem-GridColumn--xxlarge--10 aem-GridColumn--offset--xlarge--2 aem-GridColumn--offset--xxlarge--3 aem-GridColumn--offset--xxxlarge--4 aem-GridColumn--xsmall--none aem-GridColumn--large--none aem-GridColumn aem-GridColumn--large--14 aem-GridColumn--xxxlarge--8 aem-GridColumn--default--16">
+<div class="container-fluid sub-footer">
+
+<div class="row">
+<div class="col-xs-24">
+<p><a target="_blank" href="https://www.amd.com/en/corporate/copyright">Terms and Conditions</a> | <a target="_blank" href="https://www.amd.com/en/corporate/privacy">Privacy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/cookies">Cookie Policy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/trademarks">Trademarks</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/statement-human-trafficking-forced-labor.pdf">Statement on Forced Labor</a> | <a target="_blank" href="https://www.amd.com/en/corporate/competition">Fair and Open Competition</a> <br> <a target="_blank" href="https://www.amd.com/system/files/documents/amd-uk-tax-strategy.pdf">UK Tax Strategy</a> | <a target="_blank" href="https://docs.xilinx.com/v/u/9x6YvZKuWyhJId7y7RQQKA">Inclusive Terminology</a> | <a href="#cookiessettings" class="ot-sdk-show-settings">Cookies Settings</a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="cookie-consent" class="cookie-consent">
+<p>This website uses cookies to ensure you get the best experience on our website. <a href="#" id="cookie-accept">Accept</a> | <a href="#" id="cookie-reject">Reject</a></p>
+</div>
+</p>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

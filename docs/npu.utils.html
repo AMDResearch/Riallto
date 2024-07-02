@@ -1,0 +1,1735 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>npu.utils package &#8212; Riallto - An exploration framework for Ryzen AI</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=a1ed0ca2" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'npu.utils';</script>
+    <script src="_static/cookie-consent.js?v=2793a0fe"></script>
+    <script src="_static/custom.js?v=4ce5a416"></script>
+    <link rel="canonical" href="https://cathalmccabe.github.io/Riallto/npu.utils.html" />
+    <link rel="icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Riallto FAQ" href="faq.html" />
+    <link rel="prev" title="npu.runtime package" href="npu.runtime.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Riallto - An exploration framework for Ryzen AI</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="index.html">
+                    Riallto - an exploration framework for the AMD Ryzen AI NPU
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Riallto Overview</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="notebooks/1_0_Introduction.html">Welcome to Riallto</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="install-riallto.html">Install Riallto</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="install-riallto-linux.html">Riallto Ubuntu 24.04 setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install-riallto-windows.html">Install Riallto on Windows</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ryzenai_video_overview.html">Riallto Video Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/1_1_ryzenai.html">Understanding the Ryzen AI NPU</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/2_1_MS_Windows_Studio_Effects.html">Windows Studio Effects</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Riallto Overview</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="notebooks/3_1_Color_threshold_example.html">Loading your First Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/3_2_Ryzenai_capabilities.html">Ryzen AI column architecture and tiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/3_3_Scaled_color_threshold_example.html">Scaling <em>Data Parallel</em> Applications to Multiple Compute Tiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/3_4_Edge_detect_example.html">Optimizing Data Movement with Shared Data Memories</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/3_5_Color_detect_example.html">Multicast, broadcast, and multiple kernels in a single compute tile</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Building Applications</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="notebooks/4_1_software_framework.html">Exploration Software Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/4_2_write_your_kernel.html">Write your Own Kernel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/4_3_kernels_with_runtime_parameters.html">Run Time Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/4_4_threshold_kernel_with_vector_ops.html">How to Use the Vector Processing Units</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/4_5_describe_an_application.html">Describing an Application</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/4_6_build_application.html">Building a complete Application</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/4_7_using_the_memtile_in_your_applications.html">Using Memory Tiles in your Application</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/4_8_build_a_colorDetect_application.html">Reusing Software Kernels</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Ryzen AI Machine Learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="notebooks/5_1_pytorch_onnx_inference.html">Run Machine Learning Inference on the NPU with PyTorch and ONNX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/5_2_pytorch_onnx_re-train.html">PyTorch and ONNX Flow for Training</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python Package</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="modules.html">npu</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="npu.html">npu package</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="npu.build.html">npu.build package</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="npu.lib.html">npu.lib package</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="npu.lib.applications.html">npu.lib.applications package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.lib.cached.html">npu.lib.cached package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.lib.kernels.html">npu.lib.kernels package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="npu.runtime.html">npu.runtime package</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">npu.utils package</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">FAQ</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Riallto FAQ</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Glossary</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="notebooks/Glossary.html">Glossary</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="notebooks/Appendix_Review_of_Image_Processing_Concepts.html">Review of Image Processing Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="prerequisites-driver.html">IPU Driver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="prerequisites-aie-license.html">AIE Build License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="prerequisites-wsl.html">Install WSL</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/npu.utils.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>npu.utils package</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-npu.utils.aiekernels">npu.utils.aiekernels module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.aiekernels.aiekernels"><code class="docutils literal notranslate"><span class="pre">aiekernels()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-npu.utils.appviz">npu.utils.appviz module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.appviz.AppViz"><code class="docutils literal notranslate"><span class="pre">AppViz</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.appviz.AppViz.save"><code class="docutils literal notranslate"><span class="pre">AppViz.save()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.appviz.AppViz.show"><code class="docutils literal notranslate"><span class="pre">AppViz.show</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-npu.utils.display_widget">npu.utils.display_widget module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.display_widget.DisplayImage"><code class="docutils literal notranslate"><span class="pre">DisplayImage</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.display_widget.DisplayImage._image_widget"><code class="docutils literal notranslate"><span class="pre">DisplayImage._image_widget</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.display_widget.DisplayImage._button_widget"><code class="docutils literal notranslate"><span class="pre">DisplayImage._button_widget</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.display_widget.DisplayImage.exit"><code class="docutils literal notranslate"><span class="pre">DisplayImage.exit</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.display_widget.DisplayImage.frame"><code class="docutils literal notranslate"><span class="pre">DisplayImage.frame()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-npu.utils.imgplot">npu.utils.imgplot module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.imgplot.image_plot"><code class="docutils literal notranslate"><span class="pre">image_plot()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-npu.utils.imgread">npu.utils.imgread module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.imgread.OpenCVImageReader"><code class="docutils literal notranslate"><span class="pre">OpenCVImageReader</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.imgread.OpenCVImageReader.img"><code class="docutils literal notranslate"><span class="pre">OpenCVImageReader.img</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-npu.utils.nputop">npu.utils.nputop module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.nputop.nputop"><code class="docutils literal notranslate"><span class="pre">nputop()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-npu.utils.svg">npu.utils.svg module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.AieTile"><code class="docutils literal notranslate"><span class="pre">AieTile</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.AieTile.MAX_BUFFERS"><code class="docutils literal notranslate"><span class="pre">AieTile.MAX_BUFFERS</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.AieTile.add_buffer"><code class="docutils literal notranslate"><span class="pre">AieTile.add_buffer()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.AieTile.add_kernel"><code class="docutils literal notranslate"><span class="pre">AieTile.add_kernel()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.AieTile.add_mem_animation"><code class="docutils literal notranslate"><span class="pre">AieTile.add_mem_animation()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.AieTile.add_memory_outlines"><code class="docutils literal notranslate"><span class="pre">AieTile.add_memory_outlines()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.AieTile.add_multiple_kernel"><code class="docutils literal notranslate"><span class="pre">AieTile.add_multiple_kernel()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.AieTile.draw_memory_connections"><code class="docutils literal notranslate"><span class="pre">AieTile.draw_memory_connections()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.AieTile.generate_image"><code class="docutils literal notranslate"><span class="pre">AieTile.generate_image()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.AieTile.get_aie_buffers_svg"><code class="docutils literal notranslate"><span class="pre">AieTile.get_aie_buffers_svg()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.AieTile.get_aie_kernels_svg"><code class="docutils literal notranslate"><span class="pre">AieTile.get_aie_kernels_svg()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.AieTile.get_aie_svg"><code class="docutils literal notranslate"><span class="pre">AieTile.get_aie_svg()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.Box"><code class="docutils literal notranslate"><span class="pre">Box</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.Box.append"><code class="docutils literal notranslate"><span class="pre">Box.append</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.Box.box"><code class="docutils literal notranslate"><span class="pre">Box.box</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.IfTile"><code class="docutils literal notranslate"><span class="pre">IfTile</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.IfTile.add_dma_animation"><code class="docutils literal notranslate"><span class="pre">IfTile.add_dma_animation()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.IfTile.add_ic_animation"><code class="docutils literal notranslate"><span class="pre">IfTile.add_ic_animation()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.IfTile.add_single_tile_mem_animation"><code class="docutils literal notranslate"><span class="pre">IfTile.add_single_tile_mem_animation()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.IfTile.draw_external_memory_connections"><code class="docutils literal notranslate"><span class="pre">IfTile.draw_external_memory_connections()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.IfTile.generate_image"><code class="docutils literal notranslate"><span class="pre">IfTile.generate_image()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.IfTile.get_if_tile_svg"><code class="docutils literal notranslate"><span class="pre">IfTile.get_if_tile_svg()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.Image"><code class="docutils literal notranslate"><span class="pre">Image</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.Image.generate_svg_file"><code class="docutils literal notranslate"><span class="pre">Image.generate_svg_file()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.Image.hide_key"><code class="docutils literal notranslate"><span class="pre">Image.hide_key()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.Image.show_key"><code class="docutils literal notranslate"><span class="pre">Image.show_key()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.Kernel"><code class="docutils literal notranslate"><span class="pre">Kernel</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.Kernel.get_kernel_svg"><code class="docutils literal notranslate"><span class="pre">Kernel.get_kernel_svg()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.KernelArc"><code class="docutils literal notranslate"><span class="pre">KernelArc</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.MemTile"><code class="docutils literal notranslate"><span class="pre">MemTile</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.MemTile.MAX_BUFFERS"><code class="docutils literal notranslate"><span class="pre">MemTile.MAX_BUFFERS</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.MemTile.add_buffer"><code class="docutils literal notranslate"><span class="pre">MemTile.add_buffer()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.MemTile.add_ic_animation"><code class="docutils literal notranslate"><span class="pre">MemTile.add_ic_animation()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.MemTile.add_memory_outlines"><code class="docutils literal notranslate"><span class="pre">MemTile.add_memory_outlines()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.MemTile.add_single_tile_ic_animation"><code class="docutils literal notranslate"><span class="pre">MemTile.add_single_tile_ic_animation()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.MemTile.draw_memory_connections"><code class="docutils literal notranslate"><span class="pre">MemTile.draw_memory_connections()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.MemTile.generate_image"><code class="docutils literal notranslate"><span class="pre">MemTile.generate_image()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.MemTile.get_buffers_svg"><code class="docutils literal notranslate"><span class="pre">MemTile.get_buffers_svg()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.MemTile.get_mem_tile_svg"><code class="docutils literal notranslate"><span class="pre">MemTile.get_mem_tile_svg()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.MemoryBox"><code class="docutils literal notranslate"><span class="pre">MemoryBox</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.MemoryBox.add_buffer"><code class="docutils literal notranslate"><span class="pre">MemoryBox.add_buffer()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.MemoryBox.add_memory_outlines"><code class="docutils literal notranslate"><span class="pre">MemoryBox.add_memory_outlines()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.RyzenAiArray"><code class="docutils literal notranslate"><span class="pre">RyzenAiArray</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.RyzenAiArray.draw_app_box"><code class="docutils literal notranslate"><span class="pre">RyzenAiArray.draw_app_box()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.RyzenAiArray.draw_system_memory"><code class="docutils literal notranslate"><span class="pre">RyzenAiArray.draw_system_memory()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.RyzenAiArray.generate_svg"><code class="docutils literal notranslate"><span class="pre">RyzenAiArray.generate_svg()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.RyzenAiArray.generate_svg_image"><code class="docutils literal notranslate"><span class="pre">RyzenAiArray.generate_svg_image()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.RyzenAiArray.hide_aie_tiles"><code class="docutils literal notranslate"><span class="pre">RyzenAiArray.hide_aie_tiles()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.RyzenAiArray.hide_if_tiles"><code class="docutils literal notranslate"><span class="pre">RyzenAiArray.hide_if_tiles()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.RyzenAiArray.hide_interconnect"><code class="docutils literal notranslate"><span class="pre">RyzenAiArray.hide_interconnect()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.RyzenAiArray.hide_mem_tiles"><code class="docutils literal notranslate"><span class="pre">RyzenAiArray.hide_mem_tiles()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.RyzenAiArray.hide_memory_connections"><code class="docutils literal notranslate"><span class="pre">RyzenAiArray.hide_memory_connections()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.RyzenAiArray.hide_tiles"><code class="docutils literal notranslate"><span class="pre">RyzenAiArray.hide_tiles()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.RyzenAiArray.show_aie_tiles"><code class="docutils literal notranslate"><span class="pre">RyzenAiArray.show_aie_tiles()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.RyzenAiArray.show_if_tiles"><code class="docutils literal notranslate"><span class="pre">RyzenAiArray.show_if_tiles()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.RyzenAiArray.show_interconnect"><code class="docutils literal notranslate"><span class="pre">RyzenAiArray.show_interconnect()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.RyzenAiArray.show_mem_tiles"><code class="docutils literal notranslate"><span class="pre">RyzenAiArray.show_mem_tiles()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.RyzenAiArray.show_tiles"><code class="docutils literal notranslate"><span class="pre">RyzenAiArray.show_tiles()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.RyzenAiArray.update_hidden_tiles"><code class="docutils literal notranslate"><span class="pre">RyzenAiArray.update_hidden_tiles()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.RyzenAiColumn"><code class="docutils literal notranslate"><span class="pre">RyzenAiColumn</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.RyzenAiColumn.draw_system_memory"><code class="docutils literal notranslate"><span class="pre">RyzenAiColumn.draw_system_memory()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.RyzenAiColumn.generate_column_svg"><code class="docutils literal notranslate"><span class="pre">RyzenAiColumn.generate_column_svg()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.RyzenAiColumn.generate_image"><code class="docutils literal notranslate"><span class="pre">RyzenAiColumn.generate_image()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.RyzenAiColumn.generate_key"><code class="docutils literal notranslate"><span class="pre">RyzenAiColumn.generate_key()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.RyzenAiColumn.hide_compute_tile"><code class="docutils literal notranslate"><span class="pre">RyzenAiColumn.hide_compute_tile()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.RyzenAiColumn.hide_interface_tile"><code class="docutils literal notranslate"><span class="pre">RyzenAiColumn.hide_interface_tile()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.RyzenAiColumn.hide_memory_tile"><code class="docutils literal notranslate"><span class="pre">RyzenAiColumn.hide_memory_tile()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.RyzenAiColumn.show_compute_tile"><code class="docutils literal notranslate"><span class="pre">RyzenAiColumn.show_compute_tile()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.RyzenAiColumn.show_interface_tile"><code class="docutils literal notranslate"><span class="pre">RyzenAiColumn.show_interface_tile()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.RyzenAiColumn.show_memory_tile"><code class="docutils literal notranslate"><span class="pre">RyzenAiColumn.show_memory_tile()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.SystemMemory"><code class="docutils literal notranslate"><span class="pre">SystemMemory</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.SystemMemory.add_buffer"><code class="docutils literal notranslate"><span class="pre">SystemMemory.add_buffer()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.SystemMemory.svg"><code class="docutils literal notranslate"><span class="pre">SystemMemory.svg</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.Tile"><code class="docutils literal notranslate"><span class="pre">Tile</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.Tile.add_ic_animation"><code class="docutils literal notranslate"><span class="pre">Tile.add_ic_animation()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.Tile.add_single_tile_ic_animation"><code class="docutils literal notranslate"><span class="pre">Tile.add_single_tile_ic_animation()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.Tile.add_single_tile_mem_animation"><code class="docutils literal notranslate"><span class="pre">Tile.add_single_tile_mem_animation()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.Tile.clear_ic_animation"><code class="docutils literal notranslate"><span class="pre">Tile.clear_ic_animation()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.Tile.draw_ic_connections"><code class="docutils literal notranslate"><span class="pre">Tile.draw_ic_connections()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.Tile.get_hide_tile_svg"><code class="docutils literal notranslate"><span class="pre">Tile.get_hide_tile_svg()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.Tile.get_ic_animations_svg"><code class="docutils literal notranslate"><span class="pre">Tile.get_ic_animations_svg()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.Tile.get_ic_connections_svg"><code class="docutils literal notranslate"><span class="pre">Tile.get_ic_connections_svg()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.Tile.get_memory_animations_svg"><code class="docutils literal notranslate"><span class="pre">Tile.get_memory_animations_svg()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.Tile.get_memory_connections_svg"><code class="docutils literal notranslate"><span class="pre">Tile.get_memory_connections_svg()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.Tile.get_tile_svg"><code class="docutils literal notranslate"><span class="pre">Tile.get_tile_svg()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.Tile.hide_tile"><code class="docutils literal notranslate"><span class="pre">Tile.hide_tile()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.Tile.show_all"><code class="docutils literal notranslate"><span class="pre">Tile.show_all()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.Tile.show_tile"><code class="docutils literal notranslate"><span class="pre">Tile.show_tile()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-npu.utils.svg_config">npu.utils.svg_config module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg_config.get_text_width"><code class="docutils literal notranslate"><span class="pre">get_text_width()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg_config.get_tile_x"><code class="docutils literal notranslate"><span class="pre">get_tile_x()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg_config.get_tile_y"><code class="docutils literal notranslate"><span class="pre">get_tile_y()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-npu.utils.test_device">npu.utils.test_device module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.test_device.get_device_status"><code class="docutils literal notranslate"><span class="pre">get_device_status()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.test_device.get_driver_version"><code class="docutils literal notranslate"><span class="pre">get_driver_version()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.test_device.reset_npu"><code class="docutils literal notranslate"><span class="pre">reset_npu()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.test_device.test_device_status"><code class="docutils literal notranslate"><span class="pre">test_device_status()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.test_device.test_driver_version"><code class="docutils literal notranslate"><span class="pre">test_driver_version()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.test_device.version_to_tuple"><code class="docutils literal notranslate"><span class="pre">version_to_tuple()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-npu.utils.videoapps">npu.utils.videoapps module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.videoapps.videoapps"><code class="docutils literal notranslate"><span class="pre">videoapps()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-npu.utils.xbutil">npu.utils.xbutil module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.xbutil.XBUtil"><code class="docutils literal notranslate"><span class="pre">XBUtil</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.xbutil.XBUtil.app_count"><code class="docutils literal notranslate"><span class="pre">XBUtil.app_count</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.xbutil.XBUtil.app_exists"><code class="docutils literal notranslate"><span class="pre">XBUtil.app_exists()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.xbutil.XBUtil.app_table"><code class="docutils literal notranslate"><span class="pre">XBUtil.app_table</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.xbutil.XBUtil.apps"><code class="docutils literal notranslate"><span class="pre">XBUtil.apps()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.xbutil.XBUtil.list_apps"><code class="docutils literal notranslate"><span class="pre">XBUtil.list_apps()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.xbutil.XBUtil.loaded_functions"><code class="docutils literal notranslate"><span class="pre">XBUtil.loaded_functions</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.xbutil.XBUtil.num_riallto_streams"><code class="docutils literal notranslate"><span class="pre">XBUtil.num_riallto_streams</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.xbutil.XBUtil.num_wse_streams"><code class="docutils literal notranslate"><span class="pre">XBUtil.num_wse_streams</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-npu.utils">Module contents</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#utilities">Utilities</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="npu-utils-package">
+<h1>npu.utils package<a class="headerlink" href="#npu-utils-package" title="Link to this heading">#</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">#</a></h2>
+</section>
+<section id="module-npu.utils.aiekernels">
+<span id="npu-utils-aiekernels-module"></span><h2>npu.utils.aiekernels module<a class="headerlink" href="#module-npu.utils.aiekernels" title="Link to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="npu.utils.aiekernels.aiekernels">
+<span class="sig-prename descclassname"><span class="pre">npu.utils.aiekernels.</span></span><span class="sig-name descname"><span class="pre">aiekernels</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.aiekernels.aiekernels" title="Link to this definition">#</a></dt>
+<dd><p>Returns a list of the optimized AIE kernels available</p>
+</dd></dl>
+
+</section>
+<section id="module-npu.utils.appviz">
+<span id="npu-utils-appviz-module"></span><h2>npu.utils.appviz module<a class="headerlink" href="#module-npu.utils.appviz" title="Link to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="npu.utils.appviz.AppViz">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npu.utils.appviz.</span></span><span class="sig-name descname"><span class="pre">AppViz</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">metadata</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.appviz.AppViz" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Visualize the Dataflow Graph in a column of the NPU</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.utils.appviz.AppViz.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.appviz.AppViz.save" title="Link to this definition">#</a></dt>
+<dd><p>saves animation to a file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="npu.utils.appviz.AppViz.show">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">show</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#npu.utils.appviz.AppViz.show" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-npu.utils.display_widget">
+<span id="npu-utils-display-widget-module"></span><h2>npu.utils.display_widget module<a class="headerlink" href="#module-npu.utils.display_widget" title="Link to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="npu.utils.display_widget.DisplayImage">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npu.utils.display_widget.</span></span><span class="sig-name descname"><span class="pre">DisplayImage</span></span><a class="headerlink" href="#npu.utils.display_widget.DisplayImage" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Simple class for displaying images/video in Jupyter notebooks.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.utils.display_widget.DisplayImage._image_widget">
+<span class="sig-name descname"><span class="pre">_image_widget</span></span><a class="headerlink" href="#npu.utils.display_widget.DisplayImage._image_widget" title="Link to this definition">#</a></dt>
+<dd><p>reference to the widgets.Image object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>widgets.Image</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.utils.display_widget.DisplayImage._button_widget">
+<span class="sig-name descname"><span class="pre">_button_widget</span></span><a class="headerlink" href="#npu.utils.display_widget.DisplayImage._button_widget" title="Link to this definition">#</a></dt>
+<dd><p>reference to the button widget used to stop the video feed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>widgets.Button</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.utils.display_widget.DisplayImage.exit">
+<span class="sig-name descname"><span class="pre">exit</span></span><a class="headerlink" href="#npu.utils.display_widget.DisplayImage.exit" title="Link to this definition">#</a></dt>
+<dd><p>set by the button widget and read by the display widget to step the video.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.utils.display_widget.DisplayImage.frame">
+<span class="sig-name descname"><span class="pre">frame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.display_widget.DisplayImage.frame" title="Link to this definition">#</a></dt>
+<dd><p>Sets the current image on the widget</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-npu.utils.imgplot">
+<span id="npu-utils-imgplot-module"></span><h2>npu.utils.imgplot module<a class="headerlink" href="#module-npu.utils.imgplot" title="Link to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="npu.utils.imgplot.image_plot">
+<span class="sig-prename descclassname"><span class="pre">npu.utils.imgplot.</span></span><span class="sig-name descname"><span class="pre">image_plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">img_src</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">img_dst</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.imgplot.image_plot" title="Link to this definition">#</a></dt>
+<dd><p>Plots the <cite>img_src</cite> using matplotlib</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
+</dd>
+</dl>
+<section id="parameters">
+<h3>Parameters:<a class="headerlink" href="#parameters" title="Link to this heading">#</a></h3>
+<dl class="simple">
+<dt>img_src: np.ndarray</dt><dd><p>Primary image to plot.</p>
+</dd>
+<dt>img_dst: np.ndarray [Optional]</dt><dd><p>Secondary image to plot. If provided it will be labeled as Processed
+Image</p>
+</dd>
+<dt>alpha: bool [Optional]</dt><dd><p>Use alpha channel for visualization.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+</section>
+<section id="module-npu.utils.imgread">
+<span id="npu-utils-imgread-module"></span><h2>npu.utils.imgread module<a class="headerlink" href="#module-npu.utils.imgread" title="Link to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="npu.utils.imgread.OpenCVImageReader">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npu.utils.imgread.</span></span><span class="sig-name descname"><span class="pre">OpenCVImageReader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grayscale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">any_resolution</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.imgread.OpenCVImageReader" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Read an image file using OpenCV and return it as a NumPy ndarray</p>
+<p>This reader is constrained to images with resolution 720p (720, 1280).
+You can read images with different resolutions by setting:
+<cite>any_resolution=True</cite></p>
+<dl class="py property">
+<dt class="sig sig-object py" id="npu.utils.imgread.OpenCVImageReader.img">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">img</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span></em><a class="headerlink" href="#npu.utils.imgread.OpenCVImageReader.img" title="Link to this definition">#</a></dt>
+<dd><p>Returns image in ndarray format</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-npu.utils.nputop">
+<span id="npu-utils-nputop-module"></span><h2>npu.utils.nputop module<a class="headerlink" href="#module-npu.utils.nputop" title="Link to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="npu.utils.nputop.nputop">
+<span class="sig-prename descclassname"><span class="pre">npu.utils.nputop.</span></span><span class="sig-name descname"><span class="pre">nputop</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.nputop.nputop" title="Link to this definition">#</a></dt>
+<dd><p>Uses XBUtil to display all currently running applications in an ipywidgets
+form suitable for JupyterLab</p>
+</dd></dl>
+
+</section>
+<section id="module-npu.utils.svg">
+<span id="npu-utils-svg-module"></span><h2>npu.utils.svg module<a class="headerlink" href="#module-npu.utils.svg" title="Link to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="npu.utils.svg.AieTile">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npu.utils.svg.</span></span><span class="sig-name descname"><span class="pre">AieTile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">row</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.svg.AieTile" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#npu.utils.svg.Tile" title="npu.utils.svg.Tile"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tile</span></code></a>, <a class="reference internal" href="#npu.utils.svg.Image" title="npu.utils.svg.Image"><code class="xref py py-class docutils literal notranslate"><span class="pre">Image</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.utils.svg.AieTile.MAX_BUFFERS">
+<span class="sig-name descname"><span class="pre">MAX_BUFFERS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">8</span></em><a class="headerlink" href="#npu.utils.svg.AieTile.MAX_BUFFERS" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.utils.svg.AieTile.add_buffer">
+<span class="sig-name descname"><span class="pre">add_buffer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">color</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">duration</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_empty</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delay</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.svg.AieTile.add_buffer" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.utils.svg.AieTile.add_kernel">
+<span class="sig-name descname"><span class="pre">add_kernel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">color</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">duration</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delay</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.svg.AieTile.add_kernel" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.utils.svg.AieTile.add_mem_animation">
+<span class="sig-name descname"><span class="pre">add_mem_animation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">up_mem_to_aie</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">up_aie_to_mem</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">down_mem_to_aie</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">down_aie_to_mem</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">right</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">left</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">internal_left</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">internal_right</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">up</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">down</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'blue'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">duration</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delay</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.svg.AieTile.add_mem_animation" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.utils.svg.AieTile.add_memory_outlines">
+<span class="sig-name descname"><span class="pre">add_memory_outlines</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.svg.AieTile.add_memory_outlines" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.utils.svg.AieTile.add_multiple_kernel">
+<span class="sig-name descname"><span class="pre">add_multiple_kernel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dict_kernels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">animate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.svg.AieTile.add_multiple_kernel" title="Link to this definition">#</a></dt>
+<dd><p>Dictionary should follow the format:
+{‘duration’: int, ‘kernels’: [color0, color1, …, colorn]}</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.utils.svg.AieTile.draw_memory_connections">
+<span class="sig-name descname"><span class="pre">draw_memory_connections</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">south_mem_to_aie</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">south_aie_to_mem</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">east</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">south</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">north</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">west</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'blue'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strokewidth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.svg.AieTile.draw_memory_connections" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.utils.svg.AieTile.generate_image">
+<span class="sig-name descname"><span class="pre">generate_image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'aie_tile.svg'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_border</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.svg.AieTile.generate_image" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.utils.svg.AieTile.get_aie_buffers_svg">
+<span class="sig-name descname"><span class="pre">get_aie_buffers_svg</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.svg.AieTile.get_aie_buffers_svg" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.utils.svg.AieTile.get_aie_kernels_svg">
+<span class="sig-name descname"><span class="pre">get_aie_kernels_svg</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.svg.AieTile.get_aie_kernels_svg" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.utils.svg.AieTile.get_aie_svg">
+<span class="sig-name descname"><span class="pre">get_aie_svg</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.svg.AieTile.get_aie_svg" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="npu.utils.svg.Box">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npu.utils.svg.</span></span><span class="sig-name descname"><span class="pre">Box</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'#000000'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stroke_color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'black'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stroke_width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">font_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text_color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pulse_text</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.svg.Box" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Define a box with</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="npu.utils.svg.Box.append">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">append</span></span><a class="headerlink" href="#npu.utils.svg.Box.append" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="npu.utils.svg.Box.box">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">box</span></span><a class="headerlink" href="#npu.utils.svg.Box.box" title="Link to this definition">#</a></dt>
+<dd><p>Return SVG text for a box</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="npu.utils.svg.IfTile">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npu.utils.svg.</span></span><span class="sig-name descname"><span class="pre">IfTile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">row</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.svg.IfTile" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#npu.utils.svg.Tile" title="npu.utils.svg.Tile"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tile</span></code></a>, <a class="reference internal" href="#npu.utils.svg.Image" title="npu.utils.svg.Image"><code class="xref py py-class docutils literal notranslate"><span class="pre">Image</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.utils.svg.IfTile.add_dma_animation">
+<span class="sig-name descname"><span class="pre">add_dma_animation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">south_up</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">south_down</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'blue'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">duration</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delay</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.svg.IfTile.add_dma_animation" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.utils.svg.IfTile.add_ic_animation">
+<span class="sig-name descname"><span class="pre">add_ic_animation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">diagonal_to_tile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">diagonal_from_tile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">duration</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delay</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'red'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.svg.IfTile.add_ic_animation" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.utils.svg.IfTile.add_single_tile_mem_animation">
+<span class="sig-name descname"><span class="pre">add_single_tile_mem_animation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.svg.IfTile.add_single_tile_mem_animation" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.utils.svg.IfTile.draw_external_memory_connections">
+<span class="sig-name descname"><span class="pre">draw_external_memory_connections</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">south</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'black'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.svg.IfTile.draw_external_memory_connections" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.utils.svg.IfTile.generate_image">
+<span class="sig-name descname"><span class="pre">generate_image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'if_tile.svg'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_border</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.svg.IfTile.generate_image" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.utils.svg.IfTile.get_if_tile_svg">
+<span class="sig-name descname"><span class="pre">get_if_tile_svg</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.svg.IfTile.get_if_tile_svg" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="npu.utils.svg.Image">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npu.utils.svg.</span></span><span class="sig-name descname"><span class="pre">Image</span></span><a class="headerlink" href="#npu.utils.svg.Image" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.utils.svg.Image.generate_svg_file">
+<span class="sig-name descname"><span class="pre">generate_svg_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">svg_content</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_border</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_sysmem</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.svg.Image.generate_svg_file" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.utils.svg.Image.hide_key">
+<span class="sig-name descname"><span class="pre">hide_key</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.svg.Image.hide_key" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.utils.svg.Image.show_key">
+<span class="sig-name descname"><span class="pre">show_key</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.svg.Image.show_key" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="npu.utils.svg.Kernel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npu.utils.svg.</span></span><span class="sig-name descname"><span class="pre">Kernel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">duration</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delay</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.svg.Kernel" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.utils.svg.Kernel.get_kernel_svg">
+<span class="sig-name descname"><span class="pre">get_kernel_svg</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.svg.Kernel.get_kernel_svg" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="npu.utils.svg.KernelArc">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npu.utils.svg.</span></span><span class="sig-name descname"><span class="pre">KernelArc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colors</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">duration</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">animate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.svg.KernelArc" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#npu.utils.svg.Kernel" title="npu.utils.svg.Kernel"><code class="xref py py-class docutils literal notranslate"><span class="pre">Kernel</span></code></a></p>
+<p>Generate Sequential Kernels with Arcs</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="npu.utils.svg.MemTile">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npu.utils.svg.</span></span><span class="sig-name descname"><span class="pre">MemTile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">row</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.svg.MemTile" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#npu.utils.svg.Tile" title="npu.utils.svg.Tile"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tile</span></code></a>, <a class="reference internal" href="#npu.utils.svg.Image" title="npu.utils.svg.Image"><code class="xref py py-class docutils literal notranslate"><span class="pre">Image</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npu.utils.svg.MemTile.MAX_BUFFERS">
+<span class="sig-name descname"><span class="pre">MAX_BUFFERS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">16</span></em><a class="headerlink" href="#npu.utils.svg.MemTile.MAX_BUFFERS" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.utils.svg.MemTile.add_buffer">
+<span class="sig-name descname"><span class="pre">add_buffer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">color</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">duration</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_empty</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delay</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.svg.MemTile.add_buffer" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.utils.svg.MemTile.add_ic_animation">
+<span class="sig-name descname"><span class="pre">add_ic_animation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">diagonal_to_tile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">diagonal_from_tile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">north</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">south</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">duration</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delay</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'red'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.svg.MemTile.add_ic_animation" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.utils.svg.MemTile.add_memory_outlines">
+<span class="sig-name descname"><span class="pre">add_memory_outlines</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.svg.MemTile.add_memory_outlines" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.utils.svg.MemTile.add_single_tile_ic_animation">
+<span class="sig-name descname"><span class="pre">add_single_tile_ic_animation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">north_up</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">north_down</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">duration</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delay</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'red'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.svg.MemTile.add_single_tile_ic_animation" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.utils.svg.MemTile.draw_memory_connections">
+<span class="sig-name descname"><span class="pre">draw_memory_connections</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">east</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">west</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'red'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.svg.MemTile.draw_memory_connections" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.utils.svg.MemTile.generate_image">
+<span class="sig-name descname"><span class="pre">generate_image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mem_tile.svg'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_border</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.svg.MemTile.generate_image" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.utils.svg.MemTile.get_buffers_svg">
+<span class="sig-name descname"><span class="pre">get_buffers_svg</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.svg.MemTile.get_buffers_svg" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.utils.svg.MemTile.get_mem_tile_svg">
+<span class="sig-name descname"><span class="pre">get_mem_tile_svg</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.svg.MemTile.get_mem_tile_svg" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="npu.utils.svg.MemoryBox">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npu.utils.svg.</span></span><span class="sig-name descname"><span class="pre">MemoryBox</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'#000000'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stroke_color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'black'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stroke_width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">font_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text_color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pulse_text</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_buffers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obj_class</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'aie_tile_buffers'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.svg.MemoryBox" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#npu.utils.svg.Box" title="npu.utils.svg.Box"><code class="xref py py-class docutils literal notranslate"><span class="pre">Box</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.utils.svg.MemoryBox.add_buffer">
+<span class="sig-name descname"><span class="pre">add_buffer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">color</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">duration</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_empty</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delay</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.svg.MemoryBox.add_buffer" title="Link to this definition">#</a></dt>
+<dd><p>Add animated buffer in a memory
+:type color: 
+:param color: Color of the buffer
+:type color: str
+:param Optional:
+:param ——–:
+:type duration: 
+:param duration: Duration of the animation in seconds
+:type duration: int
+:type start_empty: 
+:param start_empty: Buffer starts animation empty
+:type start_empty: bool
+:type delay: 
+:param delay: Animation starts after <cite>delay</cite> seconds
+:type delay: int
+:type color2: 
+:param color2: Color used to empty the buffer
+:type color2: str</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.utils.svg.MemoryBox.add_memory_outlines">
+<span class="sig-name descname"><span class="pre">add_memory_outlines</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">buffers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.svg.MemoryBox.add_memory_outlines" title="Link to this definition">#</a></dt>
+<dd><p>Add buffer outline</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="npu.utils.svg.RyzenAiArray">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npu.utils.svg.</span></span><span class="sig-name descname"><span class="pre">RyzenAiArray</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rows</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cols</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ns_mem_connections</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remove_if_tile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.svg.RyzenAiArray" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#npu.utils.svg.Image" title="npu.utils.svg.Image"><code class="xref py py-class docutils literal notranslate"><span class="pre">Image</span></code></a></p>
+<p>A class representing a Ryzen AI Array. Inherits from the Image class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rows</strong> (<em>int</em>) – Number of rows in the array (default is 4).</p></li>
+<li><p><strong>cols</strong> (<em>int</em>) – Number of columns in the array (default is 5).</p></li>
+<li><p><strong>ns_mem_connections</strong> (<em>bool</em>) – Whether to include memory connections as north south,         or more complicated path from memory (North) to AIE (south) (default is False).</p></li>
+<li><p><strong>remove_if_tile</strong> (<em>bool</em>) – Whether to remove first interface tile (for RyzenAI) (default is True).</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.utils.svg.RyzenAiArray.draw_app_box">
+<span class="sig-name descname"><span class="pre">draw_app_box</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">col</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.svg.RyzenAiArray.draw_app_box" title="Link to this definition">#</a></dt>
+<dd><p>Add a box around the column to represent an application</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>col</strong> (<em>index</em><em> of </em><em>the column</em>)</p></li>
+<li><p><strong>width</strong> (<em>number</em><em> of </em><em>columns</em>)</p></li>
+<li><p><strong>text</strong> (<em>application name</em>)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.utils.svg.RyzenAiArray.draw_system_memory">
+<span class="sig-name descname"><span class="pre">draw_system_memory</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.svg.RyzenAiArray.draw_system_memory" title="Link to this definition">#</a></dt>
+<dd><p>Draw system memory</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.utils.svg.RyzenAiArray.generate_svg">
+<span class="sig-name descname"><span class="pre">generate_svg</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.svg.RyzenAiArray.generate_svg" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.utils.svg.RyzenAiArray.generate_svg_image">
+<span class="sig-name descname"><span class="pre">generate_svg_image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ryzenai_array.svg'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">debug</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.svg.RyzenAiArray.generate_svg_image" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.utils.svg.RyzenAiArray.hide_aie_tiles">
+<span class="sig-name descname"><span class="pre">hide_aie_tiles</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">opacity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.25</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.svg.RyzenAiArray.hide_aie_tiles" title="Link to this definition">#</a></dt>
+<dd><p>Hide AIE tiles only.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.utils.svg.RyzenAiArray.hide_if_tiles">
+<span class="sig-name descname"><span class="pre">hide_if_tiles</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">opacity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.25</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.svg.RyzenAiArray.hide_if_tiles" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.utils.svg.RyzenAiArray.hide_interconnect">
+<span class="sig-name descname"><span class="pre">hide_interconnect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">opacity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.25</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.svg.RyzenAiArray.hide_interconnect" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.utils.svg.RyzenAiArray.hide_mem_tiles">
+<span class="sig-name descname"><span class="pre">hide_mem_tiles</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">opacity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.25</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.svg.RyzenAiArray.hide_mem_tiles" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.utils.svg.RyzenAiArray.hide_memory_connections">
+<span class="sig-name descname"><span class="pre">hide_memory_connections</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">opacity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.25</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.svg.RyzenAiArray.hide_memory_connections" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.utils.svg.RyzenAiArray.hide_tiles">
+<span class="sig-name descname"><span class="pre">hide_tiles</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">opacity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.25</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.svg.RyzenAiArray.hide_tiles" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.utils.svg.RyzenAiArray.show_aie_tiles">
+<span class="sig-name descname"><span class="pre">show_aie_tiles</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.svg.RyzenAiArray.show_aie_tiles" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.utils.svg.RyzenAiArray.show_if_tiles">
+<span class="sig-name descname"><span class="pre">show_if_tiles</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.svg.RyzenAiArray.show_if_tiles" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.utils.svg.RyzenAiArray.show_interconnect">
+<span class="sig-name descname"><span class="pre">show_interconnect</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.svg.RyzenAiArray.show_interconnect" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.utils.svg.RyzenAiArray.show_mem_tiles">
+<span class="sig-name descname"><span class="pre">show_mem_tiles</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.svg.RyzenAiArray.show_mem_tiles" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.utils.svg.RyzenAiArray.show_tiles">
+<span class="sig-name descname"><span class="pre">show_tiles</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.svg.RyzenAiArray.show_tiles" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.utils.svg.RyzenAiArray.update_hidden_tiles">
+<span class="sig-name descname"><span class="pre">update_hidden_tiles</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.svg.RyzenAiArray.update_hidden_tiles" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="npu.utils.svg.RyzenAiColumn">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npu.utils.svg.</span></span><span class="sig-name descname"><span class="pre">RyzenAiColumn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rows</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cols</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">if_tile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mem_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.svg.RyzenAiColumn" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#npu.utils.svg.Image" title="npu.utils.svg.Image"><code class="xref py py-class docutils literal notranslate"><span class="pre">Image</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.utils.svg.RyzenAiColumn.draw_system_memory">
+<span class="sig-name descname"><span class="pre">draw_system_memory</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.svg.RyzenAiColumn.draw_system_memory" title="Link to this definition">#</a></dt>
+<dd><p>Draw system memory</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.utils.svg.RyzenAiColumn.generate_column_svg">
+<span class="sig-name descname"><span class="pre">generate_column_svg</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.svg.RyzenAiColumn.generate_column_svg" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.utils.svg.RyzenAiColumn.generate_image">
+<span class="sig-name descname"><span class="pre">generate_image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ryzenai_column.svg'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.svg.RyzenAiColumn.generate_image" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.utils.svg.RyzenAiColumn.generate_key">
+<span class="sig-name descname"><span class="pre">generate_key</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kernels</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.svg.RyzenAiColumn.generate_key" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.utils.svg.RyzenAiColumn.hide_compute_tile">
+<span class="sig-name descname"><span class="pre">hide_compute_tile</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.svg.RyzenAiColumn.hide_compute_tile" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.utils.svg.RyzenAiColumn.hide_interface_tile">
+<span class="sig-name descname"><span class="pre">hide_interface_tile</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.svg.RyzenAiColumn.hide_interface_tile" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.utils.svg.RyzenAiColumn.hide_memory_tile">
+<span class="sig-name descname"><span class="pre">hide_memory_tile</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.svg.RyzenAiColumn.hide_memory_tile" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.utils.svg.RyzenAiColumn.show_compute_tile">
+<span class="sig-name descname"><span class="pre">show_compute_tile</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.svg.RyzenAiColumn.show_compute_tile" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.utils.svg.RyzenAiColumn.show_interface_tile">
+<span class="sig-name descname"><span class="pre">show_interface_tile</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.svg.RyzenAiColumn.show_interface_tile" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.utils.svg.RyzenAiColumn.show_memory_tile">
+<span class="sig-name descname"><span class="pre">show_memory_tile</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.svg.RyzenAiColumn.show_memory_tile" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="npu.utils.svg.SystemMemory">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npu.utils.svg.</span></span><span class="sig-name descname"><span class="pre">SystemMemory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_buffers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.svg.SystemMemory" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.utils.svg.SystemMemory.add_buffer">
+<span class="sig-name descname"><span class="pre">add_buffer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">color</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">duration</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_empty</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delay</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.svg.SystemMemory.add_buffer" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="npu.utils.svg.SystemMemory.svg">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">svg</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#npu.utils.svg.SystemMemory.svg" title="Link to this definition">#</a></dt>
+<dd><p>Return SVG code</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="npu.utils.svg.Tile">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npu.utils.svg.</span></span><span class="sig-name descname"><span class="pre">Tile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">row</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tile_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tile_background_color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'#FFFFFF'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">container_background_color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'#FFFFFF'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.svg.Tile" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.utils.svg.Tile.add_ic_animation">
+<span class="sig-name descname"><span class="pre">add_ic_animation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">diagonal_to_tile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">diagonal_from_tile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">north</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">south</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">east</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">west</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">duration</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delay</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'red'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.svg.Tile.add_ic_animation" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.utils.svg.Tile.add_single_tile_ic_animation">
+<span class="sig-name descname"><span class="pre">add_single_tile_ic_animation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">north_up</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">north_down</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">west_left</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">west_right</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">duration</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delay</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'red'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.svg.Tile.add_single_tile_ic_animation" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.utils.svg.Tile.add_single_tile_mem_animation">
+<span class="sig-name descname"><span class="pre">add_single_tile_mem_animation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">north_up</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">north_down</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">south_up</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">south_down</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">east_left</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">east_right</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">west_right</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">west_left</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'blue'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">duration</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delay</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.svg.Tile.add_single_tile_mem_animation" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.utils.svg.Tile.clear_ic_animation">
+<span class="sig-name descname"><span class="pre">clear_ic_animation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.svg.Tile.clear_ic_animation" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.utils.svg.Tile.draw_ic_connections">
+<span class="sig-name descname"><span class="pre">draw_ic_connections</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">north</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">south</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">east</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">west</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.svg.Tile.draw_ic_connections" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.utils.svg.Tile.get_hide_tile_svg">
+<span class="sig-name descname"><span class="pre">get_hide_tile_svg</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.svg.Tile.get_hide_tile_svg" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.utils.svg.Tile.get_ic_animations_svg">
+<span class="sig-name descname"><span class="pre">get_ic_animations_svg</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.svg.Tile.get_ic_animations_svg" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.utils.svg.Tile.get_ic_connections_svg">
+<span class="sig-name descname"><span class="pre">get_ic_connections_svg</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.svg.Tile.get_ic_connections_svg" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.utils.svg.Tile.get_memory_animations_svg">
+<span class="sig-name descname"><span class="pre">get_memory_animations_svg</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.svg.Tile.get_memory_animations_svg" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.utils.svg.Tile.get_memory_connections_svg">
+<span class="sig-name descname"><span class="pre">get_memory_connections_svg</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.svg.Tile.get_memory_connections_svg" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.utils.svg.Tile.get_tile_svg">
+<span class="sig-name descname"><span class="pre">get_tile_svg</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.svg.Tile.get_tile_svg" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.utils.svg.Tile.hide_tile">
+<span class="sig-name descname"><span class="pre">hide_tile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">opacity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.svg.Tile.hide_tile" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.utils.svg.Tile.show_all">
+<span class="sig-name descname"><span class="pre">show_all</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.svg.Tile.show_all" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.utils.svg.Tile.show_tile">
+<span class="sig-name descname"><span class="pre">show_tile</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.svg.Tile.show_tile" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-npu.utils.svg_config">
+<span id="npu-utils-svg-config-module"></span><h2>npu.utils.svg_config module<a class="headerlink" href="#module-npu.utils.svg_config" title="Link to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="npu.utils.svg_config.get_text_width">
+<span class="sig-prename descclassname"><span class="pre">npu.utils.svg_config.</span></span><span class="sig-name descname"><span class="pre">get_text_width</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">font_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">13</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.svg_config.get_text_width" title="Link to this definition">#</a></dt>
+<dd><p>Get with of text for a particular font_size</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="npu.utils.svg_config.get_tile_x">
+<span class="sig-prename descclassname"><span class="pre">npu.utils.svg_config.</span></span><span class="sig-name descname"><span class="pre">get_tile_x</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">col</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.svg_config.get_tile_x" title="Link to this definition">#</a></dt>
+<dd><p>Get X coordinate for a AIE tile</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="npu.utils.svg_config.get_tile_y">
+<span class="sig-prename descclassname"><span class="pre">npu.utils.svg_config.</span></span><span class="sig-name descname"><span class="pre">get_tile_y</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">row</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.svg_config.get_tile_y" title="Link to this definition">#</a></dt>
+<dd><p>Get Y coordinate for a AIE tile</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-npu.utils.test_device">
+<span id="npu-utils-test-device-module"></span><h2>npu.utils.test_device module<a class="headerlink" href="#module-npu.utils.test_device" title="Link to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="npu.utils.test_device.get_device_status">
+<span class="sig-prename descclassname"><span class="pre">npu.utils.test_device.</span></span><span class="sig-name descname"><span class="pre">get_device_status</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.test_device.get_device_status" title="Link to this definition">#</a></dt>
+<dd><p>Returns states of the NPU device, when operating normally should return the string ‘OK’.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="npu.utils.test_device.get_driver_version">
+<span class="sig-prename descclassname"><span class="pre">npu.utils.test_device.</span></span><span class="sig-name descname"><span class="pre">get_driver_version</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.test_device.get_driver_version" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="npu.utils.test_device.reset_npu">
+<span class="sig-prename descclassname"><span class="pre">npu.utils.test_device.</span></span><span class="sig-name descname"><span class="pre">reset_npu</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.test_device.reset_npu" title="Link to this definition">#</a></dt>
+<dd><p>This is a utility function that wraps a powershell script to
+reset the IPU device.
+Note: this requires admin privileges.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="npu.utils.test_device.test_device_status">
+<span class="sig-prename descclassname"><span class="pre">npu.utils.test_device.</span></span><span class="sig-name descname"><span class="pre">test_device_status</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.test_device.test_device_status" title="Link to this definition">#</a></dt>
+<dd><p>Checks if device exists, and if the status is expected ‘OK’.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="npu.utils.test_device.test_driver_version">
+<span class="sig-prename descclassname"><span class="pre">npu.utils.test_device.</span></span><span class="sig-name descname"><span class="pre">test_driver_version</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">min_driver_version</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'10.1109.8.100'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.test_device.test_driver_version" title="Link to this definition">#</a></dt>
+<dd><p>Asserts if the driver version matches a minimum specified version.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="npu.utils.test_device.version_to_tuple">
+<span class="sig-prename descclassname"><span class="pre">npu.utils.test_device.</span></span><span class="sig-name descname"><span class="pre">version_to_tuple</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">version</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.test_device.version_to_tuple" title="Link to this definition">#</a></dt>
+<dd><p>Convert a version string to a tuple of integers</p>
+</dd></dl>
+
+</section>
+<section id="module-npu.utils.videoapps">
+<span id="npu-utils-videoapps-module"></span><h2>npu.utils.videoapps module<a class="headerlink" href="#module-npu.utils.videoapps" title="Link to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="npu.utils.videoapps.videoapps">
+<span class="sig-prename descclassname"><span class="pre">npu.utils.videoapps.</span></span><span class="sig-name descname"><span class="pre">videoapps</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.videoapps.videoapps" title="Link to this definition">#</a></dt>
+<dd><p>Returns a list of pre-made video processing applications</p>
+</dd></dl>
+
+</section>
+<section id="module-npu.utils.xbutil">
+<span id="npu-utils-xbutil-module"></span><h2>npu.utils.xbutil module<a class="headerlink" href="#module-npu.utils.xbutil" title="Link to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="npu.utils.xbutil.XBUtil">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npu.utils.xbutil.</span></span><span class="sig-name descname"><span class="pre">XBUtil</span></span><a class="headerlink" href="#npu.utils.xbutil.XBUtil" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py property">
+<dt class="sig sig-object py" id="npu.utils.xbutil.XBUtil.app_count">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">app_count</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#npu.utils.xbutil.XBUtil.app_count" title="Link to this definition">#</a></dt>
+<dd><p>The total number of running apps</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.utils.xbutil.XBUtil.app_exists">
+<span class="sig-name descname"><span class="pre">app_exists</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.xbutil.XBUtil.app_exists" title="Link to this definition">#</a></dt>
+<dd><p>Returns true if an app with the given name is
+present on the NPU device</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="npu.utils.xbutil.XBUtil.app_table">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">app_table</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#npu.utils.xbutil.XBUtil.app_table" title="Link to this definition">#</a></dt>
+<dd><p>Returns a table of all the apps currently loaded onto the NPU device.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.utils.xbutil.XBUtil.apps">
+<span class="sig-name descname"><span class="pre">apps</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.xbutil.XBUtil.apps" title="Link to this definition">#</a></dt>
+<dd><p>Starts a thread displaying all the apps in an ipython widget.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npu.utils.xbutil.XBUtil.list_apps">
+<span class="sig-name descname"><span class="pre">list_apps</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#npu.utils.xbutil.XBUtil.list_apps" title="Link to this definition">#</a></dt>
+<dd><p>Lists all the apps running on the
+NPU device</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="npu.utils.xbutil.XBUtil.loaded_functions">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">loaded_functions</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#npu.utils.xbutil.XBUtil.loaded_functions" title="Link to this definition">#</a></dt>
+<dd><p>Returns a list of loaded functions on the NPU. Applications can have multiple functions.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="npu.utils.xbutil.XBUtil.num_riallto_streams">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">num_riallto_streams</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#npu.utils.xbutil.XBUtil.num_riallto_streams" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="npu.utils.xbutil.XBUtil.num_wse_streams">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">num_wse_streams</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#npu.utils.xbutil.XBUtil.num_wse_streams" title="Link to this definition">#</a></dt>
+<dd><p>Returns the current number of active WSE streams</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-npu.utils">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-npu.utils" title="Link to this heading">#</a></h2>
+<section id="utilities">
+<h3>Utilities<a class="headerlink" href="#utilities" title="Link to this heading">#</a></h3>
+<p>The <cite>npu.utils</cite> submodule provides useful utility functions to visualize,
+list available resources, and introspect NPU applications.</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="npu.runtime.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">npu.runtime package</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="faq.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Riallto FAQ</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-npu.utils.aiekernels">npu.utils.aiekernels module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.aiekernels.aiekernels"><code class="docutils literal notranslate"><span class="pre">aiekernels()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-npu.utils.appviz">npu.utils.appviz module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.appviz.AppViz"><code class="docutils literal notranslate"><span class="pre">AppViz</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.appviz.AppViz.save"><code class="docutils literal notranslate"><span class="pre">AppViz.save()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.appviz.AppViz.show"><code class="docutils literal notranslate"><span class="pre">AppViz.show</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-npu.utils.display_widget">npu.utils.display_widget module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.display_widget.DisplayImage"><code class="docutils literal notranslate"><span class="pre">DisplayImage</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.display_widget.DisplayImage._image_widget"><code class="docutils literal notranslate"><span class="pre">DisplayImage._image_widget</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.display_widget.DisplayImage._button_widget"><code class="docutils literal notranslate"><span class="pre">DisplayImage._button_widget</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.display_widget.DisplayImage.exit"><code class="docutils literal notranslate"><span class="pre">DisplayImage.exit</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.display_widget.DisplayImage.frame"><code class="docutils literal notranslate"><span class="pre">DisplayImage.frame()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-npu.utils.imgplot">npu.utils.imgplot module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.imgplot.image_plot"><code class="docutils literal notranslate"><span class="pre">image_plot()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-npu.utils.imgread">npu.utils.imgread module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.imgread.OpenCVImageReader"><code class="docutils literal notranslate"><span class="pre">OpenCVImageReader</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.imgread.OpenCVImageReader.img"><code class="docutils literal notranslate"><span class="pre">OpenCVImageReader.img</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-npu.utils.nputop">npu.utils.nputop module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.nputop.nputop"><code class="docutils literal notranslate"><span class="pre">nputop()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-npu.utils.svg">npu.utils.svg module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.AieTile"><code class="docutils literal notranslate"><span class="pre">AieTile</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.AieTile.MAX_BUFFERS"><code class="docutils literal notranslate"><span class="pre">AieTile.MAX_BUFFERS</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.AieTile.add_buffer"><code class="docutils literal notranslate"><span class="pre">AieTile.add_buffer()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.AieTile.add_kernel"><code class="docutils literal notranslate"><span class="pre">AieTile.add_kernel()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.AieTile.add_mem_animation"><code class="docutils literal notranslate"><span class="pre">AieTile.add_mem_animation()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.AieTile.add_memory_outlines"><code class="docutils literal notranslate"><span class="pre">AieTile.add_memory_outlines()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.AieTile.add_multiple_kernel"><code class="docutils literal notranslate"><span class="pre">AieTile.add_multiple_kernel()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.AieTile.draw_memory_connections"><code class="docutils literal notranslate"><span class="pre">AieTile.draw_memory_connections()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.AieTile.generate_image"><code class="docutils literal notranslate"><span class="pre">AieTile.generate_image()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.AieTile.get_aie_buffers_svg"><code class="docutils literal notranslate"><span class="pre">AieTile.get_aie_buffers_svg()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.AieTile.get_aie_kernels_svg"><code class="docutils literal notranslate"><span class="pre">AieTile.get_aie_kernels_svg()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.AieTile.get_aie_svg"><code class="docutils literal notranslate"><span class="pre">AieTile.get_aie_svg()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.Box"><code class="docutils literal notranslate"><span class="pre">Box</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.Box.append"><code class="docutils literal notranslate"><span class="pre">Box.append</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.Box.box"><code class="docutils literal notranslate"><span class="pre">Box.box</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.IfTile"><code class="docutils literal notranslate"><span class="pre">IfTile</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.IfTile.add_dma_animation"><code class="docutils literal notranslate"><span class="pre">IfTile.add_dma_animation()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.IfTile.add_ic_animation"><code class="docutils literal notranslate"><span class="pre">IfTile.add_ic_animation()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.IfTile.add_single_tile_mem_animation"><code class="docutils literal notranslate"><span class="pre">IfTile.add_single_tile_mem_animation()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.IfTile.draw_external_memory_connections"><code class="docutils literal notranslate"><span class="pre">IfTile.draw_external_memory_connections()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.IfTile.generate_image"><code class="docutils literal notranslate"><span class="pre">IfTile.generate_image()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.IfTile.get_if_tile_svg"><code class="docutils literal notranslate"><span class="pre">IfTile.get_if_tile_svg()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.Image"><code class="docutils literal notranslate"><span class="pre">Image</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.Image.generate_svg_file"><code class="docutils literal notranslate"><span class="pre">Image.generate_svg_file()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.Image.hide_key"><code class="docutils literal notranslate"><span class="pre">Image.hide_key()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.Image.show_key"><code class="docutils literal notranslate"><span class="pre">Image.show_key()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.Kernel"><code class="docutils literal notranslate"><span class="pre">Kernel</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.Kernel.get_kernel_svg"><code class="docutils literal notranslate"><span class="pre">Kernel.get_kernel_svg()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.KernelArc"><code class="docutils literal notranslate"><span class="pre">KernelArc</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.MemTile"><code class="docutils literal notranslate"><span class="pre">MemTile</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.MemTile.MAX_BUFFERS"><code class="docutils literal notranslate"><span class="pre">MemTile.MAX_BUFFERS</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.MemTile.add_buffer"><code class="docutils literal notranslate"><span class="pre">MemTile.add_buffer()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.MemTile.add_ic_animation"><code class="docutils literal notranslate"><span class="pre">MemTile.add_ic_animation()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.MemTile.add_memory_outlines"><code class="docutils literal notranslate"><span class="pre">MemTile.add_memory_outlines()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.MemTile.add_single_tile_ic_animation"><code class="docutils literal notranslate"><span class="pre">MemTile.add_single_tile_ic_animation()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.MemTile.draw_memory_connections"><code class="docutils literal notranslate"><span class="pre">MemTile.draw_memory_connections()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.MemTile.generate_image"><code class="docutils literal notranslate"><span class="pre">MemTile.generate_image()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.MemTile.get_buffers_svg"><code class="docutils literal notranslate"><span class="pre">MemTile.get_buffers_svg()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.MemTile.get_mem_tile_svg"><code class="docutils literal notranslate"><span class="pre">MemTile.get_mem_tile_svg()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.MemoryBox"><code class="docutils literal notranslate"><span class="pre">MemoryBox</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.MemoryBox.add_buffer"><code class="docutils literal notranslate"><span class="pre">MemoryBox.add_buffer()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.MemoryBox.add_memory_outlines"><code class="docutils literal notranslate"><span class="pre">MemoryBox.add_memory_outlines()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.RyzenAiArray"><code class="docutils literal notranslate"><span class="pre">RyzenAiArray</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.RyzenAiArray.draw_app_box"><code class="docutils literal notranslate"><span class="pre">RyzenAiArray.draw_app_box()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.RyzenAiArray.draw_system_memory"><code class="docutils literal notranslate"><span class="pre">RyzenAiArray.draw_system_memory()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.RyzenAiArray.generate_svg"><code class="docutils literal notranslate"><span class="pre">RyzenAiArray.generate_svg()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.RyzenAiArray.generate_svg_image"><code class="docutils literal notranslate"><span class="pre">RyzenAiArray.generate_svg_image()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.RyzenAiArray.hide_aie_tiles"><code class="docutils literal notranslate"><span class="pre">RyzenAiArray.hide_aie_tiles()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.RyzenAiArray.hide_if_tiles"><code class="docutils literal notranslate"><span class="pre">RyzenAiArray.hide_if_tiles()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.RyzenAiArray.hide_interconnect"><code class="docutils literal notranslate"><span class="pre">RyzenAiArray.hide_interconnect()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.RyzenAiArray.hide_mem_tiles"><code class="docutils literal notranslate"><span class="pre">RyzenAiArray.hide_mem_tiles()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.RyzenAiArray.hide_memory_connections"><code class="docutils literal notranslate"><span class="pre">RyzenAiArray.hide_memory_connections()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.RyzenAiArray.hide_tiles"><code class="docutils literal notranslate"><span class="pre">RyzenAiArray.hide_tiles()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.RyzenAiArray.show_aie_tiles"><code class="docutils literal notranslate"><span class="pre">RyzenAiArray.show_aie_tiles()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.RyzenAiArray.show_if_tiles"><code class="docutils literal notranslate"><span class="pre">RyzenAiArray.show_if_tiles()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.RyzenAiArray.show_interconnect"><code class="docutils literal notranslate"><span class="pre">RyzenAiArray.show_interconnect()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.RyzenAiArray.show_mem_tiles"><code class="docutils literal notranslate"><span class="pre">RyzenAiArray.show_mem_tiles()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.RyzenAiArray.show_tiles"><code class="docutils literal notranslate"><span class="pre">RyzenAiArray.show_tiles()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.RyzenAiArray.update_hidden_tiles"><code class="docutils literal notranslate"><span class="pre">RyzenAiArray.update_hidden_tiles()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.RyzenAiColumn"><code class="docutils literal notranslate"><span class="pre">RyzenAiColumn</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.RyzenAiColumn.draw_system_memory"><code class="docutils literal notranslate"><span class="pre">RyzenAiColumn.draw_system_memory()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.RyzenAiColumn.generate_column_svg"><code class="docutils literal notranslate"><span class="pre">RyzenAiColumn.generate_column_svg()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.RyzenAiColumn.generate_image"><code class="docutils literal notranslate"><span class="pre">RyzenAiColumn.generate_image()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.RyzenAiColumn.generate_key"><code class="docutils literal notranslate"><span class="pre">RyzenAiColumn.generate_key()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.RyzenAiColumn.hide_compute_tile"><code class="docutils literal notranslate"><span class="pre">RyzenAiColumn.hide_compute_tile()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.RyzenAiColumn.hide_interface_tile"><code class="docutils literal notranslate"><span class="pre">RyzenAiColumn.hide_interface_tile()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.RyzenAiColumn.hide_memory_tile"><code class="docutils literal notranslate"><span class="pre">RyzenAiColumn.hide_memory_tile()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.RyzenAiColumn.show_compute_tile"><code class="docutils literal notranslate"><span class="pre">RyzenAiColumn.show_compute_tile()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.RyzenAiColumn.show_interface_tile"><code class="docutils literal notranslate"><span class="pre">RyzenAiColumn.show_interface_tile()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.RyzenAiColumn.show_memory_tile"><code class="docutils literal notranslate"><span class="pre">RyzenAiColumn.show_memory_tile()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.SystemMemory"><code class="docutils literal notranslate"><span class="pre">SystemMemory</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.SystemMemory.add_buffer"><code class="docutils literal notranslate"><span class="pre">SystemMemory.add_buffer()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.SystemMemory.svg"><code class="docutils literal notranslate"><span class="pre">SystemMemory.svg</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.Tile"><code class="docutils literal notranslate"><span class="pre">Tile</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.Tile.add_ic_animation"><code class="docutils literal notranslate"><span class="pre">Tile.add_ic_animation()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.Tile.add_single_tile_ic_animation"><code class="docutils literal notranslate"><span class="pre">Tile.add_single_tile_ic_animation()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.Tile.add_single_tile_mem_animation"><code class="docutils literal notranslate"><span class="pre">Tile.add_single_tile_mem_animation()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.Tile.clear_ic_animation"><code class="docutils literal notranslate"><span class="pre">Tile.clear_ic_animation()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.Tile.draw_ic_connections"><code class="docutils literal notranslate"><span class="pre">Tile.draw_ic_connections()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.Tile.get_hide_tile_svg"><code class="docutils literal notranslate"><span class="pre">Tile.get_hide_tile_svg()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.Tile.get_ic_animations_svg"><code class="docutils literal notranslate"><span class="pre">Tile.get_ic_animations_svg()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.Tile.get_ic_connections_svg"><code class="docutils literal notranslate"><span class="pre">Tile.get_ic_connections_svg()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.Tile.get_memory_animations_svg"><code class="docutils literal notranslate"><span class="pre">Tile.get_memory_animations_svg()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.Tile.get_memory_connections_svg"><code class="docutils literal notranslate"><span class="pre">Tile.get_memory_connections_svg()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.Tile.get_tile_svg"><code class="docutils literal notranslate"><span class="pre">Tile.get_tile_svg()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.Tile.hide_tile"><code class="docutils literal notranslate"><span class="pre">Tile.hide_tile()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.Tile.show_all"><code class="docutils literal notranslate"><span class="pre">Tile.show_all()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg.Tile.show_tile"><code class="docutils literal notranslate"><span class="pre">Tile.show_tile()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-npu.utils.svg_config">npu.utils.svg_config module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg_config.get_text_width"><code class="docutils literal notranslate"><span class="pre">get_text_width()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg_config.get_tile_x"><code class="docutils literal notranslate"><span class="pre">get_tile_x()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.svg_config.get_tile_y"><code class="docutils literal notranslate"><span class="pre">get_tile_y()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-npu.utils.test_device">npu.utils.test_device module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.test_device.get_device_status"><code class="docutils literal notranslate"><span class="pre">get_device_status()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.test_device.get_driver_version"><code class="docutils literal notranslate"><span class="pre">get_driver_version()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.test_device.reset_npu"><code class="docutils literal notranslate"><span class="pre">reset_npu()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.test_device.test_device_status"><code class="docutils literal notranslate"><span class="pre">test_device_status()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.test_device.test_driver_version"><code class="docutils literal notranslate"><span class="pre">test_driver_version()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.test_device.version_to_tuple"><code class="docutils literal notranslate"><span class="pre">version_to_tuple()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-npu.utils.videoapps">npu.utils.videoapps module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.videoapps.videoapps"><code class="docutils literal notranslate"><span class="pre">videoapps()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-npu.utils.xbutil">npu.utils.xbutil module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.xbutil.XBUtil"><code class="docutils literal notranslate"><span class="pre">XBUtil</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.xbutil.XBUtil.app_count"><code class="docutils literal notranslate"><span class="pre">XBUtil.app_count</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.xbutil.XBUtil.app_exists"><code class="docutils literal notranslate"><span class="pre">XBUtil.app_exists()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.xbutil.XBUtil.app_table"><code class="docutils literal notranslate"><span class="pre">XBUtil.app_table</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.xbutil.XBUtil.apps"><code class="docutils literal notranslate"><span class="pre">XBUtil.apps()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.xbutil.XBUtil.list_apps"><code class="docutils literal notranslate"><span class="pre">XBUtil.list_apps()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.xbutil.XBUtil.loaded_functions"><code class="docutils literal notranslate"><span class="pre">XBUtil.loaded_functions</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.xbutil.XBUtil.num_riallto_streams"><code class="docutils literal notranslate"><span class="pre">XBUtil.num_riallto_streams</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.utils.xbutil.XBUtil.num_wse_streams"><code class="docutils literal notranslate"><span class="pre">XBUtil.num_wse_streams</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-npu.utils">Module contents</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#utilities">Utilities</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Advanced Micro Devices, Inc.
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <p>
+<div class="aem-Grid aem-Grid--16">
+<div class="aem-GridColumn aem-GridColumn--xxxlarge--none aem-GridColumn--xsmall--16 aem-GridColumn--offset--xsmall--0 aem-GridColumn--xlarge--none aem-GridColumn--xxlarge--none aem-GridColumn--default--none aem-GridColumn--offset--large--1 aem-GridColumn--xlarge--12 aem-GridColumn--offset--default--0 aem-GridColumn--xxlarge--10 aem-GridColumn--offset--xlarge--2 aem-GridColumn--offset--xxlarge--3 aem-GridColumn--offset--xxxlarge--4 aem-GridColumn--xsmall--none aem-GridColumn--large--none aem-GridColumn aem-GridColumn--large--14 aem-GridColumn--xxxlarge--8 aem-GridColumn--default--16">
+<div class="container-fluid sub-footer">
+
+<div class="row">
+<div class="col-xs-24">
+<p><a target="_blank" href="https://www.amd.com/en/corporate/copyright">Terms and Conditions</a> | <a target="_blank" href="https://www.amd.com/en/corporate/privacy">Privacy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/cookies">Cookie Policy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/trademarks">Trademarks</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/statement-human-trafficking-forced-labor.pdf">Statement on Forced Labor</a> | <a target="_blank" href="https://www.amd.com/en/corporate/competition">Fair and Open Competition</a> <br> <a target="_blank" href="https://www.amd.com/system/files/documents/amd-uk-tax-strategy.pdf">UK Tax Strategy</a> | <a target="_blank" href="https://docs.xilinx.com/v/u/9x6YvZKuWyhJId7y7RQQKA">Inclusive Terminology</a> | <a href="#cookiessettings" class="ot-sdk-show-settings">Cookies Settings</a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="cookie-consent" class="cookie-consent">
+<p>This website uses cookies to ensure you get the best experience on our website. <a href="#" id="cookie-accept">Accept</a> | <a href="#" id="cookie-reject">Reject</a></p>
+</div>
+</p>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

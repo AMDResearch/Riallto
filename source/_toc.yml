@@ -1,0 +1,49 @@
+format: jb-book
+root: index
+parts:
+    - caption: Riallto Overview
+      chapters:
+            - file: notebooks/1_0_Introduction.ipynb
+            - file: install-riallto.rst
+              sections: 
+              - file: install-riallto-linux.md
+              - file: install-riallto-windows.rst
+            - file: ryzenai_video_overview.rst
+            - file: notebooks/1_1_ryzenai.ipynb
+            - file: notebooks/2_1_MS_Windows_Studio_Effects.ipynb
+    - caption: Riallto Overview
+      chapters:
+            - file: notebooks/3_1_Color_threshold_example.ipynb
+            - file: notebooks/3_2_Ryzenai_capabilities.ipynb
+            - file: notebooks/3_3_Scaled_color_threshold_example.ipynb
+            - file: notebooks/3_4_Edge_detect_example.ipynb
+            - file: notebooks/3_5_Color_detect_example.ipynb
+    - caption: Building Applications
+      chapters:
+            - file: notebooks/4_1_software_framework.ipynb
+            - file: notebooks/4_2_write_your_kernel.ipynb
+            - file: notebooks/4_3_kernels_with_runtime_parameters.ipynb
+            - file: notebooks/4_4_threshold_kernel_with_vector_ops.ipynb
+            - file: notebooks/4_5_describe_an_application.ipynb
+            - file: notebooks/4_6_build_application.ipynb
+            - file: notebooks/4_7_using_the_memtile_in_your_applications.ipynb
+            - file: notebooks/4_8_build_a_colorDetect_application.ipynb
+    - caption: Ryzen AI Machine Learning
+      chapters:
+            - file: notebooks/5_1_pytorch_onnx_inference.ipynb
+            - file: notebooks/5_2_pytorch_onnx_re-train.ipynb
+    - caption: Python Package
+      chapters:
+            - file: modules.rst
+    - caption: FAQ
+      chapters:
+            - file: faq.rst
+    - caption: Glossary
+      chapters:
+            - file: notebooks/Glossary.ipynb
+    - caption: Appendix
+      chapters:
+            - file: notebooks/Appendix_Review_of_Image_Processing_Concepts.ipynb
+            - file: prerequisites-driver.rst
+            - file: prerequisites-aie-license
+            - file: prerequisites-wsl.rst

@@ -9,5 +9,3 @@ install/temp
 install/tests
 install/installed
 install/tarballs/*.tar.gz
-
-*-checkpoint.ipynb
