@@ -82,7 +82,7 @@ Can I inspect the material before I install the software?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 -  Absolutely, all the materials are available on the website at
-   `Welcome to Riallto <https://riallto.ai/1_0_Introduction.html>`__
+   `Welcome to Riallto <https://riallto.ai/notebooks/1_0_Introduction.html>`__
 
 Where can I get help if I have questions about Riallto?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
