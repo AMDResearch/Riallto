@@ -23,7 +23,7 @@ Prerequisites
 
 You will need a laptop or computer with an AMD Ryzen AI processor. The Ryzen NPU and Riallto are currently only supported under Windows 11. 
 
-The Ryzen AI NPU appears in the Windows Device Manager as an *IPU* (Inference Processing Unit) which is another term for an NPU. Both 'Lite' and 'Full' installation options require the installation of the IPU driver version 10.1009.8.100. You can install the Windows driver for the Ryzen AI NPU by following the instructions on the following page:
+The Ryzen AI NPU appears in the Windows Device Manager as an *IPU* (Inference Processing Unit) which is another term for an NPU. Both 'Lite' and 'Full' installation options require the installation of the IPU driver version 10.1109.8.128. You can install the Windows driver for the Ryzen AI NPU by following the instructions on the following page:
 
 :ref:`prerequisites-driver`
 
@@ -38,7 +38,7 @@ Download Riallto installer
 
 Riallto consists of runtime software to load Ryzen AI applications, and a software toolchain to compile and build applications for Ryzen AI. Riallto also includes a series of Jupyter Notebook tutorials. 
 
-`Download the latest v1.0 Riallto installer <https://www.xilinx.com/bin/public/openDownload?filename=Riallto-v1.0.zip>`_ and run it on your Ryzen AI laptop. This will install the Riallto software framework and a copy of the Riallto Jupyter notebooks that you can browse and run on your laptop. Make sure to select the correct installation option when prompted, the 'Full' version will not install without WSL2 or the AIE build license (see details in the Prerequisites section above). 
+`Download the latest v1.1 Riallto installer <https://www.xilinx.com/bin/public/openDownload?filename=Riallto-v1.1.zip>`_ and run it on your Ryzen AI laptop. This will install the Riallto software framework and a copy of the Riallto Jupyter notebooks that you can browse and run on your laptop. Make sure to select the correct installation option when prompted, the 'Full' version will not install without WSL2 or the AIE build license (see details in the Prerequisites section above). 
 
 If you don't have a Ryzen AI laptop, you can browse the Riallto notebooks as webpages which make up the majority of the content on the webpages you are browsing now. See the *NPU Architecture Features* section to learn more about the NPU. The *Building Applications* section to learn how to build custom applications for the NPU. The last section, will show you how to run *Machine Learning with ONNX* on Ryzen AI.
 
