@@ -18,7 +18,7 @@ KERNEL_IMAGE=linux-image-unsigned-6.10.0-061000rc2-generic_6.10.0-061000rc2.2024
 URLS=(
 "https://kernel.ubuntu.com/mainline/v6.10-rc2/amd64/"
 "https://www.xilinx.com/bin/public/openDownload?filename=pynqMLIR_AIE_py312_v0.9.tar.gz"
-"https://www.xilinx.com/bin/public/openDownload?filename=Riallto-v1.1.zip"
+"https://www.amd.com/bin/public/amdOpenDownload?filename=Riallto-v1.1.zip"
 "https://github.com/amd/xdna-driver.git"
 "https://github.com/AMDResearch/Riallto.git"
 "https://docker.io/library/ubuntu"
@@ -182,7 +182,7 @@ fi
 
 if [ ! -f "./xilinx_tools.tar.gz" ]; then
 	echo "xilinx_tools.tar.gz is missing, downloading it from opendownloads..."
-	wget -O $build_tmp/riallto_installer.zip https://www.xilinx.com/bin/public/openDownload?filename=Riallto-v1.1.zip  
+	wget -O $build_tmp/riallto_installer.zip https://www.amd.com/bin/public/amdOpenDownload?filename=Riallto-v1.1.zip
 	pushd $build_tmp
 		unzip riallto_installer.zip
         	mv Riallto-v1.1/Riallto/downloads/xilinx_tools_latest.tar.gz ./xilinx_tools.tar.gz	
