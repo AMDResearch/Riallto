@@ -38,7 +38,7 @@ Download Riallto installer
 
 Riallto consists of runtime software to load Ryzen AI applications, and a software toolchain to compile and build applications for Ryzen AI. Riallto also includes a series of Jupyter Notebook tutorials. 
 
-`Download the latest v1.1 Riallto installer <https://www.xilinx.com/bin/public/openDownload?filename=Riallto-v1.1.zip>`_ and run it on your Ryzen AI laptop. This will install the Riallto software framework and a copy of the Riallto Jupyter notebooks that you can browse and run on your laptop. Make sure to select the correct installation option when prompted, the 'Full' version will not install without WSL2 or the AIE build license (see details in the Prerequisites section above). 
+`Download the latest v1.1 Riallto installer <https://www.amd.com/bin/public/amdOpenDownload?filename=Riallto-v1.1.zip>`_ and run it on your Ryzen AI laptop. This will install the Riallto software framework and a copy of the Riallto Jupyter notebooks that you can browse and run on your laptop. Make sure to select the correct installation option when prompted, the 'Full' version will not install without WSL2 or the AIE build license (see details in the Prerequisites section above).
 
 If you don't have a Ryzen AI laptop, you can browse the Riallto notebooks as webpages which make up the majority of the content on the webpages you are browsing now. See the *NPU Architecture Features* section to learn more about the NPU. The *Building Applications* section to learn how to build custom applications for the NPU. The last section, will show you how to run *Machine Learning with ONNX* on Ryzen AI.
 
