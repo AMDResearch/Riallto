@@ -2,6 +2,8 @@
 // Add button to expand images to full screen
 document.addEventListener("DOMContentLoaded", function() {
     const images = document.querySelectorAll("img:not(.no-expand)");
+	const theme = localStorage.getItem("theme") || "light";
+	document.documentElement.setAttribute('data-theme', theme);
 
     images.forEach((img) => {
 		img.onload = function() {
