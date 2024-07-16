@@ -3,7 +3,7 @@ title: Riallto - An exploration framework for Ryzen AI
 root: index
 author: 'Advanced Micro Devices, Inc.'
 copyright: '2024'
-exclude_patterns : ['fpl24.md']
+exclude_patterns : ['fpl24.md', 'requirements.txt']
 
 html:
   baseurl: https://riallto.ai/
