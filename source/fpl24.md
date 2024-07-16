@@ -29,11 +29,15 @@ We are part of the Advanced and Research Development team at Advanced Micro Devi
 
 ## Contact Us
 
-You can reach us at aup@amd.com
+You can reach us at [aup@amd.com](mailto:aup@amd.com?subject=FPL%202024%20NPU%20Tutorial).
 
 ## Register
 
-- 2 or 3, September **TBD**
-- Time: TBD
-- In Person:  Check the FPL 2024 site for more information. http://asaclab.polito.it/fpl2024/
-- [Register](http://asaclab.polito.it/fpl2024/registration/)
+<p><span class="icon-calendar">2 or 3 September, 2024 <strong>TBD</strong></span></p>
+
+<p><span class="icon-time">Morning or Afternoon <strong>TBD</strong></span></p>
+
+<p><span class="icon-map">In Person:&nbsp; Check the FPL 2024 site for more information.&nbsp;<a
+        href="http://asaclab.polito.it/fpl2024/">http://asaclab.polito.it/fpl2024/</a></span></p>
+
+<p><a href="http://asaclab.polito.it/fpl2024/registration/"><span class="icon-check-circle">Register</span></a></p>
