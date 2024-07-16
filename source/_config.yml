@@ -3,9 +3,10 @@ title: Riallto - An exploration framework for Ryzen AI
 root: index
 author: 'Advanced Micro Devices, Inc.'
 copyright: '2024'
+exclude_patterns : ['fpl24.md']
 
 html:
-  baseurl: https://cathalmccabe.github.io/Riallto/
+  baseurl: https://riallto.ai/
   repository_provider: github
   favicon: "./images/favicon.ico"
   footer:
@@ -30,7 +31,7 @@ html:
     </p>
 
 repository:
-  url: https://github.com/cathalmccabe/Riallto
+  url: https://github.com/amdresearch/riallto
   provider: github
 
 execute:
