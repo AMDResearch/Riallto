@@ -236,6 +236,15 @@ class Kernel(KernelMeta):
             self.kb.build(debug)
 
     @property
+    def lst(self):
+        """Returns assembly instructions of the compiled kernel"""
+        if not os.path.exists(self.kb.buildasmpath):
+            self.kb.build()
+        with open(self.kb.buildobjpath + '.lst', 'r', encoding='utf-8') as file:
+            asmcode = file.read()
+        return '\n'.join(asmcode.lst.split('\n')[6:])
+
+    @property
     def objfile(self):
         self.build()
         return self.kb.buildobjpath
