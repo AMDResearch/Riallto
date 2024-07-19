@@ -242,7 +242,7 @@ class Kernel(KernelMeta):
             self.kb.build()
         with open(self.kb.buildobjpath + '.lst', 'r', encoding='utf-8') as file:
             asmcode = file.read()
-        return '\n'.join(asmcode.lst.split('\n')[6:])
+        return '\n'.join(asmcode.split('\n')[6:])
 
     @property
     def objfile(self):
