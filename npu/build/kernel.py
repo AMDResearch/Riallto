@@ -15,10 +15,10 @@ import re
 
 
 class Kernel(KernelMeta):
-    """This class encapsulates a ComputeTile kernel C/C++ src code and methods to generate a compiled object - that compiled object 
-    is used within MLIR to build the final xclbin application.  Additionally, the kernel is parsed for input and output ports and can 
-    encapsulates a behavioral model to capture functional behavior and data shaping from input to output ports.  This metadata 
-    for the kernel enables behavioral execution to verify correctness in Python and also tracing to build the final AppBuilder xclbin.   
+    """This class encapsulates a ComputeTile kernel C/C++ src code and methods to generate a compiled object - that compiled object
+    is used within MLIR to build the final xclbin application.  Additionally, the kernel is parsed for input and output ports and can
+    encapsulates a behavioral model to capture functional behavior and data shaping from input to output ports.  This metadata
+    for the kernel enables behavioral execution to verify correctness in Python and also tracing to build the final AppBuilder xclbin.
 
     Attributes
     ----------
@@ -32,14 +32,14 @@ class Kernel(KernelMeta):
         The behavioral function that emulates the C/C++ kernel's behavior.
     """
     def __init__(self, srccode : str, behavioralfx:Optional[Callable]=None, top_function:Optional[str]=None, requires_boilerplate:bool=False) -> None:
-        """Return a new Kernel object.""" 
+        """Return a new Kernel object."""
         if srccode.endswith('.cpp') or srccode.endswith('.cc'):
             with open(srccode, 'r') as file:
                 self._srccode = file.read()
                 self.srcfile = srccode
         else:
             self._srccode = srccode
-            self.srcfile = None 
+            self.srcfile = None
 
         self._requires_boilerplate = requires_boilerplate
         self._top_function = top_function
@@ -50,7 +50,7 @@ class Kernel(KernelMeta):
         super().__init__(kname, kname, kname, "CT", ports=_parsed_ports)
 
         if behavioralfx is None:
-            self.behavioralfx = _default_behavioral_validate_bufferports 
+            self.behavioralfx = _default_behavioral_validate_bufferports
         else:
             self.behavioralfx = behavioralfx
 
@@ -154,7 +154,7 @@ class Kernel(KernelMeta):
                 stack.pop()
 
             if len(stack)==0:
-                    return i+1
+                return i+1
 
         raise RuntimeError(f"Unable to find closing brace for {self._main_function['fullsig']}")
 
@@ -172,7 +172,7 @@ class Kernel(KernelMeta):
         '''
 
         if self.behavioralfx is None:
-                raise ValueError(f'Unable to trace Kernel I/O with no behavioral model for kernel {self.name}')      
+            raise ValueError(f'Unable to trace Kernel I/O with no behavioral model for kernel {self.name}')
 
         bufferargs = [a for a in args if isinstance(a, BufferPort) or isinstance(a, Buffer) or isinstance(a, np.ndarray)]
         rtpargs = [a for a in args if isinstance(a, int)]
@@ -210,8 +210,8 @@ class Kernel(KernelMeta):
 
         for bufferport, input_arg in mapped_buffers:
             if input_arg is not None:
-                bufferport.io = 'in' 
-                bufferport.array = Buffer.to_ndarray(input_arg)                
+                bufferport.io = 'in'
+                bufferport.array = Buffer.to_ndarray(input_arg)
             else:
                 bufferport.io = 'out'
                 bufferport.slices = list()
@@ -219,18 +219,16 @@ class Kernel(KernelMeta):
         for rtpport, call_value in zip(self.rtpports,rtpargs):
             rtpport.value = call_value
 
-
     def create_outputs(self, behavioral_n_tracing):
         """From kernel call, produce the output value or tuple."""
         if behavioral_n_tracing is True:
-            outputs = [Buffer.to_ndarray(op) for op in self.outputbufferports] 
+            outputs = [Buffer.to_ndarray(op) for op in self.outputbufferports]
         else:
             outputs = self.outputbufferports
 
         if len(outputs) == 1:
             return outputs[0]
-        else:
-            return outputs
+        return outputs
 
     def build(self, debug=False):
         """Build the kernel object file for linking into the complete application."""
@@ -241,19 +239,17 @@ class Kernel(KernelMeta):
     def objfile(self):
         self.build()
         return self.kb.buildobjpath
-    
-    def _parsecpp_to_ports(self, parsedcpp):
-        bufferports = [BufferPort(param['name'], param['type']) 
-                              for param in parsedcpp.functions[-1]["parameters"] 
-                              if '*' in param['type'] ]  
-              
-        rtpports = [RTPPort(param['name'], param['type'], c_dtype=param['type']) 
-                              for param in parsedcpp.functions[-1]["parameters"] 
-                              if '*' not in param['type'] ]  
 
-        
+    def _parsecpp_to_ports(self, parsedcpp):
+        bufferports = [BufferPort(param['name'], param['type'])
+                              for param in parsedcpp.functions[-1]["parameters"]
+                              if '*' in param['type'] ]
+
+        rtpports = [RTPPort(param['name'], param['type'], c_dtype=param['type'])
+                              for param in parsedcpp.functions[-1]["parameters"]
+                              if '*' not in param['type'] ]
+
         return bufferports + rtpports
-    
 
 def _default_behavioral_validate_bufferports(invobj):
     """ A behavioural model that gives users guidance to build a behavorial model or
@@ -264,4 +260,3 @@ def _default_behavioral_validate_bufferports(invobj):
                 raise RuntimeError(f"Default behavioral model is being used but cannot determine shape for port {p.name} - \
                                    please specify a behavioral function for this kernel or set the array sizes before \
                                    using the kernel.  E.g. {p.name}.array = np.ndarray(...)")
-
