@@ -115,7 +115,7 @@ class XBUtil:
     @property
     def app_count(self) -> int:
         """ The total number of running apps """
-        return self.num_wse_streams + self.num_riallto_streams
+        return self.num_wse_streams + self.num_riallto_streams + self.num_app_streams
 
     @property
     def num_wse_streams(self) -> int:
@@ -125,6 +125,10 @@ class XBUtil:
     @property
     def num_riallto_streams(self) -> int:
         return sum(1 for app in self.loaded_functions if 'Riallto' in app)
+
+    @property
+    def num_app_streams(self) -> int:
+        return sum(1 for app in self.loaded_functions if 'app' in app)
 
     def _get_loaded_functions(self) -> List[str]:
         """ Returns a list of the loaded functions on the NPU from xbutil. """
