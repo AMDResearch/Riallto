@@ -131,10 +131,14 @@ class XBUtil:
         applist = []
         d = self._cmd(['examine', '-d', self.devid, '-r', 'all'])
 
-        for f, col in zip(d['devices'][0]['dynamic_regions'][0]['compute_units'],
-                          d['devices'][0]['aie_partitions']['partitions']):
-            applist.append({f['name']: {'start_col': str(col['start_col']),
-                                        'num_cols': str(col['num_cols'])}})
+        dyreg = d['devices'][0].get('dynamic_regions')
+        for idx, col in enumerate(d['devices'][0]['aie_partitions']['partitions']):
+            if dyreg:
+                name = dyreg[0]['compute_units'][idx]['name']
+            else:
+                name = f'app{idx}'
+            applist.append({name: {'start_col': str(col['start_col']),
+                                   'num_cols': str(col['num_cols'])}})
         return applist
 
     @property
