@@ -8,6 +8,7 @@ import subprocess
 import tempfile
 import json
 import time
+from npu.utils.test_device import get_device_name
 
 XBUTIL_DIR = Path("C:\\Windows\\System32\\AMD")
 
@@ -29,13 +30,14 @@ class XBUtil:
         Attributes
         ----------
         _xbutil : Path
-            A Path or command to call the xbutil.exe application
+            A Path or command to call the xbutil.exe or xrt-smi application
         _devices : Set[str]
             A set of devices that are present on this machine.
         devid : str
             A unique string for the Phx device on this machine.
         """
-        self._xbutil = Path(f"{XBUTIL_DIR}/xbutil.exe")
+        tool = 'xbutil' if get_device_name() == 'AMD IPU Device' else 'xrt-smi'
+        self._xbutil = Path(f"{XBUTIL_DIR}/{tool}.exe")
         self._check_xbutil_install()
         self._devices = self._get_devices()
         self._check_devices()
@@ -60,8 +62,7 @@ class XBUtil:
         return s
 
     def list_apps(self) -> List[str]:
-        """ Lists all the apps running on the
-        NPU device """
+        """ Lists all the apps running on the NPU device """
         applist = []
         wse_pattern = "IPUV1CNN"
         riallto_pattern = "Riallto"
@@ -72,8 +73,7 @@ class XBUtil:
         return applist
 
     def _apps(self) -> None:
-        """ displays all apps that are running on the NPU
-        device using an IPython widget """
+        """Displays all running apps on the NPU device using an IPython widget"""
         import ipywidgets as widgets
         from IPython.display import display
         output1 = widgets.Output()
@@ -129,8 +129,7 @@ class XBUtil:
     def _get_loaded_functions(self) -> List[str]:
         """ Returns a list of the loaded functions on the NPU from xbutil. """
         applist = []
-        d = self._cmd(['examine', '-d', self.devid, '-r', 'dynamic-regions',
-                       '-r', 'aie-partitions'])
+        d = self._cmd(['examine', '-d', self.devid, '-r', 'all'])
 
         for f, col in zip(d['devices'][0]['dynamic_regions'][0]['compute_units'],
                           d['devices'][0]['aie_partitions']['partitions']):
