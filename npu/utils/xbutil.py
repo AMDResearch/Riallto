@@ -66,9 +66,11 @@ class XBUtil:
         applist = []
         wse_pattern = "IPUV1CNN"
         riallto_pattern = "Riallto"
+        app_pattern = "app"
         for f in self._get_loaded_functions():
             name = list(f.keys())[0]
-            if name.endswith(riallto_pattern) or name.endswith(wse_pattern):
+            if name.endswith(riallto_pattern) or name.endswith(wse_pattern) or\
+                app_pattern in name:
                 applist.append(f)
         return applist
 
