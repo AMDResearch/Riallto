@@ -24,7 +24,7 @@ Please follow the [guide here](https://riallto.ai/prerequisites-aie-license.html
 
 4. __Disable secure boot from your BIOS settings.__ For now we are using an unsigned kernel version requiring that secure boot is disabled before it can be used. To disable secure boot there is a [guide](https://learn.microsoft.com/en-us/windows-hardware/manufacture/desktop/disabling-secure-boot?view=windows-11) from Microsoft here, but often the steps depend on your hardware manufacturer.
 
-5. Navigate to `scripts/linux/` where the installation script is located.
+5. Clone this the Riallto repository and then navigate to the installation script `git clone https://github.com/AMDResearch/Riallto.git && cd Riallto/scripts/linux/`.
 
 6. __Run `./setup_riallto_linux.sh <your license file>`.__
 This command will check the kernel version and if the xdna-driver has been installed. If the kernel is not 6.10 or the NPU device drivers are missing it will build them within a docker and install them on the host machine. This takes about 10 minutes to run and after completing successfully the user will be asked to restart.
