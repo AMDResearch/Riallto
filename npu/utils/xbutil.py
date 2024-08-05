@@ -8,10 +8,16 @@ import subprocess
 import tempfile
 import json
 import time
+import platform
 from npu.utils.test_device import get_device_name
 
-XBUTIL_DIR = Path("C:\\Windows\\System32\\AMD")
-
+if platform.system() == "Windows":
+    XBUTIL_DIR = Path("C:\\Windows\\System32\\AMD")
+    _tool = 'xbutil' if get_device_name() == 'AMD IPU Device' else 'xrt-smi'\
+        + '.exe'
+else:
+    XBUTIL_DIR = Path("/opt/xilinx/xrt/bin/")
+    _tool = 'xrt-smi'
 
 def _map_list_to_list(appsmap: list) -> List[str]:
     applist = []
@@ -36,8 +42,7 @@ class XBUtil:
         devid : str
             A unique string for the Phx device on this machine.
         """
-        tool = 'xbutil' if get_device_name() == 'AMD IPU Device' else 'xrt-smi'
-        self._xbutil = Path(f"{XBUTIL_DIR}/{tool}.exe")
+        self._xbutil = Path(f"{XBUTIL_DIR}/{_tool}")
         self._check_xbutil_install()
         self._devices = self._get_devices()
         self._check_devices()
