@@ -8,7 +8,6 @@ from npu.lib import PlusN
 
 from .test_applications import check_npu, manage_testing
 from npu.runtime import AppRunner
-from npu.build.itkernel import ITWrite
 
 def test_slicing(manage_testing):
     """ End-to-end build-and-run test where only a slice of the input is set via IT. """
