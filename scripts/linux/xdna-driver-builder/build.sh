@@ -3,17 +3,22 @@
 # Copyright (C) 2023 Advanced Micro Devices, Inc. All rights reserved.
 # SPDX-License-Identifier: MIT
 
-KERNEL_HEADERS=linux-headers-6.10.0-061000rc2_6.10.0-061000rc2.202406022333_all.deb
-KERNEL_HEADERS_GENERIC=linux-headers-6.10.0-061000rc2-generic_6.10.0-061000rc2.202406022333_amd64.deb
-KERNEL_MODULES=linux-modules-6.10.0-061000rc2-generic_6.10.0-061000rc2.202406022333_amd64.deb
-KERNEL_IMAGE=linux-image-unsigned-6.10.0-061000rc2-generic_6.10.0-061000rc2.202406022333_amd64.deb
+
+KERNEL_VERSION="6.10-rc2"
+KERNEL_VERSION_FULL="6.10.0-061000rc2"
+BUILD_DATE="202406022333"
+
+KERNEL_HEADERS="linux-headers-${KERNEL_VERSION_FULL}_${KERNEL_VERSION_FULL}.${BUILD_DATE}_all.deb"
+KERNEL_HEADERS_GENERIC="linux-headers-${KERNEL_VERSION_FULL}-generic_${KERNEL_VERSION_FULL}.${BUILD_DATE}_amd64.deb"
+KERNEL_MODULES="linux-modules-${KERNEL_VERSION_FULL}-generic_${KERNEL_VERSION_FULL}.${BUILD_DATE}_amd64.deb"
+KERNEL_IMAGE="linux-image-unsigned-${KERNEL_VERSION_FULL}-generic_${KERNEL_VERSION_FULL}.${BUILD_DATE}_amd64.deb"
 
 rm -rf _work
 mkdir -p _work
-wget -P _work https://kernel.ubuntu.com/mainline/v6.10-rc2/amd64/$KERNEL_HEADERS_GENERIC
-wget -P _work https://kernel.ubuntu.com/mainline/v6.10-rc2/amd64/$KERNEL_HEADERS
-wget -P _work https://kernel.ubuntu.com/mainline/v6.10-rc2/amd64/$KERNEL_IMAGE
-wget -P _work https://kernel.ubuntu.com/mainline/v6.10-rc2/amd64/$KERNEL_MODULES
+wget -P _work https://kernel.ubuntu.com/mainline/v$KERNEL_VERSION/amd64/$KERNEL_HEADERS_GENERIC
+wget -P _work https://kernel.ubuntu.com/mainline/v$KERNEL_VERSION/amd64/$KERNEL_HEADERS
+wget -P _work https://kernel.ubuntu.com/mainline/v$KERNEL_VERSION/amd64/$KERNEL_IMAGE
+wget -P _work https://kernel.ubuntu.com/mainline/v$KERNEL_VERSION/amd64/$KERNEL_MODULES
 
 # Build a container that creates the appropriate linux kernel version
 docker build \
