@@ -4,6 +4,7 @@
 import pytest
 import numpy as np
 import os
+import platform
 from .test_applications import check_npu
 from npu.runtime import AppRunner
 from npu.utils.xbutil import XBUtil
@@ -17,9 +18,11 @@ def _get_full_path(xclbin: str = None) -> str:
 
 
 def _xbutil(appcount):
-    appsreport = XBUtil()
-    state = appsreport.app_count == appcount
-    del appsreport
+    state = True
+    if platform.system() == 'Windows':
+        appsreport = XBUtil()
+        state = appsreport.app_count == appcount
+        del appsreport
     return state
 
 
@@ -57,6 +60,8 @@ def test_videoapp_n_loads(numappsreport):
     del app
 
 
+@pytest.mark.skipif(platform.system() == 'Linux',
+                    reason="Skip because we don't get app_count in Linux")
 def test_videoapp_five_loads():
     """Load five instances of the same app.
     AppRunner should return a RuntimeError indicating not enough space
