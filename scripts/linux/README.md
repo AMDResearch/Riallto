@@ -20,17 +20,17 @@ You can follow the steps [here](https://docs.docker.com/engine/install/ubuntu/).
 
 3. __Obtain a license file for Riallto.__
 
-   Please follow the [guide here](https://riallto.ai/prerequisites-aie-license.html#prerequisites-aie-license)
+   Please follow the [guide here](https://riallto.ai/prerequisites-aie-license.html#prerequisites-aie-license) to get the license.
 
 4. __Disable secure boot from your BIOS settings.__
 
    For now we are using an unsigned kernel version requiring that secure boot is disabled before it can be used. To disable secure boot there is a [guide](https://learn.microsoft.com/en-us/windows-hardware/manufacture/desktop/disabling-secure-boot?view=windows-11) from Microsoft here, but often the steps depend on your hardware manufacturer.
 
-5. Clone this the Riallto repository and then navigate to the installation script.
+5. __Clone the `Riallto` repository and then navigate to the installation script.__
 
    ```sh
    git clone https://github.com/AMDResearch/Riallto.git -b v1.1
-   cd Riallto/scripts/linux/`
+   cd Riallto/scripts/linux/
    ```
 
    ```{note}
@@ -43,11 +43,11 @@ You can follow the steps [here](https://docs.docker.com/engine/install/ubuntu/).
    ./setup_riallto_linux.sh <your license file>
    ```
 
-   This command will check the kernel version and if the `xdna-driver` has been installed. If the kernel is not 6.10 or the NPU device drivers are missing, it will build them within a docker and install them on the host machine. This takes about 10 minutes to run and after completing successfully the user will be asked to restart.
+   This command will check the kernel version and if the `xdna-driver` has been installed. If the Linux kernel is not `6.10` or the NPU device drivers are missing, it will build them within a docker and install them on the host machine. This takes about 10 minutes to run and after completing successfully the user will be asked to restart.
 
 7. __Reboot the machine.__
 
-   To finish upgrading the kernel to `6.10`.
+   This will finish upgrading the Linux kernel to `6.10`.
 
 8. __Install Riallto by creating its Docker container.__
 
@@ -65,7 +65,7 @@ Verify the correct installation of Riallto. Inside the `Riallto/scripts/linux` d
 ./run_pytest.sh
 ```
 
-This script will run a suit of `pytest`s to test the operation of your NPU device and the Riallto installation. This will take about 50 minutes.
+This script will run a suit of tests using `pytest` to verify the operation of your NPU device and the Riallto installation. This will take about 50 minutes.
 
 ## Running Riallto
 
@@ -74,6 +74,29 @@ Launch a Jupyterlab server from a Docker container allowing you to use Riallto n
 ```sh
 ./launch_jupyter.sh ../../notebooks
 ```
+
+### Running from different users
+
+Once the Riallto Docker container is created for one user, other users can run Riallto without having to re install. Other users do not need elevated privileges, but they need to be part of the `docker` group.
+
+1. Make sure user is in the docker group.
+
+   ```sh
+   sudo usermod -aG docker <user> ; exit
+   ```
+
+2. Clone the Riallto repository and then navigate to the Linux scripts directory.
+
+   ```sh
+   git clone https://github.com/AMDResearch/Riallto.git -b v1.1
+   cd Riallto/scripts/linux/
+   ```
+
+3. Launch a Jupyterlab server using Riallto notebooks.
+
+   ```sh
+   ./launch_jupyter.sh ../../notebooks
+   ```
 
 ## FAQ
 
