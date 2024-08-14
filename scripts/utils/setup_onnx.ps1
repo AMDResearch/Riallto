@@ -9,6 +9,7 @@ $wheelDest = "$notebookDest\onnx\wheels"
 # Enter venv
 $venvPath = Join-Path -Path $PSScriptRoot -ChildPath "activate_venv.ps1"
 . $venvPath
+
 function Get-Wheels() {
 
     if (-Not (Test-Path $wheelDest)) {
@@ -122,9 +123,9 @@ function Remove-Cache() {
     }
 }
 
-Get-Wheels
-Get-Binaries
-Install-Prerequisites
-Install-ONNXRuntime
-Copy-DLLs
-Remove-Cache
+# Get-Wheels
+# Get-Binaries
+# Install-Prerequisites
+# Install-ONNXRuntime
+# Copy-DLLs
+# Remove-Cache
