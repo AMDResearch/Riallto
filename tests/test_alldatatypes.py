@@ -26,6 +26,7 @@ void passthrough(uint8_t *in_buffer, uint8_t *out_buffer) {
 } // extern "C"
 '''
 
+
 def passthrough_behavior(invobj):
     invobj.out_buffer.array = invobj.in_buffer.array
 
@@ -40,7 +41,8 @@ def _appbuild_and_test(datatype, shapein=None):
 
     kernel_src0 = kernel_src.replace('#define N 4', f'#define N {buffin.size}')
     datatype_txt = str(np.dtype(datatype))
-    kernel_src0 = kernel_src0.replace('uint8_t', f'{datatype_txt}' + '_t' )
+    kernel_src0 = kernel_src0.replace('uint8_t', f'{datatype_txt}' +
+                                      '' if datatype == bfloat16 else '_t')
 
     passthrough = Kernel(kernel_src0)
     passthrough.behavioralfx = passthrough_behavior
@@ -50,8 +52,11 @@ def _appbuild_and_test(datatype, shapein=None):
     app = AppRunner("SingleKernelCall.xclbin")
 
     # generate a numpy array of random data of shape buffin.shape
-    test_data = np.random.randint(0, (2**(bpi*8))-1,
-                                  buffin.shape, dtype=buffin.dtype)
+    if datatype == bfloat16:
+        test_data = bfloat16(np.random.randn(*buffin.shape))
+    else:
+        test_data = np.random.randint(0, (2**(bpi*8))-1, buffin.shape,
+                                      dtype=buffin.dtype)
     res = np.zeros(buffin.shape, dtype=buffin.dtype)
     bo_in = app.allocate(shape=buffin.shape, dtype=buffin.dtype)
     bo_out = app.allocate(shape=buffin.shape, dtype=buffin.dtype)
@@ -73,7 +78,7 @@ def test_appbuild_good_shapes_1d(datatype):
 
 
 @pytest.mark.parametrize('dimension', ['np.uint8; (4, 12)', 'np.uint16; (8, 2)',
-                                      'np.uint32; (2, 3)', 'bfloat16; (8, 2)'])
+                                       'np.uint32; (2, 3)', 'bfloat16; (8, 2)'])
 def test_appbuild_good_shapes_2d(dimension):
     dtype, shape = dimension.split(';')
     _appbuild_and_test(eval(dtype), eval(shape))
