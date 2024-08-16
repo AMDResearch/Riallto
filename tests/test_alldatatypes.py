@@ -7,6 +7,7 @@ from npu.build.kernel import Kernel
 from npu.runtime import AppRunner
 from .test_applications import check_npu
 from .test_applications import SingleKernelCall
+from ml_dtypes import bfloat16
 
 
 kernel_src = '''
@@ -72,7 +73,7 @@ def test_appbuild_good_shapes_1d(datatype):
 
 
 @pytest.mark.parametrize('dimension', ['np.uint8; (4, 12)', 'np.uint16; (8, 2)',
-                                      'np.uint32; (2, 3)'])
+                                      'np.uint32; (2, 3)', 'bfloat16; (8, 2)'])
 def test_appbuild_good_shapes_2d(dimension):
     dtype, shape = dimension.split(';')
     _appbuild_and_test(eval(dtype), eval(shape))
