@@ -42,7 +42,7 @@ def _appbuild_and_test(datatype, shapein=None):
     kernel_src0 = kernel_src.replace('#define N 4', f'#define N {buffin.size}')
     datatype_txt = str(np.dtype(datatype))
     kernel_src0 = kernel_src0.replace('uint8_t', f'{datatype_txt}' +
-                                      '' if datatype == bfloat16 else '_t')
+                                      ('' if datatype == bfloat16 else '_t'))
 
     passthrough = Kernel(kernel_src0)
     passthrough.behavioralfx = passthrough_behavior
