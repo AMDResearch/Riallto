@@ -21,7 +21,7 @@ testcases = [(vapp, file) for file in files for vapp in videoapps()]
 @pytest.mark.parametrize('testcase', testcases)
 def test_videoapp_use_jpg(testcase):
     app, filename = testcase
-    filename = os.path.dirname(os.path.abspath(__file__)) + filename
+    filename = os.path.dirname(os.path.abspath(__file__)) +'/'+ filename
     appobj = eval(app)(filename)
     assert appobj
     del appobj
