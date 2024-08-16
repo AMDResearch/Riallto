@@ -84,7 +84,7 @@ def test_appbuild_good_shapes_2d(dimension):
     _appbuild_and_test(eval(dtype), eval(shape))
 
 
-@pytest.mark.parametrize('datatype', [np.uint8, np.uint16])
+@pytest.mark.parametrize('datatype', [np.uint8, np.uint16, bfloat16])
 def test_appbuild_bad_shapes(datatype):
     with pytest.raises(ValueError) as valerror:
         _appbuild_and_test(datatype, (1, 1))
