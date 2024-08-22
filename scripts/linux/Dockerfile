@@ -89,6 +89,7 @@ RUN source ~/.bashrc && python3 -m pip install notebook
 
 #Cleanup a bit
 RUN rm -rf /home/riallto/*.tar.gz
+ENV SHELL=/bin/bash
 
 CMD ["/bin/bash", "-l", "-c", "jupyterhub-singleuser", "--allow-root"]
 
