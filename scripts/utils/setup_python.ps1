@@ -3,7 +3,7 @@
 
 param(
   [Parameter(Mandatory=$false)]
-  [version]$version = "3.9.2"
+  [version]$version = "3.10.0"
 )
 
 # Check if -Verbose was used when calling script
@@ -25,12 +25,12 @@ function Check-PythonInstalled {
 			# can still run without error because it tries to launch the microsoft store, in which case
 			# e.g. python.exe runs successfully but python_version will be an empty string
 			if ($python_version){
-				# For pybind11 compiled pyd Python has to be 3.9 major version, patch version doesn't matter
-				if ($python_version -like "3.9.*") {
+				# For pybind11 compiled pyd Python has to be 3.10 major version, patch version doesn't matter
+				if ($python_version -like "3.10.*") {
 					Write-Host "Python $python_version is installed"
 					return $true
 				} else {
-					Write-Host "Found Python $python_version, expected Python 3.9.*" -ForegroundColor red -BackgroundColor black
+					Write-Host "Found Python $python_version, expected Python 3.10.*" -ForegroundColor red -BackgroundColor black
 					return $false
 				}
 			} else {
@@ -41,11 +41,11 @@ function Check-PythonInstalled {
 		}
 	}
 	
-	#Write-Host "Could not find a Python 3.9.* installation, please install Python 3.9.* and run this script again" -ForegroundColor red -BackgroundColor black
+	#Write-Host "Could not find a Python 3.10.* installation, please install Python 3.10.* and run this script again" -ForegroundColor red -BackgroundColor black
 	return $false
 }
 
-# This function downloads the executable and installs Python3.9.12-amd64
+# This function downloads the executable and installs Python3.10.0-amd64
 function Install-Python($version) {
 
 	if (-Not (Check-PythonInstalled)) {
@@ -77,7 +77,7 @@ function New-VirtualEnv {
 	if (-Not (Test-Path $venvPath)) {
 		try {
 			Write-Host "Creating virtual environment: riallto_venv"
-			py -3.9 -m venv Riallto $venvPath
+			py -3.10 -m venv Riallto $venvPath
 		} catch {
 			Write-Host "Failed to create the Riallto virtualenv"
 			Exit 1
