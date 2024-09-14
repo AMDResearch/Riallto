@@ -46,10 +46,9 @@ class AsmVLIWInstructions:
                 continue
 
             if inloop and '.label' not in line:
-                vliwops = line.split(';')
-                #vliwops[0] = vliwops[0].split('0x')[-1][4:]
-                #for i in range(1, len(vliwops), 1):
-                #    vliwops[i] = vliwops[i].replace(' ', '')
+                vliwops = []
+                for i in range(92, len(line), 30):
+                    vliwops.append(line[i:i+30].replace('          ','').split(';')[0])
                 loop_dict[loop_count]['asm'].append(vliwops)
 
         return loop_dict
