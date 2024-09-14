@@ -230,7 +230,8 @@ class Kernel(KernelMeta):
 
         if len(outputs) == 1:
             return outputs[0]
-        return outputs
+        else:
+            return tuple(outputs)
 
     def build(self, debug=False):
         """Build the kernel object file for linking into the complete application."""

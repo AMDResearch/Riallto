@@ -1,8 +1,9 @@
 # Copyright (C) 2023 Advanced Micro Devices, Inc. All rights reserved.
 # SPDX-License-Identifier: MIT
 
-from .xbutil import XBUtil
 import platform
+from .xbutil import XBUtil
+
 
 def nputop():
     """ Uses XBUtil to display all currently running applications in an ipywidgets
@@ -10,4 +11,4 @@ def nputop():
     if platform.system() == "Windows":
         XBUtil().apps()
     else:
-        print(f"nputop is not currently supported in linux due to changes in the xbutil api")
+        print("nputop is not currently supported in linux due to changes in the xbutil api")
