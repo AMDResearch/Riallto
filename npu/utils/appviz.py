@@ -21,7 +21,7 @@ _ct_color = {
         'inbuf': [config.light_blue, config.lilac],
         'outbuf': [config.dark_blue, config.pink]},
     3: {'kernel': config.red,
-        'inbuf': [config.light_red, config.green],
+        'inbuf': [config.light_red, config.violet],
         'outbuf': [config.red, config.light_orange]}
 }
 

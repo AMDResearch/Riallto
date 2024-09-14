@@ -95,6 +95,8 @@ dark_orange = "#D55E00"
 dark_pink = "#DC267F"
 purple = "#4B0092"
 lilac = "#E0C2FF"
+magenta = "#FF00FF"
+violet = "#8F00FF"
 
 light_orange = "#F7E2B2"
 light_red = "#C36D6D"
