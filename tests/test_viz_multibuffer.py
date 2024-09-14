@@ -117,7 +117,7 @@ def test_viz_2in_2out():
         invobj.out1.array = invobj.in0.array
         invobj.out0.array = invobj.in1.array
 
-    class SingleKernel_1_2(AppBuilder):
+    class SingleKernel_2_2(AppBuilder):
         def __init__(self):
             self.kernel = Kernel(k_2in_2out, kernel_behavior)
             super().__init__()
@@ -131,6 +131,6 @@ def test_viz_2in_2out():
     x_out0 = np.zeros(shape=(32, 1), dtype=np.uint16)
     x_out1 = np.zeros(shape=(32, 1), dtype=np.uint16)
 
-    app_builder = SingleKernel_1_2()
+    app_builder = SingleKernel_2_2()
     _ = app_builder.to_metadata(x_in0, x_in1, x_out0, x_out1)
     app_builder.save(svgfile := f'{imgdir}{app_builder.name}.svg')
