@@ -10,6 +10,7 @@ from .tracekernels import kerneltracer
 from .kernelmeta import KernelMeta
 from .buffers import Buffer
 from .port import BufferPort, RTPPort
+from .asm import AsmVLIWInstructions
 from typing import Optional, Callable, List, Dict
 import re
 
@@ -55,6 +56,7 @@ class Kernel(KernelMeta):
             self.behavioralfx = behavioralfx
 
         self.kb = KernelObjectBuilder(self.ktype, self.srccode, self.srcfile)
+        self.asmlst = None
         self._main_function_sanity_check()
         self._expose_ports()
 
@@ -234,15 +236,7 @@ class Kernel(KernelMeta):
         """Build the kernel object file for linking into the complete application."""
         if not os.path.exists(self.kb.buildobjpath):
             self.kb.build(debug)
-
-    @property
-    def lst(self):
-        """Returns assembly instructions of the compiled kernel"""
-        if not os.path.exists(self.kb.buildasmpath):
-            self.kb.build()
-        with open(self.kb.buildobjpath + '.lst', 'r', encoding='utf-8') as file:
-            asmcode = file.read()
-        return '\n'.join(asmcode.split('\n')[6:])
+            self.asmlst = AsmVLIWInstructions(self.kb.buildobjpath)
 
     @property
     def objfile(self):
