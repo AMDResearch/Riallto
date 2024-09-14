@@ -22,6 +22,7 @@ class AsmVLIWInstructions:
         """Returns a dict with the VLIW instructions for each loop"""
         asm = copy.deepcopy(self._vliwasm)
         inloop = False
+        nested = False
         loop_nesting = 0
         loop_dict = {}
         loop_count = 0
@@ -31,6 +32,8 @@ class AsmVLIWInstructions:
                 continue
 
             if '.begin_of_loop' in line:
+                if inloop:
+                    nested = True
                 inloop = True
                 loop_dict[loop_count] = {
                     'loop_nesting': loop_nesting,
@@ -40,6 +43,7 @@ class AsmVLIWInstructions:
 
             if '.end_of_loop' in line:
                 inloop = False
+                nested = False
                 loop_count += 1
 
             if '.noswbrkpt' in line or 'nohwbrkpt' in line:
