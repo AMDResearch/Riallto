@@ -65,7 +65,8 @@ extern "C" {
 
 def test_viz_2in_1out():
     def kernel_behavior(invobj):
-        invobj.out_buffer.array = np.concat(invobj.in0.array, invobj.in1.array)
+        invobj.out_buffer.array = np.concatenate((invobj.in0.array,
+                                                 invobj.in1.array))
 
     class SingleKernel_2_1(AppBuilder):
         def __init__(self):
@@ -89,8 +90,9 @@ def test_viz_2in_1out():
 
 def test_viz_1in_2out():
     def kernel_behavior(invobj):
-        invobj.out0.array = invobj.in_buffer.array
-        invobj.out1.array = invobj.in_buffer.array
+        x = np.split(invobj.in_buffer.array, 2)
+        invobj.out0.array = x[0]
+        invobj.out1.array = x[1]
 
     class SingleKernel_1_2(AppBuilder):
         def __init__(self):
