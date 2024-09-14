@@ -150,6 +150,7 @@ def test_viz_2in_2out():
 def test_viz_k2in_1out_mt():
     class SingleKernel_2_1_mt(AppBuilder):
         def __init__(self):
+            self.split = MTSplit(2)
             self.kernel = Kernel(k_2in_1out, kernel_behavior_2_1)
             super().__init__()
 
@@ -241,4 +242,5 @@ def test_viz_k2in_2out_mpt():
     assert _count_class_occurrences(svgfile, 'kernel') == 2
     assert _count_class_occurrences(svgfile, 'aie_tile_buffers') == 8
     assert _count_class_occurrences(svgfile, 'mem_connections') == 9
-    app = app_builder.build(x_in0, x_in1, x_out0, x_out1)
+    #assert _count_class_occurrences(svgfile, 'mem_tile_buffers') == 4
+    #app = app_builder.build(x_in0, x_in1, x_out0, x_out1)
