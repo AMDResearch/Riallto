@@ -38,6 +38,8 @@ class AppViz:
         self._drawn_kernels = self._draw_kernels()
         self._ct2mt_counter = 0
         self._mt2ct_counter = 0
+        self._from_it_counter = 0
+        self._to_it_counter = 0
         self._mt2ct_passthrough = {'found': False, 'color': None}
         self._dbuf_colors = {}
         self._draw_connections_sorted()
@@ -168,6 +170,7 @@ class AppViz:
                             self._kanimate_duration/2,
                             start_empty=bool(i))
             self._draw_ub_ic_ingress(dst, bufcol)
+            self._from_it_counter += 1
 
         if src['type'] == 'CT' and dst['type'] == 'IT':
             src_row = self._drawn_kernels[src['name']]['row']
@@ -177,7 +180,8 @@ class AppViz:
                             bufcol,
                             self._kanimate_duration/2,
                             start_empty=not bool(i))
-            self._draw_ub_ic_egress(src)
+            self._draw_ub_ic_egress(src, bufcol)
+            self._to_it_counter += 1
 
         if src['type'] == 'CT' and dst['type'] == 'MT':
             src_row = self._drawn_kernels[src['name']]['row']
@@ -325,10 +329,9 @@ class AppViz:
                         duration=self._kanimate_duration/2,
                         color=dst_color)
 
-    def _draw_ub_ic_egress(self, src) -> None:
+    def _draw_ub_ic_egress(self, src, src_color) -> None:
         """Display animation originating from CT and destination IT"""
 
-        src_color = self._drawn_kernels[src['name']]['kcolor']
         src_row = self._loc_conv[src['tloc'][1]]
 
         for i in range(3, src_row-1, -1):
@@ -337,22 +340,26 @@ class AppViz:
                     diagonal_from_tile=diagonal_from_tile,
                     south=1,
                     duration=self._kanimate_duration/2,
-                    color=src_color)
+                    color=src_color,
+                    delay=self._to_it_counter/5)
 
         self._col_svg.mem_tiles[0].add_ic_animation(
                     south=1,
                     duration=self._kanimate_duration/2,
-                    color=src_color)
+                    color=src_color,
+                    delay=self._to_it_counter/5)
 
         self._col_svg.if_tiles[0].add_ic_animation(
                     diagonal_to_tile=1,
                     duration=self._kanimate_duration/2,
-                    color=src_color)
+                    color=src_color,
+                    delay=self._to_it_counter/5)
 
         self._col_svg.if_tiles[0].add_dma_animation(
                     south_down=1,
                     duration=self._kanimate_duration/2,
-                    color=src_color)
+                    color=src_color,
+                    delay=self._to_it_counter/5)
 
     def _draw_ub_ic_ingress(self, dst, kcolor) -> None:
         """Display animation originating from IT and destination CT"""
@@ -360,16 +367,19 @@ class AppViz:
         self._col_svg.if_tiles[0].add_ic_animation(
                     diagonal_from_tile=1,
                     duration=self._kanimate_duration/2,
-                    color=kcolor)
+                    color=kcolor,
+                    delay=self._from_it_counter/5)
         self._col_svg.if_tiles[0].add_dma_animation(
                     south_up=1,
                     duration=self._kanimate_duration/2,
-                    color=kcolor)
+                    color=kcolor,
+                    delay=self._from_it_counter/5)
 
         self._col_svg.mem_tiles[0].add_ic_animation(
                     north=1,
                     duration=self._kanimate_duration/2,
-                    color=kcolor)
+                    color=kcolor,
+                    delay=self._from_it_counter/5)
 
         dst_row = self._loc_conv[dst['tloc'][1]]
         for i in range(3, dst_row-1, -1):
@@ -378,7 +388,8 @@ class AppViz:
                     diagonal_to_tile=diagonal_to_tile,
                     north=1,
                     duration=self._kanimate_duration/2,
-                    color=kcolor)
+                    color=kcolor,
+                    delay=self._from_it_counter/5)
 
     def _draw_ct2ct_data_movement(self, src, dst) -> None:
         """Display animation originating from CT and destination CT
