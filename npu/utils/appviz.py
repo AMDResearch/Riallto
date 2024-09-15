@@ -117,19 +117,21 @@ class AppViz:
         conn = copy(tmpconn)
 
         # Draw animations starting in the MT second. Run twice for ping-pong
-        for k, c in conn.items():
-            if c['srcport'] == 'MTout' and c['sinkport'] != 'ITin':
-                for i in range(2):
+        for i in range(2):
+            for k, c in conn.items():
+                if c['srcport'] == 'MTout' and c['sinkport'] != 'ITin':
                     self._draw_connection(c, bool(i))
-                tmpconn.pop(k)
+                    if i == 1:
+                        tmpconn.pop(k)
         conn = copy(tmpconn)
 
         # Draw animations ending in the MT third. Run twice for ping-pong
-        for k, c in conn.items():
-            if c['sinkport'] == 'MTin':
-                for i in range(2):
+        for i in range(2):
+            for k, c in conn.items():
+                if c['sinkport'] == 'MTin':
                     self._draw_connection(c, bool(i))
-                tmpconn.pop(k)
+                    if i == 1:
+                        tmpconn.pop(k)
         conn = copy(tmpconn)
 
         # Draw remaining animations
