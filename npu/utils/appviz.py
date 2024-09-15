@@ -118,19 +118,18 @@ class AppViz:
 
         # Draw animations starting in the MT second. Run twice for ping-pong
         for k, c in conn.items():
-            if c['srcport'] == 'MTout':
+            if c['srcport'] == 'MTout' and c['sinkport'] != 'ITin':
                 for i in range(2):
                     self._draw_connection(c, bool(i))
                 tmpconn.pop(k)
         conn = copy(tmpconn)
 
         # Draw animations ending in the MT third. Run twice for ping-pong
-        for i in range(2):
-            for k, c in conn.items():
-                if c['sinkport'] == 'MTin':
+        for k, c in conn.items():
+            if c['sinkport'] == 'MTin':
+                for i in range(2):
                     self._draw_connection(c, bool(i))
-                    if i == 1:
-                        tmpconn.pop(k)
+                tmpconn.pop(k)
         conn = copy(tmpconn)
 
         # Draw remaining animations
@@ -197,7 +196,7 @@ class AppViz:
                         bufcol,
                         self._kanimate_duration/2,
                         start_empty=dbuf,
-                        color2=config.purple,
+                        color2=_mt2it_color[self._ct2mt_counter//2],
                         delay= self._ct2mt_counter/5)
             if not dbuf:
                 for i in range(2):
@@ -206,7 +205,7 @@ class AppViz:
                                 self._kanimate_duration/2,
                                 start_empty=bool(i))
 
-                self._draw_ct2mem_ic(src)
+                self._draw_ct2mem_ic(src, bufcol)
             else:
                 self._ct2mt_counter += 1
 
@@ -249,10 +248,10 @@ class AppViz:
         self._draw_ub2mem_ic(src, dst)
         self._draw_mem2ub_ic(src, dst)
 
-    def _draw_ct2mem_ic(self, src) -> None:
+    def _draw_ct2mem_ic(self, src, src_color) -> None:
         """Display animation originating from CT and destination MT"""
 
-        src_color = self._drawn_kernels[src['name']]['kcolor']
+        #src_color = self._drawn_kernels[src['name']]['kcolor']
         src_row = self._loc_conv[src['tloc'][1]]
         delay = self._ct2mt_counter / 5
 
@@ -329,7 +328,7 @@ class AppViz:
                 warnings.warn("Cannot display more than two output buffers "
                               "from the memory tile to the interface tile")
                 return
-            dst_color = _mt2it_color[self._it2mt_counter]
+            dst_color = _mt2it_color[self._mt2it_counter]
             self._col_svg.mem_tiles[0].add_ic_animation(
                         diagonal_from_tile=1,
                         south=1,
