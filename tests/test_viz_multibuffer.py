@@ -217,8 +217,8 @@ def test_viz_k2in_2out_mt():
     assert _count_class_occurrences(svgfile, 'mem_tile_buffers') == 8
 
 
-def test_viz_k2in_2out_mpt():
-    class SingleKernel_2_2_MPT(AppBuilder):
+def test_viz_k2in_2out_inmpt():
+    class SingleKernel_2_2_MPT_inbuff(AppBuilder):
         def __init__(self):
             self.kernel = Kernel(k_2in_2out, kernel_behavior_2_2)
             self.mtbi0 = MTPassThrough()
@@ -236,11 +236,37 @@ def test_viz_k2in_2out_mpt():
     x_out0 = np.zeros(shape=(32, 1), dtype=np.uint16)
     x_out1 = np.zeros(shape=(32, 1), dtype=np.uint16)
 
-    app_builder = SingleKernel_2_2_MPT()
+    app_builder = SingleKernel_2_2_MPT_inbuff()
     _ = app_builder.to_metadata(x_in0, x_in1, x_out0, x_out1)
     app_builder.save(svgfile := f'{imgdir}{app_builder.name}.svg')
     assert _count_class_occurrences(svgfile, 'kernel') == 2
     assert _count_class_occurrences(svgfile, 'aie_tile_buffers') == 8
     assert _count_class_occurrences(svgfile, 'mem_connections') == 9
-    #assert _count_class_occurrences(svgfile, 'mem_tile_buffers') == 4
-    #app = app_builder.build(x_in0, x_in1, x_out0, x_out1)
+    assert _count_class_occurrences(svgfile, 'mem_tile_buffers') == 4
+
+
+def test_viz_k2in_2out_outmpt():
+    class SingleKernel_2_2_MPT_outbuff(AppBuilder):
+        def __init__(self):
+            self.kernel = Kernel(k_2in_2out, kernel_behavior_2_2)
+            self.mtbi0 = MTPassThrough()
+            self.mtbi1 = MTPassThrough()
+            super().__init__()
+
+        def callgraph(self, x_in0, x_in1, x_out0, x_out1):
+            x0, x1 = self.kernel(x_in0, x_in1)
+            x_out0[:] = self.mtbi0(x0)
+            x_out1[:] = self.mtbi1(x1)
+
+    x_in0 = np.zeros(shape=(32, 1), dtype=np.uint16)
+    x_in1 = np.zeros(shape=(32, 1), dtype=np.uint16)
+    x_out0 = np.zeros(shape=(32, 1), dtype=np.uint16)
+    x_out1 = np.zeros(shape=(32, 1), dtype=np.uint16)
+
+    app_builder = SingleKernel_2_2_MPT_outbuff()
+    _ = app_builder.to_metadata(x_in0, x_in1, x_out0, x_out1)
+    app_builder.save(svgfile := f'{imgdir}{app_builder.name}.svg')
+    assert _count_class_occurrences(svgfile, 'kernel') == 2
+    assert _count_class_occurrences(svgfile, 'aie_tile_buffers') == 8
+    assert _count_class_occurrences(svgfile, 'mem_connections') == 9
+    assert _count_class_occurrences(svgfile, 'mem_tile_buffers') == 4
