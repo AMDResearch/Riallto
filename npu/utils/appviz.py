@@ -192,11 +192,16 @@ class AppViz:
             else:
                 bufcol = self._dbuf_colors[c['name']]
 
+            if dst.get('mtmode') == 'passthrough':
+                color2 = _mt2it_color[self._ct2mt_counter//2]
+            else:
+                color2 = _mt2it_color[0]
+
             self._col_svg.mem_tiles[0].add_buffer(
                         bufcol,
                         self._kanimate_duration/2,
                         start_empty=dbuf,
-                        color2=_mt2it_color[self._ct2mt_counter//2],
+                        color2=color2,
                         delay= self._ct2mt_counter/5)
             if not dbuf:
                 for i in range(2):
@@ -219,19 +224,24 @@ class AppViz:
 
             show_mem_buffer = True
             mtmode = src.get('mtmode')
-            pt_dict = self._mt2ct_passthrough[self._mt2ct_counter]
+
             if mtmode == 'passthrough':
+                pt_dict = self._mt2ct_passthrough[self._mt2ct_counter]
                 if pt_dict['found']:
                     dst_buf_color = pt_dict['color']
                     show_mem_buffer = False
                 else:
                     pt_dict['found'] = True
                     pt_dict['color'] = dst_buf_color
+                src_color = _it2mt_color[self._mt2ct_counter]
+            else:
+                pt_dict = self._mt2ct_passthrough[0]
+                src_color = _it2mt_color[0]
 
             if show_mem_buffer:
                 for i in range(int(pt_dict['found']) + 1):
                     self._col_svg.mem_tiles[0].add_buffer(
-                                _it2mt_color[self._mt2ct_counter],
+                                src_color,
                                 self._kanimate_duration/2,
                                 start_empty=dbuf ^ bool(i),
                                 color2=dst_buf_color,
