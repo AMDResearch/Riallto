@@ -25,6 +25,8 @@ _ct_color = {
         'outbuf': [config.red, config.light_orange]}
 }
 
+_it2mt_color = [config.green, config.artichoke]
+_mt2it_color = [config.purple, config.orchid]
 
 class AppViz:
     """ Visualize the Dataflow Graph in a column of the NPU"""
@@ -38,9 +40,12 @@ class AppViz:
         self._drawn_kernels = self._draw_kernels()
         self._ct2mt_counter = 0
         self._mt2ct_counter = 0
-        self._from_it_counter = 0
-        self._to_it_counter = 0
-        self._mt2ct_passthrough = {'found': False, 'color': None}
+        self._it2ct_counter = 0
+        self._ct2it_counter = 0
+        self._it2mt_counter = 0
+        self._mt2it_counter = 0
+        self._mt2ct_passthrough = {0: {'found': False, 'color': None},
+                                   1: {'found': False, 'color': None}}
         self._dbuf_colors = {}
         self._draw_connections_sorted()
         self._draw_key()
@@ -112,14 +117,11 @@ class AppViz:
         conn = copy(tmpconn)
 
         # Draw animations starting in the MT second. Run twice for ping-pong
-        for i in range(2):
-            for k, c in conn.items():
-                if c['srcport'] == 'MTout':
+        for k, c in conn.items():
+            if c['srcport'] == 'MTout':
+                for i in range(2):
                     self._draw_connection(c, bool(i))
-                    if i == 1:
-                        tmpconn.pop(k)
-            self._ct2mt_counter = 0
-            self._mt2ct_counter = 0
+                tmpconn.pop(k)
         conn = copy(tmpconn)
 
         # Draw animations ending in the MT third. Run twice for ping-pong
@@ -170,7 +172,7 @@ class AppViz:
                             self._kanimate_duration/2,
                             start_empty=bool(i))
             self._draw_ub_ic_ingress(dst, bufcol)
-            self._from_it_counter += 1
+            self._it2ct_counter += 1
 
         if src['type'] == 'CT' and dst['type'] == 'IT':
             src_row = self._drawn_kernels[src['name']]['row']
@@ -181,7 +183,7 @@ class AppViz:
                             self._kanimate_duration/2,
                             start_empty=not bool(i))
             self._draw_ub_ic_egress(src, bufcol)
-            self._to_it_counter += 1
+            self._ct2it_counter += 1
 
         if src['type'] == 'CT' and dst['type'] == 'MT':
             src_row = self._drawn_kernels[src['name']]['row']
@@ -218,18 +220,19 @@ class AppViz:
 
             show_mem_buffer = True
             mtmode = src.get('mtmode')
+            pt_dict = self._mt2ct_passthrough[self._mt2ct_counter]
             if mtmode == 'passthrough':
-                if self._mt2ct_passthrough['found']:
-                    dst_buf_color = self._mt2ct_passthrough['color']
+                if pt_dict['found']:
+                    dst_buf_color = pt_dict['color']
                     show_mem_buffer = False
                 else:
-                    self._mt2ct_passthrough['found'] = True
-                    self._mt2ct_passthrough['color'] = dst_buf_color
+                    pt_dict['found'] = True
+                    pt_dict['color'] = dst_buf_color
 
             if show_mem_buffer:
-                for i in range(int(self._mt2ct_passthrough['found']) + 1):
+                for i in range(int(pt_dict['found']) + 1):
                     self._col_svg.mem_tiles[0].add_buffer(
-                                config.green,
+                                _it2mt_color[self._mt2ct_counter],
                                 self._kanimate_duration/2,
                                 start_empty=dbuf ^ bool(i),
                                 color2=dst_buf_color,
@@ -295,39 +298,55 @@ class AppViz:
         """Display animation originating from IT and destination MT"""
 
         if src['type'] == 'IT' and dst['type'] == 'MT':
-            src_color = config.green
+            if self._it2mt_counter > 1:
+                warnings.warn("Cannot display more than two input buffers "
+                              "from the interface tile to the memory tile")
+                return
+            src_color = _it2mt_color[self._it2mt_counter]
             self._col_svg.mem_tiles[0].add_ic_animation(
                         diagonal_to_tile=1,
                         north=1,
                         duration=self._kanimate_duration*1,
-                        color=src_color)
+                        color=src_color,
+                        delay=self._it2mt_counter/5)
             self._col_svg.if_tiles[0].add_dma_animation(
                         south_up=1,
                         duration=self._kanimate_duration/2,
-                        color=src_color)
+                        color=src_color,
+                        delay=self._it2mt_counter/5)
             self._col_svg.if_tiles[0].add_ic_animation(
                         diagonal_from_tile=1,
                         duration=self._kanimate_duration/2,
-                        color=src_color)
+                        color=src_color,
+                        delay=self._it2mt_counter/5)
+            self._it2mt_counter += 1
 
     def _draw_mem2ub_ic(self, src, dst) -> None:
         """Display animation originating from MT and destination IT"""
 
         if src['type'] == 'MT' and dst['type'] == 'IT':
-            dst_color = config.purple
+            if self._mt2it_counter > 1:
+                warnings.warn("Cannot display more than two output buffers "
+                              "from the memory tile to the interface tile")
+                return
+            dst_color = _mt2it_color[self._it2mt_counter]
             self._col_svg.mem_tiles[0].add_ic_animation(
                         diagonal_from_tile=1,
                         south=1,
                         duration=self._kanimate_duration*1,
-                        color=dst_color)
+                        color=dst_color,
+                        delay=self._mt2it_counter/5)
             self._col_svg.if_tiles[0].add_ic_animation(
                         diagonal_to_tile=1,
                         duration=self._kanimate_duration/2,
-                        color=dst_color)
+                        color=dst_color,
+                        delay=self._mt2it_counter/5)
             self._col_svg.if_tiles[0].add_dma_animation(
                         south_down=1,
                         duration=self._kanimate_duration/2,
-                        color=dst_color)
+                        color=dst_color,
+                        delay=self._mt2it_counter/5)
+            self._mt2it_counter += 1
 
     def _draw_ub_ic_egress(self, src, src_color) -> None:
         """Display animation originating from CT and destination IT"""
@@ -341,25 +360,25 @@ class AppViz:
                     south=1,
                     duration=self._kanimate_duration/2,
                     color=src_color,
-                    delay=self._to_it_counter/5)
+                    delay=self._ct2it_counter/5)
 
         self._col_svg.mem_tiles[0].add_ic_animation(
                     south=1,
                     duration=self._kanimate_duration/2,
                     color=src_color,
-                    delay=self._to_it_counter/5)
+                    delay=self._ct2it_counter/5)
 
         self._col_svg.if_tiles[0].add_ic_animation(
                     diagonal_to_tile=1,
                     duration=self._kanimate_duration/2,
                     color=src_color,
-                    delay=self._to_it_counter/5)
+                    delay=self._ct2it_counter/5)
 
         self._col_svg.if_tiles[0].add_dma_animation(
                     south_down=1,
                     duration=self._kanimate_duration/2,
                     color=src_color,
-                    delay=self._to_it_counter/5)
+                    delay=self._ct2it_counter/5)
 
     def _draw_ub_ic_ingress(self, dst, kcolor) -> None:
         """Display animation originating from IT and destination CT"""
@@ -368,18 +387,18 @@ class AppViz:
                     diagonal_from_tile=1,
                     duration=self._kanimate_duration/2,
                     color=kcolor,
-                    delay=self._from_it_counter/5)
+                    delay=self._it2ct_counter/5)
         self._col_svg.if_tiles[0].add_dma_animation(
                     south_up=1,
                     duration=self._kanimate_duration/2,
                     color=kcolor,
-                    delay=self._from_it_counter/5)
+                    delay=self._it2ct_counter/5)
 
         self._col_svg.mem_tiles[0].add_ic_animation(
                     north=1,
                     duration=self._kanimate_duration/2,
                     color=kcolor,
-                    delay=self._from_it_counter/5)
+                    delay=self._it2ct_counter/5)
 
         dst_row = self._loc_conv[dst['tloc'][1]]
         for i in range(3, dst_row-1, -1):
@@ -389,7 +408,7 @@ class AppViz:
                     north=1,
                     duration=self._kanimate_duration/2,
                     color=kcolor,
-                    delay=self._from_it_counter/5)
+                    delay=self._it2ct_counter/5)
 
     def _draw_ct2ct_data_movement(self, src, dst) -> None:
         """Display animation originating from CT and destination CT
