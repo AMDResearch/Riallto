@@ -44,8 +44,7 @@ class AppViz:
         self._ct2it_counter = 0
         self._it2mt_counter = 0
         self._mt2it_counter = 0
-        self._mt2ct_passthrough = {0: {'found': False, 'color': None, 'src': None},
-                                   1: {'found': False, 'color': None, 'src': None}}
+        self._mt2ct_pt = {}
         self._dbuf_colors = {}
         self._draw_connections_sorted()
         self._draw_key()
@@ -123,6 +122,7 @@ class AppViz:
                     self._draw_connection(c, bool(i))
                     if i == 1:
                         tmpconn.pop(k)
+            self._mt2ct_counter = 0
         conn = copy(tmpconn)
 
         # Draw animations ending in the MT third. Run twice for ping-pong
@@ -226,25 +226,18 @@ class AppViz:
 
             show_mem_buffer = True
             mtmode = src.get('mtmode')
-            increase_counter = 0
             if mtmode == 'passthrough':
-                pt_dict = self._mt2ct_passthrough[self._mt2ct_counter]
-                increase_counter = (not src['name'] == pt_dict['src'])
-                if pt_dict['found']:
-                    dst_buf_color = pt_dict['color']
+                if not self._mt2ct_pt.get(src['name']):
+                    self._mt2ct_pt[src['name']] = {'color': dst_buf_color}
+                elif self._mt2ct_pt[src['name']]:
+                    dst_buf_color = self._mt2ct_pt[src['name']]['color']
                     show_mem_buffer = False
-                    pt_dict['src'] = src['name']
-                else:
-                    pt_dict['found'] = True
-                    pt_dict['color'] = dst_buf_color
-
                 src_color = _it2mt_color[self._mt2ct_counter]
             else:
-                pt_dict = self._mt2ct_passthrough[0]
                 src_color = _it2mt_color[0]
 
             if show_mem_buffer:
-                for i in range(int(pt_dict['found']) + 1):
+                for i in range(int(bool(self._mt2ct_pt)) + 1):
                     self._col_svg.mem_tiles[0].add_buffer(
                                 src_color,
                                 self._kanimate_duration/2,
@@ -256,9 +249,8 @@ class AppViz:
                         self._kanimate_duration/2,
                         start_empty=dbuf)
             if not dbuf:
-                self._draw_mem2ct_ic(dst, c, dst_buf_color, mtmode)
-            else:
-                self._mt2ct_counter += increase_counter
+                self._draw_mem2ct_ic(dst, dst_buf_color, mtmode)
+                self._mt2ct_counter += 1
 
         self._draw_ub2mem_ic(src, dst)
         self._draw_mem2ub_ic(src, dst)
@@ -286,7 +278,7 @@ class AppViz:
                     color=src_color)
         self._ct2mt_counter += 1
 
-    def _draw_mem2ct_ic(self, dst, c, dst_color, mtmode=None) -> None:
+    def _draw_mem2ct_ic(self, dst, dst_color, mtmode=None) -> None:
         """Display animation originating from MT and destination CT"""
 
         dst_row = self._loc_conv[dst['tloc'][1]]
