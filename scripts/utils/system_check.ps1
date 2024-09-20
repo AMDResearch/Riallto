@@ -13,7 +13,7 @@ $lightInstallBool = [System.Boolean]::Parse($lightInstall)
 # $knownProcessors = "AMD Ryzen 5 7640HS", "AMD Ryzen 7 7840H", "AMD Ryzen 7 7840HS", "AMD Ryzen 7 7840U", "AMD Ryzen 9 7940H", "AMD Ryzen 9 7940HS"
 
 # IPU device
-$deviceName = "AMD IPU Device"
+$deviceName = "NPU Compute Accelerator Device"
 
 # Minimum version, casting to special version type very useful - can compare directly without string mannpulations
 $minimumVersion = [version]"10.1109.8.100"
