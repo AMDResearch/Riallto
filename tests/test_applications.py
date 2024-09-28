@@ -127,6 +127,7 @@ class MtSplitConcat4AIEsPlusN(AppBuilder):
         x = MTConcat(xs)
         return x
 
+
 class MtSplitConcat4AIEsNonAnonymousPlusN(AppBuilder):
     def __init__(self):
         super().__init__()
@@ -149,7 +150,7 @@ class MtSplitConcat4AIEsNonAnonymous(AppBuilder):
         self.mtbsplit = MTSplit(4)
         self.mtbconcat = MTConcat()
 
-    def callgraph(self, x_in, x_out, n):
+    def callgraph(self, x_in, x_out):
         new_xs = []
         xs = self.mtbsplit(x_in)
         for i in range(4):
