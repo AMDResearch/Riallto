@@ -127,6 +127,35 @@ class MtSplitConcat4AIEsPlusN(AppBuilder):
         x = MTConcat(xs)
         return x
 
+class MtSplitConcat4AIEsNonAnonymousPlusN(AppBuilder):
+    def __init__(self):
+        super().__init__()
+        self.kernels = [PlusN() for _ in range(4)]
+        self.mtbsplit = MTSplit(4)
+        self.mtbconcat = MTConcat()
+
+    def callgraph(self, x_in, x_out, n):
+        new_xs = []
+        xs = self.mtbsplit(x_in)
+        for i in range(4):
+            new_xs.append(self.kernels[i](xs[i], xs[i].nbytes, n))
+        x_out[:] = self.mtbconcat(new_xs)
+
+
+class MtSplitConcat4AIEsNonAnonymous(AppBuilder):
+    def __init__(self, kernel):
+        super().__init__()
+        self.kernels = [kernel for _ in range(4)]
+        self.mtbsplit = MTSplit(4)
+        self.mtbconcat = MTConcat()
+
+    def callgraph(self, x_in, x_out, n):
+        new_xs = []
+        xs = self.mtbsplit(x_in)
+        for i in range(4):
+            new_xs.append(self.kernels[i](xs[i], xs[i].nbytes))
+        x_out[:] = self.mtbconcat(new_xs)
+
 
 class TwoInputsApp(AppBuilder):
     def callgraph(self, k, a, b, size):
