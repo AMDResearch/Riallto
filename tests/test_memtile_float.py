@@ -104,7 +104,7 @@ def average_behavior(invobj):
 
 
 @pytest.mark.parametrize('datatype', [np.float32, bfloat16])
-def test_memtile_average_mtsplit(datatype):
+def test_memtile_sum_mtsplit(datatype):
 
     datatype_txt = 'float' if datatype == np.float32 else 'bfloat16'
     vec_sum_src0 = vec_sum_src.replace('bfloat16', datatype_txt)
