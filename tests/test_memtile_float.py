@@ -18,7 +18,6 @@ def plus1_behavior(invobj):
     invobj.out_buffer.array = invobj.in_buffer.array
 
 
-
 @pytest.mark.parametrize('datatype', [np.float32, bfloat16])
 def test_memtile_distribute_join_4_non_anonymous(datatype):
 
@@ -77,7 +76,6 @@ def test_memtile_distribute_join_4_non_anonymous(datatype):
                        rtol=1e-02)
 
 
-
 vec_sum_src = '''
 #include <aie_api/aie.hpp>
 
@@ -110,6 +108,7 @@ def test_memtile_average_mtsplit(datatype):
 
     datatype_txt = 'float' if datatype == np.float32 else 'bfloat16'
     kernel_src0 = kernel_src.replace('bfloat16', datatype_txt)
+
     class VectorSum():
         def __new__(cls, *args):
             kobj = Kernel(kernel_src0, average_behavior)
