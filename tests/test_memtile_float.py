@@ -75,3 +75,82 @@ def test_memtile_distribute_join_4_non_anonymous(datatype):
 
     assert np.allclose((test_data + 1.).astype(np.float32), test_out,
                        rtol=1e-02)
+
+
+
+vec_sum_src = '''
+#include <aie_api/aie.hpp>
+
+extern "C" {
+    void reduced_sum(bfloat16 *in_buffer, bfloat16* out_buffer, uint32_t elements) {
+        ::aie::vector<bfloat16, 32> buffer;
+        ::aie::vector<bfloat16, 32> acc = ::aie::zeros<bfloat16, 32>();
+        uint16_t loop_count = (elements) >> 5;
+        for(int j=0; j<loop_count; j++) {
+            buffer = ::aie::load_v<32>(in_buffer);
+            acc = ::aie::add(acc, buffer);
+            in_buffer += 32;
+        }
+        auto sum = aie::reduce_add(acc);
+        out_buffer[0] = sum;
+        out_buffer+=1;
+    }
+}
+'''
+
+
+def average_behavior(invobj):
+    # workaround to make sure there's enough data for the DMA
+    invobj.out_buffer.array = np.zeros((16), dtype=invobj.in_buffer.array.dtype)
+    invobj.out_buffer.array[0] = np.average(invobj.in_buffer.array)
+
+
+@pytest.mark.parametrize('datatype', [np.float32, bfloat16])
+def test_memtile_average_mtsplit(datatype):
+
+    datatype_txt = 'float' if datatype == np.float32 else 'bfloat16'
+    kernel_src0 = kernel_src.replace('bfloat16', datatype_txt)
+    class VectorSum():
+        def __new__(cls, *args):
+            kobj = Kernel(kernel_src0, average_behavior)
+            return kobj(*args) if len(args) > 0 else kobj
+
+    class MtSplitConcat4AIEsSum(AppBuilder):
+        def __init__(self):
+            super().__init__()
+            self.kernels = [VectorSum() for _ in range(4)]
+            self.mtbsplit = MTSplit(4)
+            self.mtbconcat = MTConcat()
+
+        def callgraph(self, x_in, x_out):
+            new_xs = []
+            xs = self.mtbsplit(x_in)
+            for i in range(4):
+                new_xs.append(self.kernels[i](xs[i], xs[i].shape[0]))
+            x_out[:] = self.mtbconcat(new_xs)
+
+    size = 256
+    array_in = np.zeros(shape=(size), dtype=datatype)
+    array_out = np.zeros(shape=(64), dtype=datatype)
+
+    trace_app = MtSplitConcat4AIEsSum()
+    trace_app.build(array_in, array_out)
+    trace_app.save(f'{imgdir}{trace_app.name}_{datatype_txt}.svg')
+    app = AppRunner(f"{trace_app.name}.xclbin")
+
+    test_data = np.random.randn(*array_in.shape).astype(datatype)
+    bo_in = app.allocate(shape=array_in.shape, dtype=datatype)
+    bo_out = app.allocate(shape=array_out.shape, dtype=datatype)
+
+    bo_in[:] = test_data
+    bo_in.sync_to_npu()
+
+    app.call(bo_in, bo_out)
+
+    bo_out.sync_from_npu()
+    test_out = np.array(bo_out)
+
+    del app
+
+    for idx, val in enumerate(np.split(test_data, 4)):
+        assert np.isclose(np.sum(val), test_out[idx*16], rtol=0.2)
