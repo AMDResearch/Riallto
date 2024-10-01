@@ -97,7 +97,7 @@ extern "C" {
 '''
 
 
-def average_behavior(invobj):
+def sum_behavior(invobj):
     # workaround to make sure there's enough data for the DMA
     invobj.out_buffer.array = np.zeros((16), dtype=invobj.in_buffer.array.dtype)
     invobj.out_buffer.array[0] = np.average(invobj.in_buffer.array)
@@ -111,7 +111,7 @@ def test_memtile_sum_mtsplit(datatype):
 
     class VectorSum():
         def __new__(cls, *args):
-            kobj = Kernel(vec_sum_src0, average_behavior)
+            kobj = Kernel(vec_sum_src0, sum_behavior)
             return kobj(*args) if len(args) > 0 else kobj
 
     class MtSplitConcat4AIEsSum(AppBuilder):
