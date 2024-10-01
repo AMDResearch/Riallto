@@ -107,11 +107,11 @@ def average_behavior(invobj):
 def test_memtile_average_mtsplit(datatype):
 
     datatype_txt = 'float' if datatype == np.float32 else 'bfloat16'
-    kernel_src0 = kernel_src.replace('bfloat16', datatype_txt)
+    vec_sum_src0 = vec_sum_src.replace('bfloat16', datatype_txt)
 
     class VectorSum():
         def __new__(cls, *args):
-            kobj = Kernel(kernel_src0, average_behavior)
+            kobj = Kernel(vec_sum_src0, average_behavior)
             return kobj(*args) if len(args) > 0 else kobj
 
     class MtSplitConcat4AIEsSum(AppBuilder):
