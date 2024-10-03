@@ -105,18 +105,12 @@ def test_memtile_sum_mtsplit(datatype):
 
     class VectorSum():
         def __new__(cls, *args):
-            kobj = Kernel(vec_sum_src0, sum_behavior)
-            return kobj(*args) if len(args) > 0 else kobj
-
-    class VectorSum():
-        def __new__(cls, *args):
             kobj = Kernel(vec_sum_src0, cls.behavioralfx)
             return kobj(*args) if len(args) > 0 else kobj
 
         def behavioralfx(self):
             self.out_buffer.array = np.zeros((16), dtype=datatype)
             self.out_buffer.array[0] = np.sum(self.in_buffer.array)
-
 
     class MtSplitConcat4AIEsSum(AppBuilder):
         def __init__(self):
@@ -219,7 +213,7 @@ def test_memtile_average_mtsplit(datatype):
     trace_app.save(f'{imgdir}{trace_app.name}_{datatype_txt}.svg')
     app = AppRunner(f"{trace_app.name}.xclbin")
 
-    test_data = np.random.randint(-128,127, size=array_in.shape, dtype=array_in.dtype)
+    test_data = np.random.randint(-128, 127, size=array_in.shape, dtype=array_in.dtype)
     bo_in = app.allocate(shape=array_in.shape, dtype=array_in.dtype)
     bo_out = app.allocate(shape=array_out.shape, dtype=datatype)
 
