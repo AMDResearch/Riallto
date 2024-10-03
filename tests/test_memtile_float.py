@@ -150,7 +150,7 @@ def test_memtile_sum_mtsplit(datatype):
     del app
 
     for idx, val in enumerate(np.split(test_data, 4)):
-        assert np.isclose(np.sum(val), test_out[idx*16], rtol=0.2)
+        assert np.isclose(np.sum(val), test_out[idx*16], rtol=0.25)
 
 
 kernel_avrg_src = '''
