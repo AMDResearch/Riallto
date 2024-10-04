@@ -291,6 +291,8 @@ class MLIRBuilder:
                 return connection.srcport.slices[0]
             if isinstance(connection.srcport.slices[0], slice):
                 return connection.srcport.slices[0].start
+            raise ValueError(f'{type(connection.srcport.slices[0])} not '
+                             'supported on MTBuffer source port')
         return sorted(buff_links, key=sorting_key)
         
     def _sort_sinkport_mtbuff_links(self, buff_links)->List:
@@ -303,6 +305,8 @@ class MLIRBuilder:
                 return connection.sinkport.slices[0]
             if isinstance(connection.sinkport.slices[0], slice):
                 return connection.sinkport.slices[0].start
+            raise ValueError(f'{type(connection.sinkport.slices[0])} not '
+                             'supported on MTBuffer sink port')
         return sorted(buff_links, key=sorting_key)
 
     def _is_con_broadcast(self, connection)->bool:
