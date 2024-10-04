@@ -4,11 +4,9 @@
 from .mlirtiles import CTTile, MEMTile, ITTile
 from .buffers import MTBuffer
 from .mlirconnections import MLIRConnect, ObjectFIFO
-from .mlirsequencebuilder import MLIRSequnceBuilder 
+from .mlirsequencebuilder import MLIRSequnceBuilder
 from typing import Dict, List, Tuple
 from collections import OrderedDict
-from itertools import groupby
-import ctypes
 
 
 class MLIRBuilder:
@@ -17,7 +15,7 @@ class MLIRBuilder:
     Attributes
     ----------
     metadata : AppMetadata
-        The application metadata.  
+        The application metadata.
     app : JSON
         The json representation of an application metadata.
     kernels : dict
@@ -31,7 +29,7 @@ class MLIRBuilder:
     """
 
     def __init__(self, metadata, config=(4,1,1)):
-        """Return a new MLIRBuilder object.""" 
+        """Return a new MLIRBuilder object."""
         app = metadata.to_json()
         self.kernels = app['kernels']
         self.connections = app['connections']
@@ -43,7 +41,7 @@ class MLIRBuilder:
         MLIRConnect.reset_id()
 
         self.aietiles, self.memtiles, self.sdmatiles = self._parse_tiles(config)
-        self.tiles = {**self.sdmatiles,  **self.memtiles, **self.aietiles} 
+        self.tiles = {**self.sdmatiles,  **self.memtiles, **self.aietiles}
         self._map_kernels_to_tiles()
 
         self._cons_src2dst = self._populate_src2dst_cons_dict()
@@ -63,12 +61,11 @@ class MLIRBuilder:
         sdmas = {(ix, 0) : ITTile(ix, 0) for ix in range(config[1])}
         return aies, mts, sdmas
 
-
     def to_mlir(self, file=None):
         """Toplevel method to generate the application MLIR."""
         indent = "   "
         used_tiles = [tile for _, tile in self.tiles.items() if tile.is_used()]
-        used_aie_tiles = [tile for _, tile in self.aietiles.items() if tile.is_used()]        
+        used_aie_tiles = [tile for _, tile in self.aietiles.items() if tile.is_used()]
 
         s = 'module  {\n'
         s += f'{indent}AIE.device(ipu)'
@@ -91,7 +88,7 @@ class MLIRBuilder:
 
         for _, aie in self.aietiles.items():
             s += aie.to_mlir()
-            
+
         s += f'{self.seqbuilder.mlir}'
         s += ' }\n'
         s += "}\n"
@@ -102,8 +99,7 @@ class MLIRBuilder:
         with open(file, "w") as f:
             f.write(s)
 
-        return ""        
-
+        return ""
 
     def _map_kernels_to_tiles(self):
 
@@ -113,7 +109,7 @@ class MLIRBuilder:
 
                 if self.aietiles[k['tloc']].kernel is not None:
                     raise ValueError(f'Cannot place {k["name"]} kernel - CT tile previously constrained with {self.aietiles[k["tloc"]].kernel["name"]}')
-                self.aietiles[k['tloc']].kernel = k  
+                self.aietiles[k['tloc']].kernel = k
 
         # Then AIE kernels onto any free AIE Tiles
         # ...place all buffers on first MT / SDMA tiles
@@ -127,7 +123,7 @@ class MLIRBuilder:
                 for _, mt in self.memtiles.items():
                     k['tloc'] = mt.tloc
                     mt.buffers[kname] = k
-                    break 
+                    break
             elif k['type'] == 'IT':
                 for _, sdma in self.sdmatiles.items():
                     k['tloc'] = sdma.tloc
@@ -148,7 +144,7 @@ class MLIRBuilder:
             else:
                 cons_dict[con_src] = [con_dst]
         return cons_dict
-    
+
     def _populate_dst2src_cons_dict(self) -> Dict[Tuple[str,str], List[Tuple[str,str]]]:
         """ Creates a mapping dict of the connections where the key is the dst (kernel, port) tuple and
         the value is a list of source (kernel,port) tuples."""
@@ -160,8 +156,8 @@ class MLIRBuilder:
                 cons_dict[con_dst].append(con_src)
             else:
                 cons_dict[con_dst] = [con_src]
-        return cons_dict  
-    
+        return cons_dict
+
     def _populate_broadcast_dict(self) -> Dict[Tuple[str,str], List[Tuple[str,str]]]:
         """ Filters the dict of src2dst connection mappings produced by _populate_src2dst_cons_dict
         to produce a dict that only contains the broadcast pattern where the same data is going
@@ -176,7 +172,7 @@ class MLIRBuilder:
                         broadcasts[src] = dsts
                     elif bc_analysis == "MIX":
                         raise RuntimeError(f"""
-                         Mixing broadcasts and distributes from the same source is not yet supported 
+                         Mixing broadcasts and distributes from the same source is not yet supported
                          {src=} to {dsts=}
                          """)
         return broadcasts
@@ -188,8 +184,7 @@ class MLIRBuilder:
                 return False
         return True
 
-
-    def _all_unique(self, outgoing_shapes)->bool: 
+    def _all_unique(self, outgoing_shapes)->bool:
         seen_list = []
         for lst in outgoing_shapes.values():
             if lst in seen_list:
@@ -197,27 +192,26 @@ class MLIRBuilder:
         return True
 
     def _analyse_broadcast(self, src:Tuple[str,str]) -> str:
-        """When given a source (kernel, port) tuple determines if it is a: 
+        """When given a source (kernel, port) tuple determines if it is a:
         true broadcast, i.e. same data unique destinations (returns "BCAST");
         distribute op, i.e. different chunks of the data to different destinations (returns "DIST");
         a mix of both (returns "MIX").
         """
-        outgoing_shapes = {} 
+        outgoing_shapes = {}
         for s in self.sequence:
             con_src = (s['srckernelname'], s['srcportname'])
             if con_src  == src:
                 dst = (s['snkkernelname'], s['snkportname'])
                 outgoing_shape = (s['srcslices'], s['srcoffset'], s['srcnbytes'])
                 if dst not in outgoing_shapes:
-                    outgoing_shapes[dst] = [] 
+                    outgoing_shapes[dst] = []
                 outgoing_shapes[dst].append(outgoing_shape)
         if self._all_equal(outgoing_shapes):
             return "BCAST"
-        elif self._all_unique(outgoing_shapes): 
+        elif self._all_unique(outgoing_shapes):
             return "DIST"
         else:
             return "MIX"
-                
 
     def _get_bcast_nbytes_offset(self, bcast_src:Tuple[str,str])->Tuple[int,int]:
         for s in self.sequence:
@@ -229,11 +223,11 @@ class MLIRBuilder:
     def _map_connections_to_objectfifos(self):
         obfs = list()
         for s in [s for s in self.sequence if s['seqtype'] == 'buffer']:
-            for c in [c for c in self.connections if s['name'] == c]:                
+            for c in [c for c in self.connections if s['name'] == c]:
                 if c in [obf.name for obf in obfs]:
                     # TODO : validate that channel transfer nbytes is consistent
                     break
-                self.connections[c]['ctype'] = "objfifo,pingpong"                                      
+                self.connections[c]['ctype'] = "objfifo,pingpong"
 
                 src = (self.connections[c]['srckernel'],
                        self.connections[c]['srcport'])
@@ -243,11 +237,11 @@ class MLIRBuilder:
                              self.connections[c]['sinkport'])]
 
                     obfs.append(ObjectFIFO(c, src, dsts, s['nbytes'], s['offset'], self.tiles, self.kernels))
-        
+
         # map broadcast connections
         for src, dsts in self._cons_broadcasts.items():
             nbytes, offset = self._get_bcast_nbytes_offset(src)
-            obfs.append(ObjectFIFO(f"{src[0]}__{src[1]}", src, dsts, nbytes, offset, self.tiles, self.kernels)) 
+            obfs.append(ObjectFIFO(f"{src[0]}__{src[1]}", src, dsts, nbytes, offset, self.tiles, self.kernels))
 
         return obfs
 
@@ -277,7 +271,7 @@ class MLIRBuilder:
             elif isinstance(c.sinkkernel, MTBuffer):
                 if c.sinkkernel.name not in mt_buff_links:
                     mt_buff_links[c.sinkkernel.name] = { 'in' : [], 'out' : [] }
-                mt_buff_links[c.sinkkernel.name]['in'].append(c) 
+                mt_buff_links[c.sinkkernel.name]['in'].append(c)
                 mt_buff_links[c.sinkkernel.name]['in'] = self._sort_sinkport_mtbuff_links(mt_buff_links[c.sinkkernel.name]['in'])
         return mt_buff_links
 
@@ -291,8 +285,10 @@ class MLIRBuilder:
                 return connection.srcport.slices[0]
             if isinstance(connection.srcport.slices[0], slice):
                 return connection.srcport.slices[0].start
+            raise ValueError(f'{type(connection.srcport.slices[0])} not '
+                             'supported on MTBuffer source port')
         return sorted(buff_links, key=sorting_key)
-        
+
     def _sort_sinkport_mtbuff_links(self, buff_links)->List:
         def sorting_key(connection):
             if not connection.sinkport.slices:
@@ -303,6 +299,8 @@ class MLIRBuilder:
                 return connection.sinkport.slices[0]
             if isinstance(connection.sinkport.slices[0], slice):
                 return connection.sinkport.slices[0].start
+            raise ValueError(f'{type(connection.sinkport.slices[0])} not '
+                             'supported on MTBuffer sink port')
         return sorted(buff_links, key=sorting_key)
 
     def _is_con_broadcast(self, connection)->bool:
@@ -310,7 +308,7 @@ class MLIRBuilder:
 
     def _get_objectfifo_varname(self, connection)->str:
         if self._is_con_broadcast(connection):
-            name = f"{connection.srckernel.name}__{connection.srcport.name}" 
+            name = f"{connection.srckernel.name}__{connection.srcport.name}"
         else:
             name = connection.name
 
@@ -333,7 +331,7 @@ class MLIRBuilder:
             if not self._is_mtlink_bcast(link):
                 s += self._generate_distribute_link(link, indent=indent)
             else:
-                s += self._generate_broadcast_link(link, mt_buff_links, indent=indent) 
+                s += self._generate_broadcast_link(link, mt_buff_links, indent=indent)
 
         return s
 
@@ -370,11 +368,10 @@ class MLIRBuilder:
                     return s
         raise RuntimeError(f"Unable to find a feeding buffer to link to in the memtile for {link=}")
 
-
     def _validate_app(self):
-        
+
         if len(self.kernels) == 0 or len(self.connections) == 0:
-            raise ValueError(f'{len(self.kernels)} kernels or {len(self.connections)} connections cannot be zero')            
+            raise ValueError(f'{len(self.kernels)} kernels or {len(self.connections)} connections cannot be zero')
 
         if len(self.aietiles) > len(self.aietiles):
             raise ValueError(f'{len(self.kernels)} kernels cannot be placed onto {len(self.aietiles)} AIE tiles')

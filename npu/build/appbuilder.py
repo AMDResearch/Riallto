@@ -53,6 +53,7 @@ class AppBuilder:
         self.connections = None
 
         self.previous_build_args = None
+        self._metadata = None
 
     def __call__(self, *args):
         """ Calling the class will execute the callgraph directly."""
@@ -64,17 +65,21 @@ class AppBuilder:
 
     def callgraph(self):
         """ This method should be overridden by a subclass. """
-        raise NotImplementedError(f'Subclass needs to implement the callgraph function for use in tracing and behavioral execution')
+        raise NotImplementedError('Subclass needs to implement the callgraph '
+                                  'function for use in tracing and behavioral'
+                                  'execution')
 
     def to_metadata(self, *args):
         """ The application is converted into the AppMetadata after tracing the callgraph() call."""
-        self.previous_build_args = args
-        self.kernels, self.connections = self.fxtracer.to_trace(*args)
+        if self._metadata is None or self.previous_build_args != args:
+            self.kernels, self.connections = self.fxtracer.to_trace(*args)
 
-        return AppMetada(self.name,
-                         self.unique_named(self.kernels),
-                         self.unique_named(self.connections),
-                         self.to_sequence())
+            self._metadata=  AppMetada(self.name,
+                            self.unique_named(self.kernels),
+                            self.unique_named(self.connections),
+                            self.to_sequence())
+        self.previous_build_args = args
+        return self._metadata
 
     def to_handoff(self, *args, file=None):
         """ Converts the application into a serializable JSON file."""
@@ -89,7 +94,7 @@ class AppBuilder:
 
     @property
     def metadata(self, *args):
-        """ Generates the application JSON and displays inside a IPython environment."""
+        """Generates the application JSON and displays inside a IPython environment"""
         from npu import ReprDict
         self.validate_previous_build_args()
         return ReprDict(self.to_json(*self.previous_build_args), rootname=self.name)
@@ -147,8 +152,10 @@ class AppBuilder:
 
     def validate_previous_build_args(self):
         if self.previous_build_args is None:
-            raise ValueError(f'Before using this AppBuilder API, please first call the AppBuilder instance directly or call \
-                             to_metadata(), to_json() or to_build() with callgraph args to complete the application graph')
+            raise ValueError('Before using this AppBuilder API, please first '
+                             'call the AppBuilder instance directly or call '
+                             'to_metadata(), to_json() or to_build() with '
+                             'callgraph args to complete the application graph')
 
     def merge_applications(self, newkernels, newconnections):
         self.connections.extend(newconnections)
