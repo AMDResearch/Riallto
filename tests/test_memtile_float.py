@@ -213,7 +213,9 @@ def test_memtile_average_mtsplit(datatype):
     trace_app.save(f'{imgdir}{trace_app.name}_{datatype_txt}.svg')
     app = AppRunner(f"{trace_app.name}.xclbin")
 
-    test_data = np.random.randint(-128, 127, size=array_in.shape, dtype=array_in.dtype)
+    np.random.seed(4102024)
+    test_data = np.random.randint(-128, 127, size=array_in.shape,
+                                  dtype=array_in.dtype)
     bo_in = app.allocate(shape=array_in.shape, dtype=array_in.dtype)
     bo_out = app.allocate(shape=array_out.shape, dtype=datatype)
 
