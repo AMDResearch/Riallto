@@ -121,7 +121,7 @@ If you see `loading /lib/firmware/amdnpu/1502_00/npu.sbin failed with error -22`
 Delete the NPU firmware:
 
 ```sh
-sudo rm -rf /lib/firmware/amdnpu/1502_00/npu.sbin
+sudo rm -rf /lib/firmware/amdnpu/
 ```
 
 Then, start the installation from scratch.
