@@ -1,7 +1,7 @@
 # Copyright (C) 2023 Advanced Micro Devices, Inc. All rights reserved.
 # SPDX-License-Identifier: MIT
 
-FROM ubuntu:24.04 as base
+FROM ubuntu:24.04
 
 ARG DEBIAN_FRONTEND=noninteractive
 ARG KERNEL_HEADERS
@@ -24,8 +24,8 @@ RUN apt-get install -y zstd
 COPY _work /root/
 
 RUN apt-get install -y libelf1t64
-RUN apt-get install -y kmod 
-RUN apt-get install -y linux-base 
+RUN apt-get install -y kmod
+RUN apt-get install -y linux-base
 
 RUN dpkg -i /root/$KERNEL_HEADERS
 RUN dpkg -i /root/$KERNEL_HEADERS_GENERIC
@@ -34,9 +34,9 @@ RUN dpkg -i /root/$KERNEL_IMAGE
 
 RUN git config --global url."https://github.com/".insteadOf "git@github.com:"
 RUN cd /root && git clone https://github.com/amd/xdna-driver.git --recursive
-RUN cd /root/xdna-driver && git checkout 7682e0b4b6c435d6700faef3dc27cd709324e27f 
+RUN cd /root/xdna-driver && git checkout main
 
-RUN apt-get install -y cmake jq pkg-config wget libdrm-dev 
+RUN apt-get install -y cmake jq pkg-config wget libdrm-dev
 RUN apt-get install -y python3-pip
 RUN apt-get install -y ocl-icd-opencl-dev
 
