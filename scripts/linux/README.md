@@ -34,7 +34,7 @@ You can follow the steps [here](https://docs.docker.com/engine/install/ubuntu/).
    ```
 
    ```{note}
-   We recommend using the tag v1.1 to get the verified version of Riallto. Install from main to get the latest drivers and code, however, this is not verified thoroughly.
+   We recommend using the tag v1.1 to get the verified version of Riallto. Install from `main` to get the latest drivers and code, however, this is not thoroughly verified.
    ```
 
 6. __Upgrade Linux Kernel.__
