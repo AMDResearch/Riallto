@@ -40,7 +40,7 @@ You can follow the steps [here](https://docs.docker.com/engine/install/ubuntu/).
 6. __Upgrade Linux Kernel.__
 
    ```sh
-   ./setup_riallto_linux.sh <your license file>
+   ./setup_riallto_linux.sh <your license file> <username (optional)>
    ```
 
    This command will check the kernel version and if the `xdna-driver` has been installed. If the Linux kernel is not `6.10` or the NPU device drivers are missing, it will build them within a docker and install them on the host machine. This takes about 10 minutes to run and after completing successfully the user will be asked to restart.
@@ -52,10 +52,14 @@ You can follow the steps [here](https://docs.docker.com/engine/install/ubuntu/).
 8. __Install Riallto by creating its Docker container.__
 
    ```sh
-   ./setup_riallto_linux.sh <your license file>
+   ./setup_riallto_linux.sh <your license file> <username (optional)>
    ```
 
    This will build the Riallto Docker and will take about 20 minutes.
+
+   ```{note}
+   You can specify a username to indicate the ownership of the files created inside the Docker container. If no username is specified, the default username is `$USER`.
+   ```
 
 ## Running Tests
 
