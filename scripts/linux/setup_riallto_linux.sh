@@ -73,7 +73,7 @@ fi
 # Check to make sure that a license file has been provided and that
 # a MAC address can be extracted from it for adding into the docker
 # image
-if [ "$#" -lt 2 ]; then
+if [ "$#" -le 2 ]; then
 	echo "Usage $0 <Xilinx license file> <username (optional)>"
 	exit 1
 fi
