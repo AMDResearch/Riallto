@@ -73,7 +73,7 @@ fi
 # Check to make sure that a license file has been provided and that
 # a MAC address can be extracted from it for adding into the docker
 # image
-if [ "$#" -le 2 ]; then
+if [ "$#" -lt 1 ]; then
 	echo "Usage $0 <Xilinx license file> <username (optional)>"
 	exit 1
 fi
@@ -179,7 +179,7 @@ mkdir -p $build_tmp
 USER_NAME="$USER"
 
 if [ $# -eq 2 ]; then
-       USER_NAME="$2"
+    USER_NAME="$2"
 fi
 
 USER_ID=`id -u $USER_NAME`
