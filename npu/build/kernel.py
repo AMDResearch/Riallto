@@ -102,8 +102,8 @@ class Kernel(KernelMeta):
         """Verify that extern C is used"""
         tight_code = self.srccode.replace(' ', '').replace('	', '')
         if 'extern"C"' not in tight_code or '//extern"C"' in tight_code:
-            raise RuntimeError('extern "C" not found. Top level function '
-                               'should be wrapped by extern "C"')
+            raise SyntaxError('extern "C" not found. Top level function '
+                              'should be wrapped by extern "C"')
 
     def display(self)->None:
         """Render the kernel code in a jupyter notebook."""
