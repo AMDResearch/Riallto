@@ -73,8 +73,8 @@ fi
 # Check to make sure that a license file has been provided and that
 # a MAC address can be extracted from it for adding into the docker
 # image
-if [ "$#" -ne 1 ]; then
-	echo "Usage $0 <Xilinx license file>"
+if [ "$#" -lt 1 ]; then
+	echo "Usage $0 <Xilinx license file> <username (optional)>"
 	exit 1
 fi
 LIC_FILE="$1"
@@ -176,9 +176,15 @@ build_tmp=./_work
 rm -rf $build_tmp
 mkdir -p $build_tmp
 
-USER_ID=`id -u`
-GROUP_ID=`id -g`
-GROUP_NAME=`id -g -n`
+USER_NAME="$USER"
+
+if [ $# -eq 2 ]; then
+    USER_NAME="$2"
+fi
+
+USER_ID=`id -u $USER_NAME`
+GROUP_ID=`id -g $USER_NAME`
+GROUP_NAME=`id -g -n $USER_NAME`
 
 ## Checks to make sure that all the required tarballs and license are in the directory
 if [ ! -f "./pynqMLIR-AIE.tar.gz" ]; then
