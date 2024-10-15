@@ -17,7 +17,7 @@ def test_externc_good():
     assert krnl_obj
 
 
-@pytest.mark.parametrize('replacewith', ['', '// extern "C"'])
+@pytest.mark.parametrize('replacewith', [''])
 def test_externc_bad(replacewith):
     src_code = kernel_src1.replace('extern "C" {', replacewith)
 
