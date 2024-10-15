@@ -3,6 +3,10 @@
 
 import pytest
 from npu.lib import Plus1, PlusN
+from npu.build.kernelbuilder import KernelObjectBuilder
+
+
+KernelObjectBuilder.clear_cache()
 
 
 def test_asm_kernel_built():
