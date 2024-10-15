@@ -9,8 +9,6 @@ from npu.lib import Plus1
 kernel_src = Plus1().srccode
 
 kernel_src1 = kernel_src.replace('\n\n}', '')
-kernel_src2 = kernel_src1.replace('extern "C" {', '')
-kernel_src1 = kernel_src1.replace('extern "C"', '// extern "C"')
 
 
 def test_externc_good():
@@ -19,8 +17,9 @@ def test_externc_good():
     assert krnl_obj
 
 
-@pytest.mark.parametrize('src_code', [kernel_src1, kernel_src2])
-def test_externc_bad(src_code):
+@pytest.mark.parametrize('replacewith', ['', '// extern "C"'])
+def test_externc_bad(replacewith):
+    src_code = kernel_src1.replace('extern "C" {', replacewith)
 
     with pytest.raises(SyntaxError) as excinfo:
         _ = Kernel(src_code)
