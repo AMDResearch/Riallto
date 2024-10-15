@@ -101,7 +101,7 @@ class Kernel(KernelMeta):
     def _extern_c_check(self):
         """Verify that extern C is used"""
         tight_code = self.srccode.replace(' ', '').replace('	', '')
-        if 'extern"C"' not in tight_code or '//extern"C"' in tight_code:
+        if 'extern"C"' not in tight_code:
             raise SyntaxError('extern "C" not found. Top level function '
                               'should be wrapped by extern "C"')
 
