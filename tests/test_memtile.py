@@ -3,18 +3,12 @@
 
 import pytest
 import numpy as np
-from npu.utils.test_device import get_device_status
-import npu.runtime as ipr
 from npu.runtime import AppRunner
 
 from .test_applications import manage_testing, _test_appbuild, check_npu
 from .test_applications import AppMTInPlusN, MtSplitConcat4AIEsPlusN, AppMTBroadcastConcat
 from .test_applications import AppITTilingMTIoPlusN, SimpleInvAppMTPassThrough, AppMTSplitConcatInit
-from .test_applications import SimpleMTPassThroughApplication
-import pytest
-from npu.build.appbuilder import AppBuilder
-from npu.build.mtkernel import MTPassThrough
-from npu.build.mtkernel import MTPassThrough
+from .test_applications import SimpleMTPassThroughApplication, MtSplitConcat4AIEsNonAnonymousPlusN
 
 
 def test_mtkernel_passthrough_simple_behavioral_build():
@@ -49,74 +43,92 @@ def test_mtkernel_splitconcat_behavioral():
 def test_plusn_via_memtile(manage_testing):
     """End-to-end build-and-run test that uses MTPassThrough and PlusN kernel"""
     check_npu()
-    array = np.zeros(shape=(256),dtype=np.uint8)
+    array = np.zeros(shape=(256), dtype=np.uint8)
 
     n = 5
 
     trace_app = AppMTInPlusN()
     trace_app.build(array, n)
 
-    app = AppRunner("AppMTInPlusN.xclbin")
+    app = AppRunner(f"{trace_app.name}.xclbin")
 
-    test_data = np.random.randint(0,255,256, dtype=np.uint8)
+    test_data = np.random.randint(0, 255, 256, dtype=np.uint8)
     bo_in = app.allocate(shape=(256), dtype=np.uint8)
     bo_out = app.allocate(shape=(256), dtype=np.uint8)
 
     bo_in[:] = test_data
     bo_in.sync_to_npu()
 
-    app._refresh_sequence()
     app.call(bo_in, bo_out)
 
     bo_out.sync_from_npu()
     test_out = np.array(bo_out).reshape(256)
 
-    print(np.allclose(test_data+n,test_out, atol=0))
-    print(f"{test_data=}")
-    print(f"{test_out=}")
-
     del app
 
-    assert(np.allclose(test_data+n,test_out, atol=0))
+    assert np.array_equal(test_data + n, test_out)
 
 @pytest.mark.parametrize('size', [256, 15360])
 def test_memtile_distribute_join_4(size):
     """End-to-end build-and-run test that uses MTSplit/MTConcat with 4 kernels
 
-    It uses the PlusN kernel, and we test sizes [256, 15360])
+    It uses the PlusN anonymously kernel, and we test sizes [256, 15360])
     """
 
     check_npu()
 
-    tile_width = size
     n = 5
-
-    array = np.zeros(shape=(4,tile_width),dtype=np.uint8)
+    array = np.zeros(shape=(4, size), dtype=np.uint8)
 
     trace_app = MtSplitConcat4AIEsPlusN()
-    trace_app.build(array,n)
-    app = AppRunner("MtSplitConcat4AIEsPlusN.xclbin")
+    trace_app.build(array, n)
+    app = AppRunner(f"{trace_app.name}.xclbin")
 
-    test_data = np.random.randint(0,255,size=(4,tile_width), dtype=np.uint8)
-    bo_in = app.allocate(shape=(4,tile_width), dtype=np.uint8)
-    bo_out = app.allocate(shape=(4,tile_width), dtype=np.uint8)
+    test_data = np.random.randint(0, 255, size=(4, size), dtype=np.uint8)
+    bo_in = app.allocate(shape=(4, size), dtype=np.uint8)
+    bo_out = app.allocate(shape=(4, size), dtype=np.uint8)
 
     bo_in[:] = test_data
     bo_in.sync_to_npu()
 
-    app._refresh_sequence()
     app.call(bo_in, bo_out)
 
     bo_out.sync_from_npu()
-    test_out = np.array(bo_out).reshape(4,tile_width)
-
-    print(np.allclose(test_data+n,test_out, atol=0))
-    print(f"{test_data=}")
-    print(f"{test_out=}")
+    test_out = np.array(bo_out).reshape(4, size)
 
     del app
 
-    assert(np.allclose(test_data+n,test_out, atol=0))
+    assert np.array_equal(test_data + n, test_out)
+
+
+def test_memtile_distribute_join_4_non_anonymous():
+    """End-to-end build-and-run test that uses MTSplit/MTConcat with 4 kernels
+
+    It uses the PlusN kernel non anonymously, we test size 256
+    """
+    size, n = 256, 7
+    array_in = np.zeros(shape=(4, size), dtype=np.uint8)
+    array_out = np.zeros(shape=(4, size), dtype=np.uint8)
+
+    trace_app = MtSplitConcat4AIEsNonAnonymousPlusN()
+    trace_app.build(array_in, array_out, n)
+    app = AppRunner(f"{trace_app.name}.xclbin")
+
+    test_data = np.random.randint(0, 255, size=(4, size), dtype=np.uint8)
+    bo_in = app.allocate(shape=(4, size), dtype=np.uint8)
+    bo_out = app.allocate(shape=(4, size), dtype=np.uint8)
+
+    bo_in[:] = test_data
+    bo_in.sync_to_npu()
+
+    app.call(bo_in, bo_out)
+
+    bo_out.sync_from_npu()
+    test_out = np.array(bo_out).reshape(4, size)
+
+    del app
+
+    assert np.array_equal(test_data + n, test_out)
 
 
 def test_callgraph_memtile_broadcast():

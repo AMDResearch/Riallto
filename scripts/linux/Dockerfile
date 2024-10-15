@@ -1,7 +1,7 @@
 # Copyright (C) 2023 Advanced Micro Devices, Inc. All rights reserved.
 # SPDX-License-Identifier: MIT
 
-FROM ubuntu:24.04 as base
+FROM ubuntu:24.04
 
 ARG BUILD_TEMPDIR
 ARG LIC_MAC=00:00:00:00:00:00
@@ -16,7 +16,7 @@ SHELL ["/bin/bash", "-c"]
 RUN apt-get update
 RUN apt-get install -y sudo adduser perl
 
-RUN deluser --remove-home $(getent passwd | awk -F: -v uid="$USER_ID" '$3 == uid {print $1}') || echo "Ignoring error, as uid:${USER_ID} does not exist" 
+RUN deluser --remove-home $(getent passwd | awk -F: -v uid="$USER_ID" '$3 == uid {print $1}') || echo "Ignoring error, as uid:${USER_ID} does not exist"
 RUN groupadd -g ${GROUP_ID} ${GROUP_NAME} || echo "Ignoring error, as ${GROUP_NAME} already exists"
 RUN useradd -u $USER_ID -g $GROUP_ID -ms /bin/bash riallto
 RUN adduser riallto sudo
@@ -38,8 +38,8 @@ ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
 RUN DEBIAN_FRONTEND=noninteractive TZ=Etc/UTC sudo -E apt-get install -y tzdata
 
-RUN git clone https://github.com/amd/xdna-driver.git --recursive --depth=1 
-RUN sudo chmod +x /home/riallto/xdna-driver/xrt/src/runtime_src/tools/scripts/xrtdeps.sh 
+RUN git clone https://github.com/amd/xdna-driver.git --recursive --depth=1
+RUN sudo chmod +x /home/riallto/xdna-driver/xrt/src/runtime_src/tools/scripts/xrtdeps.sh
 RUN sudo /home/riallto/xdna-driver/xrt/src/runtime_src/tools/scripts/xrtdeps.sh -docker
 
 COPY $BUILD_TEMPDIR/root/debs npu_ubuntu_debs
@@ -50,7 +50,7 @@ RUN sudo apt-get install -y python3-pip ocl-icd-opencl-dev uuid-dev
 RUN sudo -E dpkg -i npu_ubuntu_debs/xrt_*-amd64-xrt.deb
 RUN sudo -E dpkg -i npu_ubuntu_debs/xrt_plugin*-amdxdna.deb
 
-RUN git clone https://github.com/AMDResearch/Riallto -b v1.1 --depth=1 
+RUN git clone https://github.com/AMDResearch/Riallto --depth=1
 
 SHELL ["/bin/bash", "-l", "-c"]
 
@@ -85,10 +85,11 @@ RUN sudo -E echo 'sudo ip link set vmnic0 addr ${LIC_MAC} || true' >> /opt/mlir_
 
 # Install Jupyterhub/notebooks
 RUN source ~/.bashrc && python3 -m pip install jupyterhub
-RUN source ~/.bashrc && python3 -m pip install notebook 
+RUN source ~/.bashrc && python3 -m pip install notebook
 
 #Cleanup a bit
 RUN rm -rf /home/riallto/*.tar.gz
+ENV SHELL=/bin/bash
 
 CMD ["/bin/bash", "-l", "-c", "jupyterhub-singleuser", "--allow-root"]
 

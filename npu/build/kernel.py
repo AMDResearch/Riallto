@@ -13,6 +13,7 @@ from .port import BufferPort, RTPPort
 from .asm import AsmVLIWInstructions
 from typing import Optional, Callable, List, Dict
 import re
+import warnings
 
 
 class Kernel(KernelMeta):
@@ -58,6 +59,7 @@ class Kernel(KernelMeta):
         self.kb = KernelObjectBuilder(self.ktype, self.srccode, self.srcfile)
         self.asmlst = None
         self._main_function_sanity_check()
+        self._extern_c_check()
         self._expose_ports()
 
     def _expose_ports(self)->None:
@@ -97,6 +99,13 @@ class Kernel(KernelMeta):
     def _main_function_sanity_check(self)->None:
         if not self._main_function['rtnType'] == "void":
             raise RuntimeError(f"The return type of the top_level function should be void not {self._main_function['rtnType']}")
+
+    def _extern_c_check(self):
+        """Verify that extern C is used"""
+        tight_code = self.srccode.replace(' ', '').replace('	', '')
+        if 'extern"C"' not in tight_code:
+            raise SyntaxError('extern "C" not found. Top level function '
+                              'should be wrapped by extern "C"')
 
     def display(self)->None:
         """Render the kernel code in a jupyter notebook."""
