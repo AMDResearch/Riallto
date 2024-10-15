@@ -10,7 +10,6 @@ from .tracekernels import kerneltracer
 from .kernelmeta import KernelMeta
 from .buffers import Buffer
 from .port import BufferPort, RTPPort
-from .asm import AsmVLIWInstructions
 from typing import Optional, Callable, List, Dict
 import re
 import warnings
@@ -57,7 +56,7 @@ class Kernel(KernelMeta):
             self.behavioralfx = behavioralfx
 
         self.kb = KernelObjectBuilder(self.ktype, self.srccode, self.srcfile)
-        self.asmlst = None
+        self._asmlst = None
         self._main_function_sanity_check()
         self._extern_c_check()
         self._expose_ports()
@@ -246,12 +245,22 @@ class Kernel(KernelMeta):
         """Build the kernel object file for linking into the complete application."""
         if not os.path.exists(self.kb.buildobjpath):
             self.kb.build(debug)
-            self.asmlst = AsmVLIWInstructions(self.kb.buildobjpath)
 
     @property
     def objfile(self):
         self.build()
         return self.kb.buildobjpath
+
+    @property
+    def asm(self):
+        """Returns string of VLIW Assembly instructions"""
+        filename = self.kb.buildobjpath + '.lst'
+        if not os.path.exists(filename):
+            raise RuntimeError('Kernel is not built (compiled). Build kernel '
+                               'to check assembly')
+        with open(filename, 'r', encoding='utf-8') as file:
+            vliwasm = file.read()
+        return '\n'.join(vliwasm.split('\n')[6:])
 
     def _parsecpp_to_ports(self, parsedcpp):
         bufferports = [BufferPort(param['name'], param['type'])
