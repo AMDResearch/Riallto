@@ -21,8 +21,8 @@ def test_externc_good():
 
 @pytest.mark.parametrize('src_code', [kernel_src1, kernel_src2])
 def test_externc_bad(src_code):
-    krnl_obj = Kernel(src_code)
+
     with pytest.raises(RuntimeError) as excinfo:
-        krnl_obj.build()
+        _ = Kernel(src_code)
 
     assert 'extern "C" not found.' in str(excinfo.value)
