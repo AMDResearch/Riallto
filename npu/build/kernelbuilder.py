@@ -54,6 +54,7 @@ class KernelObjectBuilder(WSLBuilder):
 
         self.buildlog = os.path.join(self.build_path, f'{self.name}.log')
         self.buildobjpath = os.path.join(self.build_path, f'{self.name}.o')
+        self.buildasmpath = os.path.join(self.build_path, f'{self.name}.o.lst')
 
     def build(self, debug=False):
         """Build the kernel object file and copy it to self.prebuilt_objpath."""
@@ -62,6 +63,7 @@ class KernelObjectBuilder(WSLBuilder):
             print(f"Using cached {self.name} kernel object file...")
 
             self._wslcall(f"{wsl_prefix()}cp", [f"{wslpath(self.prebuilt_objpath)}", f"{wslpath(self.buildobjpath)}"], debug)
+            self._wslcall(f"{wsl_prefix()}cp", [f"{wslpath(self.prebuilt_objpath + '.lst')}", f"{wslpath(self.buildobjpath) + '.lst'}"], debug)
         else:
             print(f"Building the {self.name} kernel...")
 
@@ -78,6 +80,7 @@ class KernelObjectBuilder(WSLBuilder):
 
             self._wslcall(f"{wsl_prefix()}bash", [f"{wslpath(self.build_path)}/kernel_build.sh", f"{self.name}"], debug)
             self._wslcall(f"{wsl_prefix()}cp", [f"{wslpath(self.buildobjpath)}", f"{wslpath(self.prebuilt_objpath)}"], debug)
+            self._wslcall(f"{wsl_prefix()}cp", [f"{wslpath(self.buildasmpath)}", f"{wslpath(self.prebuilt_objpath + '.lst')}"], debug)
 
         self.update_cache_md5()
 
