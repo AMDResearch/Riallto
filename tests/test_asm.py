@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: MIT
 
 import pytest
-from npu.lib import Plus1, PlusN
+from npu.lib import Plus1, PlusN, RgbaRtpThres
 from npu.build.kernelbuilder import KernelObjectBuilder
 
 
@@ -31,7 +31,7 @@ def test_asm_kernel_notbuilt_asm():
 def test_asm_kernel_notbuilt_asmdisplay():
     """Test if a non built kernel returns RuntimeError when calling asmdisplay"""
 
-    kernelobj = PlusN()
+    kernelobj = RgbaRtpThres()
     with pytest.raises(RuntimeError) as excinfo:
         _ = kernelobj.asmdisplay
 
