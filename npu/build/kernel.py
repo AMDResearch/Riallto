@@ -31,7 +31,9 @@ class Kernel(KernelMeta):
     behavioralfx : function
         The behavioral function that emulates the C/C++ kernel's behavior.
     """
-    def __init__(self, srccode : str, behavioralfx:Optional[Callable]=None, top_function:Optional[str]=None, requires_boilerplate:bool=False) -> None:
+    def __init__(self, srccode: str, behavioralfx: Optional[Callable] = None,
+                 top_function: Optional[str] = None,
+                 requires_boilerplate: bool = False) -> None:
         """Return a new Kernel object."""
         if srccode.endswith('.cpp') or srccode.endswith('.cc'):
             with open(srccode, 'r') as file:
@@ -60,7 +62,7 @@ class Kernel(KernelMeta):
         self._extern_c_check()
         self._expose_ports()
 
-    def _expose_ports(self)->None:
+    def _expose_ports(self) -> None:
         for p in self.ports:
             setattr(self, p.name, p)
 
@@ -75,7 +77,7 @@ class Kernel(KernelMeta):
             parsedname = self._top_function
         return parsedname, allports, functions[parsedname]
 
-    def _parse_functions(self, functions_l:List)->Dict:
+    def _parse_functions(self, functions_l: List) -> Dict:
         """Parse the functions list into a dict."""
         f = {}
         for funcname in functions_l:
@@ -94,7 +96,7 @@ class Kernel(KernelMeta):
             f[funcname['name']] = e
         return f
 
-    def _main_function_sanity_check(self)->None:
+    def _main_function_sanity_check(self) -> None:
         if not self._main_function['rtnType'] == "void":
             raise RuntimeError(f"The return type of the top_level function should be void not {self._main_function['rtnType']}")
 
@@ -105,16 +107,16 @@ class Kernel(KernelMeta):
             raise SyntaxError('extern "C" not found. Top level function '
                               'should be wrapped by extern "C"')
 
-    def display(self)->None:
+    def display(self) -> None:
         """Render the kernel code in a jupyter notebook."""
         from IPython.display import display, Code
         _code = Code(self._srccode, language="cpp")
         display(_code)
 
-    def completed_srccode(self)->str:
+    def completed_srccode(self) -> str:
         """From the parsed information generate the source."""
         if self._requires_boilerplate:
-            preamble= f"""
+            preamble = """
 #define NOCPP
 #include <stdint.h>
 #include <stdio.h>
@@ -138,23 +140,23 @@ class Kernel(KernelMeta):
             # nested { }
             match = re.search(pattern, s)
             end_index = self._find_matching_brackets(s, match.end()-1)
-            s =  s[:end_index] + '\n} // extern end\n' + s[end_index:]
+            s = s[:end_index] + '\n} // extern end\n' + s[end_index:]
         else:
             s = f"{self._srccode}"
 
         return s
 
-    def _get_ptr_type_depth(self, arg)->int:
+    def _get_ptr_type_depth(self, arg) -> int:
         arg = arg.rstrip()
         count = 0
         for i in reversed(arg):
-            if i=="*":
+            if i == "*":
                 count += 1
             else:
                 break
         return count
 
-    def _find_matching_brackets(self, s, start_index:int):
+    def _find_matching_brackets(self, s, start_index: int):
         stack = []
         for i in range(start_index, len(s)):
             if s[i] == '{':
@@ -162,12 +164,13 @@ class Kernel(KernelMeta):
             elif s[i] == '}':
                 stack.pop()
 
-            if len(stack)==0:
+            if len(stack) == 0:
                 return i+1
 
-        raise RuntimeError(f"Unable to find closing brace for {self._main_function['fullsig']}")
+        raise RuntimeError("Unable to find closing brace for "
+                           f"{self._main_function['fullsig']}")
 
-    def to_cpp(self)->None:
+    def to_cpp(self) -> None:
         """ output source code to a .cpp file"""
         with open(f'{self.name}.cpp', 'w') as file:
             file.write(self.completed_srccode())
@@ -215,7 +218,7 @@ class Kernel(KernelMeta):
 
     def _set_arg_io_values(self, bufferargs, rtpargs):
         '''Map C/C++ arguments to BufferPorts and RTP ports.'''
-        mapped_buffers = itertools.zip_longest(self.bufferports,bufferargs)
+        mapped_buffers = itertools.zip_longest(self.bufferports, bufferargs)
 
         for bufferport, input_arg in mapped_buffers:
             if input_arg is not None:
@@ -225,7 +228,7 @@ class Kernel(KernelMeta):
                 bufferport.io = 'out'
                 bufferport.slices = list()
 
-        for rtpport, call_value in zip(self.rtpports,rtpargs):
+        for rtpport, call_value in zip(self.rtpports, rtpargs):
             rtpport.value = call_value
 
     def create_outputs(self, behavioral_n_tracing):
@@ -268,14 +271,15 @@ class Kernel(KernelMeta):
 
     def _parsecpp_to_ports(self, parsedcpp):
         bufferports = [BufferPort(param['name'], param['type'])
-                              for param in parsedcpp.functions[-1]["parameters"]
-                              if '*' in param['type'] ]
+                       for param in parsedcpp.functions[-1]["parameters"]
+                       if '*' in param['type']]
 
         rtpports = [RTPPort(param['name'], param['type'], c_dtype=param['type'])
-                              for param in parsedcpp.functions[-1]["parameters"]
-                              if '*' not in param['type'] ]
+                    for param in parsedcpp.functions[-1]["parameters"]
+                    if '*' not in param['type']]
 
         return bufferports + rtpports
+
 
 def _default_behavioral_validate_bufferports(invobj):
     """ A behavioural model that gives users guidance to build a behavorial model or
