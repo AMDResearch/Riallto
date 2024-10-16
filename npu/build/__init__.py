@@ -2,12 +2,13 @@
 # SPDX-License-Identifier: MIT
 
 import os
-from .utils import is_win, is_win_path, is_wsl_win_path
+from .utils import is_win_path, is_wsl_win_path
 
 MODULE_PATH = os.path.dirname(os.path.realpath(__file__))
-BUILD_TEMPLATE_PATH = os.path.join(MODULE_PATH,"build_template")
+BUILD_TEMPLATE_PATH = os.path.join(MODULE_PATH, "build_template")
 
-def wslpath(winpath:str)->str:
+
+def wslpath(winpath: str) -> str:
     """ From the windows path create the equivalent WSL path """
     if is_win_path(winpath):
         drive = winpath[0].lower()
@@ -19,4 +20,3 @@ def wslpath(winpath:str)->str:
         return newpath
     else:
         return winpath
-
