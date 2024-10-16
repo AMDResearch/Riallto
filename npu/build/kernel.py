@@ -110,7 +110,7 @@ class Kernel(KernelMeta):
     def display(self) -> None:
         """Render the kernel code in a jupyter notebook."""
         from IPython.display import display, Code
-        _code = Code(self._srccode, language="cpp")
+        _code = Code(self.srccode, language="cpp")
         display(_code)
 
     def completed_srccode(self) -> str:
