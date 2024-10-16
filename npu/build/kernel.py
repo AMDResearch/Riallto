@@ -12,7 +12,6 @@ from .buffers import Buffer
 from .port import BufferPort, RTPPort
 from typing import Optional, Callable, List, Dict
 import re
-import warnings
 
 
 class Kernel(KernelMeta):
@@ -245,6 +244,9 @@ class Kernel(KernelMeta):
         """Build the kernel object file for linking into the complete application."""
         if not os.path.exists(self.kb.buildobjpath):
             self.kb.build(debug)
+            with open(self.kb.buildobjpath + '.lst', 'r', encoding='utf-8') as file:
+                vliwasm = file.read()
+            self._asmlst = '\n'.join(vliwasm.split('\n')[6:])
 
     @property
     def objfile(self):
@@ -254,13 +256,15 @@ class Kernel(KernelMeta):
     @property
     def asm(self):
         """Returns string of VLIW Assembly instructions"""
-        filename = self.kb.buildobjpath + '.lst'
-        if not os.path.exists(filename):
+        if self._asmlst is None:
             raise RuntimeError('Kernel is not built (compiled). Build kernel '
                                'to check assembly')
-        with open(filename, 'r', encoding='utf-8') as file:
-            vliwasm = file.read()
-        return '\n'.join(vliwasm.split('\n')[6:])
+        return self._asmlst
+
+    def asmdisplay(self) -> None:
+        """Render the VLIW Assembly instructions in a jupyter notebook"""
+        from IPython.display import display, Code
+        display(Code(self.asm, language="c-objdump"))
 
     def _parsecpp_to_ports(self, parsedcpp):
         bufferports = [BufferPort(param['name'], param['type'])
