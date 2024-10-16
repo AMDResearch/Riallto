@@ -14,7 +14,7 @@ def test_asm_kernel_built():
 
     kernelobj = Plus1()
     kernelobj.build()
-    kernelobj.asmdisplay
+    kernelobj.asmdisplay()
     assert kernelobj.asm
 
 
@@ -33,6 +33,6 @@ def test_asm_kernel_notbuilt_asmdisplay():
 
     kernelobj = RgbaRtpThres()
     with pytest.raises(RuntimeError) as excinfo:
-        _ = kernelobj.asmdisplay
+        _ = kernelobj.asmdisplay()
 
     assert 'is not built (compiled)' in str(excinfo.value)
