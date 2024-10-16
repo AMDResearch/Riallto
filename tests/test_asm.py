@@ -14,14 +14,25 @@ def test_asm_kernel_built():
 
     kernelobj = Plus1()
     kernelobj.build()
+    kernelobj.asmdisplay
     assert kernelobj.asm
 
 
-def test_asm_kernel_notbuilt():
-    """Test if a non built kernel returns RuntimeError"""
+def test_asm_kernel_notbuilt_asm():
+    """Test if a non built kernel returns RuntimeError when calling asm"""
 
     kernelobj = PlusN()
     with pytest.raises(RuntimeError) as excinfo:
         _ = kernelobj.asm
+
+    assert 'Kernel is not built (compiled)' in str(excinfo.value)
+
+
+def test_asm_kernel_notbuilt_asmdisplay():
+    """Test if a non built kernel returns RuntimeError when calling asmdisplay"""
+
+    kernelobj = PlusN()
+    with pytest.raises(RuntimeError) as excinfo:
+        _ = kernelobj.asmdisplay
 
     assert 'Kernel is not built (compiled)' in str(excinfo.value)
