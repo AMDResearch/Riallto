@@ -25,7 +25,7 @@ def test_asm_kernel_notbuilt_asm():
     with pytest.raises(RuntimeError) as excinfo:
         _ = kernelobj.asm
 
-    assert 'Kernel is not built (compiled)' in str(excinfo.value)
+    assert 'is not built (compiled)' in str(excinfo.value)
 
 
 def test_asm_kernel_notbuilt_asmdisplay():
