@@ -260,8 +260,8 @@ class Kernel(KernelMeta):
     def asm(self):
         """Returns string of VLIW Assembly instructions"""
         if self._asmlst is None:
-            raise RuntimeError('Kernel is not built (compiled). Build kernel '
-                               'to check assembly')
+            raise RuntimeError(f'Kernel: {self.name} is not built (compiled). '
+                               'Build kernel to check assembly')
         return self._asmlst
 
     def asmdisplay(self) -> None:
