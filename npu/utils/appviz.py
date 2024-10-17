@@ -122,7 +122,6 @@ class AppViz:
                     self._draw_connection(c, bool(i))
                     if i == 1:
                         tmpconn.pop(k)
-            self._mt2ct_counter = 0
         conn = copy(tmpconn)
 
         # Draw animations ending in the MT third. Run twice for ping-pong
@@ -250,6 +249,7 @@ class AppViz:
                         start_empty=dbuf)
             if not dbuf:
                 self._draw_mem2ct_ic(dst, dst_buf_color, mtmode)
+            else:
                 self._mt2ct_counter += 1
 
         self._draw_ub2mem_ic(src, dst)
