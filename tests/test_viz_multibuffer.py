@@ -291,8 +291,8 @@ def test_viz_scaleup_2buffers_2kernels_mt():
             xo0 = []
             xo1 = []
             for i in range(2):
-                xo0.append(self.kernel0[i](xs0[i], xs0[i].size))
-                xo1.append(self.kernel0[i](xs1[i], xs1[i].size, 3))
+                xo0.append(self.kernel0[i](xs0[i], xs0[i].nbytes))
+                xo1.append(self.kernel0[i](xs1[i], xs1[i].nbytes, 3))
 
             x_out0[:] = self.concat0(xo0)
             x_out1[:] = self.concat1(xo1)
