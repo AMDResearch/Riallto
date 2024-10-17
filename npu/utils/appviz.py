@@ -122,6 +122,7 @@ class AppViz:
                     self._draw_connection(c, bool(i))
                     if i == 1:
                         tmpconn.pop(k)
+            self._mt2ct_counter = 0
         conn = copy(tmpconn)
 
         # Draw animations ending in the MT third. Run twice for ping-pong
@@ -131,6 +132,7 @@ class AppViz:
                     self._draw_connection(c, bool(i))
                     if i == 1:
                         tmpconn.pop(k)
+            self._ct2mt_counter = 0
         conn = copy(tmpconn)
 
         # Draw remaining animations
@@ -194,15 +196,16 @@ class AppViz:
                 bufcol = self._dbuf_colors[c['name']]
 
             if dst.get('mtmode') == 'passthrough':
-                color2 = _mt2it_color[self._ct2mt_counter//2]
+                dst_it_color = _mt2it_color[self._ct2mt_counter//2]
             else:
-                color2 = _mt2it_color[0]
+                idx = int(c['sinkkernel'][-1])%2
+                dst_it_color = _mt2it_color[idx]
 
             self._col_svg.mem_tiles[0].add_buffer(
                         bufcol,
                         self._kanimate_duration/2,
                         start_empty=dbuf,
-                        color2=color2,
+                        color2=dst_it_color,
                         delay= self._ct2mt_counter/5)
             if not dbuf:
                 for i in range(2):
@@ -233,7 +236,8 @@ class AppViz:
                     show_mem_buffer = False
                 src_color = _it2mt_color[self._mt2ct_counter]
             else:
-                src_color = _it2mt_color[0]
+                idx = int(c['srckernel'][-1])
+                src_color = _it2mt_color[idx]
 
             if show_mem_buffer:
                 for i in range(int(bool(self._mt2ct_pt)) + 1):
