@@ -8,6 +8,7 @@ from npu.build.kernel import Kernel
 from npu.build.mtkernel import MTPassThrough, MTSplit, MTConcat
 from npu.build.appbuilder import AppBuilder
 from .test_visualization import _count_class_occurrences
+from npu.lib import Plus1, PlusN
 
 
 imgdir = str(Path(__file__).parent / "images") + '/'
@@ -270,3 +271,40 @@ def test_viz_k2in_2out_outmpt():
     assert _count_class_occurrences(svgfile, 'aie_tile_buffers') == 8
     assert _count_class_occurrences(svgfile, 'mem_connections') == 9
     assert _count_class_occurrences(svgfile, 'mem_tile_buffers') == 4
+
+
+def test_viz_scaleup_2buffers_2kernels_mt():
+    class MultiKernelScaleup_2_2_mt(AppBuilder):
+        def __init__(self):
+            self.concat0 = MTConcat()
+            self.concat1 = MTConcat()
+            self.split0 = MTSplit(2)
+            self.split1 = MTSplit(2)
+            self.kernel0 = [Plus1() for _ in range(2)]
+            self.kernel1 = [PlusN() for _ in range(2)]
+            super().__init__()
+
+        def callgraph(self, x_in0, x_in1, x_out0, x_out1):
+            xs0 = self.split0(x_in0)
+            xs1 = self.split0(x_in1)
+
+            xo0 = []
+            xo1 = []
+            for i in range(2):
+                xo0.append(self.kernel0[i](xs0[i], xs0[i].size))
+                xo1.append(self.kernel0[i](xs1[i], xs1[i].size, 3))
+
+            x_out0[:] = self.concat0(xo0)
+            x_out1[:] = self.concat1(xo1)
+
+    x_in0 = np.zeros(shape=(512, 1), dtype=np.uint8)
+    x_in1 = np.zeros(shape=x_in0.shape, dtype=x_in0.dtype)
+    x_out0 = np.zeros(shape=x_in0.shape, dtype=x_in0.dtype)
+    x_out1 = np.zeros(shape=x_in0.shape, dtype=x_in0.dtype)
+
+    app_builder = MultiKernelScaleup_2_2_mt()
+    _ = app_builder.to_metadata(x_in0, x_in1, x_out0, x_out1)
+    app_builder.save(svgfile := f'{imgdir}{app_builder.name}.svg')
+    assert _count_class_occurrences(svgfile, 'kernel') == 4
+    assert _count_class_occurrences(svgfile, 'aie_tile_buffers') == 8
+    assert _count_class_occurrences(svgfile, 'mem_connections') == 16
