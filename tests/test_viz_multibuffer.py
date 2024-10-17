@@ -2,7 +2,6 @@
 # SPDX-License-Identifier: MIT
 
 from pathlib import Path
-import pytest
 import numpy as np
 from npu.build.kernel import Kernel
 from npu.build.mtkernel import MTPassThrough, MTSplit, MTConcat
@@ -286,7 +285,7 @@ def test_viz_scaleup_2buffers_2kernels_mt():
 
         def callgraph(self, x_in0, x_in1, x_out0, x_out1):
             xs0 = self.split0(x_in0)
-            xs1 = self.split0(x_in1)
+            xs1 = self.split1(x_in1)
 
             xo0 = []
             xo1 = []
