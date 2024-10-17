@@ -65,7 +65,7 @@ extern "C" {
 
 def kernel_behavior_2_1(invobj):
     invobj.out_buffer.array = np.concatenate((invobj.in0.array,
-                                                invobj.in1.array))
+                                              invobj.in1.array))
 
 
 def kernel_behavior_1_2(invobj):
@@ -88,7 +88,6 @@ def test_viz_2in_1out():
         def callgraph(self, x_in0, x_in1, x_out):
             x_out[:] = self.kernel(x_in0, x_in1)
 
-
     x_in0 = np.zeros(shape=(32, 1), dtype=np.uint16)
     x_in1 = np.zeros(shape=(32, 1), dtype=np.uint16)
     x_out = np.zeros(shape=(64, 1), dtype=np.uint16)
@@ -109,7 +108,6 @@ def test_viz_1in_2out():
 
         def callgraph(self, x_in, x_out0, x_out1):
             x_out0[:], x_out1[:] = self.kernel(x_in)
-
 
     x_in = np.zeros(shape=(64, 1), dtype=np.uint16)
     x_out0 = np.zeros(shape=(32, 1), dtype=np.uint16)
@@ -133,7 +131,6 @@ def test_viz_2in_2out():
         def callgraph(self, x_in0, x_in1, x_out0, x_out1):
             x_out0[:], x_out1[:] = self.kernel(x_in0, x_in1)
 
-
     x_in0 = np.zeros(shape=(32, 1), dtype=np.uint16)
     x_in1 = np.zeros(shape=(32, 1), dtype=np.uint16)
     x_out0 = np.zeros(shape=(32, 1), dtype=np.uint16)
@@ -156,7 +153,7 @@ def test_viz_k2in_1out_mt():
 
         def callgraph(self, x_in, x_out):
             xs = self.split(x_in)
-            x_out[:]  = self.kernel(*xs)
+            x_out[:] = self.kernel(*xs)
 
     x_in = np.zeros(shape=(64, 1), dtype=np.uint16)
     x_out = np.zeros(shape=(64, 1), dtype=np.uint16)
@@ -204,7 +201,6 @@ def test_viz_k2in_2out_mt():
             x0, x1 = self.kernel(*xs)
             x_out[:] = self.concat([x0, x1])
 
-
     x_in = np.zeros(shape=(64, 1), dtype=np.uint16)
     x_out = np.zeros(shape=(64, 1), dtype=np.uint16)
 
@@ -229,7 +225,6 @@ def test_viz_k2in_2out_inmpt():
             x_in_mpt0 = self.mtbi0(x_in0)
             x_in_mpt1 = self.mtbi1(x_in1)
             x_out0[:], x_out1[:] = self.kernel(x_in_mpt0, x_in_mpt1)
-
 
     x_in0 = np.zeros(shape=(32, 1), dtype=np.uint16)
     x_in1 = np.zeros(shape=(32, 1), dtype=np.uint16)

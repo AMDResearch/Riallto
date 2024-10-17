@@ -28,6 +28,7 @@ _ct_color = {
 _it2mt_color = [config.green, config.artichoke]
 _mt2it_color = [config.purple, config.orchid]
 
+
 class AppViz:
     """ Visualize the Dataflow Graph in a column of the NPU"""
     def __init__(self, metadata: str):
@@ -161,7 +162,7 @@ class AppViz:
                     self._col_svg.aie_tiles[dst_row].add_buffer(
                             self._drawn_kernels[src['name']]['kcolor'],
                             self._kanimate_duration/2,
-                            start_empty= bool(i))
+                            start_empty=bool(i))
 
             self._draw_ct2ct_data_movement(src, dst)
 
@@ -198,7 +199,7 @@ class AppViz:
             if dst.get('mtmode') == 'passthrough':
                 dst_it_color = _mt2it_color[self._ct2mt_counter//2]
             else:
-                idx = int(c['sinkkernel'][-1])%2
+                idx = int(c['sinkkernel'][-1]) % 2
                 dst_it_color = _mt2it_color[idx]
 
             self._col_svg.mem_tiles[0].add_buffer(
@@ -206,7 +207,7 @@ class AppViz:
                         self._kanimate_duration/2,
                         start_empty=dbuf,
                         color2=dst_it_color,
-                        delay= self._ct2mt_counter/5)
+                        delay=self._ct2mt_counter/5)
             if not dbuf:
                 for i in range(2):
                     self._col_svg.aie_tiles[src_row].add_buffer(
@@ -262,7 +263,6 @@ class AppViz:
     def _draw_ct2mem_ic(self, src, src_color) -> None:
         """Display animation originating from CT and destination MT"""
 
-        #src_color = self._drawn_kernels[src['name']]['kcolor']
         src_row = self._loc_conv[src['tloc'][1]]
         delay = self._ct2mt_counter / 5
 
