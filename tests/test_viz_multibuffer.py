@@ -300,5 +300,5 @@ def test_viz_scaleup_2buffers_2kernels_mt():
     _ = app_builder.to_metadata(x_in0, x_in1, x_out0, x_out1)
     app_builder.save(svgfile := f'{imgdir}{app_builder.name}.svg')
     assert _count_class_occurrences(svgfile, 'kernel') == 8
-    assert _count_class_occurrences(svgfile, 'aie_tile_buffers') == 8
+    assert _count_class_occurrences(svgfile, 'aie_tile_buffers') == 16
     assert _count_class_occurrences(svgfile, 'mem_connections') == 16
