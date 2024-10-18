@@ -58,6 +58,7 @@ def test_memtile_distribute_join_4_non_anonymous(datatype):
     trace_app.save(f'{imgdir}{trace_app.name}_{datatype_txt}.svg')
     app = AppRunner(f"{trace_app.name}.xclbin")
 
+    np.random.seed(512)
     test_data = np.random.randn(*array_in.shape).astype(datatype)
     bo_in = app.allocate(shape=(4, size), dtype=datatype)
     bo_out = app.allocate(shape=(4, size), dtype=datatype)
@@ -135,6 +136,7 @@ def test_memtile_sum_mtsplit(datatype):
     trace_app.save(f'{imgdir}{trace_app.name}_{datatype_txt}.svg')
     app = AppRunner(f"{trace_app.name}.xclbin")
 
+    np.random.seed(256)
     test_data = np.random.randn(*array_in.shape).astype(datatype)
     bo_in = app.allocate(shape=array_in.shape, dtype=datatype)
     bo_out = app.allocate(shape=array_out.shape, dtype=datatype)
