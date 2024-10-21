@@ -196,7 +196,7 @@ class AppViz:
             else:
                 bufcol = self._dbuf_colors[c['name']]
 
-            idx = int(c['sinkkernel'][-1]) % 2
+            idx = (int(c['sinkkernel'][-1]) + 1) % 2
             dst_it_color = _mt2it_color[idx]
 
             self._col_svg.mem_tiles[0].add_buffer(
@@ -233,7 +233,8 @@ class AppViz:
                     dst_buf_color = self._mt2ct_pt[src['name']]['color']
                     show_mem_buffer = False
 
-            src_color = _it2mt_color[self._mt2ct_counter]
+            idx = int(c['srckernel'][-1]) % 2
+            src_color = _it2mt_color[idx]
 
             if show_mem_buffer:
                 for i in range(int(bool(self._mt2ct_pt)) + 1):
