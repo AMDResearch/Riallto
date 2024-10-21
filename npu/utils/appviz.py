@@ -202,7 +202,7 @@ class AppViz:
             self._col_svg.mem_tiles[0].add_buffer(
                         bufcol,
                         self._kanimate_duration/2,
-                        start_empty=dbuf,
+                        start_empty=not dbuf,
                         color2=dst_it_color,
                         delay=self._ct2mt_counter/5)
             if not dbuf:
@@ -241,7 +241,7 @@ class AppViz:
                     self._col_svg.mem_tiles[0].add_buffer(
                                 src_color,
                                 self._kanimate_duration/2,
-                                start_empty=dbuf ^ bool(i),
+                                start_empty=not (dbuf ^ bool(i)),
                                 color2=dst_buf_color,
                                 delay=self._mt2ct_counter/5)
             self._col_svg.aie_tiles[dst_row].add_buffer(
