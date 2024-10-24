@@ -82,9 +82,10 @@ def _set_webcam_resolution(cap, height: int, width: int) -> bool:
     """
     _ = cap.set(cv2.CAP_PROP_FRAME_WIDTH, width)
     _ = cap.set(cv2.CAP_PROP_FRAME_HEIGHT, height)
-    if width != int(cap.get(cv2.CAP_PROP_FRAME_WIDTH)):
-        return False
-    return True
+    if width == int(cap.get(cv2.CAP_PROP_FRAME_WIDTH)) and \
+        height == int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT)):
+        return True
+    return False
 
 
 def _set_supported_webcam_resolution(cap) -> bool:

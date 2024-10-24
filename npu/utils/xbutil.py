@@ -8,9 +8,16 @@ import subprocess
 import tempfile
 import json
 import time
+import platform
+from npu.utils.test_device import get_device_name
 
-XBUTIL_DIR = Path("C:\\Windows\\System32\\AMD")
-
+if platform.system() == "Windows":
+    XBUTIL_DIR = Path("C:\\Windows\\System32\\AMD")
+    _tool = 'xbutil' if get_device_name() == 'AMD IPU Device' else 'xrt-smi'\
+        + '.exe'
+else:
+    XBUTIL_DIR = Path("/opt/xilinx/xrt/bin/")
+    _tool = 'xrt-smi'
 
 def _map_list_to_list(appsmap: list) -> List[str]:
     applist = []
@@ -29,13 +36,13 @@ class XBUtil:
         Attributes
         ----------
         _xbutil : Path
-            A Path or command to call the xbutil.exe application
+            A Path or command to call the xbutil.exe or xrt-smi application
         _devices : Set[str]
             A set of devices that are present on this machine.
         devid : str
             A unique string for the Phx device on this machine.
         """
-        self._xbutil = Path(f"{XBUTIL_DIR}/xbutil.exe")
+        self._xbutil = Path(f"{XBUTIL_DIR}/{_tool}")
         self._check_xbutil_install()
         self._devices = self._get_devices()
         self._check_devices()
@@ -60,20 +67,20 @@ class XBUtil:
         return s
 
     def list_apps(self) -> List[str]:
-        """ Lists all the apps running on the
-        NPU device """
+        """ Lists all the apps running on the NPU device """
         applist = []
         wse_pattern = "IPUV1CNN"
         riallto_pattern = "Riallto"
+        app_pattern = "app"
         for f in self._get_loaded_functions():
             name = list(f.keys())[0]
-            if name.endswith(riallto_pattern) or name.endswith(wse_pattern):
+            if name.endswith(riallto_pattern) or name.endswith(wse_pattern) or\
+                app_pattern in name:
                 applist.append(f)
         return applist
 
     def _apps(self) -> None:
-        """ displays all apps that are running on the NPU
-        device using an IPython widget """
+        """Displays all running apps on the NPU device using an IPython widget"""
         import ipywidgets as widgets
         from IPython.display import display
         output1 = widgets.Output()
@@ -115,7 +122,7 @@ class XBUtil:
     @property
     def app_count(self) -> int:
         """ The total number of running apps """
-        return self.num_wse_streams + self.num_riallto_streams
+        return self.num_wse_streams + self.num_riallto_streams + self.num_app_streams
 
     @property
     def num_wse_streams(self) -> int:
@@ -126,16 +133,23 @@ class XBUtil:
     def num_riallto_streams(self) -> int:
         return sum(1 for app in self.loaded_functions if 'Riallto' in app)
 
+    @property
+    def num_app_streams(self) -> int:
+        return sum(1 for app in self.loaded_functions if 'app' in app)
+
     def _get_loaded_functions(self) -> List[str]:
         """ Returns a list of the loaded functions on the NPU from xbutil. """
         applist = []
-        d = self._cmd(['examine', '-d', self.devid, '-r', 'dynamic-regions',
-                       '-r', 'aie-partitions'])
+        d = self._cmd(['examine', '-d', self.devid, '-r', 'all'])
 
-        for f, col in zip(d['devices'][0]['dynamic_regions'][0]['compute_units'],
-                          d['devices'][0]['aie_partitions']['partitions']):
-            applist.append({f['name']: {'start_col': str(col['start_col']),
-                                        'num_cols': str(col['num_cols'])}})
+        dyreg = d['devices'][0].get('dynamic_regions')
+        for idx, col in enumerate(d['devices'][0]['aie_partitions']['partitions']):
+            if dyreg:
+                name = dyreg[0]['compute_units'][idx]['name']
+            else:
+                name = f'app{idx}'
+            applist.append({name: {'start_col': str(col['start_col']),
+                                   'num_cols': str(col['num_cols'])}})
         return applist
 
     @property

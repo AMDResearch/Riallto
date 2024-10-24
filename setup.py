@@ -29,7 +29,7 @@ else:
 
 setup(
     name="npu",
-    version='1.0',
+    version='1.1',
     package_data={
         '': ['*.py', '*.pyd', '*.so', '*.dll', 'Makefile', '.h', '.cpp',
             'tests/*',
