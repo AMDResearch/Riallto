@@ -3,7 +3,6 @@
 
 import platform
 from .xbutil import XBUtil
-import platform
 
 def nputop():
     """ Uses XBUtil to display all currently running applications in an ipywidgets
