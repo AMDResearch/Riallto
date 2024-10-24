@@ -315,7 +315,7 @@ class AppViz:
             self._col_svg.mem_tiles[0].add_ic_animation(
                         diagonal_to_tile=1,
                         north=1,
-                        duration=self._kanimate_duration*1,
+                        duration=self._kanimate_duration/2,
                         color=src_color,
                         delay=self._it2mt_counter/5)
             self._col_svg.if_tiles[0].add_dma_animation(
@@ -342,7 +342,7 @@ class AppViz:
             self._col_svg.mem_tiles[0].add_ic_animation(
                         diagonal_from_tile=1,
                         south=1,
-                        duration=self._kanimate_duration*1,
+                        duration=self._kanimate_duration/2,
                         color=dst_color,
                         delay=self._mt2it_counter/5)
             self._col_svg.if_tiles[0].add_ic_animation(
