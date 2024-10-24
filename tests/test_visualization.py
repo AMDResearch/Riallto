@@ -281,7 +281,7 @@ def test_dataparallel(randomname):
         objin = getattr(obj, inname)
         objout.array = objin.array
 
-    class DataParallelPassthrough(AppBuilder):
+    class DataParallelMTSplit(AppBuilder):
         def __init__(self):
             self.split = MTSplit(4)
             self.concat = MTConcat()
@@ -296,7 +296,7 @@ def test_dataparallel(randomname):
                 x = self.concat(xs)
                 xout[t] = x
 
-    app_builder = DataParallelPassthrough()
+    app_builder = DataParallelMTSplit()
     _ = app_builder.to_metadata(x_in, x_out)
     svgfile = f'{imgdir}{app_builder.name}_{inname}_{outname}.svg'
     app_builder.save(svgfile)
