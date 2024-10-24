@@ -47,6 +47,7 @@ class AppViz:
         self._mt2it_counter = 0
         self._mt2ct_pt = {}
         self._dbuf_colors = {}
+        self._ct2mt_dict = {}
         self._draw_connections_sorted()
         self._draw_key()
 
@@ -196,8 +197,10 @@ class AppViz:
             else:
                 bufcol = self._dbuf_colors[c['name']]
 
-            idx = (int(c['sinkkernel'][-1])) % 2
-            dst_it_color = _mt2it_color[idx]
+            if (key := c['sinkkernel']) not in self._ct2mt_dict.keys():
+                self._ct2mt_dict[key] = {'idx': len(self._ct2mt_dict)}
+
+            dst_it_color = _mt2it_color[self._ct2mt_dict[key]['idx']]
 
             self._col_svg.mem_tiles[0].add_buffer(
                         bufcol,
