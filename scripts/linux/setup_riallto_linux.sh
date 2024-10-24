@@ -146,6 +146,7 @@ fi
 
 if [ $build_xrt -eq 1 ]; then
 	# Building the NPU driver version and installing it
+
 	if [ ! -f "./xdna-driver-builder/${DRIVER_TARBALL}" ]; then
 		echo "xdna-driver-builder/${DRIVER_TARBALL} is missing, building it from scratch"
 		pushd xdna-driver-builder
