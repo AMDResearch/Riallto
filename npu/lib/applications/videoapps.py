@@ -83,7 +83,7 @@ def _set_webcam_resolution(cap, height: int, width: int) -> bool:
     _ = cap.set(cv2.CAP_PROP_FRAME_WIDTH, width)
     _ = cap.set(cv2.CAP_PROP_FRAME_HEIGHT, height)
     if width == int(cap.get(cv2.CAP_PROP_FRAME_WIDTH)) and \
-        height == int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT)):
+            height == int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT)):
         return True
     return False
 
@@ -101,7 +101,7 @@ def _set_supported_webcam_resolution(cap) -> bool:
 
 
 class VideoApplication:
-    """Wrapper class that allows to feed and visualize video stream from the NPU
+    """Class that allows to feed and visualize a video stream from the NPU
 
     You must pass an xclbin and optionally the pixel type for the input and
     output images.
