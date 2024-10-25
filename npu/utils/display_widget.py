@@ -17,7 +17,7 @@ class DisplayImage:
     _button_widget : widgets.Button
         reference to the button widget used to stop the video feed.
     exit : bool
-        set by the button widget and read by the display widget to step the video.
+        set by the button widget to stop the video feed
     """
 
     def __init__(self):
@@ -34,14 +34,17 @@ class DisplayImage:
         display(self._image_widget)
 
     def _stop_video(self, event=None) -> None:
-        """ On button press this function is called to set the exit attribute and stop the video """
+        """ On button press this function stops the video feed"""
         self.exit = True
         self._button_widget.unobserve_all()
         self._button_widget.disabled = True
 
-    def frame(self, value) -> None:
+    def frame(self, value, scale: int = 1) -> None:
         """ Sets the current image on the widget """
         pil_image = PIL.Image.fromarray(value)
+        if scale > 1:
+            rows, cols, _ = value.shape
+            pil_image = pil_image.resize((cols//scale, rows//scale))
         b = BytesIO()
         pil_image.save(b, format='jpeg')
         self._image_widget.value = b.getvalue()
