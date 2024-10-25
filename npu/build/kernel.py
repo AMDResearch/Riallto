@@ -12,6 +12,7 @@ from .buffers import Buffer
 from .port import BufferPort, RTPPort
 from typing import Optional, Callable, List, Dict
 import re
+import warnings
 
 
 class Kernel(KernelMeta):
