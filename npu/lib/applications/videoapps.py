@@ -116,6 +116,8 @@ class VideoApplication:
         Pixel type for the input image, either pxtype.RGBA or pxtype.GRAY
     pxtype_out : pxtype
         Pixel type for the output image, either pxtype.RGBA or pxtype.GRAY
+    scale : int
+        Scale down displayed image by 'scale' factor
 
     Returns
     -------
@@ -134,7 +136,7 @@ class VideoApplication:
     def __init__(self, filename, videosource: Union[int, str] = 0,
                  pxtype_in: pxtype = pxtype.RGBA,
                  pxtype_out: pxtype = pxtype.RGBA,
-                 resize: int = 4):
+                 scale: int = 1):
 
         if not isinstance(pxtype_in, pxtype):
             raise ValueError(f"pxtype_in ({pxtype_in}) must be of the type "
@@ -159,7 +161,7 @@ class VideoApplication:
         self.app = AppRunner(filename)
         self.thread = None
         self._disp = None
-        self._scaleoutput = resize
+        self._scaleoutput = scale
 
     def _get_resolution(self, videosource):
         if isinstance(videosource, int):
@@ -195,7 +197,7 @@ class VideoApplication:
             raise IOError("Cannot read from webcam. Check if other notebook "
                           "is using the webcam.")
 
-        self._disp = DisplayImage(self._scaleoutput)
+        self._disp = DisplayImage()
         self.app.rtpwidgets(self.rtps)
         self.thread = threading.Thread(target=self._process_video)
         self.thread.start()
@@ -236,7 +238,7 @@ class VideoApplication:
             else:
                 tmp = np.copy(bo_out)
 
-            self._disp.frame(tmp)
+            self._disp.frame(tmp, self._scaleoutput)
 
             if self._disp.exit:
                 self._cap.release()
@@ -265,10 +267,10 @@ class VideoApplication:
 class _PipecleanerVideoProcessing(VideoApplication):
     """Pipecleaner Video processing
     """
-    def __init__(self, videosource: Union[int, str] = 0, resize: int = 1):
+    def __init__(self, videosource: Union[int, str] = 0, scale: int = 1):
         self._get_resolution(videosource)
         filename = _get_full_path(f'color_threshold_v1_{self.cam_h}p.xclbin')
-        super().__init__(filename, videosource, resize=resize)
+        super().__init__(filename, videosource, scale=scale)
 
     def _process_video(self):
         bo_in = np.zeros(shape=(self.cam_h, self.cam_w, 4), dtype=np.uint8)
@@ -294,11 +296,11 @@ class ColorThresholdVideoProcessing(VideoApplication):
             'thresholdValue3': _int_slider_b,
             'thresholdType': _dropdown_thr}
 
-    def __init__(self, videosource: Union[int, str] = 0, resize: int = 1):
+    def __init__(self, videosource: Union[int, str] = 0, scale: int = 1):
 
         self._get_resolution(videosource)
         filename = _get_full_path(f'color_threshold_v1_{self.cam_h}p.xclbin')
-        super().__init__(filename, videosource, resize=resize)
+        super().__init__(filename, videosource, scale=scale)
 
 
 class ScaledColorThresholdVideoProcessing(VideoApplication):
@@ -310,11 +312,11 @@ class ScaledColorThresholdVideoProcessing(VideoApplication):
             'thresholdValue3': _int_slider_b,
             'thresholdType': _dropdown_thr}
 
-    def __init__(self, videosource: Union[int, str] = 0, resize: int = 1):
+    def __init__(self, videosource: Union[int, str] = 0, scale: int = 1):
 
         self._get_resolution(videosource)
         filename = _get_full_path(f'color_threshold_v2_{self.cam_h}p.xclbin')
-        super().__init__(filename, videosource, resize=resize)
+        super().__init__(filename, videosource, scale=scale)
 
 
 class _Filter2dOperator():
@@ -343,11 +345,11 @@ class EdgeDetectVideoProcessing(VideoApplication):
                            'name': 'threshold'}
     }
 
-    def __init__(self, videosource: Union[int, str] = 0, resize: int = 1):
+    def __init__(self, videosource: Union[int, str] = 0, scale: int = 1):
 
         self._get_resolution(videosource)
         filename = _get_full_path(f'edge_detect_{self.cam_h}p.xclbin')
-        super().__init__(filename, videosource, resize=resize)
+        super().__init__(filename, videosource, scale=scale)
 
     def start(self):
         super().start()
@@ -397,11 +399,11 @@ class ColorDetectVideoProcessing(VideoApplication):
         }
     }
 
-    def __init__(self, videosource: Union[int, str] = 0, resize: int = 1):
+    def __init__(self, videosource: Union[int, str] = 0, scale: int = 1):
 
         self._get_resolution(videosource)
         filename = _get_full_path(f'color_detect_{self.cam_h}p.xclbin')
-        super().__init__(filename, videosource, resize=resize)
+        super().__init__(filename, videosource, scale=scale)
 
     def start(self):
         super().start()
@@ -429,22 +431,22 @@ class ColorDetectVideoProcessing(VideoApplication):
 class DenoiseTPVideoProcessing(VideoApplication):
     """Denoising Task Parallel Video processing
     """
-    def __init__(self, videosource: Union[int, str] = 0, resize: int = 1):
+    def __init__(self, videosource: Union[int, str] = 0, scale: int = 1):
 
         self._get_resolution(videosource)
         filename = \
             _get_full_path(f'denoise_task_parallel_{self.cam_h}p.xclbin')
         super().__init__(filename, videosource, pxtype_out=pxtype.GRAY,
-                         resize=resize)
+                         scale=scale)
 
 
 class DenoiseDPVideoProcessing(VideoApplication):
     """Denoising Data Parallel Video processing
     """
-    def __init__(self, videosource: Union[int, str] = 0, resize: int = 1):
+    def __init__(self, videosource: Union[int, str] = 0, scale: int = 1):
 
         self._get_resolution(videosource)
         filename = \
             _get_full_path(f'denoise_data_parallel_{self.cam_h}p.xclbin')
         super().__init__(filename, videosource, pxtype_out=pxtype.GRAY,
-                         resize=resize)
+                         scale=scale)

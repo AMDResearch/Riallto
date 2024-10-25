@@ -20,7 +20,7 @@ class DisplayImage:
         set by the button widget and read by the display widget to step the video.
     """
 
-    def __init__(self, resize: int = 1):
+    def __init__(self):
         """ returns a DisplayImage object """
         self._image_widget = widgets.Image(format='jpeg')
         self._display()
@@ -28,7 +28,6 @@ class DisplayImage:
         self._button_widget.on_click(self._stop_video)
         display(self._button_widget)
         self.exit = False
-        self._resize = resize
 
     def _display(self) -> None:
         """ Creates the display widget """
@@ -40,11 +39,12 @@ class DisplayImage:
         self._button_widget.unobserve_all()
         self._button_widget.disabled = True
 
-    def frame(self, value) -> None:
+    def frame(self, value, scale: int = 1) -> None:
         """ Sets the current image on the widget """
         pil_image = PIL.Image.fromarray(value)
-        rows, cols, _ = value.shape
-        pil_image = pil_image.resize((cols//self._resize, rows//self._resize))
+        if scale > 1:
+            rows, cols, _ = value.shape
+            pil_image = pil_image.resize((cols//scale, rows//scale))
         b = BytesIO()
         pil_image.save(b, format='jpeg')
         self._image_widget.value = b.getvalue()
