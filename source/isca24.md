@@ -33,7 +33,7 @@ You can reach us at [aup@amd.com](mailto:aup@amd.com?subject=FPL%202024%20NPU%20
 
 ## Register
 
-<p><span class="icon-calendar">30 June, 2024 <strong>TBD</strong></span></p>
+<p><span class="icon-calendar">30 June, 2024</span></p>
 
 <p><span class="icon-time">9:00 AM - 12:30 PM</span></p>
 
