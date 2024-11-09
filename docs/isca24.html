@@ -415,8 +415,34 @@ document.write(`
 <h1>Designing for the Neural Processing Unit on AMD Ryzen AI with Open-Source Tools<a class="headerlink" href="#designing-for-the-neural-processing-unit-on-amd-ryzen-ai-with-open-source-tools" title="Link to this heading">#</a></h1>
 <section id="abstract">
 <h2>Abstract<a class="headerlink" href="#abstract" title="Link to this heading">#</a></h2>
-<p>In this tutorial, we will describe the <a class="reference external" href="https://www.amd.com/en/products/processors/consumer/ryzen-ai.html">AMD Ryzen™ AI</a> architecture platform, discuss the neural processing unit (NPU), and provide hands-on experience with the open-source software tools to implement designs. <a class="reference external" href="https://www.amd.com/en/products/processors/consumer/ryzen-ai.html">AMD Ryzen™ AI</a> is the first in a new class of NPUs designed for x86 computers. Built on the <a class="reference external" href="https://www.amd.com/en/technologies/xdna.html">AMD XDNA™</a> spatial dataflow computer architecture, the NPU consists of a tiled array of AI Engine processors, a set of VLIW vector processors with adaptable interconnect, designed to offer lower latency and better energy efficiency.</p>
-<p>Participants will first gain insight into the system architecture of an x86 Ryzen AI processor and the AI Engine compute and data movement capabilities through the <a class="reference external" href="https://riallto.ai/">Riallto</a> open-source exploration framework. Riallto lets users explore the NPU architecture and its programming tools running on Jupyter notebooks. This hands-on tutorial will guide attendees through a series of vision processing examples illustrating various NPU architectural features. You will also see how to program the NPU using Riallto. Then, the IRON AIE programming guide and examples introduce the participants to writing their own compute kernel and data movement. This Interface Representation for hands-ON (IRON) is an API for close-to-metal programming of the AIE-array. It is an open-access toolkit enabling performance engineers to build fast and efficient, often specialized designs through a Python API for <a class="reference external" href="https://github.com/Xilinx/mlir-aie">MLIR-AIE</a>, AMD MLIR dialect representing the AIE-array. Finally, we will briefly show how the <a class="reference external" href="https://ryzenai.docs.amd.com/en/latest/index.html">AMD Ryzen™ AI Software</a> allows users to seamlessly run AI inference on the <a class="reference external" href="https://www.amd.com/en/products/processors/consumer/ryzen-ai.html">AMD Ryzen™ AI</a> based PC.</p>
+  <p>
+        This tutorial introduces the Neural Processing Unit (NPU) on the 
+        <a class="reference external" href="https://www.amd.com/en/products/processors/consumer/ryzen-ai.html">AMD Ryzen™ AI</a>
+        APU and provides hands-on programming experience with open-source software tools. 
+        The <a class="reference external" href="https://www.amd.com/en/products/processors/consumer/ryzen-ai.html">AMD Ryzen™ AI</a>
+        platform is the first in a new class of NPUs designed for x86 computers. The NPU is built on the
+        <a class="reference external" href="https://www.amd.com/en/technologies/xdna.html">AMD XDNA™</a>
+        spatial dataflow computer architecture, and consists of a tiled array of AI Engine processors, 
+        a set of VLIW vector processors with adaptable interconnect, designed to offer lower latency and better energy efficiency.
+      </p>
+
+      <p>
+        Participants will first gain insight into the system architecture of an x86 Ryzen AI processor and the
+        AI Engine compute and data movement capabilities through the
+        <a class="reference external" href="https://riallto.ai/">Riallto</a> open-source exploration framework.
+        Riallto lets users explore the NPU architecture and its programming tools running on Jupyter notebooks. 
+        
+        This hands-on tutorial will guide attendees through a series of vision processing examples illustrating various NPU architectural features. 
+        You will also see how to program the NPU using Riallto. 
+        Then, the IRON AIE programming guide and examples introduce the participants to writing their own compute kernel and data movement. 
+        This Interface Representation for hands-ON (IRON) is an API for close-to-metal programming of the AIE-array.
+        It is an open-access toolkit enabling performance engineers to build fast and efficient, 
+        often specialized designs through a Python API for MLIR-AIE, AMD MLIR dialect representing the AIE-array.
+        Finally, we will briefly show how the 
+        <a class="reference external" href="https://ryzenai.docs.amd.com/en/latest/index.html">AMD Ryzen™ AI Software</a> allows users to seamlessly run AI inference on the
+        <a class="reference external" href="https://www.amd.com/en/products/processors/consumer/ryzen-ai.html">AMD Ryzen™ AI</a> based PC. 
+  </p>
+
 </section>
 <section id="agenda">
 <h2>Agenda<a class="headerlink" href="#agenda" title="Link to this heading">#</a></h2>
@@ -428,13 +454,13 @@ document.write(`
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>13:30 PM – 15:00 PM</p></td>
+<tr class="row-even"><td><p>9:00 AM – 10:00 AM</p></td>
 <td><p>Tutorial Welcome and General Introductions <br> Introduction to Ryzen AI NPU and Riallto <br> Explore NPU architectural features with Riallto</p></td>
 </tr>
-<tr class="row-odd"><td><p>15:00 PM – 15:30 PM</p></td>
+<tr class="row-odd"><td><p>10:00 AM – 10:00 AM</p></td>
 <td><p>Coffee Break</p></td>
 </tr>
-<tr class="row-even"><td><p>15:30 PM – 17:00 PM</p></td>
+<tr class="row-even"><td><p>10:20 AM – 12:30 PM</p></td>
 <td><p>Write your own compute kernel and connectivity <br> IRON AIE <br> AMD Ryzen AI Software</p></td>
 </tr>
 </tbody>
@@ -444,9 +470,9 @@ document.write(`
 </section>
 <section id="about-us">
 <h2>About Us<a class="headerlink" href="#about-us" title="Link to this heading">#</a></h2>
-<p>Presenter: Dr. Mario Ruiz
+<p>Presenter: Dr. Mario Ruiz <br>
 Mario is a member of technical staff in AMD University Program. As part of this role, he delivers training workshops for academics on the latest AMD tools and technologies. Mario completed his PhD in the Autonomous University of Madrid, which was focused on exploring High Level Synthesis tools in the context of networking. Mario is an active contributor to Riallto.</p>
-<p>This tutorial is also organized by: Cathal McCabe</p>
+<p>This tutorial is also organized by: Dr. Joseph Melber, Dr. Phil James-Roxby, Dr. Kristof Denolf and Dr. Andrew Schmidt</p>
 <p>We are part of the Advanced and Research Development team at Advanced Micro Devices, Inc. (AMD)</p>
 </section>
 <section id="contact-us">
@@ -455,11 +481,11 @@ Mario is a member of technical staff in AMD University Program. As part of this 
 </section>
 <section id="register">
 <h2>Register<a class="headerlink" href="#register" title="Link to this heading">#</a></h2>
-<p><span class="icon-calendar">2 September, 2024</span></p>
-<p><span class="icon-time">13:30 PM - 17:00 PM</span></p>
-<p><span class="icon-map">In Person:&nbsp; Check the FPL 2024 site for more information.&nbsp;<a
-        href="http://asaclab.polito.it/fpl2024/">http://asaclab.polito.it/fpl2024/</a></span></p>
-<p><a href="http://asaclab.polito.it/fpl2024/registration/"><span class="icon-check-circle">Register</span></a></p>
+<p><span class="icon-calendar">30 June, 2024</span></p>
+<p><span class="icon-time">9:00 AM - 12:30 PM</span></p>
+<p><span class="icon-map">In Person:&nbsp; Check the ISCA 2024 site for more information.&nbsp;<a
+        href="https://iscaconf.org/isca2024/">https://iscaconf.org/isca2024/</a></span></p>
+<p><a href="https://www.iscaconf.org/isca2024/attend/register.php"><span class="icon-check-circle">Register</span></a></p>
 </section>
 </section>
 
