@@ -1,4 +1,4 @@
-# Designing for the Neural Processing Unit on AMD Ryzen AI with Open-Source Tools
+# Designing for the Neural Processing Unit on AMD Ryzen™ AI with Open-Source Tools
 
 ## Abstract
 
