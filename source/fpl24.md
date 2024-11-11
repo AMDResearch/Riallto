@@ -1,4 +1,4 @@
-# Designing for the Neural Processing Unit on AMD Ryzen AI with Open-Source Tools
+# Designing for the Neural Processing Unit on AMD Ryzen™ AI with Open-Source Tools
 
 ## Abstract
 
@@ -12,9 +12,9 @@ The times in this agenda are tentative.
 
 | Time                | Topic |
 |---------------------|-------|
-| 9:00 AM – 10:30 AM  | Tutorial Welcome and General Introductions <br> Introduction to Ryzen AI NPU and Riallto <br> Explore NPU architectural features with Riallto |
-| 10:30 AM – 11:00 AM | Coffee Break |
-| 11:00 AM – 12:30 PM | Write your own compute kernel and connectivity <br> IRON AIE <br> AMD Ryzen AI Software |
+| 13:30 PM – 15:00 PM | Tutorial Welcome and General Introductions <br> Introduction to Ryzen AI NPU and Riallto <br> Explore NPU architectural features with Riallto |
+| 15:00 PM – 15:30 PM | Coffee Break |
+| 15:30 PM – 17:00 PM | Write your own compute kernel and connectivity <br> IRON AIE <br> AMD Ryzen AI Software |
 
 Reference material can be found here: [riallto.ai](https://riallto.ai/), [IRON AIE programming guide](https://github.com/Xilinx/mlir-aie/blob/main/programming_guide/README.md) and [examples](https://github.com/Xilinx/mlir-aie/tree/main/programming_examples).
 
@@ -33,9 +33,9 @@ You can reach us at [aup@amd.com](mailto:aup@amd.com?subject=FPL%202024%20NPU%20
 
 ## Register
 
-<p><span class="icon-calendar">2 or 3 September, 2024 <strong>TBD</strong></span></p>
+<p><span class="icon-calendar">2 September, 2024</span></p>
 
-<p><span class="icon-time">Morning or Afternoon <strong>TBD</strong></span></p>
+<p><span class="icon-time">13:30 PM - 17:00 PM</span></p>
 
 <p><span class="icon-map">In Person:&nbsp; Check the FPL 2024 site for more information.&nbsp;<a
         href="http://asaclab.polito.it/fpl2024/">http://asaclab.polito.it/fpl2024/</a></span></p>

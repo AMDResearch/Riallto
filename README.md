@@ -9,13 +9,3 @@ Docs are built offline on a Ryzen AI laptop. Generated html docs can be found in
 * Jupyterbook needs to be installed
 
 In the Riallto environment, run build.bat in the **source** folder, and copy the contents from *_build/html* to the **./docs** folder.
-
-
-
-
-
-
-
-
-
-

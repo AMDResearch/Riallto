@@ -1,0 +1,617 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Designing for the Neural Processing Unit on AMD Ryzen AI with Open-Source Tools &#8212; Riallto - An exploration framework for Ryzen AI</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=180d896d" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'fpl24';</script>
+    <script src="_static/cookie-consent.js?v=2793a0fe"></script>
+    <script src="_static/custom.js?v=4ce5a416"></script>
+    <link rel="canonical" href="https://riallto.ai/fpl24.html" />
+    <link rel="icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Riallto - An exploration framework for Ryzen AI</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="index.html">
+                    Riallto - an exploration framework for the AMD Ryzen AI NPU
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Riallto Overview</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="notebooks/1_0_Introduction.html">Welcome to Riallto</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="install-riallto.html">Install Riallto</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="install-riallto-linux.html">Riallto Ubuntu 24.04 setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install-riallto-windows.html">Install Riallto on Windows</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="ryzenai_video_overview.html">Riallto Video Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/1_1_ryzenai.html">Understanding the Ryzen AI NPU</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/2_1_MS_Windows_Studio_Effects.html">Windows Studio Effects</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Riallto Overview</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="notebooks/3_1_Color_threshold_example.html">Loading your First Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/3_2_Ryzenai_capabilities.html">Ryzen AI column architecture and tiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/3_3_Scaled_color_threshold_example.html">Scaling <em>Data Parallel</em> Applications to Multiple Compute Tiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/3_4_Edge_detect_example.html">Optimizing Data Movement with Shared Data Memories</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/3_5_Color_detect_example.html">Multicast, broadcast, and multiple kernels in a single compute tile</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Building Applications</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="notebooks/4_1_software_framework.html">Exploration Software Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/4_2_write_your_kernel.html">Write your Own Kernel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/4_3_kernels_with_runtime_parameters.html">Run Time Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/4_4_threshold_kernel_with_vector_ops.html">How to Use the Vector Processing Units</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/4_5_describe_an_application.html">Describing an Application</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/4_6_build_application.html">Building a complete Application</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/4_7_using_the_memtile_in_your_applications.html">Using Memory Tiles in your Application</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/4_8_build_a_colorDetect_application.html">Reusing Software Kernels</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Ryzen AI Machine Learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="notebooks/5_1_pytorch_onnx_inference.html">Run Machine Learning Inference on the NPU with PyTorch and ONNX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/5_2_pytorch_onnx_re-train.html">PyTorch and ONNX Flow for Training</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python Package</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="modules.html">npu</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="npu.html">npu package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="npu.build.html">npu.build package</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="npu.lib.html">npu.lib package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="npu.lib.applications.html">npu.lib.applications package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.lib.cached.html">npu.lib.cached package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="npu.lib.kernels.html">npu.lib.kernels package</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3"><a class="reference internal" href="npu.runtime.html">npu.runtime package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="npu.utils.html">npu.utils package</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">FAQ</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Riallto FAQ</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Glossary</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="notebooks/Glossary.html">Glossary</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="notebooks/Appendix_Review_of_Image_Processing_Concepts.html">Review of Image Processing Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="prerequisites-driver.html">IPU Driver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="prerequisites-aie-license.html">AIE Build License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="prerequisites-wsl.html">Install WSL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="upgrade-ryzenaisw.html">Upgrading RyzenAI-SW</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/fpl24.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Designing for the Neural Processing Unit on AMD Ryzen AI with Open-Source Tools</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract">Abstract</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#agenda">Agenda</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about-us">About Us</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contact-us">Contact Us</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#register">Register</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="designing-for-the-neural-processing-unit-on-amd-ryzen-ai-with-open-source-tools">
+<h1>Designing for the Neural Processing Unit on AMD Ryzen AI with Open-Source Tools<a class="headerlink" href="#designing-for-the-neural-processing-unit-on-amd-ryzen-ai-with-open-source-tools" title="Link to this heading">#</a></h1>
+<section id="abstract">
+<h2>Abstract<a class="headerlink" href="#abstract" title="Link to this heading">#</a></h2>
+  <p>
+        This tutorial introduces the Neural Processing Unit (NPU) on the 
+        <a class="reference external" href="https://www.amd.com/en/products/processors/consumer/ryzen-ai.html">AMD Ryzen™ AI</a>
+        APU and provides hands-on programming experience with open-source software tools. 
+        The <a class="reference external" href="https://www.amd.com/en/products/processors/consumer/ryzen-ai.html">AMD Ryzen™ AI</a>
+        platform is the first in a new class of NPUs designed for x86 computers. The NPU is built on the
+        <a class="reference external" href="https://www.amd.com/en/technologies/xdna.html">AMD XDNA™</a>
+        spatial dataflow computer architecture, and consists of a tiled array of AI Engine processors, 
+        a set of VLIW vector processors with adaptable interconnect, designed to offer lower latency and better energy efficiency.
+      </p>
+
+      <p>
+        Participants will first gain insight into the system architecture of an x86 Ryzen AI processor and the
+        AI Engine compute and data movement capabilities through the
+        <a class="reference external" href="https://riallto.ai/">Riallto</a> open-source exploration framework.
+        Riallto lets users explore the NPU architecture and its programming tools running on Jupyter notebooks. 
+        
+        This hands-on tutorial will guide attendees through a series of vision processing examples illustrating various NPU architectural features. 
+        You will also see how to program the NPU using Riallto. 
+        Then, the IRON AIE programming guide and examples introduce the participants to writing their own compute kernel and data movement. 
+        This Interface Representation for hands-ON (IRON) is an API for close-to-metal programming of the AIE-array.
+        It is an open-access toolkit enabling performance engineers to build fast and efficient, 
+        often specialized designs through a Python API for MLIR-AIE, AMD MLIR dialect representing the AIE-array.
+        Finally, we will briefly show how the 
+        <a class="reference external" href="https://ryzenai.docs.amd.com/en/latest/index.html">AMD Ryzen™ AI Software</a> allows users to seamlessly run AI inference on the
+        <a class="reference external" href="https://www.amd.com/en/products/processors/consumer/ryzen-ai.html">AMD Ryzen™ AI</a> based PC. 
+  </p>
+
+</section>
+<section id="agenda">
+<h2>Agenda<a class="headerlink" href="#agenda" title="Link to this heading">#</a></h2>
+<p>The times in this agenda are tentative.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Time</p></th>
+<th class="head"><p>Topic</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>9:00 AM – 10:00 AM</p></td>
+<td><p>Tutorial Welcome and General Introductions <br> Introduction to Ryzen AI NPU and Riallto <br> Explore NPU architectural features with Riallto</p></td>
+</tr>
+<tr class="row-odd"><td><p>10:00 AM – 10:00 AM</p></td>
+<td><p>Coffee Break</p></td>
+</tr>
+<tr class="row-even"><td><p>10:20 AM – 12:30 PM</p></td>
+<td><p>Write your own compute kernel and connectivity <br> IRON AIE <br> AMD Ryzen AI Software</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Reference material can be found here: <a class="reference external" href="https://riallto.ai/">riallto.ai</a>, <a class="reference external" href="https://github.com/Xilinx/mlir-aie/blob/main/programming_guide/README.md">IRON AIE programming guide</a> and <a class="reference external" href="https://github.com/Xilinx/mlir-aie/tree/main/programming_examples">examples</a>.</p>
+</section>
+<section id="about-us">
+<h2>About Us<a class="headerlink" href="#about-us" title="Link to this heading">#</a></h2>
+<p>Presenter: Dr. Mario Ruiz <br>
+Mario is a member of technical staff in AMD University Program. As part of this role, he delivers training workshops for academics on the latest AMD tools and technologies. Mario completed his PhD in the Autonomous University of Madrid, which was focused on exploring High Level Synthesis tools in the context of networking. Mario is an active contributor to Riallto.</p>
+<p>This tutorial is also organized by: Dr. Joseph Melber, Dr. Phil James-Roxby, Dr. Kristof Denolf and Dr. Andrew Schmidt</p>
+<p>We are part of the Advanced and Research Development team at Advanced Micro Devices, Inc. (AMD)</p>
+</section>
+<section id="contact-us">
+<h2>Contact Us<a class="headerlink" href="#contact-us" title="Link to this heading">#</a></h2>
+<p>You can reach us at <a class="reference external" href="mailto:aup&#37;&#52;&#48;amd&#46;com?subject=FPL%202024%20NPU%20Tutorial">aup<span>&#64;</span>amd<span>&#46;</span>com</a>.</p>
+</section>
+<section id="register">
+<h2>Register<a class="headerlink" href="#register" title="Link to this heading">#</a></h2>
+<p><span class="icon-calendar">30 June, 2024</span></p>
+<p><span class="icon-time">9:00 AM - 12:30 PM</span></p>
+<p><span class="icon-map">In Person:&nbsp; Check the ISCA 2024 site for more information.&nbsp;<a
+        href="https://iscaconf.org/isca2024/">https://iscaconf.org/isca2024/</a></span></p>
+<p><a href="https://www.iscaconf.org/isca2024/attend/register.php"><span class="icon-check-circle">Register</span></a></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract">Abstract</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#agenda">Agenda</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about-us">About Us</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contact-us">Contact Us</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#register">Register</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Advanced Micro Devices, Inc.
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <p>
+<div class="aem-Grid aem-Grid--16">
+<div class="aem-GridColumn aem-GridColumn--xxxlarge--none aem-GridColumn--xsmall--16 aem-GridColumn--offset--xsmall--0 aem-GridColumn--xlarge--none aem-GridColumn--xxlarge--none aem-GridColumn--default--none aem-GridColumn--offset--large--1 aem-GridColumn--xlarge--12 aem-GridColumn--offset--default--0 aem-GridColumn--xxlarge--10 aem-GridColumn--offset--xlarge--2 aem-GridColumn--offset--xxlarge--3 aem-GridColumn--offset--xxxlarge--4 aem-GridColumn--xsmall--none aem-GridColumn--large--none aem-GridColumn aem-GridColumn--large--14 aem-GridColumn--xxxlarge--8 aem-GridColumn--default--16">
+<div class="container-fluid sub-footer">
+
+<div class="row">
+<div class="col-xs-24">
+<p><a target="_blank" href="https://www.amd.com/en/corporate/copyright">Terms and Conditions</a> | <a target="_blank" href="https://www.amd.com/en/corporate/privacy">Privacy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/cookies">Cookie Policy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/trademarks">Trademarks</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/statement-human-trafficking-forced-labor.pdf">Statement on Forced Labor</a> | <a target="_blank" href="https://www.amd.com/en/corporate/competition">Fair and Open Competition</a> <br> <a target="_blank" href="https://www.amd.com/system/files/documents/amd-uk-tax-strategy.pdf">UK Tax Strategy</a> | <a target="_blank" href="https://docs.xilinx.com/v/u/9x6YvZKuWyhJId7y7RQQKA">Inclusive Terminology</a> | <a href="#cookiessettings" class="ot-sdk-show-settings">Cookies Settings</a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="cookie-consent" class="cookie-consent">
+<p>This website uses cookies to ensure you get the best experience on our website. <a href="#" id="cookie-accept">Accept</a> | <a href="#" id="cookie-reject">Reject</a></p>
+</div>
+</p>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -43,7 +43,7 @@
   <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
@@ -59,8 +59,8 @@
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'install-riallto-linux';</script>
-    <script src="_static/cookie-consent.js?v=2793a0fe"></script>
     <script src="_static/custom.js?v=4ce5a416"></script>
+    <script src="_static/cookie-consent.js?v=9f09204a"></script>
     <link rel="canonical" href="https://riallto.ai/install-riallto-linux.html" />
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
@@ -396,7 +396,16 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-steps">Install steps</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-riallto-running-tests">Running Riallto / Running Tests</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-tests">Running Tests</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-riallto">Running Riallto</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-from-different-users">Running from different users</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#faq">FAQ</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#if-you-get-the-following-error-on-boot-error-bad-shim-signature">If you get the following error on boot, <code class="docutils literal notranslate"><span class="pre">error:</span> <span class="pre">bad</span> <span class="pre">shim</span> <span class="pre">signature</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#if-the-docker-container-does-not-start-with-launch-jupyter-sh-or-run-pytest-sh-because-of-the-dev-accel-accel0-does-not-exist">If the Docker container does not start with <code class="docutils literal notranslate"><span class="pre">launch_jupyter.sh</span></code> or <code class="docutils literal notranslate"><span class="pre">run_pytest.sh</span></code> because of the <code class="docutils literal notranslate"><span class="pre">/dev/accel/accel0</span></code> does not exist</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -412,37 +421,113 @@ document.write(`
 <h1>Riallto Ubuntu 24.04 setup<a class="headerlink" href="#riallto-ubuntu-24-04-setup" title="Link to this heading">#</a></h1>
 <p>Currently there is support for bringing up Riallto on Ubuntu 24.04 with docker.
 To use Riallto on Linux requires the use of the <a class="reference external" href="https://github.com/amd/xdna-driver">xdna-driver</a> which is installed as part of the setup.
-This driver requires version 6.10+ of the linux kernel, these scripts will upgrade a standard Ubuntu 24.04 installation to this kernel version. <strong>Using this kernel version will require disabling secure boot on your device.</strong></p>
+This driver requires version 6.10+ of the Linux kernel, these scripts will upgrade a standard Ubuntu 24.04 installation to this kernel version. <strong>Using this kernel version will require disabling secure boot on your device.</strong></p>
 <section id="install-steps">
 <h2>Install steps<a class="headerlink" href="#install-steps" title="Link to this heading">#</a></h2>
 <p>On an NPU enabled laptop running Ubuntu 24.04.</p>
 <ol class="arabic simple">
-<li><p><strong>Setup Docker.</strong>
-You can follow the steps <a class="reference external" href="https://docs.docker.com/engine/install/ubuntu/">here</a>.</p></li>
-<li><p><strong>Add your user to the docker user group and then relogin.</strong></p></li>
+<li><p><strong>Setup Docker.</strong></p></li>
 </ol>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>sudo usermod -aG docker $USER ; exit
+<p>You can follow the steps <a class="reference external" href="https://docs.docker.com/engine/install/ubuntu/">here</a>.</p>
+<ol class="arabic" start="2">
+<li><p><strong>Add your user to the docker user group and then relogin.</strong></p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>usermod<span class="w"> </span>-aG<span class="w"> </span>docker<span class="w"> </span><span class="nv">$USER</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="nb">exit</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="3">
-<li><p><strong>Obtain a license file for Riallto.</strong>
-Please follow the <a class="reference external" href="https://riallto.ai/prerequisites-aie-license.html#prerequisites-aie-license">guide here</a></p></li>
-<li><p><strong>Disable secure boot from your BIOS settings.</strong> For now we are using an unsigned kernel version requiring that secure boot is disabled before it can be used. To disable secure boot there is a <a class="reference external" href="https://learn.microsoft.com/en-us/windows-hardware/manufacture/desktop/disabling-secure-boot?view=windows-11">guide</a> from Microsoft here, but often the steps depend on your hardware manufacturer.</p></li>
-<li><p><strong>Run <code class="docutils literal notranslate"><span class="pre">./setup_riallto_linux.sh</span> <span class="pre">&lt;your</span> <span class="pre">license</span> <span class="pre">file&gt;</span></code>.</strong>
-This command will check the kernel version and if the xdna-driver has been installed. If the kernel is not 6.10 or the NPU device drivers are missing it will build them within a docker and install them on the host machine. This takes about 10 minutes to run and after completing successfully the user will be asked to restart.</p></li>
-<li><p><strong>Reboot the machine.</strong>
-To finish upgrading the kernel to <code class="docutils literal notranslate"><span class="pre">6.10</span></code>.</p></li>
-<li><p><strong>Re run the <code class="docutils literal notranslate"><span class="pre">./setup_riallto_linux.sh</span> <span class="pre">&lt;your</span> <span class="pre">license</span> <span class="pre">file&gt;</span></code> script.</strong>
-This will build the Riallto docker and will take about 20 minutes.</p></li>
+</li>
+<li><p><strong>Obtain a license file for Riallto.</strong></p>
+<p>Please follow the <a class="reference external" href="https://riallto.ai/prerequisites-aie-license.html#prerequisites-aie-license">guide here</a> to get the license.</p>
+</li>
+<li><p><strong>Disable secure boot from your BIOS settings.</strong></p>
+<p>For now we are using an unsigned kernel version requiring that secure boot is disabled before it can be used. To disable secure boot there is a <a class="reference external" href="https://learn.microsoft.com/en-us/windows-hardware/manufacture/desktop/disabling-secure-boot?view=windows-11">guide</a> from Microsoft here, but often the steps depend on your hardware manufacturer.</p>
+</li>
+<li><p><strong>Clone the <code class="docutils literal notranslate"><span class="pre">Riallto</span></code> repository and then navigate to the installation script.</strong></p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/AMDResearch/Riallto.git<span class="w"> </span>-b<span class="w"> </span>v1.1
+<span class="nb">cd</span><span class="w"> </span>Riallto/scripts/linux/
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We recommend using the tag v1.1 to get the verified version of Riallto. Install from <code class="docutils literal notranslate"><span class="pre">main</span></code> to get the latest drivers and code, however, this is not thoroughly verified.</p>
+</div>
+</li>
+<li><p><strong>Upgrade Linux Kernel.</strong></p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>./setup_riallto_linux.sh<span class="w"> </span>&lt;your<span class="w"> </span>license<span class="w"> </span>file&gt;<span class="w"> </span>&lt;username<span class="w"> </span><span class="o">(</span>optional<span class="o">)</span>&gt;
+</pre></div>
+</div>
+<p>This command will check the kernel version and if the <code class="docutils literal notranslate"><span class="pre">xdna-driver</span></code> has been installed. If the Linux kernel is not <code class="docutils literal notranslate"><span class="pre">6.10</span></code> or the NPU device drivers are missing, it will build them within a docker and install them on the host machine. This takes about 10 minutes to run and after completing successfully the user will be asked to restart.</p>
+</li>
+<li><p><strong>Reboot the machine.</strong></p>
+<p>This will finish upgrading the Linux kernel to <code class="docutils literal notranslate"><span class="pre">6.10</span></code>.</p>
+</li>
+<li><p><strong>Install Riallto by creating its Docker container.</strong></p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>./setup_riallto_linux.sh<span class="w"> </span>&lt;your<span class="w"> </span>license<span class="w"> </span>file&gt;<span class="w"> </span>&lt;username<span class="w"> </span><span class="o">(</span>optional<span class="o">)</span>&gt;
+</pre></div>
+</div>
+<p>This will build the Riallto Docker and will take about 20 minutes.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can specify a username to indicate the ownership of the files created inside the Docker container. If no username is specified, the default username is <code class="docutils literal notranslate"><span class="pre">$USER</span></code>.</p>
+</div>
+</li>
 </ol>
 </section>
-<section id="running-riallto-running-tests">
-<h2>Running Riallto / Running Tests<a class="headerlink" href="#running-riallto-running-tests" title="Link to this heading">#</a></h2>
-<p>Inside this directory there are a few scripts.</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">launch_jupyter.sh</span> <span class="pre">&lt;notebooks</span> <span class="pre">directory&gt;</span></code> - will launch a jupyterlab server from a docker container allowing you to use Riallto notebooks in the directory provided (usually Riallto/notebooks).</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">run_pytest.sh</span></code> - will run a suit of pytests to test the operation of your NPU device and the Riallto installation.</p></li>
-</ul>
+<section id="running-tests">
+<h2>Running Tests<a class="headerlink" href="#running-tests" title="Link to this heading">#</a></h2>
+<p>Verify the correct installation of Riallto. Inside the <code class="docutils literal notranslate"><span class="pre">Riallto/scripts/linux</span></code> directory, you will find the <code class="docutils literal notranslate"><span class="pre">run_pytest.sh</span></code> script.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>./run_pytest.sh
+</pre></div>
+</div>
+<p>This script will run a suit of tests using <code class="docutils literal notranslate"><span class="pre">pytest</span></code> to verify the operation of your NPU device and the Riallto installation. This will take about 50 minutes.</p>
+</section>
+<section id="running-riallto">
+<h2>Running Riallto<a class="headerlink" href="#running-riallto" title="Link to this heading">#</a></h2>
+<p>Launch a Jupyterlab server from a Docker container allowing you to use Riallto notebooks from the provided directory (usually Riallto/notebooks). Inside the <code class="docutils literal notranslate"><span class="pre">Riallto/scripts/linux</span></code> directory, you will find the <code class="docutils literal notranslate"><span class="pre">launch_jupyter.sh</span></code> script.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>./launch_jupyter.sh<span class="w"> </span>../../notebooks
+</pre></div>
+</div>
+<section id="running-from-different-users">
+<h3>Running from different users<a class="headerlink" href="#running-from-different-users" title="Link to this heading">#</a></h3>
+<p>Once the Riallto Docker container is created for one user, other users can run Riallto without having to re install. Other users do not need elevated privileges, but they need to be part of the <code class="docutils literal notranslate"><span class="pre">docker</span></code> group.</p>
+<ol class="arabic">
+<li><p>Make sure user is in the docker group.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>usermod<span class="w"> </span>-aG<span class="w"> </span>docker<span class="w"> </span>&lt;user&gt;<span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="nb">exit</span>
+</pre></div>
+</div>
+</li>
+<li><p>Clone the Riallto repository and then navigate to the Linux scripts directory.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/AMDResearch/Riallto.git<span class="w"> </span>-b<span class="w"> </span>v1.1
+<span class="nb">cd</span><span class="w"> </span>Riallto/scripts/linux/
+</pre></div>
+</div>
+</li>
+<li><p>Launch a Jupyterlab server using Riallto notebooks.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>./launch_jupyter.sh<span class="w"> </span>../../notebooks
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+</section>
+<section id="faq">
+<h2>FAQ<a class="headerlink" href="#faq" title="Link to this heading">#</a></h2>
+<section id="if-you-get-the-following-error-on-boot-error-bad-shim-signature">
+<h3>If you get the following error on boot, <code class="docutils literal notranslate"><span class="pre">error:</span> <span class="pre">bad</span> <span class="pre">shim</span> <span class="pre">signature</span></code><a class="headerlink" href="#if-you-get-the-following-error-on-boot-error-bad-shim-signature" title="Link to this heading">#</a></h3>
+<p>This means that secure boot has not been disabled from the machine and it cannot run the necessary kernel version.</p>
+</section>
+<section id="if-the-docker-container-does-not-start-with-launch-jupyter-sh-or-run-pytest-sh-because-of-the-dev-accel-accel0-does-not-exist">
+<h3>If the Docker container does not start with <code class="docutils literal notranslate"><span class="pre">launch_jupyter.sh</span></code> or <code class="docutils literal notranslate"><span class="pre">run_pytest.sh</span></code> because of the <code class="docutils literal notranslate"><span class="pre">/dev/accel/accel0</span></code> does not exist<a class="headerlink" href="#if-the-docker-container-does-not-start-with-launch-jupyter-sh-or-run-pytest-sh-because-of-the-dev-accel-accel0-does-not-exist" title="Link to this heading">#</a></h3>
+<p>Check <code class="docutils literal notranslate"><span class="pre">dmesg</span></code></p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>dmesg<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;xdna&quot;</span>
+</pre></div>
+</div>
+<p>If you see <code class="docutils literal notranslate"><span class="pre">loading</span> <span class="pre">/lib/firmware/amdnpu/1502_00/npu.sbin</span> <span class="pre">failed</span> <span class="pre">with</span> <span class="pre">error</span> <span class="pre">-22</span></code>, it means that the driver did not install properly.</p>
+<p>Delete the NPU firmware:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span>/lib/firmware/amdnpu/
+</pre></div>
+</div>
+<p>Then, start the installation from scratch.</p>
+</section>
 </section>
 </section>
 
@@ -511,7 +596,16 @@ This will build the Riallto docker and will take about 20 minutes.</p></li>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-steps">Install steps</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-riallto-running-tests">Running Riallto / Running Tests</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-tests">Running Tests</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-riallto">Running Riallto</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-from-different-users">Running from different users</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#faq">FAQ</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#if-you-get-the-following-error-on-boot-error-bad-shim-signature">If you get the following error on boot, <code class="docutils literal notranslate"><span class="pre">error:</span> <span class="pre">bad</span> <span class="pre">shim</span> <span class="pre">signature</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#if-the-docker-container-does-not-start-with-launch-jupyter-sh-or-run-pytest-sh-because-of-the-dev-accel-accel0-does-not-exist">If the Docker container does not start with <code class="docutils literal notranslate"><span class="pre">launch_jupyter.sh</span></code> or <code class="docutils literal notranslate"><span class="pre">run_pytest.sh</span></code> because of the <code class="docutils literal notranslate"><span class="pre">/dev/accel/accel0</span></code> does not exist</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

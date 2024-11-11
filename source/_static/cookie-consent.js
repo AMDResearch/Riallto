@@ -2,12 +2,18 @@
 // SPDX-License-Identifier: MIT
 
 document.addEventListener('DOMContentLoaded', function () {
+    initializeGoogleAnalytics();
+    // initialize analytics to denied
+    gtag('consent', 'default', {
+         'ad_storage': 'denied',
+         'ad_user_data': 'denied',
+         'ad_personalization': 'denied',
+         'analytics_storage': 'denied'
+      });
     // Check if the user has already given consent
-    if (!localStorage.getItem('cookieConsent')) {
+    if (localStorage.getItem('cookieConsent') !== 'true') {
         // Show the cookie consent banner
         showCookieConsent();
-    }else{
-        initializeGoogleAnalytics();
     }
 });
 
@@ -20,19 +26,23 @@ function showCookieConsent() {
     // Add event listener to the "Got it!" link
     document.getElementById('cookie-accept').addEventListener('click', function () {
         // Set a localStorage flag to remember user's consent
-        localStorage.setItem('cookieConsent', true);
+        localStorage.setItem('cookieConsent', 'true');
 
         // Hide the cookie consent banner
         cookieConsent.style.display = 'none';
 
-        // Add Google Analytics tracking code
-        initializeGoogleAnalytics();
+        // Enable Google Analytics tracking code
+        gtag('consent', 'update', {
+            'ad_user_data': 'granted',
+            'ad_storage': 'granted',
+            'analytics_storage': 'granted'
+          });
     });
 
     // Add event listener to the "Reject" link
     document.getElementById('cookie-reject').addEventListener('click', function () {
         // Set a localStorage flag to remember user's rejection
-        localStorage.setItem('cookieRejected', true);
+        localStorage.setItem('cookieRejected', 'true');
 
         // Hide the cookie consent banner
         cookieConsent.style.display = 'none';

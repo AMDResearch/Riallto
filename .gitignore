@@ -9,3 +9,5 @@ install/temp
 install/tests
 install/installed
 install/tarballs/*.tar.gz
+source/_build/
+docs/_sources/
