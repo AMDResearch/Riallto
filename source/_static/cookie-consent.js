@@ -3,7 +3,7 @@
 
 document.addEventListener('DOMContentLoaded', function () {
     // Check if the user has already given consent
-    if (!localStorage.getItem('cookieConsent')) {
+    if (localStorage.getItem('cookieConsent') !== 'true') {
         // Show the cookie consent banner
         showCookieConsent();
     }else{
@@ -20,7 +20,7 @@ function showCookieConsent() {
     // Add event listener to the "Got it!" link
     document.getElementById('cookie-accept').addEventListener('click', function () {
         // Set a localStorage flag to remember user's consent
-        localStorage.setItem('cookieConsent', true);
+        localStorage.setItem('cookieConsent', 'true');
 
         // Hide the cookie consent banner
         cookieConsent.style.display = 'none';
@@ -32,7 +32,7 @@ function showCookieConsent() {
     // Add event listener to the "Reject" link
     document.getElementById('cookie-reject').addEventListener('click', function () {
         // Set a localStorage flag to remember user's rejection
-        localStorage.setItem('cookieRejected', true);
+        localStorage.setItem('cookieRejected', 'true');
 
         // Hide the cookie consent banner
         cookieConsent.style.display = 'none';
@@ -69,10 +69,17 @@ function initializeGoogleAnalytics() {
         'gtag'
     );
 
+    // Set consent status
+    gtag('consent', 'update', {
+            'ad_user_data': 'granted',
+            'ad_storage': 'granted',
+            'analytics_storage': 'granted'
+    });
+    console.log("Consent status updated.");
+
     gtag('js', new Date());
     console.log("gtag('js', new Date()) called.");
 
     gtag('config', 'G-JK8T9PJNL0');
     console.log("gtag('config', 'G-JK8T9PJNL0') called.");
 }
-
