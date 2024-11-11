@@ -43,7 +43,7 @@
   <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
@@ -59,8 +59,8 @@
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'npu.lib';</script>
-    <script src="_static/cookie-consent.js?v=2793a0fe"></script>
     <script src="_static/custom.js?v=4ce5a416"></script>
+    <script src="_static/cookie-consent.js?v=9f09204a"></script>
     <link rel="canonical" href="https://riallto.ai/npu.lib.html" />
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
@@ -396,15 +396,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subpackages">Subpackages</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-npu.lib">Module contents</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#library-of-prebuilts">Library of prebuilts</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#applications">Applications</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#kernels">Kernels</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#graphs">Graphs</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module contents</a></li>
 </ul>
             </nav>
         </div>
@@ -424,229 +416,38 @@ document.write(`
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="npu.lib.applications.html">npu.lib.applications package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="npu.lib.applications.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="npu.lib.applications.html#module-npu.lib.applications.videoapps">npu.lib.applications.videoapps module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="npu.lib.applications.html#npu.lib.applications.videoapps.ColorDetectVideoProcessing"><code class="docutils literal notranslate"><span class="pre">ColorDetectVideoProcessing</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="npu.lib.applications.html#npu.lib.applications.videoapps.ColorDetectVideoProcessing.rtps"><code class="docutils literal notranslate"><span class="pre">ColorDetectVideoProcessing.rtps</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="npu.lib.applications.html#npu.lib.applications.videoapps.ColorDetectVideoProcessing.start"><code class="docutils literal notranslate"><span class="pre">ColorDetectVideoProcessing.start()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="npu.lib.applications.html#npu.lib.applications.videoapps.ColorThresholdVideoProcessing"><code class="docutils literal notranslate"><span class="pre">ColorThresholdVideoProcessing</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="npu.lib.applications.html#npu.lib.applications.videoapps.ColorThresholdVideoProcessing.rtps"><code class="docutils literal notranslate"><span class="pre">ColorThresholdVideoProcessing.rtps</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="npu.lib.applications.html#npu.lib.applications.videoapps.DenoiseDPVideoProcessing"><code class="docutils literal notranslate"><span class="pre">DenoiseDPVideoProcessing</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="npu.lib.applications.html#npu.lib.applications.videoapps.DenoiseTPVideoProcessing"><code class="docutils literal notranslate"><span class="pre">DenoiseTPVideoProcessing</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="npu.lib.applications.html#npu.lib.applications.videoapps.EdgeDetectVideoProcessing"><code class="docutils literal notranslate"><span class="pre">EdgeDetectVideoProcessing</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="npu.lib.applications.html#npu.lib.applications.videoapps.EdgeDetectVideoProcessing.rtps"><code class="docutils literal notranslate"><span class="pre">EdgeDetectVideoProcessing.rtps</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="npu.lib.applications.html#npu.lib.applications.videoapps.EdgeDetectVideoProcessing.start"><code class="docutils literal notranslate"><span class="pre">EdgeDetectVideoProcessing.start()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="npu.lib.applications.html#npu.lib.applications.videoapps.ScaledColorThresholdVideoProcessing"><code class="docutils literal notranslate"><span class="pre">ScaledColorThresholdVideoProcessing</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="npu.lib.applications.html#npu.lib.applications.videoapps.ScaledColorThresholdVideoProcessing.rtps"><code class="docutils literal notranslate"><span class="pre">ScaledColorThresholdVideoProcessing.rtps</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="npu.lib.applications.html#npu.lib.applications.videoapps.VideoApplication"><code class="docutils literal notranslate"><span class="pre">VideoApplication</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="npu.lib.applications.html#npu.lib.applications.videoapps.VideoApplication.cam_h"><code class="docutils literal notranslate"><span class="pre">VideoApplication.cam_h</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="npu.lib.applications.html#npu.lib.applications.videoapps.VideoApplication.cam_w"><code class="docutils literal notranslate"><span class="pre">VideoApplication.cam_w</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="npu.lib.applications.html#npu.lib.applications.videoapps.VideoApplication.resolution"><code class="docutils literal notranslate"><span class="pre">VideoApplication.resolution</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="npu.lib.applications.html#npu.lib.applications.videoapps.VideoApplication.rtps"><code class="docutils literal notranslate"><span class="pre">VideoApplication.rtps</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="npu.lib.applications.html#npu.lib.applications.videoapps.VideoApplication.start"><code class="docutils literal notranslate"><span class="pre">VideoApplication.start()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="npu.lib.applications.html#npu.lib.applications.videoapps.VideoApplication.stop"><code class="docutils literal notranslate"><span class="pre">VideoApplication.stop()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="npu.lib.applications.html#npu.lib.applications.videoapps.VideoApplication.videores"><code class="docutils literal notranslate"><span class="pre">VideoApplication.videores</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="npu.lib.applications.html#npu.lib.applications.videoapps.pxtype"><code class="docutils literal notranslate"><span class="pre">pxtype</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="npu.lib.applications.html#npu.lib.applications.videoapps.pxtype.GRAY"><code class="docutils literal notranslate"><span class="pre">pxtype.GRAY</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="npu.lib.applications.html#npu.lib.applications.videoapps.pxtype.RGBA"><code class="docutils literal notranslate"><span class="pre">pxtype.RGBA</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="npu.lib.applications.html#module-npu.lib.applications">Module contents</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="npu.lib.applications.html#applications">Applications</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="npu.lib.applications.html#npu-lib-applications-videoapps-module">npu.lib.applications.videoapps module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="npu.lib.applications.html#module-contents">Module contents</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="npu.lib.cached.html">npu.lib.cached package</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="npu.lib.cached.html#module-npu.lib.cached">Module contents</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="npu.lib.cached.html#cached">Cached</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="npu.lib.cached.html#module-contents">Module contents</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="npu.lib.kernels.html">npu.lib.kernels package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="npu.lib.kernels.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="npu.lib.kernels.html#module-npu.lib.kernels.addweighted">npu.lib.kernels.addweighted module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="npu.lib.kernels.html#npu.lib.kernels.addweighted.AddWeighted"><code class="docutils literal notranslate"><span class="pre">AddWeighted</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="npu.lib.kernels.html#npu.lib.kernels.addweighted.AddWeighted.behavioralfx"><code class="docutils literal notranslate"><span class="pre">AddWeighted.behavioralfx()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="npu.lib.kernels.html#npu.lib.kernels.addweighted.AddWeightedScalar"><code class="docutils literal notranslate"><span class="pre">AddWeightedScalar</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="npu.lib.kernels.html#module-npu.lib.kernels.bitwiseand">npu.lib.kernels.bitwiseand module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="npu.lib.kernels.html#npu.lib.kernels.bitwiseand.BitwiseAnd"><code class="docutils literal notranslate"><span class="pre">BitwiseAnd</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="npu.lib.kernels.html#npu.lib.kernels.bitwiseand.BitwiseAnd.behavioralfx"><code class="docutils literal notranslate"><span class="pre">BitwiseAnd.behavioralfx()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="npu.lib.kernels.html#npu.lib.kernels.bitwiseand.BitwiseAndScalar"><code class="docutils literal notranslate"><span class="pre">BitwiseAndScalar</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="npu.lib.kernels.html#module-npu.lib.kernels.bitwiseor">npu.lib.kernels.bitwiseor module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="npu.lib.kernels.html#npu.lib.kernels.bitwiseor.BitwiseOr"><code class="docutils literal notranslate"><span class="pre">BitwiseOr</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="npu.lib.kernels.html#npu.lib.kernels.bitwiseor.BitwiseOr.behavioralfx"><code class="docutils literal notranslate"><span class="pre">BitwiseOr.behavioralfx()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="npu.lib.kernels.html#npu.lib.kernels.bitwiseor.BitwiseOrScalar"><code class="docutils literal notranslate"><span class="pre">BitwiseOrScalar</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="npu.lib.kernels.html#module-npu.lib.kernels.filter2d">npu.lib.kernels.filter2d module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="npu.lib.kernels.html#npu.lib.kernels.filter2d.Filter2d"><code class="docutils literal notranslate"><span class="pre">Filter2d</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="npu.lib.kernels.html#npu.lib.kernels.filter2d.Filter2d.behavioralfx"><code class="docutils literal notranslate"><span class="pre">Filter2d.behavioralfx()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="npu.lib.kernels.html#npu.lib.kernels.filter2d.Filter2dScalar"><code class="docutils literal notranslate"><span class="pre">Filter2dScalar</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="npu.lib.kernels.html#module-npu.lib.kernels.gray2rgba">npu.lib.kernels.gray2rgba module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="npu.lib.kernels.html#npu.lib.kernels.gray2rgba.Gray2Rgba"><code class="docutils literal notranslate"><span class="pre">Gray2Rgba</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="npu.lib.kernels.html#npu.lib.kernels.gray2rgba.Gray2Rgba.behavioralfx"><code class="docutils literal notranslate"><span class="pre">Gray2Rgba.behavioralfx()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="npu.lib.kernels.html#npu.lib.kernels.gray2rgba.Gray2RgbaScalar"><code class="docutils literal notranslate"><span class="pre">Gray2RgbaScalar</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="npu.lib.kernels.html#module-npu.lib.kernels.inrange">npu.lib.kernels.inrange module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="npu.lib.kernels.html#npu.lib.kernels.inrange.InRange"><code class="docutils literal notranslate"><span class="pre">InRange</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="npu.lib.kernels.html#npu.lib.kernels.inrange.InRange.behavioralfx"><code class="docutils literal notranslate"><span class="pre">InRange.behavioralfx()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="npu.lib.kernels.html#module-npu.lib.kernels.inverse">npu.lib.kernels.inverse module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="npu.lib.kernels.html#npu.lib.kernels.inverse.Inverse"><code class="docutils literal notranslate"><span class="pre">Inverse</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="npu.lib.kernels.html#npu.lib.kernels.inverse.Inverse.behavioralfx"><code class="docutils literal notranslate"><span class="pre">Inverse.behavioralfx()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="npu.lib.kernels.html#module-npu.lib.kernels.kernelgenerator">npu.lib.kernels.kernelgenerator module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="npu.lib.kernels.html#npu.lib.kernels.kernelgenerator.KernelObjCall"><code class="docutils literal notranslate"><span class="pre">KernelObjCall</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="npu.lib.kernels.html#module-npu.lib.kernels.median">npu.lib.kernels.median module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="npu.lib.kernels.html#npu.lib.kernels.median.Median"><code class="docutils literal notranslate"><span class="pre">Median</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="npu.lib.kernels.html#npu.lib.kernels.median.Median.behavioralfx"><code class="docutils literal notranslate"><span class="pre">Median.behavioralfx()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="npu.lib.kernels.html#npu.lib.kernels.median.MedianScalar"><code class="docutils literal notranslate"><span class="pre">MedianScalar</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="npu.lib.kernels.html#module-npu.lib.kernels.plusn">npu.lib.kernels.plusn module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="npu.lib.kernels.html#npu.lib.kernels.plusn.Plus1"><code class="docutils literal notranslate"><span class="pre">Plus1</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="npu.lib.kernels.html#npu.lib.kernels.plusn.Plus1.behavioralfx"><code class="docutils literal notranslate"><span class="pre">Plus1.behavioralfx()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="npu.lib.kernels.html#npu.lib.kernels.plusn.PlusN"><code class="docutils literal notranslate"><span class="pre">PlusN</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="npu.lib.kernels.html#npu.lib.kernels.plusn.PlusN.behavioralfx"><code class="docutils literal notranslate"><span class="pre">PlusN.behavioralfx()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="npu.lib.kernels.html#module-npu.lib.kernels.rgba2gray">npu.lib.kernels.rgba2gray module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="npu.lib.kernels.html#npu.lib.kernels.rgba2gray.Rgba2Gray"><code class="docutils literal notranslate"><span class="pre">Rgba2Gray</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="npu.lib.kernels.html#npu.lib.kernels.rgba2gray.Rgba2Gray.behavioralfx"><code class="docutils literal notranslate"><span class="pre">Rgba2Gray.behavioralfx()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="npu.lib.kernels.html#npu.lib.kernels.rgba2gray.Rgba2GrayScalar"><code class="docutils literal notranslate"><span class="pre">Rgba2GrayScalar</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="npu.lib.kernels.html#module-npu.lib.kernels.rgba2hue">npu.lib.kernels.rgba2hue module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="npu.lib.kernels.html#npu.lib.kernels.rgba2hue.Rgba2Hue"><code class="docutils literal notranslate"><span class="pre">Rgba2Hue</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="npu.lib.kernels.html#npu.lib.kernels.rgba2hue.Rgba2Hue.behavioralfx"><code class="docutils literal notranslate"><span class="pre">Rgba2Hue.behavioralfx()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="npu.lib.kernels.html#npu.lib.kernels.rgba2hue.Rgba2HueScalar"><code class="docutils literal notranslate"><span class="pre">Rgba2HueScalar</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="npu.lib.kernels.html#module-npu.lib.kernels.rgba_inverse">npu.lib.kernels.rgba_inverse module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="npu.lib.kernels.html#npu.lib.kernels.rgba_inverse.RgbaInverse"><code class="docutils literal notranslate"><span class="pre">RgbaInverse</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="npu.lib.kernels.html#npu.lib.kernels.rgba_inverse.RgbaInverse.behavioralfx"><code class="docutils literal notranslate"><span class="pre">RgbaInverse.behavioralfx()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="npu.lib.kernels.html#module-npu.lib.kernels.threshold">npu.lib.kernels.threshold module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="npu.lib.kernels.html#npu.lib.kernels.threshold.RgbaRtpThres"><code class="docutils literal notranslate"><span class="pre">RgbaRtpThres</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="npu.lib.kernels.html#npu.lib.kernels.threshold.RgbaRtpThres.behavioralfx"><code class="docutils literal notranslate"><span class="pre">RgbaRtpThres.behavioralfx()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="npu.lib.kernels.html#npu.lib.kernels.threshold.ThresholdGrayscale"><code class="docutils literal notranslate"><span class="pre">ThresholdGrayscale</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="npu.lib.kernels.html#npu.lib.kernels.threshold.ThresholdGrayscale.behavioralfx"><code class="docutils literal notranslate"><span class="pre">ThresholdGrayscale.behavioralfx()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="npu.lib.kernels.html#npu.lib.kernels.threshold.ThresholdRgba"><code class="docutils literal notranslate"><span class="pre">ThresholdRgba</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="npu.lib.kernels.html#npu.lib.kernels.threshold.ThresholdRgba.behavioralfx"><code class="docutils literal notranslate"><span class="pre">ThresholdRgba.behavioralfx()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="npu.lib.kernels.html#module-npu.lib.kernels">Module contents</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="npu.lib.kernels.html#kernels">Kernels</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="npu.lib.kernels.html#npu-lib-kernels-addweighted-module">npu.lib.kernels.addweighted module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="npu.lib.kernels.html#npu-lib-kernels-bitwiseand-module">npu.lib.kernels.bitwiseand module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="npu.lib.kernels.html#npu-lib-kernels-bitwiseor-module">npu.lib.kernels.bitwiseor module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="npu.lib.kernels.html#npu-lib-kernels-filter2d-module">npu.lib.kernels.filter2d module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="npu.lib.kernels.html#npu-lib-kernels-gray2rgba-module">npu.lib.kernels.gray2rgba module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="npu.lib.kernels.html#npu-lib-kernels-inrange-module">npu.lib.kernels.inrange module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="npu.lib.kernels.html#npu-lib-kernels-inverse-module">npu.lib.kernels.inverse module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="npu.lib.kernels.html#npu-lib-kernels-kernelgenerator-module">npu.lib.kernels.kernelgenerator module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="npu.lib.kernels.html#npu-lib-kernels-median-module">npu.lib.kernels.median module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="npu.lib.kernels.html#npu-lib-kernels-plusn-module">npu.lib.kernels.plusn module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="npu.lib.kernels.html#npu-lib-kernels-rgba2gray-module">npu.lib.kernels.rgba2gray module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="npu.lib.kernels.html#npu-lib-kernels-rgba2hue-module">npu.lib.kernels.rgba2hue module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="npu.lib.kernels.html#npu-lib-kernels-rgba-inverse-module">npu.lib.kernels.rgba_inverse module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="npu.lib.kernels.html#npu-lib-kernels-threshold-module">npu.lib.kernels.threshold module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="npu.lib.kernels.html#module-contents">Module contents</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </section>
-<section id="module-npu.lib">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-npu.lib" title="Link to this heading">#</a></h2>
-<section id="library-of-prebuilts">
-<h3>Library of prebuilts<a class="headerlink" href="#library-of-prebuilts" title="Link to this heading">#</a></h3>
-<p>The NPU submodule <cite>npu.lib</cite> contains prebuilt binaries for various
-vision applications, optimized C++ kernel sources and pre-defined
-graphs to help quickly build custom applications.</p>
-<section id="applications">
-<h4>Applications<a class="headerlink" href="#applications" title="Link to this heading">#</a></h4>
-<p>Prebuilt applications can be run as-is with no additional build
-steps required.</p>
-<p>You can list the available videoapps with</p>
-<blockquote>
-<div><p>from npu.utils import videoapps
-videoapps()</p>
-</div></blockquote>
-<p>Example running edge detect</p>
-<blockquote>
-<div><p>from npu.lib import EdgeDetectVideoProcessing</p>
-<p>app = EdgeDetectVideoProcessing()
-app.start()</p>
-</div></blockquote>
-</section>
-<section id="kernels">
-<h4>Kernels<a class="headerlink" href="#kernels" title="Link to this heading">#</a></h4>
-<p>List the available kernels with</p>
-<blockquote>
-<div><p>from npu.utils import aiekernels
-aiekernels()</p>
-</div></blockquote>
-</section>
-<section id="graphs">
-<h4>Graphs<a class="headerlink" href="#graphs" title="Link to this heading">#</a></h4>
-<p>Pre-defined graphs are classes that inherit functionality from
-AppBuilder and make it simple to insert your own kernel into an
-NPU application without worrying too much about setting up the
-graph for dataflow.</p>
-<p>Example using an RGB720pBuilder class with a custom kernel object</p>
-<blockquote>
-<div><p>from npu.lib.graphs.graph_1ct import RGB720pBuilder
-app_builder = RGB720pBuilder(kernel=passthrough)</p>
-</div></blockquote>
-<p>This graph is specifically designed to work with 720p RGBA data,
-in applications which have one input and one output buffer.</p>
-</section>
-</section>
+<section id="module-contents">
+<h2>Module contents<a class="headerlink" href="#module-contents" title="Link to this heading">#</a></h2>
 </section>
 </section>
 
@@ -715,15 +516,7 @@ in applications which have one input and one output buffer.</p>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subpackages">Subpackages</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-npu.lib">Module contents</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#library-of-prebuilts">Library of prebuilts</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#applications">Applications</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#kernels">Kernels</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#graphs">Graphs</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module contents</a></li>
 </ul>
   </nav></div>
 

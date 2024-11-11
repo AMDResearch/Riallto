@@ -43,7 +43,7 @@
   <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
@@ -59,8 +59,8 @@
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'npu.lib.kernels';</script>
-    <script src="_static/cookie-consent.js?v=2793a0fe"></script>
     <script src="_static/custom.js?v=4ce5a416"></script>
+    <script src="_static/cookie-consent.js?v=9f09204a"></script>
     <link rel="canonical" href="https://riallto.ai/npu.lib.kernels.html" />
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
@@ -396,125 +396,21 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-npu.lib.kernels.addweighted">npu.lib.kernels.addweighted module</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.lib.kernels.addweighted.AddWeighted"><code class="docutils literal notranslate"><span class="pre">AddWeighted</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.lib.kernels.addweighted.AddWeighted.behavioralfx"><code class="docutils literal notranslate"><span class="pre">AddWeighted.behavioralfx()</span></code></a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.lib.kernels.addweighted.AddWeightedScalar"><code class="docutils literal notranslate"><span class="pre">AddWeightedScalar</span></code></a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-npu.lib.kernels.bitwiseand">npu.lib.kernels.bitwiseand module</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.lib.kernels.bitwiseand.BitwiseAnd"><code class="docutils literal notranslate"><span class="pre">BitwiseAnd</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.lib.kernels.bitwiseand.BitwiseAnd.behavioralfx"><code class="docutils literal notranslate"><span class="pre">BitwiseAnd.behavioralfx()</span></code></a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.lib.kernels.bitwiseand.BitwiseAndScalar"><code class="docutils literal notranslate"><span class="pre">BitwiseAndScalar</span></code></a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-npu.lib.kernels.bitwiseor">npu.lib.kernels.bitwiseor module</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.lib.kernels.bitwiseor.BitwiseOr"><code class="docutils literal notranslate"><span class="pre">BitwiseOr</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.lib.kernels.bitwiseor.BitwiseOr.behavioralfx"><code class="docutils literal notranslate"><span class="pre">BitwiseOr.behavioralfx()</span></code></a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.lib.kernels.bitwiseor.BitwiseOrScalar"><code class="docutils literal notranslate"><span class="pre">BitwiseOrScalar</span></code></a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-npu.lib.kernels.filter2d">npu.lib.kernels.filter2d module</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.lib.kernels.filter2d.Filter2d"><code class="docutils literal notranslate"><span class="pre">Filter2d</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.lib.kernels.filter2d.Filter2d.behavioralfx"><code class="docutils literal notranslate"><span class="pre">Filter2d.behavioralfx()</span></code></a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.lib.kernels.filter2d.Filter2dScalar"><code class="docutils literal notranslate"><span class="pre">Filter2dScalar</span></code></a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-npu.lib.kernels.gray2rgba">npu.lib.kernels.gray2rgba module</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.lib.kernels.gray2rgba.Gray2Rgba"><code class="docutils literal notranslate"><span class="pre">Gray2Rgba</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.lib.kernels.gray2rgba.Gray2Rgba.behavioralfx"><code class="docutils literal notranslate"><span class="pre">Gray2Rgba.behavioralfx()</span></code></a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.lib.kernels.gray2rgba.Gray2RgbaScalar"><code class="docutils literal notranslate"><span class="pre">Gray2RgbaScalar</span></code></a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-npu.lib.kernels.inrange">npu.lib.kernels.inrange module</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.lib.kernels.inrange.InRange"><code class="docutils literal notranslate"><span class="pre">InRange</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.lib.kernels.inrange.InRange.behavioralfx"><code class="docutils literal notranslate"><span class="pre">InRange.behavioralfx()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-npu.lib.kernels.inverse">npu.lib.kernels.inverse module</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.lib.kernels.inverse.Inverse"><code class="docutils literal notranslate"><span class="pre">Inverse</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.lib.kernels.inverse.Inverse.behavioralfx"><code class="docutils literal notranslate"><span class="pre">Inverse.behavioralfx()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-npu.lib.kernels.kernelgenerator">npu.lib.kernels.kernelgenerator module</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.lib.kernels.kernelgenerator.KernelObjCall"><code class="docutils literal notranslate"><span class="pre">KernelObjCall</span></code></a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-npu.lib.kernels.median">npu.lib.kernels.median module</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.lib.kernels.median.Median"><code class="docutils literal notranslate"><span class="pre">Median</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.lib.kernels.median.Median.behavioralfx"><code class="docutils literal notranslate"><span class="pre">Median.behavioralfx()</span></code></a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.lib.kernels.median.MedianScalar"><code class="docutils literal notranslate"><span class="pre">MedianScalar</span></code></a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-npu.lib.kernels.plusn">npu.lib.kernels.plusn module</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.lib.kernels.plusn.Plus1"><code class="docutils literal notranslate"><span class="pre">Plus1</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.lib.kernels.plusn.Plus1.behavioralfx"><code class="docutils literal notranslate"><span class="pre">Plus1.behavioralfx()</span></code></a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.lib.kernels.plusn.PlusN"><code class="docutils literal notranslate"><span class="pre">PlusN</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.lib.kernels.plusn.PlusN.behavioralfx"><code class="docutils literal notranslate"><span class="pre">PlusN.behavioralfx()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-npu.lib.kernels.rgba2gray">npu.lib.kernels.rgba2gray module</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.lib.kernels.rgba2gray.Rgba2Gray"><code class="docutils literal notranslate"><span class="pre">Rgba2Gray</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.lib.kernels.rgba2gray.Rgba2Gray.behavioralfx"><code class="docutils literal notranslate"><span class="pre">Rgba2Gray.behavioralfx()</span></code></a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.lib.kernels.rgba2gray.Rgba2GrayScalar"><code class="docutils literal notranslate"><span class="pre">Rgba2GrayScalar</span></code></a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-npu.lib.kernels.rgba2hue">npu.lib.kernels.rgba2hue module</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.lib.kernels.rgba2hue.Rgba2Hue"><code class="docutils literal notranslate"><span class="pre">Rgba2Hue</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.lib.kernels.rgba2hue.Rgba2Hue.behavioralfx"><code class="docutils literal notranslate"><span class="pre">Rgba2Hue.behavioralfx()</span></code></a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.lib.kernels.rgba2hue.Rgba2HueScalar"><code class="docutils literal notranslate"><span class="pre">Rgba2HueScalar</span></code></a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-npu.lib.kernels.rgba_inverse">npu.lib.kernels.rgba_inverse module</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.lib.kernels.rgba_inverse.RgbaInverse"><code class="docutils literal notranslate"><span class="pre">RgbaInverse</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.lib.kernels.rgba_inverse.RgbaInverse.behavioralfx"><code class="docutils literal notranslate"><span class="pre">RgbaInverse.behavioralfx()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-npu.lib.kernels.threshold">npu.lib.kernels.threshold module</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.lib.kernels.threshold.RgbaRtpThres"><code class="docutils literal notranslate"><span class="pre">RgbaRtpThres</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.lib.kernels.threshold.RgbaRtpThres.behavioralfx"><code class="docutils literal notranslate"><span class="pre">RgbaRtpThres.behavioralfx()</span></code></a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.lib.kernels.threshold.ThresholdGrayscale"><code class="docutils literal notranslate"><span class="pre">ThresholdGrayscale</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.lib.kernels.threshold.ThresholdGrayscale.behavioralfx"><code class="docutils literal notranslate"><span class="pre">ThresholdGrayscale.behavioralfx()</span></code></a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.lib.kernels.threshold.ThresholdRgba"><code class="docutils literal notranslate"><span class="pre">ThresholdRgba</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.lib.kernels.threshold.ThresholdRgba.behavioralfx"><code class="docutils literal notranslate"><span class="pre">ThresholdRgba.behavioralfx()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-npu.lib.kernels">Module contents</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kernels">Kernels</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#npu-lib-kernels-addweighted-module">npu.lib.kernels.addweighted module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#npu-lib-kernels-bitwiseand-module">npu.lib.kernels.bitwiseand module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#npu-lib-kernels-bitwiseor-module">npu.lib.kernels.bitwiseor module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#npu-lib-kernels-filter2d-module">npu.lib.kernels.filter2d module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#npu-lib-kernels-gray2rgba-module">npu.lib.kernels.gray2rgba module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#npu-lib-kernels-inrange-module">npu.lib.kernels.inrange module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#npu-lib-kernels-inverse-module">npu.lib.kernels.inverse module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#npu-lib-kernels-kernelgenerator-module">npu.lib.kernels.kernelgenerator module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#npu-lib-kernels-median-module">npu.lib.kernels.median module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#npu-lib-kernels-plusn-module">npu.lib.kernels.plusn module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#npu-lib-kernels-rgba2gray-module">npu.lib.kernels.rgba2gray module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#npu-lib-kernels-rgba2hue-module">npu.lib.kernels.rgba2hue module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#npu-lib-kernels-rgba-inverse-module">npu.lib.kernels.rgba_inverse module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#npu-lib-kernels-threshold-module">npu.lib.kernels.threshold module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module contents</a></li>
 </ul>
             </nav>
         </div>
@@ -531,392 +427,50 @@ document.write(`
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">#</a></h2>
 </section>
-<section id="module-npu.lib.kernels.addweighted">
-<span id="npu-lib-kernels-addweighted-module"></span><h2>npu.lib.kernels.addweighted module<a class="headerlink" href="#module-npu.lib.kernels.addweighted" title="Link to this heading">#</a></h2>
-<dl class="py class">
-<dt class="sig sig-object py" id="npu.lib.kernels.addweighted.AddWeighted">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npu.lib.kernels.addweighted.</span></span><span class="sig-name descname"><span class="pre">AddWeighted</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#npu.lib.kernels.addweighted.AddWeighted" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Vectorized implementation of the <cite>cv2.AddWeighted</cite> function.</p>
-<p>This kernel accepts 2 inputs, each input is weighted by the RTPs alpha
-and beta, then emits a single output which is the element-wise addition
-of the weighted inputs.</p>
-<p>Read more about this function in the cv2 docs:
-<a class="reference external" href="https://docs.opencv.org/4.x/d2/de8/group__core__array.html#gafafb2513349db3bcff51f54ee5592a19">https://docs.opencv.org/4.x/d2/de8/group__core__array.html#gafafb2513349db3bcff51f54ee5592a19</a></p>
-<dl class="py method">
-<dt class="sig sig-object py" id="npu.lib.kernels.addweighted.AddWeighted.behavioralfx">
-<span class="sig-name descname"><span class="pre">behavioralfx</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#npu.lib.kernels.addweighted.AddWeighted.behavioralfx" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="npu.lib.kernels.addweighted.AddWeightedScalar">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npu.lib.kernels.addweighted.</span></span><span class="sig-name descname"><span class="pre">AddWeightedScalar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#npu.lib.kernels.addweighted.AddWeightedScalar" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Scalar implementation of the <cite>cv2.AddWeighted</cite> function</p>
-</dd></dl>
-
+<section id="npu-lib-kernels-addweighted-module">
+<h2>npu.lib.kernels.addweighted module<a class="headerlink" href="#npu-lib-kernels-addweighted-module" title="Link to this heading">#</a></h2>
 </section>
-<section id="module-npu.lib.kernels.bitwiseand">
-<span id="npu-lib-kernels-bitwiseand-module"></span><h2>npu.lib.kernels.bitwiseand module<a class="headerlink" href="#module-npu.lib.kernels.bitwiseand" title="Link to this heading">#</a></h2>
-<dl class="py class">
-<dt class="sig sig-object py" id="npu.lib.kernels.bitwiseand.BitwiseAnd">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npu.lib.kernels.bitwiseand.</span></span><span class="sig-name descname"><span class="pre">BitwiseAnd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#npu.lib.kernels.bitwiseand.BitwiseAnd" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Vectorized implementation of the <cite>cv2.bitwise_and</cite> function.</p>
-<p>It accepts 2 buffer inputs and outputs 1 output which is the element-wise
-logical AND operation applied on each value.</p>
-<p>Read more about this function in the cv2 docs:
-<a class="reference external" href="https://docs.opencv.org/4.x/d2/de8/group__core__array.html#ga60b4d04b251ba5eb1392c34425497e14">https://docs.opencv.org/4.x/d2/de8/group__core__array.html#ga60b4d04b251ba5eb1392c34425497e14</a></p>
-<dl class="py method">
-<dt class="sig sig-object py" id="npu.lib.kernels.bitwiseand.BitwiseAnd.behavioralfx">
-<span class="sig-name descname"><span class="pre">behavioralfx</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#npu.lib.kernels.bitwiseand.BitwiseAnd.behavioralfx" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="npu.lib.kernels.bitwiseand.BitwiseAndScalar">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npu.lib.kernels.bitwiseand.</span></span><span class="sig-name descname"><span class="pre">BitwiseAndScalar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#npu.lib.kernels.bitwiseand.BitwiseAndScalar" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Scalar implementation of the <cite>cv2.bitwise_and</cite> function</p>
-</dd></dl>
-
+<section id="npu-lib-kernels-bitwiseand-module">
+<h2>npu.lib.kernels.bitwiseand module<a class="headerlink" href="#npu-lib-kernels-bitwiseand-module" title="Link to this heading">#</a></h2>
 </section>
-<section id="module-npu.lib.kernels.bitwiseor">
-<span id="npu-lib-kernels-bitwiseor-module"></span><h2>npu.lib.kernels.bitwiseor module<a class="headerlink" href="#module-npu.lib.kernels.bitwiseor" title="Link to this heading">#</a></h2>
-<dl class="py class">
-<dt class="sig sig-object py" id="npu.lib.kernels.bitwiseor.BitwiseOr">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npu.lib.kernels.bitwiseor.</span></span><span class="sig-name descname"><span class="pre">BitwiseOr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#npu.lib.kernels.bitwiseor.BitwiseOr" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Vectorized implementation of the <cite>cv2.bitwise_or</cite> function.</p>
-<p>It accepts 2 buffer inputs and outputs 1 output which is the element-wise
-logical AND operation applied on each value.</p>
-<p>Read more about this function in the cv2 docs:
-<a class="reference external" href="https://docs.opencv.org/4.x/d2/de8/group__core__array.html#gab85523db362a4e26ff0c703793a719b4">https://docs.opencv.org/4.x/d2/de8/group__core__array.html#gab85523db362a4e26ff0c703793a719b4</a></p>
-<dl class="py method">
-<dt class="sig sig-object py" id="npu.lib.kernels.bitwiseor.BitwiseOr.behavioralfx">
-<span class="sig-name descname"><span class="pre">behavioralfx</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#npu.lib.kernels.bitwiseor.BitwiseOr.behavioralfx" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="npu.lib.kernels.bitwiseor.BitwiseOrScalar">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npu.lib.kernels.bitwiseor.</span></span><span class="sig-name descname"><span class="pre">BitwiseOrScalar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#npu.lib.kernels.bitwiseor.BitwiseOrScalar" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Scalar implementation of the <cite>cv2.bitwise_or</cite> function</p>
-</dd></dl>
-
+<section id="npu-lib-kernels-bitwiseor-module">
+<h2>npu.lib.kernels.bitwiseor module<a class="headerlink" href="#npu-lib-kernels-bitwiseor-module" title="Link to this heading">#</a></h2>
 </section>
-<section id="module-npu.lib.kernels.filter2d">
-<span id="npu-lib-kernels-filter2d-module"></span><h2>npu.lib.kernels.filter2d module<a class="headerlink" href="#module-npu.lib.kernels.filter2d" title="Link to this heading">#</a></h2>
-<dl class="py class">
-<dt class="sig sig-object py" id="npu.lib.kernels.filter2d.Filter2d">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npu.lib.kernels.filter2d.</span></span><span class="sig-name descname"><span class="pre">Filter2d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">linewidth</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1280</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#npu.lib.kernels.filter2d.Filter2d" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Vectorized implementation of a grayscale filter2d kernel</p>
-<p>It supports 720p or 1080p image resolutions.</p>
-<p>It accepts a row of the image at a time and uses a circular buffer to keep
-track of the last three rows. It then applies the filter to the three rows.</p>
-<section id="keyword-parameter">
-<h3>Keyword Parameter<a class="headerlink" href="#keyword-parameter" title="Link to this heading">#</a></h3>
-<dl class="simple">
-<dt>linewidth: optional</dt><dd><p>Either 1280, 1920</p>
-</dd>
-</dl>
-<p>Read more about this function in the cv2 docs:
-<a class="reference external" href="https://docs.opencv.org/4.x/d4/d86/group__imgproc__filter.html#ga27c049795ce870216ddfb366086b5a04">https://docs.opencv.org/4.x/d4/d86/group__imgproc__filter.html#ga27c049795ce870216ddfb366086b5a04</a></p>
-<dl class="py method">
-<dt class="sig sig-object py" id="npu.lib.kernels.filter2d.Filter2d.behavioralfx">
-<span class="sig-name descname"><span class="pre">behavioralfx</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#npu.lib.kernels.filter2d.Filter2d.behavioralfx" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
+<section id="npu-lib-kernels-filter2d-module">
+<h2>npu.lib.kernels.filter2d module<a class="headerlink" href="#npu-lib-kernels-filter2d-module" title="Link to this heading">#</a></h2>
 </section>
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="npu.lib.kernels.filter2d.Filter2dScalar">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npu.lib.kernels.filter2d.</span></span><span class="sig-name descname"><span class="pre">Filter2dScalar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">linewidth</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1280</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#npu.lib.kernels.filter2d.Filter2dScalar" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Scalar implementation of a filter2d function.</p>
-<section id="id1">
-<h3>Keyword Parameter<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
-<dl class="simple">
-<dt>linewidth: optional</dt><dd><p>Either 1280, 1920</p>
-</dd>
-</dl>
+<section id="npu-lib-kernels-gray2rgba-module">
+<h2>npu.lib.kernels.gray2rgba module<a class="headerlink" href="#npu-lib-kernels-gray2rgba-module" title="Link to this heading">#</a></h2>
 </section>
-</dd></dl>
-
+<section id="npu-lib-kernels-inrange-module">
+<h2>npu.lib.kernels.inrange module<a class="headerlink" href="#npu-lib-kernels-inrange-module" title="Link to this heading">#</a></h2>
 </section>
-<section id="module-npu.lib.kernels.gray2rgba">
-<span id="npu-lib-kernels-gray2rgba-module"></span><h2>npu.lib.kernels.gray2rgba module<a class="headerlink" href="#module-npu.lib.kernels.gray2rgba" title="Link to this heading">#</a></h2>
-<dl class="py class">
-<dt class="sig sig-object py" id="npu.lib.kernels.gray2rgba.Gray2Rgba">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npu.lib.kernels.gray2rgba.</span></span><span class="sig-name descname"><span class="pre">Gray2Rgba</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#npu.lib.kernels.gray2rgba.Gray2Rgba" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Vectorized implementation of the <cite>cv2.cvtColor</cite> RGBA2Gray conversion.</p>
-<p>This kernel is used to convert a single channel grayscale image input
-into a 4 channel RGBA image.</p>
-<p>Read more about this function in the cv2 docs:
-<a class="reference external" href="https://docs.opencv.org/4.x/d8/d01/group__imgproc__color__conversions.html#ga397ae87e1288a81d2363b61574eb8cab">https://docs.opencv.org/4.x/d8/d01/group__imgproc__color__conversions.html#ga397ae87e1288a81d2363b61574eb8cab</a></p>
-<dl class="py method">
-<dt class="sig sig-object py" id="npu.lib.kernels.gray2rgba.Gray2Rgba.behavioralfx">
-<span class="sig-name descname"><span class="pre">behavioralfx</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#npu.lib.kernels.gray2rgba.Gray2Rgba.behavioralfx" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="npu.lib.kernels.gray2rgba.Gray2RgbaScalar">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npu.lib.kernels.gray2rgba.</span></span><span class="sig-name descname"><span class="pre">Gray2RgbaScalar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#npu.lib.kernels.gray2rgba.Gray2RgbaScalar" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Scalar implementation of the <cite>cv2.cvtColor</cite> RGBA2Gray conversion.</p>
-</dd></dl>
-
+<section id="npu-lib-kernels-inverse-module">
+<h2>npu.lib.kernels.inverse module<a class="headerlink" href="#npu-lib-kernels-inverse-module" title="Link to this heading">#</a></h2>
 </section>
-<section id="module-npu.lib.kernels.inrange">
-<span id="npu-lib-kernels-inrange-module"></span><h2>npu.lib.kernels.inrange module<a class="headerlink" href="#module-npu.lib.kernels.inrange" title="Link to this heading">#</a></h2>
-<dl class="py class">
-<dt class="sig sig-object py" id="npu.lib.kernels.inrange.InRange">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npu.lib.kernels.inrange.</span></span><span class="sig-name descname"><span class="pre">InRange</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#npu.lib.kernels.inrange.InRange" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Vectorized implementation of the <cite>cv2.inRange</cite> function.</p>
-<p>This vectorized implementation operates on grayscale image inputs.
-Read more about this function in the cv2 docs:
-<a class="reference external" href="https://docs.opencv.org/4.x/d2/de8/group__core__array.html#ga48af0ab51e36436c5d04340e036ce981">https://docs.opencv.org/4.x/d2/de8/group__core__array.html#ga48af0ab51e36436c5d04340e036ce981</a></p>
-<dl class="py method">
-<dt class="sig sig-object py" id="npu.lib.kernels.inrange.InRange.behavioralfx">
-<span class="sig-name descname"><span class="pre">behavioralfx</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#npu.lib.kernels.inrange.InRange.behavioralfx" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
+<section id="npu-lib-kernels-kernelgenerator-module">
+<h2>npu.lib.kernels.kernelgenerator module<a class="headerlink" href="#npu-lib-kernels-kernelgenerator-module" title="Link to this heading">#</a></h2>
 </section>
-<section id="module-npu.lib.kernels.inverse">
-<span id="npu-lib-kernels-inverse-module"></span><h2>npu.lib.kernels.inverse module<a class="headerlink" href="#module-npu.lib.kernels.inverse" title="Link to this heading">#</a></h2>
-<dl class="py class">
-<dt class="sig sig-object py" id="npu.lib.kernels.inverse.Inverse">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npu.lib.kernels.inverse.</span></span><span class="sig-name descname"><span class="pre">Inverse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#npu.lib.kernels.inverse.Inverse" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Vectorized implementation of a invert function on grayscale images.</p>
-<p>This vectorized implementation operates on grayscale image inputs.
-It performs the operation 255 - image</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="npu.lib.kernels.inverse.Inverse.behavioralfx">
-<span class="sig-name descname"><span class="pre">behavioralfx</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#npu.lib.kernels.inverse.Inverse.behavioralfx" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
+<section id="npu-lib-kernels-median-module">
+<h2>npu.lib.kernels.median module<a class="headerlink" href="#npu-lib-kernels-median-module" title="Link to this heading">#</a></h2>
 </section>
-<section id="module-npu.lib.kernels.kernelgenerator">
-<span id="npu-lib-kernels-kernelgenerator-module"></span><h2>npu.lib.kernels.kernelgenerator module<a class="headerlink" href="#module-npu.lib.kernels.kernelgenerator" title="Link to this heading">#</a></h2>
-<dl class="py class">
-<dt class="sig sig-object py" id="npu.lib.kernels.kernelgenerator.KernelObjCall">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npu.lib.kernels.kernelgenerator.</span></span><span class="sig-name descname"><span class="pre">KernelObjCall</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cpp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bfx</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#npu.lib.kernels.kernelgenerator.KernelObjCall" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Helper function that generates new kernel objects.</p>
-</dd></dl>
-
+<section id="npu-lib-kernels-plusn-module">
+<h2>npu.lib.kernels.plusn module<a class="headerlink" href="#npu-lib-kernels-plusn-module" title="Link to this heading">#</a></h2>
 </section>
-<section id="module-npu.lib.kernels.median">
-<span id="npu-lib-kernels-median-module"></span><h2>npu.lib.kernels.median module<a class="headerlink" href="#module-npu.lib.kernels.median" title="Link to this heading">#</a></h2>
-<dl class="py class">
-<dt class="sig sig-object py" id="npu.lib.kernels.median.Median">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npu.lib.kernels.median.</span></span><span class="sig-name descname"><span class="pre">Median</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#npu.lib.kernels.median.Median" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Vectorized implementation of a median filter.</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="npu.lib.kernels.median.Median.behavioralfx">
-<span class="sig-name descname"><span class="pre">behavioralfx</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#npu.lib.kernels.median.Median.behavioralfx" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="npu.lib.kernels.median.MedianScalar">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npu.lib.kernels.median.</span></span><span class="sig-name descname"><span class="pre">MedianScalar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#npu.lib.kernels.median.MedianScalar" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Scalar implementation of a median filter.</p>
-</dd></dl>
-
+<section id="npu-lib-kernels-rgba2gray-module">
+<h2>npu.lib.kernels.rgba2gray module<a class="headerlink" href="#npu-lib-kernels-rgba2gray-module" title="Link to this heading">#</a></h2>
 </section>
-<section id="module-npu.lib.kernels.plusn">
-<span id="npu-lib-kernels-plusn-module"></span><h2>npu.lib.kernels.plusn module<a class="headerlink" href="#module-npu.lib.kernels.plusn" title="Link to this heading">#</a></h2>
-<dl class="py class">
-<dt class="sig sig-object py" id="npu.lib.kernels.plusn.Plus1">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npu.lib.kernels.plusn.</span></span><span class="sig-name descname"><span class="pre">Plus1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#npu.lib.kernels.plusn.Plus1" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Vectorized implementation of a plus1 function.</p>
-<p>This function simply adds a constant 1 to every element of an input array.
-This is a useful function to verify that your graph is set up
-correctly as the input/output relationship is simple to interpret.</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="npu.lib.kernels.plusn.Plus1.behavioralfx">
-<span class="sig-name descname"><span class="pre">behavioralfx</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#npu.lib.kernels.plusn.Plus1.behavioralfx" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="npu.lib.kernels.plusn.PlusN">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npu.lib.kernels.plusn.</span></span><span class="sig-name descname"><span class="pre">PlusN</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#npu.lib.kernels.plusn.PlusN" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Vectorized implementation of a plusN function.</p>
-<p>This function adds a custom value specified by the runtime parameter N
-to every value of an input array.</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="npu.lib.kernels.plusn.PlusN.behavioralfx">
-<span class="sig-name descname"><span class="pre">behavioralfx</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#npu.lib.kernels.plusn.PlusN.behavioralfx" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
+<section id="npu-lib-kernels-rgba2hue-module">
+<h2>npu.lib.kernels.rgba2hue module<a class="headerlink" href="#npu-lib-kernels-rgba2hue-module" title="Link to this heading">#</a></h2>
 </section>
-<section id="module-npu.lib.kernels.rgba2gray">
-<span id="npu-lib-kernels-rgba2gray-module"></span><h2>npu.lib.kernels.rgba2gray module<a class="headerlink" href="#module-npu.lib.kernels.rgba2gray" title="Link to this heading">#</a></h2>
-<dl class="py class">
-<dt class="sig sig-object py" id="npu.lib.kernels.rgba2gray.Rgba2Gray">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npu.lib.kernels.rgba2gray.</span></span><span class="sig-name descname"><span class="pre">Rgba2Gray</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#npu.lib.kernels.rgba2gray.Rgba2Gray" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Vectorized implementation of the <cite>cv2.cvtColor</cite> RGBA2Gray conversion.</p>
-<p>This kernel is used to convert 4 channel image input into a single
-channel grayscale image.</p>
-<p>Read more about this function in the cv2 docs:
-<a class="reference external" href="https://docs.opencv.org/4.x/d8/d01/group__imgproc__color__conversions.html#ga397ae87e1288a81d2363b61574eb8cab">https://docs.opencv.org/4.x/d8/d01/group__imgproc__color__conversions.html#ga397ae87e1288a81d2363b61574eb8cab</a></p>
-<dl class="py method">
-<dt class="sig sig-object py" id="npu.lib.kernels.rgba2gray.Rgba2Gray.behavioralfx">
-<span class="sig-name descname"><span class="pre">behavioralfx</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#npu.lib.kernels.rgba2gray.Rgba2Gray.behavioralfx" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="npu.lib.kernels.rgba2gray.Rgba2GrayScalar">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npu.lib.kernels.rgba2gray.</span></span><span class="sig-name descname"><span class="pre">Rgba2GrayScalar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#npu.lib.kernels.rgba2gray.Rgba2GrayScalar" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Scalar implementation of of the <cite>cv2.cvtColor</cite> RGBA2Gray conversion.</p>
-</dd></dl>
-
+<section id="npu-lib-kernels-rgba-inverse-module">
+<h2>npu.lib.kernels.rgba_inverse module<a class="headerlink" href="#npu-lib-kernels-rgba-inverse-module" title="Link to this heading">#</a></h2>
 </section>
-<section id="module-npu.lib.kernels.rgba2hue">
-<span id="npu-lib-kernels-rgba2hue-module"></span><h2>npu.lib.kernels.rgba2hue module<a class="headerlink" href="#module-npu.lib.kernels.rgba2hue" title="Link to this heading">#</a></h2>
-<dl class="py class">
-<dt class="sig sig-object py" id="npu.lib.kernels.rgba2hue.Rgba2Hue">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npu.lib.kernels.rgba2hue.</span></span><span class="sig-name descname"><span class="pre">Rgba2Hue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#npu.lib.kernels.rgba2hue.Rgba2Hue" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Vectorized implementation of the <cite>cv2.cvtColor</cite> RGBA2HUE conversion.</p>
-<p>This kernel is used to convert 4 channel image input into HSV space
-(hue, saturation, value).</p>
-<p>Read more about this function in the cv2 docs:
-<a class="reference external" href="https://docs.opencv.org/4.x/d8/d01/group__imgproc__color__conversions.html#ga397ae87e1288a81d2363b61574eb8cab">https://docs.opencv.org/4.x/d8/d01/group__imgproc__color__conversions.html#ga397ae87e1288a81d2363b61574eb8cab</a></p>
-<dl class="py method">
-<dt class="sig sig-object py" id="npu.lib.kernels.rgba2hue.Rgba2Hue.behavioralfx">
-<span class="sig-name descname"><span class="pre">behavioralfx</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#npu.lib.kernels.rgba2hue.Rgba2Hue.behavioralfx" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="npu.lib.kernels.rgba2hue.Rgba2HueScalar">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npu.lib.kernels.rgba2hue.</span></span><span class="sig-name descname"><span class="pre">Rgba2HueScalar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#npu.lib.kernels.rgba2hue.Rgba2HueScalar" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Scalar implementation of the <cite>cv2.cvtColor</cite> RGBA2HUE conversion</p>
-</dd></dl>
-
+<section id="npu-lib-kernels-threshold-module">
+<h2>npu.lib.kernels.threshold module<a class="headerlink" href="#npu-lib-kernels-threshold-module" title="Link to this heading">#</a></h2>
 </section>
-<section id="module-npu.lib.kernels.rgba_inverse">
-<span id="npu-lib-kernels-rgba-inverse-module"></span><h2>npu.lib.kernels.rgba_inverse module<a class="headerlink" href="#module-npu.lib.kernels.rgba_inverse" title="Link to this heading">#</a></h2>
-<dl class="py class">
-<dt class="sig sig-object py" id="npu.lib.kernels.rgba_inverse.RgbaInverse">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npu.lib.kernels.rgba_inverse.</span></span><span class="sig-name descname"><span class="pre">RgbaInverse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#npu.lib.kernels.rgba_inverse.RgbaInverse" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Vectorized inverse operation for an RGBA image.</p>
-<p>For each RGBA 4-Byte pair it subtracts 255 from the R/G/B channel while
-leaving the alpha channel unchanged. This kernel accepts a single input
-for the input tile it is processing and returns a buffer for the output
-tile.</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="npu.lib.kernels.rgba_inverse.RgbaInverse.behavioralfx">
-<span class="sig-name descname"><span class="pre">behavioralfx</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#npu.lib.kernels.rgba_inverse.RgbaInverse.behavioralfx" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-</section>
-<section id="module-npu.lib.kernels.threshold">
-<span id="npu-lib-kernels-threshold-module"></span><h2>npu.lib.kernels.threshold module<a class="headerlink" href="#module-npu.lib.kernels.threshold" title="Link to this heading">#</a></h2>
-<dl class="py class">
-<dt class="sig sig-object py" id="npu.lib.kernels.threshold.RgbaRtpThres">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npu.lib.kernels.threshold.</span></span><span class="sig-name descname"><span class="pre">RgbaRtpThres</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#npu.lib.kernels.threshold.RgbaRtpThres" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Vectorized implementation of an RGBA threshold.</p>
-<p>For each RGBA 4 byte pair it applies a threshold to the R/G/B channels
-while leaving the alpha channel unchanged. This kernel accepts one
-buffer input for the input tile size, a RTP nbytes  for the number of
-bytes that the kernel is expecting to process, r_thresh the threshold
-value for the red channel, g_thres the threshold value for the green
-channel, and b_thresh the threshold value for the blue channel.
-The vectorization factor for the kernel is 64 elements.</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="npu.lib.kernels.threshold.RgbaRtpThres.behavioralfx">
-<span class="sig-name descname"><span class="pre">behavioralfx</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#npu.lib.kernels.threshold.RgbaRtpThres.behavioralfx" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="npu.lib.kernels.threshold.ThresholdGrayscale">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npu.lib.kernels.threshold.</span></span><span class="sig-name descname"><span class="pre">ThresholdGrayscale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#npu.lib.kernels.threshold.ThresholdGrayscale" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Vectorized implementation of the <cite>cv2.threshold</cite> function.</p>
-<p>This vectorized implementation operates on RGBA image inputs.
-Read more about this function in the cv2 docs:
-<a class="reference external" href="https://docs.opencv.org/4.x/d7/d1b/group__imgproc__misc.html#gae8a4a146d1ca78c626a53577199e9c57">https://docs.opencv.org/4.x/d7/d1b/group__imgproc__misc.html#gae8a4a146d1ca78c626a53577199e9c57</a></p>
-<dl class="py method">
-<dt class="sig sig-object py" id="npu.lib.kernels.threshold.ThresholdGrayscale.behavioralfx">
-<span class="sig-name descname"><span class="pre">behavioralfx</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#npu.lib.kernels.threshold.ThresholdGrayscale.behavioralfx" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="npu.lib.kernels.threshold.ThresholdRgba">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npu.lib.kernels.threshold.</span></span><span class="sig-name descname"><span class="pre">ThresholdRgba</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#npu.lib.kernels.threshold.ThresholdRgba" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Vectorized implementation of the <cite>cv2.threshold</cite> function.</p>
-<p>This vectorized implementation operates on RGBA image inputs.
-Read more about this function in the cv2 docs:
-<a class="reference external" href="https://docs.opencv.org/4.x/d7/d1b/group__imgproc__misc.html#gae8a4a146d1ca78c626a53577199e9c57">https://docs.opencv.org/4.x/d7/d1b/group__imgproc__misc.html#gae8a4a146d1ca78c626a53577199e9c57</a></p>
-<dl class="py method">
-<dt class="sig sig-object py" id="npu.lib.kernels.threshold.ThresholdRgba.behavioralfx">
-<span class="sig-name descname"><span class="pre">behavioralfx</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#npu.lib.kernels.threshold.ThresholdRgba.behavioralfx" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-</section>
-<section id="module-npu.lib.kernels">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-npu.lib.kernels" title="Link to this heading">#</a></h2>
-<section id="kernels">
-<h3>Kernels<a class="headerlink" href="#kernels" title="Link to this heading">#</a></h3>
-<p>The <cite>npu.lib.kernels</cite> submodule includes pre-defined, but not pre-built
-kernels that can be used in custom application graph definitions. Each
-kernel also has a behavioral model associated with it allowing validation
-of data shapes and functionality in Python, before compiling the application
-binaries.</p>
-<p>Example usage of inverse kernel behavioral model</p>
-<blockquote>
-<div><p>import numpy as np
-from npu.lib.kernels.inverse import Inverse</p>
-<p>kernel = Inverse()
-x = np.array(np.ones(100,)
-y = kernel(x, dtype=np.uint8), 100, 1)</p>
-</div></blockquote>
-</section>
+<section id="module-contents">
+<h2>Module contents<a class="headerlink" href="#module-contents" title="Link to this heading">#</a></h2>
 </section>
 </section>
 
@@ -985,125 +539,21 @@ y = kernel(x, dtype=np.uint8), 100, 1)</p>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-npu.lib.kernels.addweighted">npu.lib.kernels.addweighted module</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.lib.kernels.addweighted.AddWeighted"><code class="docutils literal notranslate"><span class="pre">AddWeighted</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.lib.kernels.addweighted.AddWeighted.behavioralfx"><code class="docutils literal notranslate"><span class="pre">AddWeighted.behavioralfx()</span></code></a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.lib.kernels.addweighted.AddWeightedScalar"><code class="docutils literal notranslate"><span class="pre">AddWeightedScalar</span></code></a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-npu.lib.kernels.bitwiseand">npu.lib.kernels.bitwiseand module</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.lib.kernels.bitwiseand.BitwiseAnd"><code class="docutils literal notranslate"><span class="pre">BitwiseAnd</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.lib.kernels.bitwiseand.BitwiseAnd.behavioralfx"><code class="docutils literal notranslate"><span class="pre">BitwiseAnd.behavioralfx()</span></code></a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.lib.kernels.bitwiseand.BitwiseAndScalar"><code class="docutils literal notranslate"><span class="pre">BitwiseAndScalar</span></code></a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-npu.lib.kernels.bitwiseor">npu.lib.kernels.bitwiseor module</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.lib.kernels.bitwiseor.BitwiseOr"><code class="docutils literal notranslate"><span class="pre">BitwiseOr</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.lib.kernels.bitwiseor.BitwiseOr.behavioralfx"><code class="docutils literal notranslate"><span class="pre">BitwiseOr.behavioralfx()</span></code></a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.lib.kernels.bitwiseor.BitwiseOrScalar"><code class="docutils literal notranslate"><span class="pre">BitwiseOrScalar</span></code></a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-npu.lib.kernels.filter2d">npu.lib.kernels.filter2d module</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.lib.kernels.filter2d.Filter2d"><code class="docutils literal notranslate"><span class="pre">Filter2d</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.lib.kernels.filter2d.Filter2d.behavioralfx"><code class="docutils literal notranslate"><span class="pre">Filter2d.behavioralfx()</span></code></a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.lib.kernels.filter2d.Filter2dScalar"><code class="docutils literal notranslate"><span class="pre">Filter2dScalar</span></code></a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-npu.lib.kernels.gray2rgba">npu.lib.kernels.gray2rgba module</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.lib.kernels.gray2rgba.Gray2Rgba"><code class="docutils literal notranslate"><span class="pre">Gray2Rgba</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.lib.kernels.gray2rgba.Gray2Rgba.behavioralfx"><code class="docutils literal notranslate"><span class="pre">Gray2Rgba.behavioralfx()</span></code></a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.lib.kernels.gray2rgba.Gray2RgbaScalar"><code class="docutils literal notranslate"><span class="pre">Gray2RgbaScalar</span></code></a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-npu.lib.kernels.inrange">npu.lib.kernels.inrange module</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.lib.kernels.inrange.InRange"><code class="docutils literal notranslate"><span class="pre">InRange</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.lib.kernels.inrange.InRange.behavioralfx"><code class="docutils literal notranslate"><span class="pre">InRange.behavioralfx()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-npu.lib.kernels.inverse">npu.lib.kernels.inverse module</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.lib.kernels.inverse.Inverse"><code class="docutils literal notranslate"><span class="pre">Inverse</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.lib.kernels.inverse.Inverse.behavioralfx"><code class="docutils literal notranslate"><span class="pre">Inverse.behavioralfx()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-npu.lib.kernels.kernelgenerator">npu.lib.kernels.kernelgenerator module</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.lib.kernels.kernelgenerator.KernelObjCall"><code class="docutils literal notranslate"><span class="pre">KernelObjCall</span></code></a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-npu.lib.kernels.median">npu.lib.kernels.median module</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.lib.kernels.median.Median"><code class="docutils literal notranslate"><span class="pre">Median</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.lib.kernels.median.Median.behavioralfx"><code class="docutils literal notranslate"><span class="pre">Median.behavioralfx()</span></code></a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.lib.kernels.median.MedianScalar"><code class="docutils literal notranslate"><span class="pre">MedianScalar</span></code></a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-npu.lib.kernels.plusn">npu.lib.kernels.plusn module</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.lib.kernels.plusn.Plus1"><code class="docutils literal notranslate"><span class="pre">Plus1</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.lib.kernels.plusn.Plus1.behavioralfx"><code class="docutils literal notranslate"><span class="pre">Plus1.behavioralfx()</span></code></a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.lib.kernels.plusn.PlusN"><code class="docutils literal notranslate"><span class="pre">PlusN</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.lib.kernels.plusn.PlusN.behavioralfx"><code class="docutils literal notranslate"><span class="pre">PlusN.behavioralfx()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-npu.lib.kernels.rgba2gray">npu.lib.kernels.rgba2gray module</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.lib.kernels.rgba2gray.Rgba2Gray"><code class="docutils literal notranslate"><span class="pre">Rgba2Gray</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.lib.kernels.rgba2gray.Rgba2Gray.behavioralfx"><code class="docutils literal notranslate"><span class="pre">Rgba2Gray.behavioralfx()</span></code></a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.lib.kernels.rgba2gray.Rgba2GrayScalar"><code class="docutils literal notranslate"><span class="pre">Rgba2GrayScalar</span></code></a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-npu.lib.kernels.rgba2hue">npu.lib.kernels.rgba2hue module</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.lib.kernels.rgba2hue.Rgba2Hue"><code class="docutils literal notranslate"><span class="pre">Rgba2Hue</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.lib.kernels.rgba2hue.Rgba2Hue.behavioralfx"><code class="docutils literal notranslate"><span class="pre">Rgba2Hue.behavioralfx()</span></code></a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.lib.kernels.rgba2hue.Rgba2HueScalar"><code class="docutils literal notranslate"><span class="pre">Rgba2HueScalar</span></code></a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-npu.lib.kernels.rgba_inverse">npu.lib.kernels.rgba_inverse module</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.lib.kernels.rgba_inverse.RgbaInverse"><code class="docutils literal notranslate"><span class="pre">RgbaInverse</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.lib.kernels.rgba_inverse.RgbaInverse.behavioralfx"><code class="docutils literal notranslate"><span class="pre">RgbaInverse.behavioralfx()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-npu.lib.kernels.threshold">npu.lib.kernels.threshold module</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.lib.kernels.threshold.RgbaRtpThres"><code class="docutils literal notranslate"><span class="pre">RgbaRtpThres</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.lib.kernels.threshold.RgbaRtpThres.behavioralfx"><code class="docutils literal notranslate"><span class="pre">RgbaRtpThres.behavioralfx()</span></code></a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.lib.kernels.threshold.ThresholdGrayscale"><code class="docutils literal notranslate"><span class="pre">ThresholdGrayscale</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.lib.kernels.threshold.ThresholdGrayscale.behavioralfx"><code class="docutils literal notranslate"><span class="pre">ThresholdGrayscale.behavioralfx()</span></code></a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.lib.kernels.threshold.ThresholdRgba"><code class="docutils literal notranslate"><span class="pre">ThresholdRgba</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npu.lib.kernels.threshold.ThresholdRgba.behavioralfx"><code class="docutils literal notranslate"><span class="pre">ThresholdRgba.behavioralfx()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-npu.lib.kernels">Module contents</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kernels">Kernels</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#npu-lib-kernels-addweighted-module">npu.lib.kernels.addweighted module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#npu-lib-kernels-bitwiseand-module">npu.lib.kernels.bitwiseand module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#npu-lib-kernels-bitwiseor-module">npu.lib.kernels.bitwiseor module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#npu-lib-kernels-filter2d-module">npu.lib.kernels.filter2d module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#npu-lib-kernels-gray2rgba-module">npu.lib.kernels.gray2rgba module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#npu-lib-kernels-inrange-module">npu.lib.kernels.inrange module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#npu-lib-kernels-inverse-module">npu.lib.kernels.inverse module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#npu-lib-kernels-kernelgenerator-module">npu.lib.kernels.kernelgenerator module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#npu-lib-kernels-median-module">npu.lib.kernels.median module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#npu-lib-kernels-plusn-module">npu.lib.kernels.plusn module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#npu-lib-kernels-rgba2gray-module">npu.lib.kernels.rgba2gray module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#npu-lib-kernels-rgba2hue-module">npu.lib.kernels.rgba2hue module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#npu-lib-kernels-rgba-inverse-module">npu.lib.kernels.rgba_inverse module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#npu-lib-kernels-threshold-module">npu.lib.kernels.threshold module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module contents</a></li>
 </ul>
   </nav></div>
 

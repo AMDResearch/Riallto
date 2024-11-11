@@ -43,7 +43,7 @@
   <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
@@ -59,8 +59,8 @@
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/4_2_write_your_kernel';</script>
-    <script src="../_static/cookie-consent.js?v=2793a0fe"></script>
     <script src="../_static/custom.js?v=4ce5a416"></script>
+    <script src="../_static/cookie-consent.js?v=9f09204a"></script>
     <link rel="canonical" href="https://riallto.ai/notebooks/4_2_write_your_kernel.html" />
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -627,7 +627,7 @@ Once a kernel has completed, data movers in the compute tile move the contents o
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/5db036031595fced0a99cf6b7fd3efd3d892290aca1d9df3845036f7c21d1d13.svg" src="../_images/5db036031595fced0a99cf6b7fd3efd3d892290aca1d9df3845036f7c21d1d13.svg" />
+<img alt="../_images/b2e75394e40504776f83a7f6040bf731c77aa03dd786225b0714cc69944b435e.svg" src="../_images/b2e75394e40504776f83a7f6040bf731c77aa03dd786225b0714cc69944b435e.svg" />
 </div>
 </div>
 <p>The pass-through kernel has been given the name <code class="docutils literal notranslate"><span class="pre">passthrough_0</span></code> and mapped to the bottom compute tile. The visualization shows the interface tile reading data from external memory (not shown), represented by the animated red tokens, and then moving data into the compute tile. This matches the <code class="docutils literal notranslate"><span class="pre">in_buffer</span></code> in our example kernel. The software kernel will start executing. Once it is completed, the compute tile pushes data back to the interface tile which writes the resulting image back to <code class="docutils literal notranslate"><span class="pre">out_buffer</span></code> in external memory.</p>
