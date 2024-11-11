@@ -79,10 +79,17 @@ function initializeGoogleAnalytics() {
         'gtag'
     );
 
+    // Set consent status
+    gtag('consent', 'update', {
+            'ad_user_data': 'granted',
+            'ad_storage': 'granted',
+            'analytics_storage': 'granted'
+    });
+    console.log("Consent status updated.");
+
     gtag('js', new Date());
     console.log("gtag('js', new Date()) called.");
 
     gtag('config', 'G-JK8T9PJNL0');
     console.log("gtag('config', 'G-JK8T9PJNL0') called.");
 }
-
