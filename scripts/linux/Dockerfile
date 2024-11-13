@@ -39,7 +39,7 @@ ENV LC_ALL en_US.UTF-8
 RUN DEBIAN_FRONTEND=noninteractive TZ=Etc/UTC sudo -E apt-get install -y tzdata
 
 RUN git clone https://github.com/amd/xdna-driver.git --recursive
-RUN cd xdna-driver/ && git checkout c04adc6
+RUN cd xdna-driver/ && git checkout c1fdb59
 RUN sudo chmod +x /home/riallto/xdna-driver/xrt/src/runtime_src/tools/scripts/xrtdeps.sh
 RUN sudo /home/riallto/xdna-driver/xrt/src/runtime_src/tools/scripts/xrtdeps.sh -docker
 

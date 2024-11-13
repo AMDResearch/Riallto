@@ -34,7 +34,7 @@ RUN dpkg -i /root/$KERNEL_IMAGE
 
 RUN git config --global url."https://github.com/".insteadOf "git@github.com:"
 RUN cd /root && git clone https://github.com/amd/xdna-driver.git --recursive
-RUN cd /root/xdna-driver && git checkout c04adc6
+RUN cd /root/xdna-driver && git checkout c1fdb59
 
 RUN apt-get install -y cmake jq pkg-config wget libdrm-dev
 RUN apt-get install -y python3-pip
