@@ -46,7 +46,7 @@ RUN mkdir /root/debs
 RUN cd /root/xdna-driver/build && ./build.sh -release
 RUN cd /root/xdna-driver/build && ./build.sh -package
 
-RUN cd /root/xdna-driver/xrt/build && ./build.sh -noert
+RUN cd /root/xdna-driver/xrt/build && ./build.sh -noert -noalveo
 
 RUN cp /root/xdna-driver/build/Release/xrt_plugin*.deb /root/debs/
 RUN cp /root/xdna-driver/xrt/build/Release/xrt*xrt.deb /root/debs/
