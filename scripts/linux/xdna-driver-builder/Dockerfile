@@ -34,7 +34,8 @@ RUN dpkg -i /root/$KERNEL_IMAGE
 
 RUN git config --global url."https://github.com/".insteadOf "git@github.com:"
 RUN cd /root && git clone https://github.com/amd/xdna-driver.git --recursive
-RUN cd /root/xdna-driver && git checkout main
+RUN cd /root/xdna-driver && git checkout f60608b
+RUN cd /root/xdna-driver && git submodule update --recursive
 
 RUN apt-get install -y cmake jq pkg-config wget libdrm-dev
 RUN apt-get install -y python3-pip
@@ -46,7 +47,7 @@ RUN mkdir /root/debs
 RUN cd /root/xdna-driver/build && ./build.sh -release
 RUN cd /root/xdna-driver/build && ./build.sh -package
 
-RUN cd /root/xdna-driver/xrt/build && ./build.sh -noert -noalveo
+RUN cd /root/xdna-driver/xrt/build && ./build.sh -noert
 
 RUN cp /root/xdna-driver/build/Release/xrt_plugin*.deb /root/debs/
 RUN cp /root/xdna-driver/xrt/build/Release/xrt*xrt.deb /root/debs/
