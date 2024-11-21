@@ -9,10 +9,10 @@ $menuShortcutDest = "$userStartMenuPath\Launch Riallto.lnk"
 # we won't delete what's in the roaming folder
 # $notebookDest = "C:\Users\$username\AppData\Roaming\riallto_notebooks"
 
-if (py -3.9 -m pip --disable-pip-version-check list --format freeze | Where-Object { $_ -like "npu=*" }) {
+if (py -3.10 -m pip --disable-pip-version-check list --format freeze | Where-Object { $_ -like "npu=*" }) {
     try {
-        py -3.9 -m pip uninstall -y npu
-		$pythonLibDir = (py -3.9 -m pip show pip | Select-String "Location:").Line.Split(" ")[1]
+        py -3.10 -m pip uninstall -y npu
+		$pythonLibDir = (py -3.10 -m pip show pip | Select-String "Location:").Line.Split(" ")[1]
 		if (Test-Path -Path $pythonLibDir\npu){
 			try {
 				Remove-Item -Recurse -Force $pythonLibDir\npu
