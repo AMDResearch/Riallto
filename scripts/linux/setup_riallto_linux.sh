@@ -111,7 +111,7 @@ if [ ! -f "${NPU_FIRMWARE}" ]; then
 		sudo apt -y --fix-broken install
 		sudo apt install -y ocl-icd-libopencl1 dkms
 		sudo -E dpkg -i xrt_*-amd64-base.deb
-		sudo -E dpkg -i xrt_*-amd64-npu.deb || true
+		sudo -E dpkg -i xrt_*-amd64-xrt.deb || true
 		sudo -E dpkg -i xrt_plugin*-amdxdna.deb || true
 	popd
 fi
