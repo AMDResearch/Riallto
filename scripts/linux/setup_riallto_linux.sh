@@ -153,14 +153,14 @@ else
 	cp xilinx_tools.tar.gz $build_tmp
 fi
 
-while true; do
-	read -p "Do you agree to the terms in ./eula.txt and wish to proceed [y/n]? " answer
-	case $answer in
-		[Yy]* ) echo "Terms accepted"; break;;
-		[Nn]* ) echo "Exiting"; exit 1;;
-		* ) echo "Please chose Y or N.";;
-	esac
-done
+# while true; do
+# 	read -p "Do you agree to the terms in ./eula.txt and wish to proceed [y/n]? " answer
+# 	case $answer in
+# 		[Yy]* ) echo "Terms accepted"; break;;
+# 		[Nn]* ) echo "Exiting"; exit 1;;
+# 		* ) echo "Please chose Y or N.";;
+# 	esac
+# done
 
 cp $LIC_FILE $build_tmp/Xilinx.lic
 
