@@ -9,8 +9,8 @@ RUN apt-get update
 RUN apt-get install -y --install-recommends linux-generic-hwe-24.04
 RUN apt-get install -y linux-headers-$(uname -r)
 RUN apt-get install -y vim git flex bison make libelf1t64
-RUN apt-get install -y dpkg-dev libelf-dev zstd
-RUN apt-get install -y bc debhelper rsync kmod cpio libssl-dev:native
+RUN apt-get install -y dpkg-dev libelf-dev zstd ocl-icd-libopencl1
+RUN apt-get install -y bc debhelper rsync kmod cpio libssl-dev:native dkms
 
 RUN git config --global http.postBuffer 157286400
 
@@ -32,8 +32,9 @@ RUN cd /root/xdna-driver/build && ./build.sh -package
 RUN cd /root/xdna-driver/xrt/build && ./build.sh -npu -opt
 
 ## Install xdna-driver
-#RUN -E dpkg -i /root/xdna-driver/xrt/build/Release/xrt_*-amd64-npu.deb
-#RUN -E dpkg -i /root/xdna-driver/build/Release/xrt_plugin*-amdxdna.deb
+RUN apt-get -y --fix-broken install
+RUN -E dpkg -i /root/xdna-driver/xrt/build/Release/xrt_*-amd64-npu.deb
+RUN -E dpkg -i /root/xdna-driver/build/Release/xrt_plugin*-amdxdna.deb
 
 # Make a copy of the deb files
 RUN mkdir /root/debs
