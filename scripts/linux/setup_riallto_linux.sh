@@ -134,14 +134,14 @@ GROUP_ID=`id -g $USER_NAME`
 GROUP_NAME=`id -g -n $USER_NAME`
 
 ## Checks to make sure that all the required tarballs and license are in the directory
-if [ ! -f "./pynqMLIR-AIE.tar.gz" ]; then
+if [ ! -f "./build_tmp/pynqMLIR-AIE.tar.gz" ]; then
 	echo "Error! pynqMLIR-AIE.tar.gz is missing, downloading from opendownloads..."
 	wget -O $build_tmp/pynqMLIR-AIE.tar.gz $MLIR_FILE
 else
 	cp pynqMLIR-AIE.tar.gz $build_tmp
 fi
 
-if [ ! -f "./xilinx_tools.tar.gz" ]; then
+if [ ! -f "./build_tmp/xilinx_tools.tar.gz" ]; then
 	echo "xilinx_tools.tar.gz is missing, downloading it from opendownloads..."
 	wget -O $build_tmp/riallto_installer.zip $RIALLTO_FILE
 	pushd $build_tmp
