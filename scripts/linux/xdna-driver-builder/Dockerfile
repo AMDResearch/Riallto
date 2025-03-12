@@ -29,7 +29,7 @@ RUN /root/xdna-driver/xrt/src/runtime_src/tools/scripts/xrtdeps.sh -docker
 RUN cd /root/xdna-driver/build && ./build.sh -release
 RUN cd /root/xdna-driver/build && ./build.sh -package
 
-RUN cd /root/xdna-driver/xrt/build && ./build.sh -npu -opt
+RUN cd /root/xdna-driver/xrt/build && ./build.sh -noert
 
 # Make a copy of the deb files
 RUN mkdir /root/debs
