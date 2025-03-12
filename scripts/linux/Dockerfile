@@ -1,7 +1,7 @@
 # Copyright (C) 2023-2025 Advanced Micro Devices, Inc. All rights reserved.
 # SPDX-License-Identifier: MIT
 
-FROM npubase:latest
+FROM ubuntu:24.04
 
 ARG BUILD_TEMPDIR
 ARG LIC_MAC=00:00:00:00:00:00
@@ -39,7 +39,7 @@ ENV LC_ALL en_US.UTF-8
 RUN DEBIAN_FRONTEND=noninteractive TZ=Etc/UTC sudo -E apt-get install -y tzdata
 
 RUN git clone https://github.com/amd/xdna-driver.git --recursive
-RUN cd xdna-driver/ && git checkout f60608b
+RUN cd xdna-driver/ && git checkout 1e1c63f
 RUN cd xdna-driver/ && git submodule update --recursive
 RUN sudo chmod +x /home/riallto/xdna-driver/xrt/src/runtime_src/tools/scripts/xrtdeps.sh
 RUN sudo /home/riallto/xdna-driver/xrt/src/runtime_src/tools/scripts/xrtdeps.sh -docker
@@ -49,6 +49,7 @@ COPY $BUILD_TEMPDIR/root/debs npu_ubuntu_debs
 RUN sudo apt-get install -y dkms udev python3
 RUN sudo apt-get install -y python3-pip ocl-icd-opencl-dev uuid-dev libopencv-dev python3-opencv
 
+RUN sudo -E dpkg -i npu_ubuntu_debs/xrt_*-amd64-base.deb
 RUN sudo -E dpkg -i npu_ubuntu_debs/xrt_*-amd64-npu.deb
 RUN sudo -E dpkg -i npu_ubuntu_debs/xrt_plugin*-amdxdna.deb
 
