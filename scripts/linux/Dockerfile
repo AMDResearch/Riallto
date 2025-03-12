@@ -95,4 +95,3 @@ RUN rm -rf /home/riallto/*.tar.gz
 ENV SHELL /bin/bash
 
 CMD ["/bin/bash", "-l", "-c", "jupyterhub-singleuser", "--allow-root"]
-

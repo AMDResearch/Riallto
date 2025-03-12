@@ -23,3 +23,4 @@ docker exec npubase_build_container bash -c "tar -zcvf driver.tar.gz /root/debs 
 
 ## cleanup
 docker kill npubase_build_container || true
+docker image rm --force npubase:latest
