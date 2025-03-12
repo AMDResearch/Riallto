@@ -108,9 +108,11 @@ if [ ! -f "${NPU_FIRMWARE}" ]; then
 	npu_install_tmp_dir=$(mktemp -d)
 	tar -xzvf "./xdna-driver-builder/${DRIVER_TARBALL}" -C "${npu_install_tmp_dir}"
 	pushd $npu_install_tmp_dir/root/debs
+		sudo apt -y --fix-broken install
+		sudo apt install -y ocl-icd-libopencl1 dkms
+		sudo -E dpkg -i xrt_*-amd64-base.deb
 		sudo -E dpkg -i xrt_*-amd64-npu.deb || true
 		sudo -E dpkg -i xrt_plugin*-amdxdna.deb || true
-		sudo apt -y --fix-broken install
 	popd
 fi
 #########################################################
