@@ -6,6 +6,8 @@ FROM ubuntu:24.04
 ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update
+RUN apt-get install -y --install-recommends linux-generic-hwe-24.04
+RUN apt-get install -y linux-headers-$(uname -r)
 RUN apt-get install -y vim git flex bison make libelf1t64
 RUN apt-get install -y dpkg-dev libelf-dev zstd
 RUN apt-get install -y bc debhelper rsync kmod cpio libssl-dev:native
@@ -23,10 +25,6 @@ RUN apt-get install -y cmake jq pkg-config wget libdrm-dev
 RUN apt-get install -y python3-pip ocl-icd-opencl-dev
 
 RUN /root/xdna-driver/xrt/src/runtime_src/tools/scripts/xrtdeps.sh -docker
-
-RUN apt-get update
-RUN apt-get install --install-recommends linux-generic-hwe-24.04
-RUN apt-get install linux-headers-$(uname -r)
 
 RUN cd /root/xdna-driver/build && ./build.sh -release
 RUN cd /root/xdna-driver/build && ./build.sh -package
