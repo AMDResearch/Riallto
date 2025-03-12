@@ -14,6 +14,7 @@ ARG GROUP_NAME
 SHELL ["/bin/bash", "-c"]
 
 RUN apt-get update
+RUN apt-get install -y --install-recommends linux-generic-hwe-24.04
 RUN apt-get install -y sudo adduser perl ocl-icd-libopencl1
 
 RUN deluser --remove-home $(getent passwd | awk -F: -v uid="$USER_ID" '$3 == uid {print $1}') || echo "Ignoring error, as uid:${USER_ID} does not exist"
