@@ -37,5 +37,5 @@ RUN cd /root/xdna-driver/xrt/build && ./build.sh -npu -opt
 
 # Make a copy of the deb files
 RUN mkdir /root/debs
-RUN cp /root/xdna-driver/xrt/build/Release/xrt_*-amd64-npu.deb /root/debs/
-RUN cp /root/xdna-driver/build/Release/xrt_plugin*.deb /root/debs/
+RUN cp /root/xdna-driver/xrt/build/Release/*.deb /root/debs/
+RUN cp /root/xdna-driver/build/Release/*.deb /root/debs/
