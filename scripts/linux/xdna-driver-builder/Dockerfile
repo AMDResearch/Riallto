@@ -33,9 +33,9 @@ RUN cd /root/xdna-driver/xrt/build && ./build.sh -npu -opt
 
 ## Install xdna-driver
 RUN apt-get -y --fix-broken install
-RUN -E dpkg -i /root/xdna-driver/xrt/build/Release/xrt_*-amd64-base.deb
-RUN -E dpkg -i /root/xdna-driver/xrt/build/Release/xrt_*-amd64-npu.deb
-RUN -E dpkg -i /root/xdna-driver/build/Release/xrt_plugin*-amdxdna.deb
+RUN dpkg -i /root/xdna-driver/xrt/build/Release/xrt_*-amd64-base.deb
+RUN dpkg -i /root/xdna-driver/xrt/build/Release/xrt_*-amd64-npu.deb
+RUN dpkg -i /root/xdna-driver/build/Release/xrt_plugin*-amdxdna.deb
 
 # Make a copy of the deb files
 RUN mkdir /root/debs
