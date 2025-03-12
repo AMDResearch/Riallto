@@ -1,7 +1,7 @@
-# Copyright (C) 2023 Advanced Micro Devices, Inc. All rights reserved.
+# Copyright (C) 2023-2025 Advanced Micro Devices, Inc. All rights reserved.
 # SPDX-License-Identifier: MIT
 
-FROM ubuntu:24.04
+FROM npubase:latest
 
 ARG BUILD_TEMPDIR
 ARG LIC_MAC=00:00:00:00:00:00
@@ -49,7 +49,7 @@ COPY $BUILD_TEMPDIR/root/debs npu_ubuntu_debs
 RUN sudo apt-get install -y dkms udev python3
 RUN sudo apt-get install -y python3-pip ocl-icd-opencl-dev uuid-dev libopencv-dev python3-opencv
 
-RUN sudo -E dpkg -i npu_ubuntu_debs/xrt_*-amd64-xrt.deb
+RUN sudo -E dpkg -i npu_ubuntu_debs/xrt_*-amd64-npu.deb
 RUN sudo -E dpkg -i npu_ubuntu_debs/xrt_plugin*-amdxdna.deb
 
 RUN git clone https://github.com/AMDResearch/Riallto --depth=1
