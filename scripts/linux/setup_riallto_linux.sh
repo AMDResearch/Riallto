@@ -5,18 +5,6 @@
 
 set -e
 
-KERNEL_VERSION="6.10-rc2"
-KERNEL_VERSION_FULL="6.10.0-061000rc2"
-BUILD_DATE="202406022333"
-
-DRIVER_TARBALL=ubuntu24.04_npu_drivers.tar.gz
-REQUIRED_KERNEL_VERSION="${KERNEL_VERSION_FULL}-generic"
-NPU_FIRMWARE="/lib/firmware/amdnpu/1502_00/npu.sbin"
-KERNEL_HEADERS="linux-headers-${KERNEL_VERSION_FULL}_${KERNEL_VERSION_FULL}.${BUILD_DATE}_all.deb"
-KERNEL_HEADERS_GENERIC="linux-headers-${KERNEL_VERSION_FULL}-generic_${KERNEL_VERSION_FULL}.${BUILD_DATE}_amd64.deb"
-KERNEL_MODULES="linux-modules-${KERNEL_VERSION_FULL}-generic_${KERNEL_VERSION_FULL}.${BUILD_DATE}_amd64.deb"
-KERNEL_IMAGE="linux-image-unsigned-${KERNEL_VERSION_FULL}-generic_${KERNEL_VERSION_FULL}.${BUILD_DATE}_amd64.deb"
-
 MLIR_FILE="https://www.xilinx.com/bin/public/openDownload?filename=pynqMLIR_AIE_py312_v0.9.tar.gz"
 RIALLTO_FILE="https://www.xilinx.com/bin/public/openDownload?filename=Riallto-v1.1.zip"
 
@@ -24,7 +12,6 @@ RIALLTO_FILE="https://www.xilinx.com/bin/public/openDownload?filename=Riallto-v1
 ############# CHECKS ##################################
 # Check to ensure key URLs are accessible
 URLS=(
-"https://kernel.ubuntu.com/mainline/v$KERNEL_VERSION/amd64/"
 $MLIR_FILE
 $RIALLTO_FILE
 "https://github.com/amd/xdna-driver.git"
@@ -50,10 +37,10 @@ for URL in "${URLS[@]}"; do
         fi
 done
 
-# Check that we are on Ubuntu24.04
+# Check that we are on Ubuntu24.04.2
 distro_info=$(lsb_release -d)
-if [[ $distro_info != *"Ubuntu 24.04"* ]]; then
-	echo "Riallto is only currently supported on Ubuntu 24.04"
+if [[ $distro_info != *"Ubuntu 24.04.2"* ]]; then
+	echo "Riallto is only currently supported on Ubuntu 24.04.2"
 	exit 1
 fi
 
@@ -93,49 +80,6 @@ echo "Found a License file associated with MAC address $MAC"
 ######### Kernel and NPU driver check / install ###########
 # Check to see if the kernel version and NPU driver is already installed
 build_xrt=0
-kernel_version=$(uname -r)
-
-if [[ "$kernel_version" == "$REQUIRED_KERNEL_VERSION" ]]; then
-	echo "Kernel version is okay, is NPU available?"
-else
-	echo "To install Riallto requires upgrading your kernel to ${REQUIRED_KERNEL_VERSION}"
-	echo "WARNING: This can be quite disruptive to your system configuration."
-	echo "After upgrading you will have to restart your machine and rerun this script"
-	while true; do
-		read -p "Are you happy to continue? [Y/N]  " answer
-		case $answer in
-			[Yy]* ) echo "You chose yes, attempting to update kernel"; break;;
-			[Nn]* ) echo "Exiting"; exit 1;;
-			* ) echo "Please chose Y or N.";;
-		esac
-	done
-
-	# First check to make sure that secure boot is disabled.
-	if mokutil --sb-state | grep -q "enabled"; then
-		echo "Secure boot is currently enabled."
-		echo "To install Riallto on Linux currently requires a"
-		echo "non-mainline kernel version ${REQUIRED_KERNEL_VERSION}."
-	       	echo "If you would like to continue with the installation "
-	        echo "please disable secure boot in your bios settings and rerun this script."
-		exit 1
-	fi
-
-	_kbump_dir=$(mktemp -d)
-
-	wget -P ${_kbump_dir} https://kernel.ubuntu.com/mainline/v$KERNEL_VERSION/amd64/$KERNEL_HEADERS_GENERIC
-	wget -P ${_kbump_dir} https://kernel.ubuntu.com/mainline/v$KERNEL_VERSION/amd64/$KERNEL_HEADERS
-	wget -P ${_kbump_dir} https://kernel.ubuntu.com/mainline/v$KERNEL_VERSION/amd64/$KERNEL_IMAGE
-	wget -P ${_kbump_dir} https://kernel.ubuntu.com/mainline/v$KERNEL_VERSION/amd64/$KERNEL_MODULES
-
-	pushd $_kbump_dir/
-		sudo dpkg -i $KERNEL_HEADERS
-		sudo dpkg -i $KERNEL_HEADERS_GENERIC
-		sudo dpkg -i $KERNEL_MODULES
-		sudo dpkg -i $KERNEL_IMAGE
-	popd
-	echo -e "\033[31mPlease now restart your machine and rerun the script.\033[0m"
-	exit 1
-fi
 
 if [ -f "./xdna-driver-builder/${DRIVER_TARBALL}" ]; then
 	echo "NPU driver is available, just setting up Riallto"
@@ -145,8 +89,7 @@ else
 fi
 
 if [ $build_xrt -eq 1 ]; then
-	# Building the NPU driver version and installing it
-
+	# Building the NPU driver
 	if [ ! -f "./xdna-driver-builder/${DRIVER_TARBALL}" ]; then
 		echo "xdna-driver-builder/${DRIVER_TARBALL} is missing, building it from scratch"
 		pushd xdna-driver-builder
@@ -158,12 +101,12 @@ if [ $build_xrt -eq 1 ]; then
 
 fi
 
-# Build the NPU drivers (xdna-driver)
+# Install the NPU drivers in the host (xdna-driver)
 if [ ! -f "${NPU_FIRMWARE}" ]; then
 	npu_install_tmp_dir=$(mktemp -d)
 	tar -xzvf "./xdna-driver-builder/${DRIVER_TARBALL}" -C "${npu_install_tmp_dir}"
 	pushd $npu_install_tmp_dir/root/debs
-		sudo -E dpkg -i xrt_*-amd64-xrt.deb || true
+		sudo -E dpkg -i xrt_*-amd64-npu.deb || true
 		sudo -E dpkg -i xrt_plugin*-amdxdna.deb || true
 		sudo apt -y --fix-broken install
 	popd
