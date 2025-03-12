@@ -7,7 +7,7 @@ set -e
 
 MLIR_FILE="https://www.xilinx.com/bin/public/openDownload?filename=pynqMLIR_AIE_py312_v0.9.tar.gz"
 RIALLTO_FILE="https://www.xilinx.com/bin/public/openDownload?filename=Riallto-v1.1.zip"
-
+DRIVER_TARBALL=ubuntu24.04_npu_drivers.tar.gz
 
 ############# CHECKS ##################################
 # Check to ensure key URLs are accessible
