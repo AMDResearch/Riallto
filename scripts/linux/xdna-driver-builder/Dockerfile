@@ -6,7 +6,8 @@ FROM ubuntu:24.04
 ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update
-RUN apt-get install --install-recommends linux-generic-hwe-24.04
+#RUN apt-get install --install-recommends linux-generic-hwe-24.04
+RUN apt-get install linux-headers-$(uname -r)
 RUN apt-get install -y vim git flex bison make libelf1t64
 RUN apt-get install -y dpkg-dev libelf-dev zstd
 RUN apt-get install -y bc debhelper rsync kmod cpio libssl-dev:native
