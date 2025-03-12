@@ -5,7 +5,7 @@ FROM npubase:latest
 
 ARG BUILD_TEMPDIR
 ARG LIC_MAC=00:00:00:00:00:00
-ENV LIC_MAC=${LIC_MAC}
+ENV LIC_MAC ${LIC_MAC}
 
 ARG USER_ID
 ARG GROUP_ID
@@ -91,7 +91,7 @@ RUN source ~/.bashrc && python3 -m pip install notebook
 
 #Cleanup a bit
 RUN rm -rf /home/riallto/*.tar.gz
-ENV SHELL=/bin/bash
+ENV SHELL /bin/bash
 
 CMD ["/bin/bash", "-l", "-c", "jupyterhub-singleuser", "--allow-root"]
 
