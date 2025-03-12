@@ -51,7 +51,7 @@ RUN sudo apt-get install -y dkms udev python3
 RUN sudo apt-get install -y python3-pip ocl-icd-opencl-dev uuid-dev libopencv-dev python3-opencv
 
 RUN sudo -E dpkg -i npu_ubuntu_debs/xrt_*-amd64-base.deb
-RUN sudo -E dpkg -i npu_ubuntu_debs/xrt_*-amd64-xrt.deb
+RUN sudo -E dpkg -i npu_ubuntu_debs/xrt_*-amd64-npu.deb
 RUN sudo -E dpkg -i npu_ubuntu_debs/xrt_plugin*-amdxdna.deb
 
 RUN git clone https://github.com/AMDResearch/Riallto --depth=1
