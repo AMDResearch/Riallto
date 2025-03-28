@@ -106,6 +106,8 @@ This means that secure boot has not been disabled from the machine and it cannot
 
 ### If the Docker container does not start with `launch_jupyter.sh` or `run_pytest.sh` because of the `/dev/accel/accel0` does not exist
 
+First of all, confirm that secure boot is disabled on the BIOS.
+
 Check `dmesg`
 
 ```sh

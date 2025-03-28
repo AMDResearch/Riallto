@@ -83,6 +83,16 @@ echo "Found a License file associated with MAC address $MAC"
 # Check to see if the kernel version and NPU driver is already installed
 build_xrt=0
 
+
+# First check to make sure that secure boot is disabled.
+if mokutil --sb-state | grep -q "enabled"; then
+	echo "Secure boot is currently enabled."
+	echo "To install Riallto on Linux currently requires to compile the XDNA driver."
+	echo "If you would like to continue with the installation "
+	echo "please disable secure boot in your BIOS settings and rerun this script."
+	exit 1
+fi
+
 if [ -f "./xdna-driver-builder/${DRIVER_TARBALL}" ]; then
 	echo "NPU driver is available, just setting up Riallto"
 	build_xrt=0;
