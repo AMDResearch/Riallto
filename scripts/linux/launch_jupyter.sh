@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Copyright (C) 2023 Advanced Micro Devices, Inc. All rights reserved.
+# Copyright (C) 2023-2025 Advanced Micro Devices, Inc. All rights reserved.
 # SPDX-License-Identifier: MIT
 
 # Check input args
@@ -25,6 +25,7 @@ docker container wait riallto_jupyter > /dev/null 2>&1 || true
 webcams=$(ls /dev/video*)
 cmd="docker run -dit --rm --name riallto_jupyter"
 cmd+=" --cap-add=NET_ADMIN --device=/dev/accel/accel0:/dev/accel/accel0"
+cmd+= " --ulimit memlock=-1:-1 "
 cmd+=" -p 8888:8888 "
 cmd+=" -v $ABS_DIR:/notebooks "
 for cam in $webcams; do
