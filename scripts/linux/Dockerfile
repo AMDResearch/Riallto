@@ -40,7 +40,7 @@ ENV LC_ALL en_US.UTF-8
 RUN DEBIAN_FRONTEND=noninteractive TZ=Etc/UTC sudo -E apt-get install -y tzdata
 
 RUN git clone https://github.com/amd/xdna-driver.git --recursive
-RUN cd xdna-driver/ && git checkout 7c1d273ef9946848a9f236f1216cfda10d9465cb
+RUN cd xdna-driver/ && git checkout deceb066418f2d53fe172a595f59413a731ccee8
 RUN cd xdna-driver/ && git submodule update --recursive
 RUN sudo chmod +x /home/riallto/xdna-driver/xrt/src/runtime_src/tools/scripts/xrtdeps.sh
 RUN sudo /home/riallto/xdna-driver/xrt/src/runtime_src/tools/scripts/xrtdeps.sh -docker
@@ -50,7 +50,8 @@ COPY $BUILD_TEMPDIR/root/debs npu_ubuntu_debs
 RUN sudo apt-get install -y dkms udev python3
 RUN sudo apt-get install -y python3-pip ocl-icd-opencl-dev uuid-dev libopencv-dev python3-opencv
 
-RUN sudo -E dpkg -i npu_ubuntu_debs/xrt_*-amd64-npu.deb
+RUN sudo -E dpkg -i npu_ubuntu_debs/xrt_*-amd64-base.deb
+RUN sudo -E dpkg -i npu_ubuntu_debs/xrt_*-amd64-base-dev.deb
 RUN sudo -E dpkg -i npu_ubuntu_debs/xrt_plugin*-amdxdna.deb
 
 RUN git clone https://github.com/AMDResearch/Riallto --depth=1
