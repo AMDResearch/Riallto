@@ -1,55 +1,51 @@
-# Riallto Ubuntu 24.04 setup
+# Riallto Ubuntu 24.04.2 setup
 
-Currently there is support for bringing up Riallto on Ubuntu 24.04 with docker.
+Currently there is support for bringing up Riallto on Ubuntu 24.04.2 with docker.
 To use Riallto on Linux requires the use of the [xdna-driver](https://github.com/amd/xdna-driver) which is installed as part of the setup.
-This driver requires version 6.10+ of the Linux kernel, these scripts will upgrade a standard Ubuntu 24.04 installation to this kernel version. __Using this kernel version will require disabling secure boot on your device.__
+This driver requires version 6.10+ of the Linux kernel, we ask you to first upgrade to Ubuntu 24.04.2 from a Ubuntu 24.04 installation to install a 6.11 kernel. __Using this kernel version will require disabling secure boot on your device.__
 
 ## Install steps
 
 On an NPU enabled laptop running Ubuntu 24.04.
 
-1. __Setup Docker.__
+1. **Upgrade to Ubuntu 24.04.2**
 
-You can follow the steps [here](https://docs.docker.com/engine/install/ubuntu/).
+   ```sh
+   sudo apt update
+   sudo apt install --install-recommends linux-generic-hwe-24.04
+   sudo reboot
+   ```
 
-2. __Add your user to the docker user group and then relogin.__
+2. **Setup Docker**
+
+   You can follow the steps [here](https://docs.docker.com/engine/install/ubuntu/).
+
+3. **Add your user to the docker user group and then relogin**
 
    ```sh
    sudo usermod -aG docker $USER ; exit
    ```
 
-3. __Obtain a license file for Riallto.__
+4. **Obtain a license file for Riallto**
 
    Please follow the [guide here](https://riallto.ai/prerequisites-aie-license.html#prerequisites-aie-license) to get the license.
 
-4. __Disable secure boot from your BIOS settings.__
+5. **Disable secure boot from your BIOS settings**
 
    For now we are using an unsigned kernel version requiring that secure boot is disabled before it can be used. To disable secure boot there is a [guide](https://learn.microsoft.com/en-us/windows-hardware/manufacture/desktop/disabling-secure-boot?view=windows-11) from Microsoft here, but often the steps depend on your hardware manufacturer.
 
-5. __Clone the `Riallto` repository and then navigate to the installation script.__
+6. **Clone the `Riallto` repository and then navigate to the installation script**
 
    ```sh
-   git clone https://github.com/AMDResearch/Riallto.git -b v1.1
+   git clone https://github.com/AMDResearch/Riallto.git -b v1.1.1
    cd Riallto/scripts/linux/
    ```
 
    ```{note}
-   We recommend using the tag v1.1 to get the verified version of Riallto. Install from `main` to get the latest drivers and code, however, this is not thoroughly verified.
+   We recommend using the tag v1.1.1 to get the verified version of Riallto. Install from `main` to get the latest drivers and code, however, this is not thoroughly verified.
    ```
 
-6. __Upgrade Linux Kernel.__
-
-   ```sh
-   ./setup_riallto_linux.sh <your license file> <username (optional)>
-   ```
-
-   This command will check the kernel version and if the `xdna-driver` has been installed. If the Linux kernel is not `6.10` or the NPU device drivers are missing, it will build them within a docker and install them on the host machine. This takes about 10 minutes to run and after completing successfully the user will be asked to restart.
-
-7. __Reboot the machine.__
-
-   This will finish upgrading the Linux kernel to `6.10`.
-
-8. __Install Riallto by creating its Docker container.__
+7. **Install Riallto by creating its Docker container**
 
    ```sh
    ./setup_riallto_linux.sh <your license file> <username (optional)>
@@ -109,6 +105,8 @@ Once the Riallto Docker container is created for one user, other users can run R
 This means that secure boot has not been disabled from the machine and it cannot run the necessary kernel version.
 
 ### If the Docker container does not start with `launch_jupyter.sh` or `run_pytest.sh` because of the `/dev/accel/accel0` does not exist
+
+First of all, confirm that secure boot is disabled on the BIOS.
 
 Check `dmesg`
 
