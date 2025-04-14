@@ -23,7 +23,7 @@ required_python_version = ""
 if platform.system() == 'Linux':
     required_python_version = "3.12.*"
 elif platform.system() == 'Windows':
-    required_python_version = "3.9.*"
+    required_python_version = "3.10.*"
 else:
     raise OSError(f'Unknown Operating System: {platform.os.name} {platform.system()}')
 
